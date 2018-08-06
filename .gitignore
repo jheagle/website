@@ -1,5 +1,11 @@
 
-# Created by https://www.gitignore.io/api/node,sass,macos,phpstorm,visualstudiocode
+# Created by https://www.gitignore.io/api/node,sass,macos,jekyll,phpstorm,visualstudiocode
+
+### Jekyll ###
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
 
 ### macOS ###
 # General
@@ -178,7 +184,6 @@ fabric.properties
 .idea/sonarlint
 
 ### Sass ###
-.sass-cache/
 *.css.map
 *.sass.map
 *.scss.map
@@ -191,4 +196,4 @@ fabric.properties
 !.vscode/extensions.json
 
 
-# End of https://www.gitignore.io/api/node,sass,macos,phpstorm,visualstudiocode
+# End of https://www.gitignore.io/api/node,sass,macos,jekyll,phpstorm,visualstudiocode
