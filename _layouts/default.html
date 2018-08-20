@@ -16,18 +16,20 @@
     <div class="header">
         <h1 class="title"><a href="/">{{ site.name }}</a></h1>
         <a class="extra" href="/">home</a>
+        <a class="extra" href="/about">about</a>
     </div>
-
-    {% include/hello.html %}
 
     {{ content }}
 
     <div class="footer">
         <div class="contact">
             <p>
-                <a href="https://github.com/{{ site.github_username }}">github.com/{{ site.github_username }}</a><br/>
-                <a href="https://twitter.com/{{ site.twitter_username }}">twitter.com/{{ site.twitter_username
-                    }}</a><br/>
+                <a href="https://github.com/{{ site.github_username }}">
+                    github.com/{{ site.github_username }}
+                </a><br/>
+                <a href="https://twitter.com/{{ site.twitter_username }}">
+                    twitter.com/{{ site.twitter_username }}
+                </a><br/>
             </p>
         </div>
     </div>
