@@ -9,11 +9,11 @@
   "author": "Shane Osbourne",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.24.6",
-    "gulp": "^3.8.8",
-    "gulp-autoprefixer": "6.0.0",
+    "browser-sync": "^2.26.5",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "6.1.0",
     "gulp-pug": "^4.0.1",
-    "gulp-sass": "^4.0.1"
+    "gulp-sass": "^4.0.2"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,6 @@
   },
   "homepage": "https://github.com/shakyShane/jekyll-gulp-sass-browser-sync",
   "dependencies": {
-    "normalize.css": "^8.0.0"
+    "normalize.css": "^8.0.1"
   }
 }
