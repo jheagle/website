@@ -22,24 +22,16 @@ gulp.task('jekyll-build', function (done) {
 /**
  * Rebuild Jekyll & do page reload
  */
-gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
-  browserSync.reload()
-})
-
-/**
- * Wait for jekyll-build, then launch the Server
- */
-gulp.task('browser-sync', ['sass', 'jekyll-build'], function () {
-  browserSync({
-    server: {
-      baseDir: '_site'
-    },
-    notify: false
+gulp.task(
+  'jekyll-rebuild',
+  gulp.series(['jekyll-build'], function () {
+    browserSync.reload()
   })
-})
+)
 
 /**
- * Compile files from _scss into both _site/css (for live injecting) and site (for future jekyll builds)
+ * Compile files from _scss into both _site/css (for live injecting) and site
+ * (for future jekyll builds)
  */
 gulp.task('sass', function () {
   return gulp.src('assets/css/main.sass')
@@ -52,6 +44,21 @@ gulp.task('sass', function () {
     .pipe(browserSync.reload({stream: true}))
     .pipe(gulp.dest('assets/css'))
 })
+
+/**
+ * Wait for jekyll-build, then launch the Server
+ */
+gulp.task(
+  'browser-sync',
+  gulp.parallel(['sass', 'jekyll-build'], function () {
+    browserSync({
+      server: {
+        baseDir: '_site'
+      },
+      notify: false
+    })
+  })
+)
 
 /**
  * Compile files _pugfiles into HTML in _includes
@@ -76,4 +83,4 @@ gulp.task('watch', function () {
  * Default task, running just `gulp` will compile the sass,
  * compile the jekyll site, launch BrowserSync & watch files.
  */
-gulp.task('default', ['browser-sync', 'watch'])
+gulp.task('default', gulp.series(['browser-sync', 'watch']))
