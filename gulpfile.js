@@ -1,6 +1,6 @@
 const gulp = require('gulp')
 const browserSync = require('browser-sync')
-const sass = require('gulp-sass')
+const sass = require('gulp-sass')(require('sass'))
 const prefix = require('gulp-autoprefixer')
 const cp = require('child_process')
 const pug = require('gulp-pug')
