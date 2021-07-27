@@ -4,20 +4,28 @@
   "description": "A starter project including full setup for Jekyll, GulpJS, SASS & BrowserSync",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "resolutions": "npx npm-force-resolutions"
   },
   "author": "Shane Osbourne",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.27.5",
+    "glob-parent": "^5.1.2",
     "gulp": "^4.0.2",
-    "gulp-autoprefixer": "6.1.0",
-    "gulp-pug": "^4.0.1",
-    "gulp-sass": "^4.0.2"
+    "gulp-autoprefixer": "8.0.0",
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.0.0",
+    "sass": "^1.36.0",
+    "yargs-parser": "^18.1.3"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/shakyShane/jekyll-gulp-sass-browser-sync.git"
+  },
+  "resolutions": {
+    "glob-parent": "6.0.1",
+    "yargs-parser": "18.1.3"
   },
   "keywords": [
     "jekyll",
