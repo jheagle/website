@@ -1,43 +1,43 @@
 {
-  "name": "browser-sync-jekyll",
+  "name": "website",
   "version": "0.0.0",
-  "description": "A starter project including full setup for Jekyll, GulpJS, SASS & BrowserSync",
+  "description": "Personal website",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "resolutions": "npx npm-force-resolutions"
   },
-  "author": "Shane Osbourne",
-  "license": "ISC",
+  "author": "Joshua Heagle",
+  "license": "GNU",
   "devDependencies": {
     "browser-sync": "^2.27.5",
-    "glob-parent": "^5.1.2",
+    "glob-parent": "^6.0.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "8.0.0",
-    "gulp-pug": "^5.0.0",
     "gulp-sass": "^5.0.0",
-    "sass": "^1.36.0",
-    "yargs-parser": "^18.1.3"
+    "jest": "^27.0.6",
+    "sass": "^1.38.1",
+    "yargs-parser": "^20.2.9"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shakyShane/jekyll-gulp-sass-browser-sync.git"
+    "url": "https://github.com/jheagle/website"
   },
   "resolutions": {
     "glob-parent": "6.0.1",
-    "yargs-parser": "18.1.3"
+    "yargs-parser": "20.2.9"
   },
   "keywords": [
-    "jekyll",
     "gulp",
     "sass",
-    "browsersync"
+    "browsersync",
+    "json-dom",
+    "portfolio"
   ],
   "bugs": {
-    "url": "https://github.com/shakyShane/jekyll-gulp-sass-browser-sync/issues"
+    "url": "https://github.com/jheagle/website/issues"
   },
-  "homepage": "https://github.com/shakyShane/jekyll-gulp-sass-browser-sync",
+  "homepage": "https://joshuaheagle.com",
   "dependencies": {
-    "normalize.css": "^8.0.1"
   }
 }
