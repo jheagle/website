@@ -1,0 +1,3 @@
+[submodule "projects/title-switcher"]
+	path = projects/title-switcher
+	url = git@github.com:jheagle/title-switcher-v2.git
