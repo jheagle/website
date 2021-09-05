@@ -1,419 +1,3032 @@
-/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
-
-
-/*
-* What follows is the result of much research on cross-browser styling.
-* Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
-* Kroc Camen, and the H5BP dev community and team.
-*/
-
-
-/* ==========================================================================
-Base styles: opinionated defaults
-========================================================================== */
-
+/*----------------------------
+ * Grid Styles
+ * -----------------------------*/
 html {
-    color: #444;
-    font-size: 1em;
-    line-height: 1.4;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-/*
-* Remove text-shadow in selection highlight: h5bp.com/i
-* These selection rule sets have to be separate.
-* Customize the background color to match your design.
-*/
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
 
+.vert-one-twelfth {
+  height: 8.3%;
+  width: 100%;
+  display: block;
+}
+
+.vert-one-eleventh {
+  height: 9.09%;
+  width: 100%;
+  display: block;
+}
+
+.vert-one-tenth {
+  height: 10%;
+  width: 100%;
+  display: block;
+}
+
+.vert-one-ninth {
+  height: 11.1%;
+  width: 100%;
+  display: block;
+}
+
+.vert-one-eighth {
+  height: 12.5%;
+  width: 100%;
+  display: block;
+}
+
+.vert-one-seventh {
+  height: 14.28%;
+  width: 100%;
+  display: block;
+}
+
+.vert-two-twelfth, .vert-one-sixth {
+  height: 16.6%;
+  width: 100%;
+  display: block;
+}
+
+.vert-two-eleventh {
+  height: 18.18%;
+  width: 100%;
+  display: block;
+}
+
+.vert-two-tenth, .vert-one-fifth {
+  height: 20%;
+  width: 100%;
+  display: block;
+}
+
+.vert-two-ninth {
+  height: 22.2%;
+  width: 100%;
+  display: block;
+}
+
+.vert-three-twelfth, .vert-two-eighth, .vert-one-quarter {
+  height: 25%;
+  width: 100%;
+  display: block;
+}
+
+.vert-three-eleventh {
+  height: 27.27%;
+  width: 100%;
+  display: block;
+}
+
+.vert-two-seventh {
+  height: 28.5%;
+  width: 100%;
+  display: block;
+}
+
+.vert-three-tenth {
+  height: 30%;
+  width: 100%;
+  display: block;
+}
+
+.vert-four-twelfth, .vert-three-ninth, .vert-two-sixth, .vert-one-third {
+  height: 33.3%;
+  width: 100%;
+  display: block;
+}
+
+.vert-fourth-eleventh {
+  height: 36.36%;
+  width: 100%;
+  display: block;
+}
+
+.vert-three-eighth {
+  height: 37.5%;
+  width: 100%;
+  display: block;
+}
+
+.vert-four-tenth, .vert-two-fifth {
+  height: 40%;
+  width: 100%;
+  display: block;
+}
+
+.vert-five-twelfth {
+  height: 41.5%;
+  width: 100%;
+  display: block;
+}
+
+.vert-three-seventh {
+  height: 42.8%;
+  width: 100%;
+  display: block;
+}
+
+.vert-four-ninth {
+  height: 44.4%;
+  width: 100%;
+  display: block;
+}
+
+.vert-five-eleventh {
+  height: 45.45%;
+  width: 100%;
+  display: block;
+}
+
+.vert-six-twelfth, .vert-five-tenth, .vert-four-eighth, .vert-three-sixth, .vert-two-quarter, .vert-one-half {
+  height: 50%;
+  width: 100%;
+  display: block;
+}
+
+.vert-six-eleventh {
+  height: 54.54%;
+  width: 100%;
+  display: block;
+}
+
+.vert-five-ninth {
+  height: 55.5%;
+  width: 100%;
+  display: block;
+}
+
+.vert-four-seventh {
+  height: 57.1%;
+  width: 100%;
+  display: block;
+}
+
+.vert-seven-twelfth {
+  height: 58.3%;
+  width: 100%;
+  display: block;
+}
+
+.vert-six-tenth, .vert-three-fifth {
+  height: 60%;
+  width: 100%;
+  display: block;
+}
+
+.vert-five-eighth {
+  height: 62.5%;
+  width: 100%;
+  display: block;
+}
+
+.vert-seven-eleventh {
+  height: 63.63%;
+  width: 100%;
+  display: block;
+}
+
+.vert-eight-twelfth, .vert-six-ninth, .vert-four-sixth, .vert-two-third {
+  height: 66.6%;
+  width: 100%;
+  display: block;
+}
+
+.vert-seven-tenth {
+  height: 70%;
+  width: 100%;
+  display: block;
+}
+
+.vert-five-seventh {
+  height: 71.4%;
+  width: 100%;
+  display: block;
+}
+
+.vert-eight-eleventh {
+  height: 72.72%;
+  width: 100%;
+  display: block;
+}
+
+.vert-nine-twelfth, .vert-six-eighth, .vert-three-quarter {
+  height: 75%;
+  width: 100%;
+  display: block;
+}
+
+.vert-seven-ninth {
+  height: 77.7%;
+  width: 100%;
+  display: block;
+}
+
+.vert-eight-tenth, .vert-four-fifth {
+  height: 80%;
+  width: 100%;
+  display: block;
+}
+
+.vert-nine-eleventh {
+  height: 81.81%;
+  width: 100%;
+  display: block;
+}
+
+.vert-ten-twelfth, .vert-five-sixth {
+  height: 83.3%;
+  width: 100%;
+  display: block;
+}
+
+.vert-six-seventh {
+  height: 85.7%;
+  width: 100%;
+  display: block;
+}
+
+.vert-seven-eighth {
+  height: 87.5%;
+  width: 100%;
+  display: block;
+}
+
+.vert-eight-ninth {
+  height: 88.8%;
+  width: 100%;
+  display: block;
+}
+
+.vert-nine-tenth {
+  height: 90%;
+  width: 100%;
+  display: block;
+}
+
+.vert-ten-eleventh {
+  height: 90.9%;
+  width: 100%;
+  display: block;
+}
+
+.vert-eleven-twelfth {
+  height: 91.6%;
+  width: 100%;
+  display: block;
+}
+
+.vert-full {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+.vert-row {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.horiz-one-twelfth {
+  width: 8.3%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-one-eleventh {
+  width: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-one-tenth {
+  width: 10%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-one-ninth {
+  width: 11.1%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-one-eighth {
+  width: 12.5%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-one-seventh {
+  width: 14.28%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-two-twelfth, .horiz-one-sixth {
+  width: 16.6%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-two-eleventh {
+  width: 18.18%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-two-tenth, .horiz-one-fifth {
+  width: 20%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-two-ninth {
+  width: 22.2%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-three-twelfth, .horiz-two-eighth, .horiz-one-quarter {
+  width: 25%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-three-eleventh {
+  width: 27.27%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-two-seventh {
+  width: 28.5%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-three-tenth {
+  width: 30%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-four-twelfth, .horiz-three-ninth, .horiz-two-sixth, .horiz-one-third {
+  width: 33.3%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-fourth-eleventh {
+  width: 36.36%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-three-eighth {
+  width: 37.5%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-four-tenth, .horiz-two-fifth {
+  width: 40%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-five-twelfth {
+  width: 41.5%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-three-seventh {
+  width: 42.8%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-four-ninth {
+  width: 44.4%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-five-eleventh {
+  width: 45.45%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-six-twelfth, .horiz-five-tenth, .horiz-four-eighth, .horiz-three-sixth, .horiz-two-quarter, .horiz-one-half {
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-six-eleventh {
+  width: 54.54%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-five-ninth {
+  width: 55.5%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-four-seventh {
+  width: 57.1%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-seven-twelfth {
+  width: 58.3%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-six-tenth, .horiz-three-fifth {
+  width: 60%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-five-eighth {
+  width: 62.5%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-seven-eleventh {
+  width: 63.63%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-eight-twelfth, .horiz-six-ninth, .horiz-four-sixth, .horiz-two-third {
+  width: 66.6%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-seven-tenth {
+  width: 70%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-five-seventh {
+  width: 71.4%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-eight-eleventh {
+  width: 72.72%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-nine-twelfth, .horiz-six-eighth, .horiz-three-quarter {
+  width: 75%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-seven-ninth {
+  width: 77.7%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-eight-tenth, .horiz-four-fifth {
+  width: 80%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-nine-eleventh {
+  width: 81.81%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-ten-twelfth, .horiz-five-sixth {
+  width: 83.3%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-six-seventh {
+  width: 85.7%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-seven-eighth {
+  width: 87.5%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-eight-ninth {
+  width: 88.8%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-nine-tenth {
+  width: 90%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-ten-eleventh {
+  width: 90.9%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-eleven-twelfth {
+  width: 91.6%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-full {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.horiz-column {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.full-section {
+  text-align: center;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  position: relative;
+  overflow: hidden;
+  z-index: 9;
+}
+
+.full-background {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+.vert-row > .med, .vert-row > .lrg, .horiz-column > .med, .horiz-column > .lrg, .vert-row.med, .vert-row.lrg, .horiz-column.med, .horiz-column.lrg {
+  display: none;
+  *zoom: 0;
+}
+
+.vert-row > .sml, .vert-row > .sml {
+  display: inline-block;
+  *zoom: 1;
+}
+
+.horiz-column > .sml, .horiz-column > .sml {
+  display: block;
+}
+
+.vert-row.sml, .vert-row.sml, .horiz-column.sml, .horiz-column.sml {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media only screen and (min-width: 580px) {
+  /*----------------------------
+  * Grid Styles
+  * -----------------------------*/
+  .med-vert-full {
+    height: 100%;
+  }
+
+  .med-vert-eleven-twelfth {
+    height: 91.6%;
+  }
+
+  .med-vert-ten-eleventh {
+    height: 90.9%;
+  }
+
+  .med-vert-nine-tenth {
+    height: 90%;
+  }
+
+  .med-vert-eight-ninth {
+    height: 88.8%;
+  }
+
+  .med-vert-seven-eighth {
+    height: 87.5%;
+  }
+
+  .med-vert-six-seventh {
+    height: 85.7%;
+  }
+
+  .med-vert-ten-twelfth, .med-vert-five-sixth {
+    height: 83.3%;
+  }
+
+  .med-vert-nine-eleventh {
+    height: 81.81%;
+  }
+
+  .med-vert-eight-tenth, .med-vert-four-fifth {
+    height: 80%;
+  }
+
+  .med-vert-seven-ninth {
+    height: 77.7%;
+  }
+
+  .med-vert-nine-twelfth, .med-vert-six-eighth, .med-vert-three-quarter {
+    height: 75%;
+  }
+
+  .med-vert-eight-eleventh {
+    height: 72.72%;
+  }
+
+  .med-vert-five-seventh {
+    height: 71.4%;
+  }
+
+  .med-vert-seven-tenth {
+    height: 70%;
+  }
+
+  .med-vert-eight-twelfth, .med-vert-six-ninth, .med-vert-four-sixth, .med-vert-two-third {
+    height: 66.6%;
+  }
+
+  .med-vert-seven-eleventh {
+    height: 63.63%;
+  }
+
+  .med-vert-five-eighth {
+    height: 62.5%;
+  }
+
+  .med-vert-six-tenth, .med-vert-three-fifth {
+    height: 60%;
+  }
+
+  .med-vert-seven-twelfth {
+    height: 58.3%;
+  }
+
+  .med-vert-four-seventh {
+    height: 57.1%;
+  }
+
+  .med-vert-five-ninth {
+    height: 55.5%;
+  }
+
+  .med-vert-six-eleventh {
+    height: 54.54%;
+  }
+
+  .med-vert-six-twelfth, .med-vert-five-tenth, .med-vert-four-eighth, .med-vert-three-sixth, .med-vert-two-quarter, .med-vert-one-half {
+    height: 50%;
+  }
+
+  .med-vert-five-eleventh {
+    height: 45.45%;
+  }
+
+  .med-vert-four-ninth {
+    height: 44.4%;
+  }
+
+  .med-vert-three-seventh {
+    height: 42.8%;
+  }
+
+  .med-vert-five-twelfth {
+    height: 41.5%;
+  }
+
+  .med-vert-four-tenth, .med-vert-two-fifth {
+    height: 40%;
+  }
+
+  .med-vert-three-eighth {
+    height: 37.5%;
+  }
+
+  .med-vert-fourth-eleventh {
+    height: 36.36%;
+  }
+
+  .med-vert-four-twelfth, .med-vert-three-ninth, .med-vert-two-sixth, .med-vert-one-third {
+    height: 33.3%;
+  }
+
+  .med-vert-three-tenth {
+    height: 30%;
+  }
+
+  .med-vert-two-seventh {
+    height: 28.5%;
+  }
+
+  .med-vert-three-eleventh {
+    height: 27.27%;
+  }
+
+  .med-vert-three-twelfth, .med-vert-two-eighth, .med-vert-one-quarter {
+    height: 25%;
+  }
+
+  .med-vert-two-ninth {
+    height: 22.2%;
+  }
+
+  .med-vert-two-tenth, .med-vert-one-fifth {
+    height: 20%;
+  }
+
+  .med-vert-two-eleventh {
+    height: 18.18%;
+  }
+
+  .med-vert-two-twelfth, .med-vert-one-sixth {
+    height: 16.6%;
+  }
+
+  .med-vert-one-seventh {
+    height: 14.28%;
+  }
+
+  .med-vert-one-eighth {
+    height: 12.5%;
+  }
+
+  .med-vert-one-ninth {
+    height: 11.1%;
+  }
+
+  .med-vert-one-tenth {
+    height: 10%;
+  }
+
+  .med-vert-one-eleventh {
+    height: 9.09%;
+  }
+
+  .med-vert-one-twelfth {
+    height: 8.3%;
+  }
+
+  .med-horiz-full {
+    width: 100%;
+  }
+
+  .med-horiz-eleven-twelfth {
+    width: 91.6%;
+  }
+
+  .med-horiz-ten-eleventh {
+    width: 90.9%;
+  }
+
+  .med-horiz-nine-tenth {
+    width: 90%;
+  }
+
+  .med-horiz-eight-ninth {
+    width: 88.8%;
+  }
+
+  .med-horiz-seven-eighth {
+    width: 87.5%;
+  }
+
+  .med-horiz-six-seventh {
+    width: 85.7%;
+  }
+
+  .med-horiz-nine-eleventh {
+    width: 81.81%;
+  }
+
+  .med-horiz-ten-twelfth, .med-horiz-five-sixth {
+    width: 83.3%;
+  }
+
+  .med-horiz-eight-tenth, .med-horiz-four-fifth {
+    width: 80%;
+  }
+
+  .med-horiz-seven-ninth {
+    width: 77.7%;
+  }
+
+  .med-horiz-nine-twelfth, .med-horiz-six-eighth, .med-horiz-three-quarter {
+    width: 75%;
+  }
+
+  .med-horiz-eight-eleventh {
+    width: 72.72%;
+  }
+
+  .med-horiz-five-seventh {
+    width: 71.4%;
+  }
+
+  .med-horiz-seven-tenth {
+    width: 70%;
+  }
+
+  .med-horiz-eight-twelfth, .med-horiz-six-ninth, .med-horiz-four-sixth, .med-horiz-two-third {
+    width: 66.6%;
+  }
+
+  .med-horiz-seven-eleventh {
+    width: 63.63%;
+  }
+
+  .med-horiz-five-eighth {
+    width: 62.5%;
+  }
+
+  .med-horiz-six-tenth, .med-horiz-three-fifth {
+    width: 60%;
+  }
+
+  .med-horiz-seven-twelfth {
+    width: 58.3%;
+  }
+
+  .med-horiz-four-seventh {
+    width: 57.1%;
+  }
+
+  .med-horiz-five-ninth {
+    width: 55.5%;
+  }
+
+  .med-horiz-six-eleventh {
+    width: 54.54%;
+  }
+
+  .med-horiz-six-twelfth, .med-horiz-five-tenth, .med-horiz-four-eighth, .med-horiz-three-sixth, .med-horiz-two-quarter, .med-horiz-one-half {
+    width: 50%;
+  }
+
+  .med-horiz-five-eleventh {
+    width: 45.45%;
+  }
+
+  .med-horiz-four-ninth {
+    width: 44.4%;
+  }
+
+  .med-horiz-three-seventh {
+    width: 42.8%;
+  }
+
+  .med-horiz-five-twelfth {
+    width: 41.5%;
+  }
+
+  .med-horiz-four-tenth, .med-horiz-two-fifth {
+    width: 40%;
+  }
+
+  .med-horiz-three-eighth {
+    width: 37.5%;
+  }
+
+  .med-horiz-fourth-eleventh {
+    width: 36.36%;
+  }
+
+  .med-horiz-four-twelfth, .med-horiz-three-ninth, .med-horiz-two-sixth, .med-horiz-one-third {
+    width: 33.3%;
+  }
+
+  .med-horiz-three-tenth {
+    width: 30%;
+  }
+
+  .med-horiz-two-seventh {
+    width: 28.5%;
+  }
+
+  .med-horiz-three-eleventh {
+    width: 27.27%;
+  }
+
+  .med-horiz-three-twelfth, .med-horiz-two-eighth, .med-horiz-one-quarter {
+    width: 25%;
+  }
+
+  .med-horiz-two-ninth {
+    width: 22.2%;
+  }
+
+  .med-horiz-two-tenth, .med-horiz-one-fifth {
+    width: 20%;
+  }
+
+  .med-horiz-two-eleventh {
+    width: 18.18%;
+  }
+
+  .med-horiz-two-twelfth, .med-horiz-one-sixth {
+    width: 16.6%;
+  }
+
+  .med-horiz-one-seventh {
+    width: 14.28%;
+  }
+
+  .med-horiz-one-eighth {
+    width: 12.5%;
+  }
+
+  .med-horiz-one-ninth {
+    width: 11.1%;
+  }
+
+  .med-horiz-one-tenth {
+    width: 10%;
+  }
+
+  .med-horiz-one-eleventh {
+    width: 9.09%;
+  }
+
+  .med-horiz-one-twelfth {
+    width: 8.3%;
+  }
+
+  .vert-row > .sml, .vert-row > .lrg, .horiz-column > .sml, .horiz-column > .lrg, .vert-row.sml, .vert-row.lrg, .horiz-column.sml, .horiz-column.lrg {
+    display: none;
+    *zoom: 0;
+  }
+
+  .vert-row > .med, .vert-row > .med {
+    display: inline-block;
+    *zoom: 1;
+  }
+
+  .horiz-column > .med, .horiz-column > .med {
+    display: block;
+  }
+
+  .vert-row.med, .vert-row.med, .horiz-column.med, .horiz-column.med {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+@media only screen and (min-width: 881px) {
+  /*----------------------------
+  * Grid Styles
+  * -----------------------------*/
+  .vert-full {
+    height: 100%;
+  }
+
+  .vert-eleven-twelfth {
+    height: 91.6%;
+  }
+
+  .vert-ten-eleventh {
+    height: 90.9%;
+  }
+
+  .vert-nine-tenth {
+    height: 90%;
+  }
+
+  .vert-eight-ninth {
+    height: 88.8%;
+  }
+
+  .vert-seven-eighth {
+    height: 87.5%;
+  }
+
+  .vert-six-seventh {
+    height: 85.7%;
+  }
+
+  .vert-ten-twelfth, .vert-five-sixth {
+    height: 83.3%;
+  }
+
+  .vert-nine-eleventh {
+    height: 81.81%;
+  }
+
+  .vert-eight-tenth, .vert-four-fifth {
+    height: 80%;
+  }
+
+  .vert-seven-ninth {
+    height: 77.7%;
+  }
+
+  .vert-nine-twelfth, .vert-six-eighth, .vert-three-quarter {
+    height: 75%;
+  }
+
+  .vert-eight-eleventh {
+    height: 72.72%;
+  }
+
+  .vert-five-seventh {
+    height: 71.4%;
+  }
+
+  .vert-seven-tenth {
+    height: 70%;
+  }
+
+  .vert-eight-twelfth, .vert-six-ninth, .vert-four-sixth, .vert-two-third {
+    height: 66.6%;
+  }
+
+  .vert-seven-eleventh {
+    height: 63.63%;
+  }
+
+  .vert-five-eighth {
+    height: 62.5%;
+  }
+
+  .vert-six-tenth, .vert-three-fifth {
+    height: 60%;
+  }
+
+  .vert-seven-twelfth {
+    height: 58.3%;
+  }
+
+  .vert-four-seventh {
+    height: 57.1%;
+  }
+
+  .vert-five-ninth {
+    height: 55.5%;
+  }
+
+  .vert-six-eleventh {
+    height: 54.54%;
+  }
+
+  .vert-six-twelfth, .vert-five-tenth, .vert-four-eighth, .vert-three-sixth, .vert-two-quarter, .vert-one-half {
+    height: 50%;
+  }
+
+  .vert-five-eleventh {
+    height: 45.45%;
+  }
+
+  .vert-four-ninth {
+    height: 44.4%;
+  }
+
+  .vert-three-seventh {
+    height: 42.8%;
+  }
+
+  .vert-five-twelfth {
+    height: 41.5%;
+  }
+
+  .vert-four-tenth, .vert-two-fifth {
+    height: 40%;
+  }
+
+  .vert-three-eighth {
+    height: 37.5%;
+  }
+
+  .vert-fourth-eleventh {
+    height: 36.36%;
+  }
+
+  .vert-four-twelfth, .vert-three-ninth, .vert-two-sixth, .vert-one-third {
+    height: 33.3%;
+  }
+
+  .vert-three-tenth {
+    height: 30%;
+  }
+
+  .vert-two-seventh {
+    height: 28.5%;
+  }
+
+  .vert-three-eleventh {
+    height: 27.27%;
+  }
+
+  .vert-three-twelfth, .vert-two-eighth, .vert-one-quarter {
+    height: 25%;
+  }
+
+  .vert-two-ninth {
+    height: 22.2%;
+  }
+
+  .vert-two-tenth, .vert-one-fifth {
+    height: 20%;
+  }
+
+  .vert-two-eleventh {
+    height: 18.18%;
+  }
+
+  .vert-two-twelfth, .vert-one-sixth {
+    height: 16.6%;
+  }
+
+  .vert-one-seventh {
+    height: 14.28%;
+  }
+
+  .vert-one-eighth {
+    height: 12.5%;
+  }
+
+  .vert-one-ninth {
+    height: 11.1%;
+  }
+
+  .vert-one-tenth {
+    height: 10%;
+  }
+
+  .vert-one-eleventh {
+    height: 9.09%;
+  }
+
+  .vert-one-twelfth {
+    height: 8.3%;
+  }
+
+  .horiz-full {
+    width: 100%;
+  }
+
+  .horiz-eleven-twelfth {
+    width: 91.6%;
+  }
+
+  .horiz-ten-eleventh {
+    width: 90.9%;
+  }
+
+  .horiz-nine-tenth {
+    width: 90%;
+  }
+
+  .horiz-eight-ninth {
+    width: 88.8%;
+  }
+
+  .horiz-seven-eighth {
+    width: 87.5%;
+  }
+
+  .horiz-six-seventh {
+    width: 85.7%;
+  }
+
+  .horiz-nine-eleventh {
+    width: 81.81%;
+  }
+
+  .horiz-ten-twelfth, .horiz-five-sixth {
+    width: 83.3%;
+  }
+
+  .horiz-eight-tenth, .horiz-four-fifth {
+    width: 80%;
+  }
+
+  .horiz-seven-ninth {
+    width: 77.7%;
+  }
+
+  .horiz-nine-twelfth, .horiz-six-eighth, .horiz-three-quarter {
+    width: 75%;
+  }
+
+  .horiz-eight-eleventh {
+    width: 72.72%;
+  }
+
+  .horiz-five-seventh {
+    width: 71.4%;
+  }
+
+  .horiz-seven-tenth {
+    width: 70%;
+  }
+
+  .horiz-eight-twelfth, .horiz-six-ninth, .horiz-four-sixth, .horiz-two-third {
+    width: 66.6%;
+  }
+
+  .horiz-seven-eleventh {
+    width: 63.63%;
+  }
+
+  .horiz-five-eighth {
+    width: 62.5%;
+  }
+
+  .horiz-six-tenth, .horiz-three-fifth {
+    width: 60%;
+  }
+
+  .horiz-seven-twelfth {
+    width: 58.3%;
+  }
+
+  .horiz-four-seventh {
+    width: 57.1%;
+  }
+
+  .horiz-five-ninth {
+    width: 55.5%;
+  }
+
+  .horiz-six-eleventh {
+    width: 54.54%;
+  }
+
+  .horiz-six-twelfth, .horiz-five-tenth, .horiz-four-eighth, .horiz-three-sixth, .horiz-two-quarter, .horiz-one-half {
+    width: 50%;
+  }
+
+  .horiz-five-eleventh {
+    width: 45.45%;
+  }
+
+  .horiz-four-ninth {
+    width: 44.4%;
+  }
+
+  .horiz-three-seventh {
+    width: 42.8%;
+  }
+
+  .horiz-five-twelfth {
+    width: 41.5%;
+  }
+
+  .horiz-four-tenth, .horiz-two-fifth {
+    width: 40%;
+  }
+
+  .horiz-three-eighth {
+    width: 37.5%;
+  }
+
+  .horiz-fourth-eleventh {
+    width: 36.36%;
+  }
+
+  .horiz-four-twelfth, .horiz-three-ninth, .horiz-two-sixth, .horiz-one-third {
+    width: 33.3%;
+  }
+
+  .horiz-three-tenth {
+    width: 30%;
+  }
+
+  .horiz-two-seventh {
+    width: 28.5%;
+  }
+
+  .horiz-three-eleventh {
+    width: 27.27%;
+  }
+
+  .horiz-three-twelfth, .horiz-two-eighth, .horiz-one-quarter {
+    width: 25%;
+  }
+
+  .horiz-two-ninth {
+    width: 22.2%;
+  }
+
+  .horiz-two-tenth, .horiz-one-fifth {
+    width: 20%;
+  }
+
+  .horiz-two-eleventh {
+    width: 18.18%;
+  }
+
+  .horiz-two-twelfth, .horiz-one-sixth {
+    width: 16.6%;
+  }
+
+  .horiz-one-seventh {
+    width: 14.28%;
+  }
+
+  .horiz-one-eighth {
+    width: 12.5%;
+  }
+
+  .horiz-one-ninth {
+    width: 11.1%;
+  }
+
+  .horiz-one-tenth {
+    width: 10%;
+  }
+
+  .horiz-one-eleventh {
+    width: 9.09%;
+  }
+
+  .horiz-one-twelfth {
+    width: 8.3%;
+  }
+
+  .vert-row > .sml, .vert-row > .med, .horiz-column > .sml, .horiz-column > .med, .vert-row.sml, .vert-row.med, .horiz-column.sml, .horiz-column.med {
+    display: none;
+    *zoom: 0;
+  }
+
+  .vert-row > .lrg, .vert-row > .lrg {
+    display: inline-block;
+    *zoom: 1;
+  }
+
+  .horiz-column > .lrg, .horiz-column > .lrg {
+    display: block;
+  }
+
+  .vert-row.lrg, .vert-row.lrg, .horiz-column.lrg, .horiz-column.lrg {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+/* What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.*/
+/* ==========================================================================
+ * Base styles: opinionated defaults
+ * ========================================================================== */
+html {
+  color: #444;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/* Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.*/
 ::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-::selection {
-    background: #b3d4fc;
-    text-shadow: none;
+  background: #b3d4fc;
+  text-shadow: none;
 }
 
-/*
-* A better looking default horizontal rule
-*/
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
 
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
 }
 
-/*
-* Remove the gap between images, videos, audio and canvas and the bottom of
-* their containers: h5bp.com/i/440
-*/
-
+/* Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440 */
 audio, canvas, img, svg, video {
-    vertical-align: middle;
+  vertical-align: middle;
 }
-
-/*
-* Remove default fieldset styles.
-*/
 
 fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
-/*
-* Allow only vertical resizing of textareas.
-*/
-
 textarea {
-    resize: vertical;
+  resize: vertical;
 }
 
 /* =========================================================================
-Custom Styles
-========================================================================== */
-
-
+ * Custom Styles
+ * ========================================================================== */
 /* -------------------------------------------
-General styles section
--------------------------------------------*/
-
+ * General styles section
+ * -------------------------------------------*/
 html {
-    font-size: 62.5%;
-    color: #444;
-    line-height: 1.4;
-    background-color: #fff;
+  font-size: 62.5%;
+  color: #444;
+  line-height: 1.4;
+  background-color: #fff;
 }
+
 html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    text-align: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  text-align: center;
 }
+
 a {
-    outline: none;
-    text-decoration: none;
+  outline: none;
+  text-decoration: none;
 }
 
 /* -------------------------------------------
-Header styles section
--------------------------------------------*/
-
+ * Header styles section
+ * -------------------------------------------*/
 header {
-    display: block;
-    width: 100%;
-    min-height: 60px;
-    position: fixed;
-    z-index: 9999;
-    min-width: 256px;
-    overflow: auto;
+  display: block;
+  width: 100%;
+  min-height: 60px;
+  position: fixed;
+  z-index: 9999;
+  min-width: 256px;
+  overflow: auto;
 }
 
 /* -------------------------------------------
-Main styles section
--------------------------------------------*/
-
+ * Main styles section
+ * -------------------------------------------*/
 main {
-    padding: 70px 0 0;
-    display: block;
-    min-height: calc(100% - 160px);
-    width: 100%;
-    overflow: auto;
+  padding: 70px 0 0;
+  display: block;
+  min-height: calc(100% - 160px);
+  width: 100%;
+  overflow: auto;
 }
 
 /* -------------------------------------------
-Main Content and Layouts styles section
--------------------------------------------*/
-
+ * Main Content and Layouts styles section
+ * -------------------------------------------*/
 section {
-    background-color: #009999;
-    z-index: 1;
+  background-color: #009999;
+  z-index: 1;
 }
+
 section .content {
-    background-color: #fff;
-    border: 4px solid #009999;
-    padding: 4px;
+  background-color: #fff;
+  border: 4px solid #009999;
+  padding: 4px;
 }
+
 section:nth-of-type(even) {
-    background-color: #fff;
-    -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
-    -o-box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
-    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
+  background-color: #fff;
+  -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
+  -o-box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
 }
+
 section:nth-of-type(even) .content {
-    color: #fff;
-    background-color: #009999;
-    border: 4px solid #fff;
+  color: #fff;
+  background-color: #009999;
+  border: 4px solid #fff;
 }
 
 /* ------------------------------------------
-Font Styles
--------------------------------------------*/
-
+ * Font Styles
+ * -------------------------------------------*/
 h1, h2, h3, h4, h5, h6, p, label, input, textarea {
-    margin: 0;
-    padding: 0;
-    outline: 0;
+  margin: 0;
+  padding: 0;
+  outline: 0;
 }
+
 input, textarea {
-    color: #444;
-    padding: .6rem .4rem;
-    border-radius: .4rem;
-    border: 1px solid #eee;
-    border-bottom: 1px solid #00ccff;
-    width: 100%;
+  color: #444;
+  padding: 0.6rem 0.4rem;
+  border-radius: 0.4rem;
+  border: 1px solid #eee;
+  border-bottom: 1px solid #00ccff;
+  width: 100%;
 }
-h1, h2, h3, h4, h5, h6, a, label, dt, input[type='button'], input[type='submit'] {
-    color: #00ccff;
-    font-weight: 700;
+
+h1, h2, h3, h4, h5, h6, a, label, dt, input[type=button], input[type=submit] {
+  color: #00ccff;
+  font-weight: 700;
 }
-input[type='button'], input[type='submit'] {
-    background-color: #fff;
-    border: 1px solid #00ccff;
+
+input[type=button], input[type=submit] {
+  background-color: #fff;
+  border: 1px solid #00ccff;
 }
+
 h1 {
-    font-size: 3.2rem;
+  font-size: 3.2rem;
 }
+
 h2 {
-    font-size: 2.8rem;
+  font-size: 2.8rem;
 }
+
 h3 {
-    font-size: 2.4rem;
+  font-size: 2.4rem;
 }
+
 h4 {
-    font-size: 2rem;
+  font-size: 2rem;
 }
+
 h5 {
-    font-size: 1.8rem;
+  font-size: 1.8rem;
 }
-h6, label, input[type='button'], input[type='submit'] {
-    font-size: 1.6rem;
+
+h6, label, input[type=button], input[type=submit] {
+  font-size: 1.6rem;
 }
+
 p, a, dt, dd {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
 }
+
 p {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 /* -------------------------------------------
-Input styles section
--------------------------------------------*/
-
+ * Input styles section
+ * -------------------------------------------*/
 .form-group {
-    margin: 10px 0;
+  margin: 10px 0;
 }
+
 .form-group label {
-    display: none;
+  display: none;
 }
+
 .form-group input, .form-group textarea {
-    display: inline-block;
+  display: inline-block;
 }
 
 /* -------------------------------------------
-Input format styles section
--------------------------------------------*/
-
-
+ * Input format styles section
+ * -------------------------------------------*/
 /* -------------------
-Validation Styles
---------------------*/
-
-
+ * Validation Styles
+ * --------------------*/
 /* ----------------------
-Common Elements
-------------------------*/
-
+ * Common Elements
+ * ------------------------*/
 .social-links {
-    position: relative;
-    overflow: none;
-    height: 100%;
+  position: relative;
+  overflow: auto;
+  height: 100%;
 }
+
 .social-links a {
-    display: inline-block;
-    padding: 0;
-    transition: all 0.2s ease-in-out;
-    height: 45%;
-    min-height: 30px;
-    width: auto;
-    margin: 4px 2px;
+  display: inline-block;
+  padding: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  height: 45%;
+  min-height: 30px;
+  width: auto;
+  margin: 4px 2px;
 }
+
 .social-links a img {
-    height: 100%;
-    width: auto;
-    padding: 0;
-    margin: 0;
+  height: 100%;
+  width: auto;
+  padding: 0;
+  margin: 0;
 }
+
 .social-links a:hover, .social-links a:focus {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 /* -------------------------------------------
-Footer styles section
--------------------------------------------*/
-
+ * Footer styles section
+ * -------------------------------------------*/
 footer {
-    display: block;
-    width: 100%;
-    position: relative;
-    bottom: 0;
-    height: 140px;
+  display: block;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  height: 140px;
 }
+
 footer img {
-    margin: 40px auto;
+  margin: 40px auto;
 }
 
 /* ==========================================================================
-Helper classes
-========================================================================== */
-
-
-/*
-* Hide from both screenreaders and browsers: h5bp.com/u
-*/
-
+ * Helper classes
+ * ========================================================================== */
 .hidden {
-    display: none !important;
-    visibility: hidden;
+  display: none !important;
+  visibility: hidden;
 }
 
-/*
-* Hide only visually, but have it available for screenreaders: h5bp.com/v
-*/
-
-.visuallyhidden {
-    border: 0;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
-/*
-* Extends the .visuallyhidden class to allow the element to be focusable
-* when navigated to via the keyboard: h5bp.com/p
-*/
-
-.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
+/* Extends the .visually-hidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p */
+.visually-hidden.focusable:active, .visually-hidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
 }
-
-/*
-* Hide visually and from screenreaders, but maintain layout
-*/
 
 .invisible {
-    visibility: hidden;
+  visibility: hidden;
 }
 
-/*
-* Clearfix: contain floats
-*
-* For modern browsers
-* 1. The space content is one way to avoid an Opera bug when the
-*    `contenteditable` attribute is included anywhere else in the document.
-*    Otherwise it causes space to appear at the top and bottom of elements
-*    that receive the `clearfix` class.
-* 2. The use of `table` rather than `block` is only necessary if using
-*    `:before` to contain the top-margins of child elements.
-*/
-
+/* Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *  `content editable` attribute is included anywhere else in the document.
+ *  Otherwise it causes space to appear at the top and bottom of elements
+ *  that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *  `:before` to contain the top-margins of child elements. */
 .clearfix:before, .clearfix:after {
-    content: " ";
-    /* 1 */
-    display: table;
-    /* 2 */
+  content: " ";
+  /* 1 */
+  display: table;
 }
+
+/* 2 */
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
 /* ==========================================================================
-These override the primary ('mobile first') styles.
-========================================================================== */
-
-@media only screen and (min-width:580px) {
-    html {
-        font-size: 75.8%;
-    }
+ * These override the primary ('mobile first') styles.
+ * ========================================================================== */
+@media only screen and (min-width: 580px) {
+  html {
+    font-size: 75.8%;
+  }
 }
 @media only screen and (min-width: 881px) {
-    html {
-        font-size: 86.1%;
-    }
-    section .content, section:nth-of-type(even) .content {
-        border: none;
-    }
+  html {
+    font-size: 86.1%;
+  }
+
+  section .content, section:nth-of-type(even) .content {
+    border: none;
+  }
 }
-@media print, ( -o-min-device-pixel-ratio: 5/4), ( -webkit-min-device-pixel-ratio: 1.25), ( min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
+/* Style adjustments for high resolution devices */
+/* ==========================================================================
+ * Print styles.
+ * Inlined to avoid required HTTP connection: h5bp.com/r
+ * ========================================================================== */
+@media print {
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster: h5bp.com/s */
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a, a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  a[href^="javascript:"]:after, a[href^="#"]:after {
+    content: "";
+  }
+
+  pre, blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  /* h5bp.com/t */
+  tr, img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2, h3 {
+    page-break-after: avoid;
+  }
+}
+#block-joshuawebstrategy-search, #block-joshuawebstrategy-breadcrumbs, #block-joshuawebstrategy-main-menu, #block-joshuawebstrategy-branding, #block-joshuawebstrategy-account-menu, #block-joshuawebstrategy-powered {
+  display: none;
+}
+
+#block-joshuawebstrategy-search, #block-joshuawebstrategy-breadcrumbs, #block-joshuawebstrategy-main-menu, #block-joshuawebstrategy-branding, #block-joshuawebstrategy-account-menu, #block-joshuawebstrategy-powered {
+  display: inline-block;
+}
+
+#block-joshuawebstrategy-branding {
+  position: absolute;
+  left: 10px;
+}
+
+#block-joshuawebstrategy-branding a {
+  display: inline-block;
+  width: 70px;
+  padding: 0;
+}
+
+#block-joshuawebstrategy-branding a img {
+  width: 100%;
+  height: auto;
+  vertical-align: inherit;
+}
+
+#block-joshuawebstrategy-branding a:last-child {
+  display: none;
+}
+
+#block-joshuawebstrategy-search h2 {
+  display: none;
+}
+
+#block-joshuawebstrategy-search form > div {
+  margin: 4px 0 0 12px;
+  display: inline-block;
+}
+
+#block-joshuawebstrategy-search form > div input:not([type=submit]) {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid #eee;
+  border-bottom: 1px solid #00ccff;
+}
+
+#block-joshuawebstrategy-search form > div input[type=submit] {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  font-size: 1rem;
+}
+
+#user-login-form {
+  width: 100%;
+  margin: 30px 0;
+}
+
+#user-login-form input {
+  max-width: 400px;
+}
+
+#user-login-form input[type=submit] {
+  max-width: 510px;
+}
+
+/* =================================================================================
+ * title-switcher styles
+ * ================================================================================= */
+.hideTitle {
+  display: none;
+}
+
+.displayTitle {
+  display: block;
+}
+
+/* =================================================================================
+ * Joshua Heagle's custom styles for Joshua Web Strategy
+ * ================================================================================= */
+.double-underline {
+  border-bottom: 6px double #00ccff;
+}
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+  border-bottom: 1em solid #00ccff;
+  margin: -0.2em 0 0.2em;
+  display: inline-block;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+  border-top: 1em solid #00ccff;
+  margin: 0.2em 0 -0.2em;
+  display: inline-block;
+}
+
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 1em solid transparent;
+  border-bottom: 1em solid transparent;
+  border-left: 1em solid #00ccff;
+  margin: 0 -0.2em 0 0.2em;
+  display: inline-block;
+}
+
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 1em solid transparent;
+  border-bottom: 1em solid transparent;
+  border-right: 1em solid #00ccff;
+  margin: 0 0.2em 0 -0.2em;
+  display: inline-block;
+}
+
+/* -------------------------------------------
+ * Menu styles section
+ * -------------------------------------------*/
+header {
+  bottom: 0;
+  top: auto;
+  height: 40px;
+  -webkit-transition: height 0.4s cubic-bezier(0.15, 0.72, 1, -0.82) 0.2s;
+  -o-transition: height 0.4s cubic-bezier(0.15, 0.72, 1, -0.82) 0.2s;
+  transition: height 0.4s cubic-bezier(0.15, 0.72, 1, -0.82) 0.2s;
+}
+
+header.hover {
+  height: 160px;
+}
+
+/* ---------------------------------
+ * Section Styles
+ * -----------------------------------*/
+section .content {
+  min-width: 75px;
+  min-height: 75px;
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+section:nth-of-type(even) .content {
+  text-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+#main {
+  position: fixed;
+  z-index: -1;
+  background-image: url(../img/336-joshua-laptop.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+}
+
+#main h1 {
+  position: absolute;
+  left: -200%;
+  top: -200%;
+  height: 0;
+  width: 0;
+  color: #fff;
+  font-size: 0.1rem;
+}
+
+#intro {
+  background-color: transparent;
+  -webkit-box-shadow: inset 0 -45px 100px rgba(0, 0, 0, 0.4);
+  -o-box-shadow: inset 0 -45px 100px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 -45px 100px rgba(0, 0, 0, 0.4);
+}
+
+#intro h2, #intro h3, #intro h4 {
+  text-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+#profile {
+  min-height: 550px;
+}
+
+#toronto-skyline {
+  background-image: url("../img/314-toronto-skyline-night.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#profile .content {
+  padding: 70px 10px 10px;
+  background-color: rgba(0, 153, 153, 0.4);
+  border: none;
+}
+
+#profile p {
+  text-align: left;
+  margin: 0 0 1em;
+  padding: 0 20px;
+}
+
+#profile a {
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+#profile .contact-button {
+  margin: 30px 20px 0;
+  display: block;
+  font-size: 1.6rem;
+  -webkit-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  width: calc(100% - 40px);
+  padding: 20px 10px;
+  border-radius: 0.4rem;
+  background-color: white;
+}
+
+#profile .contact-button:hover, #profile .contact-button:focus {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#work {
+  -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
+  -o-box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
+}
+
+#work .content {
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  font-weight: 700;
+  font-size: 1.4em;
+}
+
+#work .content h4 {
+  margin: 0 4px 4px;
+}
+
+.logo-link {
+  margin: 8px;
+  width: 100%;
+  text-align: left;
+}
+
+.logo-link img {
+  width: 35%;
+  min-width: 75px;
+}
+
+#eyeconx .logo-link, #eyestartv .logo-link, #bright-optical .logo-link {
+  display: none;
+}
+
+.title-switcher p, .titles h4 {
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+.title-switcher p {
+  text-align: left;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.title-switcher a {
+  font-size: 1.8rem;
+}
+
+#work iframe {
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+#work .social-overlay {
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+}
+
+#work .social-links {
+  color: #fff;
+}
+
+#work .social-overlay p {
+  color: #444;
+  background-color: rgba(0, 153, 153, 0.7);
+}
+
+#addressbook, #eyeconx, #live-cam, #title-switcher-plugin, #json-search, #eyestartv, #bright-optical {
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+}
+
+#addressbook {
+  background-image: url(../img/address-book.jpg);
+}
+
+#eyeconx {
+  background-image: url(../img/eyeconx-website.jpg);
+}
+
+#live-cam {
+  background-image: url(../img/live-street-cams.jpg);
+}
+
+#title-switcher-plugin {
+  background-image: url(../img/title-switcher-plugin.jpg);
+}
+
+#json-search {
+  background-image: url(../img/json-keyword-search.jpg);
+}
+
+#eyestartv {
+  background-image: url(../img/eyestartv-register.jpg);
+}
+
+#bright-optical {
+  background-image: url(../img/bright-optical-location-admin.jpg);
+}
+
+.blue-shade {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(26, 89, 171, 0.5);
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+#cam-title {
+  color: #FFC017;
+  font-size: 1.4rem;
+  font-family: "Arial", arial, helvetica, san-serif, serif;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin-top: -26px;
+  text-decoration: none;
+}
+
+#rates {
+  min-height: 1580px;
+}
+
+#rates .rate-intro p {
+  text-align: center;
+  margin: 0 auto;
+}
+
+#rates .rate-column {
+  text-align: left;
+  padding: 1rem;
+}
+
+#rates .rate-column li {
+  margin-bottom: 1.2rem;
+}
+
+#rates .rate-column > p {
+  margin-top: 1.2rem;
+}
+
+#rates .sml .rate-column {
+  min-height: 680px;
+}
+
+#rates .sml .rate-column:nth-of-type(2) {
+  min-height: 420px;
+}
+
+#rates .sml .rate-column:first-of-type {
+  min-height: 320px;
+}
+
+#rates .rates-head, #rates .rates-foot {
+  height: auto;
+}
+
+#rates .sml .rate-column h4, #rates .sml .rate-column h5, #rates .sml .rate-column h6, #rates .sml .rate-column p {
+  display: inline-block;
+  margin: 4px 20px 0 0;
+  font-size: 1.4rem;
+}
+
+#rates .sml .rate-column h6, #rates .sml .rate-column p {
+  font-size: 1.2rem;
+  margin: 4px 0;
+  vertical-align: top;
+}
+
+#rates .sml .rate-column h6 {
+  width: 29%;
+  min-width: 66px;
+}
+
+#rates .sml .rate-column p {
+  width: 70%;
+}
+
+#rates .sml .rate-column ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+#contact {
+  min-height: 650px;
+}
+
+#contact .content {
+  padding: 0;
+}
+
+#contact .content > .contact-note {
+  padding: 20px 5px 5px;
+}
+
+#contact .content > .contact-note p {
+  padding: 0 8px;
+  text-align: left;
+}
+
+#contact .lrg .content > .contact-note {
+  padding: 60px 5px 5px;
+}
+
+#contact .company-contact {
+  padding: 8px;
+}
+
+#contact h3, #contact h4, #contact a {
+  opacity: 1;
+  -webkit-transition: opacity 0.4s ease-in-out;
+  -o-transition: opacity 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
+}
+
+#contact a:hover, #contact a:focus {
+  opacity: 0.6;
+}
+
+#contact .sml .company-contact {
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+#contact .lrg .company-contact {
+  font-size: 1.6rem;
+}
+
+#contact .company-contact h4 {
+  font-size: 1.6rem;
+}
+
+#contact .contact-note h3 {
+  font-size: 2rem;
+}
+
+#contact form {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#contact .contact-info {
+  width: 100%;
+  height: 30%;
+  text-align: left;
+}
+
+#contact .contact-info .form-group {
+  width: 100%;
+  text-align: center;
+}
+
+#contact input, #contact textarea {
+  width: 90%;
+  position: relative;
+  margin: 0;
+  font-size: 0.8rem;
+  -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  -o-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+#contact input:not(.large-button):hover, #contact textarea:hover, #contact input:not(.large-button):focus, #contact textarea:focus {
+  font-size: 1.2rem;
+  width: 95%;
+}
+
+#contact .message {
+  width: 100%;
+  height: 65%;
+}
+
+#contact .message textarea {
+  height: 90%;
+}
+
+#contact .message textarea:hover, #contact .message textarea:focus {
+  height: 92%;
+}
+
+#contact .large-button {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  font-size: 2.6rem;
+}
+
+#contact .large-button:hover, #contact .large-button:focus {
+  width: 104%;
+  height: 121%;
+  font-size: 2.8rem;
+  margin: -1% -2% 0;
+  -webkit-box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  -o-box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+#home-footer {
+  z-index: 1;
+  background-color: #fff;
+  min-height: 120px;
+}
+
+#home-footer .copyright {
+  color: #fff;
+  background-color: #009999;
+  border: 4px solid #fff;
+  text-align: center;
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+#home-footer .copyright .copyright-info p {
+  padding: 6px 4px;
+  font-size: 1.8rem;
+  margin: 0;
 }
 
 /* ==========================================================================
-  Print styles.
-  Inlined to avoid required HTTP connection: h5bp.com/r
-  ========================================================================== */
+ * These override the primary ('mobile first') styles.
+ * ========================================================================== */
+@media only screen and (min-width: 314px) {
+  #main {
+    background-image: url("../img/480-joshua-laptop.jpg");
+  }
 
-@media print {
-    * {
-        background: transparent !important;
-        color: #000 !important;
-        /* Black prints faster: h5bp.com/s */
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
-    a, a:visited {
-        text-decoration: underline;
-    }
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-    /*
-      * Don't show links for images, or javascript/internal links
-      */
-    a[href^="javascript:"]:after, a[href^="#"]:after {
-        content: "";
-    }
-    pre, blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-    thead {
-        display: table-header-group;
-        /* h5bp.com/t */
-    }
-    tr, img {
-        page-break-inside: avoid;
-    }
-    img {
-        max-width: 100% !important;
-    }
-    p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-    }
-    h2, h3 {
-        page-break-after: avoid;
-    }
+  #toronto-skyline {
+    background-image: url("../img/448-toronto-skyline-night.jpg");
+  }
+
+  #contact .company-contact {
+    padding: 12px 30px;
+  }
 }
-@-ms-viewport {
-    width: device-width;
+@media only screen and (min-width: 344px) {
+  #rates {
+    min-height: 1140px;
+  }
+
+  #rates .sml .rate-column {
+    min-height: 465px;
+  }
+
+  #rates .sml .rate-column:nth-of-type(2) {
+    min-height: 280px;
+  }
+
+  #rates .sml .rate-column:first-of-type {
+    min-height: 215px;
+  }
+}
+@media only screen and (min-width: 448px) {
+  #main {
+    background-image: url("../img/600-joshua-laptop.jpg");
+  }
+
+  #toronto-skyline {
+    background-image: url("../img/640-toronto-skyline-night.jpg");
+  }
+
+  #rates .rate-intro p {
+    text-align: center;
+    margin: 0 20% 0 20%;
+  }
+}
+@media only screen and (min-width: 580px) {
+  .overflow-bottom-fifty {
+    top: 0;
+    bottom: -50%;
+    height: 150%;
+    position: relative;
+    z-index: 10;
+  }
+
+  #contact .contact-info .form-group {
+    width: 50%;
+  }
+
+  #contact input, #contact textarea {
+    margin: 2px 0;
+  }
+
+  #contact .contact-info .form-group input {
+    width: 80%;
+  }
+
+  #contact .contact-info .form-group input:not(.large-button):hover, #contact .contact-info .form-group input:not(.large-button):focus {
+    width: 90%;
+  }
+
+  #rates {
+    min-height: 1570px;
+  }
+
+  #rates .vert-row {
+    min-height: 75px;
+  }
+
+  #rates .vert-eight-twelfth {
+    min-height: 1420px;
+  }
+
+  #rates .rate-intro p {
+    margin: 0 15% 0 15%;
+  }
+}
+@media only screen and (min-width: 600px) {
+  #main {
+    background-image: url("../img/768-joshua-laptop.jpg");
+  }
+
+  #toronto-skyline {
+    background-image: url("../img/800-toronto-skyline-night.jpg");
+  }
+
+  #rates {
+    min-height: 1470px;
+  }
+
+  #rates .vert-eight-twelfth {
+    min-height: 1320px;
+  }
+}
+@media only screen and (min-width: 630px) {
+  #rates {
+    min-height: 1350px;
+  }
+
+  #rates .vert-eight-twelfth {
+    min-height: 1200px;
+  }
+}
+@media only screen and (min-width: 720px) {
+  #rates {
+    min-height: 1200px;
+  }
+
+  #rates .vert-eight-twelfth {
+    min-height: 1050px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  #main {
+    background-image: url("../img/2448-joshua-laptop.jpg");
+  }
+
+  #toronto-skyline {
+    background-image: url("../img/1024-toronto-skyline-night.jpg");
+  }
+
+  #rates {
+    min-height: 1100px;
+  }
+
+  #rates .vert-eight-twelfth {
+    min-height: 950px;
+  }
+}
+@media only screen and (min-width: 881px) {
+  .logo {
+    position: relative;
+    display: inline-block;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  header {
+    min-height: 70px;
+    bottom: auto;
+  }
+
+  header:hover, header:active, header.hover {
+    height: auto;
+  }
+
+  .title-switcher p, .title-switcher a {
+    font-size: 0.9rem;
+  }
+
+  #profile .content {
+    background-color: rgba(0, 153, 153, 0.8);
+  }
+
+  #profile .content h3 {
+    font-size: 2.2rem;
+  }
+
+  #profile .content p {
+    font-weight: 700;
+  }
+
+  #profile .content {
+    border-radius: 10px;
+    padding: 20px 10px 10px;
+  }
+
+  #home-footer .copyright {
+    border: none;
+  }
+
+  #contact {
+    min-height: 700px;
+  }
+
+  .logo-link {
+    float: left;
+  }
+
+  .overflow-top-fifty {
+    top: -50%;
+    bottom: 0;
+    height: 150%;
+    position: relative;
+    z-index: 10;
+  }
+
+  #rates {
+    min-height: 1190px;
+  }
+
+  #rates .horiz-one-eleventh {
+    max-width: 40px;
+  }
+
+  #rates .vert-row {
+    min-height: 100px;
+  }
+
+  #rates .horiz-ten-twelfth {
+    min-width: 844px;
+  }
+
+  #rates .vert-eight-twelfth {
+    min-height: 980px;
+  }
+
+  #rates .rate-intro p {
+    margin: 60px 0 0;
+  }
+
+  #rates .lrg .rate-column {
+    width: 40%;
+    min-width: 280px;
+  }
+
+  #rates .lrg .rate-column h4 {
+    font-size: 1.8em;
+  }
+
+  #rates .lrg .rate-column h5 {
+    font-size: 1.6em;
+  }
+
+  #rates .lrg .rate-column h6 {
+    font-size: 1.4em;
+  }
+
+  #rates .lrg .rate-column p, #rates .lrg .rate-column li {
+    font-size: 1.2em;
+  }
+}
+@media only screen and (min-width: 1042px) {
+  #rates {
+    min-height: 1190px;
+  }
+
+  #rates .vert-row, #rates .content {
+    min-height: 35px;
+  }
+
+  #rates .vert-row > .horiz-full {
+    height: inherit;
+  }
+
+  #rates .rate-intro {
+    margin: 30px 0 0;
+  }
+
+  #rates .rate-intro p {
+    margin: 0;
+  }
+
+  #rates .vert-eight-twelfth {
+    min-height: 980px;
+  }
+}
+@media only screen and (min-width: 1260px) {
+  #rates {
+    min-height: 1090px;
+  }
+
+  #rates .vert-eight-twelfth {
+    min-height: 880px;
+  }
+}
+@media only screen and (min-width: 1450px) {
+  #rates {
+    min-height: 990px;
+  }
+
+  #rates .vert-eight-twelfth {
+    min-height: 780px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  #rates {
+    min-height: 890px;
+  }
+
+  #rates .vert-eight-twelfth {
+    min-height: 680px;
+  }
+}
+@media only screen and (min-width: 1800px) {
+  #rates .horiz-one-eleventh {
+    max-width: 9.09%;
+  }
+}
+@media only screen and (min-width: 2400px) {
+  #toronto-skyline {
+    background-image: url("../img/2400-toronto-skyline-night.jpg");
+  }
+}
+/* Style adjustments for high resolution devices */
+.menu {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-transition: height 0.4s cubic-bezier(0.15, 0.72, 1, -0.82) 0.2s;
+  -o-transition: height 0.4s cubic-bezier(0.15, 0.72, 1, -0.82) 0.2s;
+  transition: height 0.4s cubic-bezier(0.15, 0.72, 1, -0.82) 0.2s;
+}
+
+.menu .menu-btn {
+  margin: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  color: #00ccff;
+  font-size: 1.4rem;
+  padding: 10px 16px;
+  cursor: pointer;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.menu .menu-btn span {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 50%;
+  background-color: #00ccff;
+  position: relative;
+  cursor: pointer;
+  margin: 0 auto;
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu .menu-btn span:after, .menu .menu-btn span:before {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: #00ccff;
+  position: relative;
+  margin: 0 auto;
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu .menu-btn span:before {
+  top: 10px;
+  left: -25%;
+  width: 150%;
+}
+
+.menu .menu-btn span:after {
+  top: -12px;
+  width: 50%;
+}
+
+.menu a {
+  color: #00ccff;
+  font-size: 1.4rem;
+}
+
+.menu li {
+  height: 40px;
+  list-style: none;
+  margin: 0;
+  font-size: 1rem;
+  display: inline-block;
+}
+
+.menu li a {
+  display: block;
+  padding: 10px 16px;
+  -webkit-transition: height 0.4s cubic-bezier(0.15, 0.72, 1, -0.82) 0.2s;
+  -o-transition: height 0.4s cubic-bezier(0.15, 0.72, 1, -0.82) 0.2s;
+  transition: height 0.4s cubic-bezier(0.15, 0.72, 1, -0.82) 0.2s;
+}
+
+.menu li:not(.menu-btn) {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #00ccff;
+  -webkit-transition: height 0.4s cubic-bezier(0.15, 0.72, 1, -0.82) 0.2s;
+  -o-transition: height 0.4s cubic-bezier(0.15, 0.72, 1, -0.82) 0.2s;
+  transition: height 0.4s cubic-bezier(0.15, 0.72, 1, -0.82) 0.2s;
+}
+
+.menu .full-menu {
+  width: 99%;
+}
+
+.menu .half-menu {
+  width: calc(49.5% - 2px);
+}
+
+.menu .third-menu {
+  width: calc(33% - 1px);
+}
+
+.menu .two-third-menu {
+  width: calc(66% - 2px);
+}
+
+.menu .current {
+  border: 1px solid #fff;
+  background-color: #00ccff;
+  color: #fff;
+}
+
+.menu .current a {
+  color: #fff;
+  background-color: #00ccff;
+  padding: 9px 15px;
+}
+
+.menu:hover li.current, .menu:active li.current {
+  border: 1px solid #ffffff;
+  background-color: #00ccff;
+  color: #fff;
+}
+
+.menu:hover .current a, .menu:active .current a {
+  color: #fff;
+  background-color: #00ccff;
+}
+
+.menu.hover {
+  height: 160px;
+}
+
+.menu li:not(.menu-btn):hover, .menu li:not(.menu-btn):active {
+  border: 1px solid #fff;
+  background-color: #00ccff;
+  color: #fff;
+}
+
+.menu li:hover a, .menu li:active a {
+  color: #fff;
+}
+
+.menu li:hover span, .menu li:active span, .menu li:hover span:before, .menu li:active span:before, .menu li:hover span:after, .menu li:active span:after {
+  background-color: #fff;
+}
+
+.menu.hover .menu-btn span:before {
+  top: -12px;
+}
+
+.menu.hover .menu-btn span:after {
+  top: 10px;
+}
+
+.menu > .med, .menu > .lrg {
+  display: none;
+  *zoom: 0;
+}
+
+.menu > .sml, .menu > .sml {
+  display: inline-block;
+  *zoom: 1;
+}
+
+.menu .menu-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media only screen and (min-width: 580px) {
+  .menu > .sml, .menu > .lrg {
+    display: none;
+    *zoom: 0;
+  }
+
+  .menu > .med, .menu > .med {
+    display: inline-block;
+    *zoom: 1;
+  }
+
+  .menu .menu-btn {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+@media only screen and (min-width: 881px) {
+  .menu {
+    text-align: center;
+    padding: 0;
+    width: 100%;
+    position: relative;
+    top: 10px;
+    left: 0;
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+
+  .menu:hover, .menu:active {
+    height: auto;
+  }
+
+  .menu a {
+    font-size: 1.4rem;
+  }
+
+  .menu li:not(.menu-btn) {
+    width: auto;
+    height: auto;
+    -webkit-transition: all 0.6s ease-in-out;
+    -o-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out;
+  }
+
+  .menu li:not(.menu-btn) a {
+    padding: 4px 9px;
+  }
+
+  .menu:hover li:not(.menu-btn), .menu:active li:not(.menu-btn) {
+    width: auto;
+    height: auto;
+  }
+
+  .menu:hover li.current, .menu:active li.current {
+    border: 1px solid #ffffff;
+  }
+
+  .menu.hover {
+    height: auto;
+  }
+
+  .menu > .sml, .menu > .med {
+    display: none;
+    *zoom: 0;
+  }
+
+  .menu > .lrg, .menu > .lrg {
+    display: inline-block;
+    *zoom: 1;
+  }
+}
+@media only screen and (min-width: 980px) {
+  .menu a {
+    font-size: 1.4rem;
+  }
 }
