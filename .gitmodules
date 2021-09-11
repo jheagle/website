@@ -1,3 +1,6 @@
 [submodule "projects/title-switcher"]
 	path = projects/title-switcher
 	url = https://github.com/jheagle/title-switcher-v2.git
+[submodule "projects/functional-helpers"]
+	path = projects/functional-helpers
+	url = https://github.com/jheagle/functional-helpers.git
