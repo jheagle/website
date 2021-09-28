@@ -2974,12 +2974,6 @@ section:nth-of-type(even) .content {
   }
 }
 @media only screen and (min-width: 881px) {
-  /** old transition from mobile size **/
-}
-@media only screen and (min-width: 980px) {
-  /** old transition to largest size **/
-}
-@media only screen and (min-width: 1081px) {
   .menu {
     text-align: center;
     padding: 0;
@@ -3035,7 +3029,7 @@ section:nth-of-type(even) .content {
     *zoom: 1;
   }
 }
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 980px) {
   .menu a {
     font-size: 1.4rem;
   }
