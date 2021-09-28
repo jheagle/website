@@ -9,6 +9,11 @@
   },
   "author": "Joshua Heagle",
   "license": "GNU",
+  "dependencies": {
+    "functional-helpers": "github:jheagle/functional-helpers",
+    "json-dom": "github:jheagle/JSON-DOM",
+    "matrix-dom": "github:jheagle/matrix-DOM"
+  },
   "devDependencies": {
     "browser-sync": "^2.27.5",
     "glob-parent": "^6.0.1",
@@ -37,7 +42,5 @@
   "bugs": {
     "url": "https://github.com/jheagle/website/issues"
   },
-  "homepage": "https://joshuaheagle.com",
-  "dependencies": {
-  }
+  "homepage": "https://joshuaheagle.com"
 }
