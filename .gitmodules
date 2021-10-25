@@ -4,3 +4,6 @@
 [submodule "projects/functional-helpers"]
 	path = projects/functional-helpers
 	url = https://github.com/jheagle/functional-helpers.git
+[submodule "projects/json-dom"]
+	path = projects/json-dom
+	url = https://github.com/jheagle/json-dom.git

@@ -1,4 +1,12 @@
-import element from 'element'
+import element from './element.js'
 
-const navigation = functionalHelpers.curry(element)('nav')
+/**
+ * Create a nav DomItem
+ * @param {array} [children=[]]
+ * @param {string} [className='']
+ * @param {object} [attributes={}]
+ * @returns {DomItem}
+ */
+const navigation = (children = [], className = '', attributes = {}) =>
+  element('nav', children, className, attributes)
 export default navigation
