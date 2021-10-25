@@ -1,4 +1,5 @@
-import element from 'element'
+import element from './element.js'
 
-const listItem = functionalHelpers.curry(element)('li')
+const listItem = (children = [], className = '', attributes = {}) =>
+  element('li', children, className, attributes)
 export default listItem

@@ -1,4 +1,4 @@
-import element from 'element'
+import element from './element.js'
 
 const anchor = (href = '#', children = [], className = '', attributes = {}) => {
   attributes.href = href

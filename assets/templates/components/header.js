@@ -1,4 +1,5 @@
-import element from 'element'
+import element from './element.js'
 
-const header = functionalHelpers.curry(element)('header')
+const header = (children = [], className = '', attributes = {}) =>
+  element('header', children, className, attributes)
 export default header

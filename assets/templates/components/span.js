@@ -1,4 +1,5 @@
-import element from 'element'
+import element from './element.js'
 
-const span = functionalHelpers.curry(element)('span')
+const span = (children = [], className = '', attributes = {}) =>
+  element('span', children, className, attributes)
 export default span
