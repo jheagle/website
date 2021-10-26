@@ -1,5 +1,3 @@
-import createDomItem from '../../../projects/json-dom/src/source/objects/createDomItem'
-
 /**
  * Create the template of a DomItem
  * @param {string} tagName
@@ -10,7 +8,7 @@ import createDomItem from '../../../projects/json-dom/src/source/objects/createD
  */
 const element = (tagName, children = [], className = '', attributes = {}) => {
   attributes.className = className
-  return createDomItem(
+  return jsonDom.createDomItem(
     {
     'tagName': tagName,
     'attributes': attributes,

@@ -3,6 +3,7 @@ import unorderedList from './components/unorderedList.js'
 import listItem from './components/listItem.js'
 import span from './components/span.js'
 import anchor from './components/anchor.js'
+import header from './components/header.js'
 
 /**
  * Generates a menu with the provided index as the currently selected item.
@@ -20,13 +21,18 @@ const menu = (currentIndex = 1) => {
     listItem([anchor('#contact', [], '', { innerText: 'Contact Me' })], 'full-menu'),
   ]
   menuItems[currentIndex].attributes.className += 'current'
-  return navigation(
+  return header(
     [
-      unorderedList(
-        menuItems,
-        'menu hover'
+      navigation(
+        [
+          unorderedList(
+            menuItems,
+            'menu hover'
+          )
+        ]
       )
-    ]
+    ],
+    'hover'
   )
 }
 export default menu
