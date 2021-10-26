@@ -10,6 +10,8 @@
     <script src='/assets/vendor/functionalHelpers.min.js'></script>
     <script src='/assets/vendor/jsonDom.min.js'></script>
     <script type='module'>
+      // TODO: Enable parsing children of element into DomItems
+      // TODO: Move each sub module of json-dom into its own module
       import menu from './assets/templates/menu.js'
       window.mainHeader = menu()
       window.mainHeader.attributes.style.display = 'none'
