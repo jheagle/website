@@ -5,15 +5,15 @@
     <title>Joshua Web Strategy</title>
     <meta charset='UTF-8'>
     <link rel='stylesheet' href='/assets/css/main.css'>
-    <script src='/assets/js/jquery-2.1.4.min.js'></script>
     <script src='/assets/js/plugins.js'></script>
-    <script src='/assets/js/functions.js'></script>
     <script src='/projects/title-switcher/index.min.js'></script>
     <script src='/assets/vendor/functionalHelpers.min.js'></script>
     <script src='/assets/vendor/jsonDom.min.js'></script>
     <script type='module'>
-        // import menu from './assets/templates/menu.js'
-        // jsonDom.renderHtml(menu())
+      import menu from './assets/templates/menu.js'
+      window.mainHeader = menu()
+      window.mainHeader.attributes.style.display = 'none'
+      jsonDom.renderHtml(window.mainHeader)
     </script>
 </head>
 <body>
