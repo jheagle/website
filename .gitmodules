@@ -7,3 +7,12 @@
 [submodule "projects/json-dom"]
 	path = projects/json-dom
 	url = https://github.com/jheagle/json-dom.git
+[submodule "projects/js-collections"]
+	path = projects/js-collections
+	url = https://github.com/jheagle/collections.git
+[submodule "projects/matrix-dom"]
+	path = projects/matrix-dom
+	url = https://github.com/jheagle/matrix-DOM.git
+[submodule "projects/pseudo-dom"]
+	path = projects/pseudo-dom
+	url = https://github.com/jheagle/PseudoDom.git
