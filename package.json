@@ -15,25 +15,25 @@
     "matrix-dom": "github:jheagle/matrix-DOM"
   },
   "devDependencies": {
-    "browser-sync": "^2.27.5",
+    "ansi-regex": "^5.0.1",
+    "browser-sync": "^2.27.9",
     "del": "^6.0.0",
     "glob-parent": "^6.0.2",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "8.0.0",
-    "gulp-sass": "^5.0.0",
-    "jest": "^27.3.1",
-    "sass": "^1.43.3",
-    "set-value": "^4.1.0",
-    "yargs-parser": "^20.2.9"
+    "gulp-sass": "^5.1.0",
+    "jest": "^27.5.1",
+    "json-schema": "^0.4.0",
+    "sass": "^1.49.9"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/jheagle/website"
   },
   "resolutions": {
+    "ansi-regex": "5.0.1",
     "glob-parent": "6.0.2",
-    "set-value": "4.1.0",
-    "yargs-parser": "20.2.9"
+    "json-schema": "0.4.0"
   },
   "keywords": [
     "gulp",
