@@ -1,19 +1,15 @@
+import node from './node.js'
+
 /**
  * Create the template of a DomItem
- * @param {string} tagName
+ * @param {string} nodeName
  * @param {array} [children=[]]
  * @param {string} [className='']
  * @param {object} [attributes={}]
  * @returns {DomItem}
  */
-const element = (tagName, children = [], className = '', attributes = {}) => {
+const element = (nodeName, children = [], className = '', attributes = {}) => {
   attributes.className = className
-  return jsonDom.createDomItem(
-    {
-    'tagName': tagName,
-    'attributes': attributes,
-    'children': children
-  }
-  )
+  return node(nodeName, null, children, attributes)
 }
 export default element

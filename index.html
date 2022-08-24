@@ -6,46 +6,23 @@
     <meta charset='UTF-8'>
     <link rel='stylesheet' href='/assets/css/main.css'>
     <script src='/assets/js/plugins.js'></script>
-    <script src='/projects/title-switcher/index.min.js'></script>
-    <script src='/assets/vendor/functionalHelpers.min.js'></script>
-    <script src='/assets/vendor/jsonDom.min.js'></script>
+    <script src='/projects/functional-helpers/browser/functionalHelpers.min.js'></script>
+    <script src='/projects/json-dom/browser/jsonDom.min.js'></script>
     <script type='module'>
-      // TODO: Enable parsing children of element into DomItems
       import menu from './assets/templates/menu.js'
-      window.mainHeader = menu()
-      window.mainHeader.attributes.style.display = 'none'
-      // TODO: With properly populated documentItem, prepend this header as the first child of body
-      jsonDom.renderHtml(window.mainHeader)
+
+      const mainHeader = menu()
+      const documentItem = jsonDom.documentItem
+      jsonDom.updateDomItems(documentItem)
+      // Add the menu as the first child of body
+      documentItem.body.children.unshift(mainHeader)
+      // Update the body child node list to include the header
+      jsonDom.updateChildNodes(documentItem.body)
+      // Update the header to generate the elements
+      jsonDom.updateElements(mainHeader)
     </script>
 </head>
 <body>
-<header class='hover'>
-    <nav>
-        <ul class='menu hover'>
-            <li class='menu-btn sml med'>
-                <span></span>
-            </li>
-            <li class='current third-menu'>
-                <a href='#intro'>Hello</a>
-            </li>
-            <li class='third-menu lrg'>
-                <a href='#profile'>Meet Me</a>
-            </li>
-            <li class='two-third-menu'>
-                <a href='#work'>See My Work</a>
-            </li>
-            <li class='third-menu sml med'>
-                <a href='#profile'>Meet Me</a>
-            </li>
-            <li class='two-third-menu'>
-                <a href='#rates'>Price Your Project</a>
-            </li>
-            <li class='full-menu'>
-                <a href='#contact'>Contact Me</a>
-            </li>
-        </ul>
-    </nav>
-</header>
 <div id='main' class='full-section'>
     <h1>Joshua Web Strategy | Joshua Heagle</h1>
 </div>
@@ -364,6 +341,7 @@
     <div class='horiz-one-twelfth lrg'></div>
 </footer>
 <script src='/assets/js/home.js'></script>
+<script src='/projects/title-switcher/index.min.js'></script>
 <script>
   /* v  place custom JavaScript below to instantiate the titleClass  v */
   const randomTitles = new TitleSwitcher('.titles', 'typingEffect')
