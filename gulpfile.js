@@ -46,8 +46,8 @@ gulp.task('watch', function () {
 // Build vendor files
 gulp.task('clean:vendor', () => del(['assets/vendor/*']))
 gulp.task(
-  'vendor:functional-helpers',
-  () => gulp.src('node_modules/functional-helpers/browser/functionalHelpers.min.js')
+  'vendor:si-funciona',
+  () => gulp.src('node_modules/si-funciona/browser/siFunciona.min.js')
     .pipe(gulp.dest('assets/vendor'))
 )
 gulp.task(
@@ -55,7 +55,7 @@ gulp.task(
   () => gulp.src('node_modules/json-dom/browser/jsonDom.min.js')
     .pipe(gulp.dest('assets/vendor'))
 )
-gulp.task('vendor', gulp.series('clean:vendor', gulp.parallel('vendor:functional-helpers', 'vendor:json-dom')))
+gulp.task('vendor', gulp.series('clean:vendor', gulp.parallel('vendor:si-funciona', 'vendor:json-dom')))
 
 /**
  * Default task, running just `gulp` will compile the sass,

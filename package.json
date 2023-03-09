@@ -10,7 +10,7 @@
   "author": "Joshua Heagle",
   "license": "GNU",
   "dependencies": {
-    "functional-helpers": "github:jheagle/functional-helpers",
+    "si-funciona": "github:jheagle/si-funciona",
     "json-dom": "github:jheagle/JSON-DOM",
     "matrix-dom": "github:jheagle/matrix-DOM"
   },
