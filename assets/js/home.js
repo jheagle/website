@@ -4,7 +4,7 @@ const homeScrolling = () => {
   let topMenu = document.getElementsByClassName('menu')[0]
   if (!topMenu) {
     // Add a bit of delay since it take some time to generate the menu.
-    return functionalHelpers.delay(500).resolver.then(() => ++attempted > 10 ? console.error('Failed to get the top menu') || false : homeScrolling())
+    return siFunciona.delay(500).resolver.then(() => ++attempted > 10 ? console.error('Failed to get the top menu') || false : homeScrolling())
   }
   let menuItems = topMenu.querySelectorAll('a')
   let menuItemsTemp = Array.from(menuItems)
