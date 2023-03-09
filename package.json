@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "ansi-regex": "^5.0.1",
-    "browser-sync": "^2.27.9",
+    "browser-sync": "^2.28.3",
     "del": "^6.0.0",
     "glob-parent": "^6.0.2",
     "gulp": "^4.0.2",
