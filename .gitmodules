@@ -6,7 +6,7 @@
 	url = https://github.com/jheagle/si-funciona.git
 [submodule "projects/json-dom"]
 	path = projects/json-dom
-	url = https://github.com/jheagle/json-dom.git
+	url = https://github.com/jheagle/JSON-DOM.git
 [submodule "projects/collect-your-stuff"]
 	path = projects/collect-your-stuff
 	url = https://github.com/jheagle/collect-your-stuff.git
