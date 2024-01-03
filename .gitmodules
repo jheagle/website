@@ -13,3 +13,6 @@
 [submodule "projects/title-switcher"]
 	path = projects/title-switcher
 	url = https://github.com/jheagle/title-switcher-v2.git
+[submodule "projects/json-dom"]
+	path = projects/json-dom
+	url = https://github.com/jheagle/JSON-DOM.git
