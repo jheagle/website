@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pseudoDom/class/PseudoEvent.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pseudoDom/class/PseudoEvent.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file Substitute for the DOM Event Class.
+ * @author Joshua Heagle &lt;joshuaheagle@gmail.com>
+ * @version 1.0.0
+ */
+
+/**
+ * Simulate the behaviour of the Event Class when there is no DOM available.
+ * @author Joshua Heagle &lt;joshuaheagle@gmail.com>
+ * @class
+ * @property {number} NONE
+ * @property {number} CAPTURING_PHASE
+ * @property {number} AT_TARGET
+ * @property {number} BUBBLING_PHASE
+ * @property {boolean} bubbles - A Boolean indicating whether the event bubbles up through the Dom or not.
+ * @property {boolean} cancelable - A Boolean indicating whether the event is cancelable.
+ * @property {boolean} composed - A Boolean value indicating whether or not the event can bubble across the boundary
+ * between the shadow Dom and the regular Dom.
+ * @property {function|PseudoEventTarget} currentTarget - A reference to the currently registered target for the event. This
+ * is the object to which the event is currently slated to be sent; it's possible this has been changed along the way
+ * through re-targeting.
+ * @property {boolean} defaultPrevented - Indicates whether or not event.preventDefault() has been called on the event.
+ * @property {boolean} immediatePropagationStopped - Flag that no further propagation should occur, including on current
+ * target.
+ * @property {boolean} propagationStopped - Flag that no further propagation should occur.
+ * @property {int} eventPhase - Indicates which phase of the event flow is being processed. Uses PseudoEvent constants.
+ * @property {EventTarget|PseudoEventTarget} target - A reference to the target to which the event was originally
+ * dispatched.
+ * @property {int} timeStamp - The time at which the event was created (in milliseconds). By specification, this
+ * value is time since epoch, but in reality browsers' definitions vary; in addition, work is underway to change this
+ * to be a DomHighResTimeStamp instead.
+ * @property {string} type - The name of the event (case-insensitive).
+ * @property {boolean} isTrusted - Indicates whether or not the event was initiated by the browser (after a user
+ * click for instance) or by a script (using an event creation method, like event.initEvent)
+ */
+export class PseudoEvent {
+  /**
+   *
+   * @param typeArg
+   * @param bubbles
+   * @param cancelable
+   * @param composed
+   * @returns {PseudoEvent}
+   * @constructor
+   */
+  constructor (typeArg = '', { bubbles = true, cancelable = true, composed = true } = {}) {
+    let properties = {
+      bubbles,
+      cancelable,
+      composed,
+      currentTarget: () => undefined,
+      defaultPrevented: false,
+      immediatePropagationStopped: false,
+      propagationStopped: false,
+      eventPhase: '',
+      target: () => undefined,
+      timeStamp: Math.floor(Date.now() / 1000),
+      type: typeArg,
+      isTrusted: true
+    }
+    this.setReadOnlyProperties = (updateProps = {}) => {
+      properties = Object.assign({}, properties, updateProps)
+      this.getReadOnlyProperties = (
+        (properties) => (name = '') => properties[name]
+      )(properties)
+      return properties
+    }
+    this.setReadOnlyProperties()
+    Object.keys(properties).map(propKey => Object.defineProperty(this, propKey, {
+      enumerable: true,
+      get: () => this.getReadOnlyProperties(propKey)
+    })
+    )
+  }
+
+  /**
+   * A selector function for retrieving existing parent PseudoNode from the given child item.
+   * This function will check all the parents starting from node, and scan the attributes
+   * property for matches. The return array contains all matching parent ancestors.
+   * WARNING: This is a recursive function.
+   * @param {string} attr
+   * @param {number|string} value
+   * @param {PseudoNode} node
+   * @returns {Array.&lt;PseudoNode>}
+   */
+  static getParentNodesFromAttribute (attr, value, node) {
+    return Object.keys(node.parentNode).length
+      ? (node.parentNode[attr] || false) === value
+        ? PseudoEvent.getParentNodesFromAttribute(attr, value, node.parentNode).concat([node.parentNode])
+        : PseudoEvent.getParentNodesFromAttribute(attr, value, node.parentNode)
+      : []
+  }
+
+  /**
+   * A helper selector function for retrieving all parent PseudoNode for the given child node.
+   * @param {PseudoNode} node
+   * @returns {Array.&lt;PseudoNode>}
+   */
+  static getParentNodes (node) {
+    return PseudoEvent.getParentNodesFromAttribute('', false, node)
+  }
+
+  /**
+   * Return an array of targets that will have the event executed open them. The order is based on the eventPhase
+   * @method
+   * @returns {Array.&lt;PseudoEventTarget>}
+   */
+  composedPath () {
+    switch (this.eventPhase) {
+      case PseudoEvent.CAPTURING_PHASE:
+        return PseudoEvent.getParentNodes(this.target)
+      case PseudoEvent.BUBBLING_PHASE:
+        return PseudoEvent.getParentNodes(this.target).slice().reverse()
+      case PseudoEvent.AT_TARGET:
+        return [this.target]
+      default:
+        return []
+    }
+  }
+
+  /**
+   * Cancels the event (if it is cancelable).
+   * @method
+   * @returns {null}
+   */
+  preventDefault () {
+    this.setReadOnlyProperties({ defaultPrevented: true })
+    return null
+  }
+
+  /**
+   * For this particular event, no other listener will be called.
+   * Neither those attached on the same element, nor those attached on elements which will be traversed later (in
+   * capture phase, for instance)
+   * @method
+   * @returns {null}
+   */
+  stopImmediatePropagation () {
+    this.setReadOnlyProperties({ immediatePropagationStopped: true })
+    return null
+  }
+
+  /**
+   * Stops the propagation of events further along in the Dom.
+   * @method
+   * @returns {null}
+   */
+  stopPropagation () {
+    this.setReadOnlyProperties({ propagationStopped: true })
+    return null
+  }
+}
+
+// Set up the class constants
+[
+  'NONE',
+  'CAPTURING_PHASE',
+  'AT_TARGET',
+  'BUBBLING_PHASE'
+].reduce((phases, phase, key) => {
+  Object.defineProperty(PseudoEvent, phase, {
+    value: key,
+    writable: false,
+    static: { get: () => key }
+  })
+  return Object.assign({}, phases, { [`${phase}`]: key })
+}, {})
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-collections.html">collections</a></li><li><a href="module-jDom.html">jDom</a></li><li><a href="module-jDomMatrix.html">jDomMatrix</a></li><li><a href="module-jsonDom.html">jsonDom</a></li><li><a href="module-pseudoDom_objects.html">pseudoDom/objects</a></li></ul><h3>Classes</h3><ul><li><a href="LinkedList.html">LinkedList</a></li><li><a href="Linker.html">Linker</a></li><li><a href="PseudoElement.html">PseudoElement</a></li><li><a href="PseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoEvent.html">PseudoEvent</a></li><li><a href="PseudoEventListener.html">PseudoEventListener</a></li><li><a href="PseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocument.html">PseudoHTMLDocument</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElement.html">PseudoHTMLElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElement.html">PseudoHTMLElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElement.html">PseudoHTMLElement</a></li><li><a href="PseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoNode.html">PseudoNode</a></li><li><a href="PseudoNodeAttached.html">PseudoNodeAttached</a></li><li><a href="PseudoNodeAttachedPseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoNodeAttachedPseudoNodeAttachedPseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="TreeLinker_TreeLinker.html">TreeLinker</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addUniqueToArray">addUniqueToArray</a></li><li><a href="global.html#adjacentEdgePoints">adjacentEdgePoints</a></li><li><a href="global.html#adjacentPoints">adjacentPoints</a></li><li><a href="global.html#appendAndReturnChild">appendAndReturnChild</a></li><li><a href="global.html#appendHTML">appendHTML</a></li><li><a href="global.html#appendListeners">appendListeners</a></li><li><a href="global.html#areEqualPoints">areEqualPoints</a></li><li><a href="global.html#assignListener">assignListener</a></li><li><a href="global.html#bindAllListeners">bindAllListeners</a></li><li><a href="global.html#bindElement">bindElement</a></li><li><a href="global.html#bindElementListeners">bindElementListeners</a></li><li><a href="global.html#bindListeners">bindListeners</a></li><li><a href="global.html#bindPointData">bindPointData</a></li><li><a href="global.html#checkInBetween">checkInBetween</a></li><li><a href="global.html#checkValidPoint">checkValidPoint</a></li><li><a href="global.html#createDomItem">createDomItem</a></li><li><a href="global.html#cube">cube</a></li><li><a href="global.html#documentDomItem">documentDomItem</a></li><li><a href="global.html#documentItem">documentItem</a></li><li><a href="global.html#elementChanges">elementChanges</a></li><li><a href="global.html#elementCompareClassList">elementCompareClassList</a></li><li><a href="global.html#elementHasAttribute">elementHasAttribute</a></li><li><a href="global.html#gatherChildItems">gatherChildItems</a></li><li><a href="global.html#generateElement">generateElement</a></li><li><a href="global.html#getAllPoints">getAllPoints</a></li><li><a href="global.html#getAxisLengths">getAxisLengths</a></li><li><a href="global.html#getChildrenByClass">getChildrenByClass</a></li><li><a href="global.html#getChildrenByName">getChildrenByName</a></li><li><a href="global.html#getChildrenFromAttribute">getChildrenFromAttribute</a></li><li><a href="global.html#getChildTest">getChildTest</a></li><li><a href="global.html#getDomItemFromElement">getDomItemFromElement</a></li><li><a href="global.html#getDomItemFromPoint">getDomItemFromPoint</a></li><li><a href="global.html#getFirstAxisOfCoordinate">getFirstAxisOfCoordinate</a></li><li><a href="global.html#getHighestAbsoluteCoordinate">getHighestAbsoluteCoordinate</a></li><li><a href="global.html#getParentsByClass">getParentsByClass</a></li><li><a href="global.html#getParentsByName">getParentsByName</a></li><li><a href="global.html#getParentsByTagName">getParentsByTagName</a></li><li><a href="global.html#getParentsFromAttribute">getParentsFromAttribute</a></li><li><a href="global.html#getPointFromElement">getPointFromElement</a></li><li><a href="global.html#getPointsLine">getPointsLine</a></li><li><a href="global.html#getPointsLines">getPointsLines</a></li><li><a href="global.html#getTopParentItem">getTopParentItem</a></li><li><a href="global.html#initChildren">initChildren</a></li><li><a href="global.html#initRoot">initRoot</a></li><li><a href="global.html#lineEndPoint">lineEndPoint</a></li><li><a href="global.html#listenerOptions">listenerOptions</a></li><li><a href="global.html#matrix">matrix</a></li><li><a href="global.html#nextCell">nextCell</a></li><li><a href="global.html#point">point</a></li><li><a href="global.html#pointAndCoordinateToDirection">pointAndCoordinateToDirection</a></li><li><a href="global.html#pointDifference">pointDifference</a></li><li><a href="global.html#pointsToDirection">pointsToDirection</a></li><li><a href="global.html#pointToDirection">pointToDirection</a></li><li><a href="global.html#previousPseudoDom">previousPseudoDom</a></li><li><a href="global.html#randDirection">randDirection</a></li><li><a href="global.html#randomStart">randomStart</a></li><li><a href="global.html#registerListener">registerListener</a></li><li><a href="global.html#registerListeners">registerListeners</a></li><li><a href="global.html#removeChild">removeChild</a></li><li><a href="global.html#renderHTML">renderHTML</a></li><li><a href="global.html#retrieveListener">retrieveListener</a></li><li><a href="global.html#retrieveParentItem">retrieveParentItem</a></li><li><a href="global.html#root">root</a></li><li><a href="global.html#setAndReturnAttribute">setAndReturnAttribute</a></li><li><a href="global.html#setAttribute">setAttribute</a></li><li><a href="global.html#square">square</a></li><li><a href="global.html#tile">tile</a></li><li><a href="global.html#updateElement">updateElement</a></li><li><a href="global.html#updateElements">updateElements</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Fri Sep 11 2020 21:27:28 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

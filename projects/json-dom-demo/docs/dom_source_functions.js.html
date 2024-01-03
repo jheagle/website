@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: dom/source/functions.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: dom/source/functions.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file Core Dom management functions
+ * @author Joshua Heagle &lt;joshuaheagle@gmail.com>
+ * @version 1.0.0
+ */
+
+import siFunciona from 'si-funciona'
+import * as jDomObjects from './objects'
+
+/**
+   * Check if the provided Element has the provided attributes.
+   * Returns a boolean, or an array of 1 / 0 / -1 based on the comparison status.
+   * @function elementHasAttribute
+   * @param {HTMLElement|module:pseudoDom/objects.PseudoHTMLElement} element - Receive the element to be assessed
+   * @param {string} key - The attribute name to search for
+   * @param {string|Object} attr - The expected value of the attribute to compare against
+   * @returns {boolean|Object.&lt;string, number>}
+   */
+export const elementHasAttribute = (element, key, attr) => {
+  if (!element.style) {
+    // if element is not a valid element then return false
+    return false
+  }
+  if (/^(style|className)$/.test(key)) {
+    // For attributes which are objects or multi-part strings
+    // -1 = remove attribute, 0 = no change, 1 = add attribute
+    return siFunciona.compareArrays(
+      typeof attr === 'string' ? attr.split(' ') : Object.keys(attr),
+      typeof attr === 'string' ? element[key].split(' ') : Object.keys(element[key])
+    )
+  }
+  // Check that the key is a property of the element
+  // Compare current to new one
+  return (element.hasAttribute(key) &amp;&amp; element.getAttribute(key) === attr)
+}
+
+/**
+   * Check if a class exists on the element, return object with keys for each class and a -1, 0, 1 difference indicator.
+   * @param {HTMLElement|module:pseudoDom/objects.PseudoHTMLElement} element - Provide an element to check classes
+   * on.
+   * @param {string} classes - A string of classes (like the content of the 'class' attribute) to be compared
+   * @returns {Object&lt;string, number>|*}
+   */
+export const elementCompareClassList = (element, classes) => siFunciona.compareArrays(
+  classes.split(' '),
+  [].from(element.classList)
+)
+
+/**
+   * Given a jDomObjects.DomItem as config, this function will return the changes to be applied
+   * to the stored element property.
+   * @function elementChanges
+   * @param {module:dom/objects.DomItem} config - The DomItem having config changes to be applied to its
+   * element
+   * @returns {module:dom/objects.DomItem}
+   */
+export const elementChanges = config => (config.element.tagName.toLowerCase() !== config.tagName.toLowerCase())
+// Generate a new element since the tag has changed
+  ? generateElement(config)
+// Remove all the similarities
+  : siFunciona.setValue(
+    'attributes',
+    siFunciona.filterObject(
+      config.attributes,
+      // For each attribute, check if it becomes true / false based on the comparison results
+      (attr1, key1) =>
+        siFunciona.filterObject(
+          // Get attributes as object of truthy and falsy values
+          siFunciona.mapObject(
+            config.attributes,
+            (attr2, key2) => (typeof attr2 === 'object' || key2 === 'className')
+            // Apply custom logic for class and styles, only keep the updates
+              ? siFunciona.filterObject(
+                elementHasAttribute(config.element, key2, attr2),
+                attr3 => attr3 === 1
+              )
+            // True when the element does not already have the attribute
+              : !elementHasAttribute(config.element, key2, attr2)
+          ),
+          // Remove when the attr4 value is 0 or false, or not empty object
+          attr4 => !!attr4
+        )[key1]
+    ),
+    config
+  )
+
+/**
+   * Set an attribute on the element within a DomItem, then return the config data.
+   * @function setAttribute
+   * @param {module:dom/objects.DomItem} config - The DomItem having config changes to be applied to its
+   * element
+   * @param {string} name - The attribute name to be updated
+   * @param {string} value - The new value to be applied to the attribute
+   * @returns {module:dom/objects.DomItem}
+   */
+export const setAttribute = (config, name, value) => {
+  config.element.setAttribute(name, value)
+  return config
+}
+
+/**
+   * Set an attribute on the element within a DomItem, then return the attribute.
+   * @function setAndReturnAttribute
+   * @param {module:dom/objects.DomItem} config - The DomItem having config changes to be applied to its
+   * element
+   * @param {string} name - The attribute name to be updated
+   * @param {string} value - The new value to be applied to the attribute
+   * @returns {string}
+   */
+export const setAndReturnAttribute = (config, name, value) => {
+  config.element.setAttribute(name, value)
+  return value
+}
+
+/**
+   * Update a single objects.DomItem element with the provided attributes / style / elementProperties
+   * @function updateElement
+   * @param {module:dom/objects.DomItem} config - The DomItem having config changes to be applied to its
+   * element
+   * @returns {module:dom/objects.DomItem}
+   */
+export const updateElement = config => !config.element.style
+// if element is not a valid element then return the config without changes
+  ? config
+// Set the the current attributes to contain all the changes
+  : siFunciona.setValue(
+    'attributes',
+    siFunciona.mapObject(
+      // Retrieve only the changes to be applied from the attributes
+      elementChanges(config).attributes,
+      (attr, key) => (siFunciona.notEmptyObjectOrArray(attr))
+        ? siFunciona.mapObject(
+          siFunciona.filterObject(
+            // Remove attributes which have a numeric key (these are unwanted styles stored on elements)
+            attr,
+            (param, k) => /^\D+$/.test(k)
+          ),
+          (p, i) => siFunciona.setAndReturnValue(config.element.style, i, p),
+          config.element.style
+        )
+        : (key in config.element)
+          ? siFunciona.setAndReturnValue(config.element, key, attr)
+          : setAndReturnAttribute(config, key, attr)
+    ),
+    config
+  )
+
+/**
+   * Generate HTML element data for each object in the matrix
+   * WARNING: This is a recursive function.
+   * @function updateElements
+   * @param {module:dom/objects.DomItem} config - The DomItem having child DomItems with config changes to be
+   * applied
+   * @returns {module:dom/objects.DomItem}
+   */
+export const updateElements = config => siFunciona.mapProperty(
+  'children',
+  child => updateElements(child),
+  updateElement(config)
+)
+
+/**
+   * Create an HTML element based on the provided attributes and return the element as an Object.
+   * @function generateElement
+   * @param {module:dom/objects.DomItem} config - The DomItem requiring matching HTML element property
+   * @return {module:dom/objects.DomItem}
+   */
+export const generateElement = config => updateElement(
+  siFunciona.setValue('element', document.createElement(config.tagName), config)
+)
+
+/**
+   * Generate HTML element data for a provided DomItem
+   * @function bindElement
+   * @param {module:dom/objects.DomItem} item - The DomItem needing element to be generated
+   * @return {module:dom/objects.DomItem}
+   */
+export const bindElement = item => siFunciona.setValue(
+  'element',
+  (!item.element || !item.element.style) ? generateElement(item).element : item.element,
+  item
+)
+
+/**
+   * Simplify detecting the parent item which can be appended to, whether root, or just a parent at any part of the tree
+   * @param {
+   * module:dom/objects.DomItemRoot|module:dom/objects.DomItem
+   * } parent - A parent DomItem which may or may not have a body
+   * @returns {module:dom/objects.DomItemBody|module:dom/objects.DomItem}
+   */
+const retrieveParentItem = parent => parent.body ? parent.body : parent
+
+/**
+   * Having an array and a potential new array element, check if the element is in the array, if not append to array.
+   * @param {module:dom/objects.DomItem|*} item - An potential array element, possibly a DomItem
+   * @param {Array} array - An array where an element may be appended.
+   * @returns {Array|Buffer|*|T[]|string}
+   */
+const addUniqueToArray = (item, array) => !array.includes(item) ? array.concat([item]) : array
+
+/**
+   * Provide a DomItem to be appended to a parent item, return the DomItem.
+   * @param {module:dom/objects.DomItem} child - A DomItem to be appended
+   * @param {module:dom/objects.DomItem} parent - A parent item to have a new child appended
+   * @returns {module:dom/objects.DomItem}
+   */
+const appendAndReturnChild = (child, parent = jDomObjects.documentItem.body) => {
+  retrieveParentItem(parent).element.appendChild(child.element)
+  return child
+}
+
+/**
+   * Append a new DomItem which has the element generated.
+   * @function appendHTML
+   * @param {module:dom/objects.DomItem} item - A new DomItem to append
+   * @param {module:dom/objects.DomItem} parent - The parent to have DomItems appended
+   * @returns {module:dom/objects.DomItem}
+   */
+export const appendHTML = (item, parent = jDomObjects.documentItem.body) => appendAndReturnChild(
+  bindElement(item),
+  siFunciona.setValue(
+    'children',
+    addUniqueToArray(item, retrieveParentItem(parent).children),
+    retrieveParentItem(parent)
+  )
+)
+
+/**
+   * Reverse of appendHTML, remove a DomItem and have the associated element removed.
+   * @function removeChild
+   * @param {module:dom/objects.DomItem} item - The DomItem with HTMLElement to be removed
+   * @param {module:dom/objects.DomItem} parent - The parent of the items
+   * @returns {Array.&lt;HTMLElement|PseudoHTMLElement>}
+   */
+export const removeChild = (item, parent = jDomObjects.documentItem.body) => {
+  parent.element.removeChild(item.element)
+  return parent.children.splice(parent.children.indexOf(item), 1)
+}
+
+/**
+   * Register a single listener function as part of the root jDomObjects.DomItem.
+   * @function registerListener
+   * @param {module:dom/objects~listenerFunction|function} listener - Provide a function which will be called
+   * when a Dom event is triggered.
+   * @param {string} [name] - The name of the listener to be used.
+   * @param {module:dom/objects.DomItemRoot|Object} [parent] - The parent DomItem which is DomItemRoot which
+   * stores has eventListeners property.
+   * @returns {Object.&lt;string, module:dom/objects~listenerFunction>}
+   */
+export const registerListener = (listener, name = listener.name, parent = jDomObjects.documentItem) => Object.assign(
+  parent.eventListeners,
+  { [name]: listener }
+)
+
+/**
+   * Register multiple listeners from an array of functions.
+   * @function registerListeners
+   * @param {Array.&lt;module:dom/objects~listenerFunction|function>} listeners - An array of functions to be
+   * used as the registered event listeners.
+   * @param {module:dom/objects.DomItemRoot|Object} [parent] - The parent DomItem which is DomItemRoot which
+   * stores has eventListeners property.
+   * @returns {module:dom/objects.DomItemRoot|Object}
+   */
+export const registerListeners = (listeners, parent = jDomObjects.documentItem) => siFunciona.mergeObjects(
+  parent,
+  { eventListeners: parent.eventListeners },
+  { eventListeners: listeners }
+)
+
+/**
+   * Based on the provided function / listener name, retrieve the associated function from the root jDomObjects.DomItem
+   * @function retrieveListener
+   * @param {string} listenerName - The name of one of the registered listener functions.
+   * @param {module:dom/objects.DomItemRoot|Object} [parent] - The parent DomItem which is DomItemRoot which
+   * stores has eventListeners property.
+   * @returns {module:dom/objects~listenerFunction|function|Object}
+   */
+export const retrieveListener = (listenerName, parent = jDomObjects.documentItem) => Object.keys(parent.eventListeners).includes(listenerName)
+  ? parent.eventListeners[listenerName]
+  : {}
+
+/**
+   * Provide compatibility for using the options parameter of addEventListener
+   * @param {module:dom/objects.EventListenerOptions} options - An object or boolean with the listener options
+   * @returns {boolean}
+   */
+const listenerOptions = options => {
+  if (typeof listenerOptions.supportsOptions === 'undefined') {
+    // Check if supportsOptions has been defined. This is a compatibility checking flag.
+    listenerOptions.supportsOptions = true
+    try {
+      // If it is possible to use OptionsObject, then set our flag to true
+      window.addEventListener('test', null, { capture: false, once: false, passive: false })
+    } catch (err) {
+      // When using an OptionsObjects fails, it is only possible to pass the boolean UseCapture as the option
+      listenerOptions.supportsOptions = false
+    }
+  }
+  return (typeof options === 'object' &amp;&amp; listenerOptions.supportsOptions) ? options : false
+}
+
+/**
+   * Provide compatibility for assigning listeners.
+   * @function assignListener
+   * @param {string} trigger - The name of the event which will trigger the listenerFunction on the element.
+   * @param {HTMLElement|module:pseudoDom/objects~PseudoHTMLElement} elem - An element to append the listener onto
+   * @param {module:dom/objects~listenerFunction|function} fn - The function which will be invoked when the
+   * event is triggered
+   * @param {module:dom/objects.EventListenerOptions} options - Additional options to how the event will be
+   * fired
+   * @returns {module:dom/objects~listenerFunction|function}
+   */
+export const assignListener = (trigger, elem, fn, options) => {
+  // Attaching a listener may be done differently based on the browser support
+  if (elem.addEventListener) {
+    // Latest support is provided fro addEventListener with the options parameter varying slightly
+    elem.addEventListener(trigger, fn, listenerOptions(options))
+  } else if (elem.attachEvent) {
+    // Older browsers, especially Internet Explorer
+    elem.attachEvent(`on${trigger}`, fn)
+  } else {
+    // General support for adding a new function onto the element which can be called to trigger the function
+    elem[`on${trigger}`] = fn
+  }
+  return fn
+}
+
+/**
+   * When there may be extra data needed for the event listener function call, this function may be used as a helper
+   * to pass the additional data. Also, if it is desirable to add event listeners during run-time, this function can be
+   * used to achieve this.
+   * WARNING: This is a recursive function.
+   * @function appendListeners
+   * @param {module:dom/objects.DomItem} item - The DomItem which will have its eventListeners updated.
+   * @param {string} event - The string name of the event trigger type to be added.
+   * @param {string} listener - The name of the function to be called once the event is triggered.
+   * @param {Object} args - Additional arguments to be used in the listener function.
+   * @param {module:dom/objects.EventListenerOptions} options - The strategy used when the event is triggered.
+   * @returns {module:dom/objects.DomItem}
+   */
+export const appendListeners = (item, event, listener, args = {}, options = false) => siFunciona.mapProperty(
+  'children',
+  i => appendListeners(i, event, listener, args, options),
+  siFunciona.setValue(
+    'eventListeners',
+    siFunciona.setValue(
+      event,
+      {
+        listenerFunc: listener,
+        listenerArgs: args,
+        listenerOptions: options
+      },
+      item.eventListeners
+    ),
+    item
+  )
+)
+
+/**
+   * Receive a DomItem with eventListeners and apply the event listeners onto the Dom element.
+   * @param {module:dom/objects.DomItem} item - The DomItem which has eventListeners to apply to its element
+   * @returns {module:dom/objects.DomItem}
+   */
+const bindElementListeners = item => siFunciona.mapProperty(
+  'eventListeners',
+  (attr, event) => assignListener(
+    event,
+    item.element,
+    e => attr.listenerFunc(e, item, attr.listenerArgs), attr.listenerOptions
+  ),
+  item
+)
+
+/**
+   * Based on the eventListeners property of the provided item, bind the
+   * listeners to the associated element property for the provided jDomObjects.DomItem.
+   * @function bindListeners
+   * @param {module:dom/objects.DomItem} item - The DomItem which may have eventListeners to apply to its
+   * element
+   * @returns {module:dom/objects.DomItem}
+   */
+export const bindListeners = item =>
+  (item.eventListeners &amp;&amp; Object.keys(item.eventListeners).length &amp;&amp; item.element.style)
+    ? bindElementListeners(item)
+    : item
+
+/**
+   * Based on the eventListeners property of the provided item, bind the listeners to the associated element property
+   * for each item in the jDomObjects.DomItem structure.
+   * WARNING: This is a recursive function.
+   * @function bindAllListeners
+   * @param {module:dom/objects.DomItem} item - The DomItem with an associated HTMLElement to have a listener
+   * assigned
+   * @returns {module:dom/objects.DomItem}
+   */
+export const bindAllListeners = item => siFunciona.mapProperty(
+  'children',
+  i => bindAllListeners(i),
+  bindListeners(item)
+)
+
+/**
+   * To be used with gatherChildItems which will start at item and recurse over all child items, this test
+   * will then choose which child items will be returned as the result of the test.
+   * @callback module:dom/core~testChildItem
+   * @param {module:dom/objects.DomItem|Object} item - The DomItem is the child being tested
+   * @param {Array.&lt;module:dom/objects.DomItem>} gatheredResults - All of the child items gathered based on
+   * the test
+   * @returns {Array.&lt;module:dom/objects.DomItem>}
+   */
+
+/**
+   * A selector function for retrieving existing child jDomObjects.DomItems from the given parent item.
+   * This function will check all the children starting from and including item, and run the test function on each
+   * child encountered. The return array contains children returned from the test from all levels.
+   * WARNING: This is a recursive function.
+   * @function gatherChildItems
+   * @param {module:dom/objects.DomItem} item - The DomItem which may have child items matching the attribute
+   * criteria
+   * @param {module:dom/core~testChildItem} test - Assess each child, and return the ones which qualify
+   * @returns {Array.&lt;module:dom/objects.DomItem>}
+   */
+export const gatherChildItems = (item, test) => test(
+  item,
+  item.children.reduce((a, b) => a.concat(gatherChildItems(b, test)), [])
+)
+
+/**
+   * Retrieve the {@link module:dom/core~testChildItem} function by providing an attribute and value to check.
+   * @param {string} attr - Provide the attribute name to be searched
+   * @param {*} value - The attribute value to be compared
+   * @returns {module:dom/core~testChildItem}
+   */
+const getChildTest = (attr, value) => (item, gatheredResults) => (item.attributes[attr] &amp;&amp; item.attributes[attr] === value)
+  ? gatheredResults.concat([item])
+  : gatheredResults
+
+/**
+   * A selector function for retrieving existing child jDomObjects.DomItems from the given parent item.
+   * This function will check all the children starting from item, and scan the attributes
+   * property for matches. The returned array contains children matching from all levels.
+   * WARNING: This calls a recursive function.
+   * @function getChildrenFromAttribute
+   * @param {string} attr - Provide the attribute name to be searched
+   * @param {*} value - The attribute value to be compared
+   * @param {module:dom/objects.DomItem} item - The DomItem which may have child items matching the attribute
+   * criteria
+   * @returns {Array.&lt;module:dom/objects.DomItem>}
+   */
+export const getChildrenFromAttribute = (attr, value, item = jDomObjects.documentItem.body) =>
+  gatherChildItems(
+    item,
+    getChildTest(attr, value)
+  )
+
+/**
+   * Helper for getting all jDomObjects.DomItems starting at parent and having specified className attribute
+   * @function getChildrenByClass
+   * @returns {module:dom/objects.DomItem[]}
+   */
+export const getChildrenByClass = siFunciona.curry(getChildrenFromAttribute)('className')
+
+/**
+   * Helper for getting all jDomObjects.DomItems starting at parent and having specified name attribute
+   * @function getChildrenByName
+   * @returns {module:dom/objects.DomItem[]}
+   */
+export const getChildrenByName = siFunciona.curry(getChildrenFromAttribute)('name')
+
+/**
+   * A selector function for retrieving existing child jDomObjects.DomItems from the given parent item.
+   * This function will check all the children starting from item, and scan the attributes
+   * property for matches. The return array contains children matching from all levels.
+   * WARNING: This is a recursive function.
+   * @function getParentsFromAttribute
+   * @param {string} attr - Provide the attribute name to be searched
+   * @param {*} value - The attribute value to be compared
+   * @param {module:dom/objects.DomItem} item - The DomItem which may have parent items matching the
+   * attribute criteria
+   * @returns {Array}
+   */
+export const getParentsFromAttribute = (attr, value, item = jDomObjects.documentItem.body) =>
+  Object.keys(item.parentItem).length
+    ? (item.parentItem.attributes[attr] || item[attr] || false) === value
+      ? getParentsFromAttribute(attr, value, item.parentItem).concat([item.parentItem])
+      : getParentsFromAttribute(attr, value, item.parentItem)
+    : []
+
+/**
+   * Helper for getting all jDomObjects.DomItems starting at child and having specified className attribute
+   * @function getParentsByClass
+   * @returns {Array}
+   */
+export const getParentsByClass = siFunciona.curry(getParentsFromAttribute)('className')
+
+/**
+   * Helper for getting all jDomObjects.DomItems starting at child and having specified name attribute
+   * @function getParentsByName
+   * @returns {Array}
+   */
+export const getParentsByName = siFunciona.curry(getParentsFromAttribute)('name')
+
+/**
+   * Helper for getting all jDomObjects.DomItems starting at child and having specified tagName
+   * @function getParentsByTagName
+   * @returns {Array}
+   */
+export const getParentsByTagName = siFunciona.curry(getParentsFromAttribute)('tagName')
+
+/**
+   * Get the upper parentItem for the provided child. (usually this is a jDomObjects.documentItem reference)
+   * WARNING: This is a recursive function.
+   * @function getTopParentItem
+   * @param {module:dom/objects.DomItem} item - The DomItem which we want the highest parent item of
+   * @returns {module:dom/objects.DomItemRoot}
+   */
+export const getTopParentItem = item => Object.keys(item.parentItem).length
+  ? getTopParentItem(item.parentItem)
+  : item
+
+/**
+   * This is a shortcut for building the specified HTML elements and appending them to the Dom
+   * with associated listeners.
+   * The final argument is specific for adding event listeners with options.
+   * @function renderHTML
+   * @param {module:dom/objects.DomItem} item - The DomItem that we want to render the element for
+   * @param {module:dom/objects.DomItemRoot} parent - The Base Dom item which is the parent of all the items
+   * @returns {module:dom/objects.DomItem}
+   */
+export const renderHTML = (item, parent = jDomObjects.documentItem) => siFunciona.pipe(
+  (domItem) => siFunciona.setValue(
+    'element',
+    (domItem.element &amp;&amp; domItem.element.style) ? domItem.element : bindElement(domItem).element,
+    domItem
+  ),
+  (domItem) => siFunciona.setValue(
+    'eventListeners',
+    siFunciona.mapObject(
+      domItem.eventListeners,
+      prop => siFunciona.mergeObjects(
+        prop,
+        { listenerFunc: retrieveListener(prop.listenerFunc, getTopParentItem(parent)) }
+      )
+    ),
+    domItem
+  ),
+  siFunciona.curry(siFunciona.setValue)('parentItem', parent.body || parent),
+  (domItem) => bindListeners(appendHTML(domItem, parent)),
+  (domItem) => siFunciona.mapProperty('children', child => renderHTML(child, domItem), domItem)
+)(siFunciona.mapObject(jDomObjects.createDomItem(item), prop => prop, item))
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-collections.html">collections</a></li><li><a href="module-jDom.html">jDom</a></li><li><a href="module-jDomMatrix.html">jDomMatrix</a></li><li><a href="module-jsonDom.html">jsonDom</a></li><li><a href="module-pseudoDom_objects.html">pseudoDom/objects</a></li></ul><h3>Classes</h3><ul><li><a href="LinkedList.html">LinkedList</a></li><li><a href="Linker.html">Linker</a></li><li><a href="PseudoElement.html">PseudoElement</a></li><li><a href="PseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoEvent.html">PseudoEvent</a></li><li><a href="PseudoEventListener.html">PseudoEventListener</a></li><li><a href="PseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocument.html">PseudoHTMLDocument</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElement.html">PseudoHTMLElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElement.html">PseudoHTMLElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElement.html">PseudoHTMLElement</a></li><li><a href="PseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoNode.html">PseudoNode</a></li><li><a href="PseudoNodeAttached.html">PseudoNodeAttached</a></li><li><a href="PseudoNodeAttachedPseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoNodeAttachedPseudoNodeAttachedPseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="TreeLinker_TreeLinker.html">TreeLinker</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addUniqueToArray">addUniqueToArray</a></li><li><a href="global.html#adjacentEdgePoints">adjacentEdgePoints</a></li><li><a href="global.html#adjacentPoints">adjacentPoints</a></li><li><a href="global.html#appendAndReturnChild">appendAndReturnChild</a></li><li><a href="global.html#appendHTML">appendHTML</a></li><li><a href="global.html#appendListeners">appendListeners</a></li><li><a href="global.html#areEqualPoints">areEqualPoints</a></li><li><a href="global.html#assignListener">assignListener</a></li><li><a href="global.html#bindAllListeners">bindAllListeners</a></li><li><a href="global.html#bindElement">bindElement</a></li><li><a href="global.html#bindElementListeners">bindElementListeners</a></li><li><a href="global.html#bindListeners">bindListeners</a></li><li><a href="global.html#bindPointData">bindPointData</a></li><li><a href="global.html#checkInBetween">checkInBetween</a></li><li><a href="global.html#checkValidPoint">checkValidPoint</a></li><li><a href="global.html#createDomItem">createDomItem</a></li><li><a href="global.html#cube">cube</a></li><li><a href="global.html#documentDomItem">documentDomItem</a></li><li><a href="global.html#documentItem">documentItem</a></li><li><a href="global.html#elementChanges">elementChanges</a></li><li><a href="global.html#elementCompareClassList">elementCompareClassList</a></li><li><a href="global.html#elementHasAttribute">elementHasAttribute</a></li><li><a href="global.html#gatherChildItems">gatherChildItems</a></li><li><a href="global.html#generateElement">generateElement</a></li><li><a href="global.html#getAllPoints">getAllPoints</a></li><li><a href="global.html#getAxisLengths">getAxisLengths</a></li><li><a href="global.html#getChildrenByClass">getChildrenByClass</a></li><li><a href="global.html#getChildrenByName">getChildrenByName</a></li><li><a href="global.html#getChildrenFromAttribute">getChildrenFromAttribute</a></li><li><a href="global.html#getChildTest">getChildTest</a></li><li><a href="global.html#getDomItemFromElement">getDomItemFromElement</a></li><li><a href="global.html#getDomItemFromPoint">getDomItemFromPoint</a></li><li><a href="global.html#getFirstAxisOfCoordinate">getFirstAxisOfCoordinate</a></li><li><a href="global.html#getHighestAbsoluteCoordinate">getHighestAbsoluteCoordinate</a></li><li><a href="global.html#getParentsByClass">getParentsByClass</a></li><li><a href="global.html#getParentsByName">getParentsByName</a></li><li><a href="global.html#getParentsByTagName">getParentsByTagName</a></li><li><a href="global.html#getParentsFromAttribute">getParentsFromAttribute</a></li><li><a href="global.html#getPointFromElement">getPointFromElement</a></li><li><a href="global.html#getPointsLine">getPointsLine</a></li><li><a href="global.html#getPointsLines">getPointsLines</a></li><li><a href="global.html#getTopParentItem">getTopParentItem</a></li><li><a href="global.html#initChildren">initChildren</a></li><li><a href="global.html#initRoot">initRoot</a></li><li><a href="global.html#lineEndPoint">lineEndPoint</a></li><li><a href="global.html#listenerOptions">listenerOptions</a></li><li><a href="global.html#matrix">matrix</a></li><li><a href="global.html#nextCell">nextCell</a></li><li><a href="global.html#point">point</a></li><li><a href="global.html#pointAndCoordinateToDirection">pointAndCoordinateToDirection</a></li><li><a href="global.html#pointDifference">pointDifference</a></li><li><a href="global.html#pointsToDirection">pointsToDirection</a></li><li><a href="global.html#pointToDirection">pointToDirection</a></li><li><a href="global.html#previousPseudoDom">previousPseudoDom</a></li><li><a href="global.html#randDirection">randDirection</a></li><li><a href="global.html#randomStart">randomStart</a></li><li><a href="global.html#registerListener">registerListener</a></li><li><a href="global.html#registerListeners">registerListeners</a></li><li><a href="global.html#removeChild">removeChild</a></li><li><a href="global.html#renderHTML">renderHTML</a></li><li><a href="global.html#retrieveListener">retrieveListener</a></li><li><a href="global.html#retrieveParentItem">retrieveParentItem</a></li><li><a href="global.html#root">root</a></li><li><a href="global.html#setAndReturnAttribute">setAndReturnAttribute</a></li><li><a href="global.html#setAttribute">setAttribute</a></li><li><a href="global.html#square">square</a></li><li><a href="global.html#tile">tile</a></li><li><a href="global.html#updateElement">updateElement</a></li><li><a href="global.html#updateElements">updateElements</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Fri Sep 11 2020 21:27:28 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

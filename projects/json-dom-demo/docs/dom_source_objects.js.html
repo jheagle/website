@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: dom/source/objects.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: dom/source/objects.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file Core objects for representing the DOM in JSON.
+ * @author Joshua Heagle &lt;joshuaheagle@gmail.com>
+ * @version 1.0.0
+ */
+
+import siFunciona from 'si-funciona'
+
+/**
+   * This is the standard definition of a listenerFunction to be used
+   * @callback listenerFunction
+   * @callback listenerFunction
+   * @param {Event|module:pseudoDom/objects.PseudoEvent} e - The event object passed to the listener
+   * @param {module:dom/objects.DomItem} target - The element which triggered the event
+   * @param {...*} [args] - Optional args as required by the listener
+   */
+
+/**
+   * A Boolean indicating whether events of this type will be dispatched to the registered listerFunction before being
+   * dispatched to any EventTarget beneath it in the Dom tree.
+   * @typedef {boolean} module:dom/objects.UseCapture
+   */
+
+/**
+   * OptionsObject defines the structure for the options to be passed to addEventListener
+   * @typedef {Object} module:dom/objects.OptionsObject
+   * @property {boolean} capture - Indicate that events of this type will be dispatched to the registered
+   * listenerFunction before being dispatched to any EventTarget beneath it in the Dom tree.
+   * @property {boolean} once - Indicate that the listenerFunction should be invoked at most once after being added. If
+   * 'true', the listenerFunction would be automatically removed when invoked.
+   * @property {boolean} passive - Indicate that, if 'true', indicates that the listenerFunction will never call
+   * preventDefault(). If preventDefault() is called, the user agent will do nothing with it.
+   */
+
+/**
+   * EventListenerOptions is either a boolean as UseCapture or an Object as OptionsObject
+   * @typedef {
+   * module:dom/objects.OptionsObject|module:dom/objects.UseCapture
+   * } module:dom/objects.EventListenerOptions
+   */
+
+/**
+   * An EventListener Object to be appended to the element within the DomItem
+   * @typedef {Object} EventListener
+   * @typedef {Object} EventListener
+   * @property {string} listenerFunc - A string function name matching an existing
+   * {@link module:dom/objects~listenerFunction}.
+   * @property {Object} listenerArgs - Additional args required for the listener function
+   * @property {module:dom/objects.EventListenerOptions} listenerOptions - Provides support for options
+   * parameter of addEventListener, or false for default
+   */
+
+/**
+   * DomItem defines the structure for a single element in the Dom
+   * @typedef {Object} module:dom/objects.DomItem
+   * @property {string} tagName - This is any valid HTMLElement tagName
+   * @property {Object.&lt;string, string|Object>} attributes - All potential HTML element attributes can be defined here
+   * (including the defaulted style object)
+   * @property {(Object|HTMLElement|module:pseudoDom/objects.PseudoHTMLElement)} element - A reference to an existing HTML element will be stored here (default
+   * empty object)
+   * @property {Object.&lt;Event, module:dom/objects~EventListener>} eventListeners - An object holding all
+   * events to be registered for the associated element
+   * @property {module:dom/objects.DomItem} parentItem - A reference to the parent of this object
+   * @property {Array.&lt;module:dom/objects.DomItem>} children - A reference to an array of child objects
+   */
+
+/**
+   * This is the basic Object for representing the Dom in a virtual perspective. All incoming attributes will be merged
+   * to the specified format.
+   * @function createDomItem
+   * @param {...Object} attributes - DomItem-like object(s) to be merged as a DomItem
+   * @returns {module:dom/objects.DomItem}
+   */
+export const createDomItem = (...attributes) => siFunciona.mergeObjectsMutable({
+  tagName: 'div',
+  attributes: {
+    style: {}
+  },
+  element: {},
+  eventListeners: {},
+  parentItem: {},
+  children: []
+}, ...attributes)
+
+/**
+   * DomItemHead defines the structure for a single element in the Dom
+   * @typedef {module:dom/objects.DomItem} module:dom/objects.DomItemHead
+   * @typedef {module:dom/objects.DomItem} DomItemHead
+   * @property {string} [tagName=head] - This is set to the string head referring to the HTML element of the same name
+   * @property {Object.&lt;string, string|Object>} attributes - All potential HTML element attributes can be defined here
+   * @property {HTMLHeadElement|module:pseudoDom/objects.PseudoHTMLElement} element - A reference to the HTML head element
+   * @property {Array.&lt;module:dom/objects.DomItem>} children - A reference to an array of child objects
+   */
+
+/**
+   * DomItemBody defines the structure for a single element in the Dom
+   * @typedef {module:dom/objects.DomItem} module:dom/objects.DomItemBody
+   * @typedef {module:dom/objects.DomItem} DomItemBody
+   * @property {string} [tagName=body] - This is set to the string body referring to the HTML element of the same name
+   * @property {Object.&lt;string, string|Object>} attributes - All potential HTML element attributes can be defined here
+   * @property {HTMLBodyElement|module:pseudoDom/objects.PseudoHTMLElement} element - A reference to the HTML body element
+   * @property {Array.&lt;module:dom/objects.DomItem>} children - A reference to an array of child objects
+   */
+
+/**
+   * Initiate the children of Root / DocumentItem. This is a helper for {@link documentDomItem}.
+   * @returns {Array.&lt;module:dom/objects~DomItemHead|module:dom/objects~DomItemBody>}
+   */
+const initChildren = () => [
+  createDomItem({
+    tagName: 'head',
+    attributes: {},
+    element: document.head,
+    children: []
+  }),
+  createDomItem({
+    tagName: 'body',
+    attributes: {},
+    element: document.body,
+    children: []
+  })
+]
+
+/**
+   * DomItemRoot defines the structure for a single element in the Dom
+   * @typedef {module:dom/objects.DomItem} module:dom/objects.DomItemRoot
+   * @property {string} [tagName=html] - This is set to the string html referring to the HTML element of the same name
+   * @property {Object} attributes - Empty object as attributes placeholder
+   * @property {HTMLDocument|module:pseudoDom/objects.PseudoHTMLDocument} element - A reference to the entire Document
+   * @property {Object.&lt;string, module:dom/objects~listenerFunction>} eventListeners - all registered
+   * listeners stored as listener name and function pairs
+   * @property {
+   * Array.&lt;module:dom/objects~DomItemHead|module:dom/objects~DomItemBody>
+   *   } children - Two references: for head and body
+   * @property {module:dom/objects~DomItemHead} head - A specific reference to head item
+   * @property {module:dom/objects~DomItemBody} body - A specific reference to body item
+   */
+
+/**
+   * Initiate the Root for DocumentItem. This is primary a helper for {@link documentDomItem}.
+   * @param {
+   * Array.&lt;module:dom/objects~DomItemHead|module:dom/objects~DomItemBody>
+   *   } children - Provide an array of Head and Body (usually via {@link initChildren})
+   * @param {Object.&lt;string, module:dom/objects~listenerFunction>} listeners - An object of all event
+   * listeners to be registered in the Dom
+   * @returns {module:dom/objects.DomItemRoot|module:dom/objects.DomItem}
+   */
+const initRoot = (children, listeners = {}) => createDomItem({
+  tagName: 'html',
+  attributes: {},
+  element: document,
+  eventListeners: listeners,
+  children: children,
+  head: children[0],
+  body: children[1]
+})
+
+/**
+   * Return a DomItem reference to the document. The rootItem argument is a system variable and not necessary to
+   * implement.
+   * @function documentDomItem
+   * @param {Object.&lt;string, module:dom/objects~listenerFunction>} listeners - An object of all event
+   * listeners to be registered in the Dom
+   * @param {module:dom/objects.DomItemRoot|module:dom/objects.DomItem} [rootItem] - This is a
+   * reference to DomItemRoot which will be defaulted with {@link initRoot}
+   * @returns {module:dom/objects.DomItemRoot|module:dom/objects.DomItem}
+   */
+export const documentDomItem = (listeners = [], rootItem = initRoot(initChildren(), listeners)) => {
+  rootItem.children = rootItem.children.map(child => createDomItem(child, { parentItem: rootItem }))
+  Object.assign(rootItem.head, rootItem.children[0])
+  Object.assign(rootItem.body, rootItem.children[1])
+  return createDomItem(rootItem)
+}
+
+/**
+   * Create reference for storing document changes
+   * @member documentItem
+   * @type {module:dom/objects.DomItemRoot}
+   */
+export const documentItem = documentDomItem()
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-collections.html">collections</a></li><li><a href="module-jDom.html">jDom</a></li><li><a href="module-jDomMatrix.html">jDomMatrix</a></li><li><a href="module-jsonDom.html">jsonDom</a></li><li><a href="module-pseudoDom_objects.html">pseudoDom/objects</a></li></ul><h3>Classes</h3><ul><li><a href="LinkedList.html">LinkedList</a></li><li><a href="Linker.html">Linker</a></li><li><a href="PseudoElement.html">PseudoElement</a></li><li><a href="PseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoEvent.html">PseudoEvent</a></li><li><a href="PseudoEventListener.html">PseudoEventListener</a></li><li><a href="PseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocument.html">PseudoHTMLDocument</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElement.html">PseudoHTMLElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElement.html">PseudoHTMLElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElement.html">PseudoHTMLElement</a></li><li><a href="PseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoNode.html">PseudoNode</a></li><li><a href="PseudoNodeAttached.html">PseudoNodeAttached</a></li><li><a href="PseudoNodeAttachedPseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoNodeAttachedPseudoNodeAttachedPseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="TreeLinker_TreeLinker.html">TreeLinker</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addUniqueToArray">addUniqueToArray</a></li><li><a href="global.html#adjacentEdgePoints">adjacentEdgePoints</a></li><li><a href="global.html#adjacentPoints">adjacentPoints</a></li><li><a href="global.html#appendAndReturnChild">appendAndReturnChild</a></li><li><a href="global.html#appendHTML">appendHTML</a></li><li><a href="global.html#appendListeners">appendListeners</a></li><li><a href="global.html#areEqualPoints">areEqualPoints</a></li><li><a href="global.html#assignListener">assignListener</a></li><li><a href="global.html#bindAllListeners">bindAllListeners</a></li><li><a href="global.html#bindElement">bindElement</a></li><li><a href="global.html#bindElementListeners">bindElementListeners</a></li><li><a href="global.html#bindListeners">bindListeners</a></li><li><a href="global.html#bindPointData">bindPointData</a></li><li><a href="global.html#checkInBetween">checkInBetween</a></li><li><a href="global.html#checkValidPoint">checkValidPoint</a></li><li><a href="global.html#createDomItem">createDomItem</a></li><li><a href="global.html#cube">cube</a></li><li><a href="global.html#documentDomItem">documentDomItem</a></li><li><a href="global.html#documentItem">documentItem</a></li><li><a href="global.html#elementChanges">elementChanges</a></li><li><a href="global.html#elementCompareClassList">elementCompareClassList</a></li><li><a href="global.html#elementHasAttribute">elementHasAttribute</a></li><li><a href="global.html#gatherChildItems">gatherChildItems</a></li><li><a href="global.html#generateElement">generateElement</a></li><li><a href="global.html#getAllPoints">getAllPoints</a></li><li><a href="global.html#getAxisLengths">getAxisLengths</a></li><li><a href="global.html#getChildrenByClass">getChildrenByClass</a></li><li><a href="global.html#getChildrenByName">getChildrenByName</a></li><li><a href="global.html#getChildrenFromAttribute">getChildrenFromAttribute</a></li><li><a href="global.html#getChildTest">getChildTest</a></li><li><a href="global.html#getDomItemFromElement">getDomItemFromElement</a></li><li><a href="global.html#getDomItemFromPoint">getDomItemFromPoint</a></li><li><a href="global.html#getFirstAxisOfCoordinate">getFirstAxisOfCoordinate</a></li><li><a href="global.html#getHighestAbsoluteCoordinate">getHighestAbsoluteCoordinate</a></li><li><a href="global.html#getParentsByClass">getParentsByClass</a></li><li><a href="global.html#getParentsByName">getParentsByName</a></li><li><a href="global.html#getParentsByTagName">getParentsByTagName</a></li><li><a href="global.html#getParentsFromAttribute">getParentsFromAttribute</a></li><li><a href="global.html#getPointFromElement">getPointFromElement</a></li><li><a href="global.html#getPointsLine">getPointsLine</a></li><li><a href="global.html#getPointsLines">getPointsLines</a></li><li><a href="global.html#getTopParentItem">getTopParentItem</a></li><li><a href="global.html#initChildren">initChildren</a></li><li><a href="global.html#initRoot">initRoot</a></li><li><a href="global.html#lineEndPoint">lineEndPoint</a></li><li><a href="global.html#listenerOptions">listenerOptions</a></li><li><a href="global.html#matrix">matrix</a></li><li><a href="global.html#nextCell">nextCell</a></li><li><a href="global.html#point">point</a></li><li><a href="global.html#pointAndCoordinateToDirection">pointAndCoordinateToDirection</a></li><li><a href="global.html#pointDifference">pointDifference</a></li><li><a href="global.html#pointsToDirection">pointsToDirection</a></li><li><a href="global.html#pointToDirection">pointToDirection</a></li><li><a href="global.html#previousPseudoDom">previousPseudoDom</a></li><li><a href="global.html#randDirection">randDirection</a></li><li><a href="global.html#randomStart">randomStart</a></li><li><a href="global.html#registerListener">registerListener</a></li><li><a href="global.html#registerListeners">registerListeners</a></li><li><a href="global.html#removeChild">removeChild</a></li><li><a href="global.html#renderHTML">renderHTML</a></li><li><a href="global.html#retrieveListener">retrieveListener</a></li><li><a href="global.html#retrieveParentItem">retrieveParentItem</a></li><li><a href="global.html#root">root</a></li><li><a href="global.html#setAndReturnAttribute">setAndReturnAttribute</a></li><li><a href="global.html#setAttribute">setAttribute</a></li><li><a href="global.html#square">square</a></li><li><a href="global.html#tile">tile</a></li><li><a href="global.html#updateElement">updateElement</a></li><li><a href="global.html#updateElements">updateElements</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Fri Sep 11 2020 21:27:28 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

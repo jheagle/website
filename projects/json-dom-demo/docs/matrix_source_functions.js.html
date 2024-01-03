@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: matrix/source/functions.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: matrix/source/functions.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file All of the siFunciona matrix functions for working with a grid of points.
+ * @author Joshua Heagle &lt;joshuaheagle@gmail.com>
+ * @version 1.0.0
+ */
+
+import siFunciona from 'si-funciona'
+import * as jDomMatrixObjects from './objects'
+
+/**
+   * Generate point data for each item in the matrix
+   * WARNING: This is a recursive function.
+   * @function bindPointData
+   * @param {module:matrix/objects.MatrixColumn|module:matrix/objects.MatrixRow} item - A special DomItem
+   * which is either a layer, row, or column in a matrix.
+   * @param {module:matrix/objects.Point} pnt - A point to be added to a specific Matrix Column
+   * @returns {module:matrix/objects.MatrixColumn|module:matrix/objects.MatrixRow}
+   */
+export const bindPointData = (item, pnt = jDomMatrixObjects.point(0, 0, 0)) => siFunciona.mergeObjects(
+  item,
+  item.point ? { point: siFunciona.cloneObject(pnt) } : {
+    children: item.children.map(
+      (el, i) => bindPointData(el, Object.assign(pnt, { [el.axis]: i }))
+    )
+  }
+)
+
+/**
+   * Based on provided point and point direction generate next point.
+   * @function nextCell
+   * @param {module:matrix/objects.Point} pnt - Provide the current / initial point
+   * @param {module:matrix/objects.Direction} dir - Provide the direction to be applied to find the next point
+   * @returns {module:matrix/objects.Point}
+   */
+export const nextCell = (pnt, dir) => jDomMatrixObjects.point(pnt.x + dir.x, pnt.y + dir.y, pnt.z + dir.z)
+
+/**
+   * Based on provided point and another point, get a point with the difference between each axis
+   * @function pointDifference
+   * @param {module:matrix/objects.Point} start - The first point to compare
+   * @param {module:matrix/objects.Point} end - The other point to be compared
+   * @returns {module:matrix/objects.Point}
+   */
+export const pointDifference = (start, end) => jDomMatrixObjects.point(
+  end.x - start.x,
+  end.y - start.y,
+  end.z - start.z
+)
+
+/**
+   * Given two points, compare the x, y, and z of each to see if they are the same
+   * @function areEqualPoints
+   * @param {module:matrix/objects.Point} p1 - The first point to compare
+   * @param {module:matrix/objects.Point} p2 - The other point to be compared
+   * @returns {boolean}
+   */
+export const areEqualPoints = (p1, p2) => p1.x === p2.x &amp;&amp; p1.y === p2.y &amp;&amp; p1.z === p2.z
+
+/**
+   * Return the first coordinate number with the highest absolute value.
+   * @function getHighestAbsoluteCoordinate
+   * @param {module:matrix/objects.Point} pnt - A Point to be assessed.
+   * @returns {module:matrix/objects.coordinate}
+   */
+export const getHighestAbsoluteCoordinate = pnt => siFunciona.reduceObject(pnt, siFunciona.getAbsoluteMax, 0)
+
+/**
+   * Having provided a coordinate number, find all corresponding axis, return the first match.
+   * @function getFirstAxisOfCoordinate
+   * @param {module:matrix/objects.Point} pnt - The Point containing a matching coordinate.
+   * @param {module:matrix/objects.coordinate} coordinate - The coordinate to search for.
+   * @returns {false|module:matrix/objects.axis}
+   */
+export const getFirstAxisOfCoordinate = (pnt, coordinate) => Object.keys(pnt).filter(
+  (key) => pnt[key] === coordinate
+)[0] || false
+
+/**
+   * Given a point and the value of the highest coordinate select the corresponding axis which will be the direction
+   * (-1 or 1) to and set the other axis to 0.
+   * @param {module:matrix/objects.Point} pnt - The which will be converted to a direction.
+   * @param {module:matrix/objects.coordinate} highestCoordinate - The highest coordinate provided by the point.
+   * @returns {module:matrix/objects.Direction}
+   */
+const pointAndCoordinateToDirection = (pnt, highestCoordinate) => (
+  axis => axis !== false
+    ? siFunciona.mergeObjects(jDomMatrixObjects.point(0, 0, 0), { [`${axis}`]: highestCoordinate > 0 ? 1 : -1 })
+    : jDomMatrixObjects.point(0, 0, 0)
+)(getFirstAxisOfCoordinate(pnt, highestCoordinate))
+
+/**
+   * Having a point, convert it to a direction where the axis with the highest coordinate value will be set to -1 or 1.
+   * @param {module:matrix/objects.Point} pnt - The point to be converted to a direction.
+   * @returns {module:matrix/objects.Direction}
+   */
+const pointToDirection = pnt => pointAndCoordinateToDirection(pnt, getHighestAbsoluteCoordinate(pnt))
+
+/**
+   * Retrieve a directional coordinate value based on two provided points
+   * (directions consist of two zero coordinates and a single coordinate of 1 / -1)
+   * @function pointsToDirection
+   * @param {module:matrix/objects.Point} start - The first point to assess.
+   * @param {module:matrix/objects.Point} end - The other point to assess.
+   * @returns {module:matrix/objects.Direction}
+   */
+export const pointsToDirection = (start, end) => pointToDirection(pointDifference(start, end))
+
+/**
+   * Generate a random starting point for a line with the provided length and direction.
+   * @function randomStart
+   * @param {number} length - The intended length the resulting line.
+   * @param {module:matrix/objects.Direction} dir - The direction the line will extend towards.
+   * @param {module:matrix/objects.Point} [lengthLimits={x: 10, y: 10, z: 10}] - The maximum grid size.
+   * @returns {module:matrix/objects.Point}
+   */
+export const randomStart = (
+  length,
+  dir,
+  lengthLimits = jDomMatrixObjects.point(10, 10, 10)
+) => jDomMatrixObjects.point(
+  siFunciona.randomInteger(lengthLimits.x - ((length - 1) * dir.x)),
+  siFunciona.randomInteger(lengthLimits.y - ((length - 1) * dir.y)),
+  siFunciona.randomInteger(lengthLimits.z - ((length - 1) * dir.z))
+)
+
+/**
+   * Given a start point, line length, and a direction, generate the end point of the line.
+   * @function lineEndPoint
+   * @param {module:matrix/objects.Point} start - The selected starting point.
+   * @param {number} length - The total length of the line.
+   * @param {module:matrix/objects.Direction} dir - The direction of the line.
+   * @returns {module:matrix/objects.Point}
+   */
+export const lineEndPoint = (start, length, dir) => jDomMatrixObjects.point(
+  start.x + dir.x * (length - 1),
+  start.y + dir.y * (length - 1),
+  start.z + dir.z * (length - 1)
+)
+
+/**
+   * Having provided two points, return an array of transition points connecting 'start' and 'end'. Return array
+   * includes 'start' (line[0]) and 'end' (line[line.length-1])
+   * @function getPointsLine
+   * @param {module:matrix/objects.Point} start - The starting location of the line.
+   * @param {module:matrix/objects.Point} end - The final line destination.
+   * @param {Array.&lt;module:matrix/objects.Point>} [line=[]] - The resulting line to connect start and end.
+   * @returns {Array.&lt;module:matrix/objects.Point>}
+   */
+export const getPointsLine = (start, end, line = []) => areEqualPoints(start, end)
+  ? line.concat([start])
+  : getPointsLine(
+    nextCell(start, pointsToDirection(start, end)),
+    end,
+    line.concat([start])
+  )
+
+/**
+   * Takes an array of arrays containing two points each. Calls getPointsLine for each array of points. Returns an
+   * array of all points captured for each line segment
+   * @function getPointsLines
+   * @param {Array.&lt;Array.&lt;module:matrix/objects.Point>>} lines - An array of lines only containing start and end.
+   * @returns {Array.&lt;Array.&lt;module:matrix/objects.Point>>}
+   */
+export const getPointsLines = lines => lines.reduce(
+  (pointsArray, line) => pointsArray.concat(getPointsLine(...line)),
+  []
+)
+
+/**
+   * Function that produces a property of the new Object, taking three arguments
+   * @callback module:matrix/core~testPointStatus
+   * @param {module:matrix/objects.MatrixColumn|Object} pnt - A point which may have some status.
+   * @param {module:matrix/objects.Matrix|Object} matrix - A matrix of points to find the point within.
+   * @returns {boolean}
+   */
+
+/**
+   * Given a start and end point, test the points between with the provided function. Return the points as part of true
+   * and / or false properties based on the test.
+   * @function module:matrix/core~testPointsBetween
+   * @param {module:matrix/objects.Point} start - The beginning point to check.
+   * @param {module:matrix/objects.Point} end - The terminating point to check between.
+   * @param {module:matrix/objects.Matrix} matrix - The grid of points all the points can exist on.
+   * @param {module:matrix/core~testPointStatus} func - The test function which will return true or false.
+   * @param {boolean} [inclusive=true] - Choose whether to include or exclude the start and end points in the results.
+   * @returns {Object.&lt;string, Array.&lt;module:matrix/objects.Point>>}
+   */
+export const testPointsBetween = (start, end, matrix, func, inclusive = true) =>
+  getPointsLine(start, end).filter(
+    (prop, i, line) => ((i !== 0 &amp;&amp; i !== line.length - 1) || inclusive)
+  ).reduce(
+    (newPoints, next) => siFunciona.mergeObjects(newPoints, { [`${func(next, matrix)}`]: [next] }), {
+      true: [],
+      false: []
+    }
+  )
+
+/**
+   * Given two points, check the cells between using specified function.
+   * When inclusive is set to true the provided start and end points will also be tested
+   * @function checkInBetween
+   * @param {...*} args - These args match the parameter list for {@link module:matrix/core~testPointsBetween}
+   * @returns {boolean}
+   */
+export const checkInBetween = (...args) => !!testPointsBetween(...args).true.length
+
+/**
+   * Return point-like object with all of the axis lengths.
+   * @function getAxisLengths
+   * @param {module:matrix/objects.Matrix} matrix - The matrix to get the dimensions of.
+   * @returns {module:matrix/objects.Point}
+   */
+export const getAxisLengths = (matrix) => jDomMatrixObjects.point(
+  matrix.children[0].children[0].children.length,
+  matrix.children[0].children.length,
+  matrix.children.length
+)
+
+/**
+   * Get random direction point
+   * @function randDirection
+   * @param {Array.&lt;module:matrix/objects.Point>} [useCoordinates=[]] - An array of possible directions.
+   * @returns {module:matrix/objects.Direction}
+   */
+export const randDirection = (useCoordinates = []) => useCoordinates.length
+  ? useCoordinates[siFunciona.randomInteger(useCoordinates.length)]
+  : jDomMatrixObjects.point(0, 0, 0)
+
+/**
+   * Test if the provided point exists in the matrix.
+   * @function checkValidPoint
+   * @param {module:matrix/objects.Point} pnt - Provide a point to validate.
+   * @param {module:matrix/objects.Matrix} matrix - The matrix that contains valid points.
+   * @returns {boolean}
+   */
+export const checkValidPoint = (pnt, matrix) => !!matrix.children[pnt.z] &amp;&amp;
+    !!matrix.children[pnt.z].children[pnt.y] &amp;&amp;
+    !!matrix.children[pnt.z].children[pnt.y].children[pnt.x] &amp;&amp;
+    !!matrix.children[pnt.z].children[pnt.y].children[pnt.x].point
+
+/**
+   * Retrieve the DomItem associated with the provided point
+   * @function getDomItemFromPoint
+   * @param {module:matrix/objects.Point} pnt - A point corresponding to a DomItem.
+   * @param {module:matrix/objects.Matrix} matrix - The matrix containing the point.
+   * @returns {false|module:dom/objects.DomItem}
+   */
+export const getDomItemFromPoint = (pnt, matrix) => checkValidPoint(pnt, matrix)
+  ? matrix.children[pnt.z].children[pnt.y].children[pnt.x]
+  : false
+
+/**
+   * Return an array of all the points in the matrix
+   * @function getAllPoints
+   * @param {module:matrix/objects.Matrix|module:matrix/objects.MatrixColumn} matrix - The matrix to retrieve
+   * points from.
+   * @param {Array.&lt;module:matrix/objects.Point>} [allPoints=[]] - The array of points to be returned
+   * @returns {Array.&lt;module:matrix/objects.Point>}
+   */
+export const getAllPoints = (matrix, allPoints = []) => (matrix.point)
+  ? allPoints.concat([matrix.point])
+  : matrix.children.reduce((allPoints, child) => allPoints.concat(getAllPoints(child, [])), [])
+
+/**
+   * Return all valid points surrounding a provided point
+   * @function adjacentPoints
+   * @param {module:matrix/objects.Point} pnt - The point we want to find adjacent points for.
+   * @param {module:matrix/objects.Matrix} matrix - The matrix having the point.
+   * @returns {Array.&lt;module:matrix/objects.Point>}
+   */
+export const adjacentPoints = (pnt, matrix) => getPointsLines([
+  [jDomMatrixObjects.point(-1, 1, 1), jDomMatrixObjects.point(1, -1, -1)],
+  [jDomMatrixObjects.point(1, 1, 1), jDomMatrixObjects.point(-1, 1, -1)],
+  [jDomMatrixObjects.point(-1, -1, 1), jDomMatrixObjects.point(1, -1, 1)],
+  [jDomMatrixObjects.point(1, 0, 0), jDomMatrixObjects.point(1, 1, -1)],
+  [jDomMatrixObjects.point(-1, 1, 0), jDomMatrixObjects.point(1, 1, 0)]
+]).concat([
+  jDomMatrixObjects.point(0, 0, 1),
+  jDomMatrixObjects.point(1, 0, 0),
+  jDomMatrixObjects.point(-1, 0, -1),
+  jDomMatrixObjects.point(0, 0, -1)
+]).map(p => nextCell(pnt, p))
+  .filter(p => checkValidPoint(nextCell(pnt, p), matrix))
+
+/**
+   * Return all points which touch on edges (not diagonal)
+   * @function adjacentEdgePoints
+   * @param {module:matrix/objects.Point} pnt - The point we want to find adjacent points for.
+   * @param {module:matrix/objects.Matrix} matrix - The matrix having the point.
+   * @returns {Array.&lt;module:matrix/objects.Point>}
+   */
+export const adjacentEdgePoints = (pnt, matrix) => [
+  jDomMatrixObjects.point(-1, 0, 0),
+  jDomMatrixObjects.point(1, 0, 0),
+  jDomMatrixObjects.point(0, -1, 0),
+  jDomMatrixObjects.point(0, 1, 0),
+  jDomMatrixObjects.point(0, 0, -1),
+  jDomMatrixObjects.point(0, 0, 1)
+].map(p => nextCell(pnt, p)).filter(p => checkValidPoint(p, matrix))
+
+/**
+   * Retrieve the point associated with the provided element.
+   * @function getPointFromElement
+   * @param {Node|HTMLElement|module:pseudoDom/objects.PseudoHTMLElement} elem - Provide an element associated with
+   * a point.
+   * @returns {module:matrix/objects.Point}
+   */
+export const getPointFromElement = elem => jDomMatrixObjects.point(
+  Array.from(elem.parentNode.childNodes).indexOf(elem),
+  Array.from(elem.parentNode.parentNode.childNodes).indexOf(elem.parentNode),
+  Array.from(elem.parentNode.parentNode.parentNode.childNodes).indexOf(elem.parentNode.parentNode)
+)
+
+/**
+   * Retrieve the DomItem associated with the provided element in the matrix
+   * @function getDomItemFromElement
+   * @param {Node|HTMLElement|module:pseudoDom/objects.PseudoHTMLElement} elem - Provide an element having an
+   * associated DomItem.
+   * @param {module:matrix/objects.Matrix} matrix - The matrix potentially containing the DomItem with Point.
+   * @returns {module:dom/objects.DomItem}
+   */
+export const getDomItemFromElement = (elem, matrix) => getDomItemFromPoint(
+  getPointFromElement(elem),
+  matrix
+)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-collections.html">collections</a></li><li><a href="module-jDom.html">jDom</a></li><li><a href="module-jDomMatrix.html">jDomMatrix</a></li><li><a href="module-jsonDom.html">jsonDom</a></li><li><a href="module-pseudoDom_objects.html">pseudoDom/objects</a></li></ul><h3>Classes</h3><ul><li><a href="LinkedList.html">LinkedList</a></li><li><a href="Linker.html">Linker</a></li><li><a href="PseudoElement.html">PseudoElement</a></li><li><a href="PseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoEvent.html">PseudoEvent</a></li><li><a href="PseudoEventListener.html">PseudoEventListener</a></li><li><a href="PseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocument.html">PseudoHTMLDocument</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElement.html">PseudoHTMLElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElement.html">PseudoHTMLElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLDocumentPseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElement.html">PseudoHTMLElement</a></li><li><a href="PseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElement.html">PseudoElement</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNode.html">PseudoNode</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoHTMLElementPseudoHTMLElementPseudoElementPseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoNode.html">PseudoNode</a></li><li><a href="PseudoNodeAttached.html">PseudoNodeAttached</a></li><li><a href="PseudoNodeAttachedPseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoNodeAttachedPseudoNodeAttachedPseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="PseudoNodePseudoNodePseudoEventTarget.html">PseudoEventTarget</a></li><li><a href="TreeLinker_TreeLinker.html">TreeLinker</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addUniqueToArray">addUniqueToArray</a></li><li><a href="global.html#adjacentEdgePoints">adjacentEdgePoints</a></li><li><a href="global.html#adjacentPoints">adjacentPoints</a></li><li><a href="global.html#appendAndReturnChild">appendAndReturnChild</a></li><li><a href="global.html#appendHTML">appendHTML</a></li><li><a href="global.html#appendListeners">appendListeners</a></li><li><a href="global.html#areEqualPoints">areEqualPoints</a></li><li><a href="global.html#assignListener">assignListener</a></li><li><a href="global.html#bindAllListeners">bindAllListeners</a></li><li><a href="global.html#bindElement">bindElement</a></li><li><a href="global.html#bindElementListeners">bindElementListeners</a></li><li><a href="global.html#bindListeners">bindListeners</a></li><li><a href="global.html#bindPointData">bindPointData</a></li><li><a href="global.html#checkInBetween">checkInBetween</a></li><li><a href="global.html#checkValidPoint">checkValidPoint</a></li><li><a href="global.html#createDomItem">createDomItem</a></li><li><a href="global.html#cube">cube</a></li><li><a href="global.html#documentDomItem">documentDomItem</a></li><li><a href="global.html#documentItem">documentItem</a></li><li><a href="global.html#elementChanges">elementChanges</a></li><li><a href="global.html#elementCompareClassList">elementCompareClassList</a></li><li><a href="global.html#elementHasAttribute">elementHasAttribute</a></li><li><a href="global.html#gatherChildItems">gatherChildItems</a></li><li><a href="global.html#generateElement">generateElement</a></li><li><a href="global.html#getAllPoints">getAllPoints</a></li><li><a href="global.html#getAxisLengths">getAxisLengths</a></li><li><a href="global.html#getChildrenByClass">getChildrenByClass</a></li><li><a href="global.html#getChildrenByName">getChildrenByName</a></li><li><a href="global.html#getChildrenFromAttribute">getChildrenFromAttribute</a></li><li><a href="global.html#getChildTest">getChildTest</a></li><li><a href="global.html#getDomItemFromElement">getDomItemFromElement</a></li><li><a href="global.html#getDomItemFromPoint">getDomItemFromPoint</a></li><li><a href="global.html#getFirstAxisOfCoordinate">getFirstAxisOfCoordinate</a></li><li><a href="global.html#getHighestAbsoluteCoordinate">getHighestAbsoluteCoordinate</a></li><li><a href="global.html#getParentsByClass">getParentsByClass</a></li><li><a href="global.html#getParentsByName">getParentsByName</a></li><li><a href="global.html#getParentsByTagName">getParentsByTagName</a></li><li><a href="global.html#getParentsFromAttribute">getParentsFromAttribute</a></li><li><a href="global.html#getPointFromElement">getPointFromElement</a></li><li><a href="global.html#getPointsLine">getPointsLine</a></li><li><a href="global.html#getPointsLines">getPointsLines</a></li><li><a href="global.html#getTopParentItem">getTopParentItem</a></li><li><a href="global.html#initChildren">initChildren</a></li><li><a href="global.html#initRoot">initRoot</a></li><li><a href="global.html#lineEndPoint">lineEndPoint</a></li><li><a href="global.html#listenerOptions">listenerOptions</a></li><li><a href="global.html#matrix">matrix</a></li><li><a href="global.html#nextCell">nextCell</a></li><li><a href="global.html#point">point</a></li><li><a href="global.html#pointAndCoordinateToDirection">pointAndCoordinateToDirection</a></li><li><a href="global.html#pointDifference">pointDifference</a></li><li><a href="global.html#pointsToDirection">pointsToDirection</a></li><li><a href="global.html#pointToDirection">pointToDirection</a></li><li><a href="global.html#previousPseudoDom">previousPseudoDom</a></li><li><a href="global.html#randDirection">randDirection</a></li><li><a href="global.html#randomStart">randomStart</a></li><li><a href="global.html#registerListener">registerListener</a></li><li><a href="global.html#registerListeners">registerListeners</a></li><li><a href="global.html#removeChild">removeChild</a></li><li><a href="global.html#renderHTML">renderHTML</a></li><li><a href="global.html#retrieveListener">retrieveListener</a></li><li><a href="global.html#retrieveParentItem">retrieveParentItem</a></li><li><a href="global.html#root">root</a></li><li><a href="global.html#setAndReturnAttribute">setAndReturnAttribute</a></li><li><a href="global.html#setAttribute">setAttribute</a></li><li><a href="global.html#square">square</a></li><li><a href="global.html#tile">tile</a></li><li><a href="global.html#updateElement">updateElement</a></li><li><a href="global.html#updateElements">updateElements</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Fri Sep 11 2020 21:27:28 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
