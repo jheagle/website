@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: source/objects/createDomItem.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: source/objects/createDomItem.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import 'core-js/stable'
+import siFunciona from 'si-funciona'
+
+/**
+ * This is the standard definition of a listenerFunction to be used
+ * @callback listenerFunction
+ * @memberOf module:domObjects
+ * @param {Event} e - The event object passed to the listener
+ * @param {DomItem} target - The element which triggered the event
+ * @param {...*} [args] - Optional args as required by the listener
+ */
+
+/**
+ * A Boolean indicating whether events of this type will be dispatched to the registered listerFunction before being
+ * dispatched to any EventTarget beneath it in the Dom tree.
+ * @typedef {boolean} UseCapture
+ * @memberOf module:domObjects
+ */
+
+/**
+ * OptionsObject defines the structure for the options to be passed to addEventListener
+ * @typedef {Object} OptionsObject
+ * @memberOf module:domObjects
+ * @property {boolean} capture - Indicate that events of this type will be dispatched to the registered
+ * listenerFunction before being dispatched to any EventTarget beneath it in the Dom tree.
+ * @property {boolean} once - Indicate that the listenerFunction should be invoked at most once after being added. If
+ * 'true', the listenerFunction would be automatically removed when invoked.
+ * @property {boolean} passive - Indicate that, if 'true', indicates that the listenerFunction will never call
+ * preventDefault(). If preventDefault() is called, the user agent will do nothing with it.
+ */
+
+/**
+ * EventListenerOptions is either a boolean as UseCapture or an Object as OptionsObject
+ * @typedef {OptionsObject|UseCapture} EventListenerOptions
+ * @memberOf module:domObjects
+ */
+
+/**
+ * An EventListener Object to be appended to the element within the DomItem
+ * @typedef {Object} EventListener
+ * @memberOf module:domObjects
+ * @property {string} listenerFunc - A string function name matching an existing
+ * {@link listenerFunction}.
+ * @property {Object} listenerArgs - Additional args required for the listener function
+ * @property {EventListenerOptions} listenerOptions - Provides support for options
+ * parameter of addEventListener, or false for default
+ */
+
+/**
+ * DomItem defines the structure for a single element in the Dom
+ * @typedef {Object} DomItem
+ * @memberOf module:domObjects
+ * @property {string} tagName - This is any valid HTMLElement tagName
+ * @property {Object.&lt;string, string|Object>} attributes - All potential HTML element attributes can be defined here
+ * (including the defaulted style object)
+ * @property {(Object|HTMLElement)} element - A reference to an existing HTML element will be stored here (default
+ * empty object)
+ * @property {Object.&lt;Event, EventListener>} eventListeners - An object holding all
+ * events to be registered for the associated element
+ * @property {DomItem} parentItem - A reference to the parent of this object
+ * @property {Array.&lt;DomItem>} children - A reference to an array of child objects
+ */
+
+/**
+ * This is the basic Object for representing the Dom in a virtual perspective. All incoming attributes will be merged
+ * to the specified format.
+ * @function
+ * @memberOf module:domObjects
+ * @param {Object} [item={}] - DomItem-like object to be formatted as DomItem
+ * @returns {DomItem}
+ */
+const createDomItem = (item = {}) => siFunciona.reduceObject(
+  {
+    tagName: 'div',
+    attributes: {
+      style: {}
+    },
+    element: {},
+    eventListeners: {},
+    parentItem: {},
+    children: []
+  },
+  (domItem, defaultValue, prop) => {
+    if (!(prop in domItem)) {
+      domItem[prop] = defaultValue
+      return domItem
+    }
+    if (prop === 'attributes' &amp;&amp; !('style' in domItem[prop])) {
+      domItem[prop].style = defaultValue.style
+    }
+    return domItem
+  },
+  item
+)
+
+export default createDomItem
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-domFunctions.html">domFunctions</a></li><li><a href="module-domObjects.html">domObjects</a></li><li><a href="module-jsonDom.html">jsonDom</a></li></ul><h3>Global</h3><ul><li><a href="global.html#checkClasses">checkClasses</a></li><li><a href="global.html#checkStyles">checkStyles</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Tue Mar 08 2022 23:33:29 GMT-0500 (Eastern Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
