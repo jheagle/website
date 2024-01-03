@@ -1,6 +1,9 @@
 [submodule "projects/collect-your-stuff"]
 	path = projects/collect-your-stuff
 	url = https://github.com/jheagle/collect-your-stuff.git
+[submodule "projects/json-dom"]
+	path = projects/json-dom
+	url = https://github.com/jheagle/JSON-DOM.git
 [submodule "projects/matrix-dom"]
 	path = projects/matrix-dom
 	url = https://github.com/jheagle/matrix-DOM.git
