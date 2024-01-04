@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang='en-CA'>
 <head>
-    <script src='/assets/js/main.js'></script>
     <title>Joshua Web Strategy</title>
     <meta charset='UTF-8'>
-    <link rel='stylesheet' href='/assets/css/main.css'>
-    <script src='/assets/js/plugins.js'></script>
-    <script src='/projects/si-funciona/browser/siFunciona.min.js'></script>
-    <script src='/projects/json-dom-demo/browser/jsonDom.min.js'></script>
+    <link rel='stylesheet' href='/browser/css/main.css'>
+    <script src='/browser/joshuaHome.js'></script>
     <script type='module'>
-      import menu from './assets/templates/menu.js'
+      import menu from './dist/templates/menu.js'
 
       const mainHeader = menu()
       const documentItem = jsonDom.documentItem
@@ -340,7 +337,9 @@
     </div>
     <div class='horiz-one-twelfth lrg'></div>
 </footer>
-<script src='/assets/js/home.js'></script>
+<script type='module'>
+    home()
+</script>
 <script src='/projects/title-switcher/browser/titleSwitcher.min.js'></script>
 <script>
   /* v  place custom JavaScript below to instantiate the titleClass  v */
