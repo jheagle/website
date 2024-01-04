@@ -1,0 +1,235 @@
+.menu {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: height 0.4s cubic-bezier(0.15, 0.72, 1, -0.82) 0.2s;
+}
+
+.menu .menu-btn {
+  margin: 0;
+  display: flex;
+  width: 100%;
+  color: #00ccff;
+  font-size: 1.4rem;
+  padding: 10px 16px;
+  cursor: pointer;
+  align-items: center;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.menu .menu-btn span {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 50%;
+  background-color: #00ccff;
+  position: relative;
+  cursor: pointer;
+  margin: 0 auto;
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  transition: all 0.3s ease-in-out;
+}
+
+.menu .menu-btn span:after, .menu .menu-btn span:before {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: #00ccff;
+  position: relative;
+  margin: 0 auto;
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+  transition: all 0.3s ease-in-out;
+}
+
+.menu .menu-btn span:before {
+  top: 10px;
+  left: -25%;
+  width: 150%;
+}
+
+.menu .menu-btn span:after {
+  top: -12px;
+  width: 50%;
+}
+
+.menu a {
+  color: #00ccff;
+  font-size: 1.4rem;
+}
+
+.menu li {
+  height: 40px;
+  list-style: none;
+  margin: 0;
+  font-size: 1rem;
+  display: inline-block;
+}
+
+.menu li a {
+  display: block;
+  padding: 10px 16px;
+  transition: height 0.4s cubic-bezier(0.15, 0.72, 1, -0.82) 0.2s;
+}
+
+.menu li:not(.menu-btn) {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #00ccff;
+  transition: height 0.4s cubic-bezier(0.15, 0.72, 1, -0.82) 0.2s;
+}
+
+.menu .full-menu {
+  width: 99%;
+}
+
+.menu .half-menu {
+  width: calc(49.5% - 2px);
+}
+
+.menu .third-menu {
+  width: calc(33% - 1px);
+}
+
+.menu .two-third-menu {
+  width: calc(66% - 2px);
+}
+
+.menu .current {
+  border: 1px solid #fff;
+  background-color: #00ccff;
+  color: #fff;
+}
+
+.menu .current a {
+  color: #fff;
+  background-color: #00ccff;
+  padding: 9px 15px;
+}
+
+.menu:hover li.current, .menu:active li.current {
+  border: 1px solid #ffffff;
+  background-color: #00ccff;
+  color: #fff;
+}
+
+.menu:hover .current a, .menu:active .current a {
+  color: #fff;
+  background-color: #00ccff;
+}
+
+.menu.hover {
+  height: 160px;
+}
+
+.menu li:not(.menu-btn):hover, .menu li:not(.menu-btn):active {
+  border: 1px solid #fff;
+  background-color: #00ccff;
+  color: #fff;
+}
+
+.menu li:hover a, .menu li:active a {
+  color: #fff;
+}
+
+.menu li:hover span, .menu li:active span, .menu li:hover span:before, .menu li:active span:before, .menu li:hover span:after, .menu li:active span:after {
+  background-color: #fff;
+}
+
+.menu.hover .menu-btn span:before {
+  top: -12px;
+}
+
+.menu.hover .menu-btn span:after {
+  top: 10px;
+}
+
+.menu > .med, .menu > .lrg {
+  display: none;
+  *zoom: 0;
+}
+
+.menu > .sml, .menu > .sml {
+  display: inline-block;
+  *zoom: 1;
+}
+
+.menu .menu-btn {
+  display: flex;
+}
+
+@media only screen and (min-width: 580px) {
+  .menu > .sml, .menu > .lrg {
+    display: none;
+    *zoom: 0;
+  }
+  .menu > .med, .menu > .med {
+    display: inline-block;
+    *zoom: 1;
+  }
+  .menu .menu-btn {
+    display: flex;
+  }
+}
+@media only screen and (min-width: 881px) {
+  .menu {
+    text-align: center;
+    padding: 0;
+    width: 100%;
+    position: relative;
+    top: 10px;
+    left: 0;
+    transition: none;
+  }
+  .menu:hover, .menu:active {
+    height: auto;
+  }
+  .menu a {
+    font-size: 1.4rem;
+  }
+  .menu li:not(.menu-btn) {
+    width: auto;
+    height: auto;
+    transition: all 0.6s ease-in-out;
+  }
+  .menu li:not(.menu-btn) a {
+    padding: 4px 9px;
+  }
+  .menu:hover li:not(.menu-btn), .menu:active li:not(.menu-btn) {
+    width: auto;
+    height: auto;
+  }
+  .menu:hover li.current, .menu:active li.current {
+    border: 1px solid #ffffff;
+  }
+  .menu.hover {
+    height: auto;
+  }
+  .menu > .sml, .menu > .med {
+    display: none;
+    *zoom: 0;
+  }
+  .menu > .lrg, .menu > .lrg {
+    display: inline-block;
+    *zoom: 1;
+  }
+}
+@media only screen and (min-width: 980px) {
+  .menu a {
+    font-size: 1.4rem;
+  }
+}
