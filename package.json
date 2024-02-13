@@ -19,7 +19,7 @@
   "dependencies": {
     "json-dom": "github:jheagle/JSON-DOM",
     "matrix-dom": "github:jheagle/matrix-DOM",
-    "si-funciona": "^2.2.3"
+    "si-funciona": "^2.2.5"
   },
   "devDependencies": {
     "browser-sync": "^3.0.2",
@@ -27,7 +27,8 @@
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "9.0.0",
     "jest": "^29.7.0",
-    "js-build-tools": "^2.3.1"
+    "js-build-tools": "^3.0.1",
+    "signal-exit": "^4.1.0"
   },
   "repository": {
     "type": "git",
