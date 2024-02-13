@@ -13,3 +13,9 @@
 [submodule "projects/title-switcher"]
 	path = projects/title-switcher
 	url = https://github.com/jheagle/title-switcher-v2.git
+[submodule "projects/common-exports"]
+	path = projects/common-exports
+	url = https://github.com/jheagle/common-exports.git
+[submodule "projects/test-fs"]
+	path = projects/test-fs
+	url = https://github.com/jheagle/test-fs.git
