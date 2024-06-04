@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a46880fd-be4c-479b-8f48-3c00a0a66d6e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoAnimation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoAttr.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoDOMTokenList.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoDocument.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoDocumentFragment.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoEvent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoHTMLCollection.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoHTMLElement.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoHTMLSlotElement.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoNamedNodeMap.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoNode.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoShadowRoot.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/services/AnimationService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/services/AttrService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/services/DOMTokenListService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/services/DocumentFragmentService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/services/DocumentService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/services/ElementService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/services/EventTargetService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/services/HTMLCollectionService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/services/HTMLSlotElementService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/services/NamedNodeMapService.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pseudo-dom/src/services/ShadowRootService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../collect-your-stuff" beforeDir="false" afterPath="$PROJECT_DIR$/../collect-your-stuff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../common-exports" beforeDir="false" afterPath="$PROJECT_DIR$/../common-exports" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/classes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/classes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/classes/PseudoElement.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoElement.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/classes/PseudoEvent.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoEvent.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/classes/PseudoEvent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/services/EventService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/classes/PseudoEventListener.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/classes/PseudoEventListener.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/classes/PseudoEventTarget.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoEventTarget.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/classes/PseudoEventTarget.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoEventTarget.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/classes/PseudoHTMLDocument.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/classes/PseudoHTMLDocument.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/classes/PseudoHTMLElement.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/services/HTMLElementService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/classes/PseudoNode.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/interfaces/PseudoNode.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/classes/PseudoNode.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/services/NodeService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/classes/PseudoNodeList.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/classes/PseudoNodeList.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/classes/PseudoNodeList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/classes/PseudoNodeList.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/factories/generateDocument.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/factories/generateDocument.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/factories/generateNode.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/factories/generateNode.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/functions/getParentNodes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/functions/getParentNodes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/functions/getParentNodesFromAttribute.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/functions/getParentNodesFromAttribute.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../si-funciona" beforeDir="false" afterPath="$PROJECT_DIR$/../si-funciona" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-fs" beforeDir="false" afterPath="$PROJECT_DIR$/../test-fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../title-switcher" beforeDir="false" afterPath="$PROJECT_DIR$/../title-switcher" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="JsBowerSettings">
+    <bower-package value="" />
+    <bower.json value="" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="Ubuntu-20.04" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2hNvn8WvF6I9qtAC2ISK2HogCMm" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a46880fd-be4c-479b-8f48-3c00a0a66d6e" name="Changes" comment="" />
+      <created>1717447513647</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717447513647</updated>
+      <workItem from="1717447514702" duration="4000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
