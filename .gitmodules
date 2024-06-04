@@ -1,6 +1,9 @@
 [submodule "projects/collect-your-stuff"]
 	path = projects/collect-your-stuff
 	url = https://github.com/jheagle/collect-your-stuff.git
+[submodule "projects/common-exports"]
+	path = projects/common-exports
+	url = https://github.com/jheagle/common-exports.git
 [submodule "projects/matrix-dom"]
 	path = projects/matrix-dom
 	url = https://github.com/jheagle/matrix-DOM.git
@@ -10,12 +13,12 @@
 [submodule "projects/si-funciona"]
 	path = projects/si-funciona
 	url = https://github.com/jheagle/si-funciona.git
-[submodule "projects/title-switcher"]
-	path = projects/title-switcher
-	url = https://github.com/jheagle/title-switcher-v2.git
-[submodule "projects/common-exports"]
-	path = projects/common-exports
-	url = https://github.com/jheagle/common-exports.git
 [submodule "projects/test-fs"]
 	path = projects/test-fs
 	url = https://github.com/jheagle/test-fs.git
+[submodule "projects/title-switcher"]
+	path = projects/title-switcher
+	url = https://github.com/jheagle/title-switcher-v2.git
+[submodule "projects/workout-planner"]
+	path = projects/workout-planner
+	url = https://github.com/jheagle/workout-planner.git
