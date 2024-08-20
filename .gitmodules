@@ -4,6 +4,9 @@
 [submodule "projects/common-exports"]
 	path = projects/common-exports
 	url = https://github.com/jheagle/common-exports.git
+[submodule "projects/json-file-db"]
+	path = projects/json-file-db
+	url = https://github.com/jheagle/json-file-db.git
 [submodule "projects/matrix-dom"]
 	path = projects/matrix-dom
 	url = https://github.com/jheagle/matrix-DOM.git
