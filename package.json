@@ -19,7 +19,7 @@
   "dependencies": {
     "json-dom": "github:jheagle/JSON-DOM",
     "matrix-dom": "github:jheagle/matrix-DOM",
-    "si-funciona": "^2.2.11"
+    "si-funciona": "^2.2.13"
   },
   "devDependencies": {
     "browser-sync": "^3.0.3",
