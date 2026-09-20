@@ -16,16 +16,25 @@
   },
   "author": "Joshua Heagle",
   "license": "GNU",
+  "peerDependencies": {
+    "gulp-imagemin": ">=9.0.0"
+  },
+  "peerDependenciesMeta": {
+    "gulp-imagemin": {
+      "optional": true
+    }
+  },
   "dependencies": {
     "json-dom": "github:jheagle/JSON-DOM",
     "matrix-dom": "github:jheagle/matrix-DOM",
-    "si-funciona": "^2.2.13"
+    "si-funciona": "^2.3.4"
   },
   "devDependencies": {
-    "browser-sync": "^3.0.3",
+    "browser-sync": "^3.0.4",
     "del": "^7.1.0",
-    "gulp": "^5.0.0",
+    "gulp": "^5.0.1",
     "gulp-autoprefixer": "9.0.0",
+    "gulp-imagemin": "github:jheagle/gulp-imagemin#common-js-compatibility",
     "jest": "^29.7.0",
     "js-build-tools": "^5.0.0",
     "signal-exit": "^4.1.0"
