@@ -1,18 +1,6 @@
-[submodule "projects/common-exports"]
-	path = projects/common-exports
-	url = https://github.com/jheagle/common-exports.git
-[submodule "projects/json-file-db"]
-	path = projects/json-file-db
-	url = https://github.com/jheagle/json-file-db.git
 [submodule "projects/title-switcher"]
 	path = projects/title-switcher
 	url = https://github.com/jheagle/title-switcher-v2.git
-[submodule "projects/workout-planner"]
-	path = projects/workout-planner
-	url = https://github.com/jheagle/workout-planner.git
-[submodule "quizzes"]
-	path = quizzes
-	url = https://github.com/jheagle/quizzes.git
 [submodule "projects/gulp-ts-compile"]
 	path = projects/gulp-ts-compile
 	url = https://github.com/jheagle/gulp-ts-compile.git
