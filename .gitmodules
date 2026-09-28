@@ -1,9 +1,0 @@
-[submodule "projects/title-switcher"]
-	path = projects/title-switcher
-	url = https://github.com/jheagle/title-switcher-v2.git
-[submodule "projects/gulp-ts-compile"]
-	path = projects/gulp-ts-compile
-	url = https://github.com/jheagle/gulp-ts-compile.git
-[submodule "projects/pace-converter"]
-	path = projects/pace-converter
-	url = git@github.com:/jheagle/pace-converter.git
