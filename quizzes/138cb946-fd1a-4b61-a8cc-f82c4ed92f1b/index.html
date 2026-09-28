@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Why not?</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel='stylesheet' href='../browser/css/main.css'>
+    <script src='../browser/quizzes.js'></script>
+    <script type='module'>
+      import form from '../dist/138cb946-fd1a-4b61-a8cc-f82c4ed92f1b/quiz.js'
+
+      const mainForm = form()
+      console.log(mainForm)
+      const documentItem = jsonDom.documentItem
+      jsonDom.updateDomItems(documentItem)
+      // Set the form as the body contents
+      documentItem.body.children = mainForm
+      // Update the body child node list to include the form
+      jsonDom.updateChildNodes(documentItem.body)
+      // Update the form to generate the elements
+      jsonDom.updateElements(documentItem.body)
+    </script>
+</head>
+<body>
+
+</body>
+

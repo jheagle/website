@@ -1,0 +1,76 @@
+import form from '../components/form.js'
+import radios from '../templates/radios.js'
+import textArea from '../components/textArea.js'
+import div from '../components/div.js'
+import label from '../components/label.js'
+import fieldset from '../components/fieldset.js'
+import main from '../components/main.js'
+import submit from '../components/submit.js'
+import footer from '../components/footer.js'
+import header from '../components/header.js'
+import nav from '../components/nav.js'
+
+/**
+ * Generates a menu with the provided index as the currently selected item.
+ * @returns {DomItem}
+ */
+const quiz = () => [header([nav()]), main([div([form(null, null, [div([fieldset('These are radios', [radios('radio-options', [{
+  label: 'Never',
+  id: 'never',
+  value: 'never'
+}, {
+  label: 'Every couple years',
+  id: 'couple-years',
+  value: 'couple-years'
+}, {
+  label: 'Once a year',
+  id: 'once-year',
+  value: 'once-year'
+}, {
+  label: 'Every couple months',
+  id: 'couple-months',
+  value: 'couple-months'
+}, {
+  label: 'Once a month',
+  id: 'once-month',
+  value: 'once-month'
+}, {
+  label: 'Every couple weeks',
+  id: 'couple-weeks',
+  value: 'couple-weeks'
+}, {
+  label: 'Once a week',
+  id: 'once-week',
+  value: 'once-week'
+}, {
+  label: 'Every couple days',
+  id: 'couple-days',
+  value: 'couple-days'
+}, {
+  label: 'Daily',
+  id: 'daily',
+  value: 'daily'
+}])]), fieldset('Three more radios', [radios('yes-maybe-no', [{
+  label: 'Yes',
+  id: 'yes',
+  value: 'yes'
+}, {
+  label: 'Sometimes',
+  id: 'sometimes',
+  value: 'sometimes'
+}, {
+  label: 'No',
+  id: 'no',
+  value: 'no'
+}])]), div([fieldset('More radios', [radios('more-thigns', [{
+  label: 'Something',
+  id: 'something',
+  value: 'something'
+}, {
+  label: 'Other',
+  id: 'other',
+  value: 'other'
+}]), div([label('Provide any additional explanation if you want.'), textArea('additional-context')])])], 'follow-up', {
+  id: 'follow-up'
+})]), div([submit()], 'form-footer')])], 'form-wrapper')]), footer()]
+export default quiz
