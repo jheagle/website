@@ -12,35 +12,16 @@
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="canonical" href="http://battleship.local/">
-    <link rel="stylesheet" href="/projects/battleship/css/main.min.css">
-    <script src="/projects/battleship/js/core.min.js"></script>
-    <script src="/projects/battleship/js/matrix.min.js"></script>
-    <script src="/projects/battleship/js/layouts.min.js"></script>
-    <script src="/projects/battleship/js/functions.min.js"></script>
+    <link rel="stylesheet" href="browser/css/layouts.css">
+    <link rel="stylesheet" href="browser/css/matrix.css">
+    <link rel="stylesheet" href="browser/css/layouts-custom.css">
+    <link rel="stylesheet" href="browser/css/game-pieces.css">
+
+    <script src="browser/battleship.js"></script>
 </head>
 <body>
-<script src="/projects/battleship/js/main.min.js"></script>
-
-<div class="site">
-    <div class="header">
-        <h1 class="title"><a href="/">{{ site.name }}</a></h1>
-        <a class="extra" href="/">home</a>
-        <a class="extra" href="/about">about</a>
-        <a class="extra" href="/projects/battleshipattleship">battleship</a>
-    </div>
-
-    <div class="footer">
-        <div class="contact">
-            <p>
-                <a href="https://github.com/{{ site.github_username }}">
-                    github.com/{{ site.github_username }}
-                </a><br/>
-                <a href="https://twitter.com/{{ site.twitter_username }}">
-                    twitter.com/{{ site.twitter_username }}
-                </a><br/>
-            </p>
-        </div>
-    </div>
-</div>
+<script>
+  battleship()
+</script>
 </body>
 </html>

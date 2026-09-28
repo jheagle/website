@@ -1,0 +1,13 @@
+/* -------------------------------------------
+ * Menu styles section
+ * -------------------------------------------*/
+header {
+  bottom: 0;
+  top: auto;
+  height: 40px;
+  transition: height 0.4s cubic-bezier(0.15, 0.72, 1, -0.82) 0.2s;
+}
+
+header.hover {
+  height: 160px;
+}
