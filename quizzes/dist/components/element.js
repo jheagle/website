@@ -1,0 +1,17 @@
+import node from './node.js'
+
+/**
+ * Create the template of a DomItem
+ * @param {string} nodeName
+ * @param {array} [children=[]]
+ * @param {string|null} [className='']
+ * @param {object} [attributes={}]
+ * @returns {DomItem}
+ */
+const element = (nodeName, children = [], className = null, attributes = {}) => {
+  if (className !== null) {
+    attributes.className = className
+  }
+  return node(nodeName, null, children, attributes)
+}
+export default element
