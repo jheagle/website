@@ -14,17 +14,21 @@
 <section class="tsd-panel">
 <ul class="tsd-signatures">
 <li class="">
-<div class="tsd-signature tsd-anchor-link" id="createeventproxy"><span class="tsd-kind-call-signature">createEventProxy</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">event</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Event</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="../types/events.EventProxy.html" class="tsd-signature-type tsd-kind-type-alias">EventProxy</a><a href="#createeventproxy" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-signature tsd-anchor-link" id="createeventproxy"><span class="tsd-kind-call-signature">createEventProxy</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">event</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Event</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">item</span><span class="tsd-signature-symbol">:</span> <a href="../types/domItem.DomItem.html" class="tsd-signature-type tsd-kind-type-alias">DomItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="../types/events.EventProxy.html" class="tsd-signature-type tsd-kind-type-alias">EventProxy</a><a href="#createeventproxy" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Return a modified version of the event.</p>
+<div class="tsd-comment tsd-typography"><p>Return a modified version of the event: adds domItemTarget and currentDomItemTarget, next to the real DOM's own
+target and currentTarget.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
-<li><span><span class="tsd-kind-parameter">event</span>: <span class="tsd-signature-type">Event</span></span></li></ul></div>
+<li><span><span class="tsd-kind-parameter">event</span>: <span class="tsd-signature-type">Event</span></span></li>
+<li><span><span class="tsd-kind-parameter">item</span>: <a href="../types/domItem.DomItem.html" class="tsd-signature-type tsd-kind-type-alias">DomItem</a></span>
+<div class="tsd-comment tsd-typography"><p>The DomItem the listener is attached to (this event's currentTarget).</p>
+</div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <a href="../types/events.EventProxy.html" class="tsd-signature-type tsd-kind-type-alias">EventProxy</a></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/JSON-DOM/blob/94d58025a659b433c0c6e6788197da29f6f68126/src/events/objects/createEventProxy.ts#L8">src/events/objects/createEventProxy.ts:8</a></li></ul></aside></div></li></ul></section></div>
+<li>Defined in <a href="https://github.com/jheagle/JSON-DOM/blob/4ec89d63604256e12749daa89acffb814f1b6f83/src/events/objects/createEventProxy.ts#L12">src/events/objects/createEventProxy.ts:12</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
