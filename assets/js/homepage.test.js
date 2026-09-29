@@ -27,10 +27,10 @@ describe('index.html', () => {
   })
 
   test('has every current section, and none of the ones that were removed', () => {
-    const present = ['intro', 'profile', 'experience', 'work', 'opportunities', 'contact']
+    const present = ['intro', 'profile', 'experience', 'work', 'contact']
     present.forEach(id => expect(document.body.querySelector(`#${id}`)).not.toBeNull())
 
-    const removed = ['rates', 'live-cam', 'addressbook', 'eyeconx', 'json-search', 'eyestartv', 'bright-optical', 'cam-title']
+    const removed = ['rates', 'opportunities', 'live-cam', 'addressbook', 'eyeconx', 'json-search', 'eyestartv', 'bright-optical', 'cam-title']
     removed.forEach(id => expect(document.body.querySelector(`#${id}`)).toBeNull())
   })
 
@@ -39,8 +39,7 @@ describe('index.html', () => {
       ['#intro', '#profile'],
       ['#profile', '#experience'],
       ['#experience', '#work'],
-      ['#work', '#opportunities'],
-      ['#opportunities', '#contact']
+      ['#work', '#contact']
     ]
     chain.forEach(([sectionId, nextHref]) => {
       const links = [...document.body.querySelector(sectionId).querySelectorAll('a.arrow-down')].map(a => a.getAttribute('href'))
