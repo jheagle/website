@@ -37,6 +37,7 @@
     "gulp-imagemin": "github:jheagle/gulp-imagemin#common-js-compatibility",
     "jest": "^29.7.0",
     "js-build-tools": "^5.0.0",
+    "pseudo-dom": "github:jheagle/pseudo-dom",
     "signal-exit": "^4.1.0"
   },
   "repository": {

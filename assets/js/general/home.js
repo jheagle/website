@@ -10,8 +10,10 @@ const home = () => {
       return siFunciona.delay(500).resolver.then(() => ++attempted > 10 ? console.error('Failed to get the top menu') || false : homeScrolling())
     }
     let menuItems = topMenu.querySelectorAll('a')
-    let menuItemsTemp = Array.from(menuItems)
-    menuItemsTemp.splice(3, 1)
+    // The nav repeats one entry (a responsive-only duplicate, e.g. "Meet Me" shown at both sml/med and lrg
+    // breakpoints) - keep only the first link to each section, regardless of how many nav items exist or which
+    // one is the duplicate, so this stays correct as the menu changes.
+    let menuItemsTemp = Array.from(menuItems).filter((item, index, all) => all.findIndex(other => other.getAttribute('href') === item.getAttribute('href')) === index)
     let scrollItems = menuItemsTemp.map(item => document.querySelector(item.getAttribute('href')))
     menuItemsTemp = null
     const adjustMain = href => {

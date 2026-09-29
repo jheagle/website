@@ -16,9 +16,9 @@ const menu = (currentIndex = 1) => {
     listItem([span()], 'menu-btn sml med'),
     listItem([anchor('#intro', [text('Hello')])], 'third-menu'),
     listItem([anchor('#profile', [text('Meet Me')])], 'third-menu lrg'),
+    listItem([anchor('#experience', [text('Experience')])], 'third-menu'),
     listItem([anchor('#work', [text('See My Work')])], 'two-third-menu'),
     listItem([anchor('#profile', [text('Meet Me')])], 'third-menu sml med'),
-    listItem([anchor('#rates', [text('Price Your Project')])], 'two-third-menu'),
     listItem([anchor('#contact', [text('Contact Me')])], 'full-menu'),
   ]
   menuItems[currentIndex].attributes.className += 'current'
