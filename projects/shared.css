@@ -1,0 +1,190 @@
+/* Shared, deliberately neutral styling for the project sandbox pages under /projects/<name>/.
+   Not the site's main grid/sass system on purpose - these pages predate the eventual full visual
+   redesign, and this shell shouldn't lock in decisions that belong to that later pass. */
+
+:root {
+  --ink: #1f2937;
+  --ink-soft: #4b5563;
+  --paper: #ffffff;
+  --paper-soft: #f4f6f8;
+  --line: #e2e5e9;
+  --accent: #0f6fde;
+  --accent-soft: #eaf2fd;
+  --code-bg: #f4f6f8;
+  --radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.55;
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.back-link:hover, .back-link:focus {
+  color: var(--accent);
+}
+
+.project-header {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.project-header h1 {
+  margin: 0 0 6px;
+  font-size: 1.8rem;
+}
+
+.project-header p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.actions {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.actions a {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-size: 0.95rem;
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.actions a.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.actions a.primary:hover, .actions a.primary:focus {
+  background: #0b5cc0;
+}
+
+.actions a:not(.primary):hover, .actions a:not(.primary):focus {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+code {
+  background: var(--code-bg);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 0.9em;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+pre {
+  background: var(--code-bg);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+.hint {
+  color: var(--ink-soft);
+}
+
+.demo {
+  margin-top: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  background: var(--paper-soft);
+}
+
+.demo h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.demo label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin: 10px 0 4px;
+}
+
+.demo input, .demo select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.demo .output {
+  margin-top: 14px;
+}
+
+.demo .output pre {
+  margin: 6px 0 0;
+}
+
+.project-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-list li {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+}
+
+.project-list a {
+  display: block;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.project-list a:hover, .project-list a:focus {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.project-list .name {
+  font-weight: 600;
+}
+
+.project-list .desc {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  margin-top: 2px;
+}

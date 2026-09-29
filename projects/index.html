@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Projects</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Projects | Joshua Heagle</title>
+    <link rel="stylesheet" href="./shared.css">
 </head>
 <body>
-<ul>
-    <li><a href="./battleship">Battleship</a></li>
-    <li><a href="./common-exports">Common Exports</a></li>
-    <li><a href="./collect-your-stuff">JS Collections (Collect Your Stuff)</a></li>
-    <li><a href="./json-dom">JSON DOM</a></li>
-    <li><a href="./json-file-db">JSON File DB</a></li>
-    <li><a href="./matrix-dom">Matrix (JSON) DOM</a></li>
-    <li><a href="./pseudo-dom">Pseudo DOM</a></li>
-    <li><a href="../quizzes">Quizzes</a></li>
-    <li><a href="./si-funciona">Si, funciona (Helper Functions)</a></li>
-    <li><a href="./test-fs">Test Filesystem</a></li>
-    <li><a href="./title-switcher">Title Switcher</a></li>
-    <li><a href="./workout-planner">Workout Planner</a></li>
-</ul>
+<div class="page">
+    <a class="back-link" href="../#work">&larr; Back to home</a>
+    <div class="project-header">
+        <h1>Projects</h1>
+        <p>Personal open-source work - libraries, a framework, and a full game.</p>
+    </div>
+    <ul class="project-list">
+        <li><a href="./battleship"><span class="name">Battleship</span><span class="desc">A full game built on the json-dom/matrix-dom ecosystem</span></a></li>
+        <li><a href="./json-dom"><span class="name">JSON DOM</span><span class="desc">A from-scratch virtual-DOM framework with a composable trait system</span></a></li>
+        <li><a href="./matrix-dom"><span class="name">Matrix DOM</span><span class="desc">Grid/matrix geometry helpers used by Battleship's board</span></a></li>
+        <li><a href="./pseudo-dom"><span class="name">Pseudo DOM</span><span class="desc">A comprehensive mock of the browser DOM for Node</span></a></li>
+        <li><a href="./si-funciona"><span class="name">Sí, funciona</span><span class="desc">General-purpose utility functions</span></a></li>
+        <li><a href="./collect-your-stuff"><span class="name">Collect your stuff (and go)!</span><span class="desc">Classic collection types - queues, stacks, linked lists</span></a></li>
+        <li><a href="./json-file-db"><span class="name">JSON File DB</span><span class="desc">A query engine that treats a folder of JSON files as a database</span></a></li>
+        <li><a href="./test-fs"><span class="name">Test Filesystem</span><span class="desc">Set up and tear down a temp directory for filesystem tests</span></a></li>
+        <li><a href="./title-switcher"><span class="name">Title Switcher</span><span class="desc">A typing-effect title switcher, published on npm</span></a></li>
+        <li><a href="./common-exports"><span class="name">Common Exports</span><span class="desc">Converts ES Modules to CommonJS</span></a></li>
+        <li><a href="../quizzes"><span class="name">Quizzes</span><span class="desc">JSON-DOM-based dynamic forms</span></a></li>
+        <li><a href="./workout-planner"><span class="name">Workout Planner</span><span class="desc">An early, evolving idea for workout tracking</span></a></li>
+    </ul>
+</div>
 </body>
 </html>

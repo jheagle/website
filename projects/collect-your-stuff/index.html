@@ -1,26 +1,65 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Collect your stuff (and run)!</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width">
-    <script src="browser/collect-your-stuff.js"></script>
+    <title>Collect your stuff (and go)! | Joshua Heagle</title>
+    <link rel="stylesheet" href="../shared.css">
+    <script src="./browser/collect-your-stuff.js"></script>
 </head>
 <body>
-<p>
-    Check the Browser Console to play with the available classes in <code>collectYourStuff</code>.
-</p>
-<a href='docs'>See the documentation on function usage</a>
+<div class="page">
+    <a class="back-link" href="../../#work">&larr; Back to projects</a>
+    <div class="project-header">
+        <h1>Collect your stuff (and go)!</h1>
+        <p>Classic collection types - linked lists, doubly-linked lists, tree lists, queues, stacks - built on a
+            shared <code>Linker</code>/<code>Arrayable</code> foundation.</p>
+    </div>
+    <div class="actions">
+        <a class="primary" href="https://github.com/jheagle/collect-your-stuff" target="_blank">View on GitHub</a>
+        <a href="./docs">Documentation</a>
+    </div>
+    <p class="hint">Try Queue (FIFO) vs Stack (LIFO) below, or open the console to use
+        <code>collectYourStuff</code> directly.</p>
+
+    <div class="demo">
+        <h2>Queue vs Stack</h2>
+        <label for="items-input">Comma-separated items, added in this order</label>
+        <input id="items-input" type="text" value="first, second, third, fourth" autocomplete="off">
+        <div class="output">
+            <pre id="items-output"></pre>
+        </div>
+    </div>
+</div>
 <script type="module">
-  import * as testHelpers from './node_modules/js-build-tools/functions/testHelpers.js'
+  const { Queue, Stack } = collectYourStuff
+  const input = document.getElementById('items-input')
+  const output = document.getElementById('items-output')
 
-  window.testHelpers = testHelpers
+  const drain = (collection, takeOne) => {
+    const order = []
+    while (!collection.empty()) {
+      order.push(takeOne(collection))
+    }
+    return order
+  }
 
+  const render = () => {
+    const items = input.value.split(',').map(item => item.trim()).filter(Boolean)
+    const queueOrder = drain(Queue.fromArray(items), q => q.dequeue())
+    const stackOrder = drain(Stack.fromArray(items), s => s.pop())
+    output.textContent = [
+      `Added:              ${items.join(', ')}`,
+      `Queue.dequeue() ->  ${queueOrder.join(', ')}  (first in, first out)`,
+      `Stack.pop() ->      ${stackOrder.join(', ')}  (last in, first out)`
+    ].join('\n')
+  }
+
+  input.addEventListener('input', render)
   window.addEventListener('DOMContentLoaded', () => {
-    testHelpers.logObject(collectYourStuff, 'Collect your stuff (and run)!')
+    render()
+    console.log(collectYourStuff, 'Collect your stuff (and go)!')
   })
 </script>
 </body>
+</html>

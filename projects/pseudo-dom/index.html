@@ -1,11 +1,32 @@
 <!DOCTYPE html>
-<heade>
+<html lang="en">
+<head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>JSON DOM</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width">
-    <script src="../../browser/pseudoDom.js"></script>
-</heade>
+    <title>Pseudo DOM | Joshua Heagle</title>
+    <link rel="stylesheet" href="../shared.css">
+    <script src="./browser/pseudo-dom.js"></script>
+</head>
+<body>
+<div class="page">
+    <a class="back-link" href="../../#work">&larr; Back to projects</a>
+    <div class="project-header">
+        <h1>Pseudo DOM</h1>
+        <p>A comprehensive mock of the browser DOM for Node - real <code>querySelector</code>, event dispatch, and
+            HTML parsing, without a browser.</p>
+    </div>
+    <div class="actions">
+        <a class="primary" href="https://github.com/jheagle/pseudo-dom" target="_blank">View on GitHub</a>
+        <a href="./docs">Documentation</a>
+    </div>
+    <p class="hint">This one mocks the DOM for environments that don't have one (Node, tests) - since you're already
+        in a real browser, <code>installGlobal()</code> has nothing to do here. See the GitHub README for a runnable
+        example, or open the console to look at <code>pseudoDom</code> directly.</p>
+</div>
+<script type="module">
+  window.addEventListener('DOMContentLoaded', () => {
+    console.log(pseudoDom, 'Pseudo DOM')
+  })
+</script>
+</body>
+</html>

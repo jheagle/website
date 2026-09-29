@@ -1,23 +1,31 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Test FileSystem</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width">
-    <script src="browser/test-fs.js"></script>
+    <title>Test Filesystem | Joshua Heagle</title>
+    <link rel="stylesheet" href="../shared.css">
+    <script src="./browser/test-fs.js"></script>
 </head>
 <body>
-<p>
-    Check the Browser Console to play with the available functions on <code>testFs</code> for "Test FileSystem".
-</p>
-<a href='docs'>See the documentation on function usage</a>
+<div class="page">
+    <a class="back-link" href="../../#work">&larr; Back to projects</a>
+    <div class="project-header">
+        <h1>Test Filesystem</h1>
+        <p>Sets up and tears down a temp directory for running real filesystem tests, instead of mocking the
+            filesystem.</p>
+    </div>
+    <div class="actions">
+        <a class="primary" href="https://github.com/jheagle/test-fs" target="_blank">View on GitHub</a>
+        <a href="./docs">Documentation</a>
+    </div>
+    <p class="hint">Its exports are test fixtures and setup/teardown helpers for Node - not much to demo live in a
+        browser. Open the console to look at <code>testFs</code> directly.</p>
+</div>
 <script type="module">
   window.addEventListener('DOMContentLoaded', () => {
-    console.log('Test FileSystem', testFs)
+    console.log(testFs, 'Test Filesystem')
   })
 </script>
 </body>
-
+</html>
