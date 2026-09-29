@@ -11,11 +11,27 @@
 <li><a href="../modules/events.html">events</a></li>
 <li><a href="" aria-current="page">EventProxy</a></li></ul>
 <h1>Type Alias EventProxy</h1></div>
-<div class="tsd-signature"><span class="tsd-kind-type-alias">EventProxy</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Event</span> <span class="tsd-signature-symbol">&amp;</span> <span class="tsd-signature-symbol">{</span> <span class="tsd-kind-property">immediatePropagationStopped</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span> <span class="tsd-signature-symbol">}</span></div>
-<div class="tsd-comment tsd-typography"><p>An Event which also remembers whether stopImmediatePropagation() was called on it.</p>
-</div><aside class="tsd-sources">
+<div class="tsd-signature"><span class="tsd-kind-type-alias">EventProxy</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Event</span> <span class="tsd-signature-symbol">&amp;</span> <span class="tsd-signature-symbol">{</span><br/>    <span class="tsd-kind-property">currentDomItemTarget</span><span class="tsd-signature-symbol">:</span> <a href="domItem.DomItem.html" class="tsd-signature-type tsd-kind-type-alias">DomItem</a><span class="tsd-signature-symbol">;</span><br/>    <span class="tsd-kind-property">domItemTarget</span><span class="tsd-signature-symbol">:</span> <a href="domItem.DomItem.html" class="tsd-signature-type tsd-kind-type-alias">DomItem</a> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">;</span><br/>    <span class="tsd-kind-property">immediatePropagationStopped</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/><span class="tsd-signature-symbol">}</span></div>
+<div class="tsd-comment tsd-typography"><p>An Event which also remembers whether stopImmediatePropagation() was called on it, and carries the DomItems
+target/currentTarget correspond to.</p>
+</div>
+<div class="tsd-type-declaration">
+<h4>Type Declaration</h4>
+<ul class="tsd-parameters">
+<li class="tsd-parameter">
+<h5><span class="tsd-kind-property">currentDomItemTarget</span><span class="tsd-signature-symbol">: </span><a href="domItem.DomItem.html" class="tsd-signature-type tsd-kind-type-alias">DomItem</a></h5>
+<div class="tsd-comment tsd-typography"><p>The DomItem the listener is attached to (the real event's currentTarget).</p>
+</div></li>
+<li class="tsd-parameter">
+<h5><span class="tsd-kind-property">domItemTarget</span><span class="tsd-signature-symbol">: </span><a href="domItem.DomItem.html" class="tsd-signature-type tsd-kind-type-alias">DomItem</a> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span></h5>
+<div class="tsd-comment tsd-typography"><p>The DomItem whose element matches the real event's target, searched for within currentDomItemTarget's own
+subtree (an event's target is always itself or a descendant of the item a listener is attached to - that is
+what bubbling means). Null when none is found.</p>
+</div></li>
+<li class="tsd-parameter">
+<h5><span class="tsd-kind-property">immediatePropagationStopped</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/JSON-DOM/blob/94d58025a659b433c0c6e6788197da29f6f68126/src/events/types.ts#L25">src/events/types.ts:25</a></li></ul></aside></div>
+<li>Defined in <a href="https://github.com/jheagle/JSON-DOM/blob/4ec89d63604256e12749daa89acffb814f1b6f83/src/events/types.ts#L26">src/events/types.ts:26</a></li></ul></aside></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
