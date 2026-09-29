@@ -1,19 +1,25 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>JSON File DB</title>
     <meta name="viewport" content="width=device-width">
-    <script src="./browser/jsonFileDb.js"></script>
+    <title>JSON File DB | Joshua Heagle</title>
+    <link rel="stylesheet" href="../shared.css">
 </head>
 <body>
-<p>
-    Check the Browser Console to play with the available functions on <code>jsonFileDb</code> for JSON File DB.
-</p>
-<script type="module">
-  window.addEventListener('DOMContentLoaded', () => {
-    console.log(jsonFileDb, 'JSON File DB')
-  })
-</script>
+<div class="page">
+    <a class="back-link" href="../../#work">&larr; Back to projects</a>
+    <div class="project-header">
+        <h1>JSON File DB</h1>
+        <p>A small query engine that treats a folder of JSON files as a database, with a SQL-like query string
+            instead of a query builder API.</p>
+    </div>
+    <div class="actions">
+        <a class="primary" href="https://github.com/jheagle/json-file-db" target="_blank">View on GitHub</a>
+        <a href="./docs">Documentation</a>
+    </div>
+    <p class="hint">Still early - the top-level package entry point is an empty stub, so there's no public API to
+        demo yet, only the individual query/introspect modules underneath. See the docs for what's there so far.</p>
+</div>
 </body>
+</html>
