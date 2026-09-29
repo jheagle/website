@@ -10,13 +10,10 @@
 
       const mainHeader = menu()
       const documentItem = jsonDom.documentItem
+      // Capture the existing (hand-authored) HTML into items first, so renderHtml's insert doesn't wipe out the
+      // real children it doesn't know about yet - then insert the menu as the first child of body.
       jsonDom.updateDomItems(documentItem)
-      // Add the menu as the first child of body
-      documentItem.body.children.unshift(mainHeader)
-      // Update the body child node list to include the header
-      jsonDom.updateChildNodes(documentItem.body)
-      // Update the header to generate the elements
-      jsonDom.updateElements(mainHeader)
+      jsonDom.renderHtml(mainHeader, documentItem.body, 0)
     </script>
 </head>
 <body>
