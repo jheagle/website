@@ -294,68 +294,22 @@ section:nth-of-type(even) .content {
   text-decoration: none;
 }
 
-#rates {
-  min-height: 1580px;
-}
-
-#rates .rate-intro p {
-  text-align: center;
-  margin: 0 auto;
-}
-
-#rates .rate-column {
+#experience .content {
+  overflow-y: auto;
   text-align: left;
-  padding: 1rem;
 }
 
-#rates .rate-column li {
-  margin-bottom: 1.2rem;
+#experience h4 {
+  margin: 16px 0 4px;
 }
 
-#rates .rate-column > p {
-  margin-top: 1.2rem;
+#experience ul {
+  margin: 0 0 12px;
+  padding-left: 20px;
 }
 
-#rates .sml .rate-column {
-  min-height: 680px;
-}
-
-#rates .sml .rate-column:nth-of-type(2) {
-  min-height: 420px;
-}
-
-#rates .sml .rate-column:first-of-type {
-  min-height: 320px;
-}
-
-#rates .rates-head, #rates .rates-foot {
-  height: auto;
-}
-
-#rates .sml .rate-column h4, #rates .sml .rate-column h5, #rates .sml .rate-column h6, #rates .sml .rate-column p {
-  display: inline-block;
-  margin: 4px 20px 0 0;
-  font-size: 1.4rem;
-}
-
-#rates .sml .rate-column h6, #rates .sml .rate-column p {
-  font-size: 1.2rem;
-  margin: 4px 0;
-  vertical-align: top;
-}
-
-#rates .sml .rate-column h6 {
-  width: 29%;
-  min-width: 66px;
-}
-
-#rates .sml .rate-column p {
-  width: 70%;
-}
-
-#rates .sml .rate-column ul {
-  padding-left: 0;
-  list-style: none;
+#experience p {
+  margin: 0 0 8px;
 }
 
 #contact {
@@ -515,30 +469,12 @@ section:nth-of-type(even) .content {
     padding: 12px 30px;
   }
 }
-@media only screen and (min-width: 344px) {
-  #rates {
-    min-height: 1140px;
-  }
-  #rates .sml .rate-column {
-    min-height: 465px;
-  }
-  #rates .sml .rate-column:nth-of-type(2) {
-    min-height: 280px;
-  }
-  #rates .sml .rate-column:first-of-type {
-    min-height: 215px;
-  }
-}
 @media only screen and (min-width: 448px) {
   #main {
     background-image: url("../img/600-joshua-laptop.jpg");
   }
   #toronto-skyline {
     background-image: url("../img/640-toronto-skyline-night.jpg");
-  }
-  #rates .rate-intro p {
-    text-align: center;
-    margin: 0 20% 0 20%;
   }
 }
 @media only screen and (min-width: 580px) {
@@ -561,18 +497,6 @@ section:nth-of-type(even) .content {
   #contact .contact-info .form-group input:not(.large-button):hover, #contact .contact-info .form-group input:not(.large-button):focus {
     width: 90%;
   }
-  #rates {
-    min-height: 1570px;
-  }
-  #rates .vert-row {
-    min-height: 75px;
-  }
-  #rates .vert-eight-twelfth {
-    min-height: 1420px;
-  }
-  #rates .rate-intro p {
-    margin: 0 15% 0 15%;
-  }
 }
 @media only screen and (min-width: 600px) {
   #main {
@@ -581,28 +505,6 @@ section:nth-of-type(even) .content {
   #toronto-skyline {
     background-image: url("../img/800-toronto-skyline-night.jpg");
   }
-  #rates {
-    min-height: 1470px;
-  }
-  #rates .vert-eight-twelfth {
-    min-height: 1320px;
-  }
-}
-@media only screen and (min-width: 630px) {
-  #rates {
-    min-height: 1350px;
-  }
-  #rates .vert-eight-twelfth {
-    min-height: 1200px;
-  }
-}
-@media only screen and (min-width: 720px) {
-  #rates {
-    min-height: 1200px;
-  }
-  #rates .vert-eight-twelfth {
-    min-height: 1050px;
-  }
 }
 @media only screen and (min-width: 768px) {
   #main {
@@ -610,12 +512,6 @@ section:nth-of-type(even) .content {
   }
   #toronto-skyline {
     background-image: url("../img/1024-toronto-skyline-night.jpg");
-  }
-  #rates {
-    min-height: 1100px;
-  }
-  #rates .vert-eight-twelfth {
-    min-height: 950px;
   }
 }
 @media only screen and (min-width: 881px) {
@@ -664,89 +560,6 @@ section:nth-of-type(even) .content {
     height: 150%;
     position: relative;
     z-index: 10;
-  }
-  #rates {
-    min-height: 1190px;
-  }
-  #rates .horiz-one-eleventh {
-    max-width: 40px;
-  }
-  #rates .vert-row {
-    min-height: 100px;
-  }
-  #rates .horiz-ten-twelfth {
-    min-width: 844px;
-  }
-  #rates .vert-eight-twelfth {
-    min-height: 980px;
-  }
-  #rates .rate-intro p {
-    margin: 60px 0 0;
-  }
-  #rates .lrg .rate-column {
-    width: 40%;
-    min-width: 280px;
-  }
-  #rates .lrg .rate-column h4 {
-    font-size: 1.8em;
-  }
-  #rates .lrg .rate-column h5 {
-    font-size: 1.6em;
-  }
-  #rates .lrg .rate-column h6 {
-    font-size: 1.4em;
-  }
-  #rates .lrg .rate-column p, #rates .lrg .rate-column li {
-    font-size: 1.2em;
-  }
-}
-@media only screen and (min-width: 1042px) {
-  #rates {
-    min-height: 1190px;
-  }
-  #rates .vert-row, #rates .content {
-    min-height: 35px;
-  }
-  #rates .vert-row > .horiz-full {
-    height: inherit;
-  }
-  #rates .rate-intro {
-    margin: 30px 0 0;
-  }
-  #rates .rate-intro p {
-    margin: 0;
-  }
-  #rates .vert-eight-twelfth {
-    min-height: 980px;
-  }
-}
-@media only screen and (min-width: 1260px) {
-  #rates {
-    min-height: 1090px;
-  }
-  #rates .vert-eight-twelfth {
-    min-height: 880px;
-  }
-}
-@media only screen and (min-width: 1450px) {
-  #rates {
-    min-height: 990px;
-  }
-  #rates .vert-eight-twelfth {
-    min-height: 780px;
-  }
-}
-@media only screen and (min-width: 1600px) {
-  #rates {
-    min-height: 890px;
-  }
-  #rates .vert-eight-twelfth {
-    min-height: 680px;
-  }
-}
-@media only screen and (min-width: 1800px) {
-  #rates .horiz-one-eleventh {
-    max-width: 9.09%;
   }
 }
 @media only screen and (min-width: 2400px) {
