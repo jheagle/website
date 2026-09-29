@@ -1,23 +1,29 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Matrix DOM</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width">
+    <title>Matrix DOM | Joshua Heagle</title>
+    <link rel="stylesheet" href="../shared.css">
     <script src="./browser/matrix-dom.js"></script>
 </head>
 <body>
-<p>
-    Check the Browser Console to play with the available functions on <code>matrixDom</code> for Matrix DOM.
-</p>
-<a href='docs'>See the documentation on function usage</a>
+<div class="page">
+    <a class="back-link" href="../../#work">&larr; Back to projects</a>
+    <div class="project-header">
+        <h1>Matrix DOM</h1>
+        <p>Grid/matrix geometry helpers - points, lines, bounds, lookup - used by Battleship's board.</p>
+    </div>
+    <div class="actions">
+        <a class="primary" href="./docs">Documentation</a>
+    </div>
+    <p class="hint">Source is private, but it's proven out in <a href="../battleship">Battleship</a>, which uses it
+        for the game board. Open the browser console to interact with <code>matrixDom</code> directly.</p>
+</div>
 <script type="module">
   window.addEventListener('DOMContentLoaded', () => {
     console.log(matrixDom, 'Matrix DOM')
   })
 </script>
 </body>
-
+</html>

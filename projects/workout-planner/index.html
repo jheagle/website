@@ -1,20 +1,24 @@
-<!DOCTYPE head>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Workout Planner</title>
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="./browser/css/global.css">
-    <script src="./browser/workoutPlanner.js"></script>
+    <title>Workout Planner | Joshua Heagle</title>
+    <link rel="stylesheet" href="../shared.css">
 </head>
 <body>
-<p>
-    Check the Browser Console to play with the available functions on <code>workoutPlanner</code> for Workout Planner.
-</p>
-<script type="module">
-  window.addEventListener('DOMContentLoaded', () => {
-    console.log(workoutPlanner, 'Workout Planner')
-  })
-</script>
+<div class="page">
+    <a class="back-link" href="../../#work">&larr; Back to projects</a>
+    <div class="project-header">
+        <h1>Workout Planner</h1>
+        <p>An early, evolving idea for JS + filesystem-backed workout tracking and planning.</p>
+    </div>
+    <div class="actions">
+        <a class="primary" href="https://github.com/jheagle/workout-planner" target="_blank">View on GitHub</a>
+    </div>
+    <p class="hint">Still shaping up - the current build is a self-rendering prototype page (built on json-dom)
+        rather than a standalone library, so there's nothing to demo safely on its own here yet. See the source
+        for where it's at.</p>
+</div>
 </body>
+</html>

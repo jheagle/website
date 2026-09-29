@@ -1,19 +1,54 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Title Switcher</title>
     <meta name="viewport" content="width=device-width">
+    <title>Title Switcher | Joshua Heagle</title>
+    <link rel="stylesheet" href="../shared.css">
     <script src="./browser/titleSwitcher.js"></script>
 </head>
 <body>
-<p>
-    Check the Browser Console to play with the available functions on <code>titleSwitcher</code> for Title Switcher.
-</p>
+<div class="page">
+    <a class="back-link" href="../../#work">&larr; Back to projects</a>
+    <div class="project-header">
+        <h1>Title Switcher</h1>
+        <p>A typing-effect title switcher plugin, published on npm as <code>title-switcher</code>. No dependencies,
+            works as-is in modern browsers.</p>
+    </div>
+    <div class="actions">
+        <a class="primary" href="https://github.com/jheagle/title-switcher-v2" target="_blank">View on GitHub</a>
+        <a href="./docs">Documentation</a>
+    </div>
+    <p class="hint">It's running right now, below - and in the title carousel on the homepage.</p>
+
+    <div class="demo">
+        <h2>Live demo</h2>
+        <div class="titles">
+            <h4 class="hideTitle displayTitle" style="color: #be1010;">I built this <em>superb</em> plug-in.</h4>
+            <h4 class="hideTitle" style="color: #1414af;"><strong>TitleSwitcher</strong> is great to display a
+                typing effect.</h4>
+            <h4 class="hideTitle" style="color: #af4e08; text-decoration: underline;">Feel free to contribute and
+                use this plug-in.</h4>
+            <h4 class="hideTitle" style="color: #0c710c;">You can find more projects on
+                <a href="https://github.com/jheagle" target="_blank">my GitHub</a>.</h4>
+        </div>
+    </div>
+</div>
+<style>
+  .hideTitle {
+    display: none;
+  }
+
+  .displayTitle {
+    display: block;
+  }
+</style>
 <script type="module">
   window.addEventListener('DOMContentLoaded', () => {
-    console.log(titleSwitcher, 'Title Switcher')
+    console.log(TitleSwitcher, 'Title Switcher')
+    const demo = new TitleSwitcher('.titles', 'typingEffect')
+    demo.startTitles({ isRandom: false, delaySwitch: 400, delayEffect: 100 })
   })
 </script>
 </body>
+</html>
