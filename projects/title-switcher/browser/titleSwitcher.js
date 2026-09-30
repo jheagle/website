@@ -256,10 +256,41 @@
       return self
     }
     /**
- * Build the markup for the first `remaining` characters of domObject's text, keeping whichever
- * of its nested tags (em, strong, ...) that content falls under. This lets the typing effect
- * reveal a title's formatting as each character is typed, instead of only applying it once the
- * whole tag has been typed out.
+ * Count how many typed "units" domObject's text takes to fully reveal via typedPartialHtml - one unit per
+ * non-whitespace character, but a whole run of consecutive whitespace (most often the newline and indentation
+ * left behind where a title's HTML source wraps onto a new line) counts as a single unit, matching how many
+ * steps typedPartialHtml actually needs to reveal it all. Typing through that whitespace one character at a
+ * time would type through several units a browser renders as a single collapsed space, with no visible change
+ * in between - not a slower typing speed, but a real stall followed by the next word suddenly catching up.
+ * @param domObject
+ */
+    const typedLength = domObject => {
+      let length = 0
+      Array.prototype.forEach.call(domObject.childNodes, child => {
+        if (child.nodeType === 3) {
+          const text = child.textContent || ''
+          let position = 0
+          while (position < text.length) {
+            if (/\s/.test(text[position])) {
+              while (position < text.length && /\s/.test(text[position])) {
+                ++position
+              }
+            } else {
+              ++position
+            }
+            ++length
+          }
+        } else if (child.nodeType === 1) {
+          length += typedLength(child)
+        }
+      })
+      return length
+    }
+    /**
+ * Build the markup for the first `remaining` typed units of domObject's text (see typedLength), keeping
+ * whichever of its nested tags (em, strong, ...) that content falls under. This lets the typing effect reveal
+ * a title's formatting as each character is typed, instead of only applying it once the whole tag has been
+ * typed out.
  * @param domObject
  * @param remaining
  */
@@ -270,9 +301,22 @@
         const child = children[i]
         if (child.nodeType === 3) {
           const text = child.textContent || ''
-          const take = Math.min(remaining, text.length)
-          html += text.slice(0, take)
-          remaining -= take
+          let position = 0
+          let taken = ''
+          while (position < text.length && remaining > 0) {
+            if (/\s/.test(text[position])) {
+              const runStart = position
+              while (position < text.length && /\s/.test(text[position])) {
+                ++position
+              }
+              taken += text.slice(runStart, position)
+            } else {
+              taken += text[position]
+              ++position
+            }
+            --remaining
+          }
+          html += taken
         } else if (child.nodeType === 1) {
           const result = typedPartialHtml(child, remaining)
           if (result.html) {
@@ -331,7 +375,7 @@
         self.typeSurface.innerHTML = ''
         self.cursorBlink(true, self)
         // Copy each letter from the current title, keeping whichever tags (em, strong, ...) it falls under
-        const totalLength = domObject.textContent.length
+        const totalLength = typedLength(domObject)
         for (let i = 0; i < totalLength; ++i) {
           setTimeout(() => {
             // Reveal one more character, wrapped in whatever tags its position in the title falls under,
