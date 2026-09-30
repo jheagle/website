@@ -17,7 +17,7 @@ Event, which is why they are kept apart from the event's own properties.</p>
 </div></section>
 <div class="tsd-signature"><span class="tsd-signature-keyword">type</span> <span class="tsd-kind-type-alias">EventInner</span> <span class="tsd-signature-symbol">=</span> <span class="tsd-signature-symbol">{</span><br/>    <a class="tsd-kind-property" href="#currenttarget">currentTarget</a><span class="tsd-signature-symbol">:</span> <a href="../interfaces/interfaces.PseudoEventTarget.html" class="tsd-signature-type tsd-kind-interface">PseudoEventTarget</a> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#dispatching">dispatching</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#eventphase">eventPhase</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#finishdispatch">finishDispatch</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">()</span> <span class="tsd-signature-symbol">=&gt;</span> <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#immediatepropagationstopped">immediatePropagationStopped</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#inpassivelistener">inPassiveListener</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#path">path</a><span class="tsd-signature-symbol">:</span> <a href="../interfaces/interfaces.PseudoEventTarget.html" class="tsd-signature-type tsd-kind-interface">PseudoEventTarget</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#propagationstopped">propagationStopped</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#target">target</a><span class="tsd-signature-symbol">:</span> <a href="../interfaces/interfaces.PseudoEventTarget.html" class="tsd-signature-type tsd-kind-interface">PseudoEventTarget</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#trusted">trusted</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/><span class="tsd-signature-symbol">}</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/f3788ce60c0d6e689c2f75676d7c0f3295203055/src/services/EventService.ts#L30">src/services/EventService.ts:30</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/63b9844c837cc1dcb2b145a64e9116cafa95f7b2/src/services/EventService.ts#L30">src/services/EventService.ts:30</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-accordion" open><summary class="tsd-accordion-summary tsd-index-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
@@ -43,62 +43,62 @@ Event, which is why they are kept apart from the event's own properties.</p>
 <h3 class="tsd-anchor-link" id="currenttarget"><span>current<wbr/>Target</span><a href="#currenttarget" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">currentTarget</span><span class="tsd-signature-symbol">:</span> <a href="../interfaces/interfaces.PseudoEventTarget.html" class="tsd-signature-type tsd-kind-interface">PseudoEventTarget</a> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/f3788ce60c0d6e689c2f75676d7c0f3295203055/src/services/EventService.ts#L31">src/services/EventService.ts:31</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/63b9844c837cc1dcb2b145a64e9116cafa95f7b2/src/services/EventService.ts#L31">src/services/EventService.ts:31</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="dispatching"><span>dispatching</span><a href="#dispatching" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">dispatching</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 <div class="tsd-comment tsd-typography"><p>True while the event is being dispatched.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/f3788ce60c0d6e689c2f75676d7c0f3295203055/src/services/EventService.ts#L39">src/services/EventService.ts:39</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/63b9844c837cc1dcb2b145a64e9116cafa95f7b2/src/services/EventService.ts#L39">src/services/EventService.ts:39</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="eventphase"><span>event<wbr/>Phase</span><a href="#eventphase" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">eventPhase</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/f3788ce60c0d6e689c2f75676d7c0f3295203055/src/services/EventService.ts#L32">src/services/EventService.ts:32</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/63b9844c837cc1dcb2b145a64e9116cafa95f7b2/src/services/EventService.ts#L32">src/services/EventService.ts:32</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="finishdispatch"><span>finish<wbr/>Dispatch</span><a href="#finishdispatch" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">finishDispatch</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">()</span> <span class="tsd-signature-symbol">=&gt;</span> <span class="tsd-signature-type">void</span></div>
 <div class="tsd-comment tsd-typography"><p>Finish the dispatch: no phase, no current target, no path and the stop flags are cleared so the event can be dispatched again.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/f3788ce60c0d6e689c2f75676d7c0f3295203055/src/services/EventService.ts#L45">src/services/EventService.ts:45</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/63b9844c837cc1dcb2b145a64e9116cafa95f7b2/src/services/EventService.ts#L45">src/services/EventService.ts:45</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="immediatepropagationstopped"><span>immediate<wbr/>Propagation<wbr/>Stopped</span><a href="#immediatepropagationstopped" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">immediatePropagationStopped</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/f3788ce60c0d6e689c2f75676d7c0f3295203055/src/services/EventService.ts#L34">src/services/EventService.ts:34</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/63b9844c837cc1dcb2b145a64e9116cafa95f7b2/src/services/EventService.ts#L34">src/services/EventService.ts:34</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="inpassivelistener"><span>in<wbr/>Passive<wbr/>Listener</span><a href="#inpassivelistener" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">inPassiveListener</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 <div class="tsd-comment tsd-typography"><p>True while a passive listener is running, in which preventDefault does nothing.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/f3788ce60c0d6e689c2f75676d7c0f3295203055/src/services/EventService.ts#L41">src/services/EventService.ts:41</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/63b9844c837cc1dcb2b145a64e9116cafa95f7b2/src/services/EventService.ts#L41">src/services/EventService.ts:41</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="path"><span>path</span><a href="#path" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">path</span><span class="tsd-signature-symbol">:</span> <a href="../interfaces/interfaces.PseudoEventTarget.html" class="tsd-signature-type tsd-kind-interface">PseudoEventTarget</a><span class="tsd-signature-symbol">[]</span></div>
 <div class="tsd-comment tsd-typography"><p>The targets the event travels through, the target first and the root last, set while dispatching.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/f3788ce60c0d6e689c2f75676d7c0f3295203055/src/services/EventService.ts#L43">src/services/EventService.ts:43</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/63b9844c837cc1dcb2b145a64e9116cafa95f7b2/src/services/EventService.ts#L43">src/services/EventService.ts:43</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="propagationstopped"><span>propagation<wbr/>Stopped</span><a href="#propagationstopped" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">propagationStopped</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/f3788ce60c0d6e689c2f75676d7c0f3295203055/src/services/EventService.ts#L35">src/services/EventService.ts:35</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/63b9844c837cc1dcb2b145a64e9116cafa95f7b2/src/services/EventService.ts#L35">src/services/EventService.ts:35</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="target"><span>target</span><a href="#target" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">target</span><span class="tsd-signature-symbol">:</span> <a href="../interfaces/interfaces.PseudoEventTarget.html" class="tsd-signature-type tsd-kind-interface">PseudoEventTarget</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/f3788ce60c0d6e689c2f75676d7c0f3295203055/src/services/EventService.ts#L33">src/services/EventService.ts:33</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/63b9844c837cc1dcb2b145a64e9116cafa95f7b2/src/services/EventService.ts#L33">src/services/EventService.ts:33</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="trusted"><span>trusted</span><a href="#trusted" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">trusted</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 <div class="tsd-comment tsd-typography"><p>True for an event which the browser created for a user action, an event which a script created is not trusted.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/f3788ce60c0d6e689c2f75676d7c0f3295203055/src/services/EventService.ts#L37">src/services/EventService.ts:37</a></li></ul></aside></section></section></details></div>
+<li>Defined in <a href="https://github.com/jheagle/PseudoDom/blob/63b9844c837cc1dcb2b145a64e9116cafa95f7b2/src/services/EventService.ts#L37">src/services/EventService.ts:37</a></li></ul></aside></section></section></details></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
