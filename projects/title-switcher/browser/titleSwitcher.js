@@ -161,7 +161,11 @@
         Array.prototype.forEach.call(__classPrivateFieldGet(this, _TitleSwitcher_titles, 'f'), function (title) {
           title.style.display = 'none'
         })
-        return this.switchTitle(__classPrivateFieldGet(this, _TitleSwitcher_titles, 'f')[__classPrivateFieldGet(this, _TitleSwitcher_currentIndex, 'f')], __classPrivateFieldGet(this, _TitleSwitcher_switchStyle, 'f'), this)
+        // currentTitle, not this.#titles[this.#currentIndex]: inserting typeElement above shifted every later index by
+        // one, so #currentIndex (computed before that insert) no longer points at the title it was set for - switchTitle
+        // would remove the 'displayTitle' class from whatever title now happens to sit at that stale index instead of
+        // from currentTitle, leaving more than one title carrying the class at once.
+        return this.switchTitle(currentTitle, __classPrivateFieldGet(this, _TitleSwitcher_switchStyle, 'f'), this)
       }
 
       /**
