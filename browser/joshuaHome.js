@@ -25303,6 +25303,7 @@
     const documentItem_1 = __importDefault(require('../domItem/objects/documentItem'))
     const insertChild_1 = __importDefault(require('../domItem/tree/insertChild'))
     const setParentItemReferences_1 = __importDefault(require('../domItem/tree/setParentItemReferences'))
+    const updateChildNodes_1 = __importDefault(require('./updateChildNodes'))
     const updateElements_1 = __importDefault(require('./updateElements'))
     /**
  * This is a shortcut for syncing a Virtual DOM (DomItem tree) item onto the real HTML DOM: builds the real elements
@@ -25318,17 +25319,21 @@
  * since it is invisible to parent.children.
  */
     const renderHtml = (item = null, parent = documentItem_1.default.body, index = parent.children.length) => {
-      let itemToRender = item === null ? documentItem_1.default : item
+      const itemToRender = item === null ? documentItem_1.default : item
       if (itemToRender.parentItem === null) {
-        // excluding when documentItem was passed in, insert the item into parent
-        itemToRender = (0, insertChild_1.default)(parent, item, index)
+        // excluding when documentItem was passed in, insert the item into parent, and place its real element among
+        // parent's real children - scoped to just this positioning, not a resync of parent's whole existing subtree
+        // (updateElements(parent) would walk every sibling's attributes too, reverting anything about them - like a
+        // style change some other, unrelated script made directly on the real DOM - that parent's items don't track)
+        (0, insertChild_1.default)(parent, item, index);
+        (0, updateChildNodes_1.default)(parent)
       }
       // Render the elements and return either to original reference, or updated documentItem (whichever is available)
       const updatedItem = (0, updateElements_1.default)((0, setParentItemReferences_1.default)(itemToRender))
       return item ?? updatedItem
     }
     exports.default = renderHtml
-  }, { '../domItem/objects/documentItem': 702, '../domItem/tree/insertChild': 727, '../domItem/tree/setParentItemReferences': 729, './updateElements': 768, 'core-js/stable': 686 }],
+  }, { '../domItem/objects/documentItem': 702, '../domItem/tree/insertChild': 727, '../domItem/tree/setParentItemReferences': 729, './updateChildNodes': 766, './updateElements': 768, 'core-js/stable': 686 }],
   766: [function (require, module, exports) {
     'use strict'
 
