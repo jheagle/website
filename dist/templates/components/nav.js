@@ -1,4 +1,4 @@
-import element from './element.js'
+import element from './element.js';
 
 /**
  * Create a nav DomItem
@@ -7,5 +7,5 @@ import element from './element.js'
  * @param {object} [attributes={}]
  * @returns {DomItem}
  */
-const navigation = (children = [], className = '', attributes = {}) => element('nav', children, className, attributes)
-export default navigation
+const navigation = (children = [], className = '', attributes = {}) => element('nav', children, className, attributes);
+export default navigation;
