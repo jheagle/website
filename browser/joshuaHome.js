@@ -98,7 +98,7 @@ const home = () => {
   homeScrolling();
 };
 module.exports = home;
-},{"si-funciona":879}],3:[function(require,module,exports){
+},{"si-funciona":922}],3:[function(require,module,exports){
 const plugins = () => {
   // Avoid `console` errors in browsers that lack a console.
   (function () {
@@ -125,11 +125,13 @@ const googleAnalytics = require('./general/googleAnalytics.js');
 const plugins = require('./general/plugins.js');
 const home = require('./general/home.js');
 const jsonDom = require('json-dom').default;
+const jsonDomComponents = require('json-dom-components').default;
 googleAnalytics();
 plugins();
 window.home = home;
 window.jsonDom = jsonDom;
-},{"./general/googleAnalytics.js":1,"./general/home.js":2,"./general/plugins.js":3,"json-dom":789}],5:[function(require,module,exports){
+window.jsonDomComponents = jsonDomComponents;
+},{"./general/googleAnalytics.js":1,"./general/home.js":2,"./general/plugins.js":3,"json-dom":832,"json-dom-components":749}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24612,6 +24614,993 @@ module.exports = require('../internals/path');
 },{"../internals/path":235,"../modules/es.aggregate-error":329,"../modules/es.aggregate-error.cause":327,"../modules/es.array-buffer.constructor":330,"../modules/es.array-buffer.detached":331,"../modules/es.array-buffer.is-view":332,"../modules/es.array-buffer.slice":333,"../modules/es.array-buffer.transfer":335,"../modules/es.array-buffer.transfer-to-fixed-length":334,"../modules/es.array.at":336,"../modules/es.array.concat":337,"../modules/es.array.copy-within":338,"../modules/es.array.every":339,"../modules/es.array.fill":340,"../modules/es.array.filter":341,"../modules/es.array.find":345,"../modules/es.array.find-index":342,"../modules/es.array.find-last":344,"../modules/es.array.find-last-index":343,"../modules/es.array.flat":347,"../modules/es.array.flat-map":346,"../modules/es.array.for-each":348,"../modules/es.array.from":350,"../modules/es.array.from-async":349,"../modules/es.array.includes":351,"../modules/es.array.index-of":352,"../modules/es.array.is-array":353,"../modules/es.array.iterator":354,"../modules/es.array.join":355,"../modules/es.array.last-index-of":356,"../modules/es.array.map":357,"../modules/es.array.of":358,"../modules/es.array.push":359,"../modules/es.array.reduce":361,"../modules/es.array.reduce-right":360,"../modules/es.array.reverse":362,"../modules/es.array.slice":363,"../modules/es.array.some":364,"../modules/es.array.sort":365,"../modules/es.array.species":366,"../modules/es.array.splice":367,"../modules/es.array.to-reversed":368,"../modules/es.array.to-sorted":369,"../modules/es.array.to-spliced":370,"../modules/es.array.unscopables.flat":372,"../modules/es.array.unscopables.flat-map":371,"../modules/es.array.unshift":373,"../modules/es.array.with":374,"../modules/es.async-disposable-stack.constructor":375,"../modules/es.async-iterator.async-dispose":376,"../modules/es.data-view":379,"../modules/es.data-view.get-float16":378,"../modules/es.data-view.set-float16":380,"../modules/es.date.get-year":381,"../modules/es.date.now":382,"../modules/es.date.set-year":383,"../modules/es.date.to-gmt-string":384,"../modules/es.date.to-iso-string":385,"../modules/es.date.to-json":386,"../modules/es.date.to-primitive":387,"../modules/es.date.to-string":388,"../modules/es.disposable-stack.constructor":389,"../modules/es.error.cause":390,"../modules/es.error.is-error":391,"../modules/es.error.to-string":392,"../modules/es.escape":393,"../modules/es.function.bind":394,"../modules/es.function.has-instance":395,"../modules/es.function.name":396,"../modules/es.global-this":397,"../modules/es.iterator.concat":398,"../modules/es.iterator.constructor":399,"../modules/es.iterator.dispose":400,"../modules/es.iterator.drop":401,"../modules/es.iterator.every":402,"../modules/es.iterator.filter":403,"../modules/es.iterator.find":404,"../modules/es.iterator.flat-map":405,"../modules/es.iterator.for-each":406,"../modules/es.iterator.from":407,"../modules/es.iterator.map":408,"../modules/es.iterator.reduce":409,"../modules/es.iterator.some":410,"../modules/es.iterator.take":411,"../modules/es.iterator.to-array":412,"../modules/es.iterator.zip":414,"../modules/es.iterator.zip-keyed":413,"../modules/es.json.is-raw-json":415,"../modules/es.json.parse":416,"../modules/es.json.raw-json":417,"../modules/es.json.stringify":418,"../modules/es.json.to-string-tag":419,"../modules/es.map":424,"../modules/es.map.get-or-insert":422,"../modules/es.map.get-or-insert-computed":421,"../modules/es.map.group-by":423,"../modules/es.math.acosh":425,"../modules/es.math.asinh":426,"../modules/es.math.atanh":427,"../modules/es.math.cbrt":428,"../modules/es.math.clz32":429,"../modules/es.math.cosh":430,"../modules/es.math.expm1":431,"../modules/es.math.f16round":432,"../modules/es.math.fround":433,"../modules/es.math.hypot":434,"../modules/es.math.imul":435,"../modules/es.math.log10":436,"../modules/es.math.log1p":437,"../modules/es.math.log2":438,"../modules/es.math.sign":439,"../modules/es.math.sinh":440,"../modules/es.math.sum-precise":441,"../modules/es.math.tanh":442,"../modules/es.math.to-string-tag":443,"../modules/es.math.trunc":444,"../modules/es.number.constructor":445,"../modules/es.number.epsilon":446,"../modules/es.number.is-finite":447,"../modules/es.number.is-integer":448,"../modules/es.number.is-nan":449,"../modules/es.number.is-safe-integer":450,"../modules/es.number.max-safe-integer":451,"../modules/es.number.min-safe-integer":452,"../modules/es.number.parse-float":453,"../modules/es.number.parse-int":454,"../modules/es.number.to-exponential":455,"../modules/es.number.to-fixed":456,"../modules/es.number.to-precision":457,"../modules/es.object.assign":458,"../modules/es.object.create":459,"../modules/es.object.define-getter":460,"../modules/es.object.define-properties":461,"../modules/es.object.define-property":462,"../modules/es.object.define-setter":463,"../modules/es.object.entries":464,"../modules/es.object.freeze":465,"../modules/es.object.from-entries":466,"../modules/es.object.get-own-property-descriptor":467,"../modules/es.object.get-own-property-descriptors":468,"../modules/es.object.get-own-property-names":469,"../modules/es.object.get-prototype-of":471,"../modules/es.object.group-by":472,"../modules/es.object.has-own":473,"../modules/es.object.is":477,"../modules/es.object.is-extensible":474,"../modules/es.object.is-frozen":475,"../modules/es.object.is-sealed":476,"../modules/es.object.keys":478,"../modules/es.object.lookup-getter":479,"../modules/es.object.lookup-setter":480,"../modules/es.object.prevent-extensions":481,"../modules/es.object.proto":482,"../modules/es.object.seal":483,"../modules/es.object.set-prototype-of":484,"../modules/es.object.to-string":485,"../modules/es.object.values":486,"../modules/es.parse-float":487,"../modules/es.parse-int":488,"../modules/es.promise":495,"../modules/es.promise.all-settled":489,"../modules/es.promise.any":491,"../modules/es.promise.finally":494,"../modules/es.promise.try":499,"../modules/es.promise.with-resolvers":500,"../modules/es.reflect.apply":501,"../modules/es.reflect.construct":502,"../modules/es.reflect.define-property":503,"../modules/es.reflect.delete-property":504,"../modules/es.reflect.get":507,"../modules/es.reflect.get-own-property-descriptor":505,"../modules/es.reflect.get-prototype-of":506,"../modules/es.reflect.has":508,"../modules/es.reflect.is-extensible":509,"../modules/es.reflect.own-keys":510,"../modules/es.reflect.prevent-extensions":511,"../modules/es.reflect.set":513,"../modules/es.reflect.set-prototype-of":512,"../modules/es.reflect.to-string-tag":514,"../modules/es.regexp.constructor":515,"../modules/es.regexp.dot-all":516,"../modules/es.regexp.escape":517,"../modules/es.regexp.exec":518,"../modules/es.regexp.flags":519,"../modules/es.regexp.sticky":520,"../modules/es.regexp.test":521,"../modules/es.regexp.to-string":522,"../modules/es.set":529,"../modules/es.set.difference.v2":524,"../modules/es.set.intersection.v2":525,"../modules/es.set.is-disjoint-from.v2":526,"../modules/es.set.is-subset-of.v2":527,"../modules/es.set.is-superset-of.v2":528,"../modules/es.set.symmetric-difference.v2":530,"../modules/es.set.union.v2":531,"../modules/es.string.anchor":532,"../modules/es.string.at-alternative":533,"../modules/es.string.big":534,"../modules/es.string.blink":535,"../modules/es.string.bold":536,"../modules/es.string.code-point-at":537,"../modules/es.string.ends-with":538,"../modules/es.string.fixed":539,"../modules/es.string.fontcolor":540,"../modules/es.string.fontsize":541,"../modules/es.string.from-code-point":542,"../modules/es.string.includes":543,"../modules/es.string.is-well-formed":544,"../modules/es.string.italics":545,"../modules/es.string.iterator":546,"../modules/es.string.link":547,"../modules/es.string.match":549,"../modules/es.string.match-all":548,"../modules/es.string.pad-end":550,"../modules/es.string.pad-start":551,"../modules/es.string.raw":552,"../modules/es.string.repeat":553,"../modules/es.string.replace":555,"../modules/es.string.replace-all":554,"../modules/es.string.search":556,"../modules/es.string.small":557,"../modules/es.string.split":558,"../modules/es.string.starts-with":559,"../modules/es.string.strike":560,"../modules/es.string.sub":561,"../modules/es.string.substr":562,"../modules/es.string.sup":563,"../modules/es.string.to-well-formed":564,"../modules/es.string.trim":569,"../modules/es.string.trim-end":565,"../modules/es.string.trim-start":568,"../modules/es.suppressed-error.constructor":570,"../modules/es.symbol":580,"../modules/es.symbol.async-dispose":571,"../modules/es.symbol.async-iterator":572,"../modules/es.symbol.description":574,"../modules/es.symbol.dispose":575,"../modules/es.symbol.has-instance":577,"../modules/es.symbol.is-concat-spreadable":578,"../modules/es.symbol.iterator":579,"../modules/es.symbol.match":583,"../modules/es.symbol.match-all":582,"../modules/es.symbol.replace":584,"../modules/es.symbol.search":585,"../modules/es.symbol.species":586,"../modules/es.symbol.split":587,"../modules/es.symbol.to-primitive":588,"../modules/es.symbol.to-string-tag":589,"../modules/es.symbol.unscopables":590,"../modules/es.typed-array.at":591,"../modules/es.typed-array.copy-within":592,"../modules/es.typed-array.every":593,"../modules/es.typed-array.fill":594,"../modules/es.typed-array.filter":595,"../modules/es.typed-array.find":599,"../modules/es.typed-array.find-index":596,"../modules/es.typed-array.find-last":598,"../modules/es.typed-array.find-last-index":597,"../modules/es.typed-array.float32-array":600,"../modules/es.typed-array.float64-array":601,"../modules/es.typed-array.for-each":602,"../modules/es.typed-array.from":603,"../modules/es.typed-array.includes":604,"../modules/es.typed-array.index-of":605,"../modules/es.typed-array.int16-array":606,"../modules/es.typed-array.int32-array":607,"../modules/es.typed-array.int8-array":608,"../modules/es.typed-array.iterator":609,"../modules/es.typed-array.join":610,"../modules/es.typed-array.last-index-of":611,"../modules/es.typed-array.map":612,"../modules/es.typed-array.of":613,"../modules/es.typed-array.reduce":615,"../modules/es.typed-array.reduce-right":614,"../modules/es.typed-array.reverse":616,"../modules/es.typed-array.set":617,"../modules/es.typed-array.slice":618,"../modules/es.typed-array.some":619,"../modules/es.typed-array.sort":620,"../modules/es.typed-array.subarray":621,"../modules/es.typed-array.to-locale-string":622,"../modules/es.typed-array.to-reversed":623,"../modules/es.typed-array.to-sorted":624,"../modules/es.typed-array.to-string":625,"../modules/es.typed-array.uint16-array":626,"../modules/es.typed-array.uint32-array":627,"../modules/es.typed-array.uint8-array":628,"../modules/es.typed-array.uint8-clamped-array":629,"../modules/es.typed-array.with":630,"../modules/es.uint8-array.from-base64":631,"../modules/es.uint8-array.from-hex":632,"../modules/es.uint8-array.set-from-base64":633,"../modules/es.uint8-array.set-from-hex":634,"../modules/es.uint8-array.to-base64":635,"../modules/es.uint8-array.to-hex":636,"../modules/es.unescape":637,"../modules/es.weak-map":641,"../modules/es.weak-map.get-or-insert":640,"../modules/es.weak-map.get-or-insert-computed":639,"../modules/es.weak-set":643,"../modules/web.atob":685,"../modules/web.btoa":686,"../modules/web.dom-collections.for-each":688,"../modules/web.dom-collections.iterator":689,"../modules/web.dom-exception.constructor":690,"../modules/web.dom-exception.stack":691,"../modules/web.dom-exception.to-string-tag":692,"../modules/web.immediate":693,"../modules/web.queue-microtask":694,"../modules/web.self":695,"../modules/web.structured-clone":699,"../modules/web.timers":700,"../modules/web.url":708,"../modules/web.url-search-params":704,"../modules/web.url-search-params.delete":702,"../modules/web.url-search-params.has":703,"../modules/web.url-search-params.size":705,"../modules/web.url.can-parse":706,"../modules/web.url.parse":709,"../modules/web.url.to-json":710}],712:[function(require,module,exports){
 "use strict";
 
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.makeClearInput = void 0;
+const toggleClearButton_1 = __importDefault(require("./toggleClearButton"));
+/**
+ * Clear the input's real value and its attributes (so it stays correct across a re-render), hide the clear
+ * button, and give focus back to the input - matching the common "search box" convention.
+ * @param inputItem
+ * @param clearButton
+ */
+const clearInput = (inputItem, clearButton) => {
+  inputItem.attributes.value = '';
+  if (inputItem.element) {
+    const element = inputItem.element;
+    element.value = '';
+    element.focus();
+  }
+  (0, toggleClearButton_1.default)(false, clearButton);
+};
+/**
+ * A ready-to-attach click listener for the clear button.
+ * @param inputItem
+ * @param clearButton
+ */
+const makeClearInput = (inputItem, clearButton) => () => clearInput(inputItem, clearButton);
+exports.makeClearInput = makeClearInput;
+exports.default = clearInput;
+},{"./toggleClearButton":715}],713:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const button_1 = __importDefault(require("../components/button"));
+const div_1 = __importDefault(require("../components/div"));
+const input_1 = __importDefault(require("../components/input"));
+const clearInput_1 = require("./clearInput");
+const toggleClearButton_1 = require("./toggleClearButton");
+/**
+ * A regular text input with a small "x" button on its right inner edge to clear it - the common "search box"
+ * pattern. The button only shows once there's a value to clear.
+ *
+ * Minimum/POC implementation: like the typeahead, its listeners are plain closures, not names registered for
+ * json-dom's render-only/forwarding mode. See MAIN.md.
+ */
+const createClearableInput = config => {
+  const {
+    name,
+    value = '',
+    placeholder = '',
+    className,
+    readonly = false
+  } = config;
+  const inputItem = (0, input_1.default)('text', name, value || null, [], 'clearable-input-field', {
+    placeholder,
+    ...(readonly ? {
+      readonly: true
+    } : {})
+  });
+  const clearButton = (0, button_1.default)('×', 'clearable-input-clear', {
+    'aria-label': 'Clear',
+    hidden: value.length === 0,
+    ...(readonly ? {
+      hidden: true,
+      disabled: true
+    } : {})
+  });
+  if (!readonly) {
+    inputItem.eventListeners.input = [{
+      listenerFunc: (0, toggleClearButton_1.makeToggleClearButton)(clearButton)
+    }];
+    clearButton.eventListeners.click = [{
+      listenerFunc: (0, clearInput_1.makeClearInput)(inputItem, clearButton)
+    }];
+  }
+  return (0, div_1.default)([inputItem, clearButton], className ?? 'clearable-input');
+};
+exports.default = createClearableInput;
+},{"../components/button":717,"../components/div":718,"../components/input":726,"./clearInput":712,"./toggleClearButton":715}],714:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * A text input with a clear ("x") button on its right inner edge.
+ */
+const createClearableInput_1 = __importDefault(require("./createClearableInput"));
+exports.default = {
+  createClearableInput: createClearableInput_1.default
+};
+},{"./createClearableInput":713}],715:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.makeToggleClearButton = void 0;
+/**
+ * Show the clear button when there's a value to clear, hide it when the input is empty.
+ * @param hasValue
+ * @param clearButton
+ */
+const toggleClearButton = (hasValue, clearButton) => {
+  clearButton.attributes.hidden = !hasValue;
+  if (clearButton.element) {
+    clearButton.element.hidden = !hasValue;
+  }
+};
+/**
+ * A ready-to-attach input listener: shows/hides the clear button based on the real input's current value.
+ * @param clearButton
+ */
+const makeToggleClearButton = clearButton => event => toggleClearButton(event.target.value.length > 0, clearButton);
+exports.makeToggleClearButton = makeToggleClearButton;
+exports.default = toggleClearButton;
+},{}],716:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const anchor = (href = '#', children = [], className, attributes = {}) => (0, element_1.default)('a', children, className, Object.assign({
+  href
+}, attributes));
+exports.default = anchor;
+},{"./element":719}],717:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const text_1 = __importDefault(require("./text"));
+const button = (label, className, attributes = {}) => (0, element_1.default)('button', [(0, text_1.default)(label)], className, Object.assign({
+  type: 'button'
+}, attributes));
+exports.default = button;
+},{"./element":719,"./text":746}],718:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const div = (children = [], className, attributes = {}) => (0, element_1.default)('div', children, className, attributes);
+exports.default = div;
+},{"./element":719}],719:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const node_1 = __importDefault(require("./node"));
+/**
+ * Create the DomItem of a real HTML element.
+ * @param nodeName - a tag name, e.g. 'div'
+ * @param children
+ * @param className - left out of attributes entirely when not given, instead of setting an empty className
+ * @param attributes
+ */
+const element = (nodeName, children = [], className, attributes = {}) => {
+  if (className !== undefined) {
+    attributes.className = className;
+  }
+  return (0, node_1.default)(nodeName, null, children, attributes);
+};
+exports.default = element;
+},{"./node":732}],720:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const legend_1 = __importDefault(require("./legend"));
+const fieldset = (content = '', children = [], className, attributes = {}) => (0, element_1.default)('fieldset', content ? [(0, legend_1.default)(content), ...children] : children, className, attributes);
+exports.default = fieldset;
+},{"./element":719,"./legend":728}],721:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const footer = (children = [], className, attributes = {}) => (0, element_1.default)('footer', children, className, attributes);
+exports.default = footer;
+},{"./element":719}],722:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const form = (action = '', method = '', children = [], className, attributes = {}) => {
+  if (action) {
+    attributes.action = action;
+  }
+  if (method) {
+    attributes.method = method;
+  }
+  return (0, element_1.default)('form', children, className, attributes);
+};
+exports.default = form;
+},{"./element":719}],723:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const header = (children = [], className, attributes = {}) => (0, element_1.default)('header', children, className, attributes);
+exports.default = header;
+},{"./element":719}],724:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const heading = (level = 1, children = [], className, attributes = {}) => (0, element_1.default)(`h${level}`, children, className, attributes);
+exports.default = heading;
+},{"./element":719}],725:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * Base HTML element factories: thin DomItem wrappers matching real HTML elements, ported and reconciled from
+ * the component templates duplicated across quizzes, workout-planner and the website.
+ */
+const anchor_1 = __importDefault(require("./anchor"));
+const button_1 = __importDefault(require("./button"));
+const div_1 = __importDefault(require("./div"));
+const element_1 = __importDefault(require("./element"));
+const fieldset_1 = __importDefault(require("./fieldset"));
+const footer_1 = __importDefault(require("./footer"));
+const form_1 = __importDefault(require("./form"));
+const header_1 = __importDefault(require("./header"));
+const heading_1 = __importDefault(require("./heading"));
+const input_1 = __importDefault(require("./input"));
+const label_1 = __importDefault(require("./label"));
+const legend_1 = __importDefault(require("./legend"));
+const listItem_1 = __importDefault(require("./listItem"));
+const main_1 = __importDefault(require("./main"));
+const nav_1 = __importDefault(require("./nav"));
+const node_1 = __importDefault(require("./node"));
+const option_1 = __importDefault(require("./option"));
+const paragraph_1 = __importDefault(require("./paragraph"));
+const radio_1 = __importDefault(require("./radio"));
+const select_1 = __importDefault(require("./select"));
+const span_1 = __importDefault(require("./span"));
+const style_1 = __importDefault(require("./style"));
+const submit_1 = __importDefault(require("./submit"));
+const table_1 = __importDefault(require("./table"));
+const tableBody_1 = __importDefault(require("./tableBody"));
+const tableData_1 = __importDefault(require("./tableData"));
+const tableHead_1 = __importDefault(require("./tableHead"));
+const tableHeading_1 = __importDefault(require("./tableHeading"));
+const tableRow_1 = __importDefault(require("./tableRow"));
+const text_1 = __importDefault(require("./text"));
+const textArea_1 = __importDefault(require("./textArea"));
+const unorderedList_1 = __importDefault(require("./unorderedList"));
+exports.default = {
+  anchor: anchor_1.default,
+  button: button_1.default,
+  div: div_1.default,
+  element: element_1.default,
+  fieldset: fieldset_1.default,
+  footer: footer_1.default,
+  form: form_1.default,
+  header: header_1.default,
+  heading: heading_1.default,
+  input: input_1.default,
+  label: label_1.default,
+  legend: legend_1.default,
+  listItem: listItem_1.default,
+  main: main_1.default,
+  nav: nav_1.default,
+  node: node_1.default,
+  option: option_1.default,
+  paragraph: paragraph_1.default,
+  radio: radio_1.default,
+  select: select_1.default,
+  span: span_1.default,
+  style: style_1.default,
+  submit: submit_1.default,
+  table: table_1.default,
+  tableBody: tableBody_1.default,
+  tableData: tableData_1.default,
+  tableHead: tableHead_1.default,
+  tableHeading: tableHeading_1.default,
+  tableRow: tableRow_1.default,
+  text: text_1.default,
+  textArea: textArea_1.default,
+  unorderedList: unorderedList_1.default
+};
+},{"./anchor":716,"./button":717,"./div":718,"./element":719,"./fieldset":720,"./footer":721,"./form":722,"./header":723,"./heading":724,"./input":726,"./label":727,"./legend":728,"./listItem":729,"./main":730,"./nav":731,"./node":732,"./option":733,"./paragraph":734,"./radio":735,"./select":736,"./span":737,"./style":738,"./submit":739,"./table":740,"./tableBody":741,"./tableData":742,"./tableHead":743,"./tableHeading":744,"./tableRow":745,"./text":746,"./textArea":747,"./unorderedList":748}],726:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const input = (type = 'text', name = '', value = null, children = [], className, attributes = {}) => {
+  attributes.type = type;
+  if (name) {
+    attributes.name = name;
+  }
+  if (value !== null) {
+    attributes.value = value;
+  }
+  return (0, element_1.default)('input', children, className, attributes);
+};
+exports.default = input;
+},{"./element":719}],727:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const text_1 = __importDefault(require("./text"));
+const label = (content = '', labelFor = '', children = [], className, attributes = {}) => (0, element_1.default)('label', content ? [(0, text_1.default)(content), ...children] : children, className, Object.assign({
+  for: labelFor
+}, attributes));
+exports.default = label;
+},{"./element":719,"./text":746}],728:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const text_1 = __importDefault(require("./text"));
+const legend = (content = '', children = [], className, attributes = {}) => (0, element_1.default)('legend', content ? [(0, text_1.default)(content), ...children] : children, className, attributes);
+exports.default = legend;
+},{"./element":719,"./text":746}],729:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const listItem = (children = [], className, attributes = {}) => (0, element_1.default)('li', children, className, attributes);
+exports.default = listItem;
+},{"./element":719}],730:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const main = (children = [], className, attributes = {}) => (0, element_1.default)('main', children, className, attributes);
+exports.default = main;
+},{"./element":719}],731:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const nav = (children = [], className, attributes = {}) => (0, element_1.default)('nav', children, className, attributes);
+exports.default = nav;
+},{"./element":719}],732:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const json_dom_1 = __importDefault(require("json-dom"));
+/**
+ * Create the DomItem for any node, the base every other component builds on.
+ * @param nodeName - Any document node name: a tag name, #text, #comment or #document.
+ * @param nodeValue - The text of a text or comment node, null for elements.
+ * @param children
+ * @param attributes
+ */
+const node = (nodeName, nodeValue = null, children = [], attributes = {}) => json_dom_1.default.createDomItem({
+  nodeName,
+  nodeValue,
+  attributes,
+  children
+});
+exports.default = node;
+},{"json-dom":832}],733:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const text_1 = __importDefault(require("./text"));
+const option = (value, label, className, attributes = {}) => (0, element_1.default)('option', [(0, text_1.default)(label)], className, Object.assign({
+  value
+}, attributes));
+exports.default = option;
+},{"./element":719,"./text":746}],734:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const text_1 = __importDefault(require("./text"));
+const paragraph = (content = '', children = [], className, attributes = {}) => (0, element_1.default)('p', content ? [(0, text_1.default)(content), ...children] : children, className, attributes);
+exports.default = paragraph;
+},{"./element":719,"./text":746}],735:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const input_1 = __importDefault(require("./input"));
+const radio = (name = '', value = '', checked = false, children = [], className, attributes = {}) => {
+  attributes.value = value;
+  if (checked) {
+    attributes.checked = true;
+  }
+  return (0, input_1.default)('radio', name, null, children, className, attributes);
+};
+exports.default = radio;
+},{"./input":726}],736:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const select = (children = [], className, attributes = {}) => (0, element_1.default)('select', children, className, attributes);
+exports.default = select;
+},{"./element":719}],737:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const span = (children = [], className, attributes = {}) => (0, element_1.default)('span', children, className, attributes);
+exports.default = span;
+},{"./element":719}],738:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const node_1 = __importDefault(require("./node"));
+const text_1 = __importDefault(require("./text"));
+const style = (styleContent = '') => (0, node_1.default)('style', null, [(0, text_1.default)(styleContent)]);
+exports.default = style;
+},{"./node":732,"./text":746}],739:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const input_1 = __importDefault(require("./input"));
+const submit = (name = '', label = 'Submit', className, attributes = {}) => {
+  attributes.value = label;
+  return (0, input_1.default)('submit', name, null, [], className, attributes);
+};
+exports.default = submit;
+},{"./input":726}],740:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const table = (children = [], className, attributes = {}) => (0, element_1.default)('table', children, className, attributes);
+exports.default = table;
+},{"./element":719}],741:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const tableBody = (children = [], className, attributes = {}) => (0, element_1.default)('tbody', children, className, attributes);
+exports.default = tableBody;
+},{"./element":719}],742:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const tableData = (children = [], className, attributes = {}) => (0, element_1.default)('td', children, className, attributes);
+exports.default = tableData;
+},{"./element":719}],743:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const tableHead = (children = [], className, attributes = {}) => (0, element_1.default)('thead', children, className, attributes);
+exports.default = tableHead;
+},{"./element":719}],744:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const tableHeading = (children = [], className, attributes = {}) => (0, element_1.default)('th', children, className, attributes);
+exports.default = tableHeading;
+},{"./element":719}],745:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const tableRow = (children = [], className, attributes = {}) => (0, element_1.default)('tr', children, className, attributes);
+exports.default = tableRow;
+},{"./element":719}],746:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const node_1 = __importDefault(require("./node"));
+/**
+ * Create a text node DomItem.
+ * @param nodeValue
+ */
+const text = (nodeValue = '') => (0, node_1.default)('#text', nodeValue);
+exports.default = text;
+},{"./node":732}],747:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const textArea = (name = '', children = [], className, attributes = {}) => {
+  if (name) {
+    attributes.name = name;
+  }
+  return (0, element_1.default)('textarea', children, className, attributes);
+};
+exports.default = textArea;
+},{"./element":719}],748:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const element_1 = __importDefault(require("./element"));
+const unorderedList = (children = [], className, attributes = {}) => (0, element_1.default)('ul', children, className, attributes);
+exports.default = unorderedList;
+},{"./element":719}],749:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * A minimal component library on json-dom: base HTML element factories plus richer interactive components.
+ */
+require("core-js/stable");
+const index_1 = __importDefault(require("./clearableInput/index"));
+const index_2 = __importDefault(require("./components/index"));
+const index_3 = __importDefault(require("./typeahead/index"));
+/**
+ * Store a reference to the global scope which will be Window if rendered via browser
+ */
+const root = typeof window !== 'undefined' ? window : {};
+const jsonDomComponents = {
+  ...index_2.default,
+  ...index_3.default,
+  ...index_1.default
+};
+root.jsonDomComponents = jsonDomComponents;
+exports.default = jsonDomComponents;
+},{"./clearableInput/index":714,"./components/index":725,"./typeahead/index":753,"core-js/stable":711}],750:[function(require,module,exports){
+"use strict";
+
+require("core-js/modules/esnext.iterator.constructor.js");
+require("core-js/modules/esnext.iterator.find.js");
+require("core-js/modules/esnext.iterator.map.js");
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const div_1 = __importDefault(require("../components/div"));
+const input_1 = __importDefault(require("../components/input"));
+const option_1 = __importDefault(require("../components/option"));
+const select_1 = __importDefault(require("../components/select"));
+const filterOptions_1 = require("./filterOptions");
+const hideList_1 = require("./hideList");
+const selectOption_1 = require("./selectOption");
+/**
+ * A typeahead: a free-text input that filters a list of options as you type, and a (visually hidden until
+ * needed) select carrying the real options and the real submitted value - picking one from the filtered list
+ * copies its label back into the free-text input and collapses the list again.
+ *
+ * Ported from a PHP Blade reference implementation, reusing its two-field shape (visible free-type input +
+ * collapsed select holding the real value) and its filtering rules (case-insensitive match on value or label,
+ * list only expands once there are 2+ characters typed and at least one match) - but wired through json-dom's
+ * own DomItem tree (via eventListeners set directly on each item, bound automatically on render) instead of
+ * attaching to the real DOM by hand.
+ *
+ * This is a minimum/POC implementation: listeners are plain closures, not names registered for json-dom's
+ * render-only/forwarding mode - fine for a component built and rendered locally, not yet for one whose events
+ * need forwarding across a socket. See MAIN.md.
+ */
+const createTypeahead = config => {
+  const {
+    name,
+    options,
+    value = '',
+    placeholder = '',
+    className,
+    readonly = false
+  } = config;
+  const selected = options.find(candidate => candidate.value === value);
+  const optionItems = options.map(choice => (0, option_1.default)(choice.value, choice.label, undefined, choice.value === value ? {
+    selected: true
+  } : {}));
+  const freeTypeInput = (0, input_1.default)('text', `${name}-search`, selected ? selected.label : '', [], 'typeahead-search', {
+    placeholder,
+    ...(readonly ? {
+      readonly: true
+    } : {})
+  });
+  const selectItem = (0, select_1.default)(optionItems, 'typeahead-options', {
+    name,
+    hidden: true,
+    size: 1,
+    ...(value ? {
+      value
+    } : {}),
+    ...(readonly ? {
+      disabled: true
+    } : {})
+  });
+  if (!readonly) {
+    freeTypeInput.eventListeners.keyup = [{
+      listenerFunc: (0, filterOptions_1.makeFilterOptions)(optionItems, selectItem)
+    }];
+    freeTypeInput.eventListeners.blur = [{
+      listenerFunc: (0, hideList_1.makeHideList)(selectItem)
+    }];
+    selectItem.eventListeners.change = [{
+      listenerFunc: (0, selectOption_1.makeSelectOption)(options, freeTypeInput, selectItem)
+    }];
+    selectItem.eventListeners.blur = [{
+      listenerFunc: (0, hideList_1.makeHideList)(selectItem)
+    }];
+  }
+  return (0, div_1.default)([freeTypeInput, selectItem], className ?? 'typeahead');
+};
+exports.default = createTypeahead;
+},{"../components/div":718,"../components/input":726,"../components/option":733,"../components/select":736,"./filterOptions":751,"./hideList":752,"./selectOption":754,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.map.js":650}],751:[function(require,module,exports){
+"use strict";
+
+require("core-js/modules/es.array.includes.js");
+require("core-js/modules/esnext.iterator.constructor.js");
+require("core-js/modules/esnext.iterator.for-each.js");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.makeFilterOptions = void 0;
+/**
+ * Filter optionItems by whether their value or label text includes the search term (case-insensitive), hiding
+ * everything else. Reveals the select (as a real dropdown, a few rows tall) once there is a real search term and
+ * at least one match; otherwise keeps it collapsed - matching the reference Blade component's own behaviour.
+ * @param searchTerm
+ * @param optionItems
+ * @param selectItem
+ */
+const filterOptions = (searchTerm, optionItems, selectItem) => {
+  const term = searchTerm.trim().toLowerCase();
+  let visibleCount = 0;
+  optionItems.forEach(optionItem => {
+    const label = (optionItem.children[0]?.nodeValue ?? '').toLowerCase();
+    const value = String(optionItem.attributes.value ?? '').toLowerCase();
+    const matches = term.length > 0 && (label.includes(term) || value.includes(term));
+    optionItem.attributes.hidden = !matches;
+    if (matches) {
+      visibleCount++;
+    }
+    if (optionItem.element) {
+      optionItem.element.hidden = !matches;
+    }
+  });
+  const expand = term.length >= 2 && visibleCount > 0;
+  selectItem.attributes.hidden = !expand;
+  selectItem.attributes.size = expand ? Math.min(5, visibleCount) : 1;
+  if (selectItem.element) {
+    const element = selectItem.element;
+    element.hidden = !expand;
+    element.size = expand ? Math.min(5, visibleCount) : 1;
+  }
+};
+/**
+ * A ready-to-attach keyup listener: reads the real input's current value and filters the given options by it.
+ * @param optionItems
+ * @param selectItem
+ */
+const makeFilterOptions = (optionItems, selectItem) => event => filterOptions(event.target.value, optionItems, selectItem);
+exports.makeFilterOptions = makeFilterOptions;
+exports.default = filterOptions;
+},{"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649}],752:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.makeHideList = void 0;
+/**
+ * Collapse the options list: hidden again, back to a single visible row's worth of height.
+ * @param selectItem
+ */
+const hideList = selectItem => {
+  selectItem.attributes.hidden = true;
+  selectItem.attributes.size = 1;
+  if (selectItem.element) {
+    const element = selectItem.element;
+    element.hidden = true;
+    element.size = 1;
+  }
+};
+/**
+ * A ready-to-attach listener (ignores the event) which collapses the given select's options list.
+ * @param selectItem
+ */
+const makeHideList = selectItem => () => hideList(selectItem);
+exports.makeHideList = makeHideList;
+exports.default = hideList;
+},{}],753:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * A typeahead (filterable select) built on the base components.
+ */
+const createTypeahead_1 = __importDefault(require("./createTypeahead"));
+exports.default = {
+  createTypeahead: createTypeahead_1.default
+};
+},{"./createTypeahead":750}],754:[function(require,module,exports){
+"use strict";
+
+require("core-js/modules/esnext.iterator.constructor.js");
+require("core-js/modules/esnext.iterator.find.js");
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.makeSelectOption = void 0;
+const hideList_1 = __importDefault(require("./hideList"));
+/**
+ * A pick was made (directly, or via the select's own change event): copy the matching option's label back into
+ * the free-type input's real value and its attributes (so it stays correct across a re-render), then collapse
+ * the list again.
+ * @param selectedValue
+ * @param options
+ * @param freeTypeInput
+ * @param selectItem
+ */
+const selectOption = (selectedValue, options, freeTypeInput, selectItem) => {
+  const matched = options.find(candidate => candidate.value === selectedValue);
+  const displayValue = matched ? matched.label : '';
+  freeTypeInput.attributes.value = displayValue;
+  if (freeTypeInput.element) {
+    freeTypeInput.element.value = displayValue;
+  }
+  (0, hideList_1.default)(selectItem);
+};
+/**
+ * A ready-to-attach change listener for the select: reads its real current value and applies the pick.
+ * @param options
+ * @param freeTypeInput
+ * @param selectItem
+ */
+const makeSelectOption = (options, freeTypeInput, selectItem) => event => selectOption(event.target.value, options, freeTypeInput, selectItem);
+exports.makeSelectOption = makeSelectOption;
+exports.default = selectOption;
+},{"./hideList":752,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647}],755:[function(require,module,exports){
+"use strict";
+
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.json.stringify.js");
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -24651,7 +25640,7 @@ const domItemToJson = (item, {
   propertiesToDelete = []
 } = {}) => JSON.stringify((0, removeEmptyProperties_1.default)(si_funciona_1.default.cloneObject(item), ['activeListeners', 'element', 'parentItem', 'body', 'head', ...propertiesToDelete]), useExclusions);
 exports.default = domItemToJson;
-},{"./removeEmptyProperties":714,"core-js/modules/es.array.includes.js":351,"core-js/modules/es.json.stringify.js":418,"core-js/stable":711,"si-funciona":879}],713:[function(require,module,exports){
+},{"./removeEmptyProperties":757,"core-js/modules/es.array.includes.js":351,"core-js/modules/es.json.stringify.js":418,"core-js/stable":711,"si-funciona":922}],756:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -24669,7 +25658,7 @@ exports.default = {
   domItemToJson: domItemToJson_1.default,
   removeEmptyProperties: removeEmptyProperties_1.default
 };
-},{"./domItemToJson":712,"./removeEmptyProperties":714,"core-js/stable":711}],714:[function(require,module,exports){
+},{"./domItemToJson":755,"./removeEmptyProperties":757,"core-js/stable":711}],757:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/es.array.includes.js");
@@ -24713,7 +25702,7 @@ const removeEmptyProperties = (item, propertiesToDelete = []) => {
   return item;
 };
 exports.default = removeEmptyProperties;
-},{"../domItem/traits/getNonSerializableKeys":742,"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":879}],715:[function(require,module,exports){
+},{"../domItem/traits/getNonSerializableKeys":785,"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":922}],758:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/es.array.includes.js");
@@ -24756,7 +25745,7 @@ const createChangeList = ({
   return changeList;
 };
 exports.default = createChangeList;
-},{"core-js/modules/es.array.includes.js":351,"core-js/stable":711,"si-funciona":879}],716:[function(require,module,exports){
+},{"core-js/modules/es.array.includes.js":351,"core-js/stable":711,"si-funciona":922}],759:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -24912,7 +25901,7 @@ const domItemChanges = domItem => {
   }, changeList);
 };
 exports.default = domItemChanges;
-},{"./createChangeList":715,"./elementHasAttribute":719,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/stable":711,"si-funciona":879}],717:[function(require,module,exports){
+},{"./createChangeList":758,"./elementHasAttribute":762,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/stable":711,"si-funciona":922}],760:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -24976,7 +25965,7 @@ const domItemHasAttribute = (domItem, key, attr) => {
   return 1;
 };
 exports.default = domItemHasAttribute;
-},{"./getAssignedStyles":720,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/stable":711,"si-funciona":879}],718:[function(require,module,exports){
+},{"./getAssignedStyles":763,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/stable":711,"si-funciona":922}],761:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -25128,7 +26117,7 @@ const elementChanges = domItem => {
   }, changeList);
 };
 exports.default = elementChanges;
-},{"./createChangeList":715,"./domItemHasAttribute":717,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/stable":711,"si-funciona":879}],719:[function(require,module,exports){
+},{"./createChangeList":758,"./domItemHasAttribute":760,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/stable":711,"si-funciona":922}],762:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -25199,7 +26188,7 @@ const elementHasAttribute = (element, key, attr) => {
   return 1;
 };
 exports.default = elementHasAttribute;
-},{"./getAssignedStyles":720,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/stable":711,"si-funciona":879}],720:[function(require,module,exports){
+},{"./getAssignedStyles":763,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/stable":711,"si-funciona":922}],763:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -25220,7 +26209,7 @@ const si_funciona_1 = __importDefault(require("si-funciona"));
  */
 const getAssignedStyles = elementStyles => si_funciona_1.default.reduceObject(elementStyles, (styles, attr, key) => Number.isNaN(Number(key)) ? styles : si_funciona_1.default.setValue(attr, elementStyles[attr], styles), {});
 exports.default = getAssignedStyles;
-},{"core-js/stable":711,"si-funciona":879}],721:[function(require,module,exports){
+},{"core-js/stable":711,"si-funciona":922}],764:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -25246,7 +26235,7 @@ exports.default = {
   elementHasAttribute: elementHasAttribute_1.default,
   getAssignedStyles: getAssignedStyles_1.default
 };
-},{"./createChangeList":715,"./domItemChanges":716,"./domItemHasAttribute":717,"./elementChanges":718,"./elementHasAttribute":719,"./getAssignedStyles":720,"core-js/stable":711}],722:[function(require,module,exports){
+},{"./createChangeList":758,"./domItemChanges":759,"./domItemHasAttribute":760,"./elementChanges":761,"./elementHasAttribute":762,"./getAssignedStyles":763,"core-js/stable":711}],765:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -25326,7 +26315,7 @@ exports.default = {
   setParentItemReferences: setParentItemReferences_1.default,
   withTrait: withTrait_1.default
 };
-},{"./objects/addDomItemProperties":723,"./objects/createCoreItem":724,"./objects/createDomItem":725,"./objects/documentDomItem":726,"./objects/documentItem":727,"./objects/initChildren":728,"./objects/initRoot":729,"./query/gatherChildItems":730,"./query/getChildTest":731,"./query/getChildrenByClass":732,"./query/getChildrenByName":733,"./query/getChildrenFromAttribute":734,"./query/getItemByElement":735,"./query/getParentsByClass":736,"./query/getParentsByName":737,"./query/getParentsByTagName":738,"./query/getParentsFromAttribute":739,"./traits/defineTrait":740,"./traits/getTraitDefinition":743,"./traits/hasTrait":744,"./traits/hasTraits":745,"./traits/isDomItem":746,"./traits/withTrait":747,"./tree/appendChild":748,"./tree/getItemByPath":749,"./tree/getItemPath":750,"./tree/getTopParentItem":751,"./tree/insertChild":752,"./tree/itemIdIndex":753,"./tree/removeChild":754,"./tree/setParentItemReferences":755,"core-js/stable":711}],723:[function(require,module,exports){
+},{"./objects/addDomItemProperties":766,"./objects/createCoreItem":767,"./objects/createDomItem":768,"./objects/documentDomItem":769,"./objects/documentItem":770,"./objects/initChildren":771,"./objects/initRoot":772,"./query/gatherChildItems":773,"./query/getChildTest":774,"./query/getChildrenByClass":775,"./query/getChildrenByName":776,"./query/getChildrenFromAttribute":777,"./query/getItemByElement":778,"./query/getParentsByClass":779,"./query/getParentsByName":780,"./query/getParentsByTagName":781,"./query/getParentsFromAttribute":782,"./traits/defineTrait":783,"./traits/getTraitDefinition":786,"./traits/hasTrait":787,"./traits/hasTraits":788,"./traits/isDomItem":789,"./traits/withTrait":790,"./tree/appendChild":791,"./tree/getItemByPath":792,"./tree/getItemPath":793,"./tree/getTopParentItem":794,"./tree/insertChild":795,"./tree/itemIdIndex":796,"./tree/removeChild":797,"./tree/setParentItemReferences":798,"core-js/stable":711}],766:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -25354,7 +26343,7 @@ const addDomItemProperties = item => {
   return (0, createDomItem_1.default)(item);
 };
 exports.default = addDomItemProperties;
-},{"./createDomItem":725,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],724:[function(require,module,exports){
+},{"./createDomItem":768,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],767:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -25408,7 +26397,7 @@ const createCoreItem = (item = {}) => {
   return newItem;
 };
 exports.default = createCoreItem;
-},{"../tree/appendChild":748,"../tree/itemIdIndex":753,"../tree/removeChild":754,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":879}],725:[function(require,module,exports){
+},{"../tree/appendChild":791,"../tree/itemIdIndex":796,"../tree/removeChild":797,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":922}],768:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -25449,7 +26438,7 @@ const createDomItem = (item = {}) => {
   });
 };
 exports.default = createDomItem;
-},{"../traits/withTrait":747,"./createCoreItem":724,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],726:[function(require,module,exports){
+},{"../traits/withTrait":790,"./createCoreItem":767,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],769:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -25486,7 +26475,7 @@ const documentDomItem = (listeners = {}, rootItem = (0, initRoot_1.default)((0, 
   return (0, updateDomItems_1.default)((0, createDomItem_1.default)(rootItem));
 };
 exports.default = documentDomItem;
-},{"../../sync/updateDomItems":799,"./createDomItem":725,"./initChildren":728,"./initRoot":729,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/stable":711}],727:[function(require,module,exports){
+},{"../../sync/updateDomItems":842,"./createDomItem":768,"./initChildren":771,"./initRoot":772,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/stable":711}],770:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -25510,7 +26499,7 @@ const documentItem = (() => {
   return existingItem;
 })();
 exports.default = documentItem;
-},{"./documentDomItem":726,"core-js/stable":711}],728:[function(require,module,exports){
+},{"./documentDomItem":769,"core-js/stable":711}],771:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -25553,7 +26542,7 @@ const initChildren = () => {
   return children;
 };
 exports.default = initChildren;
-},{"./createDomItem":725,"core-js/stable":711,"si-funciona/dist/helpers/functions/onBodyLoad":827}],729:[function(require,module,exports){
+},{"./createDomItem":768,"core-js/stable":711,"si-funciona/dist/helpers/functions/onBodyLoad":870}],772:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -25584,7 +26573,7 @@ const initRoot = (children = [{}, {}], listeners = {}) => (0, createDomItem_1.de
   body: children[1]
 });
 exports.default = initRoot;
-},{"./createDomItem":725,"core-js/stable":711}],730:[function(require,module,exports){
+},{"./createDomItem":768,"core-js/stable":711}],773:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -25604,7 +26593,7 @@ require("core-js/stable");
  */
 const gatherChildItems = (item, test) => test(item, item.children.reduce((a, b) => a.concat(gatherChildItems(b, test)), []));
 exports.default = gatherChildItems;
-},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/stable":711}],731:[function(require,module,exports){
+},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/stable":711}],774:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25618,7 +26607,7 @@ require("core-js/stable");
  */
 const getChildTest = (attr, value) => (item, gatheredResults) => item.attributes[attr] && item.attributes[attr] === value ? gatheredResults.concat([item]) : gatheredResults;
 exports.default = getChildTest;
-},{"core-js/stable":711}],732:[function(require,module,exports){
+},{"core-js/stable":711}],775:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/es.array.includes.js");
@@ -25643,7 +26632,7 @@ const gatherChildItems_1 = __importDefault(require("./gatherChildItems"));
  */
 const getChildrenByClass = (className, item = documentItem_1.default.body) => (0, gatherChildItems_1.default)(item, (child, gatheredResults) => (child.attributes.className ?? '').split(' ').includes(className) ? gatheredResults.concat([child]) : gatheredResults);
 exports.default = getChildrenByClass;
-},{"../objects/documentItem":727,"./gatherChildItems":730,"core-js/modules/es.array.includes.js":351,"core-js/stable":711}],733:[function(require,module,exports){
+},{"../objects/documentItem":770,"./gatherChildItems":773,"core-js/modules/es.array.includes.js":351,"core-js/stable":711}],776:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -25665,7 +26654,7 @@ const getChildrenFromAttribute_1 = __importDefault(require("./getChildrenFromAtt
  */
 const getChildrenByName = si_funciona_1.default.curry(getChildrenFromAttribute_1.default)('name');
 exports.default = getChildrenByName;
-},{"./getChildrenFromAttribute":734,"core-js/stable":711,"si-funciona":879}],734:[function(require,module,exports){
+},{"./getChildrenFromAttribute":777,"core-js/stable":711,"si-funciona":922}],777:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -25692,7 +26681,7 @@ const getChildTest_1 = __importDefault(require("./getChildTest"));
  */
 const getChildrenFromAttribute = (attr, value, item = documentItem_1.default.body) => (0, gatherChildItems_1.default)(item, (0, getChildTest_1.default)(attr, value));
 exports.default = getChildrenFromAttribute;
-},{"../objects/documentItem":727,"./gatherChildItems":730,"./getChildTest":731,"core-js/stable":711}],735:[function(require,module,exports){
+},{"../objects/documentItem":770,"./gatherChildItems":773,"./getChildTest":774,"core-js/stable":711}],778:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25720,7 +26709,7 @@ const getItemByElement = (item, element) => {
   return null;
 };
 exports.default = getItemByElement;
-},{"core-js/stable":711}],736:[function(require,module,exports){
+},{"core-js/stable":711}],779:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/es.array.includes.js");
@@ -25759,7 +26748,7 @@ const getParentsByClass = (className, item = documentItem_1.default.body) => {
   return carriesClass ? getParentsByClass(className, parent).concat([parent]) : getParentsByClass(className, parent);
 };
 exports.default = getParentsByClass;
-},{"../objects/documentItem":727,"core-js/modules/es.array.includes.js":351,"core-js/stable":711,"si-funciona":879}],737:[function(require,module,exports){
+},{"../objects/documentItem":770,"core-js/modules/es.array.includes.js":351,"core-js/stable":711,"si-funciona":922}],780:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -25781,7 +26770,7 @@ const getParentsFromAttribute_1 = __importDefault(require("./getParentsFromAttri
  */
 const getParentsByName = si_funciona_1.default.curry(getParentsFromAttribute_1.default)('name');
 exports.default = getParentsByName;
-},{"./getParentsFromAttribute":739,"core-js/stable":711,"si-funciona":879}],738:[function(require,module,exports){
+},{"./getParentsFromAttribute":782,"core-js/stable":711,"si-funciona":922}],781:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -25803,7 +26792,7 @@ const getParentsFromAttribute_1 = __importDefault(require("./getParentsFromAttri
  */
 const getParentsByTagName = si_funciona_1.default.curry(getParentsFromAttribute_1.default)('nodeName');
 exports.default = getParentsByTagName;
-},{"./getParentsFromAttribute":739,"core-js/stable":711,"si-funciona":879}],739:[function(require,module,exports){
+},{"./getParentsFromAttribute":782,"core-js/stable":711,"si-funciona":922}],782:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -25841,7 +26830,7 @@ const getParentsFromAttribute = (attr, value, item = documentItem_1.default.body
   return (parent.attributes[attr] || item[attr] || false) === value ? getParentsFromAttribute(attr, value, parent).concat([parent]) : getParentsFromAttribute(attr, value, parent);
 };
 exports.default = getParentsFromAttribute;
-},{"../objects/documentItem":727,"core-js/stable":711,"si-funciona":879}],740:[function(require,module,exports){
+},{"../objects/documentItem":770,"core-js/stable":711,"si-funciona":922}],783:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -25866,7 +26855,7 @@ const defineTrait = (name, definition) => {
   return definition;
 };
 exports.default = defineTrait;
-},{"./definitions":741,"core-js/stable":711}],741:[function(require,module,exports){
+},{"./definitions":784,"core-js/stable":711}],784:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.map.delete-all.js");
@@ -25897,7 +26886,7 @@ const definitions = new Map([['render', {
   })
 }]]);
 exports.default = definitions;
-},{"core-js/modules/esnext.map.delete-all.js":653,"core-js/modules/esnext.map.every.js":654,"core-js/modules/esnext.map.filter.js":655,"core-js/modules/esnext.map.find-key.js":656,"core-js/modules/esnext.map.find.js":657,"core-js/modules/esnext.map.includes.js":658,"core-js/modules/esnext.map.key-of.js":659,"core-js/modules/esnext.map.map-keys.js":660,"core-js/modules/esnext.map.map-values.js":661,"core-js/modules/esnext.map.merge.js":662,"core-js/modules/esnext.map.reduce.js":663,"core-js/modules/esnext.map.some.js":664,"core-js/modules/esnext.map.update.js":665}],742:[function(require,module,exports){
+},{"core-js/modules/esnext.map.delete-all.js":653,"core-js/modules/esnext.map.every.js":654,"core-js/modules/esnext.map.filter.js":655,"core-js/modules/esnext.map.find-key.js":656,"core-js/modules/esnext.map.find.js":657,"core-js/modules/esnext.map.includes.js":658,"core-js/modules/esnext.map.key-of.js":659,"core-js/modules/esnext.map.map-keys.js":660,"core-js/modules/esnext.map.map-values.js":661,"core-js/modules/esnext.map.merge.js":662,"core-js/modules/esnext.map.reduce.js":663,"core-js/modules/esnext.map.some.js":664,"core-js/modules/esnext.map.update.js":665}],785:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -25923,7 +26912,7 @@ const getNonSerializableKeys = item => Object.keys(item.has ?? {}).flatMap(trait
   return definition && definition.serializable === false ? definition.keys : [];
 });
 exports.default = getNonSerializableKeys;
-},{"./definitions":741,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.flat-map.js":648,"core-js/stable":711}],743:[function(require,module,exports){
+},{"./definitions":784,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.flat-map.js":648,"core-js/stable":711}],786:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -25942,7 +26931,7 @@ const definitions_1 = __importDefault(require("./definitions"));
  */
 const getTraitDefinition = name => definitions_1.default.get(name);
 exports.default = getTraitDefinition;
-},{"./definitions":741,"core-js/stable":711}],744:[function(require,module,exports){
+},{"./definitions":784,"core-js/stable":711}],787:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25956,7 +26945,7 @@ require("core-js/stable");
  */
 const hasTrait = (item, trait) => (item.has ?? {})[trait] === true;
 exports.default = hasTrait;
-},{"core-js/stable":711}],745:[function(require,module,exports){
+},{"core-js/stable":711}],788:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -25973,7 +26962,7 @@ require("core-js/stable");
  */
 const hasTraits = (item, ...traits) => traits.every(trait => (item.has ?? {})[trait] === true);
 exports.default = hasTraits;
-},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/stable":711}],746:[function(require,module,exports){
+},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/stable":711}],789:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -25995,7 +26984,7 @@ const hasTrait_1 = __importDefault(require("./hasTrait"));
  */
 const isDomItem = item => (0, hasTrait_1.default)(item, 'render') && item.children.every(isDomItem);
 exports.default = isDomItem;
-},{"./hasTrait":744,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/stable":711}],747:[function(require,module,exports){
+},{"./hasTrait":787,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/stable":711}],790:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26024,7 +27013,7 @@ const withTrait = (item, trait, data) => {
   return item;
 };
 exports.default = withTrait;
-},{"./definitions":741,"core-js/stable":711}],748:[function(require,module,exports){
+},{"./definitions":784,"core-js/stable":711}],791:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26042,7 +27031,7 @@ const appendChild = (parent, child) => {
   return parent;
 };
 exports.default = appendChild;
-},{"core-js/stable":711}],749:[function(require,module,exports){
+},{"core-js/stable":711}],792:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -26066,7 +27055,7 @@ const getItemByPath = (root, path) => path.reduce((item, index) => {
   return child;
 }, root);
 exports.default = getItemByPath;
-},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/stable":711}],750:[function(require,module,exports){
+},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/stable":711}],793:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26096,7 +27085,7 @@ const getItemPath = item => {
   return [...getItemPath(parent), parent.children.indexOf(item)];
 };
 exports.default = getItemPath;
-},{"core-js/stable":711,"si-funciona":879}],751:[function(require,module,exports){
+},{"core-js/stable":711,"si-funciona":922}],794:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26124,7 +27113,7 @@ const getTopParentItem = item => {
   return si_funciona_1.default.emptyObject(item.parentItem) ? item : getTopParentItem(item.parentItem);
 };
 exports.default = getTopParentItem;
-},{"core-js/stable":711,"si-funciona":879}],752:[function(require,module,exports){
+},{"core-js/stable":711,"si-funciona":922}],795:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26145,7 +27134,7 @@ const insertChild = (parent, child, index) => {
   return parent;
 };
 exports.default = insertChild;
-},{"core-js/stable":711}],753:[function(require,module,exports){
+},{"core-js/stable":711}],796:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -26264,7 +27253,7 @@ const getItemById = (root, id) => {
   return item;
 };
 exports.getItemById = getItemById;
-},{"collect-your-stuff":20,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":879}],754:[function(require,module,exports){
+},{"collect-your-stuff":20,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":922}],797:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26284,7 +27273,7 @@ const removeChild = (parent, child) => {
   return parent.children.splice(parent.children.indexOf(child), 1);
 };
 exports.default = removeChild;
-},{"./itemIdIndex":753,"core-js/stable":711}],755:[function(require,module,exports){
+},{"./itemIdIndex":796,"core-js/stable":711}],798:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -26309,7 +27298,7 @@ const setParentItemReferences = item => {
   return item;
 };
 exports.default = setParentItemReferences;
-},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],756:[function(require,module,exports){
+},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],799:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26353,7 +27342,7 @@ const activateListener = (eventName, eventListener, item) => {
   return item;
 };
 exports.default = activateListener;
-},{"../../domItem/tree/getTopParentItem":751,"../objects/createEventResponder":782,"../objects/options/getListenerOptions":784,"../objects/options/optionsToNumber":786,"./makeEventHandler":769,"./retrieveListener":775,"core-js/stable":711}],757:[function(require,module,exports){
+},{"../../domItem/tree/getTopParentItem":794,"../objects/createEventResponder":825,"../objects/options/getListenerOptions":827,"../objects/options/optionsToNumber":829,"./makeEventHandler":812,"./retrieveListener":818,"core-js/stable":711}],800:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26406,7 +27395,7 @@ const addEventListener = (eventName, listenerFunction, customArgs, options, item
   return item;
 };
 exports.default = addEventListener;
-},{"../objects/createEventListener":780,"core-js/stable":711}],758:[function(require,module,exports){
+},{"../objects/createEventListener":823,"core-js/stable":711}],801:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -26459,7 +27448,7 @@ const applyActiveListeners = (eventName, item) => {
   return item;
 };
 exports.default = applyActiveListeners;
-},{"../objects/createEventProxy":781,"../objects/options/getListenerOptions":784,"../objects/options/numberToOptions":785,"./assignListener":759,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":879}],759:[function(require,module,exports){
+},{"../objects/createEventProxy":824,"../objects/options/getListenerOptions":827,"../objects/options/numberToOptions":828,"./assignListener":802,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":922}],802:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26497,7 +27486,7 @@ const assignListener = (trigger, elem, fn, options = false) => {
   return fn;
 };
 exports.default = assignListener;
-},{"./listenerOptions":768,"core-js/stable":711}],760:[function(require,module,exports){
+},{"./listenerOptions":811,"core-js/stable":711}],803:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26524,7 +27513,7 @@ const bindAllListeners = item => {
   return (0, bindListeners_1.default)(item);
 };
 exports.default = bindAllListeners;
-},{"./bindListeners":762,"core-js/stable":711}],761:[function(require,module,exports){
+},{"./bindListeners":805,"core-js/stable":711}],804:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -26559,7 +27548,7 @@ const bindElementListeners = item => {
   return item;
 };
 exports.default = bindElementListeners;
-},{"./activateListener":756,"./applyActiveListeners":758,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],762:[function(require,module,exports){
+},{"./activateListener":799,"./applyActiveListeners":801,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],805:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26581,7 +27570,7 @@ const si_funciona_1 = __importDefault(require("si-funciona"));
  */
 const bindListeners = item => !si_funciona_1.default.emptyObject(item.eventListeners) && item.element ? (0, bindElementListeners_1.default)(item) : item;
 exports.default = bindListeners;
-},{"./bindElementListeners":761,"core-js/stable":711,"si-funciona":879}],763:[function(require,module,exports){
+},{"./bindElementListeners":804,"core-js/stable":711,"si-funciona":922}],806:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26638,7 +27627,7 @@ const deactivateListener = (eventName, eventListener, item) => {
   return item;
 };
 exports.default = deactivateListener;
-},{"../objects/options/getListenerOptions":784,"../objects/options/numberToOptions":785,"../objects/options/optionsToNumber":786,"./unassignListener":778,"core-js/stable":711,"si-funciona":879}],764:[function(require,module,exports){
+},{"../objects/options/getListenerOptions":827,"../objects/options/numberToOptions":828,"../objects/options/optionsToNumber":829,"./unassignListener":821,"core-js/stable":711,"si-funciona":922}],807:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -26661,7 +27650,7 @@ const deactivateListeners = item => {
   return item;
 };
 exports.default = deactivateListeners;
-},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],765:[function(require,module,exports){
+},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],808:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26721,7 +27710,7 @@ const findEventListener = (eventName, listenerFunction, customArgs, options, ite
   return [listenerIndex, item.eventListeners[eventName][listenerIndex]];
 };
 exports.default = findEventListener;
-},{"../objects/options/getListenerOptions":784,"../objects/options/optionsToNumber":786,"core-js/stable":711,"si-funciona":879}],766:[function(require,module,exports){
+},{"../objects/options/getListenerOptions":827,"../objects/options/optionsToNumber":829,"core-js/stable":711,"si-funciona":922}],809:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26765,7 +27754,7 @@ const fullAddEventListener = (eventName, listener, name, customArgs, options, it
   }, (0, curry_1.default)(addEventListener_1.default)(eventName, listenerName, customArgs, options), bindListeners_1.default)(item);
 };
 exports.default = fullAddEventListener;
-},{"../../domItem/tree/getTopParentItem":751,"./addEventListener":757,"./bindListeners":762,"./registerListener":772,"core-js/stable":711,"si-funciona/dist/helpers/functions/curry":824,"si-funciona/dist/helpers/functions/pipe":828}],767:[function(require,module,exports){
+},{"../../domItem/tree/getTopParentItem":794,"./addEventListener":800,"./bindListeners":805,"./registerListener":815,"core-js/stable":711,"si-funciona/dist/helpers/functions/curry":867,"si-funciona/dist/helpers/functions/pipe":871}],810:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26801,7 +27790,7 @@ const fullRemoveEventListener = (eventName, listener, name, customArgs, options,
   return (0, removeEventListener_1.default)(eventName, listenerName, customArgs, options, item);
 };
 exports.default = fullRemoveEventListener;
-},{"./removeEventListener":774,"core-js/stable":711}],768:[function(require,module,exports){
+},{"./removeEventListener":817,"core-js/stable":711}],811:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26831,7 +27820,7 @@ const listenerOptions = options => {
   return typeof options === 'object' && listenerOptions.supportsOptions ? options : false;
 };
 exports.default = listenerOptions;
-},{"core-js/stable":711}],769:[function(require,module,exports){
+},{"core-js/stable":711}],812:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26853,7 +27842,7 @@ const makeEventHandler = (listener, item, ...args) => {
   };
 };
 exports.default = makeEventHandler;
-},{"core-js/stable":711}],770:[function(require,module,exports){
+},{"core-js/stable":711}],813:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/es.array.includes.js");
@@ -26898,7 +27887,7 @@ const makeForwardingListener = (listenerName, transport) => (event, item, ...arg
   targetState: captureTargetState(event.target)
 });
 exports.default = makeForwardingListener;
-},{"core-js/modules/es.array.includes.js":351,"core-js/stable":711}],771:[function(require,module,exports){
+},{"core-js/modules/es.array.includes.js":351,"core-js/stable":711}],814:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26937,7 +27926,7 @@ const receiveForwardedEvent = (root, envelope, validator) => {
   }));
 };
 exports.default = receiveForwardedEvent;
-},{"../../domItem/tree/itemIdIndex":753,"core-js/stable":711}],772:[function(require,module,exports){
+},{"../../domItem/tree/itemIdIndex":796,"core-js/stable":711}],815:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26961,7 +27950,7 @@ const registerListener = (listener, name = listener.name, parent = documentItem_
   [name]: listener
 });
 exports.default = registerListener;
-},{"../../domItem/objects/documentItem":727,"core-js/stable":711}],773:[function(require,module,exports){
+},{"../../domItem/objects/documentItem":770,"core-js/stable":711}],816:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26986,7 +27975,7 @@ const registerListeners = (listeners, parent = documentItem_1.default) => {
   return parent;
 };
 exports.default = registerListeners;
-},{"../../domItem/objects/documentItem":727,"core-js/stable":711,"si-funciona":879}],774:[function(require,module,exports){
+},{"../../domItem/objects/documentItem":770,"core-js/stable":711,"si-funciona":922}],817:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27027,7 +28016,7 @@ const removeEventListener = (eventName, listenerFunction, customArgs, options, i
   return item;
 };
 exports.default = removeEventListener;
-},{"./deactivateListener":763,"./findEventListener":765,"core-js/stable":711}],775:[function(require,module,exports){
+},{"./deactivateListener":806,"./findEventListener":808,"core-js/stable":711}],818:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/es.array.includes.js");
@@ -27065,7 +28054,7 @@ const retrieveListener = (listenerName, parent = documentItem_1.default) => {
   return parent.eventActions[listenerName];
 };
 exports.default = retrieveListener;
-},{"../../domItem/objects/documentItem":727,"./makeForwardingListener":770,"core-js/modules/es.array.includes.js":351,"core-js/stable":711}],776:[function(require,module,exports){
+},{"../../domItem/objects/documentItem":770,"./makeForwardingListener":813,"core-js/modules/es.array.includes.js":351,"core-js/stable":711}],819:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -27120,7 +28109,7 @@ const revokeActiveListeners = (eventName, item) => {
   return item;
 };
 exports.default = revokeActiveListeners;
-},{"../objects/options/getListenerOptions":784,"../objects/options/numberToOptions":785,"./unassignListener":778,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":879}],777:[function(require,module,exports){
+},{"../objects/options/getListenerOptions":827,"../objects/options/numberToOptions":828,"./unassignListener":821,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":922}],820:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27145,7 +28134,7 @@ const setForwardEvents = (transport, parent = documentItem_1.default) => {
   return parent;
 };
 exports.default = setForwardEvents;
-},{"../../domItem/objects/documentItem":727,"core-js/stable":711}],778:[function(require,module,exports){
+},{"../../domItem/objects/documentItem":770,"core-js/stable":711}],821:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27176,7 +28165,7 @@ const unassignListener = (trigger, elem, fn, options = false) => {
   return fn;
 };
 exports.default = unassignListener;
-},{"./listenerOptions":768,"core-js/stable":711}],779:[function(require,module,exports){
+},{"./listenerOptions":811,"core-js/stable":711}],822:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27247,7 +28236,7 @@ exports.default = {
   createEventResponder: createEventResponder_1.default,
   options: options_1.default
 };
-},{"./functions/activateListener":756,"./functions/addEventListener":757,"./functions/applyActiveListeners":758,"./functions/assignListener":759,"./functions/bindAllListeners":760,"./functions/bindElementListeners":761,"./functions/bindListeners":762,"./functions/deactivateListener":763,"./functions/deactivateListeners":764,"./functions/findEventListener":765,"./functions/fullAddEventListener":766,"./functions/fullRemoveEventListener":767,"./functions/listenerOptions":768,"./functions/makeEventHandler":769,"./functions/makeForwardingListener":770,"./functions/receiveForwardedEvent":771,"./functions/registerListener":772,"./functions/registerListeners":773,"./functions/removeEventListener":774,"./functions/retrieveListener":775,"./functions/revokeActiveListeners":776,"./functions/setForwardEvents":777,"./functions/unassignListener":778,"./objects/createEventListener":780,"./objects/createEventProxy":781,"./objects/createEventResponder":782,"./objects/options":783,"core-js/stable":711}],780:[function(require,module,exports){
+},{"./functions/activateListener":799,"./functions/addEventListener":800,"./functions/applyActiveListeners":801,"./functions/assignListener":802,"./functions/bindAllListeners":803,"./functions/bindElementListeners":804,"./functions/bindListeners":805,"./functions/deactivateListener":806,"./functions/deactivateListeners":807,"./functions/findEventListener":808,"./functions/fullAddEventListener":809,"./functions/fullRemoveEventListener":810,"./functions/listenerOptions":811,"./functions/makeEventHandler":812,"./functions/makeForwardingListener":813,"./functions/receiveForwardedEvent":814,"./functions/registerListener":815,"./functions/registerListeners":816,"./functions/removeEventListener":817,"./functions/retrieveListener":818,"./functions/revokeActiveListeners":819,"./functions/setForwardEvents":820,"./functions/unassignListener":821,"./objects/createEventListener":823,"./objects/createEventProxy":824,"./objects/createEventResponder":825,"./objects/options":826,"core-js/stable":711}],823:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27276,7 +28265,7 @@ const createEventListener = ({
   listenerActive
 });
 exports.default = createEventListener;
-},{"core-js/stable":711}],781:[function(require,module,exports){
+},{"core-js/stable":711}],824:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27323,7 +28312,7 @@ const createEventProxy = (event, item) => new Proxy(Object.defineProperties(even
   }
 });
 exports.default = createEventProxy;
-},{"../../domItem/query/getItemByElement":735,"core-js/stable":711}],782:[function(require,module,exports){
+},{"../../domItem/query/getItemByElement":778,"core-js/stable":711}],825:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27349,7 +28338,7 @@ const createEventResponder = (eventHandler, abort = null) => {
   });
 };
 exports.default = createEventResponder;
-},{"core-js/stable":711}],783:[function(require,module,exports){
+},{"core-js/stable":711}],826:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27372,7 +28361,7 @@ exports.default = {
   numberToOptions: numberToOptions_1.default,
   optionsToNumber: optionsToNumber_1.default
 };
-},{"./options/getListenerOptions":784,"./options/numberToOptions":785,"./options/optionsToNumber":786,"core-js/stable":711}],784:[function(require,module,exports){
+},{"./options/getListenerOptions":827,"./options/numberToOptions":828,"./options/optionsToNumber":829,"core-js/stable":711}],827:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27393,7 +28382,7 @@ const getListenerOptions = () => ({
   signal: SIGNAL
 });
 exports.default = getListenerOptions;
-},{"core-js/stable":711}],785:[function(require,module,exports){
+},{"core-js/stable":711}],828:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27413,7 +28402,7 @@ const si_funciona_1 = __importDefault(require("si-funciona"));
  */
 const numberToOptions = (optionsTemplate, binaryOptions) => si_funciona_1.default.mapObject(optionsTemplate, flag => !!(binaryOptions & flag));
 exports.default = numberToOptions;
-},{"core-js/stable":711,"si-funciona":879}],786:[function(require,module,exports){
+},{"core-js/stable":711,"si-funciona":922}],829:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27439,7 +28428,7 @@ const optionsToNumber = (optionsTemplate, listenerOptions) => {
   return si_funciona_1.default.reduceObject(optionsTemplate, (binaryOptions, flag, name) => listenerOptions[name] ? binaryOptions | flag : binaryOptions, 0);
 };
 exports.default = optionsToNumber;
-},{"core-js/stable":711,"si-funciona":879}],787:[function(require,module,exports){
+},{"core-js/stable":711,"si-funciona":922}],830:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27455,7 +28444,7 @@ const jsonToDomItem_1 = __importDefault(require("./jsonToDomItem"));
 exports.default = {
   jsonToDomItem: jsonToDomItem_1.default
 };
-},{"./jsonToDomItem":788,"core-js/stable":711}],788:[function(require,module,exports){
+},{"./jsonToDomItem":831,"core-js/stable":711}],831:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27484,7 +28473,7 @@ const jsonToDomItem = jsonString => {
   return parsedJson;
 };
 exports.default = jsonToDomItem;
-},{"../domItem/objects/addDomItemProperties":723,"../domItem/tree/setParentItemReferences":755,"core-js/stable":711}],789:[function(require,module,exports){
+},{"../domItem/objects/addDomItemProperties":766,"../domItem/tree/setParentItemReferences":798,"core-js/stable":711}],832:[function(require,module,exports){
 "use strict";
 
 /**
@@ -27505,7 +28494,7 @@ const index_6 = __importDefault(require("./sync/index"));
 const index_7 = __importDefault(require("./diff/index"));
 const jsonDom = Object.assign({}, index_1.default, index_2.default, index_3.default, index_4.default, index_5.default, index_6.default, index_7.default);
 module.exports = jsonDom;
-},{"./deflate/index":713,"./diff/index":721,"./domItem/index":722,"./events/index":779,"./inflate/index":787,"./render/index":791,"./sync/index":796,"core-js/stable":711}],790:[function(require,module,exports){
+},{"./deflate/index":756,"./diff/index":764,"./domItem/index":765,"./events/index":822,"./inflate/index":830,"./render/index":834,"./sync/index":839,"core-js/stable":711}],833:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27545,7 +28534,7 @@ const generateElement = domItem => {
   return (0, updateElement_1.default)(domItem);
 };
 exports.default = generateElement;
-},{"./updateElement":794,"core-js/stable":711}],791:[function(require,module,exports){
+},{"./updateElement":837,"core-js/stable":711}],834:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27569,7 +28558,7 @@ exports.default = {
   updateElement: updateElement_1.default,
   updateElements: updateElements_1.default
 };
-},{"./generateElement":790,"./renderHtml":792,"./updateChildNodes":793,"./updateElement":794,"./updateElements":795,"core-js/stable":711}],792:[function(require,module,exports){
+},{"./generateElement":833,"./renderHtml":835,"./updateChildNodes":836,"./updateElement":837,"./updateElements":838,"core-js/stable":711}],835:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27625,7 +28614,7 @@ const renderHtml = (item = null, parent = documentItem_1.default.body, index = p
   return item ?? updatedItem;
 };
 exports.default = renderHtml;
-},{"../domItem/objects/documentItem":727,"../domItem/tree/insertChild":752,"../domItem/tree/itemIdIndex":753,"../domItem/tree/setParentItemReferences":755,"./updateChildNodes":793,"./updateElements":795,"core-js/stable":711}],793:[function(require,module,exports){
+},{"../domItem/objects/documentItem":770,"../domItem/tree/insertChild":795,"../domItem/tree/itemIdIndex":796,"../domItem/tree/setParentItemReferences":798,"./updateChildNodes":836,"./updateElements":838,"core-js/stable":711}],836:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -27684,7 +28673,7 @@ const updateChildNodes = domItem => {
   return domItem;
 };
 exports.default = updateChildNodes;
-},{"./updateElement":794,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/modules/esnext.iterator.map.js":650,"core-js/stable":711}],794:[function(require,module,exports){
+},{"./updateElement":837,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/modules/esnext.iterator.map.js":650,"core-js/stable":711}],837:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/es.array.includes.js");
@@ -27793,7 +28782,7 @@ const updateElement = domItem => {
   return (0, bindListeners_1.default)(domItem);
 };
 exports.default = updateElement;
-},{"../diff/domItemChanges":716,"../events/functions/bindListeners":762,"../events/functions/deactivateListeners":764,"./generateElement":790,"./updateChildNodes":793,"core-js/modules/es.array.includes.js":351,"core-js/stable":711,"si-funciona":879}],795:[function(require,module,exports){
+},{"../diff/domItemChanges":759,"../events/functions/bindListeners":805,"../events/functions/deactivateListeners":807,"./generateElement":833,"./updateChildNodes":836,"core-js/modules/es.array.includes.js":351,"core-js/stable":711,"si-funciona":922}],838:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -27827,7 +28816,7 @@ const updateElements = config => {
   return domItem;
 };
 exports.default = updateElements;
-},{"./updateChildNodes":793,"./updateElement":794,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],796:[function(require,module,exports){
+},{"./updateChildNodes":836,"./updateElement":837,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],839:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27847,7 +28836,7 @@ exports.default = {
   updateDomItem: updateDomItem_1.default,
   updateDomItems: updateDomItems_1.default
 };
-},{"./updateChildren":797,"./updateDomItem":798,"./updateDomItems":799,"core-js/stable":711}],797:[function(require,module,exports){
+},{"./updateChildren":840,"./updateDomItem":841,"./updateDomItems":842,"core-js/stable":711}],840:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -27887,7 +28876,7 @@ const updateChildren = domItem => {
   return domItem;
 };
 exports.default = updateChildren;
-},{"../domItem/objects/createDomItem":725,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],798:[function(require,module,exports){
+},{"../domItem/objects/createDomItem":768,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],841:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27935,7 +28924,7 @@ const updateDomItem = config => {
   return config;
 };
 exports.default = updateDomItem;
-},{"../diff/elementChanges":718,"core-js/stable":711,"si-funciona":879}],799:[function(require,module,exports){
+},{"../diff/elementChanges":761,"core-js/stable":711,"si-funciona":922}],842:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -27969,7 +28958,7 @@ const updateDomItems = config => {
   return domItem;
 };
 exports.default = updateDomItems;
-},{"./updateChildren":797,"./updateDomItem":798,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],800:[function(require,module,exports){
+},{"./updateChildren":840,"./updateDomItem":841,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],843:[function(require,module,exports){
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -28732,7 +29721,7 @@ try {
   }
 }
 
-},{}],801:[function(require,module,exports){
+},{}],844:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28802,7 +29791,7 @@ var _default = exports.default = {
   mergeArrays: _mergeArrays.default,
   uniqueArray: _uniqueArray.default
 };
-},{"./arrays/BasicQueue":802,"./arrays/addUniqueToArray":803,"./arrays/buildArray":804,"./arrays/buildArrayOfReferences":805,"./arrays/compareArrays":806,"./arrays/mergeArrays":807,"./arrays/uniqueArray":808}],802:[function(require,module,exports){
+},{"./arrays/BasicQueue":845,"./arrays/addUniqueToArray":846,"./arrays/buildArray":847,"./arrays/buildArrayOfReferences":848,"./arrays/compareArrays":849,"./arrays/mergeArrays":850,"./arrays/uniqueArray":851}],845:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28853,7 +29842,7 @@ class BasicQueue {
   }
 }
 var _default = exports.default = BasicQueue;
-},{}],803:[function(require,module,exports){
+},{}],846:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28868,7 +29857,7 @@ require("core-js/modules/es.array.includes.js");
  */
 const addUniqueToArray = (item, array) => !array.includes(item) ? array.concat([item]) : array;
 var _default = exports.default = addUniqueToArray;
-},{"core-js/modules/es.array.includes.js":351}],804:[function(require,module,exports){
+},{"core-js/modules/es.array.includes.js":351}],847:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28892,7 +29881,7 @@ const buildArray = (item, length) => {
   return arr;
 };
 var _default = exports.default = buildArray;
-},{"../objects/cloneObject":845}],805:[function(require,module,exports){
+},{"../objects/cloneObject":888}],848:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28913,7 +29902,7 @@ const buildArrayOfReferences = (item, length) => {
   return arr;
 };
 var _default = exports.default = buildArrayOfReferences;
-},{}],806:[function(require,module,exports){
+},{}],849:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29008,7 +29997,7 @@ const compareArrays = (...arrays) => (0, _mergeArrays.default)(...arrays).reduce
   }];
 }, []);
 var _default = exports.default = compareArrays;
-},{"../objects/isObject":855,"../objects/objectKeys":860,"./mergeArrays":807,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],807:[function(require,module,exports){
+},{"../objects/isObject":898,"../objects/objectKeys":903,"./mergeArrays":850,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],850:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29028,7 +30017,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const mergeArrays = (...arrays) => arrays.map(_uniqueArray.default).reduce((merged, arr) => [...merged, ...arr.filter(attr => !merged.includes(attr))], []);
 var _default = exports.default = mergeArrays;
-},{"./uniqueArray":808,"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],808:[function(require,module,exports){
+},{"./uniqueArray":851,"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],851:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29043,7 +30032,7 @@ require("core-js/modules/esnext.iterator.filter.js");
  */
 const uniqueArray = array => array.filter((item, index) => array.indexOf(item) === index);
 var _default = exports.default = uniqueArray;
-},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646}],809:[function(require,module,exports){
+},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646}],852:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29168,7 +30157,7 @@ var _default = exports.default = {
   nextReference: _nextReference.default,
   sameDescriptor: _sameDescriptor.default
 };
-},{"./descriptors/assignDescriptor":810,"./descriptors/assignDescriptorDetail":811,"./descriptors/checkClearValues":812,"./descriptors/checkDescriptorComplete":813,"./descriptors/cloneDescriptor":814,"./descriptors/cloneDescriptorDetail":815,"./descriptors/compareDescriptor":816,"./descriptors/describeObject":817,"./descriptors/describeObjectDetail":818,"./descriptors/describeObjectMap":819,"./descriptors/nextReference":820,"./descriptors/sameDescriptor":821}],810:[function(require,module,exports){
+},{"./descriptors/assignDescriptor":853,"./descriptors/assignDescriptorDetail":854,"./descriptors/checkClearValues":855,"./descriptors/checkDescriptorComplete":856,"./descriptors/cloneDescriptor":857,"./descriptors/cloneDescriptorDetail":858,"./descriptors/compareDescriptor":859,"./descriptors/describeObject":860,"./descriptors/describeObjectDetail":861,"./descriptors/describeObjectMap":862,"./descriptors/nextReference":863,"./descriptors/sameDescriptor":864}],853:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29225,7 +30214,7 @@ const assignDescriptor = (originalMap, ...descriptors) => descriptors.reduce((as
   return assignedDescriptor;
 }, (0, _cloneDescriptor.default)(originalMap));
 var _default = exports.default = assignDescriptor;
-},{"../arrays/compareArrays":806,"../arrays/uniqueArray":808,"./assignDescriptorDetail":811,"./cloneDescriptor":814,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],811:[function(require,module,exports){
+},{"../arrays/compareArrays":849,"../arrays/uniqueArray":851,"./assignDescriptorDetail":854,"./cloneDescriptor":857,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],854:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29261,7 +30250,7 @@ const assignDescriptorDetail = (originalDetail, ...details) => details.reduce((e
   return existingDetail;
 }, (0, _cloneDescriptorDetail.default)(originalDetail));
 var _default = exports.default = assignDescriptorDetail;
-},{"../arrays/uniqueArray":808,"./cloneDescriptorDetail":815,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],812:[function(require,module,exports){
+},{"../arrays/uniqueArray":851,"./cloneDescriptorDetail":858,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],855:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29281,7 +30270,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const checkClearValues = (descriptor, keepValues = false) => (0, _setValue.default)('details', descriptor.complete && !keepValues ? descriptor.details.map(detail => (0, _setValue.default)('value', [], detail)) : descriptor.details, descriptor);
 var _default = exports.default = checkClearValues;
-},{"../objects/setValue":864,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650}],813:[function(require,module,exports){
+},{"../objects/setValue":907,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650}],856:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29300,7 +30289,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const checkDescriptorComplete = descriptor => (0, _setValue.default)('complete', descriptor.references.every(refId => [descriptor.details[refId].arrayReference, descriptor.details[refId].objectReference].some(ref => typeof ref === 'number')), descriptor);
 var _default = exports.default = checkDescriptorComplete;
-},{"../objects/setValue":864,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645}],814:[function(require,module,exports){
+},{"../objects/setValue":907,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645}],857:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29335,7 +30324,7 @@ const cloneDescriptor = originalMap => {
   return copyMap;
 };
 var _default = exports.default = cloneDescriptor;
-},{"./cloneDescriptorDetail":815,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650}],815:[function(require,module,exports){
+},{"./cloneDescriptorDetail":858,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650}],858:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29361,7 +30350,7 @@ const cloneDescriptorDetail = originalDetail => {
   return copyDetail;
 };
 var _default = exports.default = cloneDescriptorDetail;
-},{"../objects/objectKeys":860,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/modules/esnext.iterator.map.js":650}],816:[function(require,module,exports){
+},{"../objects/objectKeys":903,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/modules/esnext.iterator.map.js":650}],859:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29393,7 +30382,7 @@ const compareDescriptor = (descriptor1, descriptor2) => {
   return smallerDescriptor.keys.every(key => largerDescriptor.keys.includes(key)) ? smallerDescriptor.details.every(detail => detail.type.some(type => largerDescriptor.details.find(foundDetail => foundDetail.key === detail.key).type.includes(type))) : false;
 };
 var _default = exports.default = compareDescriptor;
-},{"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.some.js":652}],817:[function(require,module,exports){
+},{"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.some.js":652}],860:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29444,7 +30433,7 @@ const describeObject = object => {
   return descriptor;
 };
 var _default = exports.default = describeObject;
-},{"../objects/objectKeys":860,"./assignDescriptorDetail":811,"./describeObjectDetail":818}],818:[function(require,module,exports){
+},{"../objects/objectKeys":903,"./assignDescriptorDetail":854,"./describeObjectDetail":861}],861:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29480,7 +30469,7 @@ const describeObjectDetail = (value, key = 0, index = 0) => {
   };
 };
 var _default = exports.default = describeObjectDetail;
-},{"../objects/emptyObject":850,"../objects/isCloneable":852,"../objects/isInstanceObject":854}],819:[function(require,module,exports){
+},{"../objects/emptyObject":893,"../objects/isCloneable":895,"../objects/isInstanceObject":897}],862:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29585,7 +30574,7 @@ const describeObjectMap = (object, {
   return describeReferences(descriptor, descriptor.details[currentReference], depthLimit);
 };
 var _default = exports.default = describeObjectMap;
-},{"./assignDescriptor":810,"./checkClearValues":812,"./checkDescriptorComplete":813,"./compareDescriptor":816,"./describeObject":817,"./nextReference":820,"./sameDescriptor":821,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.for-each.js":649}],820:[function(require,module,exports){
+},{"./assignDescriptor":853,"./checkClearValues":855,"./checkDescriptorComplete":856,"./compareDescriptor":859,"./describeObject":860,"./nextReference":863,"./sameDescriptor":864,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.for-each.js":649}],863:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29615,7 +30604,7 @@ const nextReference = (descriptor, currentReference) => descriptor.references.fi
   return !!(0, _objectKeys.default)(val).length;
 });
 var _default = exports.default = nextReference;
-},{"../objects/objectKeys":860,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647}],821:[function(require,module,exports){
+},{"../objects/objectKeys":903,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647}],864:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29636,7 +30625,7 @@ require("core-js/modules/esnext.iterator.some.js");
  */
 const sameDescriptor = (descriptor1, descriptor2) => descriptor1.details.every((detail, index) => detail.value.some(dVal => descriptor2.details[index].value.includes(dVal)));
 var _default = exports.default = sameDescriptor;
-},{"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.some.js":652}],822:[function(require,module,exports){
+},{"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.some.js":652}],865:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29737,7 +30726,7 @@ var _default = exports.default = {
   relevancyFilter: _relevancyFilter.default,
   trace: _trace.default
 };
-},{"./functions/callWithParams":823,"./functions/curry":824,"./functions/delay":825,"./functions/makeBasicQueue":826,"./functions/onBodyLoad":827,"./functions/pipe":828,"./functions/preloadParams":829,"./functions/queueManager":830,"./functions/queueTimeout":831,"./functions/relevancyFilter":832,"./functions/trace":833}],823:[function(require,module,exports){
+},{"./functions/callWithParams":866,"./functions/curry":867,"./functions/delay":868,"./functions/makeBasicQueue":869,"./functions/onBodyLoad":870,"./functions/pipe":871,"./functions/preloadParams":872,"./functions/queueManager":873,"./functions/queueTimeout":874,"./functions/relevancyFilter":875,"./functions/trace":876}],866:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29752,7 +30741,7 @@ exports.default = void 0;
  */
 const callWithParams = (fn, params = [], minimum = 2) => fn(...params.slice(0, fn.length || minimum));
 var _default = exports.default = callWithParams;
-},{}],824:[function(require,module,exports){
+},{}],867:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29767,7 +30756,7 @@ exports.default = void 0;
  */
 const curry = fn => (...args) => args.length >= fn.length ? fn(...args) : (...a) => curry(fn)(...[...args, ...a]);
 var _default = exports.default = curry;
-},{}],825:[function(require,module,exports){
+},{}],868:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29797,7 +30786,7 @@ const delay = (time = 0) => {
   };
 };
 var _default = exports.default = delay;
-},{"regenerator-runtime/runtime":800}],826:[function(require,module,exports){
+},{"regenerator-runtime/runtime":843}],869:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29814,7 +30803,7 @@ const makeBasicQueue = (initialQueue = []) => {
   return new _BasicQueue.default(initialQueue);
 };
 var _default = exports.default = makeBasicQueue;
-},{"../arrays/BasicQueue":802}],827:[function(require,module,exports){
+},{"../arrays/BasicQueue":845}],870:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29859,7 +30848,7 @@ const onBodyLoad = (callback, reset = false) => {
   return queue;
 };
 var _default = exports.default = onBodyLoad;
-},{"./queueManager":830}],828:[function(require,module,exports){
+},{"./queueManager":873}],871:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29875,7 +30864,7 @@ require("core-js/modules/esnext.iterator.reduce.js");
  */
 const pipe = (...fns) => x => fns.reduce((y, f) => f(y), x);
 var _default = exports.default = pipe;
-},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],829:[function(require,module,exports){
+},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],872:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29894,7 +30883,7 @@ const preloadParams = (fn, params = [], unassignedParam = 0) => missing => {
   return fn(...params);
 };
 var _default = exports.default = preloadParams;
-},{}],830:[function(require,module,exports){
+},{}],873:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30033,7 +31022,7 @@ const queueManager = (queue = null) => {
   };
 };
 var _default = exports.default = queueManager;
-},{"./makeBasicQueue":826,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"regenerator-runtime/runtime":800}],831:[function(require,module,exports){
+},{"./makeBasicQueue":869,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"regenerator-runtime/runtime":843}],874:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30054,7 +31043,7 @@ const queueTimeout = (queueManagerHandle = null) => {
   return (fn, time = 0, ...args) => manager.push(() => (0, _delay.default)(time).resolver.then(() => fn(...args)));
 };
 var _default = exports.default = queueTimeout;
-},{"./delay":825,"./queueManager":830,"regenerator-runtime/runtime":800}],832:[function(require,module,exports){
+},{"./delay":868,"./queueManager":873,"regenerator-runtime/runtime":843}],875:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30086,7 +31075,7 @@ const relevancyFilter = (map, {
   });
 };
 var _default = exports.default = relevancyFilter;
-},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.map.js":650}],833:[function(require,module,exports){
+},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.map.js":650}],876:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30109,7 +31098,7 @@ const trace = (label, useClone = true) => value => {
   return value;
 };
 var _default = exports.default = trace;
-},{"../objects/cloneObject":845,"regenerator-runtime/runtime":800}],834:[function(require,module,exports){
+},{"../objects/cloneObject":888,"regenerator-runtime/runtime":843}],877:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30194,7 +31183,7 @@ var _default = exports.default = {
   randomNumber: _randomNumber.default,
   simplestRatio: _simplestRatio.default
 };
-},{"./numbers/absoluteMax":835,"./numbers/absoluteMin":836,"./numbers/compare":837,"./numbers/greatestCommonDivisor":838,"./numbers/leastCommonMultiple":839,"./numbers/lowestCommonDenominator":840,"./numbers/randomInteger":841,"./numbers/randomNumber":842,"./numbers/simplestRatio":843}],835:[function(require,module,exports){
+},{"./numbers/absoluteMax":878,"./numbers/absoluteMin":879,"./numbers/compare":880,"./numbers/greatestCommonDivisor":881,"./numbers/leastCommonMultiple":882,"./numbers/lowestCommonDenominator":883,"./numbers/randomInteger":884,"./numbers/randomNumber":885,"./numbers/simplestRatio":886}],878:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30208,7 +31197,7 @@ exports.default = void 0;
  */
 const absoluteMax = (num1, num2) => Math.abs(num1) > Math.abs(num2) ? num1 : num2;
 var _default = exports.default = absoluteMax;
-},{}],836:[function(require,module,exports){
+},{}],879:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30222,7 +31211,7 @@ exports.default = void 0;
  */
 const absoluteMin = (num1, num2) => Math.abs(num1) < Math.abs(num2) ? num1 : num2;
 var _default = exports.default = absoluteMin;
-},{}],837:[function(require,module,exports){
+},{}],880:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30239,7 +31228,7 @@ exports.default = void 0;
  */
 const compare = (val1, val2) => val1 === val2 ? 0 : val1 > val2 ? 1 : -1;
 var _default = exports.default = compare;
-},{}],838:[function(require,module,exports){
+},{}],881:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30253,7 +31242,7 @@ exports.default = void 0;
  */
 const greatestCommonDivisor = (num1, num2) => num2 === 0 ? num1 : greatestCommonDivisor(num2, num1 % num2);
 var _default = exports.default = greatestCommonDivisor;
-},{}],839:[function(require,module,exports){
+},{}],882:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30269,7 +31258,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const leastCommonMultiple = (num1, num2) => num1 === 0 || num2 === 0 ? 0 : num1 * num2 / (0, _greatestCommonDivisor.default)(num1, num2);
 var _default = exports.default = leastCommonMultiple;
-},{"./greatestCommonDivisor":838}],840:[function(require,module,exports){
+},{"./greatestCommonDivisor":881}],883:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30287,7 +31276,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const lowestCommonDenominator = (...numbers) => numbers.reduce((num1, num2) => (0, _leastCommonMultiple.default)(num1, num2), 1);
 var _default = exports.default = lowestCommonDenominator;
-},{"./leastCommonMultiple":839,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],841:[function(require,module,exports){
+},{"./leastCommonMultiple":882,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],884:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30310,7 +31299,7 @@ exports.default = void 0;
  */
 const randomInteger = (range, offset = 0, interval = 1) => (Math.floor(Math.random() * range) + offset) * interval;
 var _default = exports.default = randomInteger;
-},{}],842:[function(require,module,exports){
+},{}],885:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30328,7 +31317,7 @@ exports.default = void 0;
  */
 const randomNumber = (range, offset = 0, interval = 1) => (Math.random() * range + offset) * interval;
 var _default = exports.default = randomNumber;
-},{}],843:[function(require,module,exports){
+},{}],886:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30355,7 +31344,7 @@ const simplestRatio = (...numbers) => {
   return numbers.map(num => commonDivisor === 0 ? 0 : num / commonDivisor);
 };
 var _default = exports.default = simplestRatio;
-},{"./greatestCommonDivisor":838,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],844:[function(require,module,exports){
+},{"./greatestCommonDivisor":881,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],887:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30528,7 +31517,7 @@ var _default = exports.default = {
   setAndReturnValue: _setAndReturnValue.default,
   setValue: _setValue.default
 };
-},{"./objects/cloneObject":845,"./objects/dotGet":846,"./objects/dotNotate":847,"./objects/dotSet":848,"./objects/dotUnset":849,"./objects/emptyObject":850,"./objects/filterObject":851,"./objects/isCloneable":852,"./objects/isEqual":853,"./objects/isInstanceObject":854,"./objects/isObject":855,"./objects/mapObject":856,"./objects/mergeObjects":857,"./objects/mergeObjectsBase":858,"./objects/mergeObjectsMutable":859,"./objects/objectKeys":860,"./objects/objectValues":861,"./objects/reduceObject":862,"./objects/setAndReturnValue":863,"./objects/setValue":864}],845:[function(require,module,exports){
+},{"./objects/cloneObject":888,"./objects/dotGet":889,"./objects/dotNotate":890,"./objects/dotSet":891,"./objects/dotUnset":892,"./objects/emptyObject":893,"./objects/filterObject":894,"./objects/isCloneable":895,"./objects/isEqual":896,"./objects/isInstanceObject":897,"./objects/isObject":898,"./objects/mapObject":899,"./objects/mergeObjects":900,"./objects/mergeObjectsBase":901,"./objects/mergeObjectsMutable":902,"./objects/objectKeys":903,"./objects/objectValues":904,"./objects/reduceObject":905,"./objects/setAndReturnValue":906,"./objects/setValue":907}],888:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30556,7 +31545,7 @@ const cloneObject = (object, {
   useClone: true
 })(object);
 var _default = exports.default = cloneObject;
-},{"./mergeObjectsBase":858}],846:[function(require,module,exports){
+},{"./mergeObjectsBase":901}],889:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30614,7 +31603,7 @@ const dotGet = (arrayObject, dotNotation, defaultValue = null) => {
   return dotGet(next, (0, _strAfter.default)(dotNotation, '.'), defaultValue);
 };
 var _default = exports.default = dotGet;
-},{"../strings/strAfter":872,"../strings/strBefore":874,"./isObject":855}],847:[function(require,module,exports){
+},{"../strings/strAfter":915,"../strings/strBefore":917,"./isObject":898}],890:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30692,7 +31681,7 @@ const performDotNotate = (arrayObject, didRetain, prepend = '', results = {}) =>
  */
 const dotNotate = (arrayObject, retainObjects = []) => performDotNotate(arrayObject, handleRetainObjects(retainObjects));
 var _default = exports.default = dotNotate;
-},{"./emptyObject":850,"./isObject":855,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650}],848:[function(require,module,exports){
+},{"./emptyObject":893,"./isObject":898,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650}],891:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30744,7 +31733,7 @@ const dotSet = (arrayObject, dotNotation, value = null) => {
   return arrayObject;
 };
 var _default = exports.default = dotSet;
-},{"../strings/strAfter":872,"../strings/strBefore":874,"./isObject":855}],849:[function(require,module,exports){
+},{"../strings/strAfter":915,"../strings/strBefore":917,"./isObject":898}],892:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30795,7 +31784,7 @@ const dotUnset = (arrayObject, dotNotation) => {
   return arrayObject;
 };
 var _default = exports.default = dotUnset;
-},{"../strings/strAfter":872,"../strings/strBefore":874,"./isObject":855}],850:[function(require,module,exports){
+},{"../strings/strAfter":915,"../strings/strBefore":917,"./isObject":898}],893:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30811,7 +31800,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const emptyObject = item => (typeof item === 'function' || (0, _isObject.default)(item)) && !(0, _objectKeys.default)(item).length;
 var _default = exports.default = emptyObject;
-},{"./isObject":855,"./objectKeys":860}],851:[function(require,module,exports){
+},{"./isObject":898,"./objectKeys":903}],894:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30841,7 +31830,7 @@ const filterObject = (obj, fn, thisArg = undefined) => Array.isArray(obj) ? obj.
   return newObj;
 }, {});
 var _default = exports.default = filterObject;
-},{"../functions/callWithParams":823,"./objectKeys":860,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.reduce.js":651}],852:[function(require,module,exports){
+},{"../functions/callWithParams":866,"./objectKeys":903,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.reduce.js":651}],895:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30856,7 +31845,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const isCloneable = value => typeof value === 'object' && value !== null && !(0, _isInstanceObject.default)(value);
 var _default = exports.default = isCloneable;
-},{"./isInstanceObject":854}],853:[function(require,module,exports){
+},{"./isInstanceObject":897}],896:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30956,7 +31945,7 @@ const compare = (first, second, seen) => {
  */
 const isEqual = (first, second) => compare(first, second, new WeakMap());
 var _default = exports.default = isEqual;
-},{"core-js/modules/es.regexp.flags.js":519,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.some.js":652,"core-js/modules/esnext.map.delete-all.js":653,"core-js/modules/esnext.map.every.js":654,"core-js/modules/esnext.map.filter.js":655,"core-js/modules/esnext.map.find-key.js":656,"core-js/modules/esnext.map.find.js":657,"core-js/modules/esnext.map.includes.js":658,"core-js/modules/esnext.map.key-of.js":659,"core-js/modules/esnext.map.map-keys.js":660,"core-js/modules/esnext.map.map-values.js":661,"core-js/modules/esnext.map.merge.js":662,"core-js/modules/esnext.map.reduce.js":663,"core-js/modules/esnext.map.some.js":664,"core-js/modules/esnext.map.update.js":665,"core-js/modules/esnext.set.add-all.js":666,"core-js/modules/esnext.set.delete-all.js":667,"core-js/modules/esnext.set.difference.js":668,"core-js/modules/esnext.set.every.js":669,"core-js/modules/esnext.set.filter.js":670,"core-js/modules/esnext.set.find.js":671,"core-js/modules/esnext.set.intersection.js":672,"core-js/modules/esnext.set.is-disjoint-from.js":673,"core-js/modules/esnext.set.is-subset-of.js":674,"core-js/modules/esnext.set.is-superset-of.js":675,"core-js/modules/esnext.set.join.js":676,"core-js/modules/esnext.set.map.js":677,"core-js/modules/esnext.set.reduce.js":678,"core-js/modules/esnext.set.some.js":679,"core-js/modules/esnext.set.symmetric-difference.js":680,"core-js/modules/esnext.set.union.js":681,"core-js/modules/esnext.weak-map.delete-all.js":682,"core-js/modules/esnext.weak-set.add-all.js":683,"core-js/modules/esnext.weak-set.delete-all.js":684}],854:[function(require,module,exports){
+},{"core-js/modules/es.regexp.flags.js":519,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.some.js":652,"core-js/modules/esnext.map.delete-all.js":653,"core-js/modules/esnext.map.every.js":654,"core-js/modules/esnext.map.filter.js":655,"core-js/modules/esnext.map.find-key.js":656,"core-js/modules/esnext.map.find.js":657,"core-js/modules/esnext.map.includes.js":658,"core-js/modules/esnext.map.key-of.js":659,"core-js/modules/esnext.map.map-keys.js":660,"core-js/modules/esnext.map.map-values.js":661,"core-js/modules/esnext.map.merge.js":662,"core-js/modules/esnext.map.reduce.js":663,"core-js/modules/esnext.map.some.js":664,"core-js/modules/esnext.map.update.js":665,"core-js/modules/esnext.set.add-all.js":666,"core-js/modules/esnext.set.delete-all.js":667,"core-js/modules/esnext.set.difference.js":668,"core-js/modules/esnext.set.every.js":669,"core-js/modules/esnext.set.filter.js":670,"core-js/modules/esnext.set.find.js":671,"core-js/modules/esnext.set.intersection.js":672,"core-js/modules/esnext.set.is-disjoint-from.js":673,"core-js/modules/esnext.set.is-subset-of.js":674,"core-js/modules/esnext.set.is-superset-of.js":675,"core-js/modules/esnext.set.join.js":676,"core-js/modules/esnext.set.map.js":677,"core-js/modules/esnext.set.reduce.js":678,"core-js/modules/esnext.set.some.js":679,"core-js/modules/esnext.set.symmetric-difference.js":680,"core-js/modules/esnext.set.union.js":681,"core-js/modules/esnext.weak-map.delete-all.js":682,"core-js/modules/esnext.weak-set.add-all.js":683,"core-js/modules/esnext.weak-set.delete-all.js":684}],897:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30981,7 +31970,7 @@ const isInstanceObject = object => {
   return object.constructor.name !== 'Array' && (0, _objectKeys.default)(object, true).length > (0, _objectKeys.default)(object).length;
 };
 var _default = exports.default = isInstanceObject;
-},{"./isObject":855,"./objectKeys":860,"core-js/modules/es.array.includes.js":351}],855:[function(require,module,exports){
+},{"./isObject":898,"./objectKeys":903,"core-js/modules/es.array.includes.js":351}],898:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30994,7 +31983,7 @@ exports.default = void 0;
  */
 const isObject = object => typeof object === 'object' && object !== null;
 var _default = exports.default = isObject;
-},{}],856:[function(require,module,exports){
+},{}],899:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31018,7 +32007,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const mapObject = (obj, fn, thisArg = undefined) => Array.isArray(obj) ? obj.map(fn, thisArg) : (0, _objectKeys.default)(obj, true).reduce((newObj, curr) => (0, _setValue.default)(curr, (0, _callWithParams.default)(fn.bind(thisArg), [obj[curr], curr, obj], 2), newObj), {});
 var _default = exports.default = mapObject;
-},{"../functions/callWithParams":823,"./objectKeys":860,"./setValue":864,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],857:[function(require,module,exports){
+},{"../functions/callWithParams":866,"./objectKeys":903,"./setValue":907,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],900:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31036,7 +32025,7 @@ const mergeObjects = (0, _mergeObjectsBase.default)({
   useClone: true
 });
 var _default = exports.default = mergeObjects;
-},{"./mergeObjectsBase":858}],858:[function(require,module,exports){
+},{"./mergeObjectsBase":901}],901:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31124,7 +32113,7 @@ const mergeObjectsBase = ({
   }) => [source, object])), depthLimit, objects);
 };
 var _default = exports.default = mergeObjectsBase;
-},{"./isCloneable":852,"./reduceObject":862,"./setValue":864,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/modules/esnext.map.delete-all.js":653,"core-js/modules/esnext.map.every.js":654,"core-js/modules/esnext.map.filter.js":655,"core-js/modules/esnext.map.find-key.js":656,"core-js/modules/esnext.map.find.js":657,"core-js/modules/esnext.map.includes.js":658,"core-js/modules/esnext.map.key-of.js":659,"core-js/modules/esnext.map.map-keys.js":660,"core-js/modules/esnext.map.map-values.js":661,"core-js/modules/esnext.map.merge.js":662,"core-js/modules/esnext.map.reduce.js":663,"core-js/modules/esnext.map.some.js":664,"core-js/modules/esnext.map.update.js":665}],859:[function(require,module,exports){
+},{"./isCloneable":895,"./reduceObject":905,"./setValue":907,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/modules/esnext.map.delete-all.js":653,"core-js/modules/esnext.map.every.js":654,"core-js/modules/esnext.map.filter.js":655,"core-js/modules/esnext.map.find-key.js":656,"core-js/modules/esnext.map.find.js":657,"core-js/modules/esnext.map.includes.js":658,"core-js/modules/esnext.map.key-of.js":659,"core-js/modules/esnext.map.map-keys.js":660,"core-js/modules/esnext.map.map-values.js":661,"core-js/modules/esnext.map.merge.js":662,"core-js/modules/esnext.map.reduce.js":663,"core-js/modules/esnext.map.some.js":664,"core-js/modules/esnext.map.update.js":665}],902:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31140,7 +32129,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const mergeObjectsMutable = (0, _mergeObjectsBase.default)();
 var _default = exports.default = mergeObjectsMutable;
-},{"./mergeObjectsBase":858}],860:[function(require,module,exports){
+},{"./mergeObjectsBase":901}],903:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31178,7 +32167,7 @@ const objectKeys = (object, includeInherited = false) => {
   return keys;
 };
 var _default = exports.default = objectKeys;
-},{"./isObject":855}],861:[function(require,module,exports){
+},{"./isObject":898}],904:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31197,7 +32186,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const objectValues = (object, includeInherited = false) => (0, _objectKeys.default)(object, includeInherited).map(key => object[key]);
 var _default = exports.default = objectValues;
-},{"./objectKeys":860,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650}],862:[function(require,module,exports){
+},{"./objectKeys":903,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650}],905:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31221,7 +32210,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const reduceObject = (obj, fn, initialValue = obj[(0, _objectKeys.default)(obj)[0]] || obj[0]) => Array.isArray(obj) ? obj.reduce(fn, initialValue) : (0, _objectKeys.default)(obj, true).reduce((newObj, curr) => (0, _callWithParams.default)(fn, [newObj, obj[curr], curr, obj], 2), initialValue);
 var _default = exports.default = reduceObject;
-},{"../functions/callWithParams":823,"./objectKeys":860,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],863:[function(require,module,exports){
+},{"../functions/callWithParams":866,"./objectKeys":903,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],906:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31239,7 +32228,7 @@ const setAndReturnValue = (item, key, value) => {
   return value;
 };
 var _default = exports.default = setAndReturnValue;
-},{}],864:[function(require,module,exports){
+},{}],907:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31259,7 +32248,7 @@ const setValue = (key, value, item) => {
   return item;
 };
 var _default = exports.default = setValue;
-},{}],865:[function(require,module,exports){
+},{}],908:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31376,7 +32365,7 @@ var _default = exports.default = {
   ucFirst: _ucFirst.default,
   words: _words.default
 };
-},{"./strings/camelCase":866,"./strings/kabobCase":867,"./strings/makeFilepath":868,"./strings/makeRelativePath":869,"./strings/regexEscape":870,"./strings/snakeCase":871,"./strings/strAfter":872,"./strings/strAfterLast":873,"./strings/strBefore":874,"./strings/strBeforeLast":875,"./strings/titleCase":876,"./strings/ucFirst":877,"./strings/words":878}],866:[function(require,module,exports){
+},{"./strings/camelCase":909,"./strings/kabobCase":910,"./strings/makeFilepath":911,"./strings/makeRelativePath":912,"./strings/regexEscape":913,"./strings/snakeCase":914,"./strings/strAfter":915,"./strings/strAfterLast":916,"./strings/strBefore":917,"./strings/strBeforeLast":918,"./strings/titleCase":919,"./strings/ucFirst":920,"./strings/words":921}],909:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31394,7 +32383,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const camelCase = str => (0, _words.default)(str).reduce((camel, part) => camel ? camel.concat((0, _ucFirst.default)(part)) : part.toLowerCase(), '');
 var _default = exports.default = camelCase;
-},{"./ucFirst":877,"./words":878,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],867:[function(require,module,exports){
+},{"./ucFirst":920,"./words":921,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],910:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31411,7 +32400,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const kabobCase = str => (0, _words.default)(str).reduce((kabob, part) => kabob ? kabob.concat('-' + part.toLowerCase()) : part.toLowerCase(), '');
 var _default = exports.default = kabobCase;
-},{"./words":878,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],868:[function(require,module,exports){
+},{"./words":921,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],911:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31459,7 +32448,7 @@ const makeFilepath = (root, append = '') => {
 };
 exports.makeFilepath = makeFilepath;
 var _default = exports.default = makeFilepath;
-},{"./strBeforeLast":875}],869:[function(require,module,exports){
+},{"./strBeforeLast":918}],912:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31502,7 +32491,7 @@ const makeRelativePath = (fromFile, toFile) => {
 };
 exports.makeRelativePath = makeRelativePath;
 var _default = exports.default = makeRelativePath;
-},{"./strAfter":872,"./strBefore":874}],870:[function(require,module,exports){
+},{"./strAfter":915,"./strBefore":917}],913:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31516,7 +32505,7 @@ exports.regexEscape = exports.default = void 0;
 const regexEscape = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 exports.regexEscape = regexEscape;
 var _default = exports.default = regexEscape;
-},{}],871:[function(require,module,exports){
+},{}],914:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31533,7 +32522,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const snakeCase = str => (0, _words.default)(str).reduce((snake, part) => snake ? snake.concat('_' + part.toLowerCase()) : part.toLowerCase(), '');
 var _default = exports.default = snakeCase;
-},{"./words":878,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],872:[function(require,module,exports){
+},{"./words":921,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],915:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31551,7 +32540,7 @@ const strAfter = (str, search) => {
   return index === -1 ? '' : str.substring(index + search.length);
 };
 var _default = exports.default = strAfter;
-},{}],873:[function(require,module,exports){
+},{}],916:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31569,7 +32558,7 @@ const strAfterLast = (str, search) => {
   return index === -1 ? '' : str.substring(index + search.length);
 };
 var _default = exports.default = strAfterLast;
-},{}],874:[function(require,module,exports){
+},{}],917:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31587,7 +32576,7 @@ const strBefore = (str, search) => {
   return index === -1 ? '' : str.slice(0, index);
 };
 var _default = exports.default = strBefore;
-},{}],875:[function(require,module,exports){
+},{}],918:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31605,7 +32594,7 @@ const strBeforeLast = (str, search) => {
   return index === -1 ? '' : str.substring(0, index);
 };
 var _default = exports.default = strBeforeLast;
-},{}],876:[function(require,module,exports){
+},{}],919:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31623,7 +32612,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const titleCase = str => (0, _words.default)(str).reduce((title, part) => title ? title.concat(' ' + (0, _ucFirst.default)(part)) : (0, _ucFirst.default)(part), '');
 var _default = exports.default = titleCase;
-},{"./ucFirst":877,"./words":878,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],877:[function(require,module,exports){
+},{"./ucFirst":920,"./words":921,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],920:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31636,7 +32625,7 @@ exports.default = void 0;
  */
 const ucFirst = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 var _default = exports.default = ucFirst;
-},{}],878:[function(require,module,exports){
+},{}],921:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31650,7 +32639,7 @@ exports.default = void 0;
  */
 const words = str => str.match(/\d+|[A-Z]?[a-z]+|[A-Za-z]+/g);
 var _default = exports.default = words;
-},{}],879:[function(require,module,exports){
+},{}],922:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -31750,5 +32739,5 @@ if (void 0) {
   // @ts-ignore
   window['siFunciona'] = siFunciona;
 }
-},{"./helpers/arrays":801,"./helpers/descriptors":809,"./helpers/functions":822,"./helpers/numbers":834,"./helpers/objects":844,"./helpers/strings":865,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/modules/esnext.weak-map.delete-all.js":682}]},{},[4])(4)
+},{"./helpers/arrays":844,"./helpers/descriptors":852,"./helpers/functions":865,"./helpers/numbers":877,"./helpers/objects":887,"./helpers/strings":908,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/modules/esnext.weak-map.delete-all.js":682}]},{},[4])(4)
 });
