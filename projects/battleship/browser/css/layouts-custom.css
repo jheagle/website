@@ -1,41 +1,45 @@
-.main-menu-form {
+.main-menu-form, .remote-entry, .waiting-room {
   margin: 0 auto 3rem;
   padding-top: 3rem;
   max-width: 400px;
 }
-.main-menu-form label {
+.main-menu-form label, .remote-entry label, .waiting-room label {
   color: white;
   font-size: 1.6rem;
 }
-.main-menu-form input {
+.main-menu-form input, .remote-entry input, .waiting-room input {
   margin: 1rem 2rem;
   font-size: 1.6rem;
   border-radius: 0.6rem;
   border: none;
   background-color: white;
 }
-.main-menu-form input:not([type=checkbox]) {
+.main-menu-form input:not([type=checkbox]), .remote-entry input:not([type=checkbox]), .waiting-room input:not([type=checkbox]) {
   display: block;
   margin: 1rem auto;
   padding: 0.4rem 0.6rem;
   width: 18rem;
 }
-.main-menu-form input[type=submit] {
+.main-menu-form input[type=submit], .main-menu-form button.remote-choice-host, .main-menu-form button.remote-choice-join, .main-menu-form button.remote-host-submit, .main-menu-form button.remote-code-submit, .main-menu-form button.remote-join-submit, .remote-entry input[type=submit], .remote-entry button.remote-choice-host, .remote-entry button.remote-choice-join, .remote-entry button.remote-host-submit, .remote-entry button.remote-code-submit, .remote-entry button.remote-join-submit, .waiting-room input[type=submit], .waiting-room button.remote-choice-host, .waiting-room button.remote-choice-join, .waiting-room button.remote-host-submit, .waiting-room button.remote-code-submit, .waiting-room button.remote-join-submit {
   font-weight: 700;
   color: #777;
   width: 12rem;
+  border: none;
   border-bottom: 0.4rem solid #777;
+  background-color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
 }
-.main-menu-form input[type=submit]:hover {
+.main-menu-form input[type=submit]:hover, .main-menu-form button.remote-choice-host:hover, .main-menu-form button.remote-choice-join:hover, .main-menu-form button.remote-host-submit:hover, .main-menu-form button.remote-code-submit:hover, .main-menu-form button.remote-join-submit:hover, .remote-entry input[type=submit]:hover, .remote-entry button.remote-choice-host:hover, .remote-entry button.remote-choice-join:hover, .remote-entry button.remote-host-submit:hover, .remote-entry button.remote-code-submit:hover, .remote-entry button.remote-join-submit:hover, .waiting-room input[type=submit]:hover, .waiting-room button.remote-choice-host:hover, .waiting-room button.remote-choice-join:hover, .waiting-room button.remote-host-submit:hover, .waiting-room button.remote-code-submit:hover, .waiting-room button.remote-join-submit:hover {
   color: green;
   border-bottom: 0.4rem solid green;
 }
-.main-menu-form .form-group {
+.main-menu-form .form-group, .main-menu-form .human-group, .main-menu-form .first-group, .remote-entry .form-group, .remote-entry .human-group, .remote-entry .first-group, .waiting-room .form-group, .waiting-room .human-group, .waiting-room .first-group {
   width: 50%;
   display: inline-block;
   margin: 1rem auto;
 }
-.main-menu-form .form-group label {
+.main-menu-form .form-group label, .main-menu-form .human-group label, .main-menu-form .first-group label, .remote-entry .form-group label, .remote-entry .human-group label, .remote-entry .first-group label, .waiting-room .form-group label, .waiting-room .human-group label, .waiting-room .first-group label {
   display: block;
 }
 
@@ -64,4 +68,83 @@
   margin: 1rem;
   color: white;
   font-size: 1.6rem;
+}
+
+.presets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  gap: 2rem;
+  max-width: 90rem;
+  margin: 4rem auto 3rem;
+  padding: 3rem 2rem 0;
+}
+.presets button {
+  font-size: 1.8rem;
+  font-weight: 700;
+  min-height: 9rem;
+  padding: 1.5rem 2rem;
+  border: none;
+  border-radius: 0.8rem;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+}
+.presets button:hover {
+  color: green;
+}
+
+.main-menu-form h2, .remote-entry h2, .waiting-room h2 {
+  color: white;
+  text-align: center;
+}
+.main-menu-form .lobby-back, .main-menu-form .remote-back, .main-menu-form .remote-sub-back, .main-menu-form .waiting-room-leave, .remote-entry .lobby-back, .remote-entry .remote-back, .remote-entry .remote-sub-back, .remote-entry .waiting-room-leave, .waiting-room .lobby-back, .waiting-room .remote-back, .waiting-room .remote-sub-back, .waiting-room .waiting-room-leave {
+  float: left;
+  font-size: 1.4rem;
+  margin: 0 0 1rem;
+  padding: 0.4rem 1.2rem;
+  border: none;
+  border-radius: 0.4rem;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+}
+.main-menu-form .lobby-back:hover, .main-menu-form .remote-back:hover, .main-menu-form .remote-sub-back:hover, .main-menu-form .waiting-room-leave:hover, .remote-entry .lobby-back:hover, .remote-entry .remote-back:hover, .remote-entry .remote-sub-back:hover, .remote-entry .waiting-room-leave:hover, .waiting-room .lobby-back:hover, .waiting-room .remote-back:hover, .waiting-room .remote-sub-back:hover, .waiting-room .waiting-room-leave:hover {
+  color: green;
+}
+
+.waiting-room {
+  text-align: center;
+}
+.waiting-room .waiting-room-name, .waiting-room .waiting-room-code {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  clear: both;
+}
+.waiting-room .waiting-room-players {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+.waiting-room .waiting-room-players li {
+  color: white;
+  font-size: 1.6rem;
+  margin: 0.5rem 0;
+}
+.waiting-room .waiting-room-status {
+  color: #f4a742;
+  font-size: 1.4rem;
+  min-height: 1.4rem;
+}
+
+.remote-entry .remote-choice-status, .remote-entry .remote-host-status, .remote-entry .remote-code-status, .remote-entry .remote-join-status {
+  color: #f4a742;
+  font-size: 1.4rem;
+  text-align: center;
+  min-height: 1.4rem;
+}
+.remote-entry .remote-join-message {
+  color: white;
+  font-size: 1.6rem;
+  text-align: center;
 }
