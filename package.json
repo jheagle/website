@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "json-dom": "github:jheagle/JSON-DOM",
+    "json-dom-components": "github:jheagle/json-dom-components",
     "matrix-dom": "github:jheagle/matrix-DOM",
     "si-funciona": "^2.7.3"
   },

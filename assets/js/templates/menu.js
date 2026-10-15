@@ -1,10 +1,5 @@
-import navigation from './components/nav.js'
-import unorderedList from './components/unorderedList.js'
-import listItem from './components/listItem.js'
-import span from './components/span.js'
-import anchor from './components/anchor.js'
-import header from './components/header.js'
-import text from './components/text.js'
+/* global jsonDomComponents */
+const { nav: navigation, unorderedList, listItem, span, anchor, header, text } = jsonDomComponents
 
 /**
  * Generates a menu with the provided index as the currently selected item.
