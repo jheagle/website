@@ -16,10 +16,11 @@ recipe interfaces and services used to build and walk them.</p>
 <p>Each module of the documentation is a folder of <code>src/</code>:</p>
 <ul>
 <li><code>collections</code>: the collection classes themselves - <code>Arrayable</code>/<code>ArrayElement</code>, <code>LinkedList</code>/<code>Linker</code>,
-<code>DoublyLinkedList</code>/<code>DoubleLinker</code>, <code>LinkedTreeList</code>/<code>TreeLinker</code>, <code>Queue</code>/<code>Queueable</code>/<code>TaskQueue</code>, and
-<code>Stack</code>/<code>Stackable</code>/<code>TaskStack</code>.</li>
+<code>DoublyLinkedList</code>/<code>DoubleLinker</code>, <code>LinkedTreeList</code>/<code>TreeLinker</code>, <code>Queue</code>/<code>Queueable</code>/<code>TaskQueue</code>,
+<code>Stack</code>/<code>Stackable</code>/<code>TaskStack</code>, and <code>ScopedCollection</code> (a keyed collection partitioned by scope, held in a
+<code>WeakMap</code> so each scope's own keys are freed once nothing else references that scope).</li>
 <li><code>recipes</code>: the <code>Is*</code> interfaces each collection implements (<code>IsArrayable</code>, <code>IsLinker</code>, <code>IsTree</code>, <code>IsQueue</code>,
-<code>IsStack</code>, ...), their iterators, and <code>Runnable</code>.</li>
+<code>IsScopedCollection</code>, <code>IsStack</code>, ...), their iterators, and <code>Runnable</code>.</li>
 <li><code>services</code>: helpers for working with trees (<code>parseTree</code>, <code>parseTreeNext</code>) and other collection-agnostic utilities.</li>
 </ul>
 <h2 id="example" class="tsd-anchor-link">Example<a href="#example" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>

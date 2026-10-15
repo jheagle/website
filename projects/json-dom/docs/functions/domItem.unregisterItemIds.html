@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>getChildrenByClass | json-dom</title><meta name="description" content="Documentation for json-dom"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar">
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>unregisterItemIds | json-dom</title><meta name="description" content="Documentation for json-dom"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar">
 <div class="tsd-toolbar-contents container"><a href="../index.html" class="title">json-dom</a>
 <div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/>
 <ul role="listbox" id="tsd-search-results"></ul>
@@ -9,31 +9,26 @@
 <div class="tsd-page-title">
 <ul class="tsd-breadcrumb" aria-label="Breadcrumb">
 <li><a href="../modules/domItem.html">domItem</a></li>
-<li><a href="" aria-current="page">getChildrenByClass</a></li></ul>
-<h1>Variable getChildrenByClass<code class="tsd-tag">Const</code></h1></div>
-<div class="tsd-signature"><span class="tsd-kind-variable">getChildrenByClass</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">className</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">item</span><span class="tsd-signature-symbol">?:</span> <a href="../types/domItem.DomItem.html" class="tsd-signature-type tsd-kind-type-alias">DomItem</a><span class="tsd-signature-symbol">)</span> <span class="tsd-signature-symbol">=&gt;</span> <a href="../types/domItem.DomItem.html" class="tsd-signature-type tsd-kind-type-alias">DomItem</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = ...</span></div>
-<div class="tsd-comment tsd-typography"><p>Helper for getting all domGeneral.DomItems starting at parent and having specified className attribute</p>
-</div>
-<div class="tsd-type-declaration">
-<h4>Type Declaration</h4>
-<ul class="tsd-parameters">
-<li class="tsd-parameter-signature">
+<li><a href="" aria-current="page">unregisterItemIds</a></li></ul>
+<h1>Function unregisterItemIds</h1></div>
+<section class="tsd-panel">
 <ul class="tsd-signatures">
-<li class="tsd-signature" id="__type"><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">className</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">item</span><span class="tsd-signature-symbol">?:</span> <a href="../types/domItem.DomItem.html" class="tsd-signature-type tsd-kind-type-alias">DomItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="../types/domItem.DomItem.html" class="tsd-signature-type tsd-kind-type-alias">DomItem</a><span class="tsd-signature-symbol">[]</span></li>
-<li class="tsd-description">
+<li class="">
+<div class="tsd-signature tsd-anchor-link" id="unregisteritemids"><span class="tsd-kind-call-signature">unregisterItemIds</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">item</span><span class="tsd-signature-symbol">:</span> <a href="../types/domItem.DomItem.html" class="tsd-signature-type tsd-kind-type-alias">DomItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#unregisteritemids" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Remove an item (and, recursively, its whole subtree) from its own root's id index - the reverse of
+registerItemIds. Call before the item is actually detached, while its parentItem chain still resolves and
+its own subtree is still intact to walk.</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
-<li><span><span class="tsd-kind-parameter">className</span>: <span class="tsd-signature-type">string</span></span>
-<div class="tsd-comment tsd-typography"><p>The className searched for</p>
-</div></li>
-<li><span><code class="tsd-tag">Optional</code><span class="tsd-kind-parameter">item</span>: <a href="../types/domItem.DomItem.html" class="tsd-signature-type tsd-kind-type-alias">DomItem</a></span>
-<div class="tsd-comment tsd-typography"><p>The DomItem which may have child items matching the attribute
-criteria</p>
+<li><span><span class="tsd-kind-parameter">item</span>: <a href="../types/domItem.DomItem.html" class="tsd-signature-type tsd-kind-type-alias">DomItem</a></span>
+<div class="tsd-comment tsd-typography"><p>The subtree to unregister, root item included.</p>
 </div></li></ul></div>
-<h4 class="tsd-returns-title">Returns <a href="../types/domItem.DomItem.html" class="tsd-signature-type tsd-kind-type-alias">DomItem</a><span class="tsd-signature-symbol">[]</span></h4></li></ul></li></ul></div><aside class="tsd-sources">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/JSON-DOM/blob/57855d3d45c93d115c6e10af98b119415138fc6d/src/domItem/query/getChildrenByClass.ts#L12">src/domItem/query/getChildrenByClass.ts:12</a></li></ul></aside></div>
+<li>Defined in <a href="https://github.com/jheagle/JSON-DOM/blob/3316833a5cd18e92ebe63a7e66ab5890a02512cd/src/domItem/tree/itemIdIndex.ts#L86">src/domItem/tree/itemIdIndex.ts:86</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
