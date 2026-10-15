@@ -12,7 +12,7 @@ longname: Globals
 
 <MemberHeading id="responsivetable" depth="3" name="responsiveTable" sig="responsiveTable" />
 
-<MemberMeta sourceHref="/source/components/macro/responsivetable-js/#L28" sourceLabel="responsiveTable.js:28" />
+<MemberMeta sourceHref="/source/components/macro/responsivetable-js/#L22" sourceLabel="responsiveTable.js:22" />
 
 Generates a menu with the provided index as the currently selected item.
 
@@ -26,73 +26,9 @@ Generates a menu with the provided index as the currently selected item.
 
 - `Object.<DomItem>`
 
-<MemberHeading id="element" depth="3" name="element" sig="element" />
-
-<MemberMeta sourceHref="/source/components/micro/element-js/#L11" sourceLabel="element.js:11" />
-
-Create the template of a DomItem
-
-**Parameters**
-
-- `nodeName` (string)
-- `children` (array, optional, default: "\[]")
-- `className` (string, optional, default: "''")
-- `attributes` (object, optional, default: "{}")
-
-**Returns**
-
-- `DomItem`
-
-<MemberHeading id="navigation" depth="3" name="navigation" sig="navigation" />
-
-<MemberMeta sourceHref="/source/components/micro/nav-js/#L10" sourceLabel="nav.js:10" />
-
-Create a nav DomItem
-
-**Parameters**
-
-- `children` (array, optional, default: "\[]")
-- `className` (string, optional, default: "''")
-- `attributes` (object, optional, default: "{}")
-
-**Returns**
-
-- `DomItem`
-
-<MemberHeading id="node" depth="3" name="node" sig="node" />
-
-<MemberMeta sourceHref="/source/components/micro/node-js/#L11" sourceLabel="node.js:11" />
-
-Create the template of a DomItem
-
-**Parameters**
-
-- `nodeName` (string)
-- `nodeValue` (string)
-- `children` (array, optional, default: "\[]")
-- `attributes` (object, optional, default: "{}")
-
-**Returns**
-
-- `DomItem`
-
-<MemberHeading id="text" depth="3" name="text" sig="text" />
-
-<MemberMeta sourceHref="/source/components/micro/text-js/#L8" sourceLabel="text.js:8" />
-
-Create the template of a DomItem
-
-**Parameters**
-
-- `nodeValue` (string)
-
-**Returns**
-
-- `DomItem`
-
 <MemberHeading id="addexerciseform" depth="3" name="addExerciseForm" sig="addExerciseForm" />
 
-<MemberMeta sourceHref="/source/components/templates/addexerciseform-js/#L18" sourceLabel="addExerciseForm.js:18" />
+<MemberMeta sourceHref="/source/components/templates/addexerciseform-js/#L13" sourceLabel="addExerciseForm.js:13" />
 
 Builds the add-exercise form's DOM structure. No event wiring here - see exercisePicker.js's own note on why that has to happen after this is attached into the real document and rendered. Primary and secondary are two separate multi-selects (rather than one picker with a per-muscle rank) - a real exercise's muscles split cleanly into those two buckets, and a plain multi-select needs no dynamic add/remove row UI to support picking several of each.
 
@@ -106,7 +42,7 @@ Builds the add-exercise form's DOM structure. No event wiring here - see exercis
 
 <MemberHeading id="wireaddexerciseformevents" depth="3" name="wireAddExerciseFormEvents" sig="wireAddExerciseFormEvents" />
 
-<MemberMeta sourceHref="/source/components/templates/addexerciseform-js/#L54" sourceLabel="addExerciseForm.js:54" />
+<MemberMeta sourceHref="/source/components/templates/addexerciseform-js/#L49" sourceLabel="addExerciseForm.js:49" />
 
 Wires the form's submit button - see addExerciseForm's own note on timing.
 
@@ -131,7 +67,7 @@ Generates a menu with the provided index as the currently selected item.
 
 <MemberHeading id="exercisepicker" depth="3" name="exercisePicker" sig="exercisePicker" />
 
-<MemberMeta sourceHref="/source/components/templates/exercisepicker-js/#L15" sourceLabel="exercisePicker.js:15" />
+<MemberMeta sourceHref="/source/components/templates/exercisepicker-js/#L12" sourceLabel="exercisePicker.js:12" />
 
 Builds the muscle -> exercise picker's DOM structure. No event wiring here - fullAddEventListener needs a complete parentItem chain up to the real document root (it throws otherwise), which a freshly-built, not-yet-attached DomItem doesn't have yet. Call wireExercisePickerEvents once this is attached into the real document and rendered.
 
@@ -145,7 +81,7 @@ Builds the muscle -> exercise picker's DOM structure. No event wiring here - ful
 
 <MemberHeading id="wireexercisepickerevents" depth="3" name="wireExercisePickerEvents" sig="wireExercisePickerEvents" />
 
-<MemberMeta sourceHref="/source/components/templates/exercisepicker-js/#L39" sourceLabel="exercisePicker.js:39" />
+<MemberMeta sourceHref="/source/components/templates/exercisepicker-js/#L36" sourceLabel="exercisePicker.js:36" />
 
 Wires the picker's change events, once it's attached into the real document and rendered - see exercisePicker's own note on why this can't happen at construction time.
 
@@ -169,7 +105,7 @@ Wires the picker's change events, once it's attached into the real document and 
 
 <MemberHeading id="logworkoutform" depth="3" name="logWorkoutForm" sig="logWorkoutForm" />
 
-<MemberMeta sourceHref="/source/components/templates/logworkoutform-js/#L14" sourceLabel="logWorkoutForm.js:14" />
+<MemberMeta sourceHref="/source/components/templates/logworkoutform-js/#L11" sourceLabel="logWorkoutForm.js:11" />
 
 Builds the log-workout form's DOM structure. No event wiring here - see exercisePicker.js's own note on why that has to happen after this is attached into the real document and rendered.
 
@@ -179,7 +115,7 @@ Builds the log-workout form's DOM structure. No event wiring here - see exercise
 
 <MemberHeading id="readformvalues" depth="3" name="readFormValues" sig="readFormValues" />
 
-<MemberMeta sourceHref="/source/components/templates/logworkoutform-js/#L42" sourceLabel="logWorkoutForm.js:42" />
+<MemberMeta sourceHref="/source/components/templates/logworkoutform-js/#L39" sourceLabel="logWorkoutForm.js:39" />
 
 Reads the form's current field values, independent of which button triggered it.
 
@@ -189,7 +125,7 @@ Reads the form's current field values, independent of which button triggered it.
 
 <MemberHeading id="wirelogworkoutformevents" depth="3" name="wireLogWorkoutFormEvents" sig="wireLogWorkoutFormEvents" />
 
-<MemberMeta sourceHref="/source/components/templates/logworkoutform-js/#L56" sourceLabel="logWorkoutForm.js:56" />
+<MemberMeta sourceHref="/source/components/templates/logworkoutform-js/#L53" sourceLabel="logWorkoutForm.js:53" />
 
 Wires the form's submit and update buttons - see logWorkoutForm's own note on timing.
 
