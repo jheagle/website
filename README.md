@@ -49,9 +49,7 @@ A single tile's content: an icon badge plus title/description, all wrapped in on
 <a name="projectGrid"></a>
 
 ## projectGrid(projects) ⇒ <code>DomItem</code>
-Builds a matrix-dom grid of project tiles, one per entry in `projects`, in display order
-(row-major: left to right, then top to bottom). Any trailing columns left over when `projects.length`
-doesn't divide evenly into `columns` are left empty (marked 'tile-empty', hidden via CSS).
+Builds a matrix-dom grid of project tiles, one per entry in `projects`, in display order(row-major: left to right, then top to bottom). Any trailing columns left over when `projects.length`doesn't divide evenly into `columns` are left empty (marked 'tile-empty', hidden via CSS).
 
 **Kind**: global function  
 
