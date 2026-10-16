@@ -1,4 +1,6 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.joshuaHome = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+"use strict";
+
 const googleAnalytics = () => {
   (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;
@@ -15,6 +17,12 @@ const googleAnalytics = () => {
 };
 module.exports = googleAnalytics;
 },{}],2:[function(require,module,exports){
+"use strict";
+
+require("core-js/modules/esnext.iterator.constructor.js");
+require("core-js/modules/esnext.iterator.filter.js");
+require("core-js/modules/esnext.iterator.for-each.js");
+require("core-js/modules/esnext.iterator.map.js");
 const siFunciona = require('si-funciona');
 const home = () => {
   let attempted = 0;
@@ -98,7 +106,9 @@ const home = () => {
   homeScrolling();
 };
 module.exports = home;
-},{"si-funciona":922}],3:[function(require,module,exports){
+},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/modules/esnext.iterator.map.js":650,"si-funciona":975}],3:[function(require,module,exports){
+"use strict";
+
 const plugins = () => {
   // Avoid `console` errors in browsers that lack a console.
   (function () {
@@ -121,17 +131,21 @@ const plugins = () => {
 };
 module.exports = plugins;
 },{}],4:[function(require,module,exports){
+"use strict";
+
 const googleAnalytics = require('./general/googleAnalytics.js');
 const plugins = require('./general/plugins.js');
 const home = require('./general/home.js');
 const jsonDom = require('json-dom');
 const jsonDomComponents = require('json-dom-components');
+const matrixDom = require('matrix-dom');
 googleAnalytics();
 plugins();
 window.home = home;
 window.jsonDom = jsonDom;
 window.jsonDomComponents = jsonDomComponents;
-},{"./general/googleAnalytics.js":1,"./general/home.js":2,"./general/plugins.js":3,"json-dom":832,"json-dom-components":749}],5:[function(require,module,exports){
+window.matrixDom = matrixDom;
+},{"./general/googleAnalytics.js":1,"./general/home.js":2,"./general/plugins.js":3,"json-dom":832,"json-dom-components":749,"matrix-dom":877}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25637,7 +25651,7 @@ const domItemToJson = (item, {
   propertiesToDelete = []
 } = {}) => JSON.stringify((0, removeEmptyProperties_1.default)(si_funciona_1.default.cloneObject(item), ['activeListeners', 'element', 'parentItem', 'body', 'head', ...propertiesToDelete]), useExclusions);
 exports.default = domItemToJson;
-},{"./removeEmptyProperties":757,"core-js/modules/es.array.includes.js":351,"core-js/modules/es.json.stringify.js":418,"core-js/stable":711,"si-funciona":922}],756:[function(require,module,exports){
+},{"./removeEmptyProperties":757,"core-js/modules/es.array.includes.js":351,"core-js/modules/es.json.stringify.js":418,"core-js/stable":711,"si-funciona":975}],756:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -25699,7 +25713,7 @@ const removeEmptyProperties = (item, propertiesToDelete = []) => {
   return item;
 };
 exports.default = removeEmptyProperties;
-},{"../domItem/traits/getNonSerializableKeys":785,"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":922}],758:[function(require,module,exports){
+},{"../domItem/traits/getNonSerializableKeys":785,"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":975}],758:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/es.array.includes.js");
@@ -25742,7 +25756,7 @@ const createChangeList = ({
   return changeList;
 };
 exports.default = createChangeList;
-},{"core-js/modules/es.array.includes.js":351,"core-js/stable":711,"si-funciona":922}],759:[function(require,module,exports){
+},{"core-js/modules/es.array.includes.js":351,"core-js/stable":711,"si-funciona":975}],759:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -25898,7 +25912,7 @@ const domItemChanges = domItem => {
   }, changeList);
 };
 exports.default = domItemChanges;
-},{"./createChangeList":758,"./elementHasAttribute":762,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/stable":711,"si-funciona":922}],760:[function(require,module,exports){
+},{"./createChangeList":758,"./elementHasAttribute":762,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/stable":711,"si-funciona":975}],760:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -25962,7 +25976,7 @@ const domItemHasAttribute = (domItem, key, attr) => {
   return 1;
 };
 exports.default = domItemHasAttribute;
-},{"./getAssignedStyles":763,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/stable":711,"si-funciona":922}],761:[function(require,module,exports){
+},{"./getAssignedStyles":763,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/stable":711,"si-funciona":975}],761:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -26114,7 +26128,7 @@ const elementChanges = domItem => {
   }, changeList);
 };
 exports.default = elementChanges;
-},{"./createChangeList":758,"./domItemHasAttribute":760,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/stable":711,"si-funciona":922}],762:[function(require,module,exports){
+},{"./createChangeList":758,"./domItemHasAttribute":760,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/stable":711,"si-funciona":975}],762:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -26185,7 +26199,7 @@ const elementHasAttribute = (element, key, attr) => {
   return 1;
 };
 exports.default = elementHasAttribute;
-},{"./getAssignedStyles":763,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/stable":711,"si-funciona":922}],763:[function(require,module,exports){
+},{"./getAssignedStyles":763,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/stable":711,"si-funciona":975}],763:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26206,7 +26220,7 @@ const si_funciona_1 = __importDefault(require("si-funciona"));
  */
 const getAssignedStyles = elementStyles => si_funciona_1.default.reduceObject(elementStyles, (styles, attr, key) => Number.isNaN(Number(key)) ? styles : si_funciona_1.default.setValue(attr, elementStyles[attr], styles), {});
 exports.default = getAssignedStyles;
-},{"core-js/stable":711,"si-funciona":922}],764:[function(require,module,exports){
+},{"core-js/stable":711,"si-funciona":975}],764:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26394,7 +26408,7 @@ const createCoreItem = (item = {}) => {
   return newItem;
 };
 exports.default = createCoreItem;
-},{"../tree/appendChild":791,"../tree/itemIdIndex":796,"../tree/removeChild":797,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":922}],768:[function(require,module,exports){
+},{"../tree/appendChild":791,"../tree/itemIdIndex":796,"../tree/removeChild":797,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":975}],768:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -26539,7 +26553,7 @@ const initChildren = () => {
   return children;
 };
 exports.default = initChildren;
-},{"./createDomItem":768,"core-js/stable":711,"si-funciona/dist/helpers/functions/onBodyLoad":870}],772:[function(require,module,exports){
+},{"./createDomItem":768,"core-js/stable":711,"si-funciona/dist/helpers/functions/onBodyLoad":923}],772:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26651,7 +26665,7 @@ const getChildrenFromAttribute_1 = __importDefault(require("./getChildrenFromAtt
  */
 const getChildrenByName = si_funciona_1.default.curry(getChildrenFromAttribute_1.default)('name');
 exports.default = getChildrenByName;
-},{"./getChildrenFromAttribute":777,"core-js/stable":711,"si-funciona":922}],777:[function(require,module,exports){
+},{"./getChildrenFromAttribute":777,"core-js/stable":711,"si-funciona":975}],777:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26745,7 +26759,7 @@ const getParentsByClass = (className, item = documentItem_1.default.body) => {
   return carriesClass ? getParentsByClass(className, parent).concat([parent]) : getParentsByClass(className, parent);
 };
 exports.default = getParentsByClass;
-},{"../objects/documentItem":770,"core-js/modules/es.array.includes.js":351,"core-js/stable":711,"si-funciona":922}],780:[function(require,module,exports){
+},{"../objects/documentItem":770,"core-js/modules/es.array.includes.js":351,"core-js/stable":711,"si-funciona":975}],780:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26767,7 +26781,7 @@ const getParentsFromAttribute_1 = __importDefault(require("./getParentsFromAttri
  */
 const getParentsByName = si_funciona_1.default.curry(getParentsFromAttribute_1.default)('name');
 exports.default = getParentsByName;
-},{"./getParentsFromAttribute":782,"core-js/stable":711,"si-funciona":922}],781:[function(require,module,exports){
+},{"./getParentsFromAttribute":782,"core-js/stable":711,"si-funciona":975}],781:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26789,7 +26803,7 @@ const getParentsFromAttribute_1 = __importDefault(require("./getParentsFromAttri
  */
 const getParentsByTagName = si_funciona_1.default.curry(getParentsFromAttribute_1.default)('nodeName');
 exports.default = getParentsByTagName;
-},{"./getParentsFromAttribute":782,"core-js/stable":711,"si-funciona":922}],782:[function(require,module,exports){
+},{"./getParentsFromAttribute":782,"core-js/stable":711,"si-funciona":975}],782:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -26827,7 +26841,7 @@ const getParentsFromAttribute = (attr, value, item = documentItem_1.default.body
   return (parent.attributes[attr] || item[attr] || false) === value ? getParentsFromAttribute(attr, value, parent).concat([parent]) : getParentsFromAttribute(attr, value, parent);
 };
 exports.default = getParentsFromAttribute;
-},{"../objects/documentItem":770,"core-js/stable":711,"si-funciona":922}],783:[function(require,module,exports){
+},{"../objects/documentItem":770,"core-js/stable":711,"si-funciona":975}],783:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27082,7 +27096,7 @@ const getItemPath = item => {
   return [...getItemPath(parent), parent.children.indexOf(item)];
 };
 exports.default = getItemPath;
-},{"core-js/stable":711,"si-funciona":922}],794:[function(require,module,exports){
+},{"core-js/stable":711,"si-funciona":975}],794:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27110,7 +27124,7 @@ const getTopParentItem = item => {
   return si_funciona_1.default.emptyObject(item.parentItem) ? item : getTopParentItem(item.parentItem);
 };
 exports.default = getTopParentItem;
-},{"core-js/stable":711,"si-funciona":922}],795:[function(require,module,exports){
+},{"core-js/stable":711,"si-funciona":975}],795:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27250,7 +27264,7 @@ const getItemById = (root, id) => {
   return item;
 };
 exports.getItemById = getItemById;
-},{"collect-your-stuff":20,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":922}],797:[function(require,module,exports){
+},{"collect-your-stuff":20,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":975}],797:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27445,7 +27459,7 @@ const applyActiveListeners = (eventName, item) => {
   return item;
 };
 exports.default = applyActiveListeners;
-},{"../objects/createEventProxy":824,"../objects/options/getListenerOptions":827,"../objects/options/numberToOptions":828,"./assignListener":802,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":922}],802:[function(require,module,exports){
+},{"../objects/createEventProxy":824,"../objects/options/getListenerOptions":827,"../objects/options/numberToOptions":828,"./assignListener":802,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":975}],802:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27567,7 +27581,7 @@ const si_funciona_1 = __importDefault(require("si-funciona"));
  */
 const bindListeners = item => !si_funciona_1.default.emptyObject(item.eventListeners) && item.element ? (0, bindElementListeners_1.default)(item) : item;
 exports.default = bindListeners;
-},{"./bindElementListeners":804,"core-js/stable":711,"si-funciona":922}],806:[function(require,module,exports){
+},{"./bindElementListeners":804,"core-js/stable":711,"si-funciona":975}],806:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27624,7 +27638,7 @@ const deactivateListener = (eventName, eventListener, item) => {
   return item;
 };
 exports.default = deactivateListener;
-},{"../objects/options/getListenerOptions":827,"../objects/options/numberToOptions":828,"../objects/options/optionsToNumber":829,"./unassignListener":821,"core-js/stable":711,"si-funciona":922}],807:[function(require,module,exports){
+},{"../objects/options/getListenerOptions":827,"../objects/options/numberToOptions":828,"../objects/options/optionsToNumber":829,"./unassignListener":821,"core-js/stable":711,"si-funciona":975}],807:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -27707,7 +27721,7 @@ const findEventListener = (eventName, listenerFunction, customArgs, options, ite
   return [listenerIndex, item.eventListeners[eventName][listenerIndex]];
 };
 exports.default = findEventListener;
-},{"../objects/options/getListenerOptions":827,"../objects/options/optionsToNumber":829,"core-js/stable":711,"si-funciona":922}],809:[function(require,module,exports){
+},{"../objects/options/getListenerOptions":827,"../objects/options/optionsToNumber":829,"core-js/stable":711,"si-funciona":975}],809:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27751,7 +27765,7 @@ const fullAddEventListener = (eventName, listener, name, customArgs, options, it
   }, (0, curry_1.default)(addEventListener_1.default)(eventName, listenerName, customArgs, options), bindListeners_1.default)(item);
 };
 exports.default = fullAddEventListener;
-},{"../../domItem/tree/getTopParentItem":794,"./addEventListener":800,"./bindListeners":805,"./registerListener":815,"core-js/stable":711,"si-funciona/dist/helpers/functions/curry":867,"si-funciona/dist/helpers/functions/pipe":871}],810:[function(require,module,exports){
+},{"../../domItem/tree/getTopParentItem":794,"./addEventListener":800,"./bindListeners":805,"./registerListener":815,"core-js/stable":711,"si-funciona/dist/helpers/functions/curry":920,"si-funciona/dist/helpers/functions/pipe":924}],810:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -27972,7 +27986,7 @@ const registerListeners = (listeners, parent = documentItem_1.default) => {
   return parent;
 };
 exports.default = registerListeners;
-},{"../../domItem/objects/documentItem":770,"core-js/stable":711,"si-funciona":922}],817:[function(require,module,exports){
+},{"../../domItem/objects/documentItem":770,"core-js/stable":711,"si-funciona":975}],817:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -28106,7 +28120,7 @@ const revokeActiveListeners = (eventName, item) => {
   return item;
 };
 exports.default = revokeActiveListeners;
-},{"../objects/options/getListenerOptions":827,"../objects/options/numberToOptions":828,"./unassignListener":821,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":922}],820:[function(require,module,exports){
+},{"../objects/options/getListenerOptions":827,"../objects/options/numberToOptions":828,"./unassignListener":821,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711,"si-funciona":975}],820:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -28399,7 +28413,7 @@ const si_funciona_1 = __importDefault(require("si-funciona"));
  */
 const numberToOptions = (optionsTemplate, binaryOptions) => si_funciona_1.default.mapObject(optionsTemplate, flag => !!(binaryOptions & flag));
 exports.default = numberToOptions;
-},{"core-js/stable":711,"si-funciona":922}],829:[function(require,module,exports){
+},{"core-js/stable":711,"si-funciona":975}],829:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -28425,7 +28439,7 @@ const optionsToNumber = (optionsTemplate, listenerOptions) => {
   return si_funciona_1.default.reduceObject(optionsTemplate, (binaryOptions, flag, name) => listenerOptions[name] ? binaryOptions | flag : binaryOptions, 0);
 };
 exports.default = optionsToNumber;
-},{"core-js/stable":711,"si-funciona":922}],830:[function(require,module,exports){
+},{"core-js/stable":711,"si-funciona":975}],830:[function(require,module,exports){
 "use strict";
 
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
@@ -28779,7 +28793,7 @@ const updateElement = domItem => {
   return (0, bindListeners_1.default)(domItem);
 };
 exports.default = updateElement;
-},{"../diff/domItemChanges":759,"../events/functions/bindListeners":805,"../events/functions/deactivateListeners":807,"./generateElement":833,"./updateChildNodes":836,"core-js/modules/es.array.includes.js":351,"core-js/stable":711,"si-funciona":922}],838:[function(require,module,exports){
+},{"../diff/domItemChanges":759,"../events/functions/bindListeners":805,"../events/functions/deactivateListeners":807,"./generateElement":833,"./updateChildNodes":836,"core-js/modules/es.array.includes.js":351,"core-js/stable":711,"si-funciona":975}],838:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -28921,7 +28935,7 @@ const updateDomItem = config => {
   return config;
 };
 exports.default = updateDomItem;
-},{"../diff/elementChanges":761,"core-js/stable":711,"si-funciona":922}],842:[function(require,module,exports){
+},{"../diff/elementChanges":761,"core-js/stable":711,"si-funciona":975}],842:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -28956,6 +28970,1689 @@ const updateDomItems = config => {
 };
 exports.default = updateDomItems;
 },{"./updateChildren":840,"./updateDomItem":841,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/stable":711}],843:[function(require,module,exports){
+"use strict";
+
+require("core-js/modules/esnext.iterator.constructor.js");
+require("core-js/modules/esnext.iterator.filter.js");
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const point_1 = __importDefault(require("../point/point"));
+const nextCell_1 = __importDefault(require("../point/nextCell"));
+const checkValidPoint_1 = __importDefault(require("./checkValidPoint"));
+/**
+ * Return all points which touch on edges (not diagonal)
+ * @param pnt - The point we want to find adjacent points for.
+ * @param matrix - The matrix having the point.
+ */
+const adjacentEdgePoints = (pnt, matrix) => [(0, point_1.default)(-1, 0, 0), (0, point_1.default)(1, 0, 0), (0, point_1.default)(0, -1, 0), (0, point_1.default)(0, 1, 0), (0, point_1.default)(0, 0, -1), (0, point_1.default)(0, 0, 1)].map(p => (0, nextCell_1.default)(pnt, p)).filter(p => (0, checkValidPoint_1.default)(p, matrix));
+exports.default = adjacentEdgePoints;
+},{"../point/nextCell":885,"../point/point":886,"./checkValidPoint":845,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/stable":711}],844:[function(require,module,exports){
+"use strict";
+
+require("core-js/modules/esnext.iterator.constructor.js");
+require("core-js/modules/esnext.iterator.filter.js");
+require("core-js/modules/esnext.iterator.map.js");
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const getPointsForLines_1 = __importDefault(require("../line/getPointsForLines"));
+const point_1 = __importDefault(require("../point/point"));
+const nextCell_1 = __importDefault(require("../point/nextCell"));
+const checkValidPoint_1 = __importDefault(require("./checkValidPoint"));
+/**
+ * Return all valid points surrounding a provided point
+ * @param pnt - The point we want to find adjacent points for.
+ * @param matrix - The matrix having the point.
+ */
+const adjacentPoints = (pnt, matrix) => (0, getPointsForLines_1.default)([[(0, point_1.default)(-1, -1, -1), (0, point_1.default)(-1, 1, -1)], [(0, point_1.default)(0, -1, -1), (0, point_1.default)(0, 1, -1)], [(0, point_1.default)(1, -1, -1), (0, point_1.default)(1, 1, -1)], [(0, point_1.default)(-1, -1, 0), (0, point_1.default)(-1, 1, 0)], [(0, point_1.default)(1, -1, 0), (0, point_1.default)(1, 1, 0)], [(0, point_1.default)(-1, -1, 1), (0, point_1.default)(-1, 1, 1)], [(0, point_1.default)(0, -1, 1), (0, point_1.default)(0, 1, 1)], [(0, point_1.default)(1, -1, 1), (0, point_1.default)(1, 1, 1)]]).concat([(0, point_1.default)(0, -1, 0), (0, point_1.default)(0, 1, 0)]).map(p => (0, nextCell_1.default)(pnt, p)).filter(p => (0, checkValidPoint_1.default)(p, matrix));
+exports.default = adjacentPoints;
+},{"../line/getPointsForLines":867,"../point/nextCell":885,"../point/point":886,"./checkValidPoint":845,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.map.js":650,"core-js/stable":711}],845:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const getAxisLengths_1 = __importDefault(require("./getAxisLengths"));
+/**
+ * Test if the provided point exists in the matrix.
+ * @param pnt - Provide a point to validate.
+ * @param matrix - The matrix that contains valid points.
+ */
+const checkValidPoint = (pnt, matrix) => {
+  const matrixDimensions = (0, getAxisLengths_1.default)(matrix);
+  if (pnt.x >= matrixDimensions.x || pnt.y >= matrixDimensions.y || pnt.z >= matrixDimensions.z) {
+    return false;
+  }
+  return !!matrix.children[pnt.z] && !!matrix.children[pnt.z].children[pnt.y] && !!matrix.children[pnt.z].children[pnt.y].children[pnt.x] && !!matrix.children[pnt.z].children[pnt.y].children[pnt.x].point;
+};
+exports.default = checkValidPoint;
+},{"./getAxisLengths":848,"core-js/stable":711}],846:[function(require,module,exports){
+"use strict";
+
+require("core-js/modules/esnext.iterator.constructor.js");
+require("core-js/modules/esnext.iterator.reduce.js");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+/**
+ * Return an array of all the points in the matrix
+ * @param matrix - The matrix (or any level of it) to retrieve points from.
+ * @param allPoints - The array of points to add the found points to.
+ */
+const getAllPoints = (matrix, allPoints = []) => matrix.point ? allPoints.concat([matrix.point]) : matrix.children.reduce((allPoints, child) => allPoints.concat(getAllPoints(child, [])), []);
+exports.default = getAllPoints;
+},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/stable":711}],847:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const getCoordinateRanges_1 = __importDefault(require("./getCoordinateRanges"));
+const getMatrixRange_1 = __importDefault(require("./getMatrixRange"));
+/**
+ * Find the range of the matrix from smallest to largest point.
+ * @param matrix - The matrix that the point will be contained within.
+ * @param maxRanges - The maximum ranges for the point. If null, the matrix will be used.
+ * @returns The number of available coordinates on each axis
+ */
+const getAvailableRanges = (matrix, maxRanges = null) => {
+  const [minPoint, maxPoint] = (0, getMatrixRange_1.default)(matrix);
+  return (0, getCoordinateRanges_1.default)(minPoint, maxPoint, maxRanges);
+};
+exports.default = getAvailableRanges;
+},{"./getCoordinateRanges":849,"./getMatrixRange":851,"core-js/stable":711}],848:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const point_1 = __importDefault(require("../point/point"));
+/**
+ * Return point-like object with all of the axis lengths.
+ * @param matrix - The matrix to get the dimensions of.
+ */
+const getAxisLengths = matrix => (0, point_1.default)(matrix.children[0].children[0].children.length, matrix.children[0].children.length, matrix.children.length);
+exports.default = getAxisLengths;
+},{"../point/point":886,"core-js/stable":711}],849:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const nextCell_1 = __importDefault(require("../point/nextCell"));
+const point_1 = __importDefault(require("../point/point"));
+const pointDifference_1 = __importDefault(require("../point/pointDifference"));
+/**
+ * Using a max an min point, find the ranges for each coordinate.
+ * @param minPoint - The smallest point in the matrix
+ * @param maxPoint - The largest point in the matrix
+ * @param maxRanges - The maximum ranges for the point. If null, the matrix will be used.
+ * @returns The number of available coordinates on each axis
+ */
+const getCoordinateRanges = (minPoint, maxPoint, maxRanges = null) => {
+  // Find the range by getting delta of min and max, then add 1 to each access to included the max point in the range
+  const coordinateRanges = (0, nextCell_1.default)((0, pointDifference_1.default)(minPoint, maxPoint), (0, point_1.default)(1, 1, 1));
+  if (maxRanges) {
+    coordinateRanges.x = Math.min(coordinateRanges.x, maxRanges.x);
+    coordinateRanges.y = Math.min(coordinateRanges.y, maxRanges.y);
+    coordinateRanges.z = Math.min(coordinateRanges.z, maxRanges.z);
+  }
+  return coordinateRanges;
+};
+exports.default = getCoordinateRanges;
+},{"../point/nextCell":885,"../point/point":886,"../point/pointDifference":887,"core-js/stable":711}],850:[function(require,module,exports){
+"use strict";
+
+require("core-js/modules/esnext.iterator.constructor.js");
+require("core-js/modules/esnext.iterator.filter.js");
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const getAllPoints_1 = __importDefault(require("./getAllPoints"));
+/**
+ * Return just the points on one z-layer of the matrix - the same points getAllPoints would find, filtered down to
+ * a single layer. A convenience for the repeated getAllPoints(matrix).filter(p => p.z === z) pattern.
+ * @param matrix - The matrix (or any level of it) to retrieve points from.
+ * @param z - The layer to keep points from.
+ */
+const getLayerPoints = (matrix, z) => (0, getAllPoints_1.default)(matrix).filter(point => point.z === z);
+exports.default = getLayerPoints;
+},{"./getAllPoints":846,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/stable":711}],851:[function(require,module,exports){
+"use strict";
+
+require("core-js/modules/esnext.iterator.constructor.js");
+require("core-js/modules/esnext.iterator.reduce.js");
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const getAllPoints_1 = __importDefault(require("./getAllPoints"));
+const si_funciona_1 = __importDefault(require("si-funciona"));
+/**
+ * Get the lowest and highest points in the matrix as the range.
+ * @param matrix - The matrix to find the range of.
+ * @returns The lowest point followed by the highest point (empty when the matrix has no points)
+ */
+const getMatrixRange = matrix => (0, getAllPoints_1.default)(matrix).reduce((range, point) => {
+  if (range.length === 0) {
+    range.push(si_funciona_1.default.cloneObject(point), si_funciona_1.default.cloneObject(point));
+  }
+  if (point.x < range[0].x) {
+    range[0].x = point.x;
+  }
+  if (point.y < range[0].y) {
+    range[0].y = point.y;
+  }
+  if (point.z < range[0].z) {
+    range[0].z = point.z;
+  }
+  if (point.x > range[1].x) {
+    range[1].x = point.x;
+  }
+  if (point.y > range[1].y) {
+    range[1].y = point.y;
+  }
+  if (point.z > range[1].z) {
+    range[1].z = point.z;
+  }
+  return range;
+}, []);
+exports.default = getMatrixRange;
+},{"./getAllPoints":846,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/stable":711,"si-funciona":975}],852:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * Measure a matrix and check points against it: axis lengths, ranges, valid points and the points around a point.
+ */
+require("core-js/stable");
+const adjacentEdgePoints_1 = __importDefault(require("./adjacentEdgePoints"));
+const adjacentPoints_1 = __importDefault(require("./adjacentPoints"));
+const checkValidPoint_1 = __importDefault(require("./checkValidPoint"));
+const getAllPoints_1 = __importDefault(require("./getAllPoints"));
+const getAvailableRanges_1 = __importDefault(require("./getAvailableRanges"));
+const getAxisLengths_1 = __importDefault(require("./getAxisLengths"));
+const getCoordinateRanges_1 = __importDefault(require("./getCoordinateRanges"));
+const getLayerPoints_1 = __importDefault(require("./getLayerPoints"));
+const getMatrixRange_1 = __importDefault(require("./getMatrixRange"));
+exports.default = {
+  adjacentEdgePoints: adjacentEdgePoints_1.default,
+  adjacentPoints: adjacentPoints_1.default,
+  checkValidPoint: checkValidPoint_1.default,
+  getAllPoints: getAllPoints_1.default,
+  getAvailableRanges: getAvailableRanges_1.default,
+  getAxisLengths: getAxisLengths_1.default,
+  getCoordinateRanges: getCoordinateRanges_1.default,
+  getLayerPoints: getLayerPoints_1.default,
+  getMatrixRange: getMatrixRange_1.default
+};
+},{"./adjacentEdgePoints":843,"./adjacentPoints":844,"./checkValidPoint":845,"./getAllPoints":846,"./getAvailableRanges":847,"./getAxisLengths":848,"./getCoordinateRanges":849,"./getLayerPoints":850,"./getMatrixRange":851,"core-js/stable":711}],853:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const matrix_1 = __importDefault(require("./matrix"));
+const updateMatrixPoints_1 = __importDefault(require("./updateMatrixPoints"));
+const json_dom_1 = __importDefault(require("json-dom"));
+const si_funciona_1 = __importDefault(require("si-funciona"));
+/**
+ * Create the matrix and assign the correct points to each tile.
+ * @param dimensions - The dimensions of the matrix to be created (x is the width, y the height, z the depth)
+ * @param props - Additional properties to be added to each level of the matrix
+ */
+const buildMatrix = (dimensions = {
+  x: 0,
+  y: 0,
+  z: 1
+}, props = {
+  x: {},
+  y: {},
+  z: {},
+  matrix: {}
+}) => si_funciona_1.default.pipe(json_dom_1.default.setParentItemReferences, updateMatrixPoints_1.default)((0, matrix_1.default)(dimensions, props));
+exports.default = buildMatrix;
+},{"./matrix":856,"./updateMatrixPoints":860,"json-dom":832,"si-funciona":975}],854:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const buildMatrix_1 = __importDefault(require("./buildMatrix"));
+/**
+ * Return a matrix where x, y, and z are equal
+ * @param props - Additional data to append to each level: x for each column (the tile data), y for each row, z for
+ * each layer and matrix for the matrix itself. Each is a single configuration object, not an array.
+ * @param size - Used to define the width, height and depth as equal values
+ */
+const cube = ({
+  x = {},
+  y = {},
+  z = {},
+  matrix = {}
+} = {}, size) => (0, buildMatrix_1.default)({
+  x: size,
+  y: size,
+  z: size
+}, {
+  x,
+  y,
+  z,
+  matrix
+});
+exports.default = cube;
+},{"./buildMatrix":853,"core-js/stable":711}],855:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * The grid itself: a matrix of layers, rows and columns (json-dom items with the matrix.* traits), where each
+ * column holds a tile with its point.
+ */
+require("core-js/stable");
+const buildMatrix_1 = __importDefault(require("./buildMatrix"));
+const cube_1 = __importDefault(require("./cube"));
+const matrix_1 = __importDefault(require("./matrix"));
+const square_1 = __importDefault(require("./square"));
+const tile_1 = __importDefault(require("./tile"));
+const updateMatrixPoints_1 = __importDefault(require("./updateMatrixPoints"));
+exports.default = {
+  buildMatrix: buildMatrix_1.default,
+  cube: cube_1.default,
+  matrix: matrix_1.default,
+  square: square_1.default,
+  tile: tile_1.default,
+  updateMatrixPoints: updateMatrixPoints_1.default
+};
+},{"./buildMatrix":853,"./cube":854,"./matrix":856,"./square":857,"./tile":858,"./updateMatrixPoints":860,"core-js/stable":711}],856:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const si_funciona_1 = __importDefault(require("si-funciona"));
+const json_dom_1 = __importDefault(require("json-dom"));
+const tile_1 = __importDefault(require("./tile"));
+require("./traits");
+/**
+ * Create a 3d matrix of i with x by y by z size, add additional objects for each layer as well
+ * @param dimensions - The dimensions of the matrix to be created (x is the width, y the height, z the depth)
+ * @param props - Additional properties to be added to each level of the matrix
+ */
+const matrix = (dimensions = {
+  x: 0,
+  y: 0,
+  z: 1
+}, props = {
+  x: {},
+  y: {},
+  z: {},
+  matrix: {}
+}) => si_funciona_1.default.mergeObjects(json_dom_1.default.createDomItem({
+  has: {
+    'matrix.matrix': true
+  },
+  tagName: 'div',
+  attributes: {
+    className: 'matrix'
+  },
+  // Each level is built fresh per array element (not built once then cloned via buildArray) so every
+  // createDomItem call actually runs and stamps its own real id - cloning a single built item would copy
+  // that one id onto every layer/row/tile instead (the id-collision bug behind JSON-DOM#100).
+  children: Array.from({
+    length: dimensions.z
+  }, () => si_funciona_1.default.mergeObjectsMutable(json_dom_1.default.createDomItem({
+    axis: 'z',
+    has: {
+      'matrix.layer': true
+    },
+    tagName: 'div',
+    attributes: {
+      className: 'layer'
+    },
+    children: Array.from({
+      length: dimensions.y
+    }, () => si_funciona_1.default.mergeObjectsMutable(json_dom_1.default.createDomItem({
+      axis: 'y',
+      has: {
+        'matrix.row': true
+      },
+      tagName: 'div',
+      attributes: {
+        className: 'row'
+      },
+      children: Array.from({
+        length: dimensions.x
+      }, () => si_funciona_1.default.mergeObjectsMutable(json_dom_1.default.createDomItem({
+        axis: 'x',
+        has: {
+          'matrix.column': true
+        },
+        tagName: 'div',
+        attributes: {
+          className: 'column'
+        },
+        children: []
+      }), (0, tile_1.default)(), props.x))
+    }), props.y))
+  }), props.z))
+}), props.matrix);
+exports.default = matrix;
+},{"./tile":858,"./traits":859,"core-js/stable":711,"json-dom":832,"si-funciona":975}],857:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const buildMatrix_1 = __importDefault(require("./buildMatrix"));
+/**
+ * Return a single layer matrix where x and y are equal
+ * @param props - Additional data to append to each level: x for each column (the tile data), y for each row, z for
+ * each layer and matrix for the matrix itself. Each is a single configuration object, not an array.
+ * @param size - Used to define the width and height as equal values (depth is set to 1)
+ */
+const square = ({
+  x = {},
+  y = {},
+  z = {},
+  matrix = {}
+} = {}, size) => (0, buildMatrix_1.default)({
+  x: size,
+  y: size,
+  z: 1
+}, {
+  x,
+  y,
+  z,
+  matrix
+});
+exports.default = square;
+},{"./buildMatrix":853,"core-js/stable":711}],858:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+/**
+ * A default tile in the Matrix, the point is filled in once the matrix is built (see updateMatrixPoints).
+ */
+const tile = () => ({
+  point: {}
+});
+exports.default = tile;
+},{"core-js/stable":711}],859:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.hasTrait = void 0;
+require("core-js/stable");
+const json_dom_1 = __importDefault(require("json-dom"));
+/**
+ * The typed version of json-dom's hasTrait, it narrows an item to the trait it was checked for.
+ */
+exports.hasTrait = json_dom_1.default.hasTrait;
+json_dom_1.default.defineTrait('matrix.matrix', {
+  keys: []
+});
+json_dom_1.default.defineTrait('matrix.layer', {
+  keys: ['axis']
+});
+json_dom_1.default.defineTrait('matrix.row', {
+  keys: ['axis']
+});
+json_dom_1.default.defineTrait('matrix.column', {
+  keys: ['axis', 'point']
+});
+},{"core-js/stable":711,"json-dom":832}],860:[function(require,module,exports){
+"use strict";
+
+require("core-js/modules/esnext.iterator.constructor.js");
+require("core-js/modules/esnext.iterator.for-each.js");
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const point_1 = __importDefault(require("../point/point"));
+const traits_1 = require("./traits");
+/**
+ * Update the points for each DomItem in a matrix.
+ * @param matrix - Provide a matrix to update the points for.
+ * @returns The same matrix, with the point of each column updated
+ */
+const updateMatrixPoints = matrix => {
+  // confirm the matrix has the matrix trait
+  if (!matrix.has || !(0, traits_1.hasTrait)(matrix, 'matrix.matrix')) {
+    throw new Error("The provided matrix does not have the 'matrix.matrix' trait.");
+  }
+  // loop through each layer, row, and column in the matrix
+  // find z from layer, y from row, and x from column
+  // update the point object within the column
+  let z = -1;
+  matrix.children.forEach(layer => {
+    if (!(0, traits_1.hasTrait)(layer, 'matrix.layer')) {
+      return;
+    }
+    ++z;
+    let y = -1;
+    layer.children.forEach(row => {
+      if (!(0, traits_1.hasTrait)(row, 'matrix.row')) {
+        return;
+      }
+      ++y;
+      let x = -1;
+      row.children.forEach(column => {
+        if (!(0, traits_1.hasTrait)(column, 'matrix.column')) {
+          return;
+        }
+        // update the point object within the column
+        column.point = (0, point_1.default)(++x, y, z);
+      });
+    });
+  });
+  return matrix;
+};
+exports.default = updateMatrixPoints;
+},{"../point/point":886,"./traits":859,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649}],861:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const testPointsBetween_1 = __importDefault(require("./testPointsBetween"));
+/**
+ * Given two points, check the cells between using specified function.
+ * When inclusive is set to true the provided start and end points will also be tested
+ * @param start - The beginning point to check.
+ * @param end - The terminating point to check between.
+ * @param matrix - The grid of points all the points can exist on.
+ * @param func - The test function which will return true or false.
+ * @param inclusive - Choose whether to include or exclude the start and end points in the results.
+ * @returns Whether at least one of the points passed the test
+ */
+const checkInBetween = (start, end, matrix, func, inclusive = true) => !!(0, testPointsBetween_1.default)(start, end, matrix, func, inclusive).true.length;
+exports.default = checkInBetween;
+},{"./testPointsBetween":871,"core-js/stable":711}],862:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const areEqualPoints_1 = __importDefault(require("../point/areEqualPoints"));
+const pointsToStep_1 = __importDefault(require("./pointsToStep"));
+/**
+ * Recursively find the next point in a line from 'start' to 'end' using the provided direction. Return an array of points connecting 'start' and 'end'.
+ * @param direction - The step from each point to the next
+ * @param start - The point to add to the line, then continue from
+ * @param end - The final line destination
+ * @param line - The points found so far
+ */
+const nextIntersect = (direction, start, end, line = []) => {
+  line.push(start);
+  return (0, areEqualPoints_1.default)(start, end) ? line : nextIntersect(direction, direction.next(start), end, line);
+};
+/**
+ * Having provided two points, return an array of transition points connecting 'start' and 'end'. Return array
+ * includes 'start' (line[0]) and 'end' (line[line.length-1]). Line contains only exactly matched points
+ * @param start - The starting location of the line.
+ * @param end - The final line destination.
+ * @param line - The resulting line to connect start and end.
+ */
+const getLineIntersectPoints = (start, end, line = []) => {
+  if ((0, areEqualPoints_1.default)(start, end)) {
+    return line.concat([start]);
+  }
+  // start and end differ here, so the step is a Direction
+  const simplifiedDirection = (0, pointsToStep_1.default)(start, end);
+  return nextIntersect(simplifiedDirection, start, end, line);
+};
+exports.default = getLineIntersectPoints;
+},{"../point/areEqualPoints":879,"./pointsToStep":870,"core-js/stable":711}],863:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const getLineIntersectPoints_1 = __importDefault(require("./getLineIntersectPoints"));
+const getLineRelativePoints_1 = __importDefault(require("./getLineRelativePoints"));
+const getLineTransitionPoints_1 = __importDefault(require("./getLineTransitionPoints"));
+/**
+ * Find the points that a line would cross from 'start' to 'end' and return the array of points
+ * @param start - The starting location of the line.
+ * @param end - The final line destination.
+ * @param type - select the method used for finding the points: 'relative'|'intersect'|'transition'
+ * @param line - The points found so far, the resulting points are added to it.
+ * @returns The points connecting start and end
+ */
+const getLinePoints = (start, end, type = 'relative', line = []) => {
+  switch (type) {
+    case 'relative':
+      return (0, getLineRelativePoints_1.default)(start, end, line);
+    case 'intersect':
+      return (0, getLineIntersectPoints_1.default)(start, end, line);
+    case 'transition':
+      return (0, getLineTransitionPoints_1.default)(start, end, line);
+    default:
+      throw Error(`The given type: '${type}' is invalid. Valid types are 'relative', 'intersect', 'transition'`);
+  }
+};
+exports.default = getLinePoints;
+},{"./getLineIntersectPoints":862,"./getLineRelativePoints":864,"./getLineTransitionPoints":865,"core-js/stable":711}],864:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const areEqualPoints_1 = __importDefault(require("../point/areEqualPoints"));
+const getAbsolutePoint_1 = __importDefault(require("../point/getAbsolutePoint"));
+const point_1 = __importDefault(require("../point/point"));
+const pointsToStep_1 = __importDefault(require("./pointsToStep"));
+const sortAxisCoordinates_1 = __importDefault(require("../point/sortAxisCoordinates"));
+/**
+ * Having provided two points, return an array of integer transition points connecting 'start' and 'end'.
+ * @param start - The starting location of the line.
+ * @param end - The final line destination.
+ * @param line - The resulting line to connect start and end.
+ */
+const getLineRelativePoints = (start, end, line = []) => {
+  if ((0, areEqualPoints_1.default)(start, end)) {
+    return [start];
+  }
+  // Get the difference between start and end and simplify each relative coordinate
+  const simplifiedDirection = (0, pointsToStep_1.default)(start, end);
+  // Increment each coordinate by 1 either in the positive or negative direction
+  const stepPoint = (0, point_1.default)(start.x < end.x ? 1 : -1, start.y < end.y ? 1 : -1, start.z < end.z ? 1 : -1);
+  // Use the sorted coordinates to determine the priority of updating each coordinate
+  const [highest, middle, lowest] = (0, sortAxisCoordinates_1.default)((0, getAbsolutePoint_1.default)(simplifiedDirection), 'desc');
+  // The error range adustment for each cycle
+  const incrementMid = 2 * middle.coordinate;
+  const incrementLow = 2 * lowest.coordinate;
+  // These are the upper limit ranges of error used to reset when we exceed the limit
+  const errResetMid = 2 * (middle.coordinate - highest.coordinate);
+  const errResetLow = 2 * (lowest.coordinate - highest.coordinate);
+  // Update the coordinates of this point as we move along the line
+  const currPoint = (0, point_1.default)(start.x, start.y, start.z);
+  // These are the error ranges on the lower bound that we will update for each point
+  let errRangeMid = 2 * middle.coordinate - highest.coordinate;
+  let errRangeLow = 2 * lowest.coordinate - highest.coordinate;
+  line.push(start);
+  while (currPoint[highest.axis] !== end[highest.axis]) {
+    // Increment highest axis of currPoint by stepPoint highest axis (1 or -1)
+    currPoint[highest.axis] += stepPoint[highest.axis];
+    if (errRangeMid < 0) {
+      errRangeMid += incrementMid;
+    } else {
+      currPoint[middle.axis] += stepPoint[middle.axis];
+      errRangeMid += errResetMid;
+    }
+    if (errRangeLow < 0) {
+      errRangeLow += incrementLow;
+    } else {
+      currPoint[lowest.axis] += stepPoint[lowest.axis];
+      errRangeLow += errResetLow;
+    }
+    line.push((0, point_1.default)(currPoint.x, currPoint.y, currPoint.z));
+  }
+  return line;
+};
+exports.default = getLineRelativePoints;
+},{"../point/areEqualPoints":879,"../point/getAbsolutePoint":881,"../point/point":886,"../point/sortAxisCoordinates":889,"./pointsToStep":870,"core-js/stable":711}],865:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const areEqualPoints_1 = __importDefault(require("../point/areEqualPoints"));
+const point_1 = __importDefault(require("../point/point"));
+const pointDifference_1 = __importDefault(require("../point/pointDifference"));
+const getHighestAbsoluteCoordinate_1 = __importDefault(require("../point/getHighestAbsoluteCoordinate"));
+/**
+ * Having provided two points, return an array of transition points connecting 'start' and 'end'. Return array
+ * includes 'start' (line[0]) and 'end' (line[line.length-1])
+ * @param start - The starting location of the line.
+ * @param end - The final line destination.
+ * @param line - The resulting line to connect start and end.
+ * @param transitions - specify the desired number of transitions, resulting points will be transitions+1 (defaults to
+ * the largest absolute difference between the points).
+ */
+const getLineTransitionPoints = (start, end, line = [], transitions = null) => {
+  if ((0, areEqualPoints_1.default)(start, end)) {
+    return [start];
+  }
+  const difference = (0, pointDifference_1.default)(start, end);
+  if (transitions === null) {
+    transitions = Math.abs((0, getHighestAbsoluteCoordinate_1.default)(difference));
+  }
+  for (let i = 0; i <= transitions; ++i) {
+    // Calculate the fractional distance (t) from 0 to 1
+    const t = i / transitions;
+    // Linear interpolation formula
+    const x = start.x + (end.x - start.x) * t;
+    const y = start.y + (end.y - start.y) * t;
+    const z = start.z + (end.z - start.z) * t;
+    line.push((0, point_1.default)(x, y, z));
+  }
+  return line;
+};
+exports.default = getLineTransitionPoints;
+},{"../point/areEqualPoints":879,"../point/getHighestAbsoluteCoordinate":883,"../point/point":886,"../point/pointDifference":887,"core-js/stable":711}],866:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const point_1 = __importDefault(require("../point/point"));
+const directions = [[1, 0], [0, 1]];
+/**
+ * Every straight, horizontal or vertical, line of exactly `length` points which fits within a grid of the given
+ * dimensions (z is always 0 - no diagonals or 3D lines; dimensions.x is the number of columns, dimensions.y the
+ * number of rows, matching getAxisLengths). Purely geometric: it knows nothing about what occupies a cell, so a
+ * caller filters the result for any blocked-cell test of its own.
+ * @param dimensions - The grid's own size (x = columns, y = rows).
+ * @param length - The exact number of points each line must have.
+ */
+const getLinesOfLength = (dimensions, length) => {
+  const lines = [];
+  for (let y = 0; y < dimensions.y; y++) {
+    for (let x = 0; x < dimensions.x; x++) {
+      for (const [stepX, stepY] of directions) {
+        const endX = x + stepX * (length - 1);
+        const endY = y + stepY * (length - 1);
+        if (endX >= dimensions.x || endY >= dimensions.y) {
+          continue;
+        }
+        lines.push(Array.from({
+          length
+        }, (_, i) => (0, point_1.default)(x + stepX * i, y + stepY * i, 0)));
+      }
+    }
+  }
+  return lines;
+};
+exports.default = getLinesOfLength;
+},{"../point/point":886,"core-js/stable":711}],867:[function(require,module,exports){
+"use strict";
+
+require("core-js/modules/esnext.iterator.constructor.js");
+require("core-js/modules/esnext.iterator.reduce.js");
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const getLinePoints_1 = __importDefault(require("./getLinePoints"));
+/**
+ * Takes an array of arrays containing two points each. Calls getPointsLine for each array of points. Returns an
+ * array of all points captured for each line segment
+ * @param lines - An array of line segments, each is the arguments for getLinePoints (start, end, and optionally the type).
+ * @returns All the points of all the lines in one array
+ */
+const getPointsForLines = lines => lines.reduce((pointsArray, line) => pointsArray.concat((0, getLinePoints_1.default)(...line)), []);
+exports.default = getPointsForLines;
+},{"./getLinePoints":863,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/stable":711}],868:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * Lines between points: find the points a line passes through, and test the points along it.
+ */
+require("core-js/stable");
+const checkInBetween_1 = __importDefault(require("./checkInBetween"));
+const getLineIntersectPoints_1 = __importDefault(require("./getLineIntersectPoints"));
+const getLinePoints_1 = __importDefault(require("./getLinePoints"));
+const getLineRelativePoints_1 = __importDefault(require("./getLineRelativePoints"));
+const getLineTransitionPoints_1 = __importDefault(require("./getLineTransitionPoints"));
+const getLinesOfLength_1 = __importDefault(require("./getLinesOfLength"));
+const getPointsForLines_1 = __importDefault(require("./getPointsForLines"));
+const lineEndPoint_1 = __importDefault(require("./lineEndPoint"));
+const pointsToStep_1 = __importDefault(require("./pointsToStep"));
+const testPointsBetween_1 = __importDefault(require("./testPointsBetween"));
+exports.default = {
+  checkInBetween: checkInBetween_1.default,
+  getLineIntersectPoints: getLineIntersectPoints_1.default,
+  getLinePoints: getLinePoints_1.default,
+  getLineRelativePoints: getLineRelativePoints_1.default,
+  getLineTransitionPoints: getLineTransitionPoints_1.default,
+  getLinesOfLength: getLinesOfLength_1.default,
+  getPointsForLines: getPointsForLines_1.default,
+  lineEndPoint: lineEndPoint_1.default,
+  pointsToStep: pointsToStep_1.default,
+  testPointsBetween: testPointsBetween_1.default
+};
+},{"./checkInBetween":861,"./getLineIntersectPoints":862,"./getLinePoints":863,"./getLineRelativePoints":864,"./getLineTransitionPoints":865,"./getLinesOfLength":866,"./getPointsForLines":867,"./lineEndPoint":869,"./pointsToStep":870,"./testPointsBetween":871,"core-js/stable":711}],869:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const point_1 = __importDefault(require("../point/point"));
+/**
+ * Given a start point, line length, and a direction, generate the end point of the line.
+ * @param start - The selected starting point.
+ * @param length - The total length of the line.
+ * @param dir - The direction of the line.
+ */
+const lineEndPoint = (start, length, dir) => (0, point_1.default)(start.x + dir.x * (length - 1), start.y + dir.y * (length - 1), start.z + dir.z * (length - 1));
+exports.default = lineEndPoint;
+},{"../point/point":886,"core-js/stable":711}],870:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const areEqualPoints_1 = __importDefault(require("../point/areEqualPoints"));
+const direction_1 = __importDefault(require("../point/direction"));
+const point_1 = __importDefault(require("../point/point"));
+const pointDifference_1 = __importDefault(require("../point/pointDifference"));
+const si_funciona_1 = __importDefault(require("si-funciona"));
+/**
+ * Find the lowest common ratio of the difference between the coordinates of two points.
+ * @param start - The first point to assess.
+ * @param end - The other point to assess.
+ * @returns A Direction, or just the point 0, 0, 0 when both points are the same
+ */
+const pointsToStep = (start, end) => {
+  if ((0, areEqualPoints_1.default)(start, end)) {
+    return (0, point_1.default)(0, 0, 0);
+  }
+  const difference = (0, pointDifference_1.default)(start, end);
+  const simplifiedCoordinates = si_funciona_1.default.simplestRatio(difference.x, difference.y, difference.z);
+  const [dx, dy, dz] = simplifiedCoordinates;
+  return (0, direction_1.default)(dx, dy, dz);
+};
+exports.default = pointsToStep;
+},{"../point/areEqualPoints":879,"../point/direction":880,"../point/point":886,"../point/pointDifference":887,"core-js/stable":711,"si-funciona":975}],871:[function(require,module,exports){
+"use strict";
+
+require("core-js/modules/esnext.iterator.constructor.js");
+require("core-js/modules/esnext.iterator.filter.js");
+require("core-js/modules/esnext.iterator.reduce.js");
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const getLinePoints_1 = __importDefault(require("./getLinePoints"));
+/**
+ * Given a start and end point, test the points between with the provided function. Return the points as part of true
+ * and / or false properties based on the test.
+ * @param start - The beginning point to check.
+ * @param end - The terminating point to check between.
+ * @param matrix - The grid of points all the points can exist on.
+ * @param func - The test function which will return true or false.
+ * @param inclusive - Choose whether to include or exclude the start and end points in the results.
+ */
+const testPointsBetween = (start, end, matrix, func, inclusive = true) => (0, getLinePoints_1.default)(start, end).filter((_prop, i, line) => i !== 0 && i !== line.length - 1 || inclusive).reduce((newPoints, next) => {
+  newPoints[func(next, matrix) ? 'true' : 'false'].push(next);
+  return newPoints;
+}, {
+  true: [],
+  false: []
+});
+exports.default = testPointsBetween;
+},{"./getLinePoints":863,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/stable":711}],872:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const getDomItemFromPoint_1 = __importDefault(require("./getDomItemFromPoint"));
+const getPointFromElement_1 = __importDefault(require("./getPointFromElement"));
+/**
+ * Retrieve the DomItem associated with the provided element in the matrix
+ * @param elem - Provide an element having an associated DomItem.
+ * @param matrix - The matrix potentially containing the DomItem with Point.
+ * @returns The DomItem (a column), or false when the element is not in the matrix
+ */
+const getDomItemFromElement = (elem, matrix) => (0, getDomItemFromPoint_1.default)((0, getPointFromElement_1.default)(elem), matrix);
+exports.default = getDomItemFromElement;
+},{"./getDomItemFromPoint":873,"./getPointFromElement":875,"core-js/stable":711}],873:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const checkValidPoint_1 = __importDefault(require("../bounds/checkValidPoint"));
+/**
+ * Retrieve the DomItem associated with the provided point
+ * @param pnt - A point corresponding to a DomItem.
+ * @param matrix - The matrix containing the point.
+ * @returns The DomItem (a column), or false when the point is not in the matrix
+ */
+const getDomItemFromPoint = (pnt, matrix) => (0, checkValidPoint_1.default)(pnt, matrix) ? matrix.children[pnt.z].children[pnt.y].children[pnt.x] : false;
+exports.default = getDomItemFromPoint;
+},{"../bounds/checkValidPoint":845,"core-js/stable":711}],874:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const point_1 = __importDefault(require("../point/point"));
+/**
+ * Retrieve the point associated with the provided DomItem.
+ * @param domItem - Provide a DomItem (a column) associated with a point.
+ * @param useIfExists - Whether to use the existing point if it exists.
+ */
+const getPointFromDomItem = (domItem, useIfExists = true) => {
+  if (typeof domItem?.parentItem?.parentItem?.parentItem?.children === 'undefined') {
+    throw Error('Invalid DomItem or not a DomItem representing a matrix point.');
+  }
+  if (useIfExists && domItem.point) {
+    return domItem.point;
+  }
+  // The check above confirms each of these parents exists
+  const row = domItem.parentItem;
+  const layer = row.parentItem;
+  const matrix = layer.parentItem;
+  return (0, point_1.default)(Array.from(row.children).indexOf(domItem), Array.from(layer.children).indexOf(row), Array.from(matrix.children).indexOf(layer));
+};
+exports.default = getPointFromDomItem;
+},{"../point/point":886}],875:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const point_1 = __importDefault(require("../point/point"));
+/**
+ * Retrieve the point associated with the provided element.
+ * @param elem - Provide an element associated with a point.
+ */
+const getPointFromElement = elem => {
+  if (typeof elem.parentNode?.parentNode?.parentNode?.childNodes === 'undefined') {
+    // This seems unlikey to occur because there will be document items as parents
+    throw Error('Invalid element or not an element representing a matrix point.');
+  }
+  // The checks above confirm each of these parents exists
+  const row = elem.parentNode;
+  const layer = row.parentNode;
+  const matrix = layer.parentNode;
+  return (0, point_1.default)(Array.from(row.childNodes).indexOf(elem), Array.from(layer.childNodes).indexOf(row), Array.from(matrix.childNodes).indexOf(layer));
+};
+exports.default = getPointFromElement;
+},{"../point/point":886,"core-js/stable":711}],876:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * Move between the points, the items and the elements of a matrix.
+ */
+require("core-js/stable");
+const getDomItemFromElement_1 = __importDefault(require("./getDomItemFromElement"));
+const getDomItemFromPoint_1 = __importDefault(require("./getDomItemFromPoint"));
+const getPointFromDomItem_1 = __importDefault(require("./getPointFromDomItem"));
+const getPointFromElement_1 = __importDefault(require("./getPointFromElement"));
+exports.default = {
+  getDomItemFromElement: getDomItemFromElement_1.default,
+  getDomItemFromPoint: getDomItemFromPoint_1.default,
+  getPointFromDomItem: getPointFromDomItem_1.default,
+  getPointFromElement: getPointFromElement_1.default
+};
+},{"./getDomItemFromElement":872,"./getDomItemFromPoint":873,"./getPointFromDomItem":874,"./getPointFromElement":875,"core-js/stable":711}],877:[function(require,module,exports){
+"use strict";
+
+/**
+ * All of the Matrix DOM functions and objects necessary to create DOM Matrices
+ */
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+require("core-js/stable");
+const index_1 = __importDefault(require("./point/index"));
+const index_2 = __importDefault(require("./line/index"));
+const index_3 = __importDefault(require("./grid/index"));
+const index_4 = __importDefault(require("./bounds/index"));
+const index_5 = __importDefault(require("./lookup/index"));
+const index_6 = __importDefault(require("./random/index"));
+/**
+ * Store a reference to the global scope which will be Window if rendered via browser
+ */
+const root = typeof window !== 'undefined' ? window : {};
+/**
+ * All the functions of matrix-dom.
+ */
+const matrixDom = {
+  ...index_1.default,
+  ...index_2.default,
+  ...index_3.default,
+  ...index_4.default,
+  ...index_5.default,
+  ...index_6.default
+};
+root.matrixDom = matrixDom;
+module.exports = matrixDom;
+},{"./bounds/index":852,"./grid/index":855,"./line/index":868,"./lookup/index":876,"./point/index":884,"./random/index":890,"core-js/stable":711}],878:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const point_1 = __importDefault(require("./point"));
+function alterCoordinates(pnt, fn) {
+  return (0, point_1.default)(fn(pnt?.x ?? null, 'x', pnt), fn(pnt?.y ?? null, 'y', pnt), fn(pnt?.z ?? null, 'z', pnt));
+}
+exports.default = alterCoordinates;
+},{"./point":886,"core-js/stable":711}],879:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+/**
+ * Given two points, compare the x, y, and z of each to see if they are the same
+ * @param p1 - The first point to compare
+ * @param p2 - The other point to be compared
+ */
+const areEqualPoints = (p1, p2) => p1.x === p2.x && p1.y === p2.y && p1.z === p2.z;
+exports.default = areEqualPoints;
+},{"core-js/stable":711}],880:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const point_1 = __importDefault(require("./point"));
+const nextCell_1 = __importDefault(require("./nextCell"));
+const prevCell_1 = __importDefault(require("./prevCell"));
+const si_funciona_1 = __importDefault(require("si-funciona"));
+/**
+ * Create a direction object having x, y, z properties and next/prev methods
+ * @param x - The x difference along the line
+ * @param y - The y difference along the line
+ * @param z - The z difference along the line
+ */
+const direction = (x, y, z = 0) => {
+  const simplifiedCoordinates = si_funciona_1.default.simplestRatio(x, y, z);
+  const [dx, dy, dz] = simplifiedCoordinates;
+  const dir = (0, point_1.default)(dx, dy, dz);
+  dir.next = start => (0, nextCell_1.default)(start, dir);
+  dir.prev = end => (0, prevCell_1.default)(end, dir);
+  return dir;
+};
+exports.default = direction;
+},{"./nextCell":885,"./point":886,"./prevCell":888,"core-js/stable":711,"si-funciona":975}],881:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const si_funciona_1 = __importDefault(require("si-funciona"));
+/**
+ * Return the point with absolute coordinates.
+ * @param pnt - A Point to have coordinates switched to absolute units.
+ */
+const getAbsolutePoint = pnt => si_funciona_1.default.mapObject(pnt, Math.abs, 0);
+exports.default = getAbsolutePoint;
+},{"core-js/stable":711,"si-funciona":975}],882:[function(require,module,exports){
+"use strict";
+
+require("core-js/modules/esnext.iterator.constructor.js");
+require("core-js/modules/esnext.iterator.filter.js");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+/**
+ * Having provided a coordinate number, find all corresponding axis, return the first match.
+ * @param pnt - The Point containing a matching coordinate.
+ * @param coordinate - The coordinate to search for.
+ * @returns The first matching axis, or false when no axis matches
+ */
+const getFirstAxisOfCoordinate = (pnt, coordinate) => Object.keys(pnt).filter(key => pnt[key] === coordinate)[0] || false;
+exports.default = getFirstAxisOfCoordinate;
+},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/stable":711}],883:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const si_funciona_1 = __importDefault(require("si-funciona"));
+/**
+ * Return the first coordinate number with the highest absolute value.
+ * @param pnt - A Point to be assessed.
+ */
+const getHighestAbsoluteCoordinate = pnt => si_funciona_1.default.reduceObject(pnt, si_funciona_1.default.absoluteMax, 0);
+exports.default = getHighestAbsoluteCoordinate;
+},{"core-js/stable":711,"si-funciona":975}],884:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * Points and directions in a matrix: create them, compare them and step from one to the next.
+ */
+require("core-js/stable");
+const alterCoordinates_1 = __importDefault(require("./alterCoordinates"));
+const areEqualPoints_1 = __importDefault(require("./areEqualPoints"));
+const direction_1 = __importDefault(require("./direction"));
+const getAbsolutePoint_1 = __importDefault(require("./getAbsolutePoint"));
+const getFirstAxisOfCoordinate_1 = __importDefault(require("./getFirstAxisOfCoordinate"));
+const getHighestAbsoluteCoordinate_1 = __importDefault(require("./getHighestAbsoluteCoordinate"));
+const nextCell_1 = __importDefault(require("./nextCell"));
+const point_1 = __importDefault(require("./point"));
+const pointDifference_1 = __importDefault(require("./pointDifference"));
+const prevCell_1 = __importDefault(require("./prevCell"));
+const sortAxisCoordinates_1 = __importDefault(require("./sortAxisCoordinates"));
+exports.default = {
+  alterCoordinates: alterCoordinates_1.default,
+  areEqualPoints: areEqualPoints_1.default,
+  direction: direction_1.default,
+  getAbsolutePoint: getAbsolutePoint_1.default,
+  getFirstAxisOfCoordinate: getFirstAxisOfCoordinate_1.default,
+  getHighestAbsoluteCoordinate: getHighestAbsoluteCoordinate_1.default,
+  nextCell: nextCell_1.default,
+  point: point_1.default,
+  pointDifference: pointDifference_1.default,
+  prevCell: prevCell_1.default,
+  sortAxisCoordinates: sortAxisCoordinates_1.default
+};
+},{"./alterCoordinates":878,"./areEqualPoints":879,"./direction":880,"./getAbsolutePoint":881,"./getFirstAxisOfCoordinate":882,"./getHighestAbsoluteCoordinate":883,"./nextCell":885,"./point":886,"./pointDifference":887,"./prevCell":888,"./sortAxisCoordinates":889,"core-js/stable":711}],885:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const point_1 = __importDefault(require("./point"));
+/**
+ * Based on provided point and point direction generate next point.
+ * @param pnt - Provide the current / initial point
+ * @param dir - Provide the direction to be applied to find the next point
+ */
+const nextCell = (pnt, dir) => (0, point_1.default)(pnt.x + dir.x, pnt.y + dir.y, pnt.z + dir.z);
+exports.default = nextCell;
+},{"./point":886,"core-js/stable":711}],886:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+/**
+ * Store the point data for an x, y, z Matrix.
+ * @param x - The numeric value for X-coordinate
+ * @param y - The numeric value for Y-coordinate
+ * @param z - The numeric value for Z-coordinate (default to 0 for 2D Matrix)
+ */
+const point = (x, y, z = 0) => ({
+  x,
+  y,
+  z
+});
+exports.default = point;
+},{"core-js/stable":711}],887:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const point_1 = __importDefault(require("./point"));
+/**
+ * Based on provided point and another point, get a point with the difference between each axis
+ * @param start - The first point to compare
+ * @param end - The other point to be compared
+ */
+const pointDifference = (start, end) => (0, point_1.default)(end.x - start.x, end.y - start.y, end.z - start.z);
+exports.default = pointDifference;
+},{"./point":886,"core-js/stable":711}],888:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const point_1 = __importDefault(require("./point"));
+/**
+ * Based on provided point and point direction generate previous point.
+ * @param pnt - Provide the current / initial point
+ * @param dir - Provide the direction to be applied to find the previous point
+ */
+const prevCell = (pnt, dir) => (0, point_1.default)(pnt.x - dir.x, pnt.y - dir.y, pnt.z - dir.z);
+exports.default = prevCell;
+},{"./point":886,"core-js/stable":711}],889:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+/**
+ * Take a point and sort the coordinates, return an array of them sorted.
+ * @param pnt - the Point to be sorted
+ * @param direction - 'asc'|'desc'
+ */
+const sortAxisCoordinates = (pnt, direction = 'desc') => {
+  const sortFn = direction === 'desc' ? (a, b) => b.coordinate - a.coordinate : (a, b) => a.coordinate - b.coordinate;
+  const axisCoordinatePairs = [{
+    axis: 'x',
+    coordinate: pnt.x
+  }, {
+    axis: 'y',
+    coordinate: pnt.y
+  }, {
+    axis: 'z',
+    coordinate: pnt.z
+  }];
+  return axisCoordinatePairs.sort(sortFn);
+};
+exports.default = sortAxisCoordinates;
+},{"core-js/stable":711}],890:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * Random points and directions within a matrix, for example to place a line of a given length.
+ */
+require("core-js/stable");
+const randDirection_1 = __importDefault(require("./randDirection"));
+const randDirectionWithInterval_1 = __importDefault(require("./randDirectionWithInterval"));
+const randomPoint_1 = __importDefault(require("./randomPoint"));
+const randomStart_1 = __importDefault(require("./randomStart"));
+const testIntervalFits_1 = __importDefault(require("./testIntervalFits"));
+exports.default = {
+  randDirection: randDirection_1.default,
+  randDirectionWithInterval: randDirectionWithInterval_1.default,
+  randomPoint: randomPoint_1.default,
+  randomStart: randomStart_1.default,
+  testIntervalFits: testIntervalFits_1.default
+};
+},{"./randDirection":891,"./randDirectionWithInterval":892,"./randomPoint":893,"./randomStart":894,"./testIntervalFits":895,"core-js/stable":711}],891:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const checkValidPoint_1 = __importDefault(require("../bounds/checkValidPoint"));
+const direction_1 = __importDefault(require("../point/direction"));
+const getAxisLengths_1 = __importDefault(require("../bounds/getAxisLengths"));
+const getCoordinateRanges_1 = __importDefault(require("../bounds/getCoordinateRanges"));
+const getMatrixRange_1 = __importDefault(require("../bounds/getMatrixRange"));
+const nextCell_1 = __importDefault(require("../point/nextCell"));
+const pointDifference_1 = __importDefault(require("../point/pointDifference"));
+const randomPoint_1 = __importDefault(require("./randomPoint"));
+/**
+ * Get random direction point.
+ * NOTE: It is possible that the direction is 0,0,0 indicating no move.
+ * @param matrix - The matrix that the point will be contained within.
+ * @param start - The point the direction will start from, null for random
+ * @param maxRanges - The maximum ranges for the point. If null, the matrix will be used.
+ */
+const randDirection = (matrix, start = null, maxRanges = null) => {
+  const [minPoint, maxPoint] = (0, getMatrixRange_1.default)(matrix);
+  // Use the available ranges as the max ranges
+  maxRanges = (0, getCoordinateRanges_1.default)(minPoint, maxPoint, maxRanges);
+  if (start === null) {
+    // random point with offset of minimum of matrix
+    start = (0, nextCell_1.default)(minPoint, (0, randomPoint_1.default)(matrix, maxRanges));
+  }
+  if (!(0, checkValidPoint_1.default)(start, matrix)) {
+    const matrixDimensions = (0, getAxisLengths_1.default)(matrix);
+    throw new Error(`The given point (${start.x}, ${start.y}, ${start.z}) is not valid within the given matrix (${matrixDimensions.x}, ${matrixDimensions.y}, ${matrixDimensions.z})`);
+  }
+  // Find a valid point within the matrix to use as our next point
+  const validPoint = (0, nextCell_1.default)(minPoint, (0, randomPoint_1.default)(matrix, maxRanges));
+  // Get the difference from start to the new
+  const delta = (0, pointDifference_1.default)(start, validPoint);
+  return (0, direction_1.default)(delta.x, delta.y, delta.z);
+};
+exports.default = randDirection;
+},{"../bounds/checkValidPoint":845,"../bounds/getAxisLengths":848,"../bounds/getCoordinateRanges":849,"../bounds/getMatrixRange":851,"../point/direction":880,"../point/nextCell":885,"../point/pointDifference":887,"./randomPoint":893,"core-js/stable":711}],892:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const alterCoordinates_1 = __importDefault(require("../point/alterCoordinates"));
+const checkValidPoint_1 = __importDefault(require("../bounds/checkValidPoint"));
+const direction_1 = __importDefault(require("../point/direction"));
+const getAbsolutePoint_1 = __importDefault(require("../point/getAbsolutePoint"));
+const getAxisLengths_1 = __importDefault(require("../bounds/getAxisLengths"));
+const getCoordinateRanges_1 = __importDefault(require("../bounds/getCoordinateRanges"));
+const getMatrixRange_1 = __importDefault(require("../bounds/getMatrixRange"));
+const nextCell_1 = __importDefault(require("../point/nextCell"));
+const point_1 = __importDefault(require("../point/point"));
+const pointDifference_1 = __importDefault(require("../point/pointDifference"));
+const randDirection_1 = __importDefault(require("./randDirection"));
+const randomPoint_1 = __importDefault(require("./randomPoint"));
+const si_funciona_1 = __importDefault(require("si-funciona"));
+const testIntervalFits_1 = __importDefault(require("./testIntervalFits"));
+/**
+ * Get random direction point.
+ * NOTE: It is possible that the direction is 0,0,0 indicating no move.
+ * @param matrix - The matrix that the point will be contained within.
+ * @param start - The point the direction will start from, null for random
+ * @param interval - An interval where a line would intersect in the direction, null for random
+ * @param maxRanges - The maximum ranges for the point. If null, the matrix will be used.
+ */
+const randDirectionWithInterval = (matrix, start = null, interval = null, maxRanges = null) => {
+  const [minPoint, maxPoint] = (0, getMatrixRange_1.default)(matrix);
+  // Use the available ranges as the max ranges
+  maxRanges = (0, getCoordinateRanges_1.default)(minPoint, maxPoint, maxRanges);
+  const intervalFits = (0, testIntervalFits_1.default)(matrix, interval, start === null ? maxRanges : (0, pointDifference_1.default)(start, maxRanges));
+  if (!intervalFits.x && !intervalFits.y && !intervalFits.z) {
+    throw new Error(`The given interval (${interval}) will not fit in this matrix`);
+  }
+  if (start === null) {
+    // The range is the the total numbers available, but the limit is the highest possible number
+    let startLimits = (0, pointDifference_1.default)((0, point_1.default)(1, 1, 1), maxRanges);
+    if (interval !== null) {
+      startLimits = (0, alterCoordinates_1.default)(startLimits, (coordinate, axis) => intervalFits[axis] ? coordinate - Math.abs(interval) : coordinate);
+    }
+    // random point with offset of minimum of matrix
+    start = (0, nextCell_1.default)(minPoint, (0, randomPoint_1.default)(matrix, startLimits));
+  }
+  if (!(0, checkValidPoint_1.default)(start, matrix)) {
+    const matrixDimensions = (0, getAxisLengths_1.default)(matrix);
+    throw new Error(`The given point (${start.x}, ${start.y}, ${start.z}) is not valid within the given matrix (${matrixDimensions.x}, ${matrixDimensions.y}, ${matrixDimensions.z})`);
+  }
+  // Reduce limits by start (absolute values)
+  const startOffset = (0, getAbsolutePoint_1.default)((0, pointDifference_1.default)(minPoint, start));
+  // end limits should be offset by start point coordinates and ensure at least one end is interval distance from start
+  const endLimits = (0, point_1.default)(maxRanges.x - startOffset.x - 1, maxRanges.y - startOffset.y - 1, maxRanges.z - startOffset.z - 1);
+  const randDir = (0, randDirection_1.default)(matrix, start, endLimits);
+  const validPoint = (0, nextCell_1.default)(startOffset, randDir.next(start));
+  const delta = (0, pointDifference_1.default)(start, validPoint);
+  // check if any coordinate already has the coorect interval
+  if (interval !== null) {
+    // none of the coordinates have the interval, so pick a valid one to update
+    const axisFit = si_funciona_1.default.reduceObject(intervalFits, (fitResults, fits, axis) => {
+      if (fits) {
+        fitResults.push(axis);
+      }
+      return fitResults;
+    }, []);
+    // Pick a random axis that fits and set that coordinate to the interval
+    const fixedAxis = axisFit[si_funciona_1.default.randomInteger(axisFit.length)];
+    delta[fixedAxis] = interval;
+  }
+  return (0, direction_1.default)(delta.x, delta.y, delta.z);
+};
+exports.default = randDirectionWithInterval;
+},{"../bounds/checkValidPoint":845,"../bounds/getAxisLengths":848,"../bounds/getCoordinateRanges":849,"../bounds/getMatrixRange":851,"../point/alterCoordinates":878,"../point/direction":880,"../point/getAbsolutePoint":881,"../point/nextCell":885,"../point/point":886,"../point/pointDifference":887,"./randDirection":891,"./randomPoint":893,"./testIntervalFits":895,"core-js/stable":711,"si-funciona":975}],893:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const si_funciona_1 = __importDefault(require("si-funciona"));
+const getCoordinateRanges_1 = __importDefault(require("../bounds/getCoordinateRanges"));
+const getMatrixRange_1 = __importDefault(require("../bounds/getMatrixRange"));
+const point_1 = __importDefault(require("../point/point"));
+/**
+ * Get random point within a matrix
+ * @param matrix - The matrix that the point will be contained within.
+ * @param maxRanges - The maximum ranges for the point. If null, the matrix will be used.
+ */
+const randPoint = (matrix, maxRanges = null) => {
+  const [minPoint, maxPoint] = (0, getMatrixRange_1.default)(matrix);
+  const coordinateRanges = (0, getCoordinateRanges_1.default)(minPoint, maxPoint, maxRanges);
+  return (0, point_1.default)(si_funciona_1.default.randomInteger(coordinateRanges.x, minPoint.x), si_funciona_1.default.randomInteger(coordinateRanges.y, minPoint.y), si_funciona_1.default.randomInteger(coordinateRanges.z, minPoint.z));
+};
+exports.default = randPoint;
+},{"../bounds/getCoordinateRanges":849,"../bounds/getMatrixRange":851,"../point/point":886,"core-js/stable":711,"si-funciona":975}],894:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const si_funciona_1 = __importDefault(require("si-funciona"));
+const alterCoordinates_1 = __importDefault(require("../point/alterCoordinates"));
+const getCoordinateRanges_1 = __importDefault(require("../bounds/getCoordinateRanges"));
+const getHighestAbsoluteCoordinate_1 = __importDefault(require("../point/getHighestAbsoluteCoordinate"));
+const getMatrixRange_1 = __importDefault(require("../bounds/getMatrixRange"));
+const nextCell_1 = __importDefault(require("../point/nextCell"));
+const randomPoint_1 = __importDefault(require("./randomPoint"));
+const randDirectionWithInterval_1 = __importDefault(require("./randDirectionWithInterval"));
+/**
+ * Generate a random starting point for a line with the provided length and direction.
+ * @param matrix - The matrix in which the line will be drawn.
+ * @param length - The intended length (intersected tiles) of the resulting line, null will use a random length within the matrix
+ * @param dir - The direction the line will extend towards, null will use a random direction within the matrix
+ * @param maxRanges - The maximum ranges for the point. If null, the matrix will be used.
+ */
+const randomStart = (matrix, length = null, dir = null, maxRanges = null) => {
+  const [minPoint, maxPoint] = (0, getMatrixRange_1.default)(matrix);
+  maxRanges = (0, getCoordinateRanges_1.default)(minPoint, maxPoint, maxRanges);
+  // length must be at least 1, and less than the highest coordinate in the matrix
+  const lineLength = length ?? si_funciona_1.default.randomInteger((0, getHighestAbsoluteCoordinate_1.default)(maxRanges) - 2, 1);
+  if (dir === null) {
+    dir = (0, randDirectionWithInterval_1.default)(matrix, null, lineLength, maxRanges);
+  }
+  // check direction has at least one non-zero component
+  if (dir.x === 0 && dir.y === 0 && dir.z === 0) {
+    throw new Error('Direction must have at least one non-zero coordinate');
+  }
+  const multipleToLength = (0, alterCoordinates_1.default)(dir, coordinate => {
+    if (lineLength % coordinate !== 0) {
+      return null;
+    }
+    return lineLength / coordinate;
+  });
+  const timesToLength = si_funciona_1.default.reduceObject(multipleToLength, (times, coordinate) => {
+    if (coordinate === null) {
+      return times;
+    }
+    if (coordinate < times) {
+      return coordinate;
+    }
+    return times;
+  }, lineLength);
+  for (let i = 0; i < timesToLength; ++i) {
+    maxRanges = dir.prev(maxRanges);
+  }
+  return (0, nextCell_1.default)(minPoint, (0, randomPoint_1.default)(matrix, maxRanges));
+};
+exports.default = randomStart;
+},{"../bounds/getCoordinateRanges":849,"../bounds/getMatrixRange":851,"../point/alterCoordinates":878,"../point/getHighestAbsoluteCoordinate":883,"../point/nextCell":885,"./randDirectionWithInterval":892,"./randomPoint":893,"core-js/stable":711,"si-funciona":975}],895:[function(require,module,exports){
+"use strict";
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+require("core-js/stable");
+const getCoordinateRanges_1 = __importDefault(require("../bounds/getCoordinateRanges"));
+const getMatrixRange_1 = __importDefault(require("../bounds/getMatrixRange"));
+/**
+ * Check each axis of the matrix to see if a length interval would fit within.
+ * @param matrix - The matrix that the point will be contained within.
+ * @param interval - An interval where a line would intersect in the direction, null for unspecified
+ * @param maxRanges - The maximum ranges for the point. If null, the matrix will be used.
+ */
+const testIntervalFits = (matrix, interval = null, maxRanges = null) => {
+  if (interval === null) {
+    return {
+      x: true,
+      y: true,
+      z: true
+    };
+  }
+  const [minPoint, maxPoint] = (0, getMatrixRange_1.default)(matrix);
+  // Use the available ranges as the max ranges
+  const ranges = (0, getCoordinateRanges_1.default)(minPoint, maxPoint, maxRanges);
+  const absoluteInterval = Math.abs(interval);
+  return {
+    x: ranges.x > absoluteInterval,
+    y: ranges.y > absoluteInterval,
+    z: ranges.z > absoluteInterval
+  };
+};
+exports.default = testIntervalFits;
+},{"../bounds/getCoordinateRanges":849,"../bounds/getMatrixRange":851,"core-js/stable":711}],896:[function(require,module,exports){
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -29718,7 +31415,7 @@ try {
   }
 }
 
-},{}],844:[function(require,module,exports){
+},{}],897:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29788,7 +31485,7 @@ var _default = exports.default = {
   mergeArrays: _mergeArrays.default,
   uniqueArray: _uniqueArray.default
 };
-},{"./arrays/BasicQueue":845,"./arrays/addUniqueToArray":846,"./arrays/buildArray":847,"./arrays/buildArrayOfReferences":848,"./arrays/compareArrays":849,"./arrays/mergeArrays":850,"./arrays/uniqueArray":851}],845:[function(require,module,exports){
+},{"./arrays/BasicQueue":898,"./arrays/addUniqueToArray":899,"./arrays/buildArray":900,"./arrays/buildArrayOfReferences":901,"./arrays/compareArrays":902,"./arrays/mergeArrays":903,"./arrays/uniqueArray":904}],898:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29839,7 +31536,7 @@ class BasicQueue {
   }
 }
 var _default = exports.default = BasicQueue;
-},{}],846:[function(require,module,exports){
+},{}],899:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29854,7 +31551,7 @@ require("core-js/modules/es.array.includes.js");
  */
 const addUniqueToArray = (item, array) => !array.includes(item) ? array.concat([item]) : array;
 var _default = exports.default = addUniqueToArray;
-},{"core-js/modules/es.array.includes.js":351}],847:[function(require,module,exports){
+},{"core-js/modules/es.array.includes.js":351}],900:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29878,7 +31575,7 @@ const buildArray = (item, length) => {
   return arr;
 };
 var _default = exports.default = buildArray;
-},{"../objects/cloneObject":888}],848:[function(require,module,exports){
+},{"../objects/cloneObject":941}],901:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29899,7 +31596,7 @@ const buildArrayOfReferences = (item, length) => {
   return arr;
 };
 var _default = exports.default = buildArrayOfReferences;
-},{}],849:[function(require,module,exports){
+},{}],902:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29994,7 +31691,7 @@ const compareArrays = (...arrays) => (0, _mergeArrays.default)(...arrays).reduce
   }];
 }, []);
 var _default = exports.default = compareArrays;
-},{"../objects/isObject":898,"../objects/objectKeys":903,"./mergeArrays":850,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],850:[function(require,module,exports){
+},{"../objects/isObject":951,"../objects/objectKeys":956,"./mergeArrays":903,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],903:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30014,7 +31711,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const mergeArrays = (...arrays) => arrays.map(_uniqueArray.default).reduce((merged, arr) => [...merged, ...arr.filter(attr => !merged.includes(attr))], []);
 var _default = exports.default = mergeArrays;
-},{"./uniqueArray":851,"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],851:[function(require,module,exports){
+},{"./uniqueArray":904,"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],904:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30029,7 +31726,7 @@ require("core-js/modules/esnext.iterator.filter.js");
  */
 const uniqueArray = array => array.filter((item, index) => array.indexOf(item) === index);
 var _default = exports.default = uniqueArray;
-},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646}],852:[function(require,module,exports){
+},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646}],905:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30154,7 +31851,7 @@ var _default = exports.default = {
   nextReference: _nextReference.default,
   sameDescriptor: _sameDescriptor.default
 };
-},{"./descriptors/assignDescriptor":853,"./descriptors/assignDescriptorDetail":854,"./descriptors/checkClearValues":855,"./descriptors/checkDescriptorComplete":856,"./descriptors/cloneDescriptor":857,"./descriptors/cloneDescriptorDetail":858,"./descriptors/compareDescriptor":859,"./descriptors/describeObject":860,"./descriptors/describeObjectDetail":861,"./descriptors/describeObjectMap":862,"./descriptors/nextReference":863,"./descriptors/sameDescriptor":864}],853:[function(require,module,exports){
+},{"./descriptors/assignDescriptor":906,"./descriptors/assignDescriptorDetail":907,"./descriptors/checkClearValues":908,"./descriptors/checkDescriptorComplete":909,"./descriptors/cloneDescriptor":910,"./descriptors/cloneDescriptorDetail":911,"./descriptors/compareDescriptor":912,"./descriptors/describeObject":913,"./descriptors/describeObjectDetail":914,"./descriptors/describeObjectMap":915,"./descriptors/nextReference":916,"./descriptors/sameDescriptor":917}],906:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30211,7 +31908,7 @@ const assignDescriptor = (originalMap, ...descriptors) => descriptors.reduce((as
   return assignedDescriptor;
 }, (0, _cloneDescriptor.default)(originalMap));
 var _default = exports.default = assignDescriptor;
-},{"../arrays/compareArrays":849,"../arrays/uniqueArray":851,"./assignDescriptorDetail":854,"./cloneDescriptor":857,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],854:[function(require,module,exports){
+},{"../arrays/compareArrays":902,"../arrays/uniqueArray":904,"./assignDescriptorDetail":907,"./cloneDescriptor":910,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],907:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30247,7 +31944,7 @@ const assignDescriptorDetail = (originalDetail, ...details) => details.reduce((e
   return existingDetail;
 }, (0, _cloneDescriptorDetail.default)(originalDetail));
 var _default = exports.default = assignDescriptorDetail;
-},{"../arrays/uniqueArray":851,"./cloneDescriptorDetail":858,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],855:[function(require,module,exports){
+},{"../arrays/uniqueArray":904,"./cloneDescriptorDetail":911,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],908:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30267,7 +31964,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const checkClearValues = (descriptor, keepValues = false) => (0, _setValue.default)('details', descriptor.complete && !keepValues ? descriptor.details.map(detail => (0, _setValue.default)('value', [], detail)) : descriptor.details, descriptor);
 var _default = exports.default = checkClearValues;
-},{"../objects/setValue":907,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650}],856:[function(require,module,exports){
+},{"../objects/setValue":960,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650}],909:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30286,7 +31983,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const checkDescriptorComplete = descriptor => (0, _setValue.default)('complete', descriptor.references.every(refId => [descriptor.details[refId].arrayReference, descriptor.details[refId].objectReference].some(ref => typeof ref === 'number')), descriptor);
 var _default = exports.default = checkDescriptorComplete;
-},{"../objects/setValue":907,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645}],857:[function(require,module,exports){
+},{"../objects/setValue":960,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645}],910:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30321,7 +32018,7 @@ const cloneDescriptor = originalMap => {
   return copyMap;
 };
 var _default = exports.default = cloneDescriptor;
-},{"./cloneDescriptorDetail":858,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650}],858:[function(require,module,exports){
+},{"./cloneDescriptorDetail":911,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650}],911:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30347,7 +32044,7 @@ const cloneDescriptorDetail = originalDetail => {
   return copyDetail;
 };
 var _default = exports.default = cloneDescriptorDetail;
-},{"../objects/objectKeys":903,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/modules/esnext.iterator.map.js":650}],859:[function(require,module,exports){
+},{"../objects/objectKeys":956,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/modules/esnext.iterator.map.js":650}],912:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30379,7 +32076,7 @@ const compareDescriptor = (descriptor1, descriptor2) => {
   return smallerDescriptor.keys.every(key => largerDescriptor.keys.includes(key)) ? smallerDescriptor.details.every(detail => detail.type.some(type => largerDescriptor.details.find(foundDetail => foundDetail.key === detail.key).type.includes(type))) : false;
 };
 var _default = exports.default = compareDescriptor;
-},{"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.some.js":652}],860:[function(require,module,exports){
+},{"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.some.js":652}],913:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30430,7 +32127,7 @@ const describeObject = object => {
   return descriptor;
 };
 var _default = exports.default = describeObject;
-},{"../objects/objectKeys":903,"./assignDescriptorDetail":854,"./describeObjectDetail":861}],861:[function(require,module,exports){
+},{"../objects/objectKeys":956,"./assignDescriptorDetail":907,"./describeObjectDetail":914}],914:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30466,7 +32163,7 @@ const describeObjectDetail = (value, key = 0, index = 0) => {
   };
 };
 var _default = exports.default = describeObjectDetail;
-},{"../objects/emptyObject":893,"../objects/isCloneable":895,"../objects/isInstanceObject":897}],862:[function(require,module,exports){
+},{"../objects/emptyObject":946,"../objects/isCloneable":948,"../objects/isInstanceObject":950}],915:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30571,7 +32268,7 @@ const describeObjectMap = (object, {
   return describeReferences(descriptor, descriptor.details[currentReference], depthLimit);
 };
 var _default = exports.default = describeObjectMap;
-},{"./assignDescriptor":853,"./checkClearValues":855,"./checkDescriptorComplete":856,"./compareDescriptor":859,"./describeObject":860,"./nextReference":863,"./sameDescriptor":864,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.for-each.js":649}],863:[function(require,module,exports){
+},{"./assignDescriptor":906,"./checkClearValues":908,"./checkDescriptorComplete":909,"./compareDescriptor":912,"./describeObject":913,"./nextReference":916,"./sameDescriptor":917,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647,"core-js/modules/esnext.iterator.for-each.js":649}],916:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30601,7 +32298,7 @@ const nextReference = (descriptor, currentReference) => descriptor.references.fi
   return !!(0, _objectKeys.default)(val).length;
 });
 var _default = exports.default = nextReference;
-},{"../objects/objectKeys":903,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647}],864:[function(require,module,exports){
+},{"../objects/objectKeys":956,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.find.js":647}],917:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30622,7 +32319,7 @@ require("core-js/modules/esnext.iterator.some.js");
  */
 const sameDescriptor = (descriptor1, descriptor2) => descriptor1.details.every((detail, index) => detail.value.some(dVal => descriptor2.details[index].value.includes(dVal)));
 var _default = exports.default = sameDescriptor;
-},{"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.some.js":652}],865:[function(require,module,exports){
+},{"core-js/modules/es.array.includes.js":351,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.some.js":652}],918:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30723,7 +32420,7 @@ var _default = exports.default = {
   relevancyFilter: _relevancyFilter.default,
   trace: _trace.default
 };
-},{"./functions/callWithParams":866,"./functions/curry":867,"./functions/delay":868,"./functions/makeBasicQueue":869,"./functions/onBodyLoad":870,"./functions/pipe":871,"./functions/preloadParams":872,"./functions/queueManager":873,"./functions/queueTimeout":874,"./functions/relevancyFilter":875,"./functions/trace":876}],866:[function(require,module,exports){
+},{"./functions/callWithParams":919,"./functions/curry":920,"./functions/delay":921,"./functions/makeBasicQueue":922,"./functions/onBodyLoad":923,"./functions/pipe":924,"./functions/preloadParams":925,"./functions/queueManager":926,"./functions/queueTimeout":927,"./functions/relevancyFilter":928,"./functions/trace":929}],919:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30738,7 +32435,7 @@ exports.default = void 0;
  */
 const callWithParams = (fn, params = [], minimum = 2) => fn(...params.slice(0, fn.length || minimum));
 var _default = exports.default = callWithParams;
-},{}],867:[function(require,module,exports){
+},{}],920:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30753,7 +32450,7 @@ exports.default = void 0;
  */
 const curry = fn => (...args) => args.length >= fn.length ? fn(...args) : (...a) => curry(fn)(...[...args, ...a]);
 var _default = exports.default = curry;
-},{}],868:[function(require,module,exports){
+},{}],921:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30783,7 +32480,7 @@ const delay = (time = 0) => {
   };
 };
 var _default = exports.default = delay;
-},{"regenerator-runtime/runtime":843}],869:[function(require,module,exports){
+},{"regenerator-runtime/runtime":896}],922:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30800,7 +32497,7 @@ const makeBasicQueue = (initialQueue = []) => {
   return new _BasicQueue.default(initialQueue);
 };
 var _default = exports.default = makeBasicQueue;
-},{"../arrays/BasicQueue":845}],870:[function(require,module,exports){
+},{"../arrays/BasicQueue":898}],923:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30845,7 +32542,7 @@ const onBodyLoad = (callback, reset = false) => {
   return queue;
 };
 var _default = exports.default = onBodyLoad;
-},{"./queueManager":873}],871:[function(require,module,exports){
+},{"./queueManager":926}],924:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30861,7 +32558,7 @@ require("core-js/modules/esnext.iterator.reduce.js");
  */
 const pipe = (...fns) => x => fns.reduce((y, f) => f(y), x);
 var _default = exports.default = pipe;
-},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],872:[function(require,module,exports){
+},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],925:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30880,7 +32577,7 @@ const preloadParams = (fn, params = [], unassignedParam = 0) => missing => {
   return fn(...params);
 };
 var _default = exports.default = preloadParams;
-},{}],873:[function(require,module,exports){
+},{}],926:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31019,7 +32716,7 @@ const queueManager = (queue = null) => {
   };
 };
 var _default = exports.default = queueManager;
-},{"./makeBasicQueue":869,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"regenerator-runtime/runtime":843}],874:[function(require,module,exports){
+},{"./makeBasicQueue":922,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"regenerator-runtime/runtime":896}],927:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31040,7 +32737,7 @@ const queueTimeout = (queueManagerHandle = null) => {
   return (fn, time = 0, ...args) => manager.push(() => (0, _delay.default)(time).resolver.then(() => fn(...args)));
 };
 var _default = exports.default = queueTimeout;
-},{"./delay":868,"./queueManager":873,"regenerator-runtime/runtime":843}],875:[function(require,module,exports){
+},{"./delay":921,"./queueManager":926,"regenerator-runtime/runtime":896}],928:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31072,7 +32769,7 @@ const relevancyFilter = (map, {
   });
 };
 var _default = exports.default = relevancyFilter;
-},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.map.js":650}],876:[function(require,module,exports){
+},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.map.js":650}],929:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31095,7 +32792,7 @@ const trace = (label, useClone = true) => value => {
   return value;
 };
 var _default = exports.default = trace;
-},{"../objects/cloneObject":888,"regenerator-runtime/runtime":843}],877:[function(require,module,exports){
+},{"../objects/cloneObject":941,"regenerator-runtime/runtime":896}],930:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31180,7 +32877,7 @@ var _default = exports.default = {
   randomNumber: _randomNumber.default,
   simplestRatio: _simplestRatio.default
 };
-},{"./numbers/absoluteMax":878,"./numbers/absoluteMin":879,"./numbers/compare":880,"./numbers/greatestCommonDivisor":881,"./numbers/leastCommonMultiple":882,"./numbers/lowestCommonDenominator":883,"./numbers/randomInteger":884,"./numbers/randomNumber":885,"./numbers/simplestRatio":886}],878:[function(require,module,exports){
+},{"./numbers/absoluteMax":931,"./numbers/absoluteMin":932,"./numbers/compare":933,"./numbers/greatestCommonDivisor":934,"./numbers/leastCommonMultiple":935,"./numbers/lowestCommonDenominator":936,"./numbers/randomInteger":937,"./numbers/randomNumber":938,"./numbers/simplestRatio":939}],931:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31194,7 +32891,7 @@ exports.default = void 0;
  */
 const absoluteMax = (num1, num2) => Math.abs(num1) > Math.abs(num2) ? num1 : num2;
 var _default = exports.default = absoluteMax;
-},{}],879:[function(require,module,exports){
+},{}],932:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31208,7 +32905,7 @@ exports.default = void 0;
  */
 const absoluteMin = (num1, num2) => Math.abs(num1) < Math.abs(num2) ? num1 : num2;
 var _default = exports.default = absoluteMin;
-},{}],880:[function(require,module,exports){
+},{}],933:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31225,7 +32922,7 @@ exports.default = void 0;
  */
 const compare = (val1, val2) => val1 === val2 ? 0 : val1 > val2 ? 1 : -1;
 var _default = exports.default = compare;
-},{}],881:[function(require,module,exports){
+},{}],934:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31239,7 +32936,7 @@ exports.default = void 0;
  */
 const greatestCommonDivisor = (num1, num2) => num2 === 0 ? num1 : greatestCommonDivisor(num2, num1 % num2);
 var _default = exports.default = greatestCommonDivisor;
-},{}],882:[function(require,module,exports){
+},{}],935:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31255,7 +32952,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const leastCommonMultiple = (num1, num2) => num1 === 0 || num2 === 0 ? 0 : num1 * num2 / (0, _greatestCommonDivisor.default)(num1, num2);
 var _default = exports.default = leastCommonMultiple;
-},{"./greatestCommonDivisor":881}],883:[function(require,module,exports){
+},{"./greatestCommonDivisor":934}],936:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31273,7 +32970,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const lowestCommonDenominator = (...numbers) => numbers.reduce((num1, num2) => (0, _leastCommonMultiple.default)(num1, num2), 1);
 var _default = exports.default = lowestCommonDenominator;
-},{"./leastCommonMultiple":882,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],884:[function(require,module,exports){
+},{"./leastCommonMultiple":935,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],937:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31296,7 +32993,7 @@ exports.default = void 0;
  */
 const randomInteger = (range, offset = 0, interval = 1) => (Math.floor(Math.random() * range) + offset) * interval;
 var _default = exports.default = randomInteger;
-},{}],885:[function(require,module,exports){
+},{}],938:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31314,7 +33011,7 @@ exports.default = void 0;
  */
 const randomNumber = (range, offset = 0, interval = 1) => (Math.random() * range + offset) * interval;
 var _default = exports.default = randomNumber;
-},{}],886:[function(require,module,exports){
+},{}],939:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31341,7 +33038,7 @@ const simplestRatio = (...numbers) => {
   return numbers.map(num => commonDivisor === 0 ? 0 : num / commonDivisor);
 };
 var _default = exports.default = simplestRatio;
-},{"./greatestCommonDivisor":881,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],887:[function(require,module,exports){
+},{"./greatestCommonDivisor":934,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],940:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31514,7 +33211,7 @@ var _default = exports.default = {
   setAndReturnValue: _setAndReturnValue.default,
   setValue: _setValue.default
 };
-},{"./objects/cloneObject":888,"./objects/dotGet":889,"./objects/dotNotate":890,"./objects/dotSet":891,"./objects/dotUnset":892,"./objects/emptyObject":893,"./objects/filterObject":894,"./objects/isCloneable":895,"./objects/isEqual":896,"./objects/isInstanceObject":897,"./objects/isObject":898,"./objects/mapObject":899,"./objects/mergeObjects":900,"./objects/mergeObjectsBase":901,"./objects/mergeObjectsMutable":902,"./objects/objectKeys":903,"./objects/objectValues":904,"./objects/reduceObject":905,"./objects/setAndReturnValue":906,"./objects/setValue":907}],888:[function(require,module,exports){
+},{"./objects/cloneObject":941,"./objects/dotGet":942,"./objects/dotNotate":943,"./objects/dotSet":944,"./objects/dotUnset":945,"./objects/emptyObject":946,"./objects/filterObject":947,"./objects/isCloneable":948,"./objects/isEqual":949,"./objects/isInstanceObject":950,"./objects/isObject":951,"./objects/mapObject":952,"./objects/mergeObjects":953,"./objects/mergeObjectsBase":954,"./objects/mergeObjectsMutable":955,"./objects/objectKeys":956,"./objects/objectValues":957,"./objects/reduceObject":958,"./objects/setAndReturnValue":959,"./objects/setValue":960}],941:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31542,7 +33239,7 @@ const cloneObject = (object, {
   useClone: true
 })(object);
 var _default = exports.default = cloneObject;
-},{"./mergeObjectsBase":901}],889:[function(require,module,exports){
+},{"./mergeObjectsBase":954}],942:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31600,7 +33297,7 @@ const dotGet = (arrayObject, dotNotation, defaultValue = null) => {
   return dotGet(next, (0, _strAfter.default)(dotNotation, '.'), defaultValue);
 };
 var _default = exports.default = dotGet;
-},{"../strings/strAfter":915,"../strings/strBefore":917,"./isObject":898}],890:[function(require,module,exports){
+},{"../strings/strAfter":968,"../strings/strBefore":970,"./isObject":951}],943:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31678,7 +33375,7 @@ const performDotNotate = (arrayObject, didRetain, prepend = '', results = {}) =>
  */
 const dotNotate = (arrayObject, retainObjects = []) => performDotNotate(arrayObject, handleRetainObjects(retainObjects));
 var _default = exports.default = dotNotate;
-},{"./emptyObject":893,"./isObject":898,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650}],891:[function(require,module,exports){
+},{"./emptyObject":946,"./isObject":951,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650}],944:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31730,7 +33427,7 @@ const dotSet = (arrayObject, dotNotation, value = null) => {
   return arrayObject;
 };
 var _default = exports.default = dotSet;
-},{"../strings/strAfter":915,"../strings/strBefore":917,"./isObject":898}],892:[function(require,module,exports){
+},{"../strings/strAfter":968,"../strings/strBefore":970,"./isObject":951}],945:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31781,7 +33478,7 @@ const dotUnset = (arrayObject, dotNotation) => {
   return arrayObject;
 };
 var _default = exports.default = dotUnset;
-},{"../strings/strAfter":915,"../strings/strBefore":917,"./isObject":898}],893:[function(require,module,exports){
+},{"../strings/strAfter":968,"../strings/strBefore":970,"./isObject":951}],946:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31797,7 +33494,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const emptyObject = item => (typeof item === 'function' || (0, _isObject.default)(item)) && !(0, _objectKeys.default)(item).length;
 var _default = exports.default = emptyObject;
-},{"./isObject":898,"./objectKeys":903}],894:[function(require,module,exports){
+},{"./isObject":951,"./objectKeys":956}],947:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31827,7 +33524,7 @@ const filterObject = (obj, fn, thisArg = undefined) => Array.isArray(obj) ? obj.
   return newObj;
 }, {});
 var _default = exports.default = filterObject;
-},{"../functions/callWithParams":866,"./objectKeys":903,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.reduce.js":651}],895:[function(require,module,exports){
+},{"../functions/callWithParams":919,"./objectKeys":956,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.reduce.js":651}],948:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31842,7 +33539,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const isCloneable = value => typeof value === 'object' && value !== null && !(0, _isInstanceObject.default)(value);
 var _default = exports.default = isCloneable;
-},{"./isInstanceObject":897}],896:[function(require,module,exports){
+},{"./isInstanceObject":950}],949:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31942,7 +33639,7 @@ const compare = (first, second, seen) => {
  */
 const isEqual = (first, second) => compare(first, second, new WeakMap());
 var _default = exports.default = isEqual;
-},{"core-js/modules/es.regexp.flags.js":519,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.some.js":652,"core-js/modules/esnext.map.delete-all.js":653,"core-js/modules/esnext.map.every.js":654,"core-js/modules/esnext.map.filter.js":655,"core-js/modules/esnext.map.find-key.js":656,"core-js/modules/esnext.map.find.js":657,"core-js/modules/esnext.map.includes.js":658,"core-js/modules/esnext.map.key-of.js":659,"core-js/modules/esnext.map.map-keys.js":660,"core-js/modules/esnext.map.map-values.js":661,"core-js/modules/esnext.map.merge.js":662,"core-js/modules/esnext.map.reduce.js":663,"core-js/modules/esnext.map.some.js":664,"core-js/modules/esnext.map.update.js":665,"core-js/modules/esnext.set.add-all.js":666,"core-js/modules/esnext.set.delete-all.js":667,"core-js/modules/esnext.set.difference.js":668,"core-js/modules/esnext.set.every.js":669,"core-js/modules/esnext.set.filter.js":670,"core-js/modules/esnext.set.find.js":671,"core-js/modules/esnext.set.intersection.js":672,"core-js/modules/esnext.set.is-disjoint-from.js":673,"core-js/modules/esnext.set.is-subset-of.js":674,"core-js/modules/esnext.set.is-superset-of.js":675,"core-js/modules/esnext.set.join.js":676,"core-js/modules/esnext.set.map.js":677,"core-js/modules/esnext.set.reduce.js":678,"core-js/modules/esnext.set.some.js":679,"core-js/modules/esnext.set.symmetric-difference.js":680,"core-js/modules/esnext.set.union.js":681,"core-js/modules/esnext.weak-map.delete-all.js":682,"core-js/modules/esnext.weak-set.add-all.js":683,"core-js/modules/esnext.weak-set.delete-all.js":684}],897:[function(require,module,exports){
+},{"core-js/modules/es.regexp.flags.js":519,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.every.js":645,"core-js/modules/esnext.iterator.some.js":652,"core-js/modules/esnext.map.delete-all.js":653,"core-js/modules/esnext.map.every.js":654,"core-js/modules/esnext.map.filter.js":655,"core-js/modules/esnext.map.find-key.js":656,"core-js/modules/esnext.map.find.js":657,"core-js/modules/esnext.map.includes.js":658,"core-js/modules/esnext.map.key-of.js":659,"core-js/modules/esnext.map.map-keys.js":660,"core-js/modules/esnext.map.map-values.js":661,"core-js/modules/esnext.map.merge.js":662,"core-js/modules/esnext.map.reduce.js":663,"core-js/modules/esnext.map.some.js":664,"core-js/modules/esnext.map.update.js":665,"core-js/modules/esnext.set.add-all.js":666,"core-js/modules/esnext.set.delete-all.js":667,"core-js/modules/esnext.set.difference.js":668,"core-js/modules/esnext.set.every.js":669,"core-js/modules/esnext.set.filter.js":670,"core-js/modules/esnext.set.find.js":671,"core-js/modules/esnext.set.intersection.js":672,"core-js/modules/esnext.set.is-disjoint-from.js":673,"core-js/modules/esnext.set.is-subset-of.js":674,"core-js/modules/esnext.set.is-superset-of.js":675,"core-js/modules/esnext.set.join.js":676,"core-js/modules/esnext.set.map.js":677,"core-js/modules/esnext.set.reduce.js":678,"core-js/modules/esnext.set.some.js":679,"core-js/modules/esnext.set.symmetric-difference.js":680,"core-js/modules/esnext.set.union.js":681,"core-js/modules/esnext.weak-map.delete-all.js":682,"core-js/modules/esnext.weak-set.add-all.js":683,"core-js/modules/esnext.weak-set.delete-all.js":684}],950:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31967,7 +33664,7 @@ const isInstanceObject = object => {
   return object.constructor.name !== 'Array' && (0, _objectKeys.default)(object, true).length > (0, _objectKeys.default)(object).length;
 };
 var _default = exports.default = isInstanceObject;
-},{"./isObject":898,"./objectKeys":903,"core-js/modules/es.array.includes.js":351}],898:[function(require,module,exports){
+},{"./isObject":951,"./objectKeys":956,"core-js/modules/es.array.includes.js":351}],951:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31980,7 +33677,7 @@ exports.default = void 0;
  */
 const isObject = object => typeof object === 'object' && object !== null;
 var _default = exports.default = isObject;
-},{}],899:[function(require,module,exports){
+},{}],952:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32004,7 +33701,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const mapObject = (obj, fn, thisArg = undefined) => Array.isArray(obj) ? obj.map(fn, thisArg) : (0, _objectKeys.default)(obj, true).reduce((newObj, curr) => (0, _setValue.default)(curr, (0, _callWithParams.default)(fn.bind(thisArg), [obj[curr], curr, obj], 2), newObj), {});
 var _default = exports.default = mapObject;
-},{"../functions/callWithParams":866,"./objectKeys":903,"./setValue":907,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],900:[function(require,module,exports){
+},{"../functions/callWithParams":919,"./objectKeys":956,"./setValue":960,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651}],953:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32022,7 +33719,7 @@ const mergeObjects = (0, _mergeObjectsBase.default)({
   useClone: true
 });
 var _default = exports.default = mergeObjects;
-},{"./mergeObjectsBase":901}],901:[function(require,module,exports){
+},{"./mergeObjectsBase":954}],954:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32110,7 +33807,7 @@ const mergeObjectsBase = ({
   }) => [source, object])), depthLimit, objects);
 };
 var _default = exports.default = mergeObjectsBase;
-},{"./isCloneable":895,"./reduceObject":905,"./setValue":907,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/modules/esnext.map.delete-all.js":653,"core-js/modules/esnext.map.every.js":654,"core-js/modules/esnext.map.filter.js":655,"core-js/modules/esnext.map.find-key.js":656,"core-js/modules/esnext.map.find.js":657,"core-js/modules/esnext.map.includes.js":658,"core-js/modules/esnext.map.key-of.js":659,"core-js/modules/esnext.map.map-keys.js":660,"core-js/modules/esnext.map.map-values.js":661,"core-js/modules/esnext.map.merge.js":662,"core-js/modules/esnext.map.reduce.js":663,"core-js/modules/esnext.map.some.js":664,"core-js/modules/esnext.map.update.js":665}],902:[function(require,module,exports){
+},{"./isCloneable":948,"./reduceObject":958,"./setValue":960,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650,"core-js/modules/esnext.iterator.reduce.js":651,"core-js/modules/esnext.map.delete-all.js":653,"core-js/modules/esnext.map.every.js":654,"core-js/modules/esnext.map.filter.js":655,"core-js/modules/esnext.map.find-key.js":656,"core-js/modules/esnext.map.find.js":657,"core-js/modules/esnext.map.includes.js":658,"core-js/modules/esnext.map.key-of.js":659,"core-js/modules/esnext.map.map-keys.js":660,"core-js/modules/esnext.map.map-values.js":661,"core-js/modules/esnext.map.merge.js":662,"core-js/modules/esnext.map.reduce.js":663,"core-js/modules/esnext.map.some.js":664,"core-js/modules/esnext.map.update.js":665}],955:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32126,7 +33823,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const mergeObjectsMutable = (0, _mergeObjectsBase.default)();
 var _default = exports.default = mergeObjectsMutable;
-},{"./mergeObjectsBase":901}],903:[function(require,module,exports){
+},{"./mergeObjectsBase":954}],956:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32164,7 +33861,7 @@ const objectKeys = (object, includeInherited = false) => {
   return keys;
 };
 var _default = exports.default = objectKeys;
-},{"./isObject":898}],904:[function(require,module,exports){
+},{"./isObject":951}],957:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32183,7 +33880,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const objectValues = (object, includeInherited = false) => (0, _objectKeys.default)(object, includeInherited).map(key => object[key]);
 var _default = exports.default = objectValues;
-},{"./objectKeys":903,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650}],905:[function(require,module,exports){
+},{"./objectKeys":956,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.map.js":650}],958:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32207,7 +33904,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const reduceObject = (obj, fn, initialValue = obj[(0, _objectKeys.default)(obj)[0]] || obj[0]) => Array.isArray(obj) ? obj.reduce(fn, initialValue) : (0, _objectKeys.default)(obj, true).reduce((newObj, curr) => (0, _callWithParams.default)(fn, [newObj, obj[curr], curr, obj], 2), initialValue);
 var _default = exports.default = reduceObject;
-},{"../functions/callWithParams":866,"./objectKeys":903,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],906:[function(require,module,exports){
+},{"../functions/callWithParams":919,"./objectKeys":956,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],959:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32225,7 +33922,7 @@ const setAndReturnValue = (item, key, value) => {
   return value;
 };
 var _default = exports.default = setAndReturnValue;
-},{}],907:[function(require,module,exports){
+},{}],960:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32245,7 +33942,7 @@ const setValue = (key, value, item) => {
   return item;
 };
 var _default = exports.default = setValue;
-},{}],908:[function(require,module,exports){
+},{}],961:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32362,7 +34059,7 @@ var _default = exports.default = {
   ucFirst: _ucFirst.default,
   words: _words.default
 };
-},{"./strings/camelCase":909,"./strings/kabobCase":910,"./strings/makeFilepath":911,"./strings/makeRelativePath":912,"./strings/regexEscape":913,"./strings/snakeCase":914,"./strings/strAfter":915,"./strings/strAfterLast":916,"./strings/strBefore":917,"./strings/strBeforeLast":918,"./strings/titleCase":919,"./strings/ucFirst":920,"./strings/words":921}],909:[function(require,module,exports){
+},{"./strings/camelCase":962,"./strings/kabobCase":963,"./strings/makeFilepath":964,"./strings/makeRelativePath":965,"./strings/regexEscape":966,"./strings/snakeCase":967,"./strings/strAfter":968,"./strings/strAfterLast":969,"./strings/strBefore":970,"./strings/strBeforeLast":971,"./strings/titleCase":972,"./strings/ucFirst":973,"./strings/words":974}],962:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32380,7 +34077,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const camelCase = str => (0, _words.default)(str).reduce((camel, part) => camel ? camel.concat((0, _ucFirst.default)(part)) : part.toLowerCase(), '');
 var _default = exports.default = camelCase;
-},{"./ucFirst":920,"./words":921,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],910:[function(require,module,exports){
+},{"./ucFirst":973,"./words":974,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],963:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32397,7 +34094,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const kabobCase = str => (0, _words.default)(str).reduce((kabob, part) => kabob ? kabob.concat('-' + part.toLowerCase()) : part.toLowerCase(), '');
 var _default = exports.default = kabobCase;
-},{"./words":921,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],911:[function(require,module,exports){
+},{"./words":974,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],964:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32445,7 +34142,7 @@ const makeFilepath = (root, append = '') => {
 };
 exports.makeFilepath = makeFilepath;
 var _default = exports.default = makeFilepath;
-},{"./strBeforeLast":918}],912:[function(require,module,exports){
+},{"./strBeforeLast":971}],965:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32488,7 +34185,7 @@ const makeRelativePath = (fromFile, toFile) => {
 };
 exports.makeRelativePath = makeRelativePath;
 var _default = exports.default = makeRelativePath;
-},{"./strAfter":915,"./strBefore":917}],913:[function(require,module,exports){
+},{"./strAfter":968,"./strBefore":970}],966:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32502,7 +34199,7 @@ exports.regexEscape = exports.default = void 0;
 const regexEscape = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 exports.regexEscape = regexEscape;
 var _default = exports.default = regexEscape;
-},{}],914:[function(require,module,exports){
+},{}],967:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32519,7 +34216,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const snakeCase = str => (0, _words.default)(str).reduce((snake, part) => snake ? snake.concat('_' + part.toLowerCase()) : part.toLowerCase(), '');
 var _default = exports.default = snakeCase;
-},{"./words":921,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],915:[function(require,module,exports){
+},{"./words":974,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],968:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32537,7 +34234,7 @@ const strAfter = (str, search) => {
   return index === -1 ? '' : str.substring(index + search.length);
 };
 var _default = exports.default = strAfter;
-},{}],916:[function(require,module,exports){
+},{}],969:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32555,7 +34252,7 @@ const strAfterLast = (str, search) => {
   return index === -1 ? '' : str.substring(index + search.length);
 };
 var _default = exports.default = strAfterLast;
-},{}],917:[function(require,module,exports){
+},{}],970:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32573,7 +34270,7 @@ const strBefore = (str, search) => {
   return index === -1 ? '' : str.slice(0, index);
 };
 var _default = exports.default = strBefore;
-},{}],918:[function(require,module,exports){
+},{}],971:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32591,7 +34288,7 @@ const strBeforeLast = (str, search) => {
   return index === -1 ? '' : str.substring(0, index);
 };
 var _default = exports.default = strBeforeLast;
-},{}],919:[function(require,module,exports){
+},{}],972:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32609,7 +34306,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
  */
 const titleCase = str => (0, _words.default)(str).reduce((title, part) => title ? title.concat(' ' + (0, _ucFirst.default)(part)) : (0, _ucFirst.default)(part), '');
 var _default = exports.default = titleCase;
-},{"./ucFirst":920,"./words":921,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],920:[function(require,module,exports){
+},{"./ucFirst":973,"./words":974,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.reduce.js":651}],973:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32622,7 +34319,7 @@ exports.default = void 0;
  */
 const ucFirst = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 var _default = exports.default = ucFirst;
-},{}],921:[function(require,module,exports){
+},{}],974:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32636,7 +34333,7 @@ exports.default = void 0;
  */
 const words = str => str.match(/\d+|[A-Z]?[a-z]+|[A-Za-z]+/g);
 var _default = exports.default = words;
-},{}],922:[function(require,module,exports){
+},{}],975:[function(require,module,exports){
 "use strict";
 
 require("core-js/modules/esnext.iterator.constructor.js");
@@ -32736,5 +34433,5 @@ if (void 0) {
   // @ts-ignore
   window['siFunciona'] = siFunciona;
 }
-},{"./helpers/arrays":844,"./helpers/descriptors":852,"./helpers/functions":865,"./helpers/numbers":877,"./helpers/objects":887,"./helpers/strings":908,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/modules/esnext.weak-map.delete-all.js":682}]},{},[4])(4)
+},{"./helpers/arrays":897,"./helpers/descriptors":905,"./helpers/functions":918,"./helpers/numbers":930,"./helpers/objects":940,"./helpers/strings":961,"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/modules/esnext.weak-map.delete-all.js":682}]},{},[4])(4)
 });

@@ -1,3 +1,9 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 /* global jsonDomComponents */
 const {
   nav: navigation,
@@ -19,4 +25,4 @@ const menu = (currentIndex = 1) => {
   menuItems[currentIndex].attributes.className += 'current';
   return header([navigation([unorderedList(menuItems, 'menu hover')])], 'hover');
 };
-export default menu;
+var _default = exports.default = menu;
