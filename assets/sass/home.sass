@@ -153,6 +153,14 @@ section:nth-of-type(even) .content
   -o-box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4)
   box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4)
 
+// This section's own height is a fixed percentage of the viewport (grid.sass's vert-row/horiz-column system),
+// not an auto height based on content - fine for the old, small, fixed 4-box layout, but the project grid's
+// real height grows with the project count and would otherwise overflow into whatever section follows. Same
+// fix already used for #experience's own too-long-for-its-box content (#experience .content, below).
+#work-grid
+  height: 100%
+  overflow-y: auto
+
 #work .content
   -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4)
   -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4)

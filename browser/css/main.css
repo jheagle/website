@@ -1904,6 +1904,11 @@ section:nth-of-type(even) .content {
   box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
 }
 
+#work-grid {
+  height: 100%;
+  overflow-y: auto;
+}
+
 #work .content {
   -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
