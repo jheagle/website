@@ -1,5 +1,3 @@
-"use strict";
-
 const plugins = () => {
   // Avoid `console` errors in browsers that lack a console.
   (function () {

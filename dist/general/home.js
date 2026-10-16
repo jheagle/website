@@ -1,9 +1,3 @@
-"use strict";
-
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.filter.js");
-require("core-js/modules/esnext.iterator.for-each.js");
-require("core-js/modules/esnext.iterator.map.js");
 const siFunciona = require('si-funciona');
 const home = () => {
   let attempted = 0;

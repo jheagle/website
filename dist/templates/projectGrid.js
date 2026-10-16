@@ -1,11 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.for-each.js");
 /* global jsonDomComponents, matrixDom, jsonDom */
 const {
   div,
@@ -58,4 +50,4 @@ const projectGrid = projects => {
   });
   return grid;
 };
-var _default = exports.default = projectGrid;
+export default projectGrid;

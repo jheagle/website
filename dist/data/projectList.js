@@ -1,9 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 /**
  * The real projects shown in the homepage's project grid, in display order.
  * @typedef {object} ProjectTile
@@ -68,4 +62,4 @@ const projects = [{
   href: '/projects/workout-planner/',
   description: 'An early, evolving idea for workout tracking.'
 }];
-var _default = exports.default = projects;
+export default projects;

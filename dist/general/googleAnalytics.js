@@ -1,5 +1,3 @@
-"use strict";
-
 const googleAnalytics = () => {
   (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;

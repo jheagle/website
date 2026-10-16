@@ -1,6 +1,4 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.joshuaHome = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-"use strict";
-
 const googleAnalytics = () => {
   (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;
@@ -17,12 +15,6 @@ const googleAnalytics = () => {
 };
 module.exports = googleAnalytics;
 },{}],2:[function(require,module,exports){
-"use strict";
-
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.filter.js");
-require("core-js/modules/esnext.iterator.for-each.js");
-require("core-js/modules/esnext.iterator.map.js");
 const siFunciona = require('si-funciona');
 const home = () => {
   let attempted = 0;
@@ -106,9 +98,7 @@ const home = () => {
   homeScrolling();
 };
 module.exports = home;
-},{"core-js/modules/esnext.iterator.constructor.js":644,"core-js/modules/esnext.iterator.filter.js":646,"core-js/modules/esnext.iterator.for-each.js":649,"core-js/modules/esnext.iterator.map.js":650,"si-funciona":975}],3:[function(require,module,exports){
-"use strict";
-
+},{"si-funciona":975}],3:[function(require,module,exports){
 const plugins = () => {
   // Avoid `console` errors in browsers that lack a console.
   (function () {
@@ -131,8 +121,6 @@ const plugins = () => {
 };
 module.exports = plugins;
 },{}],4:[function(require,module,exports){
-"use strict";
-
 const googleAnalytics = require('./general/googleAnalytics.js');
 const plugins = require('./general/plugins.js');
 const home = require('./general/home.js');

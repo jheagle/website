@@ -1,5 +1,3 @@
-"use strict";
-
 const googleAnalytics = require('./general/googleAnalytics.js');
 const plugins = require('./general/plugins.js');
 const home = require('./general/home.js');
