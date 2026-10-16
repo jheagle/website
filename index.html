@@ -20,11 +20,11 @@
       import projects from './dist/data/projectList.js'
 
       const documentItem = jsonDom.documentItem
-      // Re-capture the current hand-authored HTML into items (same reasoning as the nav script above - the
-      // target container is still real, hand-authored HTML at this point, not yet known to json-dom) so this
-      // script works standalone regardless of script ordering, rather than relying on the nav script's own
-      // earlier capture as a side effect.
-      jsonDom.updateDomItems(documentItem)
+      // Reuses the nav script's own earlier updateDomItems(documentItem) capture above (the module scripts
+      // run in document order, and both share the same window.jsonDom.documentItem singleton) rather than
+      // calling it again here - a real, reproducible bug found live in a real browser (not caught by jsdom,
+      // whose own DOM differs here): a second full-tree updateDomItems pass throws
+      // "property 0 is non-configurable and can't be deleted" from deep inside json-dom's own reconciliation.
       const workGridElement = document.getElementById('work-grid')
       const workGridItem = jsonDom.getItemByElement(documentItem.body, workGridElement)
       jsonDom.renderHtml(projectGrid(projects), workGridItem, 0)
