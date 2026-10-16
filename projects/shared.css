@@ -153,38 +153,3 @@ pre code {
 .demo .output pre {
   margin: 6px 0 0;
 }
-
-.project-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.project-list li {
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  margin-bottom: 10px;
-}
-
-.project-list a {
-  display: block;
-  padding: 14px 16px;
-  text-decoration: none;
-  color: var(--ink);
-}
-
-.project-list a:hover, .project-list a:focus {
-  background: var(--accent-soft);
-  color: var(--accent);
-}
-
-.project-list .name {
-  font-weight: 600;
-}
-
-.project-list .desc {
-  display: block;
-  color: var(--ink-soft);
-  font-size: 0.9rem;
-  margin-top: 2px;
-}

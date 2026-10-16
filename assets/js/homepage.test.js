@@ -53,15 +53,13 @@ describe('index.html', () => {
     expect(experienceText).toContain('Benevity')
   })
 
-  test('Featured Projects links to what is actually public or a real sandbox page', () => {
-    const links = [...document.body.querySelector('#work').querySelectorAll('a[href]')].map(a => a.getAttribute('href'))
-    expect(links).toContain('/projects/battleship/')
-    expect(links).toContain('https://github.com/jheagle/battleship')
-    expect(links).toContain('/projects/json-dom/docs')
-    expect(links).toContain('https://github.com/jheagle/js-build-tools')
-    expect(links).toContain('/projects/si-funciona/')
-    expect(links).toContain('/projects/collect-your-stuff/')
-    expect(links).toContain('/projects/title-switcher/')
+  test('#work has an empty container for the JS-rendered project grid, not hard-coded project boxes', () => {
+    // The grid itself (title/image/description/link per project) is rendered client-side by
+    // templates/projectGrid.js from data/projects.js - see projectGrid.test.js for coverage of its real
+    // output. This static-HTML parse never executes that script, so it can only confirm the container exists.
+    const workGrid = document.body.querySelector('#work #work-grid')
+    expect(workGrid).not.toBeNull()
+    expect(workGrid.children.length).toBe(0)
   })
 
   test('none of the old freelance-pitch language remains', () => {

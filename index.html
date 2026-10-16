@@ -15,6 +15,20 @@
       jsonDom.updateDomItems(documentItem)
       jsonDom.renderHtml(mainHeader, documentItem.body, 0)
     </script>
+    <script type='module'>
+      import projectGrid from './dist/templates/projectGrid.js'
+      import projects from './dist/data/projectList.js'
+
+      const documentItem = jsonDom.documentItem
+      // Reuses the nav script's own earlier updateDomItems(documentItem) capture above (the module scripts
+      // run in document order, and both share the same window.jsonDom.documentItem singleton) rather than
+      // calling it again here - a real, reproducible bug found live in a real browser (not caught by jsdom,
+      // whose own DOM differs here): a second full-tree updateDomItems pass throws
+      // "property 0 is non-configurable and can't be deleted" from deep inside json-dom's own reconciliation.
+      const workGridElement = document.getElementById('work-grid')
+      const workGridItem = jsonDom.getItemByElement(documentItem.body, workGridElement)
+      jsonDom.renderHtml(projectGrid(projects), workGridItem, 0)
+    </script>
 </head>
 <body>
 <div id='main' class='full-section'>
@@ -209,59 +223,7 @@
     <div class='vert-row vert-two-third vert-one-half'>
         <div class='horiz-one-eighth lrg'></div>
         <div class='horiz-column horiz-three-quarter horiz-full'>
-            <div class='vert-row vert-one-half'>
-                <div class='horiz-column horiz-one-half project content' id='ecosystem-project'>
-                    <h5>A TypeScript virtual-DOM ecosystem</h5>
-                    <p>A from-scratch virtual-DOM framework built around a composable trait system (rather than
-                        deep inheritance), including a render-only mode that lets the browser just inflate JSON to
-                        HTML and forward events to a server. Proven out by building a full multiplayer-ready
-                        Battleship game on top of it.</p>
-                    <p>
-                        <a href='/projects/battleship/' target='_blank'>Play Battleship</a>
-                        &mdash;
-                        <a href='https://github.com/jheagle/battleship' target='_blank'>GitHub</a>
-                        &mdash;
-                        <a href='/projects/json-dom/docs' target='_blank'>framework docs</a>
-                    </p>
-                </div>
-                <div class='horiz-column horiz-one-half vert-full content' id='title-switcher-plugin'>
-                    <div class='title-switcher'>
-                        <p class='hideTitle displayTitle' style='color: #be1010; text-align: center;'>I built this
-                            <em>superb</em>
-                            <strong>plug-in</strong>
-                        </p>
-                        <p class='hideTitle' style='color: #1414af; text-align: right;'>
-                            <strong>TitleSwitcher</strong>
-                            is great to display
-                            <em>a typing effect</em>
-                        </p>
-                        <p class='hideTitle'
-                           style='color: #af4e08; text-align: center; text-decoration: underline;'>Published on npm
-                            as <code>title-switcher</code></p>
-                        <p class='hideTitle' style='color: #0c710c;'>
-                            <a href='/projects/title-switcher/' target='_blank'>More on its own page</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class='vert-row vert-one-half'>
-                <div class='horiz-column horiz-one-half content' id='build-tools-project'>
-                    <h5>js-build-tools</h5>
-                    <p>A shared build, test, and documentation pipeline (Gulp-based, TypeDoc-integrated) used
-                        across a dozen interlocking npm packages.</p>
-                    <p><a href='https://github.com/jheagle/js-build-tools' target='_blank'>See it on GitHub</a></p>
-                </div>
-                <div class='horiz-column horiz-one-half content' id='utility-libraries-project'>
-                    <h5>si-funciona &amp; collect-your-stuff</h5>
-                    <p>Dependency-light, fully-typed general-purpose utility and collection libraries &mdash; try
-                        them live on their own pages.</p>
-                    <p>
-                        <a href='/projects/si-funciona/' target='_blank'>si-funciona</a>
-                        &mdash;
-                        <a href='/projects/collect-your-stuff/' target='_blank'>collect-your-stuff</a>
-                    </p>
-                </div>
-            </div>
+            <div id='work-grid'></div>
         </div>
         <div class='horiz-one-eighth lrg'></div>
     </div>
@@ -401,9 +363,7 @@
 <script>
   /* v  place custom JavaScript below to instantiate the titleClass  v */
   const randomTitles = new TitleSwitcher('.titles', 'typingEffect')
-  const orderedTitles = new TitleSwitcher('.title-switcher', 'typingEffect')
   randomTitles.startTitles({ isRandom: true }) // set to random title switching, then defaults are 400 and 200 milliseconds for switch/effects
-  orderedTitles.startTitles({ isRandom: false, delaySwitch: 400, delayEffect: 100 }) // the first arguments is to not randomly switch, then the time between switching, and finally the delay of the effect (typing in this case)
 </script>
 </body>
 </html>
