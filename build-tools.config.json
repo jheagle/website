@@ -1,8 +1,7 @@
 {
   "cleanPaths": [
     "dist",
-    "browser/css",
-    "browser/img"
+    "browser/css"
   ],
   "browser": {
     "enabled": true,
@@ -14,9 +13,7 @@
     "to": "dist"
   },
   "images": {
-    "enabled": true,
-    "from": "assets/img/*",
-    "to": "browser/img"
+    "enabled": false
   },
   "readme": {
     "from": [
