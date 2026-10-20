@@ -4,7 +4,7 @@
   "description": "Personal website",
   "main": "gulpfile.js",
   "scripts": {
-    "build": "gulp build",
+    "build": "gulp build && npm run build:css",
     "dev": "gulp",
     "htmldocs": "jsdoc -R MAIN.md -c ./.jsdoc.conf.js -d docs",
     "readme": "gulp readme",
@@ -12,7 +12,9 @@
     "test": "gulp testFull",
     "test:quick": "gulp testQuick",
     "watch": "gulp watchFull",
-    "watch:test": "gulp watchTest"
+    "watch:test": "gulp watchTest",
+    "build:css": "tailwindcss -i assets/tailwind/site.css -o browser/tailwind/site.css --minify",
+    "watch:css": "tailwindcss -i assets/tailwind/site.css -o browser/tailwind/site.css --watch"
   },
   "author": "Joshua Heagle",
   "license": "GNU",
@@ -31,6 +33,7 @@
     "si-funciona": "^2.7.3"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
     "browser-sync": "^3.0.4",
     "del": "^7.1.0",
     "gulp": "^5.0.1",
@@ -39,7 +42,8 @@
     "jest": "^29.7.0",
     "js-build-tools": "^6.1.0",
     "pseudo-dom": "github:jheagle/pseudo-dom",
-    "signal-exit": "^4.1.0"
+    "signal-exit": "^4.1.0",
+    "tailwindcss": "^4.3.3"
   },
   "repository": {
     "type": "git",

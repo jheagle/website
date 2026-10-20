@@ -42,10 +42,12 @@ describe('index.html', () => {
     hrefs.forEach(href => expect(sectionIds).toContain(href.slice(1)))
   })
 
-  test('is plain HTML: no scripts, no grid/sass stylesheet', () => {
+  test('is plain HTML: no scripts, and Tailwind is the only stylesheet (no grid/sass)', () => {
     expect(document.head.querySelectorAll('script').length).toBe(0)
     expect(document.body.querySelectorAll('script').length).toBe(0)
-    expect(document.head.querySelector("link[rel='stylesheet']")).toBeNull()
+    const stylesheets = [...document.head.querySelectorAll("link[rel='stylesheet']")].map(link => link.getAttribute('href'))
+    expect(stylesheets).toEqual(['/browser/tailwind/site.css'])
+    expect(fs.existsSync(path.join(rootDir, stylesheets[0]))).toBe(true)
   })
 
   test('every local image, video and link points at a file that exists', () => {

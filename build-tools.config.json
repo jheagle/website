@@ -1,4 +1,9 @@
 {
+  "cleanPaths": [
+    "dist",
+    "browser/css",
+    "browser/img"
+  ],
   "browser": {
     "enabled": true,
     "name": "joshuaHome"

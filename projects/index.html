@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='en-CA'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Projects | Joshua Heagle</title>
+    <meta name='description' content="Joshua Heagle's open-source projects: a family of TypeScript libraries, the build tooling under them, and the games and apps built on top.">
+    <link rel='icon' href='/favicon.ico'>
+    <link rel='stylesheet' href='/browser/tailwind/site.css'>
+    <link rel='stylesheet' href='/browser/css/project-grid.css'>
+    <style>
+      /* Interim: the same readable defaults as the homepage, plus the existing project-grid tiles. */
+      :root { color-scheme: light dark; }
+      body { max-width: 72rem; margin: 0 auto; padding: 1rem 1rem 4rem; font-family: system-ui, sans-serif; line-height: 1.6; }
+      main > p { max-width: 46rem; }
+    </style>
+    <script src='/browser/joshuaHome.js'></script>
+    <script type='module'>
+      import projectGrid from '/dist/templates/projectGrid.js'
+      import projects from '/dist/data/projectList.js'
+
+      const documentItem = jsonDom.documentItem
+      // Capture the hand-authored HTML into items once, so renderHtml's insert doesn't wipe out real children it
+      // doesn't know about yet. Only call this once per page: a second full-tree pass throws in a real browser.
+      jsonDom.updateDomItems(documentItem)
+      const gridItem = jsonDom.getItemByElement(documentItem.body, document.getElementById('project-grid'))
+      jsonDom.renderHtml(projectGrid(projects), gridItem, 0)
+    </script>
+</head>
+<body>
+<header>
+    <p><a href='/'>&larr; Joshua Heagle</a></p>
+    <h1>Projects</h1>
+</header>
+
+<main>
+    <p>
+        A family of open-source TypeScript libraries that build on each other, the build and test tooling underneath
+        them, and the games and apps built on top. Each project's page has its source and docs, and many have something
+        you can try right in the browser.
+    </p>
+    <div id='project-grid'></div>
+    <noscript>
+        <p>The project grid needs JavaScript. Every project is also on <a href='https://github.com/jheagle'>GitHub</a>.</p>
+    </noscript>
+</main>
+
+<footer>
+    <p>Joshua Heagle &copy; 2026</p>
+</footer>
+</body>
+</html>
