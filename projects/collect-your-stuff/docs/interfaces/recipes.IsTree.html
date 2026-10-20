@@ -15,7 +15,7 @@
 <div class="tsd-comment tsd-typography"><p>Arrayable represents a collection stored as Elements.</p>
 </div></section>
 <div class="tsd-signature"><span class="tsd-signature-keyword">interface</span> <span class="tsd-kind-interface">IsTree</span> <span class="tsd-signature-symbol">{</span><br/>    <a class="tsd-kind-property" href="#classtype">classType</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#innerlist">innerList</a><span class="tsd-signature-symbol">:</span> <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a> <span class="tsd-signature-symbol">|</span> <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#rootparent">rootParent</a><span class="tsd-signature-symbol">:</span> <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a><span class="tsd-signature-symbol">;</span><br/>    <span class="tsd-signature-keyword">get</span> <a class="tsd-kind-get-signature" href="#firstfirst">first</a><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <a class="tsd-signature-type tsd-kind-type-parameter" href="recipes.IsArrayable.html#t">T</a><span class="tsd-signature-symbol">;</span><br/>    <span class="tsd-signature-keyword">get</span> <a class="tsd-kind-get-signature" href="#lastlast">last</a><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <a class="tsd-signature-type tsd-kind-type-parameter" href="recipes.IsArrayable.html#t">T</a><span class="tsd-signature-symbol">;</span><br/>    <span class="tsd-signature-keyword">get</span> <a class="tsd-kind-get-signature" href="#lengthlength">length</a><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span><br/>    <span class="tsd-signature-keyword">get</span> <a class="tsd-kind-get-signature" href="#listlist">list</a><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <a href="recipes.IsElement.html" class="tsd-signature-type tsd-kind-interface">IsElement</a> <span class="tsd-signature-symbol">|</span> <a href="recipes.IsElement.html" class="tsd-signature-type tsd-kind-interface">IsElement</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#iterator-1">&quot;[iterator]&quot;</a><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Iterator</span><span class="tsd-signature-symbol">&lt;</span><a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#append-1">append</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">node</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">after</span><span class="tsd-signature-symbol">?:</span> <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="recipes.IsArrayable.html" class="tsd-signature-type tsd-kind-interface">IsArrayable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#foreach-1">forEach</a><span class="tsd-signature-symbol">(</span><br/>        <span class="tsd-kind-parameter">callback</span><span class="tsd-signature-symbol">:</span> <a href="../types/recipes.forEachCallback.html" class="tsd-signature-type tsd-kind-type-alias">forEachCallback</a><span class="tsd-signature-symbol">,</span><br/>        <span class="tsd-kind-parameter">thisArg</span><span class="tsd-signature-symbol">?:</span> <a href="recipes.IsArrayable.html" class="tsd-signature-type tsd-kind-interface">IsArrayable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="recipes.IsArrayable.html" class="tsd-signature-type tsd-kind-interface">IsArrayable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#initialize-1">initialize</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">initialList</span><span class="tsd-signature-symbol">:</span> <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a> <span class="tsd-signature-symbol">|</span> <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="recipes.IsArrayable.html" class="tsd-signature-type tsd-kind-interface">IsArrayable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#insertafter-1">insertAfter</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">node</span><span class="tsd-signature-symbol">:</span> <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">newNode</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="recipes.IsArrayable.html" class="tsd-signature-type tsd-kind-interface">IsArrayable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#insertbefore-1">insertBefore</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">node</span><span class="tsd-signature-symbol">:</span> <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">newNode</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="recipes.IsArrayable.html" class="tsd-signature-type tsd-kind-interface">IsArrayable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#item-1">item</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">index</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#prepend-1">prepend</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">node</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">before</span><span class="tsd-signature-symbol">?:</span> <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="recipes.IsArrayable.html" class="tsd-signature-type tsd-kind-interface">IsArrayable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#remove-1">remove</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">node</span><span class="tsd-signature-symbol">:</span> <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a><span class="tsd-signature-symbol">;</span><br/><span class="tsd-signature-symbol">}</span></div>
-<section class="tsd-panel tsd-hierarchy" data-refl="680">
+<section class="tsd-panel tsd-hierarchy" data-refl="686">
 <h4>Hierarchy (<a href="../hierarchy.html#recipes.IsTree">View Summary</a>)</h4>
 <ul class="tsd-hierarchy">
 <li class="tsd-hierarchy-item"><a href="recipes.IsArrayable.html" class="tsd-signature-type tsd-kind-interface">IsArrayable</a><span class="tsd-signature-symbol">&lt;</span><a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a><span class="tsd-signature-symbol">&gt;</span>
@@ -24,9 +24,9 @@
 <section class="tsd-panel">
 <h4>Implemented by</h4>
 <ul class="tsd-hierarchy">
-<li><a href="../classes/collections.LinkedTreeList.html" class="tsd-signature-type tsd-kind-class">LinkedTreeList</a></li></ul></section><aside class="tsd-sources">
+<li><a href="../classes/collections_linked-tree-list.LinkedTreeList.html" class="tsd-signature-type tsd-kind-class">LinkedTreeList</a></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsTree.ts#L7">src/recipes/IsTree.ts:7</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsTree.ts#L7">src/recipes/IsTree.ts:7</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-accordion" open><summary class="tsd-accordion-summary tsd-index-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
@@ -67,18 +67,18 @@
 </div><aside class="tsd-sources">
 <p>Inherited from <a href="">IsTree</a>.<a href="#classtype">classType</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsArrayable.ts#L13">src/recipes/IsArrayable.ts:13</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsArrayable.ts#L13">src/recipes/IsArrayable.ts:13</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="innerlist"><span>inner<wbr/>List</span><a href="#innerlist" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">innerList</span><span class="tsd-signature-symbol">:</span> <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a> <span class="tsd-signature-symbol">|</span> <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a><span class="tsd-signature-symbol">[]</span></div><aside class="tsd-sources">
 <p>Inherited from <a href="recipes.IsArrayable.html">IsArrayable</a>.<a href="recipes.IsArrayable.html#innerlist">innerList</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsArrayable.ts#L17">src/recipes/IsArrayable.ts:17</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsArrayable.ts#L17">src/recipes/IsArrayable.ts:17</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member">
 <h3 class="tsd-anchor-link" id="rootparent"><span>root<wbr/>Parent</span><a href="#rootparent" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">rootParent</span><span class="tsd-signature-symbol">:</span> <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsTree.ts#L11">src/recipes/IsTree.ts:11</a></li></ul></aside></section></section></details>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsTree.ts#L11">src/recipes/IsTree.ts:11</a></li></ul></aside></section></section></details>
 <details class="tsd-panel-group tsd-member-group tsd-accordion" open><summary class="tsd-accordion-summary" data-key="section-Accessors"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
 <h2 class="tsd-anchor-link" id="accessors-1">Accessors<a href="#accessors-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2></summary>
 <section>
@@ -93,7 +93,7 @@
 <h4 class="tsd-returns-title">Returns <a class="tsd-signature-type tsd-kind-type-parameter" href="recipes.IsArrayable.html#t">T</a></h4><aside class="tsd-sources">
 <p>Inherited from IsArrayable.first</p>
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsArrayable.ts#L37">src/recipes/IsArrayable.ts:37</a></li></ul></aside></div></li></ul></section>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsArrayable.ts#L37">src/recipes/IsArrayable.ts:37</a></li></ul></aside></div></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="last"><span>last</span><a href="#last" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -105,7 +105,7 @@
 <h4 class="tsd-returns-title">Returns <a class="tsd-signature-type tsd-kind-type-parameter" href="recipes.IsArrayable.html#t">T</a></h4><aside class="tsd-sources">
 <p>Inherited from IsArrayable.last</p>
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsArrayable.ts#L42">src/recipes/IsArrayable.ts:42</a></li></ul></aside></div></li></ul></section>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsArrayable.ts#L42">src/recipes/IsArrayable.ts:42</a></li></ul></aside></div></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="length"><span>length</span><a href="#length" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -117,7 +117,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4><aside class="tsd-sources">
 <p>Inherited from IsArrayable.length</p>
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsArrayable.ts#L47">src/recipes/IsArrayable.ts:47</a></li></ul></aside></div></li></ul></section>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsArrayable.ts#L47">src/recipes/IsArrayable.ts:47</a></li></ul></aside></div></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="list"><span>list</span><a href="#list" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -129,7 +129,7 @@
 <h4 class="tsd-returns-title">Returns <a href="recipes.IsElement.html" class="tsd-signature-type tsd-kind-interface">IsElement</a> <span class="tsd-signature-symbol">|</span> <a href="recipes.IsElement.html" class="tsd-signature-type tsd-kind-interface">IsElement</a><span class="tsd-signature-symbol">[]</span></h4><aside class="tsd-sources">
 <p>Inherited from IsArrayable.list</p>
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsArrayable.ts#L32">src/recipes/IsArrayable.ts:32</a></li></ul></aside></div></li></ul></section></section></details>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsArrayable.ts#L32">src/recipes/IsArrayable.ts:32</a></li></ul></aside></div></li></ul></section></section></details>
 <details class="tsd-panel-group tsd-member-group tsd-accordion" open><summary class="tsd-accordion-summary" data-key="section-Methods"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
 <h2 class="tsd-anchor-link" id="methods-1">Methods<a href="#methods-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2></summary>
 <section>
@@ -144,7 +144,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Iterator</span><span class="tsd-signature-symbol">&lt;</span><a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="recipes.IsArrayable.html">IsArrayable</a>.<a href="recipes.IsArrayable.html#iterator">[iterator]</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsArrayable.ts#L99">src/recipes/IsArrayable.ts:99</a></li></ul></aside></div></li></ul></section>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsArrayable.ts#L99">src/recipes/IsArrayable.ts:99</a></li></ul></aside></div></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="append"><span>append</span><a href="#append" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -161,7 +161,7 @@
 <h4 class="tsd-returns-title">Returns <a href="recipes.IsArrayable.html" class="tsd-signature-type tsd-kind-interface">IsArrayable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="recipes.IsArrayable.html">IsArrayable</a>.<a href="recipes.IsArrayable.html#append">append</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsArrayable.ts#L68">src/recipes/IsArrayable.ts:68</a></li></ul></aside></div></li></ul></section>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsArrayable.ts#L68">src/recipes/IsArrayable.ts:68</a></li></ul></aside></div></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="foreach"><span>for<wbr/>Each</span><a href="#foreach" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -178,7 +178,7 @@
 <h4 class="tsd-returns-title">Returns <a href="recipes.IsArrayable.html" class="tsd-signature-type tsd-kind-interface">IsArrayable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="recipes.IsArrayable.html">IsArrayable</a>.<a href="recipes.IsArrayable.html#foreach">forEach</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsArrayable.ts#L94">src/recipes/IsArrayable.ts:94</a></li></ul></aside></div></li></ul></section>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsArrayable.ts#L94">src/recipes/IsArrayable.ts:94</a></li></ul></aside></div></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="initialize"><span>initialize</span><a href="#initialize" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -194,7 +194,7 @@
 <h4 class="tsd-returns-title">Returns <a href="recipes.IsArrayable.html" class="tsd-signature-type tsd-kind-interface">IsArrayable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="recipes.IsArrayable.html">IsArrayable</a>.<a href="recipes.IsArrayable.html#initialize">initialize</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsArrayable.ts#L27">src/recipes/IsArrayable.ts:27</a></li></ul></aside></div></li></ul></section>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsArrayable.ts#L27">src/recipes/IsArrayable.ts:27</a></li></ul></aside></div></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="insertafter"><span>insert<wbr/>After</span><a href="#insertafter" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -211,7 +211,7 @@
 <h4 class="tsd-returns-title">Returns <a href="recipes.IsArrayable.html" class="tsd-signature-type tsd-kind-interface">IsArrayable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="recipes.IsArrayable.html">IsArrayable</a>.<a href="recipes.IsArrayable.html#insertafter">insertAfter</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsArrayable.ts#L54">src/recipes/IsArrayable.ts:54</a></li></ul></aside></div></li></ul></section>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsArrayable.ts#L54">src/recipes/IsArrayable.ts:54</a></li></ul></aside></div></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="insertbefore"><span>insert<wbr/>Before</span><a href="#insertbefore" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -228,7 +228,7 @@
 <h4 class="tsd-returns-title">Returns <a href="recipes.IsArrayable.html" class="tsd-signature-type tsd-kind-interface">IsArrayable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="recipes.IsArrayable.html">IsArrayable</a>.<a href="recipes.IsArrayable.html#insertbefore">insertBefore</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsArrayable.ts#L61">src/recipes/IsArrayable.ts:61</a></li></ul></aside></div></li></ul></section>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsArrayable.ts#L61">src/recipes/IsArrayable.ts:61</a></li></ul></aside></div></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="item"><span>item</span><a href="#item" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -244,7 +244,7 @@
 <h4 class="tsd-returns-title">Returns <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a></h4><aside class="tsd-sources">
 <p>Inherited from <a href="recipes.IsArrayable.html">IsArrayable</a>.<a href="recipes.IsArrayable.html#item">item</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsArrayable.ts#L87">src/recipes/IsArrayable.ts:87</a></li></ul></aside></div></li></ul></section>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsArrayable.ts#L87">src/recipes/IsArrayable.ts:87</a></li></ul></aside></div></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="prepend"><span>prepend</span><a href="#prepend" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -261,7 +261,7 @@
 <h4 class="tsd-returns-title">Returns <a href="recipes.IsArrayable.html" class="tsd-signature-type tsd-kind-interface">IsArrayable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="recipes.IsArrayable.html">IsArrayable</a>.<a href="recipes.IsArrayable.html#prepend">prepend</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsArrayable.ts#L75">src/recipes/IsArrayable.ts:75</a></li></ul></aside></div></li></ul></section>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsArrayable.ts#L75">src/recipes/IsArrayable.ts:75</a></li></ul></aside></div></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited">
 <h3 class="tsd-anchor-link" id="remove"><span>remove</span><a href="#remove" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -277,7 +277,7 @@
 <h4 class="tsd-returns-title">Returns <a href="recipes.IsTreeNode.html" class="tsd-signature-type tsd-kind-interface">IsTreeNode</a></h4><aside class="tsd-sources">
 <p>Inherited from <a href="recipes.IsArrayable.html">IsArrayable</a>.<a href="recipes.IsArrayable.html#remove">remove</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/ad8a941091971381f6aff071d07bcd45d26ccc5a/src/recipes/IsArrayable.ts#L81">src/recipes/IsArrayable.ts:81</a></li></ul></aside></div></li></ul></section></section></details></div>
+<li>Defined in <a href="https://github.com/jheagle/collect-your-stuff/blob/acccbeb7e336fe745a3ffd77bf0e41fce6bb70b3/src/recipes/IsArrayable.ts#L81">src/recipes/IsArrayable.ts:81</a></li></ul></aside></div></li></ul></section></section></details></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
