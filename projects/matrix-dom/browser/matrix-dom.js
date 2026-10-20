@@ -1118,9 +1118,6 @@ var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
     "default": mod
   };
 };
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 require("core-js/stable");
 const index_1 = __importDefault(require("./point/index"));
 const index_2 = __importDefault(require("./line/index"));
@@ -1144,7 +1141,7 @@ const matrixDom = {
   ...index_6.default
 };
 root.matrixDom = matrixDom;
-exports.default = matrixDom;
+module.exports = matrixDom;
 },{"./bounds/index":10,"./grid/index":13,"./line/index":26,"./lookup/index":34,"./point/index":42,"./random/index":48,"core-js/stable":760}],36:[function(require,module,exports){
 "use strict";
 

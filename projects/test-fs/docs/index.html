@@ -14,7 +14,7 @@
 <ol>
 <li>CommonJs modules: dist/*.js (default)</li>
 <li>ES6 modules: dist/*.mjs</li>
-<li>Bundles Browser file: browser/test-fs.js</li>
+<li>Bundles Browser file: browser/test-fs.js - exposes a <code>testFs</code> global with only the browser-safe functions, grouped by category (<code>testFs.debugging</code>, <code>testFs.evaluate</code>, <code>testFs.objects</code>); the Node-only filesystem functions are not included</li>
 </ol>
 <h2 id="installation" class="tsd-anchor-link">Installation<a href="#installation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
 <p>In your project's root directory, run: <code>npm install --save-dev test-filesystem</code>
