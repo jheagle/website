@@ -19,53 +19,66 @@ const parseHtmlFile = (filePath) => {
 }
 
 describe('index.html', () => {
-  const { document } = parseHtmlFile(path.join(__dirname, '../../index.html'))
+  const rootDir = path.join(__dirname, '../..')
+  const { document } = parseHtmlFile(path.join(rootDir, 'index.html'))
+  const sectionIds = ['hello', 'now', 'how-i-work', 'selected-work', 'projects', 'outside-work', 'experience', 'contact']
 
-  test('has the current title and hero heading, not the old freelance-agency branding', () => {
-    expect(document.head.querySelector('title').textContent).toBe('Joshua Heagle | Senior Full-Stack Engineer')
-    expect(document.body.querySelector('h1').textContent).toBe('Joshua Heagle | Senior Full-Stack Engineer')
+  test('has the current title and heading, without "Senior"', () => {
+    expect(document.head.querySelector('title').textContent).toBe('Joshua Heagle | Full-Stack Engineer')
+    expect(document.body.querySelector('h1').textContent).toBe('Joshua Heagle')
   })
 
-  test('has every current section, and none of the ones that were removed', () => {
-    const present = ['intro', 'profile', 'experience', 'work', 'contact']
-    present.forEach(id => expect(document.body.querySelector(`#${id}`)).not.toBeNull())
+  test('has every content section in reading order, and none of the old grid-layout sections', () => {
+    const ids = [...document.body.querySelectorAll('main > section')].map(section => section.getAttribute('id'))
+    expect(ids).toEqual(sectionIds)
 
-    const removed = ['rates', 'opportunities', 'live-cam', 'addressbook', 'eyeconx', 'json-search', 'eyestartv', 'bright-optical', 'cam-title']
+    const removed = ['intro', 'profile', 'work', 'work-grid', 'rates', 'opportunities', 'live-cam', 'main']
     removed.forEach(id => expect(document.body.querySelector(`#${id}`)).toBeNull())
   })
 
-  test('the arrow-down navigation chains through every section in order', () => {
-    const chain = [
-      ['#intro', '#profile'],
-      ['#profile', '#experience'],
-      ['#experience', '#work'],
-      ['#work', '#contact']
-    ]
-    chain.forEach(([sectionId, nextHref]) => {
-      const links = [...document.body.querySelector(sectionId).querySelectorAll('a.arrow-down')].map(a => a.getAttribute('href'))
-      expect(links).toContain(nextHref)
+  test('every in-page nav link points at a real section', () => {
+    const hrefs = [...document.body.querySelectorAll('header nav a')].map(a => a.getAttribute('href'))
+    expect(hrefs.length).toBeGreaterThan(0)
+    hrefs.forEach(href => expect(sectionIds).toContain(href.slice(1)))
+  })
+
+  test('is plain HTML: no scripts, no grid/sass stylesheet', () => {
+    expect(document.head.querySelectorAll('script').length).toBe(0)
+    expect(document.body.querySelectorAll('script').length).toBe(0)
+    expect(document.head.querySelector("link[rel='stylesheet']")).toBeNull()
+  })
+
+  test('every local image, video and link points at a file that exists', () => {
+    const local = [
+      ...[...document.body.querySelectorAll('img, video')].map(el => el.getAttribute('src')),
+      ...[...document.body.querySelectorAll('a')].map(a => a.getAttribute('href'))
+    ].filter(url => url && url.startsWith('/'))
+    expect(local.length).toBeGreaterThan(0)
+    local.forEach(url => {
+      const target = path.join(rootDir, decodeURIComponent(url))
+      const resolved = url.endsWith('/') ? path.join(target, 'index.html') : target
+      expect({ url, exists: fs.existsSync(resolved) }).toEqual({ url, exists: true })
     })
   })
 
-  test('Experience names both real employers', () => {
+  test('every image has alt text', () => {
+    const images = [...document.body.querySelectorAll('img')]
+    expect(images.length).toBeGreaterThan(0)
+    images.forEach(img => expect((img.getAttribute('alt') || '').trim()).not.toBe(''))
+  })
+
+  test('names both real employers', () => {
     const experienceText = document.body.querySelector('#experience').textContent
     expect(experienceText).toContain('BIC')
     expect(experienceText).toContain('Benevity')
   })
 
-  test('#work has an empty container for the JS-rendered project grid, not hard-coded project boxes', () => {
-    // The grid itself (title/image/description/link per project) is rendered client-side by
-    // templates/projectGrid.js from data/projects.js - see projectGrid.test.js for coverage of its real
-    // output. This static-HTML parse never executes that script, so it can only confirm the container exists.
-    const workGrid = document.body.querySelector('#work #work-grid')
-    expect(workGrid).not.toBeNull()
-    expect(workGrid.children.length).toBe(0)
-  })
-
-  test('none of the old freelance-pitch language remains', () => {
+  test('none of the old freelance-pitch or removed contact details remain', () => {
     const bodyText = document.body.textContent
     expect(bodyText).not.toContain('Joshua Web Strategy')
     expect(bodyText).not.toContain('customized quote')
-    expect(bodyText).not.toContain('2016')
+    expect(bodyText).not.toContain('Senior')
+    expect(bodyText).not.toMatch(/\d{3}-\d{3}-\d{4}/)
+    expect(document.body.querySelector("a[href*='facebook.com/joshua.heagle']")).toBeNull()
   })
 })
