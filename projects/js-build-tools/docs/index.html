@@ -1,71 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Home</title>
-
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
+<!DOCTYPE html><html lang="en" style="font-size:16px"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JS Build Tools</title><!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-</head>
-
-<body>
-
-<div id="main">
-
-    <h1 class="page-title">Home</h1>
-
-    
-
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-    <section>
-        <article><h1><a href="https://www.npmjs.com/package/js-build-tools">js-build-tools</a></h1>
-<p>Centralize the build process for Node.js, JS and TypeScript projects into a single tool suite.</p>
-<h3>Goals</h3>
-<p>Using this tool suite, you can:</p>
-<ul>
-<li>Parse TypeScript into JS distribution files</li>
-<li>Create formatted distribution files to be used in a node / commonjs environment.</li>
-<li>Bundle your distribution files to be used in a browser environment.</li>
-<li>Run tests and watch for changes.</li>
-<li>Generate jsdoc readme files.</li>
-<li>Generate real HTML documentation straight from your source - TypeDoc for a TypeScript project (a module for
-each of your folders), or jsdoc with a modern theme for a plain JavaScript one.</li>
-<li>Copy files (a bundle, or anything else) to another location, on demand.</li>
-</ul>
-<h2>Installation</h2>
-<p>In your project's root directory, run: <code>npm install --save-dev gulp js-build-tools</code>
-(or <code>yarn add --dev gulp js-build-tools</code> if you use Yarn).</p>
-<p>It is recommended to install gulp with the <code>-g</code> flag, so that you can run it with <code>gulp</code> instead
-of <code>node_modules/.bin/gulp</code>.</p>
-<h2>Configuration</h2>
-<p>In your project's root directory, create a <code>build-tools.config.json</code> file. This can contain any of the following (values
-provided are the defaults):</p>
-<pre class="prettyprint source lang-json"><code>{
+    <![endif]--><script src="scripts/third-party/hljs.js" defer="defer"></script><script src="scripts/third-party/hljs-line-num.js" defer="defer"></script><script src="scripts/third-party/popper.js" defer="defer"></script><script src="scripts/third-party/tippy.js" defer="defer"></script><script src="scripts/third-party/tocbot.min.js"></script><script>var baseURL="/",locationPathname="";baseURL=(locationPathname=document.location.pathname).substr(0,locationPathname.lastIndexOf("/")+1)</script><link rel="stylesheet" href="styles/clean-jsdoc-theme.min.css"><svg aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none"><defs><symbol id="copy-icon" viewbox="0 0 488.3 488.3"><g><path d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z"/><path d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z"/></g></symbol><symbol id="search-icon" viewBox="0 0 512 512"><g><g><path d="M225.474,0C101.151,0,0,101.151,0,225.474c0,124.33,101.151,225.474,225.474,225.474    c124.33,0,225.474-101.144,225.474-225.474C450.948,101.151,349.804,0,225.474,0z M225.474,409.323    c-101.373,0-183.848-82.475-183.848-183.848S124.101,41.626,225.474,41.626s183.848,82.475,183.848,183.848    S326.847,409.323,225.474,409.323z"/></g></g><g><g><path d="M505.902,476.472L386.574,357.144c-8.131-8.131-21.299-8.131-29.43,0c-8.131,8.124-8.131,21.306,0,29.43l119.328,119.328    c4.065,4.065,9.387,6.098,14.715,6.098c5.321,0,10.649-2.033,14.715-6.098C514.033,497.778,514.033,484.596,505.902,476.472z"/></g></g></symbol><symbol id="font-size-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11.246 15H4.754l-2 5H.6L7 4h2l6.4 16h-2.154l-2-5zm-.8-2L8 6.885 5.554 13h4.892zM21 12.535V12h2v8h-2v-.535a4 4 0 1 1 0-6.93zM19 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></symbol><symbol id="add-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"/></symbol><symbol id="minus-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5 11h14v2H5z"/></symbol><symbol id="dark-theme-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"/></symbol><symbol id="light-theme-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></symbol><symbol id="reset-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.537 19.567A9.961 9.961 0 0 1 12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10c0 2.136-.67 4.116-1.81 5.74L17 12h3a8 8 0 1 0-2.46 5.772l.997 1.795z"/></symbol><symbol id="down-icon" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.7803 6.21967C13.0732 6.51256 13.0732 6.98744 12.7803 7.28033L8.53033 11.5303C8.23744 11.8232 7.76256 11.8232 7.46967 11.5303L3.21967 7.28033C2.92678 6.98744 2.92678 6.51256 3.21967 6.21967C3.51256 5.92678 3.98744 5.92678 4.28033 6.21967L8 9.93934L11.7197 6.21967C12.0126 5.92678 12.4874 5.92678 12.7803 6.21967Z"></path></symbol><symbol id="codepen-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.5 13.202L13 15.535v3.596L19.197 15 16.5 13.202zM14.697 12L12 10.202 9.303 12 12 13.798 14.697 12zM20 10.869L18.303 12 20 13.131V10.87zM19.197 9L13 4.869v3.596l3.5 2.333L19.197 9zM7.5 10.798L11 8.465V4.869L4.803 9 7.5 10.798zM4.803 15L11 19.131v-3.596l-3.5-2.333L4.803 15zM4 13.131L5.697 12 4 10.869v2.262zM2 9a1 1 0 0 1 .445-.832l9-6a1 1 0 0 1 1.11 0l9 6A1 1 0 0 1 22 9v6a1 1 0 0 1-.445.832l-9 6a1 1 0 0 1-1.11 0l-9-6A1 1 0 0 1 2 15V9z"/></symbol><symbol id="close-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"/></symbol><symbol id="menu-icon" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"/></symbol></defs></svg></head><body data-theme="dark"><div class="sidebar-container"><div class="sidebar" id="sidebar"><a href="index.html" class="sidebar-title sidebar-title-anchor">JS Build Tools</a><div class="sidebar-items-container"><div class="sidebar-section-title with-arrow" data-isopen="false" id="sidebar-modules"><div>Modules</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="module-gulpConfig.html">gulpConfig</a></div><div class="sidebar-section-children"><a href="module-js-build-tools.html">js-build-tools</a></div><div class="sidebar-section-children"><a href="module-partials.html">partials</a></div><div class="sidebar-section-children"><a href="module-testHelpers.html">testHelpers</a></div></div></div></div></div><div class="navbar-container" id="VuAckcnZhf"><nav class="navbar"><div class="navbar-left-items"></div><div class="navbar-right-items"><div class="navbar-right-item"><button class="icon-button search-button" aria-label="open-search"><svg><use xlink:href="#search-icon"></use></svg></button></div><div class="navbar-right-item"><button class="icon-button theme-toggle" aria-label="toggle-theme"><svg><use class="theme-svg-use" xlink:href="#light-theme-icon"></use></svg></button></div><div class="navbar-right-item"><button class="icon-button font-size" aria-label="change-font-size"><svg><use xlink:href="#font-size-icon"></use></svg></button></div></div><nav></nav></nav></div><div class="toc-container"><div class="toc-content"><span class="bold">On this page</span><div id="eed4d2a0bfd64539bb9df78095dec881"></div></div></div><div class="body-wrapper"><div class="main-content"><div class="main-wrapper"><section class="readme"><article><h1 id="js-build-tools"><a href="https://www.npmjs.com/package/js-build-tools">js-build-tools</a></h1><p>Centralize the build process for Node.js, JS and TypeScript projects into a single tool suite.</p><h3 id="goals">Goals</h3><p>Using this tool suite, you can:</p><ul><li>Parse TypeScript into JS distribution files</li><li>Create formatted distribution files to be used in a node / commonjs environment.</li><li>Bundle your distribution files to be used in a browser environment.</li><li>Run tests and watch for changes.</li><li>Generate jsdoc readme files.</li><li>Generate real HTML documentation straight from your source - TypeDoc for a TypeScript project (a module for each of your folders), or jsdoc with a modern theme for a plain JavaScript one.</li><li>Copy files (a bundle, or anything else) to another location, on demand.</li></ul><h2 id="installation">Installation</h2><p>In your project's root directory, run: <code>npm install --save-dev gulp js-build-tools</code> (or <code>yarn add --dev gulp js-build-tools</code> if you use Yarn).</p><p>It is recommended to install gulp with the <code>-g</code> flag, so that you can run it with <code>gulp</code> instead of <code>node_modules/.bin/gulp</code>.</p><h2 id="configuration">Configuration</h2><p>In your project's root directory, create a <code>build-tools.config.json</code> file. This can contain any of the following (values provided are the defaults):</p><pre class="prettyprint source lang-json"><code>{
   &quot;browser&quot;: {
     // 'true' to generate browser bundled files; 'false' for node environment only
     &quot;enabled&quot;: true,
@@ -182,12 +117,7 @@ provided are the defaults):</p>
     &quot;to&quot;: &quot;dist&quot;
   }
 }
-</code></pre>
-<h3>Create your local gulpfile.js</h3>
-<p>In your project's root directory, create a <code>gulpfile.js</code> file, in here you can require any of the functions you need.
-For example:</p>
-<h4>Common JS</h4>
-<pre class="prettyprint source lang-js"><code>// Your local gulpfile.js
+</code></pre><h3 id="create-your-local-gulpfile.js">Create your local gulpfile.js</h3><p>In your project's root directory, create a <code>gulpfile.js</code> file, in here you can require any of the functions you need. For example:</p><h4 id="common-js">Common JS</h4><pre class="prettyprint source lang-js"><code>// Your local gulpfile.js
 const {
   build,
   defaultCmd,
@@ -214,9 +144,7 @@ exports.testFull = testFull
 exports.testQuick = testQuick
 exports.watchFull = watchFull
 exports.watchTest = watchTest
-</code></pre>
-<h4>ES Module</h4>
-<pre class="prettyprint source lang-js"><code>// Your local gulpfile.mjs
+</code></pre><h4 id="es-module">ES Module</h4><pre class="prettyprint source lang-js"><code>// Your local gulpfile.mjs
 // Everything you export will be created as a gulp task.
 export {
   build,
@@ -235,25 +163,10 @@ export {
 // You can build your own tasks here as well by using some of the functions `js-build-tools/functions`.
 // You can list your available tasks by running `gulp --tasks`.
 
-</code></pre>
-<p>Verify your tasks are available by running <code>gulp --tasks</code>.</p>
-<h3>Configure Babel</h3>
-<p>Depending on how you wrote your test files, Jest may require some Babel configuration.
-Create a <code>babel.config.js</code> file in the root directory of your project.
-You can then use the recommended configuration by requiring the <code>babel.config.js</code> file into your own configuration file.
-Example:</p>
-<pre class="prettyprint source lang-js"><code>const babelConfig = require('js-build-tools/babel.config')
+</code></pre><p>Verify your tasks are available by running <code>gulp --tasks</code>.</p><h3 id="configure-babel">Configure Babel</h3><p>Depending on how you wrote your test files, Jest may require some Babel configuration. Create a <code>babel.config.js</code> file in the root directory of your project. You can then use the recommended configuration by requiring the <code>babel.config.js</code> file into your own configuration file. Example:</p><pre class="prettyprint source lang-js"><code>const babelConfig = require('js-build-tools/babel.config')
 // You may add additional configuration here. Example: babelConfig.presets.push('@babel/preset-env')
 module.exports = babelConfig
-</code></pre>
-<h3>Configure ES Modules (.mjs)</h3>
-<p>It is not recommended to use <code>&quot;type&quot;: &quot;module&quot;</code> in the <code>package.json</code> to enable ES Modules.
-This is because some dependencies still rely on common JS syntax (ex: babel, jest, jsdoc).
-So, to use ES Modules, you can use the <code>.mjs</code> extension on your files instead.
-There are different downsides to using the <code>.mjs</code> extension to consider.
-The <code>jsdoc</code> generation can only read <code>.js</code> files, and the provided test runner <code>Jest</code> will need to be configured.
-Update the test config as follows:</p>
-<pre class="prettyprint source lang-json"><code>{
+</code></pre><h3 id="configure-es-modules-(.mjs)">Configure ES Modules (.mjs)</h3><p>It is not recommended to use <code>&quot;type&quot;: &quot;module&quot;</code> in the <code>package.json</code> to enable ES Modules. This is because some dependencies still rely on common JS syntax (ex: babel, jest, jsdoc). So, to use ES Modules, you can use the <code>.mjs</code> extension on your files instead. There are different downsides to using the <code>.mjs</code> extension to consider. The <code>jsdoc</code> generation can only read <code>.js</code> files, and the provided test runner <code>Jest</code> will need to be configured. Update the test config as follows:</p><pre class="prettyprint source lang-json"><code>{
   &quot;dist&quot;: {
     // Use .mjs files for from and main
     &quot;main&quot;: &quot;src/main.mjs&quot;,
@@ -287,24 +200,13 @@ Update the test config as follows:</p>
     &quot;watch&quot;: &quot;functions/**/*.[cm]?[jt]s&quot;
   }
 }
-</code></pre>
-<p>There is an additional file you need to get Jest working, add a <code>jest.config.js</code> file.
-While we have already added these configurations above in the &quot;options&quot;,
-there seems to be a bug where the &quot;transform&quot; does not work in that context. Add the following to your <code>jest.config.js</code>:</p>
-<pre class="prettyprint source lang-js"><code>module.exports = {
+</code></pre><p>There is an additional file you need to get Jest working, add a <code>jest.config.js</code> file. While we have already added these configurations above in the &quot;options&quot;, there seems to be a bug where the &quot;transform&quot; does not work in that context. Add the following to your <code>jest.config.js</code>:</p><pre class="prettyprint source lang-js"><code>module.exports = {
   // The transform will instruct jest to run the files through babel so it can interpret them
   transform: {
     '^.+\\.[cm]?[jt]sx?$': 'babel-jest'
   }
 }
-</code></pre>
-<h3>Configure HTML JS Documentation, full manual control (optional, advanced)</h3>
-<p>For most projects, <code>docs.enabled</code> with <code>docs.method: 'jsdoc'</code> (see 'Configure HTML documentation' below) is the
-simpler path - no <code>.jsdoc.conf.js</code> file to maintain by hand, wired straight into <code>gulp build</code>/<code>gulp docs</code>. This
-section is for when you want full, direct control over jsdoc's own config instead (a plugin or option this
-project's own generated config does not expose, for example).</p>
-<p>Create a <code>.jsdoc.conf.js</code> file and add the following:</p>
-<pre class="prettyprint source lang-js"><code>const jsDocBase = require('js-build-tools/jsdoc.base')
+</code></pre><h3 id="configure-html-js-documentation%2C-full-manual-control-(optional%2C-advanced)">Configure HTML JS Documentation, full manual control (optional, advanced)</h3><p>For most projects, <code>docs.enabled</code> with <code>docs.method: 'jsdoc'</code> (see 'Configure HTML documentation' below) is the simpler path - no <code>.jsdoc.conf.js</code> file to maintain by hand, wired straight into <code>gulp build</code>/<code>gulp docs</code>. This section is for when you want full, direct control over jsdoc's own config instead (a plugin or option this project's own generated config does not expose, for example).</p><p>Create a <code>.jsdoc.conf.js</code> file and add the following:</p><pre class="prettyprint source lang-js"><code>const jsDocBase = require('js-build-tools/jsdoc.base')
 /* You will get a jsdoc config object with the following:
  * {
  *    plugins: ['plugins/markdown'],
@@ -318,12 +220,7 @@ project's own generated config does not expose, for example).</p>
  * This searches the defined 'distPath' for building the HTML JS Documentation
  */
 module.exports = jsDocBase
-</code></pre>
-<h3>Configure what the browser bundle leaves out (optional)</h3>
-<p>A dependency can be reached from your code without being needed in the browser, and bundling it can add a lot of size.
-Two settings in <code>browser</code> handle this, both take module names or file paths (see browserify's <code>b.ignore(file)</code> and
-<code>b.exclude(file)</code>):</p>
-<pre class="prettyprint source lang-json"><code>{
+</code></pre><h3 id="configure-what-the-browser-bundle-leaves-out-(optional)">Configure what the browser bundle leaves out (optional)</h3><p>A dependency can be reached from your code without being needed in the browser, and bundling it can add a lot of size. Two settings in <code>browser</code> handle this, both take module names or file paths (see browserify's <code>b.ignore(file)</code> and <code>b.exclude(file)</code>):</p><pre class="prettyprint source lang-json"><code>{
   &quot;browser&quot;: {
     // Resolves to an empty object ({}) in the bundle instead of the real module. This suits a dependency which is only
     // reached because it is the default value of an option you always override with your own (for example a selector
@@ -335,13 +232,7 @@ Two settings in <code>browser</code> handle this, both take module names or file
     &quot;exclude&quot;: [&quot;a-library-the-page-loads&quot;]
   }
 }
-</code></pre>
-<h3>Configure additional browser bundles (optional)</h3>
-<p>By default a project produces exactly one browser bundle, from <code>dist.main</code>/<code>browser.name</code>/<code>browser.ignore</code>/
-<code>browser.exclude</code> above. <code>browser.bundles</code> adds more bundles alongside it - for example a render-only variant built
-from a different entry point than the full bundle. Each entry only needs to specify what's actually different about
-that bundle; anything left out falls back to the primary bundle's own value:</p>
-<pre class="prettyprint source lang-json"><code>{
+</code></pre><h3 id="configure-additional-browser-bundles-(optional)">Configure additional browser bundles (optional)</h3><p>By default a project produces exactly one browser bundle, from <code>dist.main</code>/<code>browser.name</code>/<code>browser.ignore</code>/ <code>browser.exclude</code> above. <code>browser.bundles</code> adds more bundles alongside it - for example a render-only variant built from a different entry point than the full bundle. Each entry only needs to specify what's actually different about that bundle; anything left out falls back to the primary bundle's own value:</p><pre class="prettyprint source lang-json"><code>{
   &quot;browser&quot;: {
     &quot;bundles&quot;: [
       {
@@ -358,32 +249,12 @@ that bundle; anything left out falls back to the primary bundle's own value:</p>
     ]
   }
 }
-</code></pre>
-<p>For the <code>gulpConfig</code> module's own <code>get</code>/<code>set</code> functions (read or override a resolved configuration value from your
-own code, by the same dot-notation path a setting has in the JSON above), see the generated reference below.</p>
-<h3>Configure including ESM files in the generated readme (optional)</h3>
-<p>The readme generator (<code>jsdoc-to-markdown</code>) only recognizes <code>.js</code> files, even though it parses real ESM <code>import</code>/
-<code>export</code> syntax just fine once it reads one - the file extension is the only thing it filters on, not the content.
-<code>readme.fromEsm</code> names <code>.mjs</code> files to document anyway: each one is read, rewritten (every top-level <code>export const</code>/
-<code>export function</code>/<code>export class</code> becomes a plain declaration plus a trailing <code>module.exports = { ... }</code> - the same
-shape <code>jsdoc-to-markdown</code> already documents cleanly, since that rewrite is exactly what this project's own
-<code>gulp.config.mjs</code> needs it for) and written to a temp <code>.js</code> file outside your project entirely, which is cleaned up
-again once the readme generator has read it. Other export forms (<code>export default</code>, re-exports, <code>export { a, b }</code>
-lists) are left untouched in whatever way <code>jsdoc-to-markdown</code> already handles ESM - restructure a file to use named
-exports if you want it documented this cleanly:</p>
-<pre class="prettyprint source lang-json"><code>{
+</code></pre><p>For the <code>gulpConfig</code> module's own <code>get</code>/<code>set</code> functions (read or override a resolved configuration value from your own code, by the same dot-notation path a setting has in the JSON above), see the generated reference below.</p><h3 id="configure-including-esm-files-in-the-generated-readme-(optional)">Configure including ESM files in the generated readme (optional)</h3><p>The readme generator (<code>jsdoc-to-markdown</code>) only recognizes <code>.js</code> files, even though it parses real ESM <code>import</code>/ <code>export</code> syntax just fine once it reads one - the file extension is the only thing it filters on, not the content. <code>readme.fromEsm</code> names <code>.mjs</code> files to document anyway: each one is read, rewritten (every top-level <code>export const</code>/ <code>export function</code>/<code>export class</code> becomes a plain declaration plus a trailing <code>module.exports = { ... }</code> - the same shape <code>jsdoc-to-markdown</code> already documents cleanly, since that rewrite is exactly what this project's own <code>gulp.config.mjs</code> needs it for) and written to a temp <code>.js</code> file outside your project entirely, which is cleaned up again once the readme generator has read it. Other export forms (<code>export default</code>, re-exports, <code>export { a, b }</code> lists) are left untouched in whatever way <code>jsdoc-to-markdown</code> already handles ESM - restructure a file to use named exports if you want it documented this cleanly:</p><pre class="prettyprint source lang-json"><code>{
   &quot;readme&quot;: {
     &quot;fromEsm&quot;: [&quot;src/myEsmOnlyModule.mjs&quot;]
   }
 }
-</code></pre>
-<h3>Configure copy files (optional)</h3>
-<p>Copy files (a bundle, or anything else) to another location - any number of entries, each independent. Unlike
-every other task here, this is never run automatically as part of <code>gulp build</code> - what this copies is often the
-live, publicly-reachable version of something, so publishing it should be a deliberate step your own script
-opts into, not a side effect of a routine local build.</p>
-<p>Add the following to the exports in your <code>build-tools.config.json</code>:</p>
-<pre class="prettyprint source lang-json"><code>{
+</code></pre><h3 id="configure-copy-files-(optional)">Configure copy files (optional)</h3><p>Copy files (a bundle, or anything else) to another location - any number of entries, each independent. Unlike every other task here, this is never run automatically as part of <code>gulp build</code> - what this copies is often the live, publicly-reachable version of something, so publishing it should be a deliberate step your own script opts into, not a side effect of a routine local build.</p><p>Add the following to the exports in your <code>build-tools.config.json</code>:</p><pre class="prettyprint source lang-json"><code>{
   &quot;copyFiles&quot;: [
     {
       // The glob pattern(s) of files to copy
@@ -395,13 +266,7 @@ opts into, not a side effect of a routine local build.</p>
     }
   ]
 }
-</code></pre>
-<p>If you also export <code>copyFiles</code> from your gulpfile you can run it on its own with <code>gulp copyFiles</code>, and can then
-add your own script for it, for example <code>&quot;publish:bundle&quot;: &quot;gulp copyFiles&quot;</code>.</p>
-<h3>Configure move fonts (optional)</h3>
-<p>Be able to copy a source directory of fonts into the distribution path.</p>
-<p>Add the following to the exports in your <code>build-tools.config.json</code>:</p>
-<pre class="prettyprint source lang-json"><code>{
+</code></pre><p>If you also export <code>copyFiles</code> from your gulpfile you can run it on its own with <code>gulp copyFiles</code>, and can then add your own script for it, for example <code>&quot;publish:bundle&quot;: &quot;gulp copyFiles&quot;</code>.</p><h3 id="configure-move-fonts-(optional)">Configure move fonts (optional)</h3><p>Be able to copy a source directory of fonts into the distribution path.</p><p>Add the following to the exports in your <code>build-tools.config.json</code>:</p><pre class="prettyprint source lang-json"><code>{
   &quot;fonts&quot;: {
     // Enable fonts process
     &quot;enabled&quot;: false,
@@ -411,11 +276,7 @@ add your own script for it, for example <code>&quot;publish:bundle&quot;: &quot;
     &quot;to&quot;: &quot;browser/fonts&quot;
   }
 }
-</code></pre>
-<h3>Configure move and minify images (optional)</h3>
-<p>Be able to copy and reduce the file size of images into an output path.</p>
-<p>Add the following to the exports in your <code>build-tools.config.json</code>:</p>
-<pre class="prettyprint source lang-json"><code>{
+</code></pre><h3 id="configure-move-and-minify-images-(optional)">Configure move and minify images (optional)</h3><p>Be able to copy and reduce the file size of images into an output path.</p><p>Add the following to the exports in your <code>build-tools.config.json</code>:</p><pre class="prettyprint source lang-json"><code>{
   &quot;images&quot;: {
     // Enable image process
     &quot;enabled&quot;: false,
@@ -425,11 +286,7 @@ add your own script for it, for example <code>&quot;publish:bundle&quot;: &quot;
     &quot;to&quot;: &quot;browser/img&quot;
   }
 }
-</code></pre>
-<h3>Configure SASS (optional)</h3>
-<p>SASS support is built-in, this enables conversion of SASS files to CSS for web projects.</p>
-<p>Add the following to the exports in your <code>build-tools.config.json</code>:</p>
-<pre class="prettyprint source lang-json"><code>{
+</code></pre><h3 id="configure-sass-(optional)">Configure SASS (optional)</h3><p>SASS support is built-in, this enables conversion of SASS files to CSS for web projects.</p><p>Add the following to the exports in your <code>build-tools.config.json</code>:</p><pre class="prettyprint source lang-json"><code>{
   &quot;sass&quot;: {
     // Enable SASS process
     &quot;enabled&quot;: false,
@@ -441,10 +298,7 @@ add your own script for it, for example <code>&quot;publish:bundle&quot;: &quot;
     &quot;to&quot;: &quot;browser/css&quot;
   }
 }
-</code></pre>
-<h3>Configure TypeScript (optional)</h3>
-<p>Create a <code>tsconfig.json</code> file in your project root with the following:</p>
-<pre class="prettyprint source lang-json"><code>{
+</code></pre><h3 id="configure-typescript-(optional)">Configure TypeScript (optional)</h3><p>Create a <code>tsconfig.json</code> file in your project root with the following:</p><pre class="prettyprint source lang-json"><code>{
   &quot;include&quot;: [&quot;src/**/*.ts&quot;],
   &quot;exclude&quot;: [&quot;src/**/*.test.*&quot;],
   &quot;compilerOptions&quot;: {
@@ -459,16 +313,7 @@ add your own script for it, for example <code>&quot;publish:bundle&quot;: &quot;
     &quot;types&quot;: []
   }
 }
-</code></pre>
-<p>The pattern for <code>&quot;include&quot;</code> should match your .ts files (and leave out the tests, which can stay <code>.test.js</code> files).
-The actual pattern used to compile comes from <code>build-tools.config.json</code> as the <code>'typescript.from'</code> setting.
-To create the ts declaration files, you must add the <code>&quot;declaration&quot;: true</code>. The <code>typescript</code> package is an optional peer
-dependency, install it in your project with <code>npm install --save-dev typescript</code> (versions 5.0 up to, but not including,
-7 are supported). When you write relative imports, leave the <code>.js</code> extension off (<code>import a from './a'</code>), because
-they stop resolving once the target is a <code>.ts</code> file. The compile only builds <code>.ts</code> files while <code>typescript.enabled</code> is
-on, so convert a whole library at once.</p>
-<p>Add the following to the exports in your <code>build-tools.config.json</code>:</p>
-<pre class="prettyprint source lang-json"><code>{
+</code></pre><p>The pattern for <code>&quot;include&quot;</code> should match your .ts files (and leave out the tests, which can stay <code>.test.js</code> files). The actual pattern used to compile comes from <code>build-tools.config.json</code> as the <code>'typescript.from'</code> setting. To create the ts declaration files, you must add the <code>&quot;declaration&quot;: true</code>. The <code>typescript</code> package is an optional peer dependency, install it in your project with <code>npm install --save-dev typescript</code> (versions 5.0 up to, but not including, 7 are supported). When you write relative imports, leave the <code>.js</code> extension off (<code>import a from './a'</code>), because they stop resolving once the target is a <code>.ts</code> file. The compile only builds <code>.ts</code> files while <code>typescript.enabled</code> is on, so convert a whole library at once.</p><p>Add the following to the exports in your <code>build-tools.config.json</code>:</p><pre class="prettyprint source lang-json"><code>{
   &quot;readme&quot;: {
     // Location of files to use for compiling documentation into the readme.
     &quot;from&quot;: &quot;dist/**/!(*.min).js&quot;
@@ -484,42 +329,16 @@ on, so convert a whole library at once.</p>
     &quot;to&quot;: &quot;dist&quot;
   }
 }
-</code></pre>
-<p>The <code>js-to-markdown</code> only works on .js files, so we run the readme search on the built dist files. Also, we want to
-register the tsconfig.json we created earlier and will alter the processes to build for TypeScript.</p>
-<p>Update <code>babel.config.js</code> with the following:</p>
-<pre class="prettyprint source lang-js"><code>const babelConfig = require('js-build-tools/babel.config')
+</code></pre><p>The <code>js-to-markdown</code> only works on .js files, so we run the readme search on the built dist files. Also, we want to register the tsconfig.json we created earlier and will alter the processes to build for TypeScript.</p><p>Update <code>babel.config.js</code> with the following:</p><pre class="prettyprint source lang-js"><code>const babelConfig = require('js-build-tools/babel.config')
 // This is the important line, we need to add compatibility for Jest to run tests on .ts files
 babelConfig.presets.push('@babel/preset-typescript')
 module.exports = babelConfig
-</code></pre>
-<h3>Configure HTML documentation (optional)</h3>
-<p><code>jsdoc-to-markdown</code> (the readme generator) only reads <code>.js</code> files, so the types in your <code>.ts</code> files (and the
-comments on them) never reach the readme it generates, and even for a plain JavaScript project a single
-markdown readme is a thinner result than a real browsable site. Instead, <code>docs.enabled</code> generates real HTML
-documentation straight from your source, with either engine:</p>
-<ul>
-<li><strong>TypeDoc</strong> (for a TypeScript project) - every folder in your source directory becomes a module of the
-documentation, the default export of each file (one function per file) is listed under the name of the file,
-and everything else a file exports (for example the types in a <code>types.ts</code>) is listed as it is. Index files,
-tests and declaration files are left out. A file which sits directly in the source directory, beside the
-folders, is a module of its own (unless it is <code>index</code> or <code>main</code>). The first comment of a folder's <code>index.ts</code>
-(or the header comment of such a file) describes its module. The comments on your code are the documentation,
-and the types come from the code itself, so <code>@module</code>, <code>@memberOf</code>, <code>@typedef</code> and the <code>{Type}</code> of <code>@param</code>
-are not needed. <code>typedoc</code> is an optional peer dependency (like <code>typescript</code>), install it in your project with
-<code>npm install --save-dev typedoc</code> (this needs a <code>typescript</code> version it supports).</li>
-<li><strong>jsdoc</strong> (for a plain JavaScript project, where TypeDoc has no real types to read) - scans your source
-recursively with jsdoc itself, rendered with a modern theme (<code>clean-jsdoc-theme</code> by default, used instead of
-jsdoc's own classic default template) instead of the manual <code>.jsdoc.conf.js</code> setup described further below.
-<code>jsdoc</code> and whichever theme you configure are optional peer dependencies, install them with
-<code>npm install --save-dev jsdoc clean-jsdoc-theme</code> (or your own chosen theme package).</li>
-</ul>
-<p>Add the following to the exports in your <code>build-tools.config.json</code>:</p>
-<pre class="prettyprint source lang-json"><code>{
+</code></pre><h3 id="configure-html-documentation-(optional)">Configure HTML documentation (optional)</h3><p><code>jsdoc-to-markdown</code> (the readme generator) only reads <code>.js</code> files, so the types in your <code>.ts</code> files (and the comments on them) never reach the readme it generates, and even for a plain JavaScript project a single markdown readme is a thinner result than a real browsable site. Instead, <code>docs.enabled</code> generates real HTML documentation straight from your source, with either engine:</p><ul><li><strong>TypeDoc</strong> (for a TypeScript project) - every folder in your source directory becomes a module of the documentation, the default export of each file (one function per file) is listed under the name of the file, and everything else a file exports (for example the types in a <code>types.ts</code>) is listed as it is. Index files, tests and declaration files are left out. A file which sits directly in the source directory, beside the folders, is a module of its own (unless it is <code>index</code> or <code>main</code>). The first comment of a folder's <code>index.ts</code> (or the header comment of such a file) describes its module. The comments on your code are the documentation, and the types come from the code itself, so <code>@module</code>, <code>@memberOf</code>, <code>@typedef</code> and the <code>{Type}</code> of <code>@param</code> are not needed. <code>typedoc</code> is an optional peer dependency (like <code>typescript</code>), install it in your project with <code>npm install --save-dev typedoc</code> (this needs a <code>typescript</code> version it supports).</li><li><strong>jsdoc</strong> (for a plain JavaScript project, where TypeDoc has no real types to read) - scans your source (<code>.js</code>, <code>.mjs</code> and <code>.cjs</code> files, leaving out tests and minified <code>.min.js</code> copies) recursively with jsdoc itself, rendered with a modern theme (<code>clean-jsdoc-theme</code> by default, used instead of jsdoc's own classic default template) instead of the manual <code>.jsdoc.conf.js</code> setup described further below. <code>jsdoc</code> and whichever theme you configure are optional peer dependencies, install them with <code>npm install --save-dev jsdoc clean-jsdoc-theme</code> (or your own chosen theme package).</li></ul><p>Add the following to the exports in your <code>build-tools.config.json</code>:</p><pre class="prettyprint source lang-json"><code>{
   &quot;docs&quot;: {
     // Generate the documentation from the source
     &quot;enabled&quot;: true,
-    // The directory holding the source, each folder in it becomes a module (TypeDoc) or is scanned recursively (jsdoc)
+    // The directory holding the source, each folder in it becomes a module (TypeDoc) or is scanned recursively (jsdoc).
+    // jsdoc also takes a list of directories and files, for example [&quot;functions&quot;, &quot;gulpfile.base.mjs&quot;]
     &quot;from&quot;: &quot;src&quot;,
     // The markdown file used as the front page of the documentation (a short overview of your project)
     &quot;index&quot;: &quot;MAIN.md&quot;,
@@ -530,25 +349,13 @@ jsdoc's own classic default template) instead of the manual <code>.jsdoc.conf.js
     // Only meaningful when method is (or resolves to) 'jsdoc' - the theme package to render with. TypeDoc
     // always keeps its own default regardless of this setting.
     &quot;theme&quot;: &quot;clean-jsdoc-theme&quot;,
+    // The name of the documentation (TypeDoc's title, the theme's title for jsdoc), defaults to the package name
+    &quot;title&quot;: &quot;&quot;,
     // Where the HTML is generated (the directory is cleared first)
     &quot;to&quot;: &quot;docs&quot;
   }
 }
-</code></pre>
-<p>While <code>docs.enabled</code> is on, <code>gulp build</code> generates the documentation instead of the readme, so your <code>README.md</code> stays
-hand-written (a short overview which links to the documentation). If you also export <code>docs</code> from your gulpfile you can
-run it on its own with <code>gulp docs</code>, and can then add the script <code>&quot;docs&quot;: &quot;gulp docs&quot;</code>.</p>
-<h3>Browser automation (optional)</h3>
-<p>Unlike the rest of this file, this isn't a <code>build-tools.config.json</code>-driven feature with its own task - it's a pair
-of plain functions (<code>partials.loadPlaywright</code>/<code>partials.launchBrowser</code> and <code>partials.serveStatic</code>) for whatever your
-own script needs a real browser for: verifying a page that only works correctly in a real browser (for example one
-using <code>&lt;script type=&quot;module&quot;&gt;</code>, which no DOM-simulation library executes at all), or taking a real screenshot.</p>
-<p><code>playwright</code> is an optional peer dependency, install it in your project with <code>npm install --save-dev playwright</code>,
-then fetch a real browser binary once per machine (not per project) with <code>npx playwright install chromium</code> - if
-that fails with &quot;Playwright does not support chromium on <your distro>&quot;, your OS is too old for the current
-release; either upgrade it or pin an older <code>playwright</code> version known to still support it (confirmed: <code>1.48.0</code>
-still installs and runs real headless Chromium on Ubuntu 20.04, which the current release has dropped).</p>
-<pre class="prettyprint source lang-js"><code>const { launchBrowser, serveStatic } = require('js-build-tools').partials
+</code></pre><p>While <code>docs.enabled</code> is on, <code>gulp build</code> generates the documentation instead of the readme, so your <code>README.md</code> stays hand-written (a short overview which links to the documentation). If you also export <code>docs</code> from your gulpfile you can run it on its own with <code>gulp docs</code>, and can then add the script <code>&quot;docs&quot;: &quot;gulp docs&quot;</code>.</p><h3 id="browser-automation-(optional)">Browser automation (optional)</h3><p>Unlike the rest of this file, this isn't a <code>build-tools.config.json</code>-driven feature with its own task - it's a pair of plain functions (<code>partials.loadPlaywright</code>/<code>partials.launchBrowser</code> and <code>partials.serveStatic</code>) for whatever your own script needs a real browser for: verifying a page that only works correctly in a real browser (for example one using <code>&lt;script type=&quot;module&quot;&gt;</code>, which no DOM-simulation library executes at all), or taking a real screenshot.</p><p><code>playwright</code> is an optional peer dependency, install it in your project with <code>npm install --save-dev playwright</code>, then fetch a real browser binary once per machine (not per project) with <code>npx playwright install chromium</code> - if that fails with &quot;Playwright does not support chromium on<your distro>&quot;, your OS is too old for the current release; either upgrade it or pin an older <code>playwright</code> version known to still support it (confirmed: <code>1.48.0</code> still installs and runs real headless Chromium on Ubuntu 20.04, which the current release has dropped).</your></p><pre class="prettyprint source lang-js"><code>const { launchBrowser, serveStatic } = require('js-build-tools').partials
 
 const { server, url } = await serveStatic('browser') // serves ./browser/ over a real local HTTP server
 const browser = await launchBrowser()
@@ -557,18 +364,7 @@ await page.goto(`${url}/index.html`)
 await page.screenshot({ path: 'homepage.png' }) // a real screenshot, to actually look at
 await browser.close()
 server.close()
-</code></pre>
-<p><code>serveStatic</code> exists because a page loaded directly from a <code>file://</code> path resolves any root-relative asset path
-(<code>/browser/...</code>) against the filesystem root instead of the page's own directory - serving it over real HTTP avoids
-that entirely, and is also the right fix for the exact same problem in a jsdom-based test.</p>
-<h3>Configure lint rule overrides (optional)</h3>
-<p><code>sourceLint</code> lints your real source directly (not the compiled dist/browser output) with
-<a href="https://github.com/neostandard/neostandard">neostandard</a>. Occasionally a rule is wrong for your project
-specifically, rather than something to fix in your code - for example a test which deliberately contains a string
-of literal <code>${...}</code> text (simulating another module's real source, not a mistaken non-template string), which
-trips neostandard's <code>no-template-curly-in-string</code> rule as a false positive. <code>lint.rules</code> layers ESLint rule
-overrides on top of neostandard's own rules, scoped to the same files neostandard itself lints:</p>
-<pre class="prettyprint source lang-json"><code>{
+</code></pre><p><code>serveStatic</code> exists because a page loaded directly from a <code>file://</code> path resolves any root-relative asset path (<code>/browser/...</code>) against the filesystem root instead of the page's own directory - serving it over real HTTP avoids that entirely, and is also the right fix for the exact same problem in a jsdom-based test.</p><h3 id="configure-lint-rule-overrides-(optional)">Configure lint rule overrides (optional)</h3><p><code>sourceLint</code> lints your real source directly (not the compiled dist/browser output) with <a href="https://github.com/neostandard/neostandard">neostandard</a>. Occasionally a rule is wrong for your project specifically, rather than something to fix in your code - for example a test which deliberately contains a string of literal <code>${...}</code> text (simulating another module's real source, not a mistaken non-template string), which trips neostandard's <code>no-template-curly-in-string</code> rule as a false positive. <code>lint.rules</code> layers ESLint rule overrides on top of neostandard's own rules, scoped to the same files neostandard itself lints:</p><pre class="prettyprint source lang-json"><code>{
   &quot;lint&quot;: {
     // ESLint rule overrides, keyed and valued exactly as ESLint's own &quot;rules&quot; object.
     &quot;rules&quot;: {
@@ -576,18 +372,11 @@ overrides on top of neostandard's own rules, scoped to the same files neostandar
     }
   }
 }
-</code></pre>
-<p>Empty by default, so a project that never sets this gets exactly neostandard's own rules, unchanged. Prefer fixing
-the actual code (or, for one specific line, an <code>eslint-disable-next-line</code> comment) over this when the finding is
-real - reach for <code>lint.rules</code> only when the rule itself doesn't fit your project.</p>
-<h3>Configure Scripts</h3>
-<p>In your <code>package.json</code> file, add the following scripts:</p>
-<pre class="prettyprint source lang-json"><code>{
+</code></pre><p>Empty by default, so a project that never sets this gets exactly neostandard's own rules, unchanged. Prefer fixing the actual code (or, for one specific line, an <code>eslint-disable-next-line</code> comment) over this when the finding is real - reach for <code>lint.rules</code> only when the rule itself doesn't fit your project.</p><h3 id="configure-scripts">Configure Scripts</h3><p>In your <code>package.json</code> file, add the following scripts:</p><pre class="prettyprint source lang-json"><code>{
   &quot;scripts&quot;: {
     &quot;build&quot;: &quot;gulp build&quot;,
     &quot;dev&quot;: &quot;gulp&quot;,
     &quot;docs&quot;: &quot;gulp docs&quot;,
-    &quot;htmldocs&quot;: &quot;jsdoc -R MAIN.md -c ./.jsdoc.conf.js -d docs&quot;,
     &quot;publish:bundle&quot;: &quot;gulp copyFiles&quot;,
     &quot;readme&quot;: &quot;gulp readme&quot;,
     &quot;sass&quot;: &quot;gulp sass&quot;,
@@ -597,30 +386,4 @@ real - reach for <code>lint.rules</code> only when the rule itself doesn't fit y
     &quot;watch:test&quot;: &quot;gulp watchTest&quot;
   }
 }
-</code></pre>
-<h2>Usage</h2>
-<p>Run any of the above commands with <code>gulp</code> or <code>npm run</code>.</p>
-<h1>Available functions documentation</h1></article>
-    </section>
-
-
-
-
-
-
-</div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Mon Oct 19 2026 21:09:33 GMT-0400 (Eastern Daylight Time)
-</footer>
-
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
-</body>
-</html>
+</code></pre><h2 id="usage">Usage</h2><p>Run any of the above commands with <code>gulp</code> or <code>npm run</code>.</p></article></section></div></div></div><div class="search-container" id="PkfLWpAbet" style="display:none"><div class="wrapper" id="iCxFxjkHbP"><button class="icon-button search-close-button" id="VjLlGakifb" aria-label="close search"><svg><use xlink:href="#close-icon"></use></svg></button><div class="search-box-c"><svg><use xlink:href="#search-icon"></use></svg> <input type="text" id="vpcKVYIppa" class="search-input" placeholder="Search..." autofocus></div><div class="search-result-c" id="fWwVHRuDuN"><span class="search-result-c-text">Type anything to view search result</span></div></div></div><div class="mobile-menu-icon-container"><button class="icon-button" id="mobile-menu" data-isopen="false" aria-label="menu"><svg><use xlink:href="#menu-icon"></use></svg></button></div><div id="mobile-sidebar" class="mobile-sidebar-container"><div class="mobile-sidebar-wrapper"><a href="index.html" class="sidebar-title sidebar-title-anchor">JS Build Tools</a><div class="mobile-nav-links"></div><div class="mobile-sidebar-items-c"><div class="sidebar-section-title with-arrow" data-isopen="false" id="sidebar-modules"><div>Modules</div><svg><use xlink:href="#down-icon"></use></svg></div><div class="sidebar-section-children-container"><div class="sidebar-section-children"><a href="module-gulpConfig.html">gulpConfig</a></div><div class="sidebar-section-children"><a href="module-js-build-tools.html">js-build-tools</a></div><div class="sidebar-section-children"><a href="module-partials.html">partials</a></div><div class="sidebar-section-children"><a href="module-testHelpers.html">testHelpers</a></div></div></div><div class="mobile-navbar-actions"><div class="navbar-right-item"><button class="icon-button search-button" aria-label="open-search"><svg><use xlink:href="#search-icon"></use></svg></button></div><div class="navbar-right-item"><button class="icon-button theme-toggle" aria-label="toggle-theme"><svg><use class="theme-svg-use" xlink:href="#light-theme-icon"></use></svg></button></div><div class="navbar-right-item"><button class="icon-button font-size" aria-label="change-font-size"><svg><use xlink:href="#font-size-icon"></use></svg></button></div></div></div></div><script type="text/javascript" src="scripts/core.min.js"></script><script src="scripts/search.min.js" defer="defer"></script><script src="scripts/third-party/fuse.js" defer="defer"></script><script type="text/javascript">var tocbotInstance=tocbot.init({tocSelector:"#eed4d2a0bfd64539bb9df78095dec881",contentSelector:".main-content",headingSelector:"h1, h2, h3",hasInnerContainers:!0,scrollContainer:".main-content",headingsOffset:130,onClick:bringLinkToView})</script></body></html>
