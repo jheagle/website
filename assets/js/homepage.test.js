@@ -63,6 +63,16 @@ describe('index.html', () => {
     })
   })
 
+  test('every video has a poster frame that exists (browsers other than Firefox show a black box without one)', () => {
+    const videos = [...document.body.querySelectorAll('video')]
+    expect(videos.length).toBeGreaterThan(0)
+    videos.forEach(video => {
+      const poster = video.getAttribute('poster')
+      expect({ src: video.getAttribute('src'), poster: Boolean(poster) }).toEqual({ src: video.getAttribute('src'), poster: true })
+      expect({ poster, exists: fs.existsSync(path.join(rootDir, poster)) }).toEqual({ poster, exists: true })
+    })
+  })
+
   test('every image has alt text', () => {
     const images = [...document.body.querySelectorAll('img')]
     expect(images.length).toBeGreaterThan(0)
