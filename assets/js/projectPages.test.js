@@ -28,8 +28,7 @@ describe.each(projects.map(project => [project.href]))('%s', href => {
 
   test('has Documentation first, then GitHub (if public), then the demo (if any), and nothing else', () => {
     expect(labels[0]).toBe('Documentation')
-    // className, not getAttribute('class'): pseudo-dom doesn't reflect the class attribute yet (see TASKS.md)
-    expect(actions[0].className).toBe('primary')
+    expect(actions[0].getAttribute('class')).toBe('primary')
     const expected = ['Documentation']
     if (!privateRepos.includes(href)) expected.push('View on GitHub')
     const demo = labels.find(label => demoLabels.includes(label))
