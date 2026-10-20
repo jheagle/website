@@ -1,13 +1,12 @@
 const projects = require('./projectList').default
 
 describe('projects data', () => {
-  test('links to what is actually public or a real sandbox page', () => {
+  test('every project links to its own page on this site, not straight to GitHub', () => {
     const links = projects.map(project => project.href)
     expect(links).toContain('/projects/battleship/')
-    expect(links).toContain('https://github.com/jheagle/js-build-tools')
-    expect(links).toContain('/projects/si-funciona/')
-    expect(links).toContain('/projects/collect-your-stuff/')
-    expect(links).toContain('/projects/title-switcher/')
+    expect(links).toContain('/projects/js-build-tools/')
+    expect(links).toContain('/quizzes/')
+    links.forEach(link => expect(link).toMatch(/^\/[\w-]+(\/[\w-]+)?\/$/))
   })
 
   test('every entry has a title, href, and description', () => {
