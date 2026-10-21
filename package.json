@@ -14,7 +14,8 @@
     "watch": "gulp watchFull",
     "watch:test": "gulp watchTest",
     "build:css": "tailwindcss -i assets/tailwind/site.css -o browser/tailwind/site.css --minify",
-    "watch:css": "tailwindcss -i assets/tailwind/site.css -o browser/tailwind/site.css --watch"
+    "watch:css": "tailwindcss -i assets/tailwind/site.css -o browser/tailwind/site.css --watch",
+    "lint": "gulp lint"
   },
   "author": "Joshua Heagle",
   "license": "GNU",
@@ -39,7 +40,7 @@
     "gulp-autoprefixer": "9.0.0",
     "gulp-imagemin": "github:jheagle/gulp-imagemin#common-js-compatibility",
     "jest": "^29.7.0",
-    "js-build-tools": "^6.3.0",
+    "js-build-tools": "^6.4.1",
     "pseudo-dom": "^1.1.0",
     "signal-exit": "^4.1.0",
     "tailwindcss": "^4.3.3"
@@ -58,5 +59,19 @@
   "bugs": {
     "url": "https://github.com/jheagle/website/issues"
   },
-  "homepage": "https://joshuaheagle.com"
+  "homepage": "https://joshuaheagle.com",
+  "allowScripts": {
+    "gifsicle@5.3.0": true,
+    "mozjpeg@8.0.0": true,
+    "optipng-bin@7.0.1": true,
+    "@parcel/watcher": false,
+    "core-js": false,
+    "core-js-pure": false,
+    "unrs-resolver": false
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  }
 }

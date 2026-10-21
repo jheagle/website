@@ -1,6 +1,7 @@
 /**
  * @jest-environment jsdom
  */
+/* global jsonDom */
 global.jsonDom = require('json-dom')
 global.jsonDomComponents = require('json-dom-components')
 global.matrixDom = require('matrix-dom')

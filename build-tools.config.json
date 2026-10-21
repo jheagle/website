@@ -26,7 +26,7 @@
     "path": "assets/sass",
     "to": "browser/css"
   },
-  "srcPath": "src",
+  "srcPath": "assets/js",
   "test": {
     "options": {
       "passWithNoTests": true,
