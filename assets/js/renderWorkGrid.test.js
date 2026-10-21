@@ -1,6 +1,7 @@
 /**
  * @jest-environment jsdom
  */
+/* global jsonDomComponents */
 // jsdom never executes <script type="module"> tags found while parsing a page, so index.html's own inline
 // module script (which wires the project grid into #work-grid) can't be exercised by loading the real page -
 // instead, this drives the exact same sequence of jsonDom calls that script performs, against a real jsdom

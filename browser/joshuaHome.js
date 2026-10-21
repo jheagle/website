@@ -1,4 +1,5 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.joshuaHome = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+/* eslint-disable no-unused-expressions, no-sequences, no-undef -- Google's own analytics.js snippet, kept as published */
 const googleAnalytics = () => {
   (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;
@@ -20,17 +21,17 @@ const home = () => {
   let attempted = 0;
   const homeScrolling = () => {
     let lastId = '';
-    let topMenu = document.getElementsByClassName('menu')[0];
+    const topMenu = document.getElementsByClassName('menu')[0];
     if (!topMenu) {
       // Add a bit of delay since it take some time to generate the menu.
       return siFunciona.delay(500).resolver.then(() => ++attempted > 10 ? console.error('Failed to get the top menu') || false : homeScrolling());
     }
-    let menuItems = topMenu.querySelectorAll('a');
+    const menuItems = topMenu.querySelectorAll('a');
     // The nav repeats one entry (a responsive-only duplicate, e.g. "Meet Me" shown at both sml/med and lrg
     // breakpoints) - keep only the first link to each section, regardless of how many nav items exist or which
     // one is the duplicate, so this stays correct as the menu changes.
     let menuItemsTemp = Array.from(menuItems).filter((item, index, all) => all.findIndex(other => other.getAttribute('href') === item.getAttribute('href')) === index);
-    let scrollItems = menuItemsTemp.map(item => document.querySelector(item.getAttribute('href')));
+    const scrollItems = menuItemsTemp.map(item => document.querySelector(item.getAttribute('href')));
     menuItemsTemp = null;
     const adjustMain = href => {
       const position = href === 'intro' ? 'fixed' : 'absolute';
@@ -38,9 +39,9 @@ const home = () => {
       return position;
     };
     const smoothScroll = (target, duration = 200, callback = null) => {
-      let offset = target.offsetTop;
+      const offset = target.offsetTop;
       let currentOffset = document.scrollingElement.scrollTop;
-      let direction = offset > currentOffset ? 1 : -1;
+      const direction = offset > currentOffset ? 1 : -1;
       let currentTime = 0;
       let difference = Math.floor(direction * (offset - currentOffset));
       const scrollTo = newTime => {
@@ -76,7 +77,7 @@ const home = () => {
       });
     });
     window.addEventListener('scroll', e => {
-      let fromTop = document.scrollingElement.scrollTop + 10;
+      const fromTop = document.scrollingElement.scrollTop + 10;
       let cur = scrollItems.filter(item => item.offsetTop < fromTop);
       cur = cur[cur.length - 1];
       const id = cur.id;
@@ -102,11 +103,11 @@ module.exports = home;
 const plugins = () => {
   // Avoid `console` errors in browsers that lack a console.
   (function () {
-    var method;
-    var noop = function () {};
-    var methods = ['assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error', 'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log', 'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd', 'timeStamp', 'trace', 'warn'];
-    var length = methods.length;
-    var console = window.console = window.console || {};
+    let method;
+    const noop = function () {};
+    const methods = ['assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error', 'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log', 'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd', 'timeStamp', 'trace', 'warn'];
+    let length = methods.length;
+    const console = window.console = window.console || {};
     while (length--) {
       method = methods[length];
 

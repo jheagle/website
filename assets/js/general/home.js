@@ -4,17 +4,17 @@ const home = () => {
   let attempted = 0
   const homeScrolling = () => {
     let lastId = ''
-    let topMenu = document.getElementsByClassName('menu')[0]
+    const topMenu = document.getElementsByClassName('menu')[0]
     if (!topMenu) {
       // Add a bit of delay since it take some time to generate the menu.
       return siFunciona.delay(500).resolver.then(() => ++attempted > 10 ? console.error('Failed to get the top menu') || false : homeScrolling())
     }
-    let menuItems = topMenu.querySelectorAll('a')
+    const menuItems = topMenu.querySelectorAll('a')
     // The nav repeats one entry (a responsive-only duplicate, e.g. "Meet Me" shown at both sml/med and lrg
     // breakpoints) - keep only the first link to each section, regardless of how many nav items exist or which
     // one is the duplicate, so this stays correct as the menu changes.
     let menuItemsTemp = Array.from(menuItems).filter((item, index, all) => all.findIndex(other => other.getAttribute('href') === item.getAttribute('href')) === index)
-    let scrollItems = menuItemsTemp.map(item => document.querySelector(item.getAttribute('href')))
+    const scrollItems = menuItemsTemp.map(item => document.querySelector(item.getAttribute('href')))
     menuItemsTemp = null
     const adjustMain = href => {
       const position = href === 'intro' ? 'fixed' : 'absolute'
@@ -22,9 +22,9 @@ const home = () => {
       return position
     }
     const smoothScroll = (target, duration = 200, callback = null) => {
-      let offset = target.offsetTop
+      const offset = target.offsetTop
       let currentOffset = document.scrollingElement.scrollTop
-      let direction = offset > currentOffset ? 1 : -1
+      const direction = offset > currentOffset ? 1 : -1
       let currentTime = 0
       let difference = Math.floor(direction * (offset - currentOffset))
       const scrollTo = newTime => {
@@ -61,7 +61,7 @@ const home = () => {
     })
 
     window.addEventListener('scroll', e => {
-      let fromTop = document.scrollingElement.scrollTop + 10
+      const fromTop = document.scrollingElement.scrollTop + 10
       let cur = scrollItems.filter(item => item.offsetTop < fromTop)
       cur = cur[cur.length - 1]
       const id = cur.id

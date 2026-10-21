@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions, no-sequences, no-undef -- Google's own analytics.js snippet, kept as published */
 const googleAnalytics = () => {
   (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r
