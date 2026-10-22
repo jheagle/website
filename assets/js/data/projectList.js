@@ -62,7 +62,7 @@ const projects = [
   },
   {
     title: 'js-build-tools',
-    href: 'https://github.com/jheagle/js-build-tools',
+    href: '/projects/js-build-tools/',
     description: 'A shared build, test, and documentation pipeline (Gulp-based) used across a dozen interlocking npm packages.'
   },
   {

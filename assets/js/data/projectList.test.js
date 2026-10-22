@@ -4,7 +4,7 @@ describe('projects data', () => {
   test('links to what is actually public or a real sandbox page', () => {
     const links = projects.map(project => project.href)
     expect(links).toContain('/projects/battleship/')
-    expect(links).toContain('https://github.com/jheagle/js-build-tools')
+    expect(links).toContain('/projects/js-build-tools/')
     expect(links).toContain('/projects/si-funciona/')
     expect(links).toContain('/projects/collect-your-stuff/')
     expect(links).toContain('/projects/title-switcher/')
