@@ -79,6 +79,45 @@ describe('index.html', () => {
     images.forEach(img => expect((img.getAttribute('alt') || '').trim()).not.toBe(''))
   })
 
+  describe('photos (run `npm run images:responsive` after adding one)', () => {
+    const photos = [...document.body.querySelectorAll('img')].filter(img => /^\/assets\/img\/.+\.jpe?g$/i.test(img.getAttribute('src')))
+    // Each srcset candidate as { url, width }
+    const candidates = img => (img.getAttribute('srcset') || '').split(',').map(part => part.trim()).filter(Boolean)
+      .map(part => {
+        const [url, descriptor] = part.split(/\s+/)
+        return { url, width: parseInt(descriptor, 10) }
+      })
+
+    test('every photo has a srcset whose files all exist, with the original as its largest candidate', () => {
+      expect(photos.length).toBeGreaterThan(0)
+      photos.forEach(img => {
+        const src = img.getAttribute('src')
+        const list = candidates(img)
+        expect({ src, candidates: list.length > 1 }).toEqual({ src, candidates: true })
+        list.forEach(({ url }) => expect({ url, exists: fs.existsSync(path.join(rootDir, url)) }).toEqual({ url, exists: true }))
+        const largest = list.reduce((max, candidate) => candidate.width > max.width ? candidate : max)
+        expect({ src, largest: largest.url, width: largest.width }).toEqual({ src, largest: src, width: Number(img.getAttribute('width')) })
+      })
+    })
+
+    test('every photo has sizes, width and height (so the browser picks a file and reserves its space before it loads)', () => {
+      photos.forEach(img => {
+        const src = img.getAttribute('src')
+        expect({ src, sizes: Boolean(img.getAttribute('sizes')) }).toEqual({ src, sizes: true })
+        expect({ src, width: Number(img.getAttribute('width')) > 0, height: Number(img.getAttribute('height')) > 0 })
+          .toEqual({ src, width: true, height: true })
+      })
+    })
+
+    test('every photo below the headshot loads lazily, and the headshot (on the first screen) does not', () => {
+      const [headshot, ...rest] = photos
+      expect(headshot.getAttribute('class')).toBe('headshot')
+      expect(headshot.getAttribute('loading')).not.toBe('lazy')
+      rest.forEach(img => expect({ src: img.getAttribute('src'), loading: img.getAttribute('loading') })
+        .toEqual({ src: img.getAttribute('src'), loading: 'lazy' }))
+    })
+  })
+
   test('names both real employers', () => {
     const experienceText = document.body.querySelector('#experience').textContent
     expect(experienceText).toContain('BIC')

@@ -12,9 +12,12 @@
       :root { color-scheme: light dark; }
       body { max-width: 46rem; margin: 0 auto; padding: 1rem 1rem 4rem; font-family: system-ui, sans-serif; line-height: 1.6; }
       img, video { display: block; max-width: 100%; height: auto; }
-      figure img, figure video { width: auto; max-height: 24rem; }
-      figure video { width: 100%; max-width: 15rem; }
-      .headshot { width: 12rem; border-radius: 50%; }
+      figure video { width: 100%; max-width: 15rem; max-height: 24rem; }
+      /* A set height (not just a max) lets the browser size each photo from its width/height attributes before the
+         file arrives, so lazy-loaded photos don't make the page jump. contain keeps a photo's shape on narrow
+         screens, where max-width shrinks it below its 24rem-tall width. */
+      figure img { width: auto; height: 24rem; max-width: 100%; object-fit: contain; object-position: left top; }
+      .headshot { width: 12rem; height: auto; border-radius: 50%; }
       figure { margin: 1.5rem 0; }
       figcaption { font-size: 0.9rem; opacity: 0.8; }
       nav ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; padding: 0; list-style: none; }
@@ -41,7 +44,7 @@
     <section id='hello'>
         <h2>Hi, I'm Joshua, though most people call me Evan.</h2>
         <figure>
-            <img class='headshot' src='/assets/img/profile/headshot-2026.jpg' width='820' height='820' alt='Joshua Heagle, head and shoulders, outdoors in a park'>
+            <img class='headshot' src='/assets/img/profile/headshot-2026.jpg' srcset='/assets/img/profile/headshot-2026-480w.jpg 480w, /assets/img/profile/headshot-2026.jpg 820w' sizes='12rem' width='820' height='820' alt='Joshua Heagle, head and shoulders, outdoors in a park'>
         </figure>
         <p>
             I'm a full-stack engineer in the Greater Toronto Area. I like finding the system underneath a problem, and
@@ -184,15 +187,15 @@
             <a href='https://evanget.fit'>evanget.fit</a> is coming soon, with tips, tracking tools and guidance.
         </p>
         <figure>
-            <img src='/assets/img/hobbies/fitness/running/2025-toronto-half-marathon.jpg' loading='lazy' alt='Joshua at the finish-photo booth of the 2025 Toronto half marathon, the clock reading 1:45:01'>
+            <img src='/assets/img/hobbies/fitness/running/2025-toronto-half-marathon.jpg' srcset='/assets/img/hobbies/fitness/running/2025-toronto-half-marathon-480w.jpg 480w, /assets/img/hobbies/fitness/running/2025-toronto-half-marathon-960w.jpg 960w, /assets/img/hobbies/fitness/running/2025-toronto-half-marathon.jpg 1205w' sizes='(max-width: 321px) calc(100vw - 2rem), 289px' width='1205' height='1600' loading='lazy' alt='Joshua at the finish-photo booth of the 2025 Toronto half marathon, the clock reading 1:45:01'>
             <figcaption>Toronto half marathon, May 2025: 1:45:01.</figcaption>
         </figure>
         <figure>
-            <img src='/assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running.jpg' loading='lazy' alt='Joshua running the final leg of the Cornwall try-a-tri'>
+            <img src='/assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running.jpg' srcset='/assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running-480w.jpg 480w, /assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running-960w.jpg 960w, /assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running.jpg 1067w' sizes='(max-width: 288px) calc(100vw - 2rem), 256px' width='1067' height='1600' loading='lazy' alt='Joshua running the final leg of the Cornwall try-a-tri'>
             <figcaption>The run leg of the Cornwall try-a-tri.</figcaption>
         </figure>
         <figure>
-            <img src='/assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang.jpg' loading='lazy' alt='Joshua pointing at a dead-hang challenge scoreboard showing his time of 1:45, wearing a Toronto Pride 5K medal'>
+            <img src='/assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang.jpg' srcset='/assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang-480w.jpg 480w, /assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang-960w.jpg 960w, /assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang.jpg 1200w' sizes='(max-width: 433px) calc(100vw - 2rem), 401px' width='1200' height='1150' loading='lazy' alt='Joshua pointing at a dead-hang challenge scoreboard showing his time of 1:45, wearing a Toronto Pride 5K medal'>
             <figcaption>After the 2026 Toronto Pride 5K: second place in the dead-hang challenge at 1:45, the same as my half-marathon time.</figcaption>
         </figure>
         <figure>
@@ -210,15 +213,15 @@
             occasional commission from my son (an LA Knight portrait for his friend's birthday card).
         </p>
         <figure>
-            <img src='/assets/img/art/sketch-la-knight.jpg' loading='lazy' alt='Pencil portrait of the wrestler LA Knight'>
+            <img src='/assets/img/art/sketch-la-knight.jpg' srcset='/assets/img/art/sketch-la-knight-480w.jpg 480w, /assets/img/art/sketch-la-knight-960w.jpg 960w, /assets/img/art/sketch-la-knight.jpg 1000w' sizes='(max-width: 352px) calc(100vw - 2rem), 320px' width='1000' height='1200' loading='lazy' alt='Pencil portrait of the wrestler LA Knight'>
             <figcaption>LA Knight, drawn for a birthday card.</figcaption>
         </figure>
         <figure>
-            <img src='/assets/img/art/ideas-anchor-skunk-chair.jpg' loading='lazy' alt='A sketchbook page of four pencil drawings: an anchor, a skunk, a desk chair and Van Gogh&#39;s ear'>
+            <img src='/assets/img/art/ideas-anchor-skunk-chair.jpg' srcset='/assets/img/art/ideas-anchor-skunk-chair-480w.jpg 480w, /assets/img/art/ideas-anchor-skunk-chair.jpg 852w' sizes='(max-width: 337px) calc(100vw - 2rem), 305px' width='852' height='1072' loading='lazy' alt='A sketchbook page of four pencil drawings: an anchor, a skunk, a desk chair and Van Gogh&#39;s ear'>
             <figcaption>Four prompts from <cite>642 Things to Draw</cite>: an anchor, a skunk, a desk chair and Van Gogh's ear.</figcaption>
         </figure>
         <figure>
-            <img src='/assets/img/art/frog-eye-zipper-eyelid.jpg' loading='lazy' alt='An enlarged drawing of a frog&#39;s eye, with a zipper drawn around it as an eyelid'>
+            <img src='/assets/img/art/frog-eye-zipper-eyelid.jpg' srcset='/assets/img/art/frog-eye-zipper-eyelid-480w.jpg 480w, /assets/img/art/frog-eye-zipper-eyelid-960w.jpg 960w, /assets/img/art/frog-eye-zipper-eyelid.jpg 1076w' sizes='(max-width: 431px) calc(100vw - 2rem), 399px' width='1076' height='1036' loading='lazy' alt='An enlarged drawing of a frog&#39;s eye, with a zipper drawn around it as an eyelid'>
             <figcaption>An abstraction of an enlarged frog's eye, with a zipper added as an eyelid. I was 15.</figcaption>
         </figure>
 
@@ -228,15 +231,15 @@
             pollinators and the environment, and far less work and money to keep up than grass.
         </p>
         <figure>
-            <img src='/assets/img/hobbies/garden/garden-front-wildflowers.jpg' loading='lazy' alt='A bed of wildflowers in full bloom'>
+            <img src='/assets/img/hobbies/garden/garden-front-wildflowers.jpg' srcset='/assets/img/hobbies/garden/garden-front-wildflowers-480w.jpg 480w, /assets/img/hobbies/garden/garden-front-wildflowers.jpg 945w' sizes='(max-width: 410px) calc(100vw - 2rem), 378px' width='945' height='960' loading='lazy' alt='A bed of wildflowers in full bloom'>
             <figcaption>Wildflowers where the lawn used to be.</figcaption>
         </figure>
         <figure>
-            <img src='/assets/img/hobbies/garden/garden-clover-replace-grass.jpg' loading='lazy' alt='White clover growing in place of grass, beside a stone path'>
+            <img src='/assets/img/hobbies/garden/garden-clover-replace-grass.jpg' srcset='/assets/img/hobbies/garden/garden-clover-replace-grass-480w.jpg 480w, /assets/img/hobbies/garden/garden-clover-replace-grass-960w.jpg 960w, /assets/img/hobbies/garden/garden-clover-replace-grass.jpg 1205w' sizes='(max-width: 321px) calc(100vw - 2rem), 289px' width='1205' height='1600' loading='lazy' alt='White clover growing in place of grass, beside a stone path'>
             <figcaption>White clover instead of grass.</figcaption>
         </figure>
         <figure>
-            <img src='/assets/img/hobbies/garden/garden-pick-your-own-bouquet.jpg' loading='lazy' alt='Joshua holding a large bouquet of mixed flowers in a metal pot'>
+            <img src='/assets/img/hobbies/garden/garden-pick-your-own-bouquet.jpg' srcset='/assets/img/hobbies/garden/garden-pick-your-own-bouquet-480w.jpg 480w, /assets/img/hobbies/garden/garden-pick-your-own-bouquet.jpg 620w' sizes='(max-width: 234px) calc(100vw - 2rem), 202px' width='620' height='1180' loading='lazy' alt='Joshua holding a large bouquet of mixed flowers in a metal pot'>
             <figcaption>A pick-your-own bouquet from a local farm, with many of the same flowers I grow at home.</figcaption>
         </figure>
 
@@ -246,11 +249,11 @@
             learning whatever skill the job in front of me needs.
         </p>
         <figure>
-            <img src='/assets/img/hobbies/fix-stuff/reupholster-before.jpg' loading='lazy' alt='A kitchen chair with a badly cracked black vinyl seat'>
+            <img src='/assets/img/hobbies/fix-stuff/reupholster-before.jpg' srcset='/assets/img/hobbies/fix-stuff/reupholster-before-480w.jpg 480w, /assets/img/hobbies/fix-stuff/reupholster-before-960w.jpg 960w, /assets/img/hobbies/fix-stuff/reupholster-before.jpg 1205w' sizes='(max-width: 321px) calc(100vw - 2rem), 289px' width='1205' height='1600' loading='lazy' alt='A kitchen chair with a badly cracked black vinyl seat'>
             <figcaption>Before.</figcaption>
         </figure>
         <figure>
-            <img src='/assets/img/hobbies/fix-stuff/reupholster-after.jpg' loading='lazy' alt='Four kitchen chairs with freshly reupholstered red and black seats'>
+            <img src='/assets/img/hobbies/fix-stuff/reupholster-after.jpg' srcset='/assets/img/hobbies/fix-stuff/reupholster-after-480w.jpg 480w, /assets/img/hobbies/fix-stuff/reupholster-after-960w.jpg 960w, /assets/img/hobbies/fix-stuff/reupholster-after.jpg 1205w' sizes='(max-width: 321px) calc(100vw - 2rem), 289px' width='1205' height='1600' loading='lazy' alt='Four kitchen chairs with freshly reupholstered red and black seats'>
             <figcaption>After.</figcaption>
         </figure>
 
