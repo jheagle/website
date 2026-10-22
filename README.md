@@ -18,9 +18,6 @@
 (row-major: left to right, then top to bottom). Any trailing columns left over when <code>projects.length</code>
 doesn&#39;t divide evenly into <code>columns</code> are left empty (marked &#39;tile-empty&#39;, hidden via CSS).</p>
 </dd>
-<dt><a href="#menu">menu(currentIndex)</a> ⇒ <code>DomItem</code></dt>
-<dd><p>Generates a menu with the provided index as the currently selected item.</p>
-</dd>
 </dl>
 
 ## Typedefs
@@ -56,17 +53,6 @@ Builds a matrix-dom grid of project tiles, one per entry in `projects`, in displ
 | Param | Type |
 | --- | --- |
 | projects | <code>Array.&lt;{title: string, href: string, description: string}&gt;</code> | 
-
-<a name="menu"></a>
-
-## menu(currentIndex) ⇒ <code>DomItem</code>
-Generates a menu with the provided index as the currently selected item.
-
-**Kind**: global function  
-
-| Param | Type | Default |
-| --- | --- | --- |
-| currentIndex | <code>number</code> | <code>1</code> | 
 
 <a name="ProjectTile"></a>
 

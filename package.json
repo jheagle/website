@@ -4,7 +4,7 @@
   "description": "Personal website",
   "main": "gulpfile.js",
   "scripts": {
-    "build": "gulp build",
+    "build": "gulp build && npm run build:css",
     "dev": "gulp",
     "htmldocs": "jsdoc -R MAIN.md -c ./.jsdoc.conf.js -d docs",
     "readme": "gulp readme",
@@ -13,7 +13,10 @@
     "test:quick": "gulp testQuick",
     "watch": "gulp watchFull",
     "watch:test": "gulp watchTest",
-    "lint": "gulp lint"
+    "build:css": "tailwindcss -i assets/tailwind/site.css -o browser/tailwind/site.css --minify",
+    "watch:css": "tailwindcss -i assets/tailwind/site.css -o browser/tailwind/site.css --watch",
+    "lint": "gulp lint",
+    "images:responsive": "node scripts/responsive-images.mjs"
   },
   "author": "Joshua Heagle",
   "license": "GNU",
@@ -28,10 +31,10 @@
   "dependencies": {
     "json-dom": "github:jheagle/JSON-DOM",
     "json-dom-components": "github:jheagle/json-dom-components",
-    "matrix-dom": "github:jheagle/matrix-DOM",
-    "si-funciona": "^2.8.0"
+    "matrix-dom": "github:jheagle/matrix-DOM"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
     "browser-sync": "^3.0.4",
     "del": "^7.1.0",
     "gulp": "^5.0.1",
@@ -39,8 +42,10 @@
     "gulp-imagemin": "github:jheagle/gulp-imagemin#common-js-compatibility",
     "jest": "^29.7.0",
     "js-build-tools": "^6.4.1",
-    "pseudo-dom": "github:jheagle/pseudo-dom",
-    "signal-exit": "^4.1.0"
+    "pseudo-dom": "^1.1.0",
+    "sharp": "^0.35.5",
+    "signal-exit": "^4.1.0",
+    "tailwindcss": "^4.3.3"
   },
   "repository": {
     "type": "git",
@@ -48,7 +53,7 @@
   },
   "keywords": [
     "gulp",
-    "sass",
+    "tailwind",
     "browsersync",
     "json-dom",
     "portfolio"

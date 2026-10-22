@@ -9,20 +9,21 @@
 </head>
 <body>
 <div class="page">
-    <a class="back-link" href="/#work">&larr; Back to projects</a>
+    <a class="back-link" href="/projects/">&larr; Back to projects</a>
     <div class="project-header">
         <h1>Sí, funciona</h1>
         <p>Dependency-light, fully-typed general-purpose utility functions - arrays, objects, strings, functions,
             numbers.</p>
     </div>
     <div class="actions">
-        <a class="primary" href="https://github.com/jheagle/si-funciona" target="_blank">View on GitHub</a>
-        <a href="./docs">Documentation</a>
+        <a class="primary" href="./docs/">Documentation</a>
+        <a href="https://github.com/jheagle/si-funciona" target="_blank">View on GitHub</a>
+        <a href="#demo">Try the demo</a>
     </div>
     <p class="hint">Try the string-case helpers below, or open the console to use <code>siFunciona</code>
         directly.</p>
 
-    <div class="demo">
+    <div class="demo" id="demo">
         <h2>String case conversion</h2>
         <label for="case-input">Type something</label>
         <input id="case-input" type="text" value="some-kabob-case example" autocomplete="off">
