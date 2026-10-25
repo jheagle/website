@@ -1,0 +1,345 @@
+<!doctype html><html lang="en" data-scrollbar="styled"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="generator" content="clean-jsdoc-theme 5.2.1" /><title>gulp.config.mjs | JS Build Tools</title><script>(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme');if(t==='dark'){d.dataset.theme='dark'}else{d.dataset.theme='light'}var fs=localStorage.getItem('clean-font-size');if(fs==='sm'){d.style.fontSize='15px'}else if(fs==='lg'){d.style.fontSize='18px'}var ls=localStorage.getItem('clean-line-spacing');if(ls==='compact'){d.style.setProperty('--clean-line-height','1.4')}else if(ls==='relaxed'){d.style.setProperty('--clean-line-height','1.8')}}catch(_){}}());</script><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500;600;700&amp;family=Roboto:wght@400;500;600;700&amp;display=swap" /><link rel="stylesheet" href="/projects/js-build-tools/docs/_assets/styles.mvnuimee-93b8c1bf.css" /></head><body><div class="flex min-h-screen flex-col bg-background text-(--clean-fg)"><header class="sticky top-0 z-30 border-b border-(--clean-border) bg-background"><div class="mx-auto flex h-16 w-full min-w-0 max-w-screen-2xl items-center gap-4 px-4"><a href="/projects/js-build-tools/docs" class="flex min-w-0 items-center pl-3 no-underline"><span class="truncate text-lg font-heading font-bold text-(--clean-fg)">JS Build Tools</span></a><div class="ml-auto flex shrink-0 items-center gap-1"><div class="flex items-center gap-1"><div data-island="cmdk" data-island-id="i1"><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-muted-foreground hover:bg-accent hover:text-accent-foreground h-9 w-9" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Search" title="Search (Ctrl K)"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search" aria-hidden="true"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg></button></div></div><div class="hidden items-center gap-1 md:flex"><div data-island="theme-toggle" data-island-id="i2"><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-muted-foreground hover:bg-accent hover:text-accent-foreground h-9 w-9" type="button" aria-label="Switch to dark theme" title="Toggle theme"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg></button></div><div data-island="settings" data-island-id="i3"><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-muted-foreground hover:bg-accent hover:text-accent-foreground h-9 w-9" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Settings" title="Settings"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings" aria-hidden="true"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div></div><div class="md:hidden"><div data-island="mobile-nav" data-island-id="i4"><button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-muted-foreground hover:bg-accent hover:text-accent-foreground h-9 w-9" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Open navigation" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M15 3v18"></path></svg></button></div></div></div></div></header><div class="mx-auto grid w-full max-w-screen-2xl flex-1 grid-cols-1 gap-6 px-4 py-6 md:grid-cols-[16rem_minmax(0,1fr)]"><aside class="hidden md:block"><div class="sticky overflow-y-auto [scrollbar-gutter:stable] pr-2 top-20 max-h-[calc(100vh-6rem)]"><div data-island="sidebar" data-island-id="i5"><nav aria-label="Documentation navigation" class="text-(--clean-fg)"><div class="mt-4 first:mt-0"><ul class="m-0 list-none p-0"><li class="my-0.5"><a href="/projects/js-build-tools/docs/" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">Home</span></a></li></ul></div><div class="mt-4 first:mt-0"><button type="button" aria-expanded="true" class="mb-1 flex w-full items-center rounded-xl py-1.5 px-3 text-left text-sm font-bold text-(--clean-fg) cursor-pointer hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">Modules</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right ml-auto shrink-0 transition-transform rotate-90" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button><ul class="m-0 list-none p-0"><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">gulpConfig</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/js-build-tools" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">js-build-tools</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/partials" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">partials</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/testhelpers" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">testHelpers</span></a></li></ul></div><div class="mt-4 first:mt-0"><button type="button" aria-expanded="true" class="mb-1 flex w-full items-center rounded-xl py-1.5 px-3 text-left text-sm font-bold text-(--clean-fg) cursor-pointer hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">Typedefs</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right ml-auto shrink-0 transition-transform rotate-90" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button><ul class="m-0 list-none p-0"><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/additionalbundleconfig" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">AdditionalBundleConfig</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/arrayablesetting" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">ArrayableSetting</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/booleansetting" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">BooleanSetting</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/browserconfig" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">BrowserConfig</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/configurations" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">Configurations</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/copyfilesentry" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">CopyFilesEntry</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/distconfig" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">DistConfig</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/docsconfig" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">DocsConfig</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/flagnumbersetting" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">FlagNumberSetting</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/flagssetting" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">FlagsSetting</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/flagstringsetting" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">FlagStringSetting</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/fontconfig" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">FontConfig</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/imageconfig" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">ImageConfig</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/jesttestflags" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">JestTestFlags</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/lintconfig" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">LintConfig</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/readmeconfig" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">ReadmeConfig</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/sassconfig" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">SassConfig</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/setting" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">Setting</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/stringsetting" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">StringSetting</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/testconfig" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">TestConfig</span></a></li><li class="my-0.5"><a href="/projects/js-build-tools/docs/module/gulpconfig/tsconfig" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">TsConfig</span></a></li></ul></div><div class="mt-4 first:mt-0"><ul class="m-0 list-none p-0"><li class="my-0.5"><a href="/projects/js-build-tools/docs/source" class="group flex items-start gap-x-3 w-full px-3 py-1.5 text-left text-sm no-underline break-words hyphens-auto overflow-hidden rounded-xl outline-offset-[-1px] cursor-pointer text-[var(--clean-fg)] hover:bg-[var(--clean-bg-muted)]"><span class="min-w-0 wrap-break-words">Source Files</span></a></li></ul></div></nav></div></div></aside><main class="min-w-0 px-4 md:px-8 lg:px-12"><div data-island="code-viewer" data-island-id="i0"><div class="my-4 overflow-hidden rounded-lg border border-(--clean-border) bg-(--clean-bg)"><div class="flex items-center justify-between border-b border-(--clean-border) bg-(--clean-bg-muted) px-3 py-2 text-sm"><span class="font-mono text-(--clean-fg)">gulp.config.mjs</span><span class="text-xs text-(--clean-fg-muted)">javascript</span></div><div class="h-[calc(100vh-13rem)] min-h-[24rem]"><pre class="m-0 h-full overflow-auto whitespace-pre p-4 text-sm leading-relaxed text-(--clean-fg)"><code class="language-javascript">/**
+ * Modify these configurations to match your project specifications.
+ * @file
+ * @author Joshua Heagle &lt;joshuaheagle@gmail.com>
+ * @version 3.0.0
+ * @module gulpConfig
+ * @memberOf module:js-build-tools
+ */
+import { fileExists } from 'test-filesystem'
+
+/**
+ * A setting that may be an array of strings or a string only.
+ * @typedef {Array&lt;string>|string} module:gulpConfig~ArrayableSetting
+ */
+/**
+ * A setting that may be true or false.
+ * @typedef {boolean} module:gulpConfig~BooleanSetting
+ */
+/**
+ * A setting that may be flag 'false' or provide a number
+ * @typedef {false|number} module:gulpConfig~FlagNumberSetting
+ */
+/**
+ * A setting that may be flag 'false' or provide a StringSetting
+ * @typedef {false|StringSetting} module:gulpConfig~FlagStringSetting
+ */
+/**
+ * An object of boolean settings used as flags.
+ * @typedef {Object&lt;string, BooleanSetting>} module:gulpConfig~FlagsSetting
+ */
+/**
+ * Configure cli options for running Jest.
+ * @typedef {FlagsSetting} module:gulpConfig~JestTestFlags
+ * @property {BooleanSetting} clearCache
+ * @property {BooleanSetting} debug
+ * @property {BooleanSetting} ignoreProjects:
+ * @property {BooleanSetting} json
+ * @property {BooleanSetting} selectProjects
+ * @property {BooleanSetting} showConfig
+ * @property {BooleanSetting} useStderr
+ * @property {BooleanSetting} watch
+ * @property {BooleanSetting} watchAll
+ */
+/**
+ * A setting that may only be a string.
+ * @typedef {string} module:gulpConfig~StringSetting
+ */
+/**
+ * Any single configuration option is a Setting.
+ * @typedef {ArrayableSetting|BooleanSetting|FlagNumberSetting|FlagsSetting|StringSetting} Setting
+ */
+/**
+ * One copy-files entry: a glob (or array of globs) to copy, and where to copy it.
+ * @typedef {Object} module:gulpConfig~CopyFilesEntry
+ * @property {ArrayableSetting} from - The glob pattern(s) of files to copy.
+ * @property {StringSetting} to - The directory to copy them into.
+ * @property {FlagStringSetting} base - Optional base for gulp's own src(pattern, {base}), to preserve a glob's
+ * own subdirectory structure in the destination instead of flattening it. false (the default) uses gulp's own
+ * default base behaviour.
+ */
+/**
+ * Configurations for building the browser files.
+ * @typedef {Object&lt;string, Setting>} module:gulpConfig~BrowserConfig
+ * @property {BooleanSetting} enabled - 'true' to generate browser bundled files; 'false' for node environment only
+ * @property {StringSetting} from - The search pattern used for retrieving compiled distribution files.
+ * @property {StringSetting} name - The name to use for the browser-bundled output file (.js will be appended).
+ * @property {StringSetting} to - The output directory for browser-bundled files.
+ * @property {ArrayableSetting} ignore - Module names or file paths which resolve to an empty object ({}) in the
+ * bundle instead of their real contents. For a dependency which is only reached because it is the default value of
+ * an option you always override (for example a selector engine's default DOM adapter, when you always pass your
+ * own), this keeps it (and anything only it requires) out of the bundle, as long as your code never actually reaches
+ * the real module by not overriding that option. See browserify's b.ignore(file).
+ * @property {ArrayableSetting} exclude - Module names or file paths left out of the bundle entirely; requiring one at
+ * runtime throws unless something else provides it (for example a script tag loading it separately). See
+ * browserify's b.exclude(file).
+ * @property {Array&lt;module:gulpConfig~AdditionalBundleConfig>} bundles - Additional bundles to produce alongside the
+ * primary one (name/dist.main/ignore/exclude above) - for example a render-only variant built from a different
+ * entry point than the full bundle. Empty by default: a project that never sets this gets exactly the one bundle it
+ * always did.
+ */
+/**
+ * One additional bundle - everything but `name` falls back to the primary bundle's own value when omitted, so an
+ * additional bundle only has to specify what's actually different about it.
+ * @typedef {Object&lt;string, Setting>} module:gulpConfig~AdditionalBundleConfig
+ * @property {StringSetting} name - The name for this bundle's output file and standalone export - must be unique
+ * among all of a project's bundles.
+ * @property {StringSetting} [main] - This bundle's own entry point. Falls back to dist.main when omitted.
+ * @property {ArrayableSetting} [ignore] - This bundle's own ignore list. Falls back to browser.ignore when omitted.
+ * @property {ArrayableSetting} [exclude] - This bundle's own exclude list. Falls back to browser.exclude when omitted.
+ */
+/**
+ * Configurations for building the node distribution files.
+ * @typedef {Object&lt;string, Setting>} module:gulpConfig~DistConfig
+ * @property {StringSetting} from - The search pattern used for gathering source files for distribution.
+ * @property {StringSetting} main - Name of the entry the distribution file.
+ * @property {StringSetting} to - The output directory for the distribution files.
+ */
+/**
+ * Configurations for copying the font files.
+ * @typedef {Object&lt;string, Setting>} module:gulpConfig~FontConfig
+ * @property {BooleanSetting} enabled - Toggle copy directory of fonts on.
+ * @property {StringSetting} from - Path to search for fonts.
+ * @property {StringSetting} to - Path to output fonts.
+ */
+/**
+ * Configurations to minify and copy the images.
+ * @typedef {Object&lt;string, Setting>} module:gulpConfig~ImageConfig
+ * @property {BooleanSetting} enabled - Toggle image minify and copy process.
+ * @property {StringSetting} from - Path to search for images.
+ * @property {FlagNumberSetting} jpegQuality - The JPEG quality (0 to 100) mozjpeg compresses to. False (the
+ * default) keeps mozjpeg's own default, 75. Raise it (85 is usually indistinguishable from the original) when 75
+ * visibly bands smooth gradients.
+ * @property {StringSetting} to - Path to output images.
+ */
+/**
+ * Configurations for linting (see {@link module:partials.neostandardLint}).
+ * @typedef {Object&lt;string, Setting>} module:gulpConfig~LintConfig
+ * @property {Object&lt;string, *>} rules - ESLint rule overrides layered on top of neostandard's own config, scoped
+ * to the same files neostandard itself lints. For a rule that is wrong for your project specifically (for example
+ * a test fixture that deliberately contains text neostandard mistakes for a real syntax problem), rather than
+ * something to fix in your code. Empty by default: a project that never sets this gets exactly neostandard's own
+ * rules, unchanged. Keyed and valued exactly as ESLint's own `rules` object - see
+ * https://eslint.org/docs/latest/use/configure/rules.
+ */
+/**
+ * Configurations to compile and generate the Readme file.
+ * @typedef {Object&lt;string, Setting>} module:gulpConfig~ReadmeConfig
+ * @property {StringSetting} file - The name of the output documentation markdown file.
+ * @property {StringSetting} from - Location of files to use for compiling documentation into the readme.
+ * @property {ArrayableSetting} fromEsm - Additional `.mjs` files to document alongside `from`, converted on the
+ * fly since the readme generator only recognizes `.js` files - see 'Configure including ESM files in the
+ * generated readme'. Empty by default: a project that never sets this gets exactly the readme it always did.
+ * @property {ArrayableSetting} options - Options for formatting the output readme.
+ * @property {StringSetting} template - The file which will be pre-fixed to your README.md output.
+ * @property {StringSetting} to - The directory to output the readme file in.
+ */
+/**
+ * Configurations for generating the HTML documentation of a project's own source, with either TypeDoc (real
+ * TypeScript types) or jsdoc (a modern theme over jsdoc's own classic default) - see docs.method.
+ * @typedef {Object&lt;string, Setting>} module:gulpConfig~DocsConfig
+ * @property {FlagStringSetting} basePath - The path the documentation is served from, such as '/projects/my-lib/docs/'
+ * (jsdoc with clean-jsdoc-theme 5.x only). The theme's links start at the site root, so documentation served below it
+ * needs this. False (the default) serves it from the site root.
+ * @property {BooleanSetting} enabled - Toggle generating the documentation from the source. When it is on the
+ * build does this instead of generating the readme from the jsdoc comments of the compiled files.
+ * @property {ArrayableSetting} from - The directory holding the source, each folder in it becomes a module (TypeDoc) or
+ * is scanned recursively (jsdoc). jsdoc also takes a list of directories and files.
+ * @property {FlagStringSetting} gitRevision - The git revision TypeDoc's &quot;Defined in&quot; source links point to (TypeDoc
+ * only). False (the default) is TypeDoc's own: the current commit, which changes every page on every commit. A
+ * branch name such as 'main' keeps the pages unchanged until the documentation itself changes; '{branch}' is the
+ * branch being built.
+ * @property {BooleanSetting} inBuild - Generate the documentation as part of build (the default). Turn it off to only
+ * generate it when you run the docs task yourself (gulp docs), for example when docs.to points into another
+ * repository and you only want to publish the documentation of a release.
+ * @property {StringSetting} index - The markdown file used as the front page of the documentation.
+ * @property {StringSetting} logLevel - How much TypeDoc reports: Verbose, Info, Warn, Error or None. Not used by jsdoc.
+ * @property {FlagStringSetting} method - 'typedoc' or 'jsdoc'. False (the default) infers it from typescript.enabled -
+ * 'typedoc' when on, 'jsdoc' when off - so an existing TypeScript project's config needs no change to keep working
+ * exactly as it already does; set this explicitly to override that inference either way.
+ * @property {StringSetting} theme - The jsdoc theme package to use (only meaningful when method is 'jsdoc' - TypeDoc
+ * keeps its own default regardless). Defaults to 'clean-jsdoc-theme'.
+ * @property {StringSetting} title - The name of the documentation, defaults to the name in the package.json.
+ * @property {StringSetting} to - The directory to generate the documentation in (it is cleared first).
+ * @property {FlagStringSetting} tsconfig - The tsconfig file to read the source with (TypeDoc only), defaults to the
+ * one of typescript.config.
+ */
+/**
+ * Configurations to compile and copy the sass files into css.
+ * @typedef {Object&lt;string, Setting>} module:gulpConfig~SassConfig
+ * @property {BooleanSetting} enabled - Toggle SASS to CSS process on.
+ * @property {StringSetting} from - The pattern for finding all sass files.
+ * @property {StringSetting} path - The directory were sass files will be stored.
+ * @property {StringSetting} to - The destination path for where generated CSS (from SASS files) should go.
+ */
+/**
+ * Configurations for running the test suite.
+ * @typedef {Object&lt;string, Setting>} module:gulpConfig~TestConfig
+ * @property {JestTestFlags} options - Additional flags for programmatically running Jest Cli.
+ * @property {ArrayableSetting} path - The directory where Jest test files are stored.
+ * By default, stored as *.test.js adjacent to the files they are testing.
+ * @property {ArrayableSetting} watch - The search pattern for watching files for changes.
+ */
+/**
+ * Configurations for compiling typescript into JS files.
+ * @typedef {Object&lt;string, Setting>} module:gulpConfig~TsConfig
+ * @property {FlagStringSetting} config - The path the tsconfig file for running typescript or false if no ts file given.
+ * @property {BooleanSetting} enabled - Toggle usage of typescript parsing.
+ * @property {StringSetting} from - Pattern for finding the TypeScript files.
+ * @property {StringSetting} to - Directory where parsed typescript files go.
+ */
+/**
+ * A set of Configurations options defined by Settings.
+ * @typedef {Object&lt;string, Setting>} module:gulpConfig~Configurations
+ * @property {BrowserConfig} browser - Browser bundling configuration group.
+ * @property {ArrayableSetting} cleanPaths - The paths for directories to delete before build.
+ * @property {Array&lt;CopyFilesEntry>} copyFiles - Files to copy elsewhere, run via the copyFiles task - never
+ * automatically as part of build, since what this copies is often the live, publicly-reachable version of
+ * something (e.g. a bundle), and publishing it should be a deliberate step.
+ * @property {DistConfig} dist - Distribution file generation configuration group.
+ * @property {DocsConfig} docs - Generate the documentation of a TypeScript project configuration group.
+ * @property {FontConfig} fonts - Fonts copy configuration group.
+ * @property {ImageConfig} images - Minify and copy the images configuration.
+ * @property {LintConfig} lint - Linting configuration group.
+ * @property {ReadmeConfig} readme - Build readme files configuration.
+ * @property {StringSetting} rootPath - Base directory of the project.
+ * @property {SassConfig} sass - Compile CSS from SASS configuration.
+ * @property {StringSetting} srcPath - The directory where your source files are stored (the files you manually created).
+ * @property {TestConfig} test - Run test suite configuration.
+ * @property {TsConfig} typescript - Compile from typescript configuration.
+ */
+import { dotGet } from './functions/utilities/dotGet.mjs'
+import { dotSet } from './functions/utilities/dotSet.mjs'
+import { dotNotate } from './functions/utilities/dotNotate.mjs'
+import { readFileSync } from 'fs'
+
+const setDefaults = {
+  browser: {
+    bundles: [],
+    enabled: true,
+    exclude: [],
+    from: 'dist/**/*.js',
+    ignore: [],
+    name: 'default',
+    to: 'browser',
+  },
+  cleanPaths: ['dist', 'browser'],
+  copyFiles: [],
+  dist: {
+    from: 'src/**/!(*.test).js',
+    main: 'dist/main',
+    to: 'dist',
+  },
+  docs: {
+    basePath: false,
+    enabled: false,
+    from: 'src',
+    gitRevision: false,
+    inBuild: true,
+    index: 'MAIN.md',
+    logLevel: 'Warn',
+    method: false,
+    theme: 'clean-jsdoc-theme',
+    title: '',
+    to: 'docs',
+    tsconfig: false,
+  },
+  fonts: {
+    enabled: false,
+    from: 'src/fonts/**/*',
+    to: 'browser/fonts',
+  },
+  images: {
+    enabled: false,
+    from: 'src/img/**/*.+(png|jpg|jpeg|gif|svg)',
+    jpegQuality: false,
+    to: 'browser/img',
+  },
+  lint: {
+    rules: {},
+  },
+  readme: {
+    file: 'README.md',
+    from: 'src/**/!(*.test).js',
+    fromEsm: [],
+    options: 'utf8',
+    template: 'MAIN.md',
+    to: './'
+  },
+  rootPath: './',
+  sass: {
+    enabled: false,
+    from: 'sass/**/*.+(scss|sass)',
+    path: 'sass',
+    to: 'browser/css',
+  },
+  srcPath: 'src',
+  test: {
+    options: {
+      clearCache: false,
+      debug: false,
+      ignoreProjects: false,
+      json: false,
+      selectProjects: false,
+      showConfig: false,
+      useStderr: false,
+      watch: false,
+      watchAll: false,
+    },
+    path: ['src'],
+    watch: 'src/**/*.js'
+  },
+  typescript: {
+    config: false,
+    enabled: false,
+    from: 'src/**/*.ts',
+    to: 'dist',
+  },
+}
+
+/**
+ * All the available configuration setting options for running the build.
+ * @memberOf module:gulpConfig` `
+ * @type {Configurations}
+ */
+let gulpConfigurations = null
+if (fileExists(process.cwd() + '/build-tools.config.json')) {
+  gulpConfigurations = JSON.parse(readFileSync(process.cwd() + '/build-tools.config.json').toString())
+} else {
+  if (fileExists('./build-tools.config.json')) {
+    gulpConfigurations = JSON.parse(readFileSync('./build-tools.config.json').toString())
+  } else {
+    console.warn('Missing config path, ensure you have a build-tools.config.js file in you project root')
+  }
+}
+
+const notation = dotNotate(setDefaults)
+for (let notationKey in notation) {
+  const arrayEnding = /(\.\d+)$/
+  if (arrayEnding.test(notationKey)) {
+    // ends in number a key then it must be an array; use the entire array
+    notationKey = notationKey.replace(arrayEnding, '')
+  }
+  const defaultValue = dotGet(setDefaults, notationKey)
+  const existingConfig = dotGet(gulpConfigurations, notationKey, defaultValue)
+  dotSet(gulpConfigurations, notationKey, existingConfig)
+}
+
+/**
+ * Retrieve a value from the configurations, default may be returned.
+ * @memberOf module:gulpConfig
+ * @param {string|null} path
+ * @param {*} defaultValue
+ * @returns {*|null}
+ */
+export const get = (path = null, defaultValue = null) => dotGet(gulpConfigurations, path, defaultValue)
+
+/**
+ * Specify a value for the configurations to use.
+ * @memberOf module:gulpConfig
+ * @param path
+ * @param value
+ * @returns {*}
+ */
+export const set = (path, value) => dotSet(gulpConfigurations, path, value)
+</code></pre></div></div></div></main></div><footer class="border-t border-(--clean-border) bg-background py-6 text-sm text-muted-foreground"><div class="mx-auto flex w-full max-w-screen-2xl flex-col items-start justify-between gap-2 px-4 md:flex-row md:items-center"><div class="flex items-center gap-1.5"><span>JS Build Tools</span><span>© 2026</span></div></div></footer></div><script type="application/json" data-island-props>{"i0":{"language":"javascript","filename":"gulp.config.mjs"},"i1":{"basePath":"/projects/js-build-tools/docs","searchIndexUrl":"/projects/js-build-tools/docs/_assets/search-index.mvnuimee-93b8c1bf.json"},"i2":{},"i3":{},"i4":{"nav":[{"label":"Home","slug":"","order":-1},{"label":"gulpConfig","slug":"module/gulpconfig","group":"Modules","order":1},{"label":"js-build-tools","slug":"module/js-build-tools","group":"Modules","order":1},{"label":"partials","slug":"module/partials","group":"Modules","order":1},{"label":"testHelpers","slug":"module/testhelpers","group":"Modules","order":1},{"label":"AdditionalBundleConfig","slug":"module/gulpconfig/additionalbundleconfig","group":"Typedefs","order":7},{"label":"ArrayableSetting","slug":"module/gulpconfig/arrayablesetting","group":"Typedefs","order":7},{"label":"BooleanSetting","slug":"module/gulpconfig/booleansetting","group":"Typedefs","order":7},{"label":"BrowserConfig","slug":"module/gulpconfig/browserconfig","group":"Typedefs","order":7},{"label":"Configurations","slug":"module/gulpconfig/configurations","group":"Typedefs","order":7},{"label":"CopyFilesEntry","slug":"module/gulpconfig/copyfilesentry","group":"Typedefs","order":7},{"label":"DistConfig","slug":"module/gulpconfig/distconfig","group":"Typedefs","order":7},{"label":"DocsConfig","slug":"module/gulpconfig/docsconfig","group":"Typedefs","order":7},{"label":"FlagNumberSetting","slug":"module/gulpconfig/flagnumbersetting","group":"Typedefs","order":7},{"label":"FlagsSetting","slug":"module/gulpconfig/flagssetting","group":"Typedefs","order":7},{"label":"FlagStringSetting","slug":"module/gulpconfig/flagstringsetting","group":"Typedefs","order":7},{"label":"FontConfig","slug":"module/gulpconfig/fontconfig","group":"Typedefs","order":7},{"label":"ImageConfig","slug":"module/gulpconfig/imageconfig","group":"Typedefs","order":7},{"label":"JestTestFlags","slug":"module/gulpconfig/jesttestflags","group":"Typedefs","order":7},{"label":"LintConfig","slug":"module/gulpconfig/lintconfig","group":"Typedefs","order":7},{"label":"ReadmeConfig","slug":"module/gulpconfig/readmeconfig","group":"Typedefs","order":7},{"label":"SassConfig","slug":"module/gulpconfig/sassconfig","group":"Typedefs","order":7},{"label":"Setting","slug":"module/gulpconfig/setting","group":"Typedefs","order":7},{"label":"StringSetting","slug":"module/gulpconfig/stringsetting","group":"Typedefs","order":7},{"label":"TestConfig","slug":"module/gulpconfig/testconfig","group":"Typedefs","order":7},{"label":"TsConfig","slug":"module/gulpconfig/tsconfig","group":"Typedefs","order":7},{"label":"Source Files","slug":"source","order":11}],"currentSlug":"source/gulp-config-mjs","siteName":"JS Build Tools","basePath":"/projects/js-build-tools/docs","collapsibleGroups":["Modules","Typedefs"]},"i5":{"nav":[{"label":"Home","slug":"","order":-1},{"label":"gulpConfig","slug":"module/gulpconfig","group":"Modules","order":1},{"label":"js-build-tools","slug":"module/js-build-tools","group":"Modules","order":1},{"label":"partials","slug":"module/partials","group":"Modules","order":1},{"label":"testHelpers","slug":"module/testhelpers","group":"Modules","order":1},{"label":"AdditionalBundleConfig","slug":"module/gulpconfig/additionalbundleconfig","group":"Typedefs","order":7},{"label":"ArrayableSetting","slug":"module/gulpconfig/arrayablesetting","group":"Typedefs","order":7},{"label":"BooleanSetting","slug":"module/gulpconfig/booleansetting","group":"Typedefs","order":7},{"label":"BrowserConfig","slug":"module/gulpconfig/browserconfig","group":"Typedefs","order":7},{"label":"Configurations","slug":"module/gulpconfig/configurations","group":"Typedefs","order":7},{"label":"CopyFilesEntry","slug":"module/gulpconfig/copyfilesentry","group":"Typedefs","order":7},{"label":"DistConfig","slug":"module/gulpconfig/distconfig","group":"Typedefs","order":7},{"label":"DocsConfig","slug":"module/gulpconfig/docsconfig","group":"Typedefs","order":7},{"label":"FlagNumberSetting","slug":"module/gulpconfig/flagnumbersetting","group":"Typedefs","order":7},{"label":"FlagsSetting","slug":"module/gulpconfig/flagssetting","group":"Typedefs","order":7},{"label":"FlagStringSetting","slug":"module/gulpconfig/flagstringsetting","group":"Typedefs","order":7},{"label":"FontConfig","slug":"module/gulpconfig/fontconfig","group":"Typedefs","order":7},{"label":"ImageConfig","slug":"module/gulpconfig/imageconfig","group":"Typedefs","order":7},{"label":"JestTestFlags","slug":"module/gulpconfig/jesttestflags","group":"Typedefs","order":7},{"label":"LintConfig","slug":"module/gulpconfig/lintconfig","group":"Typedefs","order":7},{"label":"ReadmeConfig","slug":"module/gulpconfig/readmeconfig","group":"Typedefs","order":7},{"label":"SassConfig","slug":"module/gulpconfig/sassconfig","group":"Typedefs","order":7},{"label":"Setting","slug":"module/gulpconfig/setting","group":"Typedefs","order":7},{"label":"StringSetting","slug":"module/gulpconfig/stringsetting","group":"Typedefs","order":7},{"label":"TestConfig","slug":"module/gulpconfig/testconfig","group":"Typedefs","order":7},{"label":"TsConfig","slug":"module/gulpconfig/tsconfig","group":"Typedefs","order":7},{"label":"Source Files","slug":"source","order":11}],"currentSlug":"source/gulp-config-mjs","basePath":"/projects/js-build-tools/docs","collapsibleGroups":["Modules","Typedefs"]}}</script><script type="module">(function(){var map={"theme-toggle":"/projects/js-build-tools/docs/_islands/theme-toggle-2XMJHGHA.js","settings":"/projects/js-build-tools/docs/_islands/settings-OVJNOKRM.js","code-viewer":"/projects/js-build-tools/docs/_islands/code-viewer-6DV37I3Y.js","embed":"/projects/js-build-tools/docs/_islands/embed-5KC6XVS2.js","playground":"/projects/js-build-tools/docs/_islands/playground-DTFW4UEZ.js","tabs":"/projects/js-build-tools/docs/_islands/tabs-NRSQKCSU.js","sidebar":"/projects/js-build-tools/docs/_islands/sidebar-QHA37LWB.js","mobile-nav":"/projects/js-build-tools/docs/_islands/mobile-nav-UPHO6VKI.js","toc":"/projects/js-build-tools/docs/_islands/toc-CQ7TFLVR.js","toc-mobile":"/projects/js-build-tools/docs/_islands/toc-mobile-7EX7TEHH.js","cmdk":"/projects/js-build-tools/docs/_islands/cmdk-JPMNTYF7.js","code-tabs":"/projects/js-build-tools/docs/_islands/code-tabs-WXRMDWL6.js","copy-btn":"/projects/js-build-tools/docs/_islands/copy-btn-BYW32LVW.js","copy-page":"/projects/js-build-tools/docs/_islands/copy-page-S6IPKVCP.js"};var seen=new Set();document.querySelectorAll('[data-island]').forEach(function(el){seen.add(el.getAttribute('data-island'));});seen.forEach(function(name){var src=map[name];if(src){import(src);}});})();</script><script>(function(){function flash(h){var b=h.querySelector('[data-heading-anchor]');if(!b)return;b.setAttribute('data-copied','');window.setTimeout(function(){b.removeAttribute('data-copied');},3000);}function onClick(e){var t=e.target;if(!t||!t.closest)return;if(t.closest('a'))return;var h=t.closest('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');if(!h)return;var id=h.id;if(!id)return;var iconOnly=!!t.closest('[data-heading-anchor]');if(!iconOnly){if(location.hash.slice(1)===id){h.scrollIntoView();}else{location.hash=id;}}try{var url=location.origin+location.pathname+location.search+'#'+id;if(navigator.clipboard){navigator.clipboard.writeText(url).then(function(){flash(h);}).catch(function(){});}}catch(_){}}document.addEventListener('click',onClick);}());</script><script>(function(){var IDLE=700;var timers=new WeakMap();function onScroll(e){var el=e.target;if(el===document||el===window)el=document.documentElement;if(!el||!el.classList)return;el.classList.add('clean-scrolling');var prev=timers.get(el);if(prev)window.clearTimeout(prev);timers.set(el,window.setTimeout(function(){el.classList.remove('clean-scrolling');},IDLE));}document.addEventListener('scroll',onScroll,true);}());</script></body></html>

@@ -1,0 +1,615 @@
+---
+title: Home
+kind: index
+---
+
+# [js-build-tools](https://www.npmjs.com/package/js-build-tools)
+
+Centralize the build process for Node.js, JS and TypeScript projects into a single tool suite.
+
+### Goals
+
+Using this tool suite, you can:
+
+- Parse TypeScript into JS distribution files
+- Create formatted distribution files to be used in a node / commonjs environment.
+- Bundle your distribution files to be used in a browser environment.
+- Run tests and watch for changes.
+- Generate jsdoc readme files.
+- Generate real HTML documentation straight from your source - TypeDoc for a TypeScript project (a module for each of your folders), or jsdoc with a modern theme for a plain JavaScript one.
+- Copy files (a bundle, or anything else) to another location, on demand.
+
+## Installation
+
+In your project's root directory, run: `npm install --save-dev gulp js-build-tools` (or `yarn add --dev gulp js-build-tools` if you use Yarn).
+
+It is recommended to install gulp with the `-g` flag, so that you can run it with `gulp` instead of `node_modules/.bin/gulp`.
+
+## Configuration
+
+In your project's root directory, create a `build-tools.config.json` file. This can contain any of the following (values provided are the defaults):
+
+```
+{
+  "browser": {
+    // 'true' to generate browser bundled files; 'false' for node environment only
+    "enabled": true,
+    // The name to use for the browser-bundled output file (.js will be appended).
+    "name": "my-package",
+    // The search pattern used for retrieving compiled distribution files.
+    "from": "dist/**/*.js",
+    // Module names or file paths which resolve to an empty object ({}) in the bundle instead of their real contents.
+    "ignore": [],
+    // Module names or file paths left out of the bundle entirely (requiring one at runtime throws, unless something
+    // else provides it, for example a script tag which loads it separately).
+    "exclude": [],
+    // Additional bundles to produce alongside the primary one above (see 'Configure additional browser bundles').
+    "bundles": [],
+    // The output directory for browser-bundled files.
+    "to": "browser"
+  },
+  // The paths for directories to delete before build.
+  "cleanPaths": [
+    "dist",
+    "browser"
+  ],
+  "dist": {
+    // Name of the entry the distribution file.
+    "main": "dist/main",
+    // The search pattern used for gathering source files for distribution.
+    "from": "src/**/!(*.test).js",
+    // The output directory for the distribution files.
+    "to": "dist"
+  },
+  "docs": {
+    // Toggle generating the HTML documentation from the TypeScript source (see 'Configure TypeScript documentation').
+    // When on, the build does this instead of generating the readme from the jsdoc comments.
+    "enabled": false,
+    // The directory holding the TypeScript source, each folder in it becomes a module of the documentation.
+    "from": "src",
+    // The markdown file used as the front page of the documentation.
+    "index": "MAIN.md",
+    // How much TypeDoc reports: Verbose, Info, Warn, Error or None.
+    "logLevel": "Warn",
+    // The name of the documentation, defaults to the name in your package.json.
+    "title": "",
+    // The directory to generate the documentation in (it is cleared first).
+    "to": "docs",
+    // The tsconfig file to read the source with, false to use the one of 'typescript.config'.
+    "tsconfig": false
+  },
+  "fonts": {
+    // Toggle copy directory of fonts on
+    "enabled": false,
+    // Path to search for fonts
+    "from": "src/fonts/**/*",
+    // Path to output fonts
+    "to": "browser/fonts"
+  },
+  "images": {
+    // Toggle image minify and copy process
+    "enabled": false,
+    // Path to search for images
+    "from": "src/img/**/*.+(png|jpg|jpeg|gif|svg)",
+    // The JPEG quality (0 to 100) to compress to, false keeps mozjpeg's own default (75)
+    "jpegQuality": false,
+    // Path to output images
+    "to": "browser/img"
+  },
+  "readme": {
+    // The file which will be pre-fixed to your README.md output.
+    "template": "MAIN.md",
+    // Options for formatting the output readme.
+    "options": "utf8",
+    // The name of the output documentation markdown file.
+    "file": "README.md",
+    // Location of files to use for compiling documentation into the readme.
+    "from": [
+      "src/**/!(*.test).js"
+    ],
+    // Additional .mjs files to document alongside 'from' (see 'Configure including ESM files in the generated
+    // readme'). Empty by default: a project that never sets this gets exactly the readme it always did.
+    "fromEsm": [],
+    // The directory to output the readme file in.
+    "to": "./"
+  },
+  // Base directory of the project.
+  "rootPath": "./",
+  "sass": {
+    // Toggle SASS to CSS process on.
+    "enabled": false,
+    // The pattern for finding all sass files.
+    "from": "sass/**/*.+(scss|sass)",
+    // The directory were sass files will be stored.
+    "path": "sass",
+    // The destination path for where generated CSS (from SASS files) should go.
+    "to": "browser/css"
+  },
+  // The directory where your source files are stored (the files you manually created).
+  "srcPath": "src",
+  "test": {
+    // Additional flags for programmatically running Jest Cli.
+    "options": null,
+    // The directory where Jest test files are stored.
+    // By default, stored as *.test.js adjacent to the files they are testing.
+    "path": [
+      "src"
+    ],
+    // The search pattern for watching files for changes.
+    "watch": "src/**/*.js"
+  },
+  "typescript": {
+    // The path the tsconfig file for running typescript or false if no ts file given.
+    "config": false,
+    // Toggle usage of typescript parsing.
+    "enabled": false,
+    // Pattern for finding the TypeScript files.
+    "from": "src/**/*.ts",
+    // Directory where parsed typescript files go.
+    "to": "dist"
+  }
+}
+```
+
+### Create your local gulpfile.js
+
+In your project's root directory, create a `gulpfile.js` file, in here you can require any of the functions you need. For example:
+
+#### Common JS
+
+```
+// Your local gulpfile.js
+const {
+  build,
+  defaultCmd,
+  docs,
+  partials,
+  readme,
+  sass,
+  testFull,
+  testQuick,
+  typescript,
+  watchFull,
+  watchTest
+} = require('js-build-tools/gulpfile.base.js')
+
+// Everything you export will be created as a gulp task.
+// You can build your own tasks here as well by using some of the functions `js-build-tools/functions`.
+// You can list your available tasks by running `gulp --tasks`.
+exports.build = build
+exports.default = defaultCmd
+exports.docs = docs
+exports.readme = readme
+exports.sass = sass
+exports.testFull = testFull
+exports.testQuick = testQuick
+exports.watchFull = watchFull
+exports.watchTest = watchTest
+```
+
+#### ES Module
+
+```
+// Your local gulpfile.mjs
+// Everything you export will be created as a gulp task.
+export {
+  build,
+  defaultCmd,
+  docs,
+  partials,
+  readme,
+  sass,
+  testFull,
+  testQuick,
+  typescript,
+  watchFull,
+  watchTest
+} from 'js-build-tools/gulpfile.base.mjs'
+
+// You can build your own tasks here as well by using some of the functions `js-build-tools/functions`.
+// You can list your available tasks by running `gulp --tasks`.
+```
+
+Verify your tasks are available by running `gulp --tasks`.
+
+### Configure Babel
+
+Depending on how you wrote your test files, Jest may require some Babel configuration. Create a `babel.config.js` file in the root directory of your project. You can then use the recommended configuration by requiring the `babel.config.js` file into your own configuration file. Example:
+
+```
+const babelConfig = require('js-build-tools/babel.config')
+// You may add additional configuration here. Example: babelConfig.presets.push('@babel/preset-env')
+module.exports = babelConfig
+```
+
+### Configure ES Modules (.mjs)
+
+It is not recommended to use `"type": "module"` in the `package.json` to enable ES Modules. This is because some dependencies still rely on common JS syntax (ex: babel, jest, jsdoc). So, to use ES Modules, you can use the `.mjs` extension on your files instead. There are different downsides to using the `.mjs` extension to consider. The `jsdoc` generation can only read `.js` files, and the provided test runner `Jest` will need to be configured. Update the test config as follows:
+
+```
+{
+  "dist": {
+    // Use .mjs files for from and main
+    "main": "src/main.mjs",
+    "from": "src/**/!(*.test).mjs",
+    "to": "dist"
+  },
+  "readme": {
+    "template": "MAIN.md",
+    "options": "utf8",
+    "file": "README.md",
+    "from": [
+      // Use the dist directory files to generate the jsdocs - dist is always .js regardless of source
+      // extension, since Babel compiles .mjs source down to it, so this is enough on its own. If you instead
+      // have a handful of standalone .mjs files that never go through the normal dist compile (for example a
+      // config file read directly by the build itself), see 'Configure including ESM files in the generated
+      // readme' for readme.fromEsm instead - a lighter option than switching your whole project's dist/test
+      // config over to .mjs just to document a few files.
+      "dist/!(*.test).js"
+    ],
+    "to": "./"
+  },
+  "test": {
+    "options": {
+      // The below helps to find the .mjs files (rather than default .js files)
+      "testMatch": [
+        "**/?(*.)+(spec|test).mjs?(x)"
+      ]
+    },
+    "path": "functions",
+    // Include watching for .mjs files
+    "watch": "functions/**/*.[cm]?[jt]s"
+  }
+}
+```
+
+There is an additional file you need to get Jest working, add a `jest.config.js` file. While we have already added these configurations above in the "options", there seems to be a bug where the "transform" does not work in that context. Add the following to your `jest.config.js`:
+
+```
+module.exports = {
+  // The transform will instruct jest to run the files through babel so it can interpret them
+  transform: {
+    '^.+\\.[cm]?[jt]sx?$': 'babel-jest'
+  }
+}
+```
+
+### Configure HTML JS Documentation, full manual control (optional, advanced)
+
+For most projects, `docs.enabled` with `docs.method: 'jsdoc'` (see 'Configure HTML documentation' below) is the simpler path - no `.jsdoc.conf.js` file to maintain by hand, wired straight into `gulp build`/`gulp docs`. This section is for when you want full, direct control over jsdoc's own config instead (a plugin or option this project's own generated config does not expose, for example).
+
+Create a `.jsdoc.conf.js` file and add the following:
+
+```
+const jsDocBase = require('js-build-tools/jsdoc.base')
+/* You will get a jsdoc config object with the following:
+ * {
+ *    plugins: ['plugins/markdown'],
+ *    source: {
+ *      include: [your configured distPath],
+ *      includePattern: '.+\\.js(doc|x)?$',
+ *      excludePattern: '((^|\\/|\\\\)_|.+\\.test\\..*)'
+ *    }
+ *  }
+ * You can manipulate the properties before returning in module.exports.
+ * This searches the defined 'distPath' for building the HTML JS Documentation
+ */
+module.exports = jsDocBase
+```
+
+### Configure what the browser bundle leaves out (optional)
+
+A dependency can be reached from your code without being needed in the browser, and bundling it can add a lot of size. Two settings in `browser` handle this, both take module names or file paths (see browserify's `b.ignore(file)` and `b.exclude(file)`):
+
+```
+{
+  "browser": {
+    // Resolves to an empty object ({}) in the bundle instead of the real module. This suits a dependency which is only
+    // reached because it is the default value of an option you always override with your own (for example a selector
+    // engine's default DOM adapter). Anything only that module requires is left out too. Your code must never actually
+    // use the real module, so keep overriding that option.
+    "ignore": ["some-default-adapter"],
+    // Left out of the bundle entirely. Requiring it at runtime throws unless something else provides it, for example a
+    // script tag which loads it separately, so this suits a large library which the page already loads.
+    "exclude": ["a-library-the-page-loads"]
+  }
+}
+```
+
+### Configure additional browser bundles (optional)
+
+By default a project produces exactly one browser bundle, from `dist.main`/`browser.name`/`browser.ignore`/ `browser.exclude` above. `browser.bundles` adds more bundles alongside it - for example a render-only variant built from a different entry point than the full bundle. Each entry only needs to specify what's actually different about that bundle; anything left out falls back to the primary bundle's own value:
+
+```
+{
+  "browser": {
+    "bundles": [
+      {
+        // Required, and must be unique among all of a project's bundles: the name for this bundle's own output file
+        // and standalone export.
+        "name": "render-only",
+        // This bundle's own entry point. Falls back to dist.main when omitted.
+        "main": "dist/renderOnly.js",
+        // This bundle's own ignore list. Falls back to browser.ignore when omitted.
+        "ignore": [],
+        // This bundle's own exclude list. Falls back to browser.exclude when omitted.
+        "exclude": []
+      }
+    ]
+  }
+}
+```
+
+For the `gulpConfig` module's own `get`/`set` functions (read or override a resolved configuration value from your own code, by the same dot-notation path a setting has in the JSON above), see the generated reference below.
+
+### Configure including ESM files in the generated readme (optional)
+
+The readme generator (`jsdoc-to-markdown`) only recognizes `.js` files, even though it parses real ESM `import`/ `export` syntax just fine once it reads one - the file extension is the only thing it filters on, not the content. `readme.fromEsm` names `.mjs` files to document anyway: each one is read, rewritten (every top-level `export const`/ `export function`/`export class` becomes a plain declaration plus a trailing `module.exports = { ... }` - the same shape `jsdoc-to-markdown` already documents cleanly, since that rewrite is exactly what this project's own `gulp.config.mjs` needs it for) and written to a temp `.js` file outside your project entirely, which is cleaned up again once the readme generator has read it. Other export forms (`export default`, re-exports, `export { a, b }` lists) are left untouched in whatever way `jsdoc-to-markdown` already handles ESM - restructure a file to use named exports if you want it documented this cleanly:
+
+```
+{
+  "readme": {
+    "fromEsm": ["src/myEsmOnlyModule.mjs"]
+  }
+}
+```
+
+### Configure copy files (optional)
+
+Copy files (a bundle, or anything else) to another location - any number of entries, each independent. Unlike every other task here, this is never run automatically as part of `gulp build` - what this copies is often the live, publicly-reachable version of something, so publishing it should be a deliberate step your own script opts into, not a side effect of a routine local build.
+
+Add the following to the exports in your `build-tools.config.json`:
+
+```
+{
+  "copyFiles": [
+    {
+      // The glob pattern(s) of files to copy
+      "from": "browser/**/*.js",
+      // The directory to copy them into
+      "to": "../my-other-project/vendor",
+      // Optional - preserves this glob's own subdirectory structure in the destination, instead of flattening it
+      "base": "browser"
+    }
+  ]
+}
+```
+
+If you also export `copyFiles` from your gulpfile you can run it on its own with `gulp copyFiles`, and can then add your own script for it, for example `"publish:bundle": "gulp copyFiles"`.
+
+### Configure move fonts (optional)
+
+Be able to copy a source directory of fonts into the distribution path.
+
+Add the following to the exports in your `build-tools.config.json`:
+
+```
+{
+  "fonts": {
+    // Enable fonts process
+    "enabled": false,
+    // Search pattern to find your font files
+    "from": "src/fonts/**/*",
+    // Output directory for your font files
+    "to": "browser/fonts"
+  }
+}
+```
+
+### Configure move and minify images (optional)
+
+Be able to copy and reduce the file size of images into an output path.
+
+Add the following to the exports in your `build-tools.config.json`:
+
+```
+{
+  "images": {
+    // Enable image process
+    "enabled": false,
+    // Search pattern to find your images
+    "from": "src/img/**/*.+(png|jpg|jpeg|gif|svg)",
+    // The JPEG quality (0 to 100) to compress to. Left false, mozjpeg uses its own default of 75, which can
+    // visibly band smooth gradients in photos; 85 is usually indistinguishable from the original
+    "jpegQuality": false,
+    // Output directory for your images files
+    "to": "browser/img"
+  }
+}
+```
+
+### Configure SASS (optional)
+
+SASS support is built-in, this enables conversion of SASS files to CSS for web projects.
+
+Add the following to the exports in your `build-tools.config.json`:
+
+```
+{
+  "sass": {
+    // Enable SASS process
+    "enabled": false,
+    // Search pattern to find your SASS files (the below would be files ending in .scss or .sass in a directory called 'sass')
+    "from": "sass/**/*.+(scss|sass)",
+    // Optional but nice to add (future support), add the directory where your sass files exist
+    "path": "sass",
+    // Output directory for your compiled css files, recommend css directory within your browser output directory
+    "to": "browser/css"
+  }
+}
+```
+
+### Configure TypeScript (optional)
+
+Create a `tsconfig.json` file in your project root with the following:
+
+```
+{
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/*.test.*"],
+  "compilerOptions": {
+    "strict": true,
+    "target": "es2020",
+    "module": "commonjs",
+    "moduleResolution": "node10",
+    "ignoreDeprecations": "6.0",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "types": []
+  }
+}
+```
+
+The pattern for `"include"` should match your .ts files (and leave out the tests, which can stay `.test.js` files). The actual pattern used to compile comes from `build-tools.config.json` as the `'typescript.from'` setting. To create the ts declaration files, you must add the `"declaration": true`. The `typescript` package is an optional peer dependency, install it in your project with `npm install --save-dev typescript` (versions 5.0 up to, but not including, 7 are supported). When you write relative imports, leave the `.js` extension off (`import a from './a'`), because they stop resolving once the target is a `.ts` file. The compile only builds `.ts` files while `typescript.enabled` is on, so convert a whole library at once.
+
+Add the following to the exports in your `build-tools.config.json`:
+
+```
+{
+  "readme": {
+    // Location of files to use for compiling documentation into the readme.
+    "from": "dist/**/!(*.min).js"
+  },
+  "typescript": {
+    // The path the tsconfig file for running typescript or false if no ts file given.
+    "config": "tsconfig.json",
+    // Toggle usage of typescript parsing
+    "enabled": true,
+    // Pattern for finding the TypeScript files
+    "from": "src/**/*.ts",
+    // Directory where parsed typescript files go
+    "to": "dist"
+  }
+}
+```
+
+The `js-to-markdown` only works on .js files, so we run the readme search on the built dist files. Also, we want to register the tsconfig.json we created earlier and will alter the processes to build for TypeScript.
+
+Update `babel.config.js` with the following:
+
+```
+const babelConfig = require('js-build-tools/babel.config')
+// This is the important line, we need to add compatibility for Jest to run tests on .ts files
+babelConfig.presets.push('@babel/preset-typescript')
+module.exports = babelConfig
+```
+
+### Configure HTML documentation (optional)
+
+`jsdoc-to-markdown` (the readme generator) only reads `.js` files, so the types in your `.ts` files (and the comments on them) never reach the readme it generates, and even for a plain JavaScript project a single markdown readme is a thinner result than a real browsable site. Instead, `docs.enabled` generates real HTML documentation straight from your source, with either engine:
+
+- **TypeDoc** (for a TypeScript project) - every folder in your source directory becomes a module of the documentation, the default export of each file (one function per file) is listed under the name of the file, and everything else a file exports (for example the types in a `types.ts`) is listed as it is. Index files, tests and declaration files are left out. A file which sits directly in the source directory, beside the folders, is a module of its own (unless it is `index` or `main`). The first comment of a folder's `index.ts` (or the header comment of such a file) describes its module. The comments on your code are the documentation, and the types come from the code itself, so `@module`, `@memberOf`, `@typedef` and the `{Type}` of `@param` are not needed. `typedoc` is an optional peer dependency (like `typescript`), install it in your project with `npm install --save-dev typedoc` (this needs a `typescript` version it supports).
+- **jsdoc** (for a plain JavaScript project, where TypeDoc has no real types to read) - scans your source (`.js`, `.mjs` and `.cjs` files, leaving out tests and minified `.min.js` copies) recursively with jsdoc itself, rendered with a modern theme (`clean-jsdoc-theme` by default, used instead of jsdoc's own classic default template) instead of the manual `.jsdoc.conf.js` setup described further below. `jsdoc` and whichever theme you configure are optional peer dependencies, install them with `npm install --save-dev jsdoc clean-jsdoc-theme` (or your own chosen theme package).
+
+Add the following to the exports in your `build-tools.config.json`:
+
+```
+{
+  "docs": {
+    // jsdoc with clean-jsdoc-theme 5.x only: the path the documentation is served from, such as
+    // "/projects/my-lib/docs/". The theme's links start at the site root, so documentation served below it needs
+    // this. Left false, it is served from the site root
+    "basePath": false,
+    // Generate the documentation from the source
+    "enabled": true,
+    // The directory holding the source, each folder in it becomes a module (TypeDoc) or is scanned recursively (jsdoc).
+    // jsdoc also takes a list of directories and files, for example ["functions", "gulpfile.base.mjs"]
+    "from": "src",
+    // TypeDoc only: the git revision the "Defined in" source links point to. Left false, TypeDoc uses the current
+    // commit, so every commit changes every page; a branch name such as "main" keeps them the same until the
+    // documentation itself changes
+    "gitRevision": false,
+    // Generate the documentation as part of build (the default). Set it to false to only generate it when you run
+    // the docs task yourself (see below)
+    "inBuild": true,
+    // The markdown file used as the front page of the documentation (a short overview of your project)
+    "index": "MAIN.md",
+    // 'typedoc' or 'jsdoc'. Left out (or false), it's inferred from typescript.enabled - 'typedoc' when your
+    // project is TypeScript, 'jsdoc' when it is not - so most projects never need to set this at all. Set it
+    // explicitly to override that inference either way.
+    "method": false,
+    // Only meaningful when method is (or resolves to) 'jsdoc' - the theme package to render with. TypeDoc
+    // always keeps its own default regardless of this setting.
+    "theme": "clean-jsdoc-theme",
+    // The name of the documentation (TypeDoc's title, the theme's title for jsdoc), defaults to the package name
+    "title": "",
+    // Where the HTML is generated (the directory is cleared first)
+    "to": "docs"
+  }
+}
+```
+
+While `docs.enabled` is on, `gulp build` generates the documentation instead of the readme, so your `README.md` stays hand-written (a short overview which links to the documentation). If you also export `docs` from your gulpfile you can run it on its own with `gulp docs`, and can then add the script `"docs": "gulp docs"`.
+
+To make generating the documentation a deliberate step instead, set `docs.inBuild` to `false`: `gulp build` then generates neither the documentation nor the readme, and `gulp docs` is the only thing that writes to `docs.to`. This suits a `docs.to` which points into another repository (a website, say): a build on a work-in-progress branch no longer rewrites the published documentation, which you regenerate when you release instead. For example with release-it, in `.release-it.json`:
+
+```
+{
+  "hooks": {
+    "after:bump": "npm run docs"
+  }
+}
+```
+
+### Browser automation (optional)
+
+Unlike the rest of this file, this isn't a `build-tools.config.json`-driven feature with its own task - it's a pair of plain functions (`partials.loadPlaywright`/`partials.launchBrowser` and `partials.serveStatic`) for whatever your own script needs a real browser for: verifying a page that only works correctly in a real browser (for example one using `<script type="module">`, which no DOM-simulation library executes at all), or taking a real screenshot.
+
+`playwright` is an optional peer dependency, install it in your project with `npm install --save-dev playwright`, then fetch a real browser binary once per machine (not per project) with `npx playwright install chromium` - if that fails with "Playwright does not support chromium on ", your OS is too old for the current release; either upgrade it or pin an older `playwright` version known to still support it (confirmed: `1.62.1` is the newest release that still installs and runs real headless Chromium on Ubuntu 20.04).
+
+```
+const { launchBrowser, serveStatic } = require('js-build-tools').partials
+
+const { server, url } = await serveStatic('browser') // serves ./browser/ over a real local HTTP server
+const browser = await launchBrowser()
+const page = await browser.newPage()
+await page.goto(`${url}/index.html`)
+await page.screenshot({ path: 'homepage.png' }) // a real screenshot, to actually look at
+await browser.close()
+server.close()
+```
+
+`serveStatic` exists because a page loaded directly from a `file://` path resolves any root-relative asset path (`/browser/...`) against the filesystem root instead of the page's own directory - serving it over real HTTP avoids that entirely, and is also the right fix for the exact same problem in a jsdom-based test.
+
+### Configure lint rule overrides (optional)
+
+`sourceLint` lints your real source directly (not the compiled dist/browser output) with [neostandard](https://github.com/neostandard/neostandard). Occasionally a rule is wrong for your project specifically, rather than something to fix in your code - for example a test which deliberately contains a string of literal `${...}` text (simulating another module's real source, not a mistaken non-template string), which trips neostandard's `no-template-curly-in-string` rule as a false positive. `lint.rules` layers ESLint rule overrides on top of neostandard's own rules, scoped to the same files neostandard itself lints:
+
+```
+{
+  "lint": {
+    // ESLint rule overrides, keyed and valued exactly as ESLint's own "rules" object.
+    "rules": {
+      "no-template-curly-in-string": "off"
+    }
+  }
+}
+```
+
+Empty by default, so a project that never sets this gets exactly neostandard's own rules, unchanged. Prefer fixing the actual code (or, for one specific line, an `eslint-disable-next-line` comment) over this when the finding is real - reach for `lint.rules` only when the rule itself doesn't fit your project.
+
+### Configure Scripts
+
+In your `package.json` file, add the following scripts:
+
+```
+{
+  "scripts": {
+    "build": "gulp build",
+    "dev": "gulp",
+    "docs": "gulp docs",
+    "publish:bundle": "gulp copyFiles",
+    "readme": "gulp readme",
+    "sass": "gulp sass",
+    "test": "gulp testFull",
+    "test:quick": "gulp testQuick",
+    "watch": "gulp watchFull",
+    "watch:test": "gulp watchTest"
+  }
+}
+```
+
+## Usage
+
+Run any of the above commands with `gulp` or `npm run`.
