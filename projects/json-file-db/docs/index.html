@@ -18,8 +18,8 @@ a SQL-like query string (<code>read workouts where date = '2024-06-02'</code>) i
 <li><code>queries</code>: parse a query string and run it - reads, inserts, updates, deletes, joins, <code>where</code>, <code>sortBy</code>, <code>groupBy</code>.</li>
 <li><code>utilities</code>: shared helpers the queries use - retrieving records/files/indexes and merging join results.</li>
 </ul>
-<p>Note: <code>src/index.ts</code> (the package's top-level entry point) is still an empty stub - there is no public
-<code>require('json-file-db')</code> API yet, only the individual modules above.</p>
+<p>The package's public entry point is <code>src/index.ts</code> (<code>require('json-fs-query')</code>): <code>query</code>, <code>quote</code>, <code>queryStatus</code>,
+<code>create</code>, <code>drop</code>, <code>describe</code>, <code>configure</code> and the schema-definition types. Everything else is internal.</p>
 </div></div>
 <div class="col-sidebar">
 <div class="page-menu">
