@@ -24,14 +24,19 @@ way to point this package at their own data directory.</p>
 that would leave another record's foreign key pointing at a value that no longer exists -
 mirroring MySQL's own foreign_key_checks setting, which is also toggleable rather than always
 on, since strict enforcement isn't always what every consumer wants.</p>
+<p>Changing databasePath while calls are still running or queued throws (see trackDatabaseCall): await them first.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li><span><span class="tsd-kind-parameter">newSettings</span>: <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../types/utilities.RuntimeSettings.html" class="tsd-signature-type tsd-kind-type-alias">RuntimeSettings</a><span class="tsd-signature-symbol">&gt;</span></span></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography">
+<div class="tsd-tag-throws">
+<h4 class="tsd-anchor-link" id="throws">Throws<a href="#throws" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>When databasePath would point to another folder while database calls are in progress.</p>
+</div></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/json-file-db/blob/57835a9502196191ab6a137b5a83e79de4409dd8/src/data/utilities/config.ts#L27">src/data/utilities/config.ts:27</a></li></ul></aside></div></li></ul></section></div>
+<li>Defined in <a href="https://github.com/jheagle/json-file-db/blob/main/src/data/utilities/config.ts#L55">src/data/utilities/config.ts:55</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

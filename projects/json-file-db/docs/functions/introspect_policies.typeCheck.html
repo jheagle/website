@@ -14,7 +14,7 @@
 <section class="tsd-panel">
 <ul class="tsd-signatures">
 <li class="">
-<div class="tsd-signature tsd-anchor-link" id="typecheck"><span class="tsd-kind-call-signature">typeCheck</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">type</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">value</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><a href="#typecheck" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-signature tsd-anchor-link" id="typecheck"><span class="tsd-kind-call-signature">typeCheck</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">type</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">value</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">nullable</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><a href="#typecheck" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Validate (and where sensible, coerce) a value against a field's declared type. Runs only
 against values being written by insertEntity/updateEntity - it never re-validates data already
@@ -22,15 +22,20 @@ on disk, so a field whose declared type doesn't match its already-stored values 
 happen, since nothing enforced this before) is left alone until something actually updates it.
 An unrecognized type name is treated as unconstrained rather than rejected, so a typo in a
 schema's field type can't silently block every write to that field.</p>
+<p>A null is a real JSON null, kept as it is for a nullable field and rejected for any other, of
+any type: it is never coerced, so a string field can't store the text &quot;null&quot; or an int field 0.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li><span><span class="tsd-kind-parameter">type</span>: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#39;string&#39;</span></span></li>
-<li><span><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = undefined</span></span></li></ul></div>
+<li><span><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = undefined</span></span></li>
+<li><span><span class="tsd-kind-parameter">nullable</span>: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></span>
+<div class="tsd-comment tsd-typography"><p>Whether the field may hold null (the field definition's <code>nullable</code>).</p>
+</div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/json-file-db/blob/57835a9502196191ab6a137b5a83e79de4409dd8/src/data/introspect/policies/typeCheck.ts#L11">src/data/introspect/policies/typeCheck.ts:11</a></li></ul></aside></div></li></ul></section></div>
+<li>Defined in <a href="https://github.com/jheagle/json-file-db/blob/main/src/data/introspect/policies/typeCheck.ts#L20">src/data/introspect/policies/typeCheck.ts:20</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
