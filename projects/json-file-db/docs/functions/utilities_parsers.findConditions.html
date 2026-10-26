@@ -16,8 +16,9 @@
 <li class="">
 <div class="tsd-signature tsd-anchor-link" id="findconditions"><span class="tsd-kind-call-signature">findConditions</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">parsed</span><span class="tsd-signature-symbol">:</span> <a href="../types/utilities_parsers.ParsedQuery.html" class="tsd-signature-type tsd-kind-type-alias">ParsedQuery</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">query</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><a href="#findconditions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Extract condition clauses from the query: <code>where &lt;field&gt; &lt;comparator&gt; &lt;value&gt;</code>, each further one joined with
-<code>and where</code>. <code>or where</code> is refused until or is built (TASKS: the where-clauses epic): it used to be read the same as
+<div class="tsd-comment tsd-typography"><p>Extract condition clauses from the query: <code>where &lt;field&gt; &lt;comparator&gt; &lt;value&gt;</code>, or <code>where &lt;field&gt; is null</code>,
+<code>is not null</code>, <code>exists</code> or <code>does not exist</code> (no value), each further one joined with <code>and where</code>. A comparison
+with the literal null (<code>= null</code>) is refused: it would never match, as null equals nothing (see where). <code>or where</code> is refused until or is built (TASKS: the where-clauses epic): it used to be read the same as
 <code>and where</code>, which silently returned the wrong rows.</p>
 </div>
 <div class="tsd-parameters">
@@ -28,10 +29,10 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-throws">
-<h4 class="tsd-anchor-link" id="throws">Throws<a href="#throws" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>For <code>or where</code>.</p>
+<h4 class="tsd-anchor-link" id="throws">Throws<a href="#throws" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>For <code>or where</code>, and for a comparison with null.</p>
 </div></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/json-file-db/blob/main/src/data/utilities/parsers/findConditions.ts#L27">src/data/utilities/parsers/findConditions.ts:27</a></li></ul></aside></div></li></ul></section></div>
+<li>Defined in <a href="https://github.com/jheagle/json-file-db/blob/main/src/data/utilities/parsers/findConditions.ts#L28">src/data/utilities/parsers/findConditions.ts:28</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
