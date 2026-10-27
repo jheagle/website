@@ -16,10 +16,12 @@
 <li class="">
 <div class="tsd-signature tsd-anchor-link" id="findconditions"><span class="tsd-kind-call-signature">findConditions</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">parsed</span><span class="tsd-signature-symbol">:</span> <a href="../types/utilities_parsers.ParsedQuery.html" class="tsd-signature-type tsd-kind-type-alias">ParsedQuery</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">query</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><a href="#findconditions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Extract condition clauses from the query: <code>where &lt;field&gt; &lt;comparator&gt; &lt;value&gt;</code>, or <code>where &lt;field&gt; is null</code>,
-<code>is not null</code>, <code>exists</code> or <code>does not exist</code> (no value), each further one joined with <code>and where</code>. A comparison
-with the literal null (<code>= null</code>) is refused: it would never match, as null equals nothing (see where). <code>or where</code> is refused until or is built (TASKS: the where-clauses epic): it used to be read the same as
-<code>and where</code>, which silently returned the wrong rows.</p>
+<div class="tsd-comment tsd-typography"><p>Extract the where clause from the query into a tree (see ConditionNode): <code>where</code> followed by conditions joined with
+<code>and</code> / <code>or</code>, <code>not</code>, and brackets, nested to any depth. Each condition is <code>&lt;field&gt; &lt;comparator&gt; &lt;value&gt;</code>, or
+<code>&lt;field&gt; is null</code>, <code>is not null</code>, <code>exists</code> or <code>does not exist</code>. A comparison with the literal null (<code>= null</code>) is
+refused: it would never match, as null equals nothing (see where). The expression ends at the next clause keyword
+outside brackets, so clauses may come in any order; several separate <code>where</code>s (or <code>and where</code> after another clause)
+are joined with <code>and</code>, as before.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -29,10 +31,10 @@ with the literal null (<code>= null</code>) is refused: it would never match, as
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-throws">
-<h4 class="tsd-anchor-link" id="throws">Throws<a href="#throws" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>For <code>or where</code>, and for a comparison with null.</p>
+<h4 class="tsd-anchor-link" id="throws">Throws<a href="#throws" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>For the errors readExpression and readCondition describe, and <code>or where</code> after another clause.</p>
 </div></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/json-file-db/blob/main/src/data/utilities/parsers/findConditions.ts#L28">src/data/utilities/parsers/findConditions.ts:28</a></li></ul></aside></div></li></ul></section></div>
+<li>Defined in <a href="https://github.com/jheagle/json-file-db/blob/main/src/data/utilities/parsers/findConditions.ts#L161">src/data/utilities/parsers/findConditions.ts:161</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
