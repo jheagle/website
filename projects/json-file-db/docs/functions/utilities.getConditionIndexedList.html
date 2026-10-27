@@ -16,10 +16,13 @@
 <li class="">
 <div class="tsd-signature tsd-anchor-link" id="getconditionindexedlist"><span class="tsd-kind-call-signature">getConditionIndexedList</span><span class="tsd-signature-symbol">(</span><br/>    <span class="tsd-kind-parameter">parsed</span><span class="tsd-signature-symbol">:</span> <a href="../types/utilities_parsers.ParsedQuery.html" class="tsd-signature-type tsd-kind-type-alias">ParsedQuery</a><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-kind-parameter">recordData</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-kind-parameter">dataSet</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-kind-parameter">resolved</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Set</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../types/utilities_parsers.ParsedQuery.html" class="tsd-signature-type tsd-kind-type-alias">ParsedQuery</a><span class="tsd-signature-symbol">&gt;</span><a href="#getconditionindexedlist" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Load only the rows the indexed conditions match, and leave the other conditions for where() to apply later.
-Conditions are joined by <code>and</code>, so a row is loaded only when every indexed condition on its entity matched it: each
-condition narrows the files the ones before it matched. (Each indexed condition used to replace the rows of the one
-before, so <code>where date = 'x' and where exercise_id = 1</code> returned every row with exercise_id 1, whatever its date.)</p>
+<div class="tsd-comment tsd-typography"><p>Load only the candidate rows the indexes allow for the where clause (see candidatesOf): an index only narrows which
+rows are read. Every condition, indexed or not, stays in parsed.where and is still applied to the candidates
+afterwards (runQuery), so an index can make a query faster but never changes its result (where-clauses decision 3;
+it used to remove the conditions it answered, and the 3 bugs fixed in #69 came from that split).</p>
+<p>An indexed condition on a joined entity's field (<code>exercises._id = 1</code>) narrows that entity's rows only when every
+row must meet it (directly under the top-level <code>and</code>, see requiredConditions). It stays in the tree too: the where
+clause is then evaluated per pair of a row and a joined row (see whereTree).</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -28,13 +31,12 @@ before, so <code>where date = 'x' and where exercise_id = 1</code> returned ever
 <li><span><span class="tsd-kind-parameter">recordData</span>: <span class="tsd-signature-type">any</span></span></li>
 <li><span><span class="tsd-kind-parameter">dataSet</span>: <span class="tsd-signature-type">any</span></span></li>
 <li><span><span class="tsd-kind-parameter">resolved</span>: <span class="tsd-signature-type">Set</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></span>
-<div class="tsd-comment tsd-typography"><p>Filled with each entity whose rows were loaded here: its rows in dataSet are final (possibly none)
-and must not be reloaded, even when other conditions are left for where() (an empty list otherwise reads as &quot;not
-loaded yet&quot;, see readEntity).</p>
+<div class="tsd-comment tsd-typography"><p>Filled with each entity whose candidate rows were loaded here: they must not be reloaded (an
+empty list otherwise reads as &quot;not loaded yet&quot;, see readEntity).</p>
 </div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../types/utilities_parsers.ParsedQuery.html" class="tsd-signature-type tsd-kind-type-alias">ParsedQuery</a><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/json-file-db/blob/main/src/data/utilities/getConditionIndexedList.ts#L21">src/data/utilities/getConditionIndexedList.ts:21</a></li></ul></aside></div></li></ul></section></div>
+<li>Defined in <a href="https://github.com/jheagle/json-file-db/blob/main/src/data/utilities/getConditionIndexedList.ts#L107">src/data/utilities/getConditionIndexedList.ts:107</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
