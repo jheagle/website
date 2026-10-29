@@ -18,9 +18,6 @@
 (row-major: left to right, then top to bottom). Any trailing columns left over when <code>projects.length</code>
 doesn&#39;t divide evenly into <code>columns</code> are left empty (marked &#39;tile-empty&#39;, hidden via CSS).</p>
 </dd>
-<dt><a href="#menu">menu(currentIndex)</a> ⇒ <code>DomItem</code></dt>
-<dd><p>Generates a menu with the provided index as the currently selected item.</p>
-</dd>
 </dl>
 
 ## Typedefs
@@ -49,24 +46,15 @@ A single tile's content: an icon badge plus title/description, all wrapped in on
 <a name="projectGrid"></a>
 
 ## projectGrid(projects) ⇒ <code>DomItem</code>
-Builds a matrix-dom grid of project tiles, one per entry in `projects`, in display order(row-major: left to right, then top to bottom). Any trailing columns left over when `projects.length`doesn't divide evenly into `columns` are left empty (marked 'tile-empty', hidden via CSS).
+Builds a matrix-dom grid of project tiles, one per entry in `projects`, in display order
+(row-major: left to right, then top to bottom). Any trailing columns left over when `projects.length`
+doesn't divide evenly into `columns` are left empty (marked 'tile-empty', hidden via CSS).
 
 **Kind**: global function  
 
 | Param | Type |
 | --- | --- |
 | projects | <code>Array.&lt;{title: string, href: string, description: string}&gt;</code> | 
-
-<a name="menu"></a>
-
-## menu(currentIndex) ⇒ <code>DomItem</code>
-Generates a menu with the provided index as the currently selected item.
-
-**Kind**: global function  
-
-| Param | Type | Default |
-| --- | --- | --- |
-| currentIndex | <code>number</code> | <code>1</code> | 
 
 <a name="ProjectTile"></a>
 

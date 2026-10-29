@@ -1,4 +1,8 @@
 {
+  "cleanPaths": [
+    "dist",
+    "browser/css"
+  ],
   "browser": {
     "enabled": true,
     "name": "joshuaHome"
@@ -9,9 +13,7 @@
     "to": "dist"
   },
   "images": {
-    "enabled": true,
-    "from": "assets/img/*",
-    "to": "browser/img"
+    "enabled": false
   },
   "readme": {
     "from": [

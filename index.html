@@ -1,369 +1,312 @@
 <!DOCTYPE html>
 <html lang='en-CA'>
 <head>
-    <title>Joshua Heagle | Senior Full-Stack Engineer</title>
     <meta charset='UTF-8'>
-    <link rel='stylesheet' href='/browser/css/main.css'>
-    <script src='/browser/joshuaHome.js'></script>
-    <script type='module'>
-      import menu from './dist/templates/menu.js'
-
-      const mainHeader = menu()
-      const documentItem = jsonDom.documentItem
-      // Capture the existing (hand-authored) HTML into items first, so renderHtml's insert doesn't wipe out the
-      // real children it doesn't know about yet - then insert the menu as the first child of body.
-      jsonDom.updateDomItems(documentItem)
-      jsonDom.renderHtml(mainHeader, documentItem.body, 0)
-    </script>
-    <script type='module'>
-      import projectGrid from './dist/templates/projectGrid.js'
-      import projects from './dist/data/projectList.js'
-
-      const documentItem = jsonDom.documentItem
-      // Reuses the nav script's own earlier updateDomItems(documentItem) capture above (the module scripts
-      // run in document order, and both share the same window.jsonDom.documentItem singleton) rather than
-      // calling it again here - a real, reproducible bug found live in a real browser (not caught by jsdom,
-      // whose own DOM differs here): a second full-tree updateDomItems pass throws
-      // "property 0 is non-configurable and can't be deleted" from deep inside json-dom's own reconciliation.
-      const workGridElement = document.getElementById('work-grid')
-      const workGridItem = jsonDom.getItemByElement(documentItem.body, workGridElement)
-      jsonDom.renderHtml(projectGrid(projects), workGridItem, 0)
-    </script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Joshua Heagle | Full-Stack Engineer</title>
+    <meta name='description' content='Joshua Evan Heagle: full-stack engineer in the Greater Toronto Area. Architecture, refactoring and shared tooling, plus running, drawing and gardening.'>
+    <link rel='icon' href='/favicon.ico'>
+    <link rel='stylesheet' href='/browser/tailwind/site.css'>
+    <style>
+      /* Deliberately minimal: readable defaults only. The real design pass (Tailwind) comes later. */
+      :root { color-scheme: light dark; }
+      body { max-width: 46rem; margin: 0 auto; padding: 1rem 1rem 4rem; font-family: system-ui, sans-serif; line-height: 1.6; }
+      img, video { display: block; max-width: 100%; height: auto; }
+      figure video { width: 100%; max-width: 15rem; max-height: 24rem; }
+      /* A set height (not just a max) lets the browser size each photo from its width/height attributes before the
+         file arrives, so lazy-loaded photos don't make the page jump. contain keeps a photo's shape on narrow
+         screens, where max-width shrinks it below its 24rem-tall width. */
+      figure img { width: auto; height: 24rem; max-width: 100%; object-fit: contain; object-position: left top; }
+      .headshot { width: 12rem; height: auto; border-radius: 50%; }
+      figure { margin: 1.5rem 0; }
+      figcaption { font-size: 0.9rem; opacity: 0.8; }
+      nav ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; padding: 0; list-style: none; }
+    </style>
 </head>
 <body>
-<div id='main' class='full-section'>
-    <h1>Joshua Heagle | Senior Full-Stack Engineer</h1>
-</div>
-<section id='intro' class='full-section'>
-    <div class='vert-one-quarter'></div>
-    <div class='vert-row vert-one-quarter'>
-        <div class='horiz-one-twelfth lrg'></div>
-        <div class='horiz-one-third horiz-full'>
-            <h2>Hello, I'm Joshua</h2>
-        </div>
-        <div class='horiz-one-twelfth lrg'></div>
-        <div class='horiz-one-half lrg'></div>
-    </div>
-    <div class='vert-row vert-one-quarter'>
-        <div class='horiz-one-half lrg'></div>
-        <div class='horiz-one-third horiz-full'>
-            <h3>Systems-minded engineer, architecture-first</h3>
-        </div>
-        <div class='horiz-one-sixth lrg'></div>
-    </div>
-    <div class='vert-row vert-one-quarter'>
-        <div class='horiz-one-third lrg'></div>
-        <div class='horiz-column horiz-one-third horiz-full'>
-            <div class='vert-three-quarter vert-full titles'>
-                <h4 class='hideTitle displayTitle'>Architect</h4>
-                <h4 class='hideTitle'>Build</h4>
-                <h4 class='hideTitle'>Refactor</h4>
-                <h4 class='hideTitle'>Ship</h4>
-                <h4 class='hideTitle'>Scale</h4>
-                <h4 class='hideTitle'>Debug</h4>
-                <h4 class='hideTitle'>Mentor</h4>
-                <h4 class='hideTitle'>Deliver</h4>
-            </div>
-            <div class='vert-one-quarter lrg'>
-                <a href='#profile' title='Learn more about Joshua.' class='arrow-down'></a>
-            </div>
-        </div>
-        <div class='horiz-one-third lrg'></div>
-    </div>
-</section>
-<section id='profile' class='full-section'>
-    <div class='full-background' id='toronto-skyline'></div>
-    <div class='horiz-column horiz-full'>
-        <div class='vert-one-eighth lrg'></div>
-        <div class='vert-row vert-three-quarter vert-full'>
-            <div class='horiz-one-eighth lrg'></div>
-            <div class='horiz-column horiz-three-quarter horiz-full content'>
-                <div class='vert-three-quarter'>
-                    <h3>A bit about me</h3>
-                    <p>
-                        I'm a Toronto-based full-stack engineer with 5+ years at BIC (formerly Inkbox), working
-                        primarily in PHP/Laravel with Vue and React on the frontend. My focus is architecture: I look
-                        for the system underneath a feature request, not just the ticket in front of me &mdash;
-                        extracting a monolithic service into a maintainable pattern, or turning a one-off solution
-                        into a shared package the whole team can build on.
-                    </p>
-                    <p>
-                        When Inkbox's consumer business closed in late 2025, I was one of four engineers kept on
-                        specifically to build in-house engineering capability for BIC going forward &mdash; now
-                        working on a new team standing up software for BIC's factories and supply chain,
-                        company-wide.
-                    </p>
-                    <p>
-                        Outside of work, I maintain a substantial personal ecosystem of open-source TypeScript
-                        libraries, and I've spent real time directing AI coding agents through that work: architecture
-                        review, catching real bugs in generated code, and managing a genuinely large dependency graph.
-                    </p>
-                </div>
-                <div class='vert-row vert-one-quarter'>
-                    <div class='horiz-one-half'>
-                        <a class='contact-button' href='#contact'>Get In Touch</a>
-                    </div>
-                    <div class='horiz-column horiz-one-half'>
-                        <div class='vert-one-quarter'>
-                            <h5>Let's Connect</h5>
-                        </div>
-                        <div class='vert-one-eighth'></div>
-                        <div class='vert-one-quarter social-links'>
-                            <a href='https://ca.linkedin.com/in/joshuaheagle' target='_BLANK'
-                               title="Join Joshua's network on LinkedIn">
-                                <img src='/browser/img/linkedin-icon.png' alt='Professional profile of Joshua Heagle'
-                                     title='Network with the programmer on LinkedIn'/>
-                            </a>
-                            <a href='https://www.facebook.com/joshua.heagle.5' target='_BLANK'
-                               title='Friend Joshua on Facebook'>
-                                <img src='/browser/img/facebook-icon.png' alt='Developer profile of Joshua Heagle'
-                                     title='Friend the developer on Facebook'/>
-                            </a>
-                            <a href='https://twitter.com/JoshuaHeagle' target='_BLANK' title='Follow Joshua on Twitter'>
-                                <img src='/browser/img/twitter-icon.png' alt='Joshua Heagle tweets programming'
-                                     title='Follow the feed on programming'/>
-                            </a>
-                        </div>
-                        <div class='vert-three-eighth'></div>
-                    </div>
-                </div>
-            </div>
-            <div class='horiz-one-eighth lrg'></div>
-        </div>
-        <div class='vert-one-eighth lrg'>
-            <div class='horiz-column horiz-full'>
-                <div class='vert-one-half'></div>
-                <div class='vert-one-half'>
-                    <a href='#experience' title='See work experience.' class='arrow-down'></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section id='experience' class='full-section'>
-    <div class='horiz-column horiz-full'>
-        <div class='vert-one-twelfth lrg'></div>
-        <div class='vert-row vert-ten-twelfth vert-full content'>
-            <div class='horiz-one-twelfth lrg'></div>
-            <div class='horiz-column horiz-ten-twelfth horiz-full'>
-                <h3>Experience</h3>
-                <h4>Full-Stack Engineer &mdash; BIC / Inkbox, Toronto (April 2021 &ndash; Present)</h4>
-                <p>
-                    Currently on a newly formed Global Supply Chain team (one of four engineers, plus a QA) tasked
-                    with building in-house software for BIC's factories and supply chain, after Inkbox's consumer
-                    business closed and the company chose to retain a small core team rather than continue relying
-                    on third-party contractors.
-                </p>
-                <p>Prior work on the Inkbox platform:</p>
-                <ul>
-                    <li>Designed and built an Inventory &amp; Distribution system from scratch &mdash; data model,
-                        schema, admin tooling, and integration with the platform's existing DTO layer, covering a
-                        catalog of tens of thousands of SKUs &mdash; then hardened it through a real production
-                        bug-fix cycle.
-                    </li>
-                    <li>Refactored a 1,489-line monolithic sheet-generation service into a Strategy-pattern
-                        architecture (a shared interface, six generator types, composed traits), cutting the core
-                        class to 128 lines; later extended the same pattern to support bundled products and added
-                        file-fetch caching for performance.
-                    </li>
-                    <li>Introduced the platform's Data Transfer Object pattern early on and maintained it for years;
-                        drove its extraction from the main application into a standalone shared package (now used
-                        across multiple codebases), and continued improving both.
-                    </li>
-                    <li>Built and maintained the platform's discount system and product feed pipeline over multiple
-                        years each.
-                    </li>
-                    <li>Prototyped a sort/packing algorithm for a new roll-to-roll print-sheet generator &mdash;
-                        benchmarked a custom sort against PHP's built-in <code>usort</code> under real throughput
-                        constraints, and made the pragmatic call to ship the built-in.
-                    </li>
-                    <li>Broad ownership across the main application and customer-facing storefront: search
-                        infrastructure (Elasticsearch/Algolia), analytics event tracking, locale/currency handling,
-                        and internal admin tooling.
-                    </li>
-                </ul>
-                <h4>Software Developer II &mdash; Benevity, Toronto (January 2017 &ndash; April 2021)</h4>
-                <ul>
-                    <li>Architected and built new API services as part of a small team; built the Grants Forms
-                        service from the ground up, including a customizable adapter for routing submissions to
-                        arbitrary receiving APIs.
-                    </li>
-                    <li>Owned the team's weekly release process end-to-end: triaged tagged Jira tickets, built and
-                        synced Docker images with AWS, ran the accompanying MSSQL scripts, coordinated with QA to
-                        validate the release, and stayed ready to roll back to a prior image if anything broke.
-                    </li>
-                    <li>Introduced a test suite and supporting tooling to move the team toward test-driven
-                        development, on a team recognized internally as the company's best-performing &mdash; one
-                        other, larger teams were regularly pointed to for advice on improving their own process.
-                    </li>
-                </ul>
-                <p>
-                    <em>Earlier roles (2013&ndash;2017):</em> Intermediate Web Developer (BID13) &mdash; Drupal
-                    migrations, mentored junior developers. Developer/Systems Analyst (Techcom) &mdash; led
-                    client-facing development and coordinated a project team on secure financial applications.
-                    Front-end/PHP Developer (3conx, Jackpine) &mdash; early career web development.
-                </p>
-            </div>
-            <div class='horiz-one-twelfth lrg'></div>
-        </div>
-        <div class='vert-one-twelfth lrg'>
-            <div class='horiz-column horiz-full'>
-                <div class='vert-one-half'></div>
-                <div class='vert-one-half'>
-                    <a href='#work' title='See featured projects.' class='arrow-down'></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section id='work' class='full-section'>
-    <div class='vert-row vert-one-eighth lrg'>
-        <div class='horiz-full'></div>
-    </div>
-    <div class='vert-row vert-two-third vert-one-half'>
-        <div class='horiz-one-eighth lrg'></div>
-        <div class='horiz-column horiz-three-quarter horiz-full'>
-            <div id='work-grid'></div>
-        </div>
-        <div class='horiz-one-eighth lrg'></div>
-    </div>
-    <div class='vert-row vert-one-twelfth sml med social-overlay'>
-        <div class='horiz-column horiz-full'>
-            <p class='social-links'>Follow and contribute to my projects:
-                <a href='https://github.com/jheagle' target='_BLANK' title="Visit Joshua's GitHub page">
-                    <img src='/browser/img/github-icon.png' alt='Developer projects of Joshua Heagle'
-                         title='Full working projects on GitHub'/>
-                </a>
+<header>
+    <h1>Joshua Heagle</h1>
+    <p>Full-Stack Engineer</p>
+    <nav aria-label='Sections'>
+        <ul>
+            <li><a href='#now'>Now</a></li>
+            <li><a href='#how-i-work'>How I work</a></li>
+            <li><a href='#selected-work'>Selected work</a></li>
+            <li><a href='#projects'>Projects</a></li>
+            <li><a href='#outside-work'>Outside of work</a></li>
+            <li><a href='#experience'>Experience</a></li>
+            <li><a href='#contact'>Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id='hello'>
+        <h2>Hi, I'm Joshua, though most people call me Evan.</h2>
+        <figure>
+            <img class='headshot' src='/assets/img/profile/headshot-2026.jpg' srcset='/assets/img/profile/headshot-2026-480w.jpg 480w, /assets/img/profile/headshot-2026.jpg 820w' sizes='12rem' width='820' height='820' alt='Joshua Heagle, head and shoulders, outdoors in a park'>
+        </figure>
+        <p>
+            I'm a full-stack engineer in the Greater Toronto Area. I like finding the system underneath a problem, and
+            I'm the person teammates ask when they need to find where something actually lives in the code. Outside of
+            work I'm a dad of two, I draw, I garden, I fix things myself, and I train for races. Nice to meet you.
+        </p>
+    </section>
+
+    <section id='now'>
+        <h2>What I'm doing now</h2>
+        <p>
+            When Inkbox's consumer business closed in late 2025, BIC kept six of us on to build in-house engineering
+            capability. I'm now one of three engineers, alongside QA, on a new Global Supply Chain team building software
+            for BIC's factories and supply chain company-wide.
+        </p>
+        <p>
+            In the quieter stretches I've done a lot of self-directed work: a family of open-source TypeScript libraries,
+            and plenty of time directing AI coding agents through real architecture and maintenance work.
+        </p>
+        <p>
+            I'm open to new opportunities, whether a full-time role or a contract, where I can do meaningful work and
+            keep growing.
+        </p>
+    </section>
+
+    <section id='how-i-work'>
+        <h2>How I work</h2>
+        <p>
+            <strong>I look for the pattern, not just the ticket.</strong> At Inkbox I turned a 1,489-line service into a
+            strategy pattern, and turned a DTO convention into a shared package other codebases now use.
+        </p>
+        <p>
+            <strong>I'm good at finding things.</strong> When a teammate needs to know <em>where</em> a bug or feature
+            actually lives, I can usually track it down. Then I like to simplify what I find into reusable pieces: DTOs,
+            Laravel facades, shared helpers.
+        </p>
+        <p>
+            <strong>I let the evidence make the case.</strong> When there's a real disagreement about a design, I'd rather
+            investigate or prototype the alternatives and compare results than argue. At Benevity, while building Forms'
+            integration with the Grants API, I traced the business rules through and found the API didn't expose data
+            Forms needed. Once I'd shown the gap, I was asked to take over and build the missing pieces myself.
+        </p>
+        <p>
+            <strong>I make pragmatic calls.</strong> I benchmarked a custom sorting algorithm against PHP's built-in
+            <code>usort</code> under a 5-second budget. Mine came out slightly ahead but was still too slow for the
+            budget, so I shipped the built-in.
+        </p>
+        <p>
+            <strong>I raise the floor for the team.</strong> At Benevity I helped introduce Jest to a Grants codebase
+            that had no JavaScript test coverage, and took shifts owning the team's weekly release end to end. Earlier,
+            I mentored junior developers at BID13.
+        </p>
+        <p>
+            <strong>I use AI tools critically.</strong> I direct coding agents through real work, and that includes
+            reviewing their architecture and catching the bugs they introduce.
+        </p>
+    </section>
+
+    <section id='selected-work'>
+        <h2>Selected work</h2>
+        <article>
+            <h3>Inventory &amp; Distribution system (Inkbox, 2023)</h3>
+            <p>
+                I designed and built it end to end: data model, schema, Nova admin tooling and integration with the
+                platform's DTO layer, covering tens of thousands of SKUs. Then I hardened it through a real production
+                bug-fix cycle.
             </p>
-        </div>
-    </div>
-    <div class='vert-row vert-one-eighth lrg'>
-        <div class='horiz-column horiz-full'>
-            <div class='vert-one-half'>
-                <p class='social-links'>Follow and contribute to my projects:
-                    <a href='https://github.com/jheagle' target='_BLANK' title="Visit Joshua's GitHub page">
-                        <img src='/browser/img/github-icon.png' alt='Developer projects of Joshua Heagle'
-                             title='Full working projects on GitHub'/>
-                    </a>
-                </p>
-            </div>
-            <div class='vert-one-half'>
-                <a href='#contact' title='Get in touch.' class='arrow-down'></a>
-            </div>
-        </div>
-    </div>
-</section>
-<section id='contact' class='full-section'>
-    <div class='vert-full'>
-        <div class='horiz-full'>
-            <div class='vert-row vert-one-third lrg'>
-                <div class='horiz-column horiz-two-fifth'>
-                    <div class='vert-one-fifth'></div>
-                    <div class='vert-row vert-three-fifth'>
-                        <div class='horiz-one-quarter'></div>
-                        <div class='horiz-three-quarter content company-contact'>
-                            <h4>Joshua Heagle</h4>
-                            <p>Toronto &amp; GTA:
-                                <a href='tel:+16477618549'>647-761-8549</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class='vert-one-fifth'></div>
-                </div>
-                <div class='horiz-one-tenth'></div>
-                <div class='horiz-two-fifth overflow-bottom-fifty content'>
-                    <div class='vert-four-fifth contact-note'>
-                        <h3>Let's connect</h3>
-                        <p><span class='double-underline'>Open</span> to new opportunities &mdash; reach out about a
-                            role, a question, or just to talk shop, and I'll get back to you.</p>
-                    </div>
-                    <div class='vert-one-fifth social-links'>
-                        <a href="https://ca.linkedin.com/in/joshuaheagle" target="_BLANK"
-                           title="Join Joshua's network on LinkedIn">
-                            <img src="/browser/img/linkedin-icon.png" alt="Professional profile of Joshua Heagle"
-                                 title="Network with the programmer on LinkedIn"/>
-                        </a>
-                        <a href="https://github.com/jheagle" target="_BLANK" title="Visit Joshua's GitHub page">
-                            <img src="/browser/img/github-icon.png" alt="Developer projects of Joshua Heagle"
-                                 title="Full working projects on GitHub"/>
-                        </a>
-                    </div>
-                </div>
-                <div class='horiz-one-tenth'></div>
-            </div>
-            <div class='vert-row med-vert-one-quarter vert-one-sixth sml med'>
-                <div class='med-horiz-one-half horiz-full content company-contact'>
-                    <h4>Joshua Heagle</h4>
-                    <p>Toronto &amp; GTA:
-                        <a href='tel:+16477618549'>647-761-8549</a>
-                    </p>
-                </div>
-                <div class='horiz-one-half overflow-bottom-fifty content med'>
-                    <div class='vert-four-fifth contact-note'>
-                        <h3>Let's connect</h3>
-                        <p><span class='double-underline'>Open</span> to new opportunities &mdash; reach out about a
-                            role, a question, or just to talk shop, and I'll get back to you.</p>
-                    </div>
-                    <div class='vert-one-fifth social-links'>
-                        <a href="https://ca.linkedin.com/in/joshuaheagle" target="_BLANK"
-                           title="Join Joshua's network on LinkedIn">
-                            <img src="/browser/img/linkedin-icon.png" alt="Professional profile of Joshua Heagle"
-                                 title="Network with the programmer on LinkedIn"/>
-                        </a>
-                        <a href="https://github.com/jheagle" target="_BLANK" title="Visit Joshua's GitHub page">
-                            <img src="/browser/img/github-icon.png" alt="Developer projects of Joshua Heagle"
-                                 title="Full working projects on GitHub"/>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<footer id='home-footer' class='vert-row vert-one-quarter'>
-    <div class='horiz-one-twelfth lrg'></div>
-    <div class='horiz-column horiz-ten-twelfth horiz-full'>
-        <div class='vert-one-twelfth lrg'></div>
-        <div class='vert-row vert-ten-twelfth vert-full copyright'>
-            <div class='horiz-column horiz-full'>
-                <div class='vert-one-third copyright-info'>
-                    <p>Joshua Heagle &copy; 2026</p>
-                </div>
-                <div class='vert-one-third social-links'>
-                    <a href='https://ca.linkedin.com/in/joshuaheagle' target='_BLANK'
-                       title="Join Joshua's network on LinkedIn">
-                        <img src='/browser/img/linkedin-icon.png' alt='Professional profile of Joshua Heagle'
-                             title='Network with the programmer on LinkedIn'/>
-                    </a>
-                    <a href='https://www.facebook.com/joshua.heagle.5' target='_BLANK'
-                       title='Friend Joshua on Facebook'>
-                        <img src='/browser/img/facebook-icon.png' alt='Developer profile of Joshua Heagle'
-                             title='Friend the developer on Facebook'/>
-                    </a>
-                    <a href='https://twitter.com/JoshuaHeagle' target='_BLANK' title='Follow Joshua on Twitter'>
-                        <img src='/browser/img/twitter-icon.png' alt='Joshua Heagle tweets programming'
-                             title='Follow the feed on programming'/>
-                    </a>
-                    <a href='https://github.com/jheagle' target='_BLANK' title="Visit Joshua's GitHub page">
-                        <img src='/browser/img/github-icon.png' alt='Developer projects of Joshua Heagle'
-                             title='Full working projects on GitHub'/>
-                    </a>
-                </div>
-                <div class='vert-one-third copyright-info'></div>
-            </div>
-        </div>
-        <div class='vert-one-twelfth lrg'></div>
-    </div>
-    <div class='horiz-one-twelfth lrg'></div>
+        </article>
+        <article>
+            <h3>Sheet generation refactor (Inkbox, 2023&ndash;24)</h3>
+            <p>
+                A 1,489-line service became 128 lines, backed by a <code>GeneratesSheets</code> interface, six generator
+                classes and shared traits. The new structure made it easy to extend later for bundled products, and to
+                add caching.
+            </p>
+        </article>
+        <article>
+            <h3>The DTO pattern, from convention to package (Inkbox, 2021 onward)</h3>
+            <p>
+                I introduced the Data Transfer Object pattern early in the core app's life and maintained it for years.
+                When other codebases needed it, I directed its extraction into a standalone shared package.
+            </p>
+        </article>
+        <article>
+            <h3>Grants Forms service (Benevity)</h3>
+            <p>
+                One of the projects I'm proudest of. I helped guide it and built much of it from the ground up, including
+                a configurable adapter that routes form submissions to any receiving API.
+            </p>
+        </article>
+    </section>
+
+    <section id='projects'>
+        <h2>What I build on my own time</h2>
+        <p>
+            I maintain a small ecosystem of TypeScript libraries that build on each other: a JSON-to-DOM rendering layer,
+            a matrix/grid layer on top of it, a lightweight DOM implementation for testing, and the shared build and test
+            tooling underneath them all. Battleship is the proof that the whole stack works.
+        </p>
+        <ul>
+            <li>
+                <a href='/projects/battleship/'>Battleship</a>: a multiplayer-ready game built on the whole stack.
+                <a href='/projects/battleship/play.html'>Play it</a> &middot;
+                <a href='https://github.com/jheagle/battleship'>source</a>
+            </li>
+            <li><a href='/projects/json-dom/'>JSON DOM</a>: a from-scratch virtual-DOM framework with a composable trait system (<a href='/projects/json-dom/docs/'>docs</a>).</li>
+            <li><a href='/projects/matrix-dom/'>Matrix DOM</a>: grid and matrix geometry helpers, used by Battleship's board.</li>
+            <li><a href='/projects/pseudo-dom/'>Pseudo DOM</a>: a lightweight DOM for testing in Node, on npm, and used to test this site.</li>
+            <li><a href='/projects/si-funciona/'>Sí, funciona</a>: dependency-light, fully typed utility functions.</li>
+            <li><a href='/projects/collect-your-stuff/'>Collect your stuff (and go)!</a>: classic collection types, such as queues, stacks and linked lists.</li>
+            <li><a href='/projects/json-file-db/'>JSON File DB</a>: a query engine that treats a folder of JSON files as a database.</li>
+            <li><a href='/projects/test-fs/'>Test Filesystem</a>: set up and tear down temp directories for filesystem tests.</li>
+            <li><a href='/projects/common-exports/'>Common Exports</a>: converts ES Modules to CommonJS for dual-format builds.</li>
+            <li><a href='/projects/js-build-tools/'>js-build-tools</a>: the shared build, test and docs pipeline behind all of the above.</li>
+            <li><a href='/projects/title-switcher/'>Title Switcher</a>: my typing-effect plugin, on npm.</li>
+            <li><a href='/quizzes/'>Quizzes</a>: JSON-DOM-based dynamic forms.</li>
+            <li><a href='/projects/workout-planner/'>Workout Planner</a>: an early, evolving idea for workout tracking.</li>
+        </ul>
+        <p><a href='/projects/'>See all projects &rarr;</a></p>
+    </section>
+
+    <section id='outside-work'>
+        <h2>Outside of work</h2>
+
+        <h3>Fitness</h3>
+        <p>
+            In late 2023, two months into a new gym routine, I ended up in hospital for six days with a late-stage
+            appendicitis. Three months of no lifting later, I started running as a warm-up, and kept going. Since then: my
+            first 10K (Whitby, June 2024), a 1:45:01 half marathon (Toronto, May 2025), the Baycrest ride on the Don Valley
+            Parkway, a try-a-tri in Cornwall, second place in a dead-hang challenge after this year's Toronto Pride 5K, and
+            a birthday tradition of running my age in kilometres: 39&nbsp;km last year, 40&nbsp;km this year. These days
+            it's lifting, running and swimming in rotation. I'm chasing a sub-20-minute 5K, a 225&nbsp;lb bench press, and
+            my first muscle-up.
+        </p>
+        <p>
+            My advice to anyone starting: find a way of moving you enjoy, do it often, and get your bloodwork done.
+        </p>
+        <p>
+            I share training as <a href='https://www.instagram.com/evan.get.fit/'>@evan.get.fit</a>, and
+            <a href='https://evanget.fit'>evanget.fit</a> is coming soon, with tips, tracking tools and guidance.
+        </p>
+        <figure>
+            <img src='/assets/img/hobbies/fitness/running/2025-toronto-half-marathon.jpg' srcset='/assets/img/hobbies/fitness/running/2025-toronto-half-marathon-480w.jpg 480w, /assets/img/hobbies/fitness/running/2025-toronto-half-marathon-960w.jpg 960w, /assets/img/hobbies/fitness/running/2025-toronto-half-marathon.jpg 1205w' sizes='(max-width: 321px) calc(100vw - 2rem), 289px' width='1205' height='1600' loading='lazy' alt='Joshua at the finish-photo booth of the 2025 Toronto half marathon, the clock reading 1:45:01'>
+            <figcaption>Toronto half marathon, May 2025: 1:45:01.</figcaption>
+        </figure>
+        <figure>
+            <img src='/assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running.jpg' srcset='/assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running-480w.jpg 480w, /assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running-960w.jpg 960w, /assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running.jpg 1067w' sizes='(max-width: 288px) calc(100vw - 2rem), 256px' width='1067' height='1600' loading='lazy' alt='Joshua running the final leg of the Cornwall try-a-tri'>
+            <figcaption>The run leg of the Cornwall try-a-tri.</figcaption>
+        </figure>
+        <figure>
+            <img src='/assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang.jpg' srcset='/assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang-480w.jpg 480w, /assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang-960w.jpg 960w, /assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang.jpg 1200w' sizes='(max-width: 433px) calc(100vw - 2rem), 401px' width='1200' height='1150' loading='lazy' alt='Joshua pointing at a dead-hang challenge scoreboard showing his time of 1:45, wearing a Toronto Pride 5K medal'>
+            <figcaption>After the 2026 Toronto Pride 5K: second place in the dead-hang challenge at 1:45, the same as my half-marathon time.</figcaption>
+        </figure>
+        <figure>
+            <video controls preload='metadata' playsinline width='1024' height='1280' poster='/assets/img/hobbies/fitness/progress/March_2022-January_2026-poster.jpg' src='/assets/img/hobbies/fitness/progress/March_2022-January_2026.mp4'></video>
+            <figcaption>Four years of progress, March 2022 to January 2026.</figcaption>
+        </figure>
+        <figure>
+            <video controls preload='metadata' playsinline width='720' height='1280' poster='/assets/img/hobbies/fitness/bodybuilding/chin-ups-25lbs-6-poster.jpg' src='/assets/img/hobbies/fitness/bodybuilding/chin-ups-25lbs-6.mp4'></video>
+            <figcaption>Six weighted chin-ups with 25&nbsp;lbs.</figcaption>
+        </figure>
+
+        <h3>Drawing</h3>
+        <p>
+            I've drawn since my teens. These days, prompts from <cite>642 Things to Draw</cite> keep me going, plus the
+            occasional commission from my son (an LA Knight portrait for his friend's birthday card).
+        </p>
+        <figure>
+            <img src='/assets/img/art/sketch-la-knight.jpg' srcset='/assets/img/art/sketch-la-knight-480w.jpg 480w, /assets/img/art/sketch-la-knight-960w.jpg 960w, /assets/img/art/sketch-la-knight.jpg 1000w' sizes='(max-width: 352px) calc(100vw - 2rem), 320px' width='1000' height='1200' loading='lazy' alt='Pencil portrait of the wrestler LA Knight'>
+            <figcaption>LA Knight, drawn for a birthday card.</figcaption>
+        </figure>
+        <figure>
+            <img src='/assets/img/art/ideas-anchor-skunk-chair.jpg' srcset='/assets/img/art/ideas-anchor-skunk-chair-480w.jpg 480w, /assets/img/art/ideas-anchor-skunk-chair.jpg 852w' sizes='(max-width: 337px) calc(100vw - 2rem), 305px' width='852' height='1072' loading='lazy' alt='A sketchbook page of four pencil drawings: an anchor, a skunk, a desk chair and Van Gogh&#39;s ear'>
+            <figcaption>Four prompts from <cite>642 Things to Draw</cite>: an anchor, a skunk, a desk chair and Van Gogh's ear.</figcaption>
+        </figure>
+        <figure>
+            <img src='/assets/img/art/frog-eye-zipper-eyelid.jpg' srcset='/assets/img/art/frog-eye-zipper-eyelid-480w.jpg 480w, /assets/img/art/frog-eye-zipper-eyelid-960w.jpg 960w, /assets/img/art/frog-eye-zipper-eyelid.jpg 1076w' sizes='(max-width: 431px) calc(100vw - 2rem), 399px' width='1076' height='1036' loading='lazy' alt='An enlarged drawing of a frog&#39;s eye, with a zipper drawn around it as an eyelid'>
+            <figcaption>An abstraction of an enlarged frog's eye, with a zipper added as an eyelid. I was 15.</figcaption>
+        </figure>
+
+        <h3>Gardening</h3>
+        <p>
+            I replaced almost all of my lawn with white clover, wildflowers and native plants. They're better for
+            pollinators and the environment, and far less work and money to keep up than grass.
+        </p>
+        <figure>
+            <img src='/assets/img/hobbies/garden/garden-front-wildflowers.jpg' srcset='/assets/img/hobbies/garden/garden-front-wildflowers-480w.jpg 480w, /assets/img/hobbies/garden/garden-front-wildflowers.jpg 945w' sizes='(max-width: 410px) calc(100vw - 2rem), 378px' width='945' height='960' loading='lazy' alt='A bed of wildflowers in full bloom'>
+            <figcaption>Wildflowers where the lawn used to be.</figcaption>
+        </figure>
+        <figure>
+            <img src='/assets/img/hobbies/garden/garden-clover-replace-grass.jpg' srcset='/assets/img/hobbies/garden/garden-clover-replace-grass-480w.jpg 480w, /assets/img/hobbies/garden/garden-clover-replace-grass-960w.jpg 960w, /assets/img/hobbies/garden/garden-clover-replace-grass.jpg 1205w' sizes='(max-width: 321px) calc(100vw - 2rem), 289px' width='1205' height='1600' loading='lazy' alt='White clover growing in place of grass, beside a stone path'>
+            <figcaption>White clover instead of grass.</figcaption>
+        </figure>
+        <figure>
+            <img src='/assets/img/hobbies/garden/garden-pick-your-own-bouquet.jpg' srcset='/assets/img/hobbies/garden/garden-pick-your-own-bouquet-480w.jpg 480w, /assets/img/hobbies/garden/garden-pick-your-own-bouquet.jpg 620w' sizes='(max-width: 234px) calc(100vw - 2rem), 202px' width='620' height='1180' loading='lazy' alt='Joshua holding a large bouquet of mixed flowers in a metal pot'>
+            <figcaption>A pick-your-own bouquet from a local farm, with many of the same flowers I grow at home.</figcaption>
+        </figure>
+
+        <h3>Fixing things myself</h3>
+        <p>
+            I wired an EV charger at home, which passed inspection, and reupholstered our kitchen chairs. I'm happiest
+            learning whatever skill the job in front of me needs.
+        </p>
+        <figure>
+            <img src='/assets/img/hobbies/fix-stuff/reupholster-before.jpg' srcset='/assets/img/hobbies/fix-stuff/reupholster-before-480w.jpg 480w, /assets/img/hobbies/fix-stuff/reupholster-before-960w.jpg 960w, /assets/img/hobbies/fix-stuff/reupholster-before.jpg 1205w' sizes='(max-width: 321px) calc(100vw - 2rem), 289px' width='1205' height='1600' loading='lazy' alt='A kitchen chair with a badly cracked black vinyl seat'>
+            <figcaption>Before.</figcaption>
+        </figure>
+        <figure>
+            <img src='/assets/img/hobbies/fix-stuff/reupholster-after.jpg' srcset='/assets/img/hobbies/fix-stuff/reupholster-after-480w.jpg 480w, /assets/img/hobbies/fix-stuff/reupholster-after-960w.jpg 960w, /assets/img/hobbies/fix-stuff/reupholster-after.jpg 1205w' sizes='(max-width: 321px) calc(100vw - 2rem), 289px' width='1205' height='1600' loading='lazy' alt='Four kitchen chairs with freshly reupholstered red and black seats'>
+            <figcaption>After.</figcaption>
+        </figure>
+
+        <h3>Languages</h3>
+        <p>
+            I'm near-fluent in Spanish, after two years in California living and teaching in it. I'm conversational in
+            Mandarin, and I'm building confidence in French (my dad's side of the family is French-Canadian). I also hold
+            a TESOL certificate.
+        </p>
+
+        <h3>Community</h3>
+        <p>
+            I use my platform to support feminist and LGBTQ+ causes, and I stay involved locally in Durham Region,
+            sometimes in person at council meetings.
+        </p>
+    </section>
+
+    <section id='experience'>
+        <h2>Where I've worked</h2>
+        <ul>
+            <li><strong>Full-Stack Engineer</strong>, BIC (formerly Inkbox), Toronto, April 2021 &ndash; present</li>
+            <li><strong>Software Developer II</strong>, Benevity, Toronto, January 2017 &ndash; April 2021</li>
+            <li>
+                <strong>Intermediate Web Developer</strong>, BID13 &middot; <strong>Developer/Systems Analyst</strong>,
+                Techcom &middot; <strong>Front-end/PHP Developer</strong>, 3conx and Jackpine (2013&ndash;2017)
+            </li>
+        </ul>
+        <h3>Education</h3>
+        <p>Computer Engineering Technology &ndash; Computer Science, Algonquin College (2010&ndash;2013)</p>
+        <p><a href='/assets/documents/Joshua_Heagle_Resume.pdf'>Download my resume (PDF)</a></p>
+    </section>
+
+    <section id='contact'>
+        <h2>Let's chat</h2>
+        <p>If you're hiring, building something interesting, or just want to talk shop, I'd like to hear from you.</p>
+        <ul>
+            <li>Email: <a href='mailto:joshuaheagle@gmail.com'>joshuaheagle@gmail.com</a></li>
+            <li>
+                <a href='https://ca.linkedin.com/in/joshuaheagle'>LinkedIn</a> &middot;
+                <a href='https://github.com/jheagle'>GitHub</a> &middot;
+                <a href='https://x.com/JoshuaHeagle'>X</a>
+            </li>
+            <li>
+                Fitness: <a href='https://www.instagram.com/evan.get.fit/'>Instagram</a> &middot;
+                <a href='https://www.facebook.com/evan.get.fit'>Facebook</a> &middot;
+                <a href='https://www.strava.com/athletes/136044729'>Strava</a>
+            </li>
+        </ul>
+    </section>
+</main>
+
+<footer>
+    <p>Joshua Heagle &copy; 2026</p>
 </footer>
-<script type='module'>
-    home()
-</script>
-<script src='/projects/title-switcher/browser/titleSwitcher.min.js'></script>
-<script>
-  /* v  place custom JavaScript below to instantiate the titleClass  v */
-  const randomTitles = new TitleSwitcher('.titles', 'typingEffect')
-  randomTitles.startTitles({ isRandom: true }) // set to random title switching, then defaults are 400 and 200 milliseconds for switch/effects
-</script>
 </body>
 </html>

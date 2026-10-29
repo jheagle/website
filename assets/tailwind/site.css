@@ -1,0 +1,15 @@
+/* Tailwind v4 entry point, compiled by `npm run build:css` into browser/tailwind/site.css.
+   No utility classes are used in the markup yet; this is wired in ahead of the design pass. */
+
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+/* Preflight (Tailwind's CSS reset) is left out for now so the plain pages keep the browser's default
+   heading sizes, list bullets and margins. Uncomment it when the design pass starts. */
+/* @import "tailwindcss/preflight.css" layer(base); */
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+
+/* Only scan the site's own pages and templates for class names, not node_modules, docs or the project bundles. */
+@source "../../index.html";
+@source "../../projects/index.html";
+@source "../js/templates";

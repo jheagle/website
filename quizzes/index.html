@@ -1,21 +1,26 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Quizzes</title>
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="./browser/css/main.css">
+    <title>Quizzes | Joshua Heagle</title>
+    <link rel="stylesheet" href="../projects/shared.css">
     <script src="./browser/quizzes.js"></script>
 </head>
 <body>
-<p>
-    Check the Browser Console to play with the available functions on <code>quizzes</code> for Quizzes.
-</p>
-<a href="./138cb946-fd1a-4b61-a8cc-f82c4ed92f1b">See a sample quiz</a>
-<script type="module">
-  window.addEventListener('DOMContentLoaded', () => {
-    console.log(quizzes, 'Quizzes')
-  })
-</script>
+<div class="page">
+    <a class="back-link" href="/projects/">&larr; Back to projects</a>
+    <div class="project-header">
+        <h1>Quizzes</h1>
+        <p>Dynamic forms and quizzes built with <a href="../projects/json-dom/">JSON DOM</a>, as a lightweight
+            alternative to form.io. Each quiz is defined as JSON-DOM structure and looked up by its own unique ID.</p>
+    </div>
+    <div class="actions">
+        <a class="primary" href="./docs/">Documentation</a>
+        <a href="https://github.com/jheagle/quizzes" target="_blank">View on GitHub</a>
+        <a href="./138cb946-fd1a-4b61-a8cc-f82c4ed92f1b/">Try the demo</a>
+    </div>
+    <p class="hint">The demo is a sample quiz. Open the browser console to use <code>quizzes</code> directly.</p>
+</div>
 </body>
+</html>
