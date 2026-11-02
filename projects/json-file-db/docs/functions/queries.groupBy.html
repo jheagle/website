@@ -14,16 +14,20 @@
 <section class="tsd-panel">
 <ul class="tsd-signatures">
 <li class="">
-<div class="tsd-signature tsd-anchor-link" id="groupby"><span class="tsd-kind-call-signature">groupBy</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">dataSet</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">groupProperty</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><a href="#groupby" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-signature tsd-anchor-link" id="groupby"><span class="tsd-kind-call-signature">groupBy</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">dataSet</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">fields</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">[]</span> <span class="tsd-signature-symbol">|</span> <a href="../types/queries.Group.html" class="tsd-signature-type tsd-kind-type-alias">Group</a><span class="tsd-signature-symbol">[]</span><a href="#groupby" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Group rows by each field in turn. The groups are a list in the order their first row came, so a sort before
+grouping orders the groups too (and the rows within each one).</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
-<li><span><span class="tsd-kind-parameter">dataSet</span>: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></span></li>
-<li><span><span class="tsd-kind-parameter">groupProperty</span>: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#39;&#39;</span></span></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4><aside class="tsd-sources">
+<li><span><span class="tsd-kind-parameter">dataSet</span>: <span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></span></li>
+<li><span><span class="tsd-kind-parameter">fields</span>: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">[]</span> <span class="tsd-signature-symbol">|</span> <a href="../types/queries.Group.html" class="tsd-signature-type tsd-kind-type-alias">Group</a><span class="tsd-signature-symbol">[]</span></h4><p>The rows as they were when there's no field, otherwise the groups.</p>
+<aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/json-file-db/blob/main/src/data/queries/groupBy.ts#L1">src/data/queries/groupBy.ts:1</a></li></ul></aside></div></li></ul></section></div>
+<li>Defined in <a href="https://github.com/jheagle/json-file-db/blob/main/src/data/queries/groupBy.ts#L44">src/data/queries/groupBy.ts:44</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
