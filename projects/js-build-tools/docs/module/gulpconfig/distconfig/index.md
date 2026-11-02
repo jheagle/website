@@ -7,7 +7,7 @@ description: Configurations for building the node distribution files.
 
 # DistConfig
 
-<SourceLink href="/source/gulp-config-mjs/#L98" label="gulp.config.mjs:98" />
+<SourceLink href="/source/gulp-config-mjs/#L99" label="gulp.config.mjs:99" />
 
 Configurations for building the node distribution files.
 

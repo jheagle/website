@@ -29,13 +29,15 @@ Runs several processes to build and validate the project. Cleans and lints the s
 
 <MemberHeading id="bundle" depth="3" name="bundle" sig="bundle" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/bundle-mjs/#L28" sourceLabel="bundle.mjs:28" />
+<MemberMeta badges="static" sourceHref="/source/functions/bundle-mjs/#L289" sourceLabel="bundle.mjs:289" />
 
 Starting at each bundle's own entry point (dist.main for the primary bundle, or its own override from browser.bundles), bundle all the reachable files into a single file per bundle and store them in the specified output directory. A project with no browser.bundles entries gets exactly the one bundle it always did; each additional entry produces its own separate bundle (for example, a render-only variant built from a different entry point than the full bundle).
 
-A bundle's name does double duty: it names the output file (name.js) and, via browserify's `standalone` option, is also the name its exports are exposed under - as a global when loaded with a bare `<script>` tag, or as the module when required via CommonJS/AMD. Without this, a bundle built from a real entry point (one that actually exports something) builds successfully but exposes nothing a consumer can reach.
+Bundling is done by esbuild (replacing browserify since 6.9.0), as an IIFE. A bundle's name does double duty: it names the output file (name.js) and is also the name its exports are exposed under - as a global when loaded with a bare `<script>` tag (camel-cased the way browserify's `standalone` option did, so `matrix-dom` is `window.matrixDom`), or as the module when required via CommonJS. AMD loaders are no longer supported.
 
 Two escape hatches from browser.config.json keep an unwanted dependency (or a dependency's dependency) out of the bundle: 'ignore' replaces it with an empty object (safe when your code never actually calls into it - for example a library's default option value you always override with your own) and 'exclude' leaves it out entirely (your code must not require it, or provide it another way, such as a separate script tag).
+
+Node built-ins: `path` and `process` get browser stand-ins, any other built-in resolves to a package of the same name if the project installs one, otherwise to an empty object.
 
 **Returns**
 
@@ -69,7 +71,7 @@ Copy files from one place to another - any number of { from, to, base? } entries
 
 Reuses copyFor (already shared with copyFonts) rather than a fresh src()/dest() pair - that keeps its existing encoding: false fix (Gulp 5's default utf8 handling corrupts binary files such as fonts or a minified bundle) instead of silently losing it in a parallel implementation.
 
-Each entry runs as its own independent copyFor(), awaited via Promise.all rather than merged into one combined stream (mergeStream, the pattern bundle.mjs uses) - that pattern assumes every merged stream ends up at the same shared destination; here, each entry can have a genuinely different one, and merging streams that each already terminate at their own separate dest() hit a real "write after end" error in practice.
+Each entry runs as its own independent copyFor(), awaited via Promise.all rather than merged into one combined stream (the pattern bundle.mjs used before esbuild) - that pattern assumes every merged stream ends up at the same shared destination; here, each entry can have a genuinely different one, and merging streams that each already terminate at their own separate dest() hit a real "write after end" error in practice.
 
 **Returns**
 
