@@ -92,7 +92,7 @@ One copy-files entry: a glob (or array of globs) to copy, and where to copy it.
 
 <MemberHeading id="browserconfig" depth="3" name="BrowserConfig" sig="BrowserConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L81" sourceLabel="gulp.config.mjs:81" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L82" sourceLabel="gulp.config.mjs:82" />
 
 Configurations for building the browser files.
 
@@ -102,13 +102,13 @@ Configurations for building the browser files.
 - `from` ([StringSetting](/module/gulpconfig#stringsetting)) — The search pattern used for retrieving compiled distribution files.
 - `name` ([StringSetting](/module/gulpconfig#stringsetting)) — The name to use for the browser-bundled output file (.js will be appended).
 - `to` ([StringSetting](/module/gulpconfig#stringsetting)) — The output directory for browser-bundled files.
-- `ignore` ([ArrayableSetting](/module/gulpconfig#arrayablesetting)) — Module names or file paths which resolve to an empty object ({}) in the bundle instead of their real contents. For a dependency which is only reached because it is the default value of an option you always override (for example a selector engine's default DOM adapter, when you always pass your own), this keeps it (and anything only it requires) out of the bundle, as long as your code never actually reaches the real module by not overriding that option. See browserify's b.ignore(file).
-- `exclude` ([ArrayableSetting](/module/gulpconfig#arrayablesetting)) — Module names or file paths left out of the bundle entirely; requiring one at runtime throws unless something else provides it (for example a script tag loading it separately). See browserify's b.exclude(file).
+- `ignore` ([ArrayableSetting](/module/gulpconfig#arrayablesetting)) — Module names or file paths which resolve to an empty object ({}) in the bundle instead of their real contents. For a dependency which is only reached because it is the default value of an option you always override (for example a selector engine's default DOM adapter, when you always pass your own), this keeps it (and anything only it requires) out of the bundle, as long as your code never actually reaches the real module by not overriding that option. Matches browserify's b.ignore(file): a module name (also any file inside that package), or a file path with its extension, starting with './' or '/'.
+- `exclude` ([ArrayableSetting](/module/gulpconfig#arrayablesetting)) — Module names or file paths left out of the bundle entirely; requiring one at runtime throws unless something else provides it (for example a script tag loading it separately). Passed to esbuild's `external` (a module name also covers its subpaths, such as `name/lib/file`).
 - `bundles` (Array.\<[module:gulpConfig\~AdditionalBundleConfig](/module/gulpconfig#additionalbundleconfig)>) — Additional bundles to produce alongside the primary one (name/dist.main/ignore/exclude above) - for example a render-only variant built from a different entry point than the full bundle. Empty by default: a project that never sets this gets exactly the one bundle it always did.
 
 <MemberHeading id="additionalbundleconfig" depth="3" name="AdditionalBundleConfig" sig="AdditionalBundleConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L91" sourceLabel="gulp.config.mjs:91" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L92" sourceLabel="gulp.config.mjs:92" />
 
 One additional bundle - everything but `name` falls back to the primary bundle's own value when omitted, so an additional bundle only has to specify what's actually different about it.
 
@@ -121,7 +121,7 @@ One additional bundle - everything but `name` falls back to the primary bundle's
 
 <MemberHeading id="distconfig" depth="3" name="DistConfig" sig="DistConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L98" sourceLabel="gulp.config.mjs:98" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L99" sourceLabel="gulp.config.mjs:99" />
 
 Configurations for building the node distribution files.
 
@@ -133,7 +133,7 @@ Configurations for building the node distribution files.
 
 <MemberHeading id="fontconfig" depth="3" name="FontConfig" sig="FontConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L105" sourceLabel="gulp.config.mjs:105" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L106" sourceLabel="gulp.config.mjs:106" />
 
 Configurations for copying the font files.
 
@@ -145,7 +145,7 @@ Configurations for copying the font files.
 
 <MemberHeading id="imageconfig" depth="3" name="ImageConfig" sig="ImageConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L119" sourceLabel="gulp.config.mjs:119" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L120" sourceLabel="gulp.config.mjs:120" />
 
 Configurations to minify and copy the images.
 
@@ -159,7 +159,7 @@ Configurations to minify and copy the images.
 
 <MemberHeading id="lintconfig" depth="3" name="LintConfig" sig="LintConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L129" sourceLabel="gulp.config.mjs:129" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L130" sourceLabel="gulp.config.mjs:130" />
 
 Configurations for linting (see [module:partials.neostandardLint](/module/partials#neostandardlint)).
 
@@ -169,7 +169,7 @@ Configurations for linting (see [module:partials.neostandardLint](/module/partia
 
 <MemberHeading id="readmeconfig" depth="3" name="ReadmeConfig" sig="ReadmeConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L141" sourceLabel="gulp.config.mjs:141" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L142" sourceLabel="gulp.config.mjs:142" />
 
 Configurations to compile and generate the Readme file.
 
@@ -184,7 +184,7 @@ Configurations to compile and generate the Readme file.
 
 <MemberHeading id="docsconfig" depth="3" name="DocsConfig" sig="DocsConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L171" sourceLabel="gulp.config.mjs:171" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L172" sourceLabel="gulp.config.mjs:172" />
 
 Configurations for generating the HTML documentation of a project's own source, with either TypeDoc (real TypeScript types) or jsdoc (a modern theme over jsdoc's own classic default) - see docs.method.
 
@@ -205,7 +205,7 @@ Configurations for generating the HTML documentation of a project's own source, 
 
 <MemberHeading id="sassconfig" depth="3" name="SassConfig" sig="SassConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L179" sourceLabel="gulp.config.mjs:179" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L180" sourceLabel="gulp.config.mjs:180" />
 
 Configurations to compile and copy the sass files into css.
 
@@ -218,7 +218,7 @@ Configurations to compile and copy the sass files into css.
 
 <MemberHeading id="testconfig" depth="3" name="TestConfig" sig="TestConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L187" sourceLabel="gulp.config.mjs:187" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L188" sourceLabel="gulp.config.mjs:188" />
 
 Configurations for running the test suite.
 
@@ -230,7 +230,7 @@ Configurations for running the test suite.
 
 <MemberHeading id="tsconfig" depth="3" name="TsConfig" sig="TsConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L195" sourceLabel="gulp.config.mjs:195" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L196" sourceLabel="gulp.config.mjs:196" />
 
 Configurations for compiling typescript into JS files.
 
@@ -243,7 +243,7 @@ Configurations for compiling typescript into JS files.
 
 <MemberHeading id="configurations" depth="3" name="Configurations" sig="Configurations: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L215" sourceLabel="gulp.config.mjs:215" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L216" sourceLabel="gulp.config.mjs:216" />
 
 A set of Configurations options defined by Settings.
 
@@ -266,7 +266,7 @@ A set of Configurations options defined by Settings.
 
 <MemberHeading id="get" depth="3" name="get" sig="get" />
 
-<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L340" sourceLabel="gulp.config.mjs:340" />
+<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L341" sourceLabel="gulp.config.mjs:341" />
 
 Retrieve a value from the configurations, default may be returned.
 
@@ -281,7 +281,7 @@ Retrieve a value from the configurations, default may be returned.
 
 <MemberHeading id="set" depth="3" name="set" sig="set" />
 
-<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L349" sourceLabel="gulp.config.mjs:349" />
+<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L350" sourceLabel="gulp.config.mjs:350" />
 
 Specify a value for the configurations to use.
 
