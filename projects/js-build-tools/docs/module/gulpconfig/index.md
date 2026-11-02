@@ -145,12 +145,13 @@ Configurations for copying the font files.
 
 <MemberHeading id="imageconfig" depth="3" name="ImageConfig" sig="ImageConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L115" sourceLabel="gulp.config.mjs:115" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L119" sourceLabel="gulp.config.mjs:119" />
 
 Configurations to minify and copy the images.
 
 **Properties**
 
+- `cacheDir` ([StringSetting](/module/gulpconfig#stringsetting)) — Where optimized images are cached between runs, so an image that hasn't changed isn't optimized again. An upgrade of imagemin (or its plugins) or other settings starts new results. Inside node_modules by default, so it's never committed; old entries aren't pruned, so delete it now and then to start over.
 - `enabled` ([BooleanSetting](/module/gulpconfig#booleansetting)) — Toggle image minify and copy process.
 - `from` ([StringSetting](/module/gulpconfig#stringsetting)) — Path to search for images.
 - `jpegQuality` ([FlagNumberSetting](/module/gulpconfig#flagnumbersetting)) — The JPEG quality (0 to 100) mozjpeg compresses to. False (the default) keeps mozjpeg's own default, 75. Raise it (85 is usually indistinguishable from the original) when 75 visibly bands smooth gradients.
@@ -158,7 +159,7 @@ Configurations to minify and copy the images.
 
 <MemberHeading id="lintconfig" depth="3" name="LintConfig" sig="LintConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L125" sourceLabel="gulp.config.mjs:125" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L129" sourceLabel="gulp.config.mjs:129" />
 
 Configurations for linting (see [module:partials.neostandardLint](/module/partials#neostandardlint)).
 
@@ -168,7 +169,7 @@ Configurations for linting (see [module:partials.neostandardLint](/module/partia
 
 <MemberHeading id="readmeconfig" depth="3" name="ReadmeConfig" sig="ReadmeConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L137" sourceLabel="gulp.config.mjs:137" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L141" sourceLabel="gulp.config.mjs:141" />
 
 Configurations to compile and generate the Readme file.
 
@@ -183,7 +184,7 @@ Configurations to compile and generate the Readme file.
 
 <MemberHeading id="docsconfig" depth="3" name="DocsConfig" sig="DocsConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L167" sourceLabel="gulp.config.mjs:167" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L171" sourceLabel="gulp.config.mjs:171" />
 
 Configurations for generating the HTML documentation of a project's own source, with either TypeDoc (real TypeScript types) or jsdoc (a modern theme over jsdoc's own classic default) - see docs.method.
 
@@ -204,7 +205,7 @@ Configurations for generating the HTML documentation of a project's own source, 
 
 <MemberHeading id="sassconfig" depth="3" name="SassConfig" sig="SassConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L175" sourceLabel="gulp.config.mjs:175" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L179" sourceLabel="gulp.config.mjs:179" />
 
 Configurations to compile and copy the sass files into css.
 
@@ -217,7 +218,7 @@ Configurations to compile and copy the sass files into css.
 
 <MemberHeading id="testconfig" depth="3" name="TestConfig" sig="TestConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L183" sourceLabel="gulp.config.mjs:183" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L187" sourceLabel="gulp.config.mjs:187" />
 
 Configurations for running the test suite.
 
@@ -229,7 +230,7 @@ Configurations for running the test suite.
 
 <MemberHeading id="tsconfig" depth="3" name="TsConfig" sig="TsConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L191" sourceLabel="gulp.config.mjs:191" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L195" sourceLabel="gulp.config.mjs:195" />
 
 Configurations for compiling typescript into JS files.
 
@@ -242,7 +243,7 @@ Configurations for compiling typescript into JS files.
 
 <MemberHeading id="configurations" depth="3" name="Configurations" sig="Configurations: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L211" sourceLabel="gulp.config.mjs:211" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L215" sourceLabel="gulp.config.mjs:215" />
 
 A set of Configurations options defined by Settings.
 
@@ -265,7 +266,7 @@ A set of Configurations options defined by Settings.
 
 <MemberHeading id="get" depth="3" name="get" sig="get" />
 
-<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L335" sourceLabel="gulp.config.mjs:335" />
+<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L340" sourceLabel="gulp.config.mjs:340" />
 
 Retrieve a value from the configurations, default may be returned.
 
@@ -280,7 +281,7 @@ Retrieve a value from the configurations, default may be returned.
 
 <MemberHeading id="set" depth="3" name="set" sig="set" />
 
-<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L344" sourceLabel="gulp.config.mjs:344" />
+<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L349" sourceLabel="gulp.config.mjs:349" />
 
 Specify a value for the configurations to use.
 

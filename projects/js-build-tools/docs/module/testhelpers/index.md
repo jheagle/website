@@ -20,7 +20,7 @@ Export the setUp helper.
 
 <MemberHeading id="createtempdir" depth="3" name="createTempDir" sig="createTempDir" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L63" sourceLabel="setUp.mjs:63" />
+<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L65" sourceLabel="setUp.mjs:65" />
 
 Ensure that the del has completed, recursively attempt to delete and recreate
 
@@ -34,7 +34,7 @@ Ensure that the del has completed, recursively attempt to delete and recreate
 
 <MemberHeading id="beforeeach" depth="3" name="beforeEach" sig="beforeEach" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L69" sourceLabel="setUp.mjs:69" />
+<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L71" sourceLabel="setUp.mjs:71" />
 
 In the Jest.beforeEach function call this one to set up the temp directory.
 
@@ -44,7 +44,7 @@ In the Jest.beforeEach function call this one to set up the temp directory.
 
 <MemberHeading id="aftereach" depth="3" name="afterEach" sig="afterEach" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L75" sourceLabel="setUp.mjs:75" />
+<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L77" sourceLabel="setUp.mjs:77" />
 
 In the Jest.afterEach function call this one to clean up and remove the temp directory.
 
@@ -54,7 +54,7 @@ In the Jest.afterEach function call this one to clean up and remove the temp dir
 
 <MemberHeading id="countmatches" depth="3" name="countMatches" sig="countMatches" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L81" sourceLabel="setUp.mjs:81" />
+<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L83" sourceLabel="setUp.mjs:83" />
 
 Return number of occurrences of substring in another string.
 
@@ -64,7 +64,7 @@ Return number of occurrences of substring in another string.
 
 <MemberHeading id="fileexists" depth="3" name="fileExists" sig="fileExists" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L87" sourceLabel="setUp.mjs:87" />
+<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L89" sourceLabel="setUp.mjs:89" />
 
 Returns true if the given file or directory exists, otherwise false.
 
@@ -74,7 +74,7 @@ Returns true if the given file or directory exists, otherwise false.
 
 <MemberHeading id="logobject" depth="3" name="logObject" sig="logObject" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L93" sourceLabel="setUp.mjs:93" />
+<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L95" sourceLabel="setUp.mjs:95" />
 
 Console log objects in a readable format, returns the given object.
 
@@ -84,7 +84,7 @@ Console log objects in a readable format, returns the given object.
 
 <MemberHeading id="removedirectory" depth="3" name="removeDirectory" sig="removeDirectory" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L99" sourceLabel="setUp.mjs:99" />
+<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L101" sourceLabel="setUp.mjs:101" />
 
 Delete a directory and subcontents.
 
@@ -93,20 +93,6 @@ Delete a directory and subcontents.
 - `Promise.<*>`
 
 ## Other
-
-<MemberHeading id="isolategulpcache" depth="3" name="isolateGulpCache" sig="isolateGulpCache" />
-
-<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/isolategulpcache-mjs/#L12" sourceLabel="isolateGulpCache.mjs:12" />
-
-Give this test file its own gulp-cache folder, and return a function that clears only that folder. gulp-cache otherwise keeps one cache in os.tmpdir() for every process, so a cache.clearAll() in one Jest worker could wipe it while another worker's images task was still using it, and gulp-cache then silently dropped that worker's images. Jest loads gulp-cache separately for each test file, so this only changes the copy that file uses.
-
-**Parameters**
-
-- `name` (string) — Unique per test file, used in the cache folder name.
-
-**Returns**
-
-- `function` — Clears this test file's cache.
 
 <MemberHeading id="setdefaults" depth="3" name="setDefaults" sig="setDefaults" />
 

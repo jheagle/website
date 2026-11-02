@@ -7,7 +7,7 @@ description: Configurations for generating the HTML documentation of a project's
 
 # DocsConfig
 
-<SourceLink href="/source/gulp-config-mjs/#L167" label="gulp.config.mjs:167" />
+<SourceLink href="/source/gulp-config-mjs/#L171" label="gulp.config.mjs:171" />
 
 Configurations for generating the HTML documentation of a project's own source, with either TypeDoc (real TypeScript types) or jsdoc (a modern theme over jsdoc's own classic default) - see docs.method.
 

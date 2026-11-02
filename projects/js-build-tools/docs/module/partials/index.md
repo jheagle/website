@@ -93,6 +93,26 @@ Create a chokidar instance which watches and triggers change when the globed fil
 
 - `FSWatcher`
 
+<MemberHeading id="cachefiles" depth="3" name="cacheFiles" sig="cacheFiles" />
+
+<MemberMeta badges="static" sourceHref="/source/functions/partials/cachefiles-mjs/#L58" sourceLabel="cacheFiles.mjs:58" />
+
+Run a gulp plugin only on files it hasn't processed before. A file whose contents (with this cache name and fingerprint) were processed by an earlier run gets that run's result from the cache instead, and skips the plugin. Replaces gulp-cache, which kept one cache for every process in the system's temp folder.
+
+A result is cached when the plugin passes on the file object it was given (as gulp plugins usually do); a plugin that makes new file objects still works, its results just aren't cached. When the plugin renames a file, the cache keeps the new name too (next to the result, as `<entry>.path`), so a cached file is renamed the same way. Entries are never pruned: delete the directory to start over.
+
+**Parameters**
+
+- `plugin` (stream.Transform) — The gulp plugin stream to run on uncached files (e.g. imagemin()).
+- `options` (Object)
+  - `options.directory` (string) — Where cached results are kept (see images.cacheDir).
+  - `options.name` (string, optional, default: "'default'") — The cache's folder; keeps results of different plugin settings apart.
+  - `options.fingerprint` (string, optional, default: "''") — Anything else that changes the plugin's output, such as its version and options: when it changes, earlier results are no longer used.
+
+**Returns**
+
+- `stream.Transform`
+
 <MemberHeading id="clean" depth="3" name="clean" sig="clean" />
 
 <MemberMeta badges="static" sourceHref="/source/functions/partials/clean-mjs/#L10" sourceLabel="clean.mjs:10" />
@@ -167,7 +187,7 @@ When using TypeScript, ensure that we process the ts first then run babel (dist)
 
 <MemberHeading id="loadimagemin" depth="3" name="loadImagemin" sig="loadImagemin" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/imagesfor-mjs/#L18" sourceLabel="imagesFor.mjs:18" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/imagesfor-mjs/#L20" sourceLabel="imagesFor.mjs:20" />
 
 Load `gulp-imagemin`, an optional peer dependency: image optimization is off by default and its binary-download dependency chain is heavy, so it is only required once the images task actually runs, and it is resolved from the consuming project's own directory rather than from this package.
 
@@ -185,7 +205,7 @@ Load `gulp-imagemin`, an optional peer dependency: image optimization is off by 
 
 <MemberHeading id="loadimageminplugins" depth="3" name="loadImageminPlugins" sig="loadImageminPlugins" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/imagesfor-mjs/#L35" sourceLabel="imagesFor.mjs:35" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/imagesfor-mjs/#L37" sourceLabel="imagesFor.mjs:37" />
 
 Load the plugins `gulp-imagemin` exports by name (gifsicle, mozjpeg, optipng and svgo), each a promise of a plugin factory, for when they need options of their own (see images.jpegQuality). Resolved like [loadImagemin](/module/partials#loadimagemin).
 
@@ -199,7 +219,7 @@ Load the plugins `gulp-imagemin` exports by name (gifsicle, mozjpeg, optipng and
 
 <MemberHeading id="imageminplugins" depth="3" name="imageminPlugins" sig="imageminPlugins" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/imagesfor-mjs/#L52" sourceLabel="imagesFor.mjs:52" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/imagesfor-mjs/#L54" sourceLabel="imagesFor.mjs:54" />
 
 The plugins imagemin uses by default, with mozjpeg set to the given JPEG quality instead of its own default (75).
 
@@ -212,9 +232,23 @@ The plugins imagemin uses by default, with mozjpeg set to the given JPEG quality
 
 - `Array.<Promise.<function()>>` — The plugins, in imagemin's default order.
 
+<MemberHeading id="imageminversions" depth="3" name="imageminVersions" sig="imageminVersions" />
+
+<MemberMeta badges="static" sourceHref="/source/functions/partials/imagesfor-mjs/#L95" sourceLabel="imagesFor.mjs:95" />
+
+The installed versions of the packages that decide imagemin's output, so the image cache stops using results made by older versions after an upgrade (see images.cacheDir).
+
+**Parameters**
+
+- `projectPath` (string, optional, default: "process.cwd()") — The project directory gulp-imagemin is installed in.
+
+**Returns**
+
+- `Object.<string, string>` — Each package's version by name; a package that isn't installed is left out.
+
 <MemberHeading id="imagesfor" depth="3" name="imagesFor" sig="imagesFor" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/imagesfor-mjs/#L63" sourceLabel="imagesFor.mjs:63" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/imagesfor-mjs/#L121" sourceLabel="imagesFor.mjs:121" />
 
 Move and optimize images into the browser directory.
 
