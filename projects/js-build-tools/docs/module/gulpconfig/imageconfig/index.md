@@ -7,7 +7,7 @@ description: Configurations to minify and copy the images.
 
 # ImageConfig
 
-<SourceLink href="/source/gulp-config-mjs/#L119" label="gulp.config.mjs:119" />
+<SourceLink href="/source/gulp-config-mjs/#L120" label="gulp.config.mjs:120" />
 
 Configurations to minify and copy the images.
 

@@ -7,7 +7,7 @@ description: One additional bundle - everything but name falls back to the prima
 
 # AdditionalBundleConfig
 
-<SourceLink href="/source/gulp-config-mjs/#L91" label="gulp.config.mjs:91" />
+<SourceLink href="/source/gulp-config-mjs/#L92" label="gulp.config.mjs:92" />
 
 One additional bundle - everything but `name` falls back to the primary bundle's own value when omitted, so an additional bundle only has to specify what's actually different about it.
 

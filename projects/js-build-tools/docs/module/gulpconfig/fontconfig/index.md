@@ -7,7 +7,7 @@ description: Configurations for copying the font files.
 
 # FontConfig
 
-<SourceLink href="/source/gulp-config-mjs/#L105" label="gulp.config.mjs:105" />
+<SourceLink href="/source/gulp-config-mjs/#L106" label="gulp.config.mjs:106" />
 
 Configurations for copying the font files.
 

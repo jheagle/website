@@ -7,7 +7,7 @@ description: Configurations to compile and generate the Readme file.
 
 # ReadmeConfig
 
-<SourceLink href="/source/gulp-config-mjs/#L141" label="gulp.config.mjs:141" />
+<SourceLink href="/source/gulp-config-mjs/#L142" label="gulp.config.mjs:142" />
 
 Configurations to compile and generate the Readme file.
 

@@ -7,7 +7,7 @@ description: Configurations for linting (see {@link module:partials.neostandardL
 
 # LintConfig
 
-<SourceLink href="/source/gulp-config-mjs/#L129" label="gulp.config.mjs:129" />
+<SourceLink href="/source/gulp-config-mjs/#L130" label="gulp.config.mjs:130" />
 
 Configurations for linting (see [module:partials.neostandardLint](/module/partials#neostandardlint)).
 
