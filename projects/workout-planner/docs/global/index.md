@@ -8,6 +8,18 @@ longname: Globals
 
 ---
 
+## Instance Methods
+
+<MemberHeading id="daynumber" depth="3" name="dayNumber" sig="dayNumber(date)" />
+
+<MemberMeta sourceHref="/source/data/musclepriority-js/#L13" sourceLabel="musclePriority.js:13" />
+
+A 'YYYY-MM-DD' date as a whole day number, so two dates are compared as calendar days, never as moments: a workout's date has no time of day, and new Date('YYYY-MM-DD') is midnight UTC, which in the evening west of UTC is already more than a day before the local "now" (21:30 in Toronto counted yesterday's workout as 2 days ago).
+
+**Parameters**
+
+- `date`
+
 ## Other
 
 <MemberHeading id="responsivetable" depth="3" name="responsiveTable" sig="responsiveTable" />
@@ -169,9 +181,19 @@ Copy the real database/ directory into an isolated test directory, so insert/upd
 
 - `destination`
 
+<MemberHeading id="localdate" depth="3" name="localDate" sig="localDate" />
+
+<MemberMeta sourceHref="/source/data/localdate-js/#L7" sourceLabel="localDate.js:7" />
+
+A date as 'YYYY-MM-DD' in the machine's own timezone - the shape every workout's date uses. Not toISOString().slice(0, 10): that's the UTC date, which is already tomorrow in the evening anywhere west of UTC (21:30 in Toronto is 01:30 UTC).
+
+**Parameters**
+
+- `date` — defaults to now
+
 <MemberHeading id="musclepriority" depth="3" name="musclePriority" sig="musclePriority" />
 
-<MemberMeta sourceHref="/source/data/musclepriority-js/#L16" sourceLabel="musclePriority.js:16" />
+<MemberMeta sourceHref="/source/data/musclepriority-js/#L29" sourceLabel="musclePriority.js:29" />
 
 Rank muscles by how much they need attention right now, from a real read of the database: every muscle (including ones never worked at all), and every workout row with its muscles already joined on (see workout()/musclePriority.test.js for the exact query shape this expects). A muscle needs priority once it's past its recovery window, or hasn't been worked often enough this week yet - whichever muscle has gone longest without being worked sorts first.
 
@@ -179,11 +201,11 @@ Rank muscles by how much they need attention right now, from a real read of the 
 
 - `muscles` — every row from `read muscles`
 - `workoutsWithMuscles` — every row from the workouts-joined-to-muscles query, each carrying a `.muscles` array (the muscles that workout's exercise worked)
-- `today` — injectable for testing; defaults to the real current time
+- `today` — injectable for testing; defaults to the real current time (only its local date counts)
 
 <MemberHeading id="getmusclepriority" depth="3" name="getMusclePriority" sig="getMusclePriority" />
 
-<MemberMeta sourceHref="/source/data/workoutqueries-js/#L8" sourceLabel="workoutQueries.js:8" />
+<MemberMeta sourceHref="/source/data/workoutqueries-js/#L9" sourceLabel="workoutQueries.js:9" />
 
 Rank every muscle by how much it needs attention right now, from a real read of the database.
 
@@ -193,7 +215,7 @@ Rank every muscle by how much it needs attention right now, from a real read of 
 
 <MemberHeading id="getexercisesformuscle" depth="3" name="getExercisesForMuscle" sig="getExercisesForMuscle" />
 
-<MemberMeta sourceHref="/source/data/workoutqueries-js/#L23" sourceLabel="workoutQueries.js:23" />
+<MemberMeta sourceHref="/source/data/workoutqueries-js/#L24" sourceLabel="workoutQueries.js:24" />
 
 Every exercise linked to a given muscle, via exercise_muscle.
 
@@ -203,7 +225,7 @@ Every exercise linked to a given muscle, via exercise_muscle.
 
 <MemberHeading id="getlastsession" depth="3" name="getLastSession" sig="getLastSession" />
 
-<MemberMeta sourceHref="/source/data/workoutqueries-js/#L35" sourceLabel="workoutQueries.js:35" />
+<MemberMeta sourceHref="/source/data/workoutqueries-js/#L36" sourceLabel="workoutQueries.js:36" />
 
 The most recently logged workout for a given exercise, or null if it's never been logged.
 
@@ -213,7 +235,7 @@ The most recently logged workout for a given exercise, or null if it's never bee
 
 <MemberHeading id="logworkout" depth="3" name="logWorkout" sig="logWorkout" />
 
-<MemberMeta sourceHref="/source/data/workoutqueries-js/#L51" sourceLabel="workoutQueries.js:51" />
+<MemberMeta sourceHref="/source/data/workoutqueries-js/#L52" sourceLabel="workoutQueries.js:52" />
 
 Log a new workout entry.
 
@@ -224,12 +246,12 @@ Log a new workout entry.
 - `sets`
 - `reps`
 - `note`
-- `date` — defaults to today, in the same 'YYYY-MM-DD' shape the rest of the data uses
+- `date` — defaults to today (the local date, see localDate), in the same 'YYYY-MM-DD' shape the rest of the data uses
 - `order` — where this entry falls among others logged the same day (defaults to first)
 
 <MemberHeading id="updateworkout" depth="3" name="updateWorkout" sig="updateWorkout" />
 
-<MemberMeta sourceHref="/source/data/workoutqueries-js/#L77" sourceLabel="workoutQueries.js:77" />
+<MemberMeta sourceHref="/source/data/workoutqueries-js/#L78" sourceLabel="workoutQueries.js:78" />
 
 Update an existing workout entry - e.g. correcting the plan with what was actually done.
 
@@ -240,7 +262,7 @@ Update an existing workout entry - e.g. correcting the plan with what was actual
 
 <MemberHeading id="addexercise" depth="3" name="addExercise" sig="addExercise" />
 
-<MemberMeta sourceHref="/source/data/workoutqueries-js/#L105" sourceLabel="workoutQueries.js:105" />
+<MemberMeta sourceHref="/source/data/workoutqueries-js/#L106" sourceLabel="workoutQueries.js:106" />
 
 Add a new exercise, with the muscles it works (primary/secondary, by whatever rank you give).
 
