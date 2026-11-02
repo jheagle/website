@@ -15,6 +15,7 @@ kind: guide
 - [components/templates/workout.js](/source/components/templates/workout-js/)
 - [data/copyDatabase.js](/source/data/copydatabase-js/)
 - [data/index.js](/source/data/index-js/)
+- [data/localDate.js](/source/data/localdate-js/)
 - [data/musclePriority.js](/source/data/musclepriority-js/)
 - [data/workoutQueries.js](/source/data/workoutqueries-js/)
 - [index.js](/source/index-js/)
