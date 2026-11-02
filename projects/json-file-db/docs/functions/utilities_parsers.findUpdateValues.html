@@ -14,22 +14,20 @@
 <section class="tsd-panel">
 <ul class="tsd-signatures">
 <li class="">
-<div class="tsd-signature tsd-anchor-link" id="findupdatevalues"><span class="tsd-kind-call-signature">findUpdateValues</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">parsed</span><span class="tsd-signature-symbol">:</span> <a href="../types/utilities_parsers.ParsedQuery.html" class="tsd-signature-type tsd-kind-type-alias">ParsedQuery</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">query</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><a href="#findupdatevalues" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-signature tsd-anchor-link" id="findupdatevalues"><span class="tsd-kind-call-signature">findUpdateValues</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">parsed</span><span class="tsd-signature-symbol">:</span> <a href="../types/utilities_parsers.ParsedQuery.html" class="tsd-signature-type tsd-kind-type-alias">ParsedQuery</a><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">body</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><a href="#findupdatevalues" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Extract an update's &quot;set field = value, field2 = value2&quot; clause from the query. Uses a two-pass
-match, unlike the other parsers here: the set clause's own boundary is found first (so it can
-be removed from the query as a whole, and so the comma-separated list doesn't get confused with
-anything that follows, like a where clause), then each individual assignment is parsed out of
-that captured substring.</p>
+<div class="tsd-comment tsd-typography"><p>Read an update's set clause body (<code>field = value, field2 = value2</code>, see splitClauses). Uses a two-pass match: the
+whole comma-separated list first, so anything after it is left over, then each assignment out of that list.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li><span><span class="tsd-kind-parameter">parsed</span>: <a href="../types/utilities_parsers.ParsedQuery.html" class="tsd-signature-type tsd-kind-type-alias">ParsedQuery</a></span></li>
-<li><span><span class="tsd-kind-parameter">query</span>: <span class="tsd-signature-type">string</span></span></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
+<li><span><span class="tsd-kind-parameter">body</span>: <span class="tsd-signature-type">string</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><p>The rest of the body, after the last assignment.</p>
+<aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/json-file-db/blob/main/src/data/utilities/parsers/findUpdateValues.ts#L21">src/data/utilities/parsers/findUpdateValues.ts:21</a></li></ul></aside></div></li></ul></section></div>
+<li>Defined in <a href="https://github.com/jheagle/json-file-db/blob/main/src/data/utilities/parsers/findUpdateValues.ts#L18">src/data/utilities/parsers/findUpdateValues.ts:18</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
