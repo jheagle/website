@@ -34,6 +34,7 @@
     "matrix-dom": "github:jheagle/matrix-DOM"
   },
   "devDependencies": {
+    "@babel/core": "^8.1.0",
     "@tailwindcss/cli": "^4.3.3",
     "browser-sync": "^3.0.4",
     "del": "^7.1.0",
@@ -41,7 +42,7 @@
     "gulp-autoprefixer": "9.0.0",
     "gulp-imagemin": "github:jheagle/gulp-imagemin#common-js-compatibility",
     "jest": "^29.7.0",
-    "js-build-tools": "^6.9.0",
+    "js-build-tools": "^8.0.0",
     "pseudo-dom": "^1.1.0",
     "sharp": "^0.35.5",
     "signal-exit": "^4.1.0",

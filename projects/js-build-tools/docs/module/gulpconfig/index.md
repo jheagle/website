@@ -266,7 +266,7 @@ A set of Configurations options defined by Settings.
 
 <MemberHeading id="get" depth="3" name="get" sig="get" />
 
-<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L341" sourceLabel="gulp.config.mjs:341" />
+<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L342" sourceLabel="gulp.config.mjs:342" />
 
 Retrieve a value from the configurations, default may be returned.
 
@@ -281,7 +281,7 @@ Retrieve a value from the configurations, default may be returned.
 
 <MemberHeading id="set" depth="3" name="set" sig="set" />
 
-<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L350" sourceLabel="gulp.config.mjs:350" />
+<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L351" sourceLabel="gulp.config.mjs:351" />
 
 Specify a value for the configurations to use.
 

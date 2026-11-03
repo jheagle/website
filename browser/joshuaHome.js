@@ -4638,7 +4638,9 @@ var joshuaHome = (() => {
       var manager = (0, _queueManager.default)();
       manager.start();
       var observer = null;
-      var doReset = () => observer = null;
+      var doReset = () => {
+        observer = null;
+      };
       var initializeObserver = async () => {
         observer = new MutationObserver(() => {
           if (document.body) {
@@ -5207,6 +5209,21 @@ var joshuaHome = (() => {
     }
   });
 
+  // node_modules/si-funciona/dist/helpers/strings/regexEscape.js
+  var require_regexEscape = __commonJS({
+    "node_modules/si-funciona/dist/helpers/strings/regexEscape.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.regexEscape = exports.default = void 0;
+      var regexEscape = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      exports.regexEscape = regexEscape;
+      var _default = exports.default = regexEscape;
+    }
+  });
+
   // node_modules/si-funciona/dist/helpers/objects/dotNotate.js
   var require_dotNotate = __commonJS({
     "node_modules/si-funciona/dist/helpers/objects/dotNotate.js"(exports) {
@@ -5220,6 +5237,7 @@ var joshuaHome = (() => {
       require_esnext_iterator_map();
       var _emptyObject = _interopRequireDefault(require_emptyObject());
       var _isObject = _interopRequireDefault(require_isObject());
+      var _regexEscape = _interopRequireDefault(require_regexEscape());
       function _interopRequireDefault(e) {
         return e && e.__esModule ? e : { default: e };
       }
@@ -5227,7 +5245,7 @@ var joshuaHome = (() => {
         if (!retainObjects.length) {
           return (currentKey, value, results) => false;
         }
-        retainObjects = retainObjects.map((key) => key.replace(".", "\\."));
+        retainObjects = retainObjects.map(_regexEscape.default);
         const retainRegex = new RegExp(`(${retainObjects.join("|")})$`);
         return (currentKey, value, results) => {
           if (!currentKey.match(retainRegex)) {
@@ -6315,7 +6333,7 @@ var joshuaHome = (() => {
       require_esnext_weak_map_delete_all();
       require_esnext_weak_set_add_all();
       require_esnext_weak_set_delete_all();
-      var sameValueZero = (first, second) => first === second || first !== first && second !== second;
+      var sameValueZero = (first, second) => first === second || Number.isNaN(first) && Number.isNaN(second);
       var compare = (first, second, seen) => {
         if (sameValueZero(first, second)) {
           return true;
@@ -6811,21 +6829,6 @@ var joshuaHome = (() => {
       };
       exports.makeRelativePath = makeRelativePath;
       var _default = exports.default = makeRelativePath;
-    }
-  });
-
-  // node_modules/si-funciona/dist/helpers/strings/regexEscape.js
-  var require_regexEscape = __commonJS({
-    "node_modules/si-funciona/dist/helpers/strings/regexEscape.js"(exports) {
-      "use strict";
-      init_process();
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.regexEscape = exports.default = void 0;
-      var regexEscape = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      exports.regexEscape = regexEscape;
-      var _default = exports.default = regexEscape;
     }
   });
 
