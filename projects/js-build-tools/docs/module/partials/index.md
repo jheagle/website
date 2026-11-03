@@ -20,7 +20,7 @@ Micro-functions used as components for the main gulp functions.
 
 <MemberHeading id="resolvepeerdir" depth="3" name="resolvePeerDir" sig="resolvePeerDir(name: string, options: Object): string" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/jsdocdocsfor-mjs/#L40" sourceLabel="jsdocDocsFor.mjs:40" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/jsdocdocsfor-mjs/#L35" sourceLabel="jsdocDocsFor.mjs:35" />
 
 Resolve the installed directory of an optional peer dependency, from the project being built rather than from this package. Deliberately not requirePeer/importPeer's own `require(name + '/package.json')` approach - that breaks for any package whose own package.json restricts its exports map and does not expose that subpath (clean-jsdoc-theme does; confirmed live, not assumed - resolving its own package.json throws ERR_PACKAGE_PATH_NOT_EXPORTED in plain Node, and a differently-shaped MODULE_NOT_FOUND under Jest's own resolver, which still is not "not installed" either way). Walking Node's own real module-lookup directories (require.resolve.paths) and checking each on disk sidesteps the exports map entirely - this only ever reads whether `<dir>/<name>/package.json` exists, never asks the module system to resolve a restricted subpath.
 
@@ -263,7 +263,7 @@ Move and optimize images into the browser directory.
 
 <MemberHeading id="resolvejsdocbin" depth="3" name="resolveJsdocBin" sig="resolveJsdocBin" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/jsdocdocsfor-mjs/#L61" sourceLabel="jsdocDocsFor.mjs:61" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/jsdocdocsfor-mjs/#L56" sourceLabel="jsdocDocsFor.mjs:56" />
 
 Resolve jsdoc's own CLI entry point. jsdoc has no stable programmatic Node API for generating HTML docs (unlike TypeDoc's Application.bootstrap()/convert()/generateDocs()) - gulp-jsdoc3, the established gulp wrapper, is stale, and its own README admits jsdoc does not support piped input in the first place, a real anti-pattern for this project's own gulp-stream conventions. Running its real CLI via child_process is the portable way in - confirmed via `npm view jsdoc bin`, which reports "jsdoc.js" at the package root.
 
@@ -277,7 +277,7 @@ Resolve jsdoc's own CLI entry point. jsdoc has no stable programmatic Node API f
 
 <MemberHeading id="resolvejsdoctheme" depth="3" name="resolveJsdocTheme" sig="resolveJsdocTheme" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/jsdocdocsfor-mjs/#L73" sourceLabel="jsdocDocsFor.mjs:73" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/jsdocdocsfor-mjs/#L68" sourceLabel="jsdocDocsFor.mjs:68" />
 
 Resolve a jsdoc theme package's own template directory, for jsdoc's own opts.template config key: the folder holding its publish.js. That is the package root for a classic jsdoc template (clean-jsdoc-theme 4.x included), but `dist` for a bundled one (clean-jsdoc-theme 5.x).
 
@@ -292,7 +292,7 @@ Resolve a jsdoc theme package's own template directory, for jsdoc's own opts.tem
 
 <MemberHeading id="jsdocdocsfor" depth="3" name="jsdocDocsFor" sig="jsdocDocsFor" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/jsdocdocsfor-mjs/#L92" sourceLabel="jsdocDocsFor.mjs:92" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/jsdocdocsfor-mjs/#L87" sourceLabel="jsdocDocsFor.mjs:87" />
 
 Generate the HTML documentation of a plain-JavaScript project with jsdoc, using jsdoc.base.js's own shared config (plugins, includePattern/excludePattern) as the starting point rather than a parallel one - the same base a project's own .jsdoc.conf.js has always been able to extend, just with source.include and the output options generated here instead of hand-maintained per project. Configure this with 'docs.from', 'docs.to', 'docs.index', 'docs.theme' and 'docs.title'.
 

@@ -29,7 +29,7 @@ Runs several processes to build and validate the project. Cleans and lints the s
 
 <MemberHeading id="bundle" depth="3" name="bundle" sig="bundle" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/bundle-mjs/#L289" sourceLabel="bundle.mjs:289" />
+<MemberMeta badges="static" sourceHref="/source/functions/bundle-mjs/#L296" sourceLabel="bundle.mjs:296" />
 
 Starting at each bundle's own entry point (dist.main for the primary bundle, or its own override from browser.bundles), bundle all the reachable files into a single file per bundle and store them in the specified output directory. A project with no browser.bundles entries gets exactly the one bundle it always did; each additional entry produces its own separate bundle (for example, a render-only variant built from a different entry point than the full bundle).
 
