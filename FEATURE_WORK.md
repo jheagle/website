@@ -38,7 +38,7 @@ Content tiers:
   Break it into its own PRs (e.g. type and colour, layout, per-section styling) as it takes shape.
 - [ ] **Show-and-tell sandboxes on `/projects/`**: small live demos people can try in the page, for the projects that run
   in a browser. One PR per project. Suggested order: title-switcher (already has a bundle on the site), json-dom,
-  matrix-dom, pseudo-dom, json-file-db, si-funciona and collect-your-stuff. battleship, quizzes and workout-planner
+  matrix-dom, pseudo-dom, json-fs-query, si-funciona and collect-your-stuff. battleship, quizzes and workout-planner
   already link to their own running app.
 - [ ] **Tier 2 blog, the infrastructure**: read-only, static pages powered by json-fs-query (posts stored as json-fs-query
   data, a listing page and a post page). Scope it before starting: where posts live, how a post is written (Markdown or

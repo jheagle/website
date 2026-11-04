@@ -49,7 +49,7 @@
       <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/functions/getParentNodesFromAttribute.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/functions/getParentNodesFromAttribute.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pseudo-dom/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../pseudo-dom/src/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../si-funciona" beforeDir="false" afterPath="$PROJECT_DIR$/../si-funciona" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../test-fs" beforeDir="false" afterPath="$PROJECT_DIR$/../test-fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-filesystem" beforeDir="false" afterPath="$PROJECT_DIR$/../test-filesystem" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../title-switcher" beforeDir="false" afterPath="$PROJECT_DIR$/../title-switcher" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
