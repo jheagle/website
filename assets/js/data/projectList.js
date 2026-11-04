@@ -41,13 +41,13 @@ const projects = [
     description: 'Dependency-light, fully-typed classic collection types — queues, stacks, linked lists — try them live on their own page.'
   },
   {
-    title: 'JSON File DB',
-    href: '/projects/json-file-db/',
+    title: 'json-fs-query',
+    href: '/projects/json-fs-query/',
     description: 'A query engine that treats a folder of JSON files as a database.'
   },
   {
     title: 'Test Filesystem',
-    href: '/projects/test-fs/',
+    href: '/projects/test-filesystem/',
     description: 'Set up and tear down a temp directory for filesystem tests.'
   },
   {
