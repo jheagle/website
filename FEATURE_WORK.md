@@ -61,10 +61,11 @@ Settled as the design pass goes; later PRs (themes, sandboxes, the blog) build o
 - **Mobile first:** unprefixed styles are the phone styles, and `md:`/`lg:` add to them. Check widths 390, 768
   and 1280 px in Firefox, Chrome and Safari (WebKit).
 - **Base layer, preflight off:** pin the browser defaults worth keeping (Firefox's look is the reference) in a small
-  base layer of our own, so every browser matches it. Measured 2026-11-04: Firefox and Chrome compute the same
+  base layer of our own, so every browser matches it. Measured 2026-11-04: Firefox, Chrome and Safari compute the same
   font sizes, margins and line heights for this page (the inline style already sets `system-ui`, 1.6 line height,
   46rem width); the real differences are the dark-mode colours. Firefox dark: background `#1C1B22`, text
-  `#FBFBFE`, links `#00CADB`. Chrome dark: `#121212`, `#FFFFFF`, `#9E9EFF`.
+  `#FBFBFE`, links `#00CADB`. Chrome dark: `#121212`, `#FFFFFF`, `#9E9EFF`. Safari (WebKit) dark: `#1E1E1E`, `#FFFFFF`,
+  `#9E9EFF`. Firefox's dark palette is the reference look.
 - **Font chosen early:** sizes, line heights and spacing are tuned to it. One self-hosted variable font (woff2)
   plus a monospace for code, rather than `system-ui`, which is a different font on every OS. Fonts and other
   preferences (sizes, spacing) live in the base layer.
