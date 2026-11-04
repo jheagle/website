@@ -66,9 +66,12 @@ Settled as the design pass goes; later PRs (themes, sandboxes, the blog) build o
   46rem width); the real differences are the dark-mode colours. Firefox dark: background `#1C1B22`, text
   `#FBFBFE`, links `#00CADB`. Chrome dark: `#121212`, `#FFFFFF`, `#9E9EFF`. Safari (WebKit) dark: `#1E1E1E`, `#FFFFFF`,
   `#9E9EFF`. Firefox's dark palette is the reference look.
-- **Font chosen early:** sizes, line heights and spacing are tuned to it. One self-hosted variable font (woff2)
-  plus a monospace for code, rather than `system-ui`, which is a different font on every OS. Fonts and other
-  preferences (sizes, spacing) live in the base layer.
+- **Fonts (chosen 2026-11-04):** **Lexend** for headings (geometric, the single-storey "a"), **Atkinson
+  Hyperlegible Next** for body text (built for legibility), **Atkinson Hyperlegible Mono** for code. All variable,
+  self-hosted woff2 from Fontsource (`@fontsource-variable/*`, OFL), latin subset: 38 + 33 + 17 KB, and the mono
+  only downloads on pages that show code. Sizes, line heights and spacing are tuned to these, in the base layer.
+  Compared on the homepage first: Inter, Source Sans 3, IBM Plex Sans, Geist, Raleway (overused), Outfit, Manrope,
+  Questrial (one weight only, too light for body text).
 - **Colours from Tailwind's palette, as tokens:** a few semantic variables (background, text, muted, accent,
   link) mapped to Tailwind palette colours in `@theme`, so light/dark and later themes are variable swaps, not
   restyles.
