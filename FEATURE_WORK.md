@@ -38,9 +38,9 @@ Content tiers:
   screens. Sections get `scroll-margin-top` so a nav link doesn't land under the header. Nice to have: highlight
   the current section.
 - [ ] **Tailwind design pass, mobile first** (yours): the visual layer over the plain HTML, designed at phone
-  width first. Starts with the base layer (see Design decisions), checked in Firefox, Chrome and Safari as it goes;
-  then colour tokens and themes; then small details (title-switcher, gentle motion). Break it into its own PRs as
-  it takes shape.
+  width first, checked in Firefox, Chrome and Safari as it goes. Order: **font** first (sizes and spacing depend on
+  it), then the base layer, then colours with light/dark, then small details (title-switcher, gentle motion).
+  Break it into its own PRs as it takes shape.
 - [ ] **Show-and-tell sandboxes on `/projects/`**: small live demos people can try in the page, for the projects that run
   in a browser. One PR per project. Suggested order: title-switcher (already has a bundle on the site), json-dom,
   matrix-dom, pseudo-dom, json-fs-query, si-funciona and collect-your-stuff. battleship, quizzes and workout-planner
@@ -65,10 +65,17 @@ Settled as the design pass goes; later PRs (themes, sandboxes, the blog) build o
   font sizes, margins and line heights for this page (the inline style already sets `system-ui`, 1.6 line height,
   46rem width); the real differences are the dark-mode colours. Firefox dark: background `#1C1B22`, text
   `#FBFBFE`, links `#00CADB`. Chrome dark: `#121212`, `#FFFFFF`, `#9E9EFF`.
-- **Colours are tokens:** every colour comes from a CSS variable (Tailwind `@theme`), so light/dark and later
-  themes are variable swaps, not restyles.
-- **Motion:** respect `prefers-reduced-motion`; animated text (the title-switcher) runs over real, static text in
-  the HTML, so screen readers and applicant-tracking systems read stable content.
+- **Font chosen early:** sizes, line heights and spacing are tuned to it. One self-hosted variable font (woff2)
+  plus a monospace for code, rather than `system-ui`, which is a different font on every OS. Fonts and other
+  preferences (sizes, spacing) live in the base layer.
+- **Colours from Tailwind's palette, as tokens:** a few semantic variables (background, text, muted, accent,
+  link) mapped to Tailwind palette colours in `@theme`, so light/dark and later themes are variable swaps, not
+  restyles.
+- **Light/dark:** follows the visitor's system setting (`prefers-color-scheme`). A manual toggle is optional and
+  later; if added, it sets an attribute on `<html>` (remembered in localStorage, applied before first paint).
+- **Motion:** subtle: smooth scrolling to sections, short transitions (colour, the nav hiding and returning),
+  the title-switcher. All of it is off when the visitor's system asks for reduced motion. Animated text runs over
+  real, static text in the HTML, so screen readers and applicant-tracking systems read stable content.
 
 ### Ongoing
 
