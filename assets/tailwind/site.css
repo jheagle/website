@@ -1,11 +1,11 @@
-/* Tailwind v4 entry point, compiled by `npm run build:css` into browser/tailwind/site.css.
-   No utility classes are used in the markup yet; this is wired in ahead of the design pass. */
+/* Tailwind v4 entry point, compiled by `npm run build:css` into browser/tailwind/site.css. */
 
 @layer theme, base, components, utilities;
 
 @import "tailwindcss/theme.css" layer(theme);
-/* Preflight (Tailwind's CSS reset) is left out for now so the plain pages keep the browser's default
-   heading sizes, list bullets and margins. Uncomment it when the design pass starts. */
+/* Preflight (Tailwind's CSS reset) stays off: the pages keep the browser's default heading sizes, list bullets and
+   margins, which Firefox, Chrome and Safari already agree on for these pages. The base layer below pins only what
+   differs between them (dark-mode colours) and what the design changes (fonts, colours). */
 /* @import "tailwindcss/preflight.css" layer(base); */
 @import "tailwindcss/utilities.css" layer(utilities) source(none);
 
@@ -13,3 +13,98 @@
 @source "../../index.html";
 @source "../../projects/index.html";
 @source "../js/templates";
+
+/* Self-hosted variable fonts from Fontsource (OFL), latin subset only. `npm run build:fonts` copies the files into
+   browser/fonts. font-display: swap shows the fallback font straight away instead of invisible text. */
+@font-face {
+  font-family: 'Lexend Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(/browser/fonts/lexend-latin-wght-normal.woff2) format('woff2-variations');
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url(/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2) format('woff2-variations');
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url(/browser/fonts/atkinson-hyperlegible-next-latin-wght-italic.woff2) format('woff2-variations');
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible Mono Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url(/browser/fonts/atkinson-hyperlegible-mono-latin-wght-normal.woff2) format('woff2-variations');
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible Mono Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url(/browser/fonts/atkinson-hyperlegible-mono-latin-wght-italic.woff2) format('woff2-variations');
+}
+
+/* Design tokens. Each colour is a light-dark() pair, so it follows the visitor's system setting through
+   color-scheme. A manual light/dark toggle later only has to set color-scheme on <html>; a new theme only has to
+   swap these values. The values are Firefox's own defaults (the reference look), so every browser matches it:
+   light is white, black and #0000EE links; dark is #1C1B22, #FBFBFE and #00CADB links. Tailwind utilities get
+   these names too: bg-background, text-foreground, text-muted, text-link, font-heading and so on. */
+@theme static {
+  --font-sans: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif;
+  --font-heading: 'Lexend Variable', system-ui, sans-serif;
+  --font-mono: 'Atkinson Hyperlegible Mono Variable', ui-monospace, monospace;
+
+  --color-background: light-dark(#ffffff, #1c1b22);
+  --color-foreground: light-dark(#000000, #fbfbfe);
+  --color-muted: color-mix(in oklab, var(--color-foreground) 75%, var(--color-background));
+  --color-link: light-dark(#0000ee, #00cadb);
+  --color-accent: var(--color-link);
+}
+
+@layer base {
+  :root {
+    color-scheme: light dark;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  /* Atkinson Hyperlegible Next has a smaller x-height than system-ui, so body text goes up a pixel to 17px.
+     rem stays 16px, so spacing set in rem doesn't change. */
+  body {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    line-height: 1.25;
+  }
+
+  /* Browsers shrink only the bare `monospace` family (to 13px); a named font keeps the surrounding size, so set
+     it relative to the text around it instead. */
+  code, kbd, samp, pre {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+
+  a {
+    color: var(--color-link);
+  }
+
+  figcaption {
+    color: var(--color-muted);
+  }
+}

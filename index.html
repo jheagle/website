@@ -6,11 +6,12 @@
     <title>Joshua Heagle | Full-Stack Engineer</title>
     <meta name='description' content='Joshua Evan Heagle: full-stack engineer in the Greater Toronto Area. Architecture, refactoring and shared tooling, plus running, drawing and gardening.'>
     <link rel='icon' href='/favicon.ico'>
+    <link rel='preload' href='/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
+    <link rel='preload' href='/browser/fonts/lexend-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
     <link rel='stylesheet' href='/browser/tailwind/site.css'>
     <style>
-      /* Deliberately minimal: readable defaults only. The real design pass (Tailwind) comes later. */
-      :root { color-scheme: light dark; }
-      body { max-width: 46rem; margin: 0 auto; padding: 1rem 1rem 4rem; font-family: system-ui, sans-serif; line-height: 1.6; }
+      /* Page layout only. Fonts, colours and type sizes come from the base layer in /browser/tailwind/site.css. */
+      body { max-width: 46rem; margin: 0 auto; padding: 1rem 1rem 4rem; }
       img, video { display: block; max-width: 100%; height: auto; }
       figure video { width: 100%; max-width: 15rem; max-height: 24rem; }
       /* A set height (not just a max) lets the browser size each photo from its width/height attributes before the
@@ -19,7 +20,7 @@
       figure img { width: auto; height: 24rem; max-width: 100%; object-fit: contain; object-position: left top; }
       .headshot { width: 12rem; height: auto; border-radius: 50%; }
       figure { margin: 1.5rem 0; }
-      figcaption { font-size: 0.9rem; opacity: 0.8; }
+      figcaption { font-size: 0.9rem; }
       nav ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; padding: 0; list-style: none; }
     </style>
 </head>
