@@ -1,4 +1,4 @@
-import element from './element.js'
+import element from './element.js?v=95daa9de0a'
 
 /**
  * Create a nav DomItem

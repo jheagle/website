@@ -1,4 +1,4 @@
-import input from './input.js'
+import input from './input.js?v=1185a9971c'
 const radio = (name = '', value = '', checked = false, children = [], className = null, attributes = {}) => {
   attributes.value = value
   if (name) {
