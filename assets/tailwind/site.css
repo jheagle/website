@@ -8,12 +8,17 @@
    differs between them (dark-mode colours) and what the design changes (fonts, colours). */
 /* @import "tailwindcss/preflight.css" layer(base); */
 @import "tailwindcss/utilities.css" layer(utilities) source(none);
+/* Tailwind's typography plugin styles the HTML that blog posts' Markdown becomes (the prose class), mapped onto the
+   site's tokens below, so posts follow light/dark and the site's fonts. */
+@plugin "@tailwindcss/typography";
 
 /* Only scan the site's own pages and templates for class names, not node_modules, docs or the project bundles. */
 @source "../../index.html";
 @source "../../projects/index.html";
 @source "../../projects/*/index.html";
 @source "../../quizzes/index.html";
+@source "../../blog/**/*.html";
+@source "../../scripts/blog";
 @source "../js/templates";
 @source "../js/sandboxes";
 
@@ -156,5 +161,59 @@
 
   figcaption {
     color: var(--color-muted);
+  }
+
+}
+
+/* Blog posts (the prose class from the typography plugin): its colours and fonts, taken from the site's tokens. Done
+   with @utility so the values extend the plugin's own prose utility (a rule in the base layer loses to it). */
+@utility prose {
+  --tw-prose-body: var(--color-foreground);
+  --tw-prose-headings: var(--color-foreground);
+  --tw-prose-lead: var(--color-muted);
+  --tw-prose-links: var(--color-link);
+  --tw-prose-bold: var(--color-foreground);
+  --tw-prose-counters: var(--color-muted);
+  --tw-prose-bullets: var(--color-accent);
+  --tw-prose-hr: var(--color-rule);
+  --tw-prose-quotes: var(--color-foreground);
+  --tw-prose-quote-borders: var(--color-accent);
+  --tw-prose-captions: var(--color-muted);
+  --tw-prose-code: var(--color-foreground);
+  --tw-prose-pre-code: var(--color-foreground);
+  --tw-prose-pre-bg: color-mix(in oklab, var(--color-foreground) 8%, var(--color-background));
+  --tw-prose-th-borders: var(--color-rule);
+  --tw-prose-td-borders: var(--color-rule);
+  font-size: inherit;
+
+  :where(h1, h2, h3, h4):not(:where([class~='not-prose'] *)) {
+    font-family: var(--font-heading);
+  }
+
+  /* The plugin sets border widths and colours and leaves the style to preflight's * { border: 0 solid }, which is
+     off here: give its quote bar, rules and table lines a style so they show */
+  :where(blockquote):not(:where([class~='not-prose'] *)) {
+    border-style: none;
+    border-inline-start: 0.25rem solid var(--tw-prose-quote-borders);
+  }
+
+  :where(hr):not(:where([class~='not-prose'] *)) {
+    border-style: none;
+    border-top: 1px solid var(--tw-prose-hr);
+  }
+
+  /* Row borders only draw on a collapsed table (preflight collapses every table) */
+  :where(table):not(:where([class~='not-prose'] *)) {
+    border-collapse: collapse;
+  }
+
+  :where(thead):not(:where([class~='not-prose'] *)) {
+    border-style: none;
+    border-bottom: 1px solid var(--tw-prose-th-borders);
+  }
+
+  :where(tbody tr):not(:where([class~='not-prose'] *)) {
+    border-style: none;
+    border-bottom: 1px solid var(--tw-prose-td-borders);
   }
 }
