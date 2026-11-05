@@ -90,7 +90,9 @@ const postPath = post => `/blog/${post.date.slice(0, 4)}/${post.slug}/`
 
 /** Point json-fs-query at the blog database, creating its record the first time. */
 const openDatabase = async (databasePath = defaults.databasePath) => {
-  fs.mkdirSync(databasePath, { recursive: true })
+  // The record's folder too: git doesn't keep empty folders, so a fresh clone of the site has posts.json but no posts/,
+  // and json-fs-query's insert doesn't create it
+  fs.mkdirSync(path.join(databasePath, 'posts'), { recursive: true })
   configure({ databasePath })
   await query(`create if not exists posts (
     _id string, title string, date string, summary string, tags array, image string null, body string,
@@ -106,10 +108,7 @@ const openDatabase = async (databasePath = defaults.databasePath) => {
  */
 const importPost = async (post, databasePath) => {
   await openDatabase(databasePath)
-  // Read every post and match the slug here: json-fs-query < 3.1.3 can't read a never-filled record through its key
-  // (json-fs-query#107), and the blog is small enough that it doesn't matter
-  const [all] = await query('read posts')
-  const existing = all.filter(row => row._id === post.slug)
+  const [existing] = await query(`read posts where _id = ${quote(post.slug)}`)
   if (existing.length) await query(`delete posts where _id = ${quote(post.slug)}`)
   const tags = `[${post.tags.map(tag => quote(tag)).join(', ')}]`
   await query(`insert posts values _id = ${quote(post.slug)}, title = ${quote(post.title)}, date = ${quote(post.date)},
