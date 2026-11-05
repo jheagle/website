@@ -60,10 +60,12 @@ describe('index.html', () => {
     expect(document.getElementById('site-nav-links').hasAttribute('data-closed')).toBe(false)
   })
 
-  test('every section leaves room for the pinned nav when a link jumps to it', () => {
-    document.body.querySelectorAll('main > section').forEach(section =>
-      expect({ id: section.getAttribute('id'), scrollMargin: section.getAttribute('class').split(' ').includes('scroll-mt-12') })
-        .toEqual({ id: section.getAttribute('id'), scrollMargin: true }))
+  test('every section leaves room for the pinned nav when a link jumps to it (56px bar on phones, 48px from md up)', () => {
+    document.body.querySelectorAll('main > section').forEach(section => {
+      const classes = section.getAttribute('class').split(' ')
+      expect({ id: section.getAttribute('id'), scrollMargin: classes.includes('scroll-mt-14') && classes.includes('md:scroll-mt-12') })
+        .toEqual({ id: section.getAttribute('id'), scrollMargin: true })
+    })
   })
 
   test('every local image, video and link points at a file that exists', () => {

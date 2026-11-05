@@ -68,9 +68,9 @@ describe('siteNav', () => {
       const toggle = document.getElementById('site-nav-toggle')
       const list = document.getElementById('site-nav-links')
       nav.setMenuOpen(true)
-      expect([toggle.textContent, toggle.getAttribute('aria-expanded'), list.hasAttribute('data-closed')]).toEqual(['Close', 'true', false])
+      expect([toggle.querySelector('[data-label]').textContent, toggle.getAttribute('aria-expanded'), list.hasAttribute('data-closed')]).toEqual(['Close', 'true', false])
       nav.setMenuOpen(false)
-      expect([toggle.textContent, toggle.getAttribute('aria-expanded'), list.hasAttribute('data-closed')]).toEqual(['Menu', 'false', true])
+      expect([toggle.querySelector('[data-label]').textContent, toggle.getAttribute('aria-expanded'), list.hasAttribute('data-closed')]).toEqual(['Menu', 'false', true])
     })
 
     test('hides on a quick scroll down even when scrollend arrives before the next frame (Chromium\'s order)', () => {

@@ -78,7 +78,9 @@ export const initSiteNav = (document, window) => {
   const setMenuOpen = open => {
     menuOpen = open
     toggle.setAttribute('aria-expanded', String(open))
-    toggle.textContent = open ? 'Close' : 'Menu'
+    // Only the label changes; the icons swap through the button's aria-expanded (group-aria-expanded/menu:...)
+    const label = toggle.querySelector('[data-label]') || toggle
+    label.textContent = open ? 'Close' : 'Menu'
     if (open) list.removeAttribute('data-closed')
     else list.setAttribute('data-closed', '')
     if (open) setHidden(false)
