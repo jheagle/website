@@ -132,11 +132,14 @@ steps where Joshua picks, tests or approves before the PR merges.
   `<nav aria-label='Project links'>`. The title-switcher page shows the shared sandbox and loads the site's own
   `/browser/vendor/titleSwitcher.min.js` (its demo copy on this branch predated the 2.2.3 security fix).
   si-funciona and collect-your-stuff keep their demos, restyled, until their sandboxes replace them in step 7.
-- [ ] **7b. Site icon ✱:** the 2018 favicon (white slab-serif "JH" on indigo) predates the redesign: its letters touch
+- [x] **7b. Site icon ✱:** the 2018 favicon (white slab-serif "JH" on indigo) predates the redesign: its letters touch
   the edges, it's hard to read at 16px, and `favicon.ico` is 370KB (six uncompressed bitmaps). Keep the JH-on-rounded-
   square idea, redrawn in Lexend Bold (outlined to shapes) on the fuchsia accent; Joshua picks from 2-3 options shown at
   real tab sizes in light and dark. Ship an SVG icon, a small `favicon.ico` (16/32/48, PNG-compressed) and a 180px
   `apple-touch-icon`, linked from every page, with a test.
+  Done 2026-11-05: Joshua picked option A (white "JH" in Lexend ExtraBold on fuchsia-700; also shown: dark, and one
+  adapting to light/dark). `icon.svg` is the source; `npm run build:icons` makes `favicon.ico` (16/32/48 PNGs,
+  1.7 KB, was 370 KB) and a square 180 px `apple-touch-icon.png`; all 15 pages link the three.
 - [ ] **8. Tier 2 blog infrastructure ✱:** read-only, static pages powered by json-fs-query (posts stored as
   json-fs-query data, a listing page and a post page). Joshua answers three scoping questions first: where posts
   live, how a post is written (Markdown or JSON-DOM), and URLs.
