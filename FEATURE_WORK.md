@@ -60,7 +60,7 @@ steps where Joshua picks, tests or approves before the PR merges.
 
 ### To do, in order
 
-- [ ] **1. `npm run compare:browsers`:** the browser-compare script as a repo script: full-page screenshots in
+- [x] **1. `npm run compare:browsers`:** the browser-compare script as a repo script: full-page screenshots in
   Firefox, Chrome and WebKit at 390/768/1280, light and dark, plus a table of computed styles that differ between
   engines. Every later PR attaches its output.
 - [ ] **2. Layout and type scale, homepage ✱:** spacing, heading sizes, how photos and figures sit, header and

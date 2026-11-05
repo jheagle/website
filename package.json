@@ -15,6 +15,7 @@
     "watch:test": "gulp watchTest",
     "build:css": "tailwindcss -i assets/tailwind/site.css -o browser/tailwind/site.css --minify",
     "build:fonts": "node scripts/copy-fonts.mjs",
+    "compare:browsers": "node scripts/compare-browsers.cjs",
     "watch:css": "tailwindcss -i assets/tailwind/site.css -o browser/tailwind/site.css --watch",
     "lint": "gulp lint",
     "images:responsive": "node scripts/responsive-images.mjs"
@@ -47,6 +48,7 @@
     "gulp-imagemin": "github:jheagle/gulp-imagemin#common-js-compatibility",
     "jest": "^29.7.0",
     "js-build-tools": "^8.0.0",
+    "playwright": "^1.64.1",
     "pseudo-dom": "^1.1.0",
     "sharp": "^0.35.5",
     "signal-exit": "^4.1.0",
