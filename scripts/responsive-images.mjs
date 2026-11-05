@@ -7,8 +7,9 @@
  * including GPS, and turned upright first, since stripping also drops the orientation tag.
  *
  * It then prints each image's attributes, ready to paste: srcset, sizes, width and height. `sizes` assumes the
- * homepage's figure styling (at most 24rem tall, inside a 46rem body with 1rem padding); give an image its own
- * `sizes` when it's styled differently, like the headshot.
+ * homepage's photo rows: every photo is 16rem tall (`h-64`) at its natural width and never shrinks (the rows scroll
+ * sideways on phones), so its display width is fixed. Give an image its own `sizes` when it's styled differently,
+ * like the headshot (`9rem`).
  *
  * Run it with `npm run images:responsive` after adding or replacing a photo.
  */
@@ -20,9 +21,8 @@ const rootDir = path.resolve(import.meta.dirname, '..')
 const pages = ['index.html']
 const widths = [480, 960]
 const quality = 82
-// The figure styling on the homepage: images are at most 24rem tall, in a body at most 46rem wide with 1rem padding
-const maxHeight = 384
-const gutter = 32
+// The photo rows on the homepage: every photo is 16rem (256px) tall
+const rowHeight = 256
 
 const variantPath = (file, width) => file.replace(/\.jpe?g$/i, `-${width}w.jpg`)
 
@@ -57,8 +57,8 @@ const main = async () => {
       }
     }
     candidates.push(`${src} ${width}w`)
-    const displayWidth = Math.round(maxHeight * width / height)
-    console.log(`\n${src}\n  srcset='${candidates.join(', ')}'\n  sizes='(max-width: ${displayWidth + gutter}px) calc(100vw - 2rem), ${displayWidth}px'\n  width='${width}' height='${height}'`)
+    const displayWidth = Math.round(rowHeight * width / height)
+    console.log(`\n${src}\n  srcset='${candidates.join(', ')}'\n  sizes='${displayWidth}px'\n  width='${width}' height='${height}'`)
   }
 }
 

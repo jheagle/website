@@ -63,9 +63,13 @@ steps where Joshua picks, tests or approves before the PR merges.
 - [x] **1. `npm run compare:browsers`:** the browser-compare script as a repo script: full-page screenshots in
   Firefox, Chrome and WebKit at 390/768/1280, light and dark, plus a table of computed styles that differ between
   engines. Every later PR attaches its output.
-- [ ] **2. Layout and type scale, homepage ✱:** spacing, heading sizes, how photos and figures sit, header and
+- [x] **2. Layout and type scale, homepage ✱:** spacing, heading sizes, how photos and figures sit, header and
   footer, phone first. Two options side by side; Joshua picks. Includes a resized fallback font (`size-adjust`,
   `ascent-override`) so text doesn't move when the web fonts arrive.
+  Picked 2026-11-04: option B (résumé layout: on wide screens each section's heading sits in a sticky left column,
+  content in `max-w-prose` beside it), with option A's left-border cards for Selected work at every width. Photos sit
+  in 16rem rows that scroll sideways on phones. Styled with Tailwind classes only, Tailwind's own scale over arbitrary
+  values; the base layer is just our small reset.
 - [ ] **3. Accent colour ✱:** a few swatches from Tailwind's palette, in light and dark; Joshua picks. Links keep
   Firefox's colours unless the pick says otherwise.
 - [ ] **4. Sticky/mobile nav ✱** (`redesign/sticky-nav-menu`): pinned to the top; hides while scrolling down and

@@ -111,7 +111,8 @@ describe('index.html', () => {
 
     test('every photo below the headshot loads lazily, and the headshot (on the first screen) does not', () => {
       const [headshot, ...rest] = photos
-      expect(headshot.getAttribute('class')).toBe('headshot')
+      expect(headshot.getAttribute('src')).toMatch(/\/headshot-/)
+      expect(headshot.closest('section').getAttribute('id')).toBe('hello')
       expect(headshot.getAttribute('loading')).not.toBe('lazy')
       rest.forEach(img => expect({ src: img.getAttribute('src'), loading: img.getAttribute('loading') })
         .toEqual({ src: img.getAttribute('src'), loading: 'lazy' }))

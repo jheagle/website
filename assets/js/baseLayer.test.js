@@ -28,8 +28,14 @@ describe('base layer (assets/tailwind/site.css)', () => {
     })
   })
 
-  test.each(pages)('%s leaves fonts and colours to the base layer (no inline overrides)', page => {
-    const style = fs.readFileSync(path.join(rootDir, page), 'utf8').match(/<style>([\s\S]*?)<\/style>/)[1]
+  test('the homepage is styled with Tailwind classes only: no inline <style> block or style attributes', () => {
+    const html = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf8')
+    expect(html).not.toMatch(/<style[\s>]/)
+    expect(html).not.toMatch(/\sstyle=/)
+  })
+
+  test('projects/index.html leaves fonts and colours to the base layer (no inline overrides)', () => {
+    const style = fs.readFileSync(path.join(rootDir, 'projects/index.html'), 'utf8').match(/<style>([\s\S]*?)<\/style>/)[1]
     expect(style).not.toMatch(/font-family|line-height|color-scheme|opacity/)
   })
 })

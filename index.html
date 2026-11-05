@@ -9,27 +9,13 @@
     <link rel='preload' href='/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
     <link rel='preload' href='/browser/fonts/lexend-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
     <link rel='stylesheet' href='/browser/tailwind/site.css'>
-    <style>
-      /* Page layout only. Fonts, colours and type sizes come from the base layer in /browser/tailwind/site.css. */
-      body { max-width: 46rem; margin: 0 auto; padding: 1rem 1rem 4rem; }
-      img, video { display: block; max-width: 100%; height: auto; }
-      figure video { width: 100%; max-width: 15rem; max-height: 24rem; }
-      /* A set height (not just a max) lets the browser size each photo from its width/height attributes before the
-         file arrives, so lazy-loaded photos don't make the page jump. contain keeps a photo's shape on narrow
-         screens, where max-width shrinks it below its 24rem-tall width. */
-      figure img { width: auto; height: 24rem; max-width: 100%; object-fit: contain; object-position: left top; }
-      .headshot { width: 12rem; height: auto; border-radius: 50%; }
-      figure { margin: 1.5rem 0; }
-      figcaption { font-size: 0.9rem; }
-      nav ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; padding: 0; list-style: none; }
-    </style>
 </head>
-<body>
-<header>
-    <h1>Joshua Heagle</h1>
-    <p>Full-Stack Engineer</p>
-    <nav aria-label='Sections'>
-        <ul>
+<body class='mx-auto px-5 pt-6 pb-16 max-w-6xl lg:pt-14'>
+<header class='mb-8 lg:mb-14 lg:grid lg:grid-cols-4 lg:items-end lg:gap-x-12'>
+    <h1 class='m-0 text-4xl/tight tracking-tight lg:col-span-full lg:text-6xl'>Joshua Heagle</h1>
+    <p class='mt-1.5 mb-4 font-heading text-xl text-muted lg:mb-0'>Full-Stack Engineer</p>
+    <nav class='lg:col-span-3' aria-label='Sections'>
+        <ul class='m-0 flex list-none flex-wrap gap-x-5 gap-y-1 p-0'>
             <li><a href='#now'>Now</a></li>
             <li><a href='#how-i-work'>How I work</a></li>
             <li><a href='#selected-work'>Selected work</a></li>
@@ -42,20 +28,23 @@
 </header>
 
 <main>
-    <section id='hello'>
-        <h2>Hi, I'm Joshua, though most people call me Evan.</h2>
-        <figure>
-            <img class='headshot' src='/assets/img/profile/headshot-2026.jpg' srcset='/assets/img/profile/headshot-2026-480w.jpg 480w, /assets/img/profile/headshot-2026.jpg 820w' sizes='12rem' width='820' height='820' alt='Joshua Heagle, head and shoulders, outdoors in a park'>
+    <section class='mb-10 lg:grid lg:grid-cols-4 lg:gap-x-12' id='hello'>
+        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-6 lg:self-start lg:text-2xl'>Hi, I'm Joshua, though most people call me Evan.</h2>
+        <div class='lg:col-span-3 lg:max-w-prose lg:*:first:mt-0'>
+        <figure class='m-0 mb-4'>
+            <img class='block h-auto w-36 rounded-full' src='/assets/img/profile/headshot-2026.jpg' srcset='/assets/img/profile/headshot-2026-480w.jpg 480w, /assets/img/profile/headshot-2026.jpg 820w' sizes='9rem' width='820' height='820' alt='Joshua Heagle, head and shoulders, outdoors in a park'>
         </figure>
         <p>
             I'm a full-stack engineer in the Greater Toronto Area. I like finding the system underneath a problem, and
             I'm the person teammates ask when they need to find where something actually lives in the code. Outside of
             work I'm a dad of two, I draw, I garden, I fix things myself, and I train for races. Nice to meet you.
         </p>
+        </div>
     </section>
 
-    <section id='now'>
-        <h2>What I'm doing now</h2>
+    <section class='mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='now'>
+        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-6 lg:self-start lg:text-2xl'>What I'm doing now</h2>
+        <div class='lg:col-span-3 lg:max-w-prose lg:*:first:mt-0'>
         <p>
             When Inkbox's consumer business closed in late 2025, BIC kept six of us on to build in-house engineering
             capability. I'm now one of three engineers, alongside QA, on a new Global Supply Chain team building software
@@ -69,10 +58,12 @@
             I'm open to new opportunities, whether a full-time role or a contract, where I can do meaningful work and
             keep growing.
         </p>
+        </div>
     </section>
 
-    <section id='how-i-work'>
-        <h2>How I work</h2>
+    <section class='mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='how-i-work'>
+        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-6 lg:self-start lg:text-2xl'>How I work</h2>
+        <div class='lg:col-span-3 lg:max-w-prose lg:*:first:mt-0'>
         <p>
             <strong>I look for the pattern, not just the ticket.</strong> At Inkbox I turned a 1,489-line service into a
             strategy pattern, and turned a DTO convention into a shared package other codebases now use.
@@ -90,7 +81,7 @@
         </p>
         <p>
             <strong>I make pragmatic calls.</strong> I benchmarked a custom sorting algorithm against PHP's built-in
-            <code>usort</code> under a 5-second budget. Mine came out slightly ahead but was still too slow for the
+            <code class='rounded bg-foreground/8 px-1 py-px'>usort</code> under a 5-second budget. Mine came out slightly ahead but was still too slow for the
             budget, so I shipped the built-in.
         </p>
         <p>
@@ -102,50 +93,54 @@
             <strong>I use AI tools critically.</strong> I direct coding agents through real work, and that includes
             reviewing their architecture and catching the bugs they introduce.
         </p>
+        </div>
     </section>
 
-    <section id='selected-work'>
-        <h2>Selected work</h2>
-        <article>
-            <h3>Inventory &amp; Distribution system (Inkbox, 2023)</h3>
+    <section class='mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='selected-work'>
+        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-6 lg:self-start lg:text-2xl'>Selected work</h2>
+        <div class='lg:col-span-3 lg:max-w-prose lg:*:first:mt-0'>
+        <article class='my-5 border-l-3 border-link py-1 pl-4 *:last:mb-0'>
+            <h3 class='mt-0 mb-2 text-lg'>Inventory &amp; Distribution system (Inkbox, 2023)</h3>
             <p>
                 I designed and built it end to end: data model, schema, Nova admin tooling and integration with the
                 platform's DTO layer, covering tens of thousands of SKUs. Then I hardened it through a real production
                 bug-fix cycle.
             </p>
         </article>
-        <article>
-            <h3>Sheet generation refactor (Inkbox, 2023&ndash;24)</h3>
+        <article class='my-5 border-l-3 border-link py-1 pl-4 *:last:mb-0'>
+            <h3 class='mt-0 mb-2 text-lg'>Sheet generation refactor (Inkbox, 2023&ndash;24)</h3>
             <p>
-                A 1,489-line service became 128 lines, backed by a <code>GeneratesSheets</code> interface, six generator
+                A 1,489-line service became 128 lines, backed by a <code class='rounded bg-foreground/8 px-1 py-px'>GeneratesSheets</code> interface, six generator
                 classes and shared traits. The new structure made it easy to extend later for bundled products, and to
                 add caching.
             </p>
         </article>
-        <article>
-            <h3>The DTO pattern, from convention to package (Inkbox, 2021 onward)</h3>
+        <article class='my-5 border-l-3 border-link py-1 pl-4 *:last:mb-0'>
+            <h3 class='mt-0 mb-2 text-lg'>The DTO pattern, from convention to package (Inkbox, 2021 onward)</h3>
             <p>
                 I introduced the Data Transfer Object pattern early in the core app's life and maintained it for years.
                 When other codebases needed it, I directed its extraction into a standalone shared package.
             </p>
         </article>
-        <article>
-            <h3>Grants Forms service (Benevity)</h3>
+        <article class='my-5 border-l-3 border-link py-1 pl-4 *:last:mb-0'>
+            <h3 class='mt-0 mb-2 text-lg'>Grants Forms service (Benevity)</h3>
             <p>
                 One of the projects I'm proudest of. I helped guide it and built much of it from the ground up, including
                 a configurable adapter that routes form submissions to any receiving API.
             </p>
         </article>
+        </div>
     </section>
 
-    <section id='projects'>
-        <h2>What I build on my own time</h2>
+    <section class='mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='projects'>
+        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-6 lg:self-start lg:text-2xl'>What I build on my own time</h2>
+        <div class='lg:col-span-3 lg:max-w-prose lg:*:first:mt-0'>
         <p>
             I maintain a small ecosystem of TypeScript libraries that build on each other: a JSON-to-DOM rendering layer,
             a matrix/grid layer on top of it, a lightweight DOM implementation for testing, and the shared build and test
             tooling underneath them all. Battleship is the proof that the whole stack works.
         </p>
-        <ul>
+        <ul class='space-y-1.5 pl-5'>
             <li>
                 <a href='/projects/battleship/'>Battleship</a>: a multiplayer-ready game built on the whole stack.
                 <a href='/projects/battleship/play.html'>Play it</a> &middot;
@@ -165,12 +160,14 @@
             <li><a href='/projects/workout-planner/'>Workout Planner</a>: an early, evolving idea for workout tracking.</li>
         </ul>
         <p><a href='/projects/'>See all projects &rarr;</a></p>
+        </div>
     </section>
 
-    <section id='outside-work'>
-        <h2>Outside of work</h2>
+    <section class='mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='outside-work'>
+        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-6 lg:self-start lg:text-2xl'>Outside of work</h2>
+        <div class='lg:col-span-3 lg:max-w-prose lg:*:first:mt-0'>
 
-        <h3>Fitness</h3>
+        <h3 class='mt-8 mb-2 text-xl'>Fitness</h3>
         <p>
             In late 2023, two months into a new gym routine, I ended up in hospital for six days with a late-stage
             appendicitis. Three months of no lifting later, I started running as a warm-up, and kept going. Since then: my
@@ -187,94 +184,104 @@
             I share training as <a href='https://www.instagram.com/evan.get.fit/'>@evan.get.fit</a>, and
             <a href='https://evanget.fit'>evanget.fit</a> is coming soon, with tips, tracking tools and guidance.
         </p>
-        <figure>
-            <img src='/assets/img/hobbies/fitness/running/2025-toronto-half-marathon.jpg' srcset='/assets/img/hobbies/fitness/running/2025-toronto-half-marathon-480w.jpg 480w, /assets/img/hobbies/fitness/running/2025-toronto-half-marathon-960w.jpg 960w, /assets/img/hobbies/fitness/running/2025-toronto-half-marathon.jpg 1205w' sizes='(max-width: 321px) calc(100vw - 2rem), 289px' width='1205' height='1600' loading='lazy' alt='Joshua at the finish-photo booth of the 2025 Toronto half marathon, the clock reading 1:45:01'>
-            <figcaption>Toronto half marathon, May 2025: 1:45:01.</figcaption>
+        <div class='my-5 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:flex-wrap md:overflow-visible'>
+        <figure class='m-0 w-min flex-none snap-start'>
+            <img class='block h-64 w-auto max-w-none object-contain' src='/assets/img/hobbies/fitness/running/2025-toronto-half-marathon.jpg' srcset='/assets/img/hobbies/fitness/running/2025-toronto-half-marathon-480w.jpg 480w, /assets/img/hobbies/fitness/running/2025-toronto-half-marathon-960w.jpg 960w, /assets/img/hobbies/fitness/running/2025-toronto-half-marathon.jpg 1205w' sizes='193px' width='1205' height='1600' loading='lazy' alt='Joshua at the finish-photo booth of the 2025 Toronto half marathon, the clock reading 1:45:01'>
+            <figcaption class='mt-1.5 text-sm/snug'>Toronto half marathon, May 2025: 1:45:01.</figcaption>
         </figure>
-        <figure>
-            <img src='/assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running.jpg' srcset='/assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running-480w.jpg 480w, /assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running-960w.jpg 960w, /assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running.jpg 1067w' sizes='(max-width: 288px) calc(100vw - 2rem), 256px' width='1067' height='1600' loading='lazy' alt='Joshua running the final leg of the Cornwall try-a-tri'>
-            <figcaption>The run leg of the Cornwall try-a-tri.</figcaption>
+        <figure class='m-0 w-min flex-none snap-start'>
+            <img class='block h-64 w-auto max-w-none object-contain' src='/assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running.jpg' srcset='/assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running-480w.jpg 480w, /assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running-960w.jpg 960w, /assets/img/hobbies/fitness/triatholon/2026-cornwall-try-a-tri-running.jpg 1067w' sizes='171px' width='1067' height='1600' loading='lazy' alt='Joshua running the final leg of the Cornwall try-a-tri'>
+            <figcaption class='mt-1.5 text-sm/snug'>The run leg of the Cornwall try-a-tri.</figcaption>
         </figure>
-        <figure>
-            <img src='/assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang.jpg' srcset='/assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang-480w.jpg 480w, /assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang-960w.jpg 960w, /assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang.jpg 1200w' sizes='(max-width: 433px) calc(100vw - 2rem), 401px' width='1200' height='1150' loading='lazy' alt='Joshua pointing at a dead-hang challenge scoreboard showing his time of 1:45, wearing a Toronto Pride 5K medal'>
-            <figcaption>After the 2026 Toronto Pride 5K: second place in the dead-hang challenge at 1:45, the same as my half-marathon time.</figcaption>
+        <figure class='m-0 w-min flex-none snap-start'>
+            <img class='block h-64 w-auto max-w-none object-contain' src='/assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang.jpg' srcset='/assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang-480w.jpg 480w, /assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang-960w.jpg 960w, /assets/img/hobbies/fitness/running/2026-toronto-pride-5k-deadhang.jpg 1200w' sizes='267px' width='1200' height='1150' loading='lazy' alt='Joshua pointing at a dead-hang challenge scoreboard showing his time of 1:45, wearing a Toronto Pride 5K medal'>
+            <figcaption class='mt-1.5 text-sm/snug'>After the 2026 Toronto Pride 5K: second place in the dead-hang challenge at 1:45, the same as my half-marathon time.</figcaption>
         </figure>
-        <figure>
-            <video controls preload='metadata' playsinline width='1024' height='1280' poster='/assets/img/hobbies/fitness/progress/March_2022-January_2026-poster.jpg' src='/assets/img/hobbies/fitness/progress/March_2022-January_2026.mp4'></video>
-            <figcaption>Four years of progress, March 2022 to January 2026.</figcaption>
+        <figure class='m-0 w-min flex-none snap-start'>
+            <video class='block h-64 w-auto max-w-none' controls preload='metadata' playsinline width='1024' height='1280' poster='/assets/img/hobbies/fitness/progress/March_2022-January_2026-poster.jpg' src='/assets/img/hobbies/fitness/progress/March_2022-January_2026.mp4'></video>
+            <figcaption class='mt-1.5 text-sm/snug'>Four years of progress, March 2022 to January 2026.</figcaption>
         </figure>
-        <figure>
-            <video controls preload='metadata' playsinline width='720' height='1280' poster='/assets/img/hobbies/fitness/bodybuilding/chin-ups-25lbs-6-poster.jpg' src='/assets/img/hobbies/fitness/bodybuilding/chin-ups-25lbs-6.mp4'></video>
-            <figcaption>Six weighted chin-ups with 25&nbsp;lbs.</figcaption>
+        <figure class='m-0 w-min flex-none snap-start'>
+            <video class='block h-64 w-auto max-w-none' controls preload='metadata' playsinline width='720' height='1280' poster='/assets/img/hobbies/fitness/bodybuilding/chin-ups-25lbs-6-poster.jpg' src='/assets/img/hobbies/fitness/bodybuilding/chin-ups-25lbs-6.mp4'></video>
+            <figcaption class='mt-1.5 text-sm/snug'>Six weighted chin-ups with 25&nbsp;lbs.</figcaption>
         </figure>
+        </div>
 
-        <h3>Drawing</h3>
+        <h3 class='mt-8 mb-2 text-xl'>Drawing</h3>
         <p>
             I've drawn since my teens. These days, prompts from <cite>642 Things to Draw</cite> keep me going, plus the
             occasional commission from my son (an LA Knight portrait for his friend's birthday card).
         </p>
-        <figure>
-            <img src='/assets/img/art/sketch-la-knight.jpg' srcset='/assets/img/art/sketch-la-knight-480w.jpg 480w, /assets/img/art/sketch-la-knight-960w.jpg 960w, /assets/img/art/sketch-la-knight.jpg 1000w' sizes='(max-width: 352px) calc(100vw - 2rem), 320px' width='1000' height='1200' loading='lazy' alt='Pencil portrait of the wrestler LA Knight'>
-            <figcaption>LA Knight, drawn for a birthday card.</figcaption>
+        <div class='my-5 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:flex-wrap md:overflow-visible'>
+        <figure class='m-0 w-min flex-none snap-start'>
+            <img class='block h-64 w-auto max-w-none object-contain' src='/assets/img/art/sketch-la-knight.jpg' srcset='/assets/img/art/sketch-la-knight-480w.jpg 480w, /assets/img/art/sketch-la-knight-960w.jpg 960w, /assets/img/art/sketch-la-knight.jpg 1000w' sizes='213px' width='1000' height='1200' loading='lazy' alt='Pencil portrait of the wrestler LA Knight'>
+            <figcaption class='mt-1.5 text-sm/snug'>LA Knight, drawn for a birthday card.</figcaption>
         </figure>
-        <figure>
-            <img src='/assets/img/art/ideas-anchor-skunk-chair.jpg' srcset='/assets/img/art/ideas-anchor-skunk-chair-480w.jpg 480w, /assets/img/art/ideas-anchor-skunk-chair.jpg 852w' sizes='(max-width: 337px) calc(100vw - 2rem), 305px' width='852' height='1072' loading='lazy' alt='A sketchbook page of four pencil drawings: an anchor, a skunk, a desk chair and Van Gogh&#39;s ear'>
-            <figcaption>Four prompts from <cite>642 Things to Draw</cite>: an anchor, a skunk, a desk chair and Van Gogh's ear.</figcaption>
+        <figure class='m-0 w-min flex-none snap-start'>
+            <img class='block h-64 w-auto max-w-none object-contain' src='/assets/img/art/ideas-anchor-skunk-chair.jpg' srcset='/assets/img/art/ideas-anchor-skunk-chair-480w.jpg 480w, /assets/img/art/ideas-anchor-skunk-chair.jpg 852w' sizes='203px' width='852' height='1072' loading='lazy' alt='A sketchbook page of four pencil drawings: an anchor, a skunk, a desk chair and Van Gogh&#39;s ear'>
+            <figcaption class='mt-1.5 text-sm/snug'>Four prompts from <cite>642 Things to Draw</cite>: an anchor, a skunk, a desk chair and Van Gogh's ear.</figcaption>
         </figure>
-        <figure>
-            <img src='/assets/img/art/frog-eye-zipper-eyelid.jpg' srcset='/assets/img/art/frog-eye-zipper-eyelid-480w.jpg 480w, /assets/img/art/frog-eye-zipper-eyelid-960w.jpg 960w, /assets/img/art/frog-eye-zipper-eyelid.jpg 1076w' sizes='(max-width: 431px) calc(100vw - 2rem), 399px' width='1076' height='1036' loading='lazy' alt='An enlarged drawing of a frog&#39;s eye, with a zipper drawn around it as an eyelid'>
-            <figcaption>An abstraction of an enlarged frog's eye, with a zipper added as an eyelid. I was 15.</figcaption>
+        <figure class='m-0 w-min flex-none snap-start'>
+            <img class='block h-64 w-auto max-w-none object-contain' src='/assets/img/art/frog-eye-zipper-eyelid.jpg' srcset='/assets/img/art/frog-eye-zipper-eyelid-480w.jpg 480w, /assets/img/art/frog-eye-zipper-eyelid-960w.jpg 960w, /assets/img/art/frog-eye-zipper-eyelid.jpg 1076w' sizes='266px' width='1076' height='1036' loading='lazy' alt='An enlarged drawing of a frog&#39;s eye, with a zipper drawn around it as an eyelid'>
+            <figcaption class='mt-1.5 text-sm/snug'>An abstraction of an enlarged frog's eye, with a zipper added as an eyelid. I was 15.</figcaption>
         </figure>
+        </div>
 
-        <h3>Gardening</h3>
+        <h3 class='mt-8 mb-2 text-xl'>Gardening</h3>
         <p>
             I replaced almost all of my lawn with white clover, wildflowers and native plants. They're better for
             pollinators and the environment, and far less work and money to keep up than grass.
         </p>
-        <figure>
-            <img src='/assets/img/hobbies/garden/garden-front-wildflowers.jpg' srcset='/assets/img/hobbies/garden/garden-front-wildflowers-480w.jpg 480w, /assets/img/hobbies/garden/garden-front-wildflowers.jpg 945w' sizes='(max-width: 410px) calc(100vw - 2rem), 378px' width='945' height='960' loading='lazy' alt='A bed of wildflowers in full bloom'>
-            <figcaption>Wildflowers where the lawn used to be.</figcaption>
+        <div class='my-5 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:flex-wrap md:overflow-visible'>
+        <figure class='m-0 w-min flex-none snap-start'>
+            <img class='block h-64 w-auto max-w-none object-contain' src='/assets/img/hobbies/garden/garden-front-wildflowers.jpg' srcset='/assets/img/hobbies/garden/garden-front-wildflowers-480w.jpg 480w, /assets/img/hobbies/garden/garden-front-wildflowers.jpg 945w' sizes='252px' width='945' height='960' loading='lazy' alt='A bed of wildflowers in full bloom'>
+            <figcaption class='mt-1.5 text-sm/snug'>Wildflowers where the lawn used to be.</figcaption>
         </figure>
-        <figure>
-            <img src='/assets/img/hobbies/garden/garden-clover-replace-grass.jpg' srcset='/assets/img/hobbies/garden/garden-clover-replace-grass-480w.jpg 480w, /assets/img/hobbies/garden/garden-clover-replace-grass-960w.jpg 960w, /assets/img/hobbies/garden/garden-clover-replace-grass.jpg 1205w' sizes='(max-width: 321px) calc(100vw - 2rem), 289px' width='1205' height='1600' loading='lazy' alt='White clover growing in place of grass, beside a stone path'>
-            <figcaption>White clover instead of grass.</figcaption>
+        <figure class='m-0 w-min flex-none snap-start'>
+            <img class='block h-64 w-auto max-w-none object-contain' src='/assets/img/hobbies/garden/garden-clover-replace-grass.jpg' srcset='/assets/img/hobbies/garden/garden-clover-replace-grass-480w.jpg 480w, /assets/img/hobbies/garden/garden-clover-replace-grass-960w.jpg 960w, /assets/img/hobbies/garden/garden-clover-replace-grass.jpg 1205w' sizes='193px' width='1205' height='1600' loading='lazy' alt='White clover growing in place of grass, beside a stone path'>
+            <figcaption class='mt-1.5 text-sm/snug'>White clover instead of grass.</figcaption>
         </figure>
-        <figure>
-            <img src='/assets/img/hobbies/garden/garden-pick-your-own-bouquet.jpg' srcset='/assets/img/hobbies/garden/garden-pick-your-own-bouquet-480w.jpg 480w, /assets/img/hobbies/garden/garden-pick-your-own-bouquet.jpg 620w' sizes='(max-width: 234px) calc(100vw - 2rem), 202px' width='620' height='1180' loading='lazy' alt='Joshua holding a large bouquet of mixed flowers in a metal pot'>
-            <figcaption>A pick-your-own bouquet from a local farm, with many of the same flowers I grow at home.</figcaption>
+        <figure class='m-0 w-min flex-none snap-start'>
+            <img class='block h-64 w-auto max-w-none object-contain' src='/assets/img/hobbies/garden/garden-pick-your-own-bouquet.jpg' srcset='/assets/img/hobbies/garden/garden-pick-your-own-bouquet-480w.jpg 480w, /assets/img/hobbies/garden/garden-pick-your-own-bouquet.jpg 620w' sizes='135px' width='620' height='1180' loading='lazy' alt='Joshua holding a large bouquet of mixed flowers in a metal pot'>
+            <figcaption class='mt-1.5 text-sm/snug'>A pick-your-own bouquet from a local farm, with many of the same flowers I grow at home.</figcaption>
         </figure>
+        </div>
 
-        <h3>Fixing things myself</h3>
+        <h3 class='mt-8 mb-2 text-xl'>Fixing things myself</h3>
         <p>
             I wired an EV charger at home, which passed inspection, and reupholstered our kitchen chairs. I'm happiest
             learning whatever skill the job in front of me needs.
         </p>
-        <figure>
-            <img src='/assets/img/hobbies/fix-stuff/reupholster-before.jpg' srcset='/assets/img/hobbies/fix-stuff/reupholster-before-480w.jpg 480w, /assets/img/hobbies/fix-stuff/reupholster-before-960w.jpg 960w, /assets/img/hobbies/fix-stuff/reupholster-before.jpg 1205w' sizes='(max-width: 321px) calc(100vw - 2rem), 289px' width='1205' height='1600' loading='lazy' alt='A kitchen chair with a badly cracked black vinyl seat'>
-            <figcaption>Before.</figcaption>
+        <div class='my-5 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:flex-wrap md:overflow-visible'>
+        <figure class='m-0 w-min flex-none snap-start'>
+            <img class='block h-64 w-auto max-w-none object-contain' src='/assets/img/hobbies/fix-stuff/reupholster-before.jpg' srcset='/assets/img/hobbies/fix-stuff/reupholster-before-480w.jpg 480w, /assets/img/hobbies/fix-stuff/reupholster-before-960w.jpg 960w, /assets/img/hobbies/fix-stuff/reupholster-before.jpg 1205w' sizes='193px' width='1205' height='1600' loading='lazy' alt='A kitchen chair with a badly cracked black vinyl seat'>
+            <figcaption class='mt-1.5 text-sm/snug'>Before.</figcaption>
         </figure>
-        <figure>
-            <img src='/assets/img/hobbies/fix-stuff/reupholster-after.jpg' srcset='/assets/img/hobbies/fix-stuff/reupholster-after-480w.jpg 480w, /assets/img/hobbies/fix-stuff/reupholster-after-960w.jpg 960w, /assets/img/hobbies/fix-stuff/reupholster-after.jpg 1205w' sizes='(max-width: 321px) calc(100vw - 2rem), 289px' width='1205' height='1600' loading='lazy' alt='Four kitchen chairs with freshly reupholstered red and black seats'>
-            <figcaption>After.</figcaption>
+        <figure class='m-0 w-min flex-none snap-start'>
+            <img class='block h-64 w-auto max-w-none object-contain' src='/assets/img/hobbies/fix-stuff/reupholster-after.jpg' srcset='/assets/img/hobbies/fix-stuff/reupholster-after-480w.jpg 480w, /assets/img/hobbies/fix-stuff/reupholster-after-960w.jpg 960w, /assets/img/hobbies/fix-stuff/reupholster-after.jpg 1205w' sizes='193px' width='1205' height='1600' loading='lazy' alt='Four kitchen chairs with freshly reupholstered red and black seats'>
+            <figcaption class='mt-1.5 text-sm/snug'>After.</figcaption>
         </figure>
+        </div>
 
-        <h3>Languages</h3>
+        <h3 class='mt-8 mb-2 text-xl'>Languages</h3>
         <p>
             I'm near-fluent in Spanish, after two years in California living and teaching in it. I'm conversational in
             Mandarin, and I'm building confidence in French (my dad's side of the family is French-Canadian). I also hold
             a TESOL certificate.
         </p>
 
-        <h3>Community</h3>
+        <h3 class='mt-8 mb-2 text-xl'>Community</h3>
         <p>
             I use my platform to support feminist and LGBTQ+ causes, and I stay involved locally in Durham Region,
             sometimes in person at council meetings.
         </p>
+        </div>
     </section>
 
-    <section id='experience'>
-        <h2>Where I've worked</h2>
-        <ul>
+    <section class='mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='experience'>
+        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-6 lg:self-start lg:text-2xl'>Where I've worked</h2>
+        <div class='lg:col-span-3 lg:max-w-prose lg:*:first:mt-0'>
+        <ul class='space-y-1.5 pl-5'>
             <li><strong>Full-Stack Engineer</strong>, BIC (formerly Inkbox), Toronto, April 2021 &ndash; present</li>
             <li><strong>Software Developer II</strong>, Benevity, Toronto, January 2017 &ndash; April 2021</li>
             <li>
@@ -282,15 +289,17 @@
                 Techcom &middot; <strong>Front-end/PHP Developer</strong>, 3conx and Jackpine (2013&ndash;2017)
             </li>
         </ul>
-        <h3>Education</h3>
+        <h3 class='mt-8 mb-2 text-xl'>Education</h3>
         <p>Computer Engineering Technology &ndash; Computer Science, Algonquin College (2010&ndash;2013)</p>
         <p><a href='/assets/documents/Joshua_Heagle_Resume.pdf'>Download my resume (PDF)</a></p>
+        </div>
     </section>
 
-    <section id='contact'>
-        <h2>Let's chat</h2>
+    <section class='mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='contact'>
+        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-6 lg:self-start lg:text-2xl'>Let's chat</h2>
+        <div class='lg:col-span-3 lg:max-w-prose lg:*:first:mt-0'>
         <p>If you're hiring, building something interesting, or just want to talk shop, I'd like to hear from you.</p>
-        <ul>
+        <ul class='space-y-1.5 pl-5'>
             <li>Email: <a href='mailto:joshuaheagle@gmail.com'>joshuaheagle@gmail.com</a></li>
             <li>
                 <a href='https://ca.linkedin.com/in/joshuaheagle'>LinkedIn</a> &middot;
@@ -303,10 +312,11 @@
                 <a href='https://www.strava.com/athletes/136044729'>Strava</a>
             </li>
         </ul>
+        </div>
     </section>
 </main>
 
-<footer>
+<footer class='mt-12 border-t border-rule pt-4 text-sm text-muted'>
     <p>Joshua Heagle &copy; 2026</p>
 </footer>
 </body>
