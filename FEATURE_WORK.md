@@ -17,7 +17,26 @@ Content tiers:
 - **Tier 2, deeper pages (blog-like):** linked from Tier 1, never on the front page. Fitness journey, opinion pieces
   (lawns and native plants), the art archive, handyman projects.
 
+
+## Principles
+
+These apply to every task below.
+
+- **Simple, content first:** one or two pleasant details beat many effects.
+- **Mobile first:** unprefixed styles are the phone styles, and `md:`/`lg:` add to them. Check widths 390, 768 and
+  1280 px in Firefox, Chrome and Safari (WebKit).
+- **Readable by machines too:** real, static text in the HTML, standard headings, no text in images, so screen readers
+  and applicant-tracking systems read stable content. Animated text runs over that real text.
+- **Firefox's look is the reference:** preflight stays off; the base layer pins only what differs between browsers
+  and what the design changes.
+- **Tokens, not one-off values:** colours and fonts are `@theme` tokens in `assets/tailwind/site.css`, so light/dark
+  and later themes are value swaps, not restyles. Light/dark follows the visitor's system setting.
+- **Reduced motion is respected:** every animation and smooth scroll is off when the visitor's system asks for it.
+
 ## Work Split
+
+Claude builds each task as a bot PR into `feature/redesign`, with screenshots from all three browsers. ✱ marks the
+steps where Joshua picks, tests or approves before the PR merges.
 
 ### Done
 
@@ -30,60 +49,57 @@ Content tiers:
 - [x] Stale js-build-tools docs pages removed (#122)
 - [x] workout-planner, quizzes and battleship docs refreshed (#123)
 - [x] Responsive photos with no layout jump, `npm run images:responsive` (#131)
+- [x] Design decisions and the nav spec (#168); fonts chosen (#169)
+- [x] **Base layer** (#170): self-hosted variable fonts from Fontsource (Lexend headings, Atkinson Hyperlegible Next
+  body at 17px, Atkinson Hyperlegible Mono code; latin only, copied by `npm run build:fonts`, two preloaded); colour
+  tokens as `light-dark()` pairs of Firefox's defaults (light `#FFFFFF` / `#000000` / links `#0000EE`; dark
+  `#1C1B22` / `#FBFBFE` / links `#00CADB`). Measured 2026-11-04: Firefox, Chrome and Safari already agree on sizes,
+  margins and line heights for these pages; dark-mode colours were the only real difference. Joshua checked Chrome,
+  Edge and Firefox: Firefox looks nicest in both modes. Keep light mode pure white: the drawings read as sketched
+  onto the page.
 
-### To do
+### To do, in order
 
-- [ ] **Sticky nav menu** (`redesign/sticky-nav-menu`, in progress, yours): pinned to the top; hides while
-  scrolling down and comes back when scrolling up. Compact on phones (collapses to a menu), full row on wider
-  screens. Sections get `scroll-margin-top` so a nav link doesn't land under the header. Nice to have: highlight
-  the current section.
-- [ ] **Tailwind design pass, mobile first** (yours): the visual layer over the plain HTML, designed at phone
-  width first, checked in Firefox, Chrome and Safari as it goes. Order: **font** first (sizes and spacing depend on
-  it), then the base layer, then colours with light/dark, then small details (title-switcher, gentle motion).
-  Break it into its own PRs as it takes shape.
-- [ ] **Show-and-tell sandboxes on `/projects/`**: small live demos people can try in the page, for the projects that run
-  in a browser. One PR per project. Suggested order: title-switcher (already has a bundle on the site), json-dom,
-  matrix-dom, pseudo-dom, json-fs-query, si-funciona and collect-your-stuff. battleship, quizzes and workout-planner
-  already link to their own running app.
-- [ ] **Tier 2 blog, the infrastructure**: read-only, static pages powered by json-fs-query (posts stored as json-fs-query
-  data, a listing page and a post page). Scope it before starting: where posts live, how a post is written (Markdown or
-  JSON-DOM), and URLs.
-- [ ] **Tier 2: first posts**: fitness journey and "why I gave up on grass", then restore those two links on the homepage.
-  The full fitness content moves to evanget.fit later (see Out of scope), so keep the fitness post easy to move.
-- [ ] **Before leaving draft**: re-sync with `main`, run the full test suite, check the live-site paths (`/projects/*`,
-  docs, bundles) in a browser, then copy this file into #124 and delete it.
+- [ ] **1. `npm run compare:browsers`:** the browser-compare script as a repo script: full-page screenshots in
+  Firefox, Chrome and WebKit at 390/768/1280, light and dark, plus a table of computed styles that differ between
+  engines. Every later PR attaches its output.
+- [ ] **2. Layout and type scale, homepage ✱:** spacing, heading sizes, how photos and figures sit, header and
+  footer, phone first. Two options side by side; Joshua picks. Includes a resized fallback font (`size-adjust`,
+  `ascent-override`) so text doesn't move when the web fonts arrive.
+- [ ] **3. Accent colour ✱:** a few swatches from Tailwind's palette, in light and dark; Joshua picks. Links keep
+  Firefox's colours unless the pick says otherwise.
+- [ ] **4. Sticky/mobile nav ✱** (`redesign/sticky-nav-menu`): pinned to the top; hides while scrolling down and
+  comes back when scrolling up. Compact on phones (collapses to a menu), full row on wider screens. Sections get
+  `scroll-margin-top` so a nav link doesn't land under the header. Nice to have: highlight the current section.
+  Joshua tests the feel on a real phone.
+- [ ] **5. `/projects/` restyle:** the tiles use the tokens (fixes the light tiles in dark mode), and Tailwind
+  replaces the old `project-grid` sass.
+- [ ] **6. Small details ✱:** the title-switcher typing effect over real static text, smooth scrolling to sections,
+  short transitions (colour, the nav hiding and returning). All off for reduced motion. Joshua judges the feel.
+- [ ] **7. Show-and-tell sandboxes on `/projects/`:** small live demos people can try in the page. One PR per
+  project: title-switcher (already has a bundle on the site), json-dom, matrix-dom, pseudo-dom, json-fs-query,
+  si-funciona and collect-your-stuff. battleship, quizzes and workout-planner already link to their own running app.
+- [ ] **8. Tier 2 blog infrastructure ✱:** read-only, static pages powered by json-fs-query (posts stored as
+  json-fs-query data, a listing page and a post page). Joshua answers three scoping questions first: where posts
+  live, how a post is written (Markdown or JSON-DOM), and URLs.
+- [ ] **9. First Tier 2 posts ✱:** fitness journey and "why I gave up on grass". Claude drafts from the local
+  `CONTENT-DRAFT.md`, Joshua approves the wording, then the two homepage links come back. Keep the fitness post easy
+  to move to evanget.fit later.
+- [ ] **10. `llms.txt`:** a plain-text summary of the site and its projects for AI tools and agents.
+- [ ] **11. Before leaving draft ✱:** re-sync with `main`, run the full test suite, check the live-site paths
+  (`/projects/*`, docs, bundles), a final pass in Firefox, Chrome and Safari (a real Apple device if available), then
+  copy this file into #124 and delete it. Joshua merges #124.
 
-### Design decisions
+### Later or optional
 
-Settled as the design pass goes; later PRs (themes, sandboxes, the blog) build on these.
-
-- **Simple:** content first; one or two pleasant details beat many effects.
-- **Mobile first:** unprefixed styles are the phone styles, and `md:`/`lg:` add to them. Check widths 390, 768
-  and 1280 px in Firefox, Chrome and Safari (WebKit).
-- **Base layer, preflight off:** pin the browser defaults worth keeping (Firefox's look is the reference) in a small
-  base layer of our own, so every browser matches it. Measured 2026-11-04: Firefox, Chrome and Safari compute the same
-  font sizes, margins and line heights for this page (the inline style already sets `system-ui`, 1.6 line height,
-  46rem width); the real differences are the dark-mode colours. Firefox dark: background `#1C1B22`, text
-  `#FBFBFE`, links `#00CADB`. Chrome dark: `#121212`, `#FFFFFF`, `#9E9EFF`. Safari (WebKit) dark: `#1E1E1E`, `#FFFFFF`,
-  `#9E9EFF`. Firefox's dark palette is the reference look.
-- **Fonts (chosen 2026-11-04):** **Lexend** for headings (geometric, the single-storey "a"), **Atkinson
-  Hyperlegible Next** for body text (built for legibility), **Atkinson Hyperlegible Mono** for code. All variable,
-  self-hosted woff2 from Fontsource (`@fontsource-variable/*`, OFL), latin subset: 38 + 33 + 17 KB, and the mono
-  only downloads on pages that show code. Sizes, line heights and spacing are tuned to these, in the base layer.
-  Compared on the homepage first: Inter, Source Sans 3, IBM Plex Sans, Geist, Raleway (overused), Outfit, Manrope,
-  Questrial (one weight only, too light for body text).
-- **Colours from Tailwind's palette, as tokens:** a few semantic variables (background, text, muted, accent,
-  link) mapped to Tailwind palette colours in `@theme`, so light/dark and later themes are variable swaps, not
-  restyles.
-- **Light/dark:** follows the visitor's system setting (`prefers-color-scheme`). A manual toggle is optional and
-  later; if added, it sets an attribute on `<html>` (remembered in localStorage, applied before first paint).
-- **Motion:** subtle: smooth scrolling to sections, short transitions (colour, the nav hiding and returning),
-  the title-switcher. All of it is off when the visitor's system asks for reduced motion. Animated text runs over
-  real, static text in the HTML, so screen readers and applicant-tracking systems read stable content.
+- A manual light/dark toggle: sets `color-scheme` on `<html>` (remembered in localStorage, applied before first
+  paint); the `light-dark()` tokens follow it with no other change.
+- Host the updated resume PDF on the site once it's re-exported.
+- Font loading: one-year cache headers for `browser/fonts` once hosting is chosen.
 
 ### Ongoing
 
-- Keep `feature/redesign` synced with `main`: docs and bundle refreshes from the libraries land on `main` (last sync 2026-10-25).
+- Keep `feature/redesign` synced with `main`: docs and bundle refreshes from the libraries land on `main` (last sync 2026-11-04).
 - New photos: run `npm run images:responsive` (the tests enforce it) and check for GPS data before committing. The repo is public.
 - Copy drafts stay in the local, git-ignored `CONTENT-DRAFT.md`. Never commit it.
 
@@ -93,7 +109,6 @@ Settled as the design pass goes; later PRs (themes, sandboxes, the blog) build o
 - **Hosting** (OVHcloud vs static): this site stays static for now.
 - **Resume and online profiles**: the same job-search positioning applies, but those documents aren't part of this repo.
 - **Analytics**: not wanted for now.
-- **Purging the pre-rewrite commits on GitHub** (GPS cleanup): waiting on GitHub Support. It's about `main`'s history, not this branch.
 
 ## Release
 
