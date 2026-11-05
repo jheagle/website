@@ -91,7 +91,9 @@
   --color-foreground: light-dark(#000000, #fbfbfe);
   --color-muted: color-mix(in oklab, var(--color-foreground) 75%, var(--color-background));
   --color-link: light-dark(#0000ee, #00cadb);
-  --color-accent: var(--color-link);
+  /* The accent: Tailwind's fuchsia, picked to match the purple text in the chin-ups video (and a favourite shirt).
+     It's on the Selected work card bars, keyboard focus outlines and selected text; links keep Firefox's colours. */
+  --color-accent: light-dark(var(--color-fuchsia-700), var(--color-fuchsia-400));
   /* Thin divider lines (border-rule): the text colour, faint. */
   --color-rule: color-mix(in oklab, var(--color-foreground) 14%, var(--color-background));
 }
@@ -131,6 +133,16 @@
 
   a:hover {
     text-decoration-thickness: 2px;
+  }
+
+  /* Keyboard focus and selected text use the accent, so they match the page in light and dark. */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-accent) 35%, var(--color-background));
   }
 
   figcaption {

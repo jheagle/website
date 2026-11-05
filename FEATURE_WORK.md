@@ -70,8 +70,12 @@ steps where Joshua picks, tests or approves before the PR merges.
   content in `max-w-prose` beside it), with option A's left-border cards for Selected work at every width. Photos sit
   in 16rem rows that scroll sideways on phones. Styled with Tailwind classes only, Tailwind's own scale over arbitrary
   values; the base layer is just our small reset.
-- [ ] **3. Accent colour ✱:** a few swatches from Tailwind's palette, in light and dark; Joshua picks. Links keep
+- [x] **3. Accent colour ✱:** a few swatches from Tailwind's palette, in light and dark; Joshua picks. Links keep
   Firefox's colours unless the pick says otherwise.
+  Picked 2026-11-04: **fuchsia** (`fuchsia-700` light, `fuchsia-400` dark), sampled from the purple text in the
+  chin-ups video. It's on the card bars, keyboard focus outlines and selected text. Also compared: the link colour,
+  teal (the old site's `#009999`; its `#00CCFF` lives on as Firefox's dark link cyan), indigo, amber, rose, and pink
+  (the half-marathon tank top).
 - [ ] **4. Sticky/mobile nav ✱** (`redesign/sticky-nav-menu`): pinned to the top; hides while scrolling down and
   comes back when scrolling up. Compact on phones (collapses to a menu), full row on wider screens. Sections get
   `scroll-margin-top` so a nav link doesn't land under the header. Nice to have: highlight the current section.
