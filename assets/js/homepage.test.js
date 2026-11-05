@@ -2,6 +2,9 @@ const fs = require('fs')
 const path = require('path')
 const { generateDocument } = require('pseudo-dom')
 
+/** A URL without its fingerprint (scripts/fingerprint.cjs adds ?v=<hash>). */
+const unstamped = url => url && url.replace(/\?v=[0-9a-f]+$/, '')
+
 /**
  * Parse a static HTML file's head and body into a fresh pseudo-dom document, so its real content and structure can
  * be queried with querySelector/getElementById - no server, no headless browser.
@@ -45,11 +48,11 @@ describe('index.html', () => {
   test('loads the title-switcher bundle then the site module (both deferred), and Tailwind is the only stylesheet', () => {
     expect(document.head.querySelectorAll('script').length).toBe(0)
     const scripts = [...document.body.querySelectorAll('script')]
-    expect(scripts.map(script => [script.getAttribute('type'), script.getAttribute('src'), script.hasAttribute('defer')]))
+    expect(scripts.map(script => [script.getAttribute('type'), unstamped(script.getAttribute('src')), script.hasAttribute('defer')]))
       .toEqual([[null, '/browser/vendor/titleSwitcher.min.js', true], ['module', '/dist/siteInit.js', false]])
     ;['browser/vendor/titleSwitcher.min.js', 'dist/siteInit.js', 'dist/siteNav.js', 'dist/roleTitles.js']
       .forEach(file => expect({ file, exists: fs.existsSync(path.join(rootDir, file)) }).toEqual({ file, exists: true }))
-    const stylesheets = [...document.head.querySelectorAll("link[rel='stylesheet']")].map(link => link.getAttribute('href'))
+    const stylesheets = [...document.head.querySelectorAll("link[rel='stylesheet']")].map(link => unstamped(link.getAttribute('href')))
     expect(stylesheets).toEqual(['/browser/tailwind/site.css'])
     expect(fs.existsSync(path.join(rootDir, stylesheets[0]))).toBe(true)
   })

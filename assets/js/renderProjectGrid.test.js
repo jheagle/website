@@ -26,7 +26,7 @@ describe('projects/index.html', () => {
       ...[...document.head.querySelectorAll("link[rel='stylesheet']")].map(link => link.getAttribute('href')),
       ...[...document.head.querySelectorAll('script[src]')].map(script => script.getAttribute('src')),
       ...[...head.matchAll(/import \w+ from '([^']+)'/g)].map(match => match[1])
-    ]
+    ].map(url => url.replace(/\?v=[0-9a-f]+$/, ''))
     expect(urls).toEqual(expect.arrayContaining(['/browser/tailwind/site.css', '/browser/joshuaHome.js']))
     expect(urls).not.toContain('/browser/css/project-grid.css')
     urls.forEach(url => expect({ url, exists: fs.existsSync(path.join(rootDir, url)) }).toEqual({ url, exists: true }))

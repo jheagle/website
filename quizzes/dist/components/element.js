@@ -1,4 +1,4 @@
-import node from './node.js'
+import node from './node.js?v=c62b979612'
 
 /**
  * Create the template of a DomItem

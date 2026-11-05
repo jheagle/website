@@ -51,7 +51,7 @@ describe.each(projects.map(project => [project.href]))('%s', href => {
 
   test('uses the site\'s stylesheet and Tailwind classes only (no old shared.css, no inline styles)', () => {
     const html = fs.readFileSync(path.join(rootDir, href, 'index.html'), 'utf8')
-    expect(html).toContain('<link rel="stylesheet" href="/browser/tailwind/site.css">')
+    expect(html).toMatch(/<link rel="stylesheet" href="\/browser\/tailwind\/site\.css\?v=[0-9a-f]+">/)
     expect(html).not.toContain('shared.css')
     expect(html).not.toMatch(/<style[\s>]/)
     expect(html).not.toMatch(/\sstyle=/)

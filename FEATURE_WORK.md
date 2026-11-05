@@ -161,12 +161,16 @@ steps where Joshua picks, tests or approves before the PR merges.
 - [x] **10. `llms.txt`:** a plain-text summary of the site and its projects for AI tools and agents, in the
   llms.txt format (h1, a blockquote summary, then link lists). A test checks every site link exists and every project in
   the grid is listed, so it can't drift silently; JSON DOM and Matrix DOM link only their pages (private repos).
-- [ ] **11. Asset fingerprinting:** a build step that stamps local CSS/JS URLs in the pages with a content hash
-  (`site.css?v=3f21a`), so a changed file gets a new URL and browsers fetch it at once. GitHub Pages caches for
-  10 minutes (`max-age=600`), and merging the redesign changes nearly every asset, so without this a visitor could
-  get old JS with new CSS for a while (seen locally 2026-11-05: the /projects/ tiles as bare links). Cover the inline
-  module imports on /projects/ and modules imported by other modules (`siteInit.js` → `siteNav.js`), by stamping the
-  import specifiers too or bundling each entry.
+- [x] **11. Asset fingerprinting:** `scripts/fingerprint.cjs` (`npm run build:fingerprint`, last step of `npm run build`
+  and of `npm run blog:build`) stamps every local CSS/JS URL in the pages with a hash of the file (`site.css?v=35670cb3df`),
+  including module imports inline and inside modules; a module is hashed after its own imports are stamped, so a change
+  to `siteNav.js` also changes `siteInit.js`'s URL. Re-running changes nothing; generated docs folders and fonts are
+  left alone. A test fails if any stamp in the repo is stale (`node scripts/fingerprint.cjs --check` says which). Only
+  a query string, so any static server still serves the file without it. Left as is: a visitor holding a cached page
+  (up to 10 minutes on Pages) still asks for the old stamp, and gets the new file.
+- [ ] **11b. `robots.txt` and `sitemap.xml`:** found while doing `llms.txt`: let crawlers in, point them at a sitemap
+  listing every page (homepage, /projects/ and each project page, quizzes, the blog listing and each post), generated
+  in the build so blog posts join it automatically; keep generated docs out of it.
 - [ ] **12. Before leaving draft ✱:** re-sync with `main`, run the full test suite, check the live-site paths
   (`/projects/*`, docs, bundles), a final pass in Firefox, Chrome and Safari (a real Apple device if available), then
   copy this file into #124 and delete it. Joshua merges #124.
