@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='en-CA'>
+<html lang='en-CA' class='scroll-smooth motion-reduce:scroll-auto'>
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -13,10 +13,13 @@
 <body class='mx-auto px-5 pt-6 pb-16 max-w-6xl lg:pt-14'>
 <header class='mb-4 lg:mb-6'>
     <h1 class='m-0 text-4xl/tight tracking-tight lg:text-6xl'>Joshua Heagle</h1>
-    <p class='mt-1.5 mb-0 font-heading text-xl text-muted'>Full-Stack Engineer</p>
+    <!-- The static role is the real text. /dist/siteInit.js types the template's lines over it (see assets/js/roleTitles.js);
+         readers, ATS and reduced-motion visitors keep the static line. -->
+    <p id='role' class='group mt-1.5 mb-0 font-heading text-xl text-muted data-animated:min-h-14 sm:data-animated:min-h-7'><span class='group-data-animated:sr-only'>Full-Stack Engineer</span></p>
+    <template id='role-titles'><span>Full-Stack Engineer</span><span>Architecture &amp; refactoring</span><span>Shared tooling &amp; TypeScript libraries</span><span>Directing AI coding agents</span><span>Runner, artist, gardener</span></template>
 </header>
 
-<!-- Pinned to the top; /dist/siteNavInit.js hides it while scrolling down, brings it back when scrolling up, and
+<!-- Pinned to the top; /dist/siteInit.js (siteNav.js) hides it while scrolling down, brings it back when scrolling up, and
      collapses it behind the Menu button on phones. Without the script it's a plain pinned list of links. -->
 <nav id='site-nav' class='group sticky top-0 z-10 -mx-5 mb-8 border-b border-rule bg-background px-5 transition-transform duration-200 data-hidden:-translate-y-full motion-reduce:transition-none md:flex md:h-12 md:items-center lg:mb-12' aria-label='Sections'>
     <div class='flex h-16 items-center justify-between gap-4 md:hidden'>
@@ -330,6 +333,7 @@
 <footer class='mt-12 border-t border-rule pt-4 text-sm text-muted'>
     <p>Joshua Heagle &copy; 2026</p>
 </footer>
-<script type='module' src='/dist/siteNavInit.js'></script>
+<script src='/browser/vendor/titleSwitcher.min.js' defer></script>
+<script type='module' src='/dist/siteInit.js'></script>
 </body>
 </html>

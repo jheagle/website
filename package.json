@@ -4,7 +4,7 @@
   "description": "Personal website",
   "main": "gulpfile.js",
   "scripts": {
-    "build": "gulp build && npm run build:fonts && npm run build:css",
+    "build": "gulp build && npm run build:fonts && npm run build:vendor && npm run build:css",
     "dev": "gulp",
     "htmldocs": "jsdoc -R MAIN.md -c ./.jsdoc.conf.js -d docs",
     "readme": "gulp readme",
@@ -15,6 +15,7 @@
     "watch:test": "gulp watchTest",
     "build:css": "tailwindcss -i assets/tailwind/site.css -o browser/tailwind/site.css --minify",
     "build:fonts": "node scripts/copy-fonts.mjs",
+    "build:vendor": "node scripts/copy-vendor.mjs",
     "compare:browsers": "node scripts/compare-browsers.cjs",
     "watch:css": "tailwindcss -i assets/tailwind/site.css -o browser/tailwind/site.css --watch",
     "lint": "gulp lint",
@@ -33,7 +34,8 @@
   "dependencies": {
     "json-dom": "github:jheagle/JSON-DOM",
     "json-dom-components": "github:jheagle/json-dom-components",
-    "matrix-dom": "github:jheagle/matrix-DOM"
+    "matrix-dom": "github:jheagle/matrix-DOM",
+    "title-switcher": "^2.2.2"
   },
   "devDependencies": {
     "@babel/core": "^8.1.0",
