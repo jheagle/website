@@ -7,7 +7,6 @@
     <link rel="preload" href="/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/browser/fonts/lexend-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/browser/tailwind/site.css">
-    <script src="./browser/siFunciona.js"></script>
 </head>
 <body class="mx-auto max-w-3xl px-5 pt-6 pb-16 lg:pt-14">
 <div>
@@ -22,38 +21,18 @@
         <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="https://github.com/jheagle/si-funciona" target="_blank">View on GitHub</a>
         <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="#demo">Try the demo</a>
     </nav>
-    <p class="text-muted">Try the string-case helpers below, or open the console to use <code class="rounded bg-foreground/8 px-1 py-px">siFunciona</code>
+    <p class="text-muted">Try some of its functions below, or open the console to use <code class="rounded bg-foreground/8 px-1 py-px">siFunciona</code>
         directly.</p>
 
-    <div class="mt-7 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6" id="demo">
-        <h2 class="mt-0 mb-3 text-xl">String case conversion</h2>
-        <label class="mb-1 block text-sm text-muted" for="case-input">Type something</label>
-        <input class="box-border w-full rounded-md border border-rule bg-background px-2.5 py-2 font-sans text-base text-foreground" id="case-input" type="text" value="some-kabob-case example" autocomplete="off">
-        <div class="mt-3.5">
-            <pre class="m-0 overflow-x-auto rounded-md bg-foreground/8 p-4 text-sm" id="case-output"></pre>
-        </div>
-    </div>
+    <section id="demo" class="mt-7 scroll-mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6">
+        <h2 class="mt-0 mb-1 text-xl">Try it</h2>
+        <p class="mt-0 mb-5 text-sm text-muted">Pick a function, change its inputs, and the result updates as you type. The same sandbox is on the projects page.</p>
+        <!-- Filled in by /dist/sandboxes/siFuncionaSandboxInit.js (assets/js/sandboxes/siFuncionaSandbox.js) -->
+        <div data-sandbox="si-funciona"><noscript><p class="m-0 text-sm">This demo needs JavaScript.</p></noscript></div>
+    </section>
 </div>
-<script type="module">
-  const { camelCase, kabobCase, snakeCase, titleCase } = siFunciona
-  const input = document.getElementById('case-input')
-  const output = document.getElementById('case-output')
-
-  const render = () => {
-    const value = input.value
-    output.textContent = [
-      `camelCase: ${camelCase(value)}`,
-      `kabobCase: ${kabobCase(value)}`,
-      `snakeCase: ${snakeCase(value)}`,
-      `titleCase: ${titleCase(value)}`
-    ].join('\n')
-  }
-
-  input.addEventListener('input', render)
-  window.addEventListener('DOMContentLoaded', () => {
-    render()
-    console.log(siFunciona, 'Sí, funciona')
-  })
-</script>
+<!-- The site's own si-funciona dependency (package.json), the same build /projects/ uses -->
+<script src="/browser/vendor/siFunciona.min.js" defer></script>
+<script type="module" src="/dist/sandboxes/siFuncionaSandboxInit.js"></script>
 </body>
 </html>

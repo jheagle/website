@@ -100,6 +100,8 @@ steps where Joshua picks, tests or approves before the PR merges.
   Progress: title-switcher done (2026-11-05, a "Try them" section under the grid: own lines, speed, blink, order,
   pause). Testing it found a security bug in title-switcher itself (typed text became live HTML; title-switcher#30,
   released as 2.2.3), and two pseudo-dom form-field gaps (tracked in TASKS.md).
+  si-funciona done (2026-11-05): a function explorer (15 functions across strings, objects, arrays and numbers; text,
+  number and JSON inputs; live call + result), on `/projects/` and the si-funciona page, replacing its old demo.
 - [x] **7a. Project pages restyle:** the 12 pages under `/projects/<name>/` (back link, header, actions, demo)
   move from the old `projects/shared.css` (155 lines, pre-redesign) to the site's Tailwind classes, tokens, fonts and
   light/dark; then `shared.css` is deleted. One PR for all 12, since they share one structure. Each page's demo is

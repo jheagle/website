@@ -30,6 +30,13 @@ title-switcher (<a href="https://www.npmjs.com/package/title-switcher">https://w
 fresh container on the stage and lets the old instance finish in the background, detached and unseen.
 The lines become text nodes (never HTML), so whatever a visitor types is shown, not run.</p>
 </dd>
+<dt><a href="#module_siFuncionaSandbox">siFuncionaSandbox</a></dt>
+<dd><p>The si-funciona sandbox: pick a function, edit its inputs, and see the call and its result update as you type.
+Runs the real library (<a href="https://www.npmjs.com/package/si-funciona">https://www.npmjs.com/package/si-funciona</a>), loaded as window.siFunciona.</p>
+<p>Inputs are read as text, numbers or JSON (JSON.parse, never eval), and results are shown with textContent, so
+nothing a visitor types is run as code. Rendered into each <code>&lt;div data-sandbox=&#39;si-funciona&#39;&gt;</code>, so /projects/ and
+the si-funciona page share one sandbox.</p>
+</dd>
 </dl>
 
 ## Constants
@@ -228,6 +235,92 @@ ids are fixed). Starts on its own unless the visitor prefers reduced motion; the
 | document | <code>Document</code> |  | 
 | window | <code>Window</code> |  | 
 | [TitleSwitcher] | <code>function</code> | <code>window.TitleSwitcher</code> | 
+
+<a name="module_siFuncionaSandbox"></a>
+
+## siFuncionaSandbox
+The si-funciona sandbox: pick a function, edit its inputs, and see the call and its result update as you type.
+Runs the real library (https://www.npmjs.com/package/si-funciona), loaded as window.siFunciona.
+
+Inputs are read as text, numbers or JSON (JSON.parse, never eval), and results are shown with textContent, so
+nothing a visitor types is run as code. Rendered into each `<div data-sandbox='si-funciona'>`, so /projects/ and
+the si-funciona page share one sandbox.
+
+
+* [siFuncionaSandbox](#module_siFuncionaSandbox)
+    * [.functions](#module_siFuncionaSandbox.functions) : <code>Array.&lt;{group: string, name: string, about: string, inputs: Array.&lt;{label: string, kind: string, value: string}&gt;}&gt;</code>
+    * [.parseInput](#module_siFuncionaSandbox.parseInput) ⇒ <code>\*</code>
+    * [.formatValue](#module_siFuncionaSandbox.formatValue) ⇒ <code>string</code>
+    * [.runFunction](#module_siFuncionaSandbox.runFunction) ⇒ <code>Object</code>
+    * [.markup](#module_siFuncionaSandbox.markup)
+    * [.initSiFuncionaSandbox](#module_siFuncionaSandbox.initSiFuncionaSandbox) ⇒ <code>Object</code> \| <code>null</code>
+
+<a name="module_siFuncionaSandbox.functions"></a>
+
+### siFuncionaSandbox.functions : <code>Array.&lt;{group: string, name: string, about: string, inputs: Array.&lt;{label: string, kind: string, value: string}&gt;}&gt;</code>
+The functions on offer, grouped as in the picker. Each input has a kind: 'text', 'number' or 'json'.
+
+**Kind**: static constant of [<code>siFuncionaSandbox</code>](#module_siFuncionaSandbox)  
+<a name="module_siFuncionaSandbox.parseInput"></a>
+
+### siFuncionaSandbox.parseInput ⇒ <code>\*</code>
+Turn one input's text into its argument.
+
+**Kind**: static constant of [<code>siFuncionaSandbox</code>](#module_siFuncionaSandbox)  
+**Throws**:
+
+- <code>Error</code> For JSON that doesn't parse, or text that isn't a number.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| kind | <code>string</code> | 'text', 'number' or 'json' |
+| text | <code>string</code> |  |
+
+<a name="module_siFuncionaSandbox.formatValue"></a>
+
+### siFuncionaSandbox.formatValue ⇒ <code>string</code>
+Show a value the way it would read in code: strings quoted, everything else as indented JSON.
+
+**Kind**: static constant of [<code>siFuncionaSandbox</code>](#module_siFuncionaSandbox)  
+
+| Param | Type |
+| --- | --- |
+| value | <code>\*</code> | 
+
+<a name="module_siFuncionaSandbox.runFunction"></a>
+
+### siFuncionaSandbox.runFunction ⇒ <code>Object</code>
+Run a function from the list with the given input texts.
+
+**Kind**: static constant of [<code>siFuncionaSandbox</code>](#module_siFuncionaSandbox)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| library | <code>Object</code> | The si-funciona exports. |
+| fn | <code>Object</code> |  |
+| texts | <code>Array.&lt;string&gt;</code> | One per input. |
+
+<a name="module_siFuncionaSandbox.markup"></a>
+
+### siFuncionaSandbox.markup
+The sandbox's static markup (no visitor data), styled with Tailwind classes; assets/tailwind/site.css scans this
+folder for them.
+
+**Kind**: static constant of [<code>siFuncionaSandbox</code>](#module_siFuncionaSandbox)  
+<a name="module_siFuncionaSandbox.initSiFuncionaSandbox"></a>
+
+### siFuncionaSandbox.initSiFuncionaSandbox ⇒ <code>Object</code> \| <code>null</code>
+Render the sandbox into the page's `<div data-sandbox='si-funciona'>` and wire it up. One per page (fixed ids).
+
+**Kind**: static constant of [<code>siFuncionaSandbox</code>](#module_siFuncionaSandbox)  
+**Returns**: <code>Object</code> \| <code>null</code> - null when the sandbox isn't on the page.  
+
+| Param | Type | Default |
+| --- | --- | --- |
+| document | <code>Document</code> |  | 
+| window | <code>Window</code> |  | 
+| [library] | <code>Object</code> | <code>window.siFunciona</code> | 
 
 <a name="projects"></a>
 

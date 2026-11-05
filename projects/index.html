@@ -50,6 +50,14 @@
                  same sandbox the title-switcher page uses; it needs the deferred /browser/vendor/titleSwitcher.min.js -->
             <div data-sandbox='title-switcher'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
         </article>
+
+        <article class='mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6'>
+            <h3 class='mt-0 mb-1 text-xl'><a class='text-foreground no-underline hover:underline' href='/projects/si-funciona/'>Sí, funciona</a></h3>
+            <p class='mt-0 mb-5 text-sm text-muted'>Utility functions you can run here. Pick one, change its inputs, and the result updates as you type.</p>
+            <!-- Filled in by /dist/sandboxes/siFuncionaSandboxInit.js (assets/js/sandboxes/siFuncionaSandbox.js), the same
+                 sandbox the si-funciona page uses; it needs the deferred /browser/vendor/siFunciona.min.js -->
+            <div data-sandbox='si-funciona'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
+        </article>
     </section>
 </main>
 
@@ -58,5 +66,7 @@
 </footer>
 <script src='/browser/vendor/titleSwitcher.min.js' defer></script>
 <script type='module' src='/dist/sandboxes/titleSwitcherSandboxInit.js'></script>
+<script src='/browser/vendor/siFunciona.min.js' defer></script>
+<script type='module' src='/dist/sandboxes/siFuncionaSandboxInit.js'></script>
 </body>
 </html>
