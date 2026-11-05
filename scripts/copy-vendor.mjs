@@ -8,6 +8,8 @@
  *   window.collectYourStuff.
  * - matrix-dom: its sandbox, on the matrix-dom page (/projects/ already has window.matrixDom from joshuaHome.js).
  *   The bundle defines window.matrixDom.
+ * - json-dom: its sandbox, on the json-dom page (/projects/ already has window.jsonDom from joshuaHome.js). The
+ *   bundle defines window.jsonDom.
  *
  * Run by `npm run build`; run it on its own with `npm run build:vendor` after updating one of these packages.
  */
@@ -20,7 +22,8 @@ const files = [
   ['title-switcher/browser/titleSwitcher.min.js', 'titleSwitcher.min.js'],
   ['si-funciona/browser/siFunciona.min.js', 'siFunciona.min.js'],
   ['collect-your-stuff/browser/collect-your-stuff.min.js', 'collectYourStuff.min.js'],
-  ['matrix-dom/browser/matrix-dom.min.js', 'matrixDom.min.js']
+  ['matrix-dom/browser/matrix-dom.min.js', 'matrixDom.min.js'],
+  ['json-dom/browser/jsonDom.min.js', 'jsonDom.min.js']
 ]
 
 fs.mkdirSync(outDir, { recursive: true })

@@ -74,6 +74,14 @@
                  sandbox the matrix-dom page uses; here window.matrixDom comes from /browser/joshuaHome.js -->
             <div data-sandbox='matrix-dom'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
         </article>
+
+        <article class='mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6'>
+            <h3 class='mt-0 mb-1 text-xl'><a class='text-foreground no-underline hover:underline' href='/projects/json-dom/'>JSON DOM</a></h3>
+            <p class='mt-0 mb-5 text-sm text-muted'>Describe part of a page as data and json-dom builds it. Edit the JSON and the result re-renders as you type.</p>
+            <!-- Filled in by /dist/sandboxes/jsonDomSandboxInit.js (assets/js/sandboxes/jsonDomSandbox.js), the same sandbox
+                 the json-dom page uses; here window.jsonDom comes from /browser/joshuaHome.js -->
+            <div data-sandbox='json-dom'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
+        </article>
     </section>
 </main>
 
@@ -87,5 +95,6 @@
 <script src='/browser/vendor/collectYourStuff.min.js' defer></script>
 <script type='module' src='/dist/sandboxes/collectYourStuffSandboxInit.js'></script>
 <script type='module' src='/dist/sandboxes/matrixDomSandboxInit.js'></script>
+<script type='module' src='/dist/sandboxes/jsonDomSandboxInit.js'></script>
 </body>
 </html>
