@@ -9,13 +9,6 @@
     <link rel='preload' href='/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
     <link rel='preload' href='/browser/fonts/lexend-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
     <link rel='stylesheet' href='/browser/tailwind/site.css'>
-    <link rel='stylesheet' href='/browser/css/project-grid.css'>
-    <style>
-      /* Interim: the same page layout as the homepage, plus the existing project-grid tiles. Fonts and colours come
-         from the base layer in /browser/tailwind/site.css. */
-      body { max-width: 72rem; margin: 0 auto; padding: 1rem 1rem 4rem; }
-      main > p { max-width: 46rem; }
-    </style>
     <script src='/browser/joshuaHome.js'></script>
     <script type='module'>
       import projectGrid from '/dist/templates/projectGrid.js'
@@ -29,14 +22,14 @@
       jsonDom.renderHtml(projectGrid(projects), gridItem, 0)
     </script>
 </head>
-<body>
-<header>
-    <p><a href='/'>&larr; Joshua Heagle</a></p>
-    <h1>Projects</h1>
+<body class='mx-auto max-w-6xl px-5 pt-6 pb-16 lg:pt-14'>
+<header class='mb-8'>
+    <p class='mt-0 mb-4'><a class='font-heading' href='/'>&larr; Joshua Heagle</a></p>
+    <h1 class='m-0 text-4xl/tight tracking-tight lg:text-5xl'>Projects</h1>
 </header>
 
 <main>
-    <p>
+    <p class='mt-0 mb-8 max-w-prose'>
         A family of open-source TypeScript libraries that build on each other, the build and test tooling underneath
         them, and the games and apps built on top. Each project's page has its source and docs, and many have something
         you can try right in the browser.
@@ -47,7 +40,7 @@
     </noscript>
 </main>
 
-<footer>
+<footer class='mt-12 border-t border-rule pt-4 text-sm text-muted'>
     <p>Joshua Heagle &copy; 2026</p>
 </footer>
 </body>

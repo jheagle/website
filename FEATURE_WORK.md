@@ -80,7 +80,7 @@ steps where Joshua picks, tests or approves before the PR merges.
   comes back when scrolling up. Compact on phones (collapses to a menu), full row on wider screens. Sections get
   `scroll-margin-top` so a nav link doesn't land under the header. Nice to have: highlight the current section.
   Joshua tests the feel on a real phone.
-- [ ] **5. `/projects/` restyle:** the tiles use the tokens (fixes the light tiles in dark mode), and Tailwind
+- [x] **5. `/projects/` restyle:** the tiles use the tokens (fixes the light tiles in dark mode), and Tailwind
   replaces the old `project-grid` sass.
 - [ ] **6. Small details ✱:** the title-switcher typing effect over real static text, smooth scrolling to sections,
   short transitions (colour, the nav hiding and returning). All off for reduced motion. Joshua judges the feel.
