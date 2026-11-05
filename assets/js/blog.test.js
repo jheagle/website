@@ -109,6 +109,17 @@ describe('blog', () => {
     expect(fs.readFileSync(path.join(outDir, 'index.html'), 'utf8')).toContain('The first posts are coming soon')
   })
 
+  test('a post imports into the committed database as git checks it out (no empty posts/ folder)', async () => {
+    const databasePath = path.join(dir, 'db/')
+    fs.mkdirSync(databasePath)
+    for (const file of ['__RECORDS.json', 'posts.json']) {
+      fs.copyFileSync(path.join(__dirname, '../../blog/database', file), path.join(databasePath, file))
+    }
+    expect(await blog.importPost(blog.parsePost(sample), databasePath)).toBe('added')
+    expect(await blog.importPost(blog.parsePost(sample), databasePath)).toBe('replaced')
+    expect((await blog.readPosts(databasePath)).length).toBe(1)
+  })
+
   test('the site\'s real blog is built and linked from nowhere it shouldn\'t be yet (no posts until one is approved)', () => {
     const root = path.join(__dirname, '../..')
     expect(fs.existsSync(path.join(root, 'blog/index.html'))).toBe(true)
