@@ -10,13 +10,14 @@
 
 /**
  * The functions on offer, grouped as in the picker. Each input has a kind: 'text', 'number', 'numbers' or 'json'. An entry can
- * show several functions at once with its own `run` (and a `label` for the picker).
- * @type {Array<{group: string, name: string, label: (string|undefined), about: string, inputs: Array<{label: string, kind: string, value: string}>, run: (Function|undefined)}>}
+ * show several functions at once with its own `run`, a `label` for the call line and a short `chip` for its button.
+ * @type {Array<{group: string, name: string, label: (string|undefined), chip: (string|undefined), about: string, inputs: Array<{label: string, kind: string, value: string}>, run: (Function|undefined)}>}
  */
 export const functions = [
   {
     group: 'Strings',
     name: 'caseConversion',
+    chip: 'all 4 cases',
     label: 'camelCase / kabobCase / snakeCase / titleCase',
     about: 'The four case helpers at once. They all split the text with words(), so any mix of casing and separators works.',
     inputs: [{ label: 'Text', kind: 'text', value: 'some_mixed-Case example2 Text' }],
@@ -66,6 +67,7 @@ export const functions = [
   {
     group: 'Numbers',
     name: 'ratios',
+    chip: 'ratio maths',
     label: 'simplestRatio / greatestCommonDivisor / lowestCommonDenominator',
     about: 'Whole numbers in, ratio maths out: the simplest ratio, the biggest number that divides them all, and the smallest number they all divide into.',
     inputs: [{ label: 'Whole numbers (comma-separated)', kind: 'numbers', value: '16, 24, 40' }],
@@ -131,9 +133,7 @@ const fieldClasses = 'box-border w-full rounded-md border border-rule bg-backgro
  */
 export const markup = `<div class='grid gap-6 md:grid-cols-2'>
   <form id='sf-form' class='flex flex-col gap-4'>
-    <label class='flex flex-col gap-1 text-sm font-semibold'>Function
-      <select id='sf-function' class='${fieldClasses} font-mono'></select>
-    </label>
+    <div id='sf-function' class='flex flex-col gap-3' role='group' aria-label='Function'></div>
     <p id='sf-about' class='m-0 text-sm text-muted'></p>
     <div id='sf-inputs' class='flex flex-col gap-4'></div>
   </form>
@@ -257,18 +257,28 @@ export const initSiFuncionaSandbox = (document, window, library = window.siFunci
   const inputs = document.getElementById('sf-inputs')
   let current = functions[0]
 
-  // The picker, grouped
+  // The picker: every function visible as a button, under its group's name (a dropdown hid all but the first)
   const groups = {}
   for (const fn of functions) {
     if (!groups[fn.group]) {
-      groups[fn.group] = document.createElement('optgroup')
-      groups[fn.group].label = fn.group
-      picker.appendChild(groups[fn.group])
+      const group = document.createElement('div')
+      const heading = document.createElement('p')
+      heading.className = 'm-0 mb-1.5 text-xs font-semibold tracking-wide text-muted uppercase'
+      heading.textContent = fn.group
+      groups[fn.group] = document.createElement('div')
+      groups[fn.group].className = 'flex flex-wrap gap-1.5'
+      groups[fn.group].setAttribute('data-group', fn.group)
+      group.append(heading, groups[fn.group])
+      picker.appendChild(group)
     }
-    const option = document.createElement('option')
-    option.value = fn.name
-    option.textContent = fn.label || fn.name
-    groups[fn.group].appendChild(option)
+    const button = document.createElement('button')
+    button.type = 'button'
+    button.className = 'cursor-pointer rounded-md border border-rule bg-transparent px-2.5 py-1 font-mono text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background'
+    button.setAttribute('data-function', fn.name)
+    button.setAttribute('aria-pressed', 'false')
+    button.textContent = fn.chip || fn.name
+    button.addEventListener('click', () => select(fn.name))
+    groups[fn.group].appendChild(button)
   }
 
   const update = () => {
@@ -281,7 +291,9 @@ export const initSiFuncionaSandbox = (document, window, library = window.siFunci
 
   const select = name => {
     current = functions.find(fn => fn.name === name) || functions[0]
-    picker.value = current.name
+    for (const button of picker.querySelectorAll('[data-function]')) {
+      button.setAttribute('aria-pressed', String(button.getAttribute('data-function') === current.name))
+    }
     document.getElementById('sf-about').textContent = current.about
     inputs.replaceChildren(...current.inputs.map((input, index) => {
       const label = document.createElement('label')
@@ -300,7 +312,6 @@ export const initSiFuncionaSandbox = (document, window, library = window.siFunci
     update()
   }
 
-  picker.addEventListener('change', () => select(picker.value))
   document.getElementById('sf-form').addEventListener('submit', event => event.preventDefault())
   select(current.name)
   const queueDemo = document.getElementById('qt-form') ? initQueueDemo(document, window, library) : null

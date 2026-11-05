@@ -248,7 +248,7 @@ the si-funciona page share one sandbox.
 
 
 * [siFuncionaSandbox](#module_siFuncionaSandbox)
-    * [.functions](#module_siFuncionaSandbox.functions) : <code>Array.&lt;{group: string, name: string, label: (string\|undefined), about: string, inputs: Array.&lt;{label: string, kind: string, value: string}&gt;, run: (function()\|undefined)}&gt;</code>
+    * [.functions](#module_siFuncionaSandbox.functions) : <code>Array.&lt;{group: string, name: string, label: (string\|undefined), chip: (string\|undefined), about: string, inputs: Array.&lt;{label: string, kind: string, value: string}&gt;, run: (function()\|undefined)}&gt;</code>
     * [.parseInput](#module_siFuncionaSandbox.parseInput) ⇒ <code>\*</code>
     * [.formatValue](#module_siFuncionaSandbox.formatValue) ⇒ <code>string</code>
     * [.runFunction](#module_siFuncionaSandbox.runFunction) ⇒ <code>Object</code>
@@ -261,9 +261,9 @@ the si-funciona page share one sandbox.
 
 <a name="module_siFuncionaSandbox.functions"></a>
 
-### siFuncionaSandbox.functions : <code>Array.&lt;{group: string, name: string, label: (string\|undefined), about: string, inputs: Array.&lt;{label: string, kind: string, value: string}&gt;, run: (function()\|undefined)}&gt;</code>
+### siFuncionaSandbox.functions : <code>Array.&lt;{group: string, name: string, label: (string\|undefined), chip: (string\|undefined), about: string, inputs: Array.&lt;{label: string, kind: string, value: string}&gt;, run: (function()\|undefined)}&gt;</code>
 The functions on offer, grouped as in the picker. Each input has a kind: 'text', 'number', 'numbers' or 'json'. An entry can
-show several functions at once with its own `run` (and a `label` for the picker).
+show several functions at once with its own `run`, a `label` for the call line and a short `chip` for its button.
 
 **Kind**: static constant of [<code>siFuncionaSandbox</code>](#module_siFuncionaSandbox)  
 <a name="module_siFuncionaSandbox.parseInput"></a>
