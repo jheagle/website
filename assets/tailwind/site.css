@@ -56,14 +56,35 @@
   src: url(/browser/fonts/atkinson-hyperlegible-mono-latin-wght-italic.woff2) format('woff2-variations');
 }
 
+/* Fallback faces: Arial (or Liberation Sans, its metric twin on Linux) resized to the web fonts' measurements, so
+   text keeps its place when the web fonts arrive instead of jumping. Values from @capsizecss/metrics 4.1 via
+   createFontStack; recompute them if a font changes. */
+@font-face {
+  font-family: 'Lexend Fallback';
+  src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('LiberationSans');
+  ascent-override: 90.9798%;
+  descent-override: 22.7449%;
+  line-gap-override: 0%;
+  size-adjust: 109.9146%;
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next Fallback';
+  src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('LiberationSans');
+  ascent-override: 98.7991%;
+  descent-override: 31.7282%;
+  line-gap-override: 0%;
+  size-adjust: 99.5961%;
+}
+
 /* Design tokens. Each colour is a light-dark() pair, so it follows the visitor's system setting through
    color-scheme. A manual light/dark toggle later only has to set color-scheme on <html>; a new theme only has to
    swap these values. The values are Firefox's own defaults (the reference look), so every browser matches it:
    light is white, black and #0000EE links; dark is #1C1B22, #FBFBFE and #00CADB links. Tailwind utilities get
-   these names too: bg-background, text-foreground, text-muted, text-link, font-heading and so on. */
+   these names too: bg-background, text-foreground, text-muted, text-link, border-rule, font-heading and so on. */
 @theme static {
-  --font-sans: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif;
-  --font-heading: 'Lexend Variable', system-ui, sans-serif;
+  --font-sans: 'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next Fallback', system-ui, sans-serif;
+  --font-heading: 'Lexend Variable', 'Lexend Fallback', system-ui, sans-serif;
   --font-mono: 'Atkinson Hyperlegible Mono Variable', ui-monospace, monospace;
 
   --color-background: light-dark(#ffffff, #1c1b22);
@@ -71,6 +92,8 @@
   --color-muted: color-mix(in oklab, var(--color-foreground) 75%, var(--color-background));
   --color-link: light-dark(#0000ee, #00cadb);
   --color-accent: var(--color-link);
+  /* Thin divider lines (border-rule): the text colour, faint. */
+  --color-rule: color-mix(in oklab, var(--color-foreground) 14%, var(--color-background));
 }
 
 @layer base {
@@ -102,6 +125,12 @@
 
   a {
     color: var(--color-link);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+  }
+
+  a:hover {
+    text-decoration-thickness: 2px;
   }
 
   figcaption {
