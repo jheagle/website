@@ -35,6 +35,7 @@
     "json-dom": "github:jheagle/JSON-DOM",
     "json-dom-components": "github:jheagle/json-dom-components",
     "matrix-dom": "github:jheagle/matrix-DOM",
+    "si-funciona": "^2.9.1",
     "title-switcher": "^2.2.3"
   },
   "devDependencies": {
