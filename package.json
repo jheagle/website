@@ -35,7 +35,7 @@
     "json-dom": "github:jheagle/JSON-DOM",
     "json-dom-components": "github:jheagle/json-dom-components",
     "matrix-dom": "github:jheagle/matrix-DOM",
-    "title-switcher": "^2.2.2"
+    "title-switcher": "^2.2.3"
   },
   "devDependencies": {
     "@babel/core": "^8.1.0",
