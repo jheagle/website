@@ -37,6 +37,13 @@ Runs the real library (<a href="https://www.npmjs.com/package/si-funciona">https
 nothing a visitor types is run as code. Rendered into each <code>&lt;div data-sandbox=&#39;si-funciona&#39;&gt;</code>, so /projects/ and
 the si-funciona page share one sandbox.</p>
 </dd>
+<dt><a href="#module_matrixDomSandbox">matrixDomSandbox</a></dt>
+<dd><p>The matrix-dom sandbox: a 10 by 10 board to try the grid geometry Battleship is built on. Draw a line between two
+cells, see a cell&#39;s neighbours, or place a fleet the way Battleship does.
+Runs the real library (matrix-dom), loaded as window.matrixDom: on /projects/ the site&#39;s own bundle already defines
+it, and the matrix-dom page loads it from browser/vendor.</p>
+<p>Rendered into each <code>&lt;div data-sandbox=&#39;matrix-dom&#39;&gt;</code>, so /projects/ and the matrix-dom page share one sandbox.</p>
+</dd>
 <dt><a href="#module_collectYourStuffSandbox">collectYourStuffSandbox</a></dt>
 <dd><p>The collect-your-stuff sandbox: try a Queue, a Stack and a (doubly) linked list one call at a time, and see the
 collection redrawn after each call from the library&#39;s own state.
@@ -370,6 +377,95 @@ Render the sandbox into the page's `<div data-sandbox='si-funciona'>` and wire i
 | document | <code>Document</code> |  | 
 | window | <code>Window</code> |  | 
 | [library] | <code>Object</code> | <code>window.siFunciona</code> | 
+
+<a name="module_matrixDomSandbox"></a>
+
+## matrixDomSandbox
+The matrix-dom sandbox: a 10 by 10 board to try the grid geometry Battleship is built on. Draw a line between two
+cells, see a cell's neighbours, or place a fleet the way Battleship does.
+Runs the real library (matrix-dom), loaded as window.matrixDom: on /projects/ the site's own bundle already defines
+it, and the matrix-dom page loads it from browser/vendor.
+
+Rendered into each `<div data-sandbox='matrix-dom'>`, so /projects/ and the matrix-dom page share one sandbox.
+
+
+* [matrixDomSandbox](#module_matrixDomSandbox)
+    * [.size](#module_matrixDomSandbox.size)
+    * [.modes](#module_matrixDomSandbox.modes)
+    * [.key](#module_matrixDomSandbox.key) ⇒ <code>string</code>
+    * [.formatPoint](#module_matrixDomSandbox.formatPoint) ⇒ <code>string</code>
+    * [.validPlacements](#module_matrixDomSandbox.validPlacements) ⇒ <code>Array.&lt;Array.&lt;{x: number, y: number}&gt;&gt;</code>
+    * [.markup](#module_matrixDomSandbox.markup)
+    * [.initMatrixDomSandbox](#module_matrixDomSandbox.initMatrixDomSandbox) ⇒ <code>Object</code> \| <code>null</code>
+
+<a name="module_matrixDomSandbox.size"></a>
+
+### matrixDomSandbox.size
+The board's size, and the fleet Battleship places (ship lengths, longest first).
+
+**Kind**: static constant of [<code>matrixDomSandbox</code>](#module_matrixDomSandbox)  
+<a name="module_matrixDomSandbox.modes"></a>
+
+### matrixDomSandbox.modes
+The modes, with one line on what each shows.
+
+**Kind**: static constant of [<code>matrixDomSandbox</code>](#module_matrixDomSandbox)  
+<a name="module_matrixDomSandbox.key"></a>
+
+### matrixDomSandbox.key ⇒ <code>string</code>
+A point's key, for sets and lookups.
+
+**Kind**: static constant of [<code>matrixDomSandbox</code>](#module_matrixDomSandbox)  
+
+| Param | Type |
+| --- | --- |
+| point | <code>Object</code> | 
+
+<a name="module_matrixDomSandbox.formatPoint"></a>
+
+### matrixDomSandbox.formatPoint ⇒ <code>string</code>
+A point as it reads in code.
+
+**Kind**: static constant of [<code>matrixDomSandbox</code>](#module_matrixDomSandbox)  
+
+| Param | Type |
+| --- | --- |
+| point | <code>Object</code> | 
+
+<a name="module_matrixDomSandbox.validPlacements"></a>
+
+### matrixDomSandbox.validPlacements ⇒ <code>Array.&lt;Array.&lt;{x: number, y: number}&gt;&gt;</code>
+Every place a ship of this length could go without crossing an occupied cell: Battleship's validPlacements.
+
+**Kind**: static constant of [<code>matrixDomSandbox</code>](#module_matrixDomSandbox)  
+**Returns**: <code>Array.&lt;Array.&lt;{x: number, y: number}&gt;&gt;</code> - Each placement as its cells.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| library | <code>Object</code> | The matrix-dom exports. |
+| matrix | <code>Object</code> |  |
+| length | <code>number</code> |  |
+| occupied | <code>Set.&lt;string&gt;</code> | Keys of cells already taken. |
+
+<a name="module_matrixDomSandbox.markup"></a>
+
+### matrixDomSandbox.markup
+The sandbox's static markup (no visitor data), styled with Tailwind classes; assets/tailwind/site.css scans this
+folder for them.
+
+**Kind**: static constant of [<code>matrixDomSandbox</code>](#module_matrixDomSandbox)  
+<a name="module_matrixDomSandbox.initMatrixDomSandbox"></a>
+
+### matrixDomSandbox.initMatrixDomSandbox ⇒ <code>Object</code> \| <code>null</code>
+Render the sandbox into the page's `<div data-sandbox='matrix-dom'>` and wire it up. One per page.
+
+**Kind**: static constant of [<code>matrixDomSandbox</code>](#module_matrixDomSandbox)  
+
+| Param | Type | Default |
+| --- | --- | --- |
+| document | <code>Document</code> |  | 
+| window | <code>Window</code> |  | 
+| [library] | <code>Object</code> | <code>window.matrixDom</code> | 
 
 <a name="module_collectYourStuffSandbox"></a>
 
