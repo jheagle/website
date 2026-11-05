@@ -10,6 +10,7 @@
  *   The bundle defines window.matrixDom.
  * - json-dom: its sandbox, on the json-dom page (/projects/ already has window.jsonDom from joshuaHome.js). The
  *   bundle defines window.jsonDom.
+ * - pseudo-dom: its sandbox (assets/js/sandboxes/pseudoDomSandbox.js). The bundle defines window.pseudoDom.
  *
  * Run by `npm run build`; run it on its own with `npm run build:vendor` after updating one of these packages.
  */
@@ -23,7 +24,8 @@ const files = [
   ['si-funciona/browser/siFunciona.min.js', 'siFunciona.min.js'],
   ['collect-your-stuff/browser/collect-your-stuff.min.js', 'collectYourStuff.min.js'],
   ['matrix-dom/browser/matrix-dom.min.js', 'matrixDom.min.js'],
-  ['json-dom/browser/jsonDom.min.js', 'jsonDom.min.js']
+  ['json-dom/browser/jsonDom.min.js', 'jsonDom.min.js'],
+  ['pseudo-dom/browser/pseudo-dom.min.js', 'pseudoDom.min.js']
 ]
 
 fs.mkdirSync(outDir, { recursive: true })

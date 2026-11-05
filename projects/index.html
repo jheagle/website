@@ -82,6 +82,14 @@
                  the json-dom page uses; here window.jsonDom comes from /browser/joshuaHome.js -->
             <div data-sandbox='json-dom'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
         </article>
+
+        <article class='mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6'>
+            <h3 class='mt-0 mb-1 text-xl'><a class='text-foreground no-underline hover:underline' href='/projects/pseudo-dom/'>Pseudo DOM</a></h3>
+            <p class='mt-0 mb-5 text-sm text-muted'>A DOM for tests in Node, checked against the real thing: the page asks both the same question and shows both answers.</p>
+            <!-- Filled in by /dist/sandboxes/pseudoDomSandboxInit.js (assets/js/sandboxes/pseudoDomSandbox.js), the same
+                 sandbox the pseudo-dom page uses; it needs the deferred /browser/vendor/pseudoDom.min.js -->
+            <div data-sandbox='pseudo-dom'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
+        </article>
     </section>
 </main>
 
@@ -96,5 +104,7 @@
 <script type='module' src='/dist/sandboxes/collectYourStuffSandboxInit.js'></script>
 <script type='module' src='/dist/sandboxes/matrixDomSandboxInit.js'></script>
 <script type='module' src='/dist/sandboxes/jsonDomSandboxInit.js'></script>
+<script src='/browser/vendor/pseudoDom.min.js' defer></script>
+<script type='module' src='/dist/sandboxes/pseudoDomSandboxInit.js'></script>
 </body>
 </html>
