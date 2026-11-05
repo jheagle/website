@@ -76,10 +76,15 @@ steps where Joshua picks, tests or approves before the PR merges.
   chin-ups video. It's on the card bars, keyboard focus outlines and selected text. Also compared: the link colour,
   teal (the old site's `#009999`; its `#00CCFF` lives on as Firefox's dark link cyan), indigo, amber, rose, and pink
   (the half-marathon tank top).
-- [ ] **4. Sticky/mobile nav ✱** (`redesign/sticky-nav-menu`): pinned to the top; hides while scrolling down and
+- [x] **4. Sticky/mobile nav ✱** (`redesign/nav-bar`): pinned to the top; hides while scrolling down and
   comes back when scrolling up. Compact on phones (collapses to a menu), full row on wider screens. Sections get
   `scroll-margin-top` so a nav link doesn't land under the header. Nice to have: highlight the current section.
   Joshua tests the feel on a real phone.
+  Built 2026-11-04: a pinned bar under the header (`assets/js/siteNav.js`, loaded as `/dist/siteNavInit.js`, the
+  homepage's only script); works as a plain pinned list without it. The bar is 64px on phones (`h-16`, room for a
+  44px fuchsia Menu button with an icon) and 48px from `md` up (`h-12`); sections use `scroll-mt-16 md:scroll-mt-12`,
+  so the bar's line and a section's top line meet. Current section: fuchsia underline. Tested by Joshua on Android
+  (light and dark) and a real iPhone. Tried and rejected earlier (the old site): a bottom nav for thumb reach.
 - [x] **5. `/projects/` restyle:** the tiles use the tokens (fixes the light tiles in dark mode), and Tailwind
   replaces the old `project-grid` sass.
 - [ ] **6. Small details ✱:** the title-switcher typing effect over real static text, smooth scrolling to sections,
