@@ -37,17 +37,33 @@ describe('index.html', () => {
   })
 
   test('every in-page nav link points at a real section', () => {
-    const hrefs = [...document.body.querySelectorAll('header nav a')].map(a => a.getAttribute('href'))
+    const hrefs = [...document.body.querySelectorAll('#site-nav-links a')].map(a => a.getAttribute('href'))
     expect(hrefs.length).toBeGreaterThan(0)
     hrefs.forEach(href => expect(sectionIds).toContain(href.slice(1)))
   })
 
-  test('is plain HTML: no scripts, and Tailwind is the only stylesheet (no grid/sass)', () => {
+  test('loads one script, the nav module, and Tailwind is the only stylesheet (no grid/sass)', () => {
     expect(document.head.querySelectorAll('script').length).toBe(0)
-    expect(document.body.querySelectorAll('script').length).toBe(0)
+    const scripts = [...document.body.querySelectorAll('script')]
+    expect(scripts.map(script => [script.getAttribute('type'), script.getAttribute('src')])).toEqual([['module', '/dist/siteNavInit.js']])
+    expect(fs.existsSync(path.join(rootDir, 'dist/siteNavInit.js'))).toBe(true)
+    expect(fs.existsSync(path.join(rootDir, 'dist/siteNav.js'))).toBe(true)
     const stylesheets = [...document.head.querySelectorAll("link[rel='stylesheet']")].map(link => link.getAttribute('href'))
     expect(stylesheets).toEqual(['/browser/tailwind/site.css'])
     expect(fs.existsSync(path.join(rootDir, stylesheets[0]))).toBe(true)
+  })
+
+  test('the nav works without its script: the Menu button starts hidden and the link list starts open', () => {
+    const toggle = document.getElementById('site-nav-toggle')
+    expect(toggle.hasAttribute('hidden')).toBe(true)
+    expect(toggle.getAttribute('aria-controls')).toBe('site-nav-links')
+    expect(document.getElementById('site-nav-links').hasAttribute('data-closed')).toBe(false)
+  })
+
+  test('every section leaves room for the pinned nav when a link jumps to it', () => {
+    document.body.querySelectorAll('main > section').forEach(section =>
+      expect({ id: section.getAttribute('id'), scrollMargin: section.getAttribute('class').split(' ').includes('scroll-mt-12') })
+        .toEqual({ id: section.getAttribute('id'), scrollMargin: true }))
   })
 
   test('every local image, video and link points at a file that exists', () => {
