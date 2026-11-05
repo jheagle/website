@@ -11,25 +11,36 @@
     <link rel='stylesheet' href='/browser/tailwind/site.css'>
 </head>
 <body class='mx-auto px-5 pt-6 pb-16 max-w-6xl lg:pt-14'>
-<header class='mb-8 lg:mb-14 lg:grid lg:grid-cols-4 lg:items-end lg:gap-x-12'>
-    <h1 class='m-0 text-4xl/tight tracking-tight lg:col-span-full lg:text-6xl'>Joshua Heagle</h1>
-    <p class='mt-1.5 mb-4 font-heading text-xl text-muted lg:mb-0'>Full-Stack Engineer</p>
-    <nav class='lg:col-span-3' aria-label='Sections'>
-        <ul class='m-0 flex list-none flex-wrap gap-x-5 gap-y-1 p-0'>
-            <li><a href='#now'>Now</a></li>
-            <li><a href='#how-i-work'>How I work</a></li>
-            <li><a href='#selected-work'>Selected work</a></li>
-            <li><a href='#projects'>Projects</a></li>
-            <li><a href='#outside-work'>Outside of work</a></li>
-            <li><a href='#experience'>Experience</a></li>
-            <li><a href='#contact'>Contact</a></li>
-        </ul>
-    </nav>
+<header class='mb-4 lg:mb-6'>
+    <h1 class='m-0 text-4xl/tight tracking-tight lg:text-6xl'>Joshua Heagle</h1>
+    <p class='mt-1.5 mb-0 font-heading text-xl text-muted'>Full-Stack Engineer</p>
 </header>
 
+<!-- Pinned to the top; /dist/siteNavInit.js hides it while scrolling down, brings it back when scrolling up, and
+     collapses it behind the Menu button on phones. Without the script it's a plain pinned list of links. -->
+<nav id='site-nav' class='group sticky top-0 z-10 -mx-5 mb-8 border-b border-rule bg-background px-5 transition-transform duration-200 data-hidden:-translate-y-full motion-reduce:transition-none md:flex md:h-12 md:items-center lg:mb-12' aria-label='Sections'>
+    <div class='flex h-16 items-center justify-between gap-4 md:hidden'>
+        <a class='font-heading font-bold text-foreground no-underline group-data-at-top:invisible' href='#top'>Joshua Heagle</a>
+        <button id='site-nav-toggle' class='group/menu inline-flex h-11 cursor-pointer items-center gap-2 rounded-lg border-0 bg-accent px-4 font-heading text-base font-semibold text-background shadow-sm' type='button' aria-expanded='true' aria-controls='site-nav-links' hidden>
+            <svg class='size-5 group-aria-expanded/menu:hidden' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' aria-hidden='true'><path d='M4 7h16M4 12h16M4 17h16'/></svg>
+            <svg class='hidden size-5 group-aria-expanded/menu:block' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' aria-hidden='true'><path d='M6 6l12 12M18 6L6 18'/></svg>
+            <span data-label>Menu</span>
+        </button>
+    </div>
+    <ul id='site-nav-links' class='m-0 flex list-none flex-col p-0 pb-2 data-closed:hidden md:pb-0 md:flex-row md:flex-wrap md:gap-x-5 md:gap-y-1 md:data-closed:flex'>
+            <li><a class='block py-1 data-current:decoration-accent data-current:decoration-2 md:py-0' href='#now'>Now</a></li>
+            <li><a class='block py-1 data-current:decoration-accent data-current:decoration-2 md:py-0' href='#how-i-work'>How I work</a></li>
+            <li><a class='block py-1 data-current:decoration-accent data-current:decoration-2 md:py-0' href='#selected-work'>Selected work</a></li>
+            <li><a class='block py-1 data-current:decoration-accent data-current:decoration-2 md:py-0' href='#projects'>Projects</a></li>
+            <li><a class='block py-1 data-current:decoration-accent data-current:decoration-2 md:py-0' href='#outside-work'>Outside of work</a></li>
+            <li><a class='block py-1 data-current:decoration-accent data-current:decoration-2 md:py-0' href='#experience'>Experience</a></li>
+            <li><a class='block py-1 data-current:decoration-accent data-current:decoration-2 md:py-0' href='#contact'>Contact</a></li>
+    </ul>
+</nav>
+
 <main>
-    <section class='mb-10 lg:grid lg:grid-cols-4 lg:gap-x-12' id='hello'>
-        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-6 lg:self-start lg:text-2xl'>Hi, I'm Joshua, though most people call me Evan.</h2>
+    <section class='scroll-mt-16 md:scroll-mt-12 mb-10 lg:grid lg:grid-cols-4 lg:gap-x-12' id='hello'>
+        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-19 lg:self-start lg:text-2xl'>Hi, I'm Joshua, though most people call me Evan.</h2>
         <div class='lg:col-span-3 lg:max-w-prose lg:*:first:mt-0'>
         <figure class='m-0 mb-4'>
             <img class='block h-auto w-36 rounded-full' src='/assets/img/profile/headshot-2026.jpg' srcset='/assets/img/profile/headshot-2026-480w.jpg 480w, /assets/img/profile/headshot-2026.jpg 820w' sizes='9rem' width='820' height='820' alt='Joshua Heagle, head and shoulders, outdoors in a park'>
@@ -42,8 +53,8 @@
         </div>
     </section>
 
-    <section class='mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='now'>
-        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-6 lg:self-start lg:text-2xl'>What I'm doing now</h2>
+    <section class='scroll-mt-16 md:scroll-mt-12 mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='now'>
+        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-19 lg:self-start lg:text-2xl'>What I'm doing now</h2>
         <div class='lg:col-span-3 lg:max-w-prose lg:*:first:mt-0'>
         <p>
             When Inkbox's consumer business closed in late 2025, BIC kept six of us on to build in-house engineering
@@ -61,8 +72,8 @@
         </div>
     </section>
 
-    <section class='mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='how-i-work'>
-        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-6 lg:self-start lg:text-2xl'>How I work</h2>
+    <section class='scroll-mt-16 md:scroll-mt-12 mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='how-i-work'>
+        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-19 lg:self-start lg:text-2xl'>How I work</h2>
         <div class='lg:col-span-3 lg:max-w-prose lg:*:first:mt-0'>
         <p>
             <strong>I look for the pattern, not just the ticket.</strong> At Inkbox I turned a 1,489-line service into a
@@ -96,8 +107,8 @@
         </div>
     </section>
 
-    <section class='mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='selected-work'>
-        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-6 lg:self-start lg:text-2xl'>Selected work</h2>
+    <section class='scroll-mt-16 md:scroll-mt-12 mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='selected-work'>
+        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-19 lg:self-start lg:text-2xl'>Selected work</h2>
         <div class='lg:col-span-3 lg:max-w-prose lg:*:first:mt-0'>
         <article class='my-5 border-l-3 border-accent py-1 pl-4 *:last:mb-0'>
             <h3 class='mt-0 mb-2 text-lg'>Inventory &amp; Distribution system (Inkbox, 2023)</h3>
@@ -132,8 +143,8 @@
         </div>
     </section>
 
-    <section class='mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='projects'>
-        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-6 lg:self-start lg:text-2xl'>What I build on my own time</h2>
+    <section class='scroll-mt-16 md:scroll-mt-12 mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='projects'>
+        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-19 lg:self-start lg:text-2xl'>What I build on my own time</h2>
         <div class='lg:col-span-3 lg:max-w-prose lg:*:first:mt-0'>
         <p>
             I maintain a small ecosystem of TypeScript libraries that build on each other: a JSON-to-DOM rendering layer,
@@ -163,8 +174,8 @@
         </div>
     </section>
 
-    <section class='mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='outside-work'>
-        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-6 lg:self-start lg:text-2xl'>Outside of work</h2>
+    <section class='scroll-mt-16 md:scroll-mt-12 mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='outside-work'>
+        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-19 lg:self-start lg:text-2xl'>Outside of work</h2>
         <div class='lg:col-span-3 lg:max-w-prose lg:*:first:mt-0'>
 
         <h3 class='mt-8 mb-2 text-xl'>Fitness</h3>
@@ -278,8 +289,8 @@
         </div>
     </section>
 
-    <section class='mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='experience'>
-        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-6 lg:self-start lg:text-2xl'>Where I've worked</h2>
+    <section class='scroll-mt-16 md:scroll-mt-12 mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='experience'>
+        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-19 lg:self-start lg:text-2xl'>Where I've worked</h2>
         <div class='lg:col-span-3 lg:max-w-prose lg:*:first:mt-0'>
         <ul class='space-y-1.5 pl-5'>
             <li><strong>Full-Stack Engineer</strong>, BIC (formerly Inkbox), Toronto, April 2021 &ndash; present</li>
@@ -295,8 +306,8 @@
         </div>
     </section>
 
-    <section class='mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='contact'>
-        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-6 lg:self-start lg:text-2xl'>Let's chat</h2>
+    <section class='scroll-mt-16 md:scroll-mt-12 mb-10 border-t border-rule pt-7 lg:grid lg:grid-cols-4 lg:gap-x-12' id='contact'>
+        <h2 class='mt-0 mb-4 text-3xl lg:sticky lg:top-19 lg:self-start lg:text-2xl'>Let's chat</h2>
         <div class='lg:col-span-3 lg:max-w-prose lg:*:first:mt-0'>
         <p>If you're hiring, building something interesting, or just want to talk shop, I'd like to hear from you.</p>
         <ul class='space-y-1.5 pl-5'>
@@ -319,5 +330,6 @@
 <footer class='mt-12 border-t border-rule pt-4 text-sm text-muted'>
     <p>Joshua Heagle &copy; 2026</p>
 </footer>
+<script type='module' src='/dist/siteNavInit.js'></script>
 </body>
 </html>
