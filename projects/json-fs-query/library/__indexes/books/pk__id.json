@@ -1,0 +1,98 @@
+[
+  {
+    "value": "earthsea",
+    "record": [
+      "earthsea.json"
+    ]
+  },
+  {
+    "value": "dispossessed",
+    "record": [
+      "dispossessed.json"
+    ]
+  },
+  {
+    "value": "left-hand",
+    "record": [
+      "left-hand.json"
+    ]
+  },
+  {
+    "value": "hobbit",
+    "record": [
+      "hobbit.json"
+    ]
+  },
+  {
+    "value": "fellowship",
+    "record": [
+      "fellowship.json"
+    ]
+  },
+  {
+    "value": "kindred",
+    "record": [
+      "kindred.json"
+    ]
+  },
+  {
+    "value": "parable",
+    "record": [
+      "parable.json"
+    ]
+  },
+  {
+    "value": "guards",
+    "record": [
+      "guards.json"
+    ]
+  },
+  {
+    "value": "small-gods",
+    "record": [
+      "small-gods.json"
+    ]
+  },
+  {
+    "value": "pride",
+    "record": [
+      "pride.json"
+    ]
+  },
+  {
+    "value": "emma",
+    "record": [
+      "emma.json"
+    ]
+  },
+  {
+    "value": "frankenstein",
+    "record": [
+      "frankenstein.json"
+    ]
+  },
+  {
+    "value": "foundation",
+    "record": [
+      "foundation.json"
+    ]
+  },
+  {
+    "value": "i-robot",
+    "record": [
+      "i-robot.json"
+    ]
+  },
+  {
+    "value": "handmaid",
+    "record": [
+      "handmaid.json"
+    ]
+  },
+  {
+    "value": "alias-grace",
+    "record": [
+      "alias-grace.json"
+    ]
+  }
+]

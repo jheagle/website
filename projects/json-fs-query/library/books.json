@@ -1,0 +1,84 @@
+{
+  "path": "books",
+  "definition": [
+    {
+      "name": "_id",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "author_id",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "genre",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "year",
+      "type": "int",
+      "optional": false,
+      "autoGenerate": false
+    }
+  ],
+  "keys": [
+    {
+      "type": "primary",
+      "fields": [
+        "_id"
+      ],
+      "lookup": "pk__id.json"
+    },
+    {
+      "type": "index",
+      "fields": [
+        "genre"
+      ],
+      "lookup": "index_genre.json"
+    },
+    {
+      "type": "foreign",
+      "fields": [
+        "author_id"
+      ],
+      "lookup": "fk_author_id.json",
+      "references": [
+        {
+          "fields": [
+            "authors._id"
+          ],
+          "lookup": "authors.json"
+        }
+      ]
+    }
+  ],
+  "entries": [
+    "earthsea.json",
+    "dispossessed.json",
+    "left-hand.json",
+    "hobbit.json",
+    "fellowship.json",
+    "kindred.json",
+    "parable.json",
+    "guards.json",
+    "small-gods.json",
+    "pride.json",
+    "emma.json",
+    "frankenstein.json",
+    "foundation.json",
+    "i-robot.json",
+    "handmaid.json",
+    "alias-grace.json"
+  ]
+}

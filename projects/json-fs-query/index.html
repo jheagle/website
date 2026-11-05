@@ -19,10 +19,21 @@
     <nav class="my-5 flex flex-wrap gap-2.5" aria-label="Project links">
         <a class="rounded-lg bg-accent px-4 py-2 font-heading font-semibold text-background no-underline hover:opacity-90" href="./docs/">Documentation</a>
         <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="https://github.com/jheagle/json-fs-query" target="_blank">View on GitHub</a>
+        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="#demo">Try the demo</a>
     </nav>
-    <p class="text-muted">It reads and writes real files, so it's Node-only and there's no browser bundle to demo here. Its
-        public API (<code class="rounded bg-foreground/8 px-1 py-px">configure</code>, <code class="rounded bg-foreground/8 px-1 py-px">create</code>, <code class="rounded bg-foreground/8 px-1 py-px">query</code>, <code class="rounded bg-foreground/8 px-1 py-px">describe</code>,
-        <code class="rounded bg-foreground/8 px-1 py-px">drop</code>) is in the docs, and <a href="../workout-planner/">Workout Planner</a> runs on it.</p>
+    <p class="text-muted">It reads and writes real files in Node, and reads work in a browser too, over
+        <code class="rounded bg-foreground/8 px-1 py-px">fetch()</code>. The demo below queries a small library database
+        kept as JSON files on this site. <a href="../workout-planner/">Workout Planner</a> runs on it too.</p>
+
+    <section id="demo" class="mt-7 scroll-mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6">
+        <h2 class="mt-0 mb-1 text-xl">Try it: a library database</h2>
+        <p class="mt-0 mb-5 text-sm text-muted">Authors, books, members and loans, as JSON files. Ask a question or write your own read. The library's "today" is 2026-11-01. The same sandbox is on the projects page.</p>
+        <!-- Filled in by /dist/sandboxes/jsonFsQuerySandboxInit.js (assets/js/sandboxes/jsonFsQuerySandbox.js) -->
+        <div data-sandbox="json-fs-query"><noscript><p class="m-0 text-sm">This demo needs JavaScript.</p></noscript></div>
+    </section>
 </div>
+<!-- The site's own json-fs-query dependency (package.json), the same build /projects/ uses -->
+<script src="/browser/vendor/jsonFsQuery.min.js" defer></script>
+<script type="module" src="/dist/sandboxes/jsonFsQuerySandboxInit.js"></script>
 </body>
 </html>

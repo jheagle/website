@@ -52,6 +52,14 @@ Runs the real library (matrix-dom), loaded as window.matrixDom: on /projects/ th
 it, and the matrix-dom page loads it from browser/vendor.</p>
 <p>Rendered into each <code>&lt;div data-sandbox=&#39;matrix-dom&#39;&gt;</code>, so /projects/ and the matrix-dom page share one sandbox.</p>
 </dd>
+<dt><a href="#module_jsonFsQuerySandbox">jsonFsQuerySandbox</a></dt>
+<dd><p>The json-fs-query sandbox: a small library database (authors, books, members, loans) kept as JSON files on this
+site, queried in the browser by the real library (json-fs-query, window.jsonFsQuery) over fetch(). Pick a question
+to load its query, edit it, or write your own read. Writes only work in Node, and json-fs-query says so.</p>
+<p>Results are drawn with textContent, so whatever a query returns is shown, not run. Rendered into each
+<code>&lt;div data-sandbox=&#39;json-fs-query&#39;&gt;</code>, so /projects/ and the json-fs-query page share one sandbox.
+The database is built by scripts/build-library-database.mjs (with json-fs-query itself).</p>
+</dd>
 <dt><a href="#module_jsonDomSandbox">jsonDomSandbox</a></dt>
 <dd><p>The json-dom sandbox: describe a piece of page as JSON (json-dom&#39;s own item format) and watch json-dom render it,
 next to the HTML it produced. Runs the real library (json-dom), loaded as window.jsonDom: on /projects/ the site&#39;s
@@ -620,6 +628,119 @@ Render the sandbox into the page's `<div data-sandbox='matrix-dom'>` and wire it
 | document | <code>Document</code> |  | 
 | window | <code>Window</code> |  | 
 | [library] | <code>Object</code> | <code>window.matrixDom</code> | 
+
+<a name="module_jsonFsQuerySandbox"></a>
+
+## jsonFsQuerySandbox
+The json-fs-query sandbox: a small library database (authors, books, members, loans) kept as JSON files on this
+site, queried in the browser by the real library (json-fs-query, window.jsonFsQuery) over fetch(). Pick a question
+to load its query, edit it, or write your own read. Writes only work in Node, and json-fs-query says so.
+
+Results are drawn with textContent, so whatever a query returns is shown, not run. Rendered into each
+`<div data-sandbox='json-fs-query'>`, so /projects/ and the json-fs-query page share one sandbox.
+The database is built by scripts/build-library-database.mjs (with json-fs-query itself).
+
+
+* [jsonFsQuerySandbox](#module_jsonFsQuerySandbox)
+    * [.databasePath](#module_jsonFsQuerySandbox.databasePath)
+    * [.libraryDate](#module_jsonFsQuerySandbox.libraryDate)
+    * [.records](#module_jsonFsQuerySandbox.records)
+    * [.questions](#module_jsonFsQuerySandbox.questions)
+    * [.cellText](#module_jsonFsQuerySandbox.cellText) ⇒ <code>string</code>
+    * [.columnsOf](#module_jsonFsQuerySandbox.columnsOf) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.isGrouped](#module_jsonFsQuerySandbox.isGrouped) ⇒ <code>boolean</code>
+    * [.buildTable](#module_jsonFsQuerySandbox.buildTable) ⇒ <code>HTMLElement</code>
+    * [.markup](#module_jsonFsQuerySandbox.markup)
+    * [.initJsonFsQuerySandbox](#module_jsonFsQuerySandbox.initJsonFsQuerySandbox) ⇒ <code>Object</code> \| <code>null</code>
+
+<a name="module_jsonFsQuerySandbox.databasePath"></a>
+
+### jsonFsQuerySandbox.databasePath
+Where the database lives on this site.
+
+**Kind**: static constant of [<code>jsonFsQuerySandbox</code>](#module_jsonFsQuerySandbox)  
+<a name="module_jsonFsQuerySandbox.libraryDate"></a>
+
+### jsonFsQuerySandbox.libraryDate
+The library's "today", so overdue loans stay overdue.
+
+**Kind**: static constant of [<code>jsonFsQuerySandbox</code>](#module_jsonFsQuerySandbox)  
+<a name="module_jsonFsQuerySandbox.records"></a>
+
+### jsonFsQuerySandbox.records
+The records, with their sizes, for the browse buttons.
+
+**Kind**: static constant of [<code>jsonFsQuerySandbox</code>](#module_jsonFsQuerySandbox)  
+<a name="module_jsonFsQuerySandbox.questions"></a>
+
+### jsonFsQuerySandbox.questions
+Questions to load with one tap: each shows off a part of the query language.
+
+**Kind**: static constant of [<code>jsonFsQuerySandbox</code>](#module_jsonFsQuerySandbox)  
+<a name="module_jsonFsQuerySandbox.cellText"></a>
+
+### jsonFsQuerySandbox.cellText ⇒ <code>string</code>
+A cell's text: arrays of rows become a compact list (each row's values joined), other values as they read.
+
+**Kind**: static constant of [<code>jsonFsQuerySandbox</code>](#module_jsonFsQuerySandbox)  
+
+| Param | Type |
+| --- | --- |
+| value | <code>\*</code> | 
+
+<a name="module_jsonFsQuerySandbox.columnsOf"></a>
+
+### jsonFsQuerySandbox.columnsOf ⇒ <code>Array.&lt;string&gt;</code>
+The columns for some rows: every key, in the order first seen.
+
+**Kind**: static constant of [<code>jsonFsQuerySandbox</code>](#module_jsonFsQuerySandbox)  
+
+| Param | Type |
+| --- | --- |
+| rows | <code>Array.&lt;Object&gt;</code> | 
+
+<a name="module_jsonFsQuerySandbox.isGrouped"></a>
+
+### jsonFsQuerySandbox.isGrouped ⇒ <code>boolean</code>
+Whether a result is grouped (group by returns groups with field, value and rows or groups).
+
+**Kind**: static constant of [<code>jsonFsQuerySandbox</code>](#module_jsonFsQuerySandbox)  
+
+| Param | Type |
+| --- | --- |
+| result | <code>Array</code> | 
+
+<a name="module_jsonFsQuerySandbox.buildTable"></a>
+
+### jsonFsQuerySandbox.buildTable ⇒ <code>HTMLElement</code>
+Build a table element for rows (text only).
+
+**Kind**: static constant of [<code>jsonFsQuerySandbox</code>](#module_jsonFsQuerySandbox)  
+
+| Param | Type |
+| --- | --- |
+| document | <code>Document</code> | 
+| rows | <code>Array.&lt;Object&gt;</code> | 
+
+<a name="module_jsonFsQuerySandbox.markup"></a>
+
+### jsonFsQuerySandbox.markup
+The sandbox's static markup (no visitor data), styled with Tailwind classes; assets/tailwind/site.css scans this
+folder for them.
+
+**Kind**: static constant of [<code>jsonFsQuerySandbox</code>](#module_jsonFsQuerySandbox)  
+<a name="module_jsonFsQuerySandbox.initJsonFsQuerySandbox"></a>
+
+### jsonFsQuerySandbox.initJsonFsQuerySandbox ⇒ <code>Object</code> \| <code>null</code>
+Render the sandbox into the page's `<div data-sandbox='json-fs-query'>` and wire it up. One per page.
+
+**Kind**: static constant of [<code>jsonFsQuerySandbox</code>](#module_jsonFsQuerySandbox)  
+
+| Param | Type | Default |
+| --- | --- | --- |
+| document | <code>Document</code> |  | 
+| window | <code>Window</code> |  | 
+| [library] | <code>Object</code> | <code>window.jsonFsQuery</code> | 
 
 <a name="module_jsonDomSandbox"></a>
 

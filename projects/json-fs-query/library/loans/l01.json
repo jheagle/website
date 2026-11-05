@@ -1,0 +1,8 @@
+{
+  "_id": "l01",
+  "book_id": "hobbit",
+  "member_id": "ana",
+  "loaned": "2026-08-02",
+  "due": "2026-08-23",
+  "returned": "2026-08-20"
+}

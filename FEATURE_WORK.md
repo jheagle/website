@@ -94,7 +94,7 @@ steps where Joshua picks, tests or approves before the PR merges.
   static role stays for readers and ATS; nothing animates for reduced motion. `scroll-smooth motion-reduce:scroll-auto`
   on `<html>`. Along the way: title-switcher#27 (cursor colour, span leak), js-build-tools 8.1.0 (no proposal or
   iterator-helper polyfills), title-switcher 2.2.2 (6KB, no dependencies), si-funciona 2.9.1 (−32%).
-- [ ] **7. Show-and-tell sandboxes on `/projects/`:** small live demos people can try in the page. One PR per
+- [x] **7. Show-and-tell sandboxes on `/projects/`:** small live demos people can try in the page. One PR per
   project: title-switcher (already has a bundle on the site), json-dom, matrix-dom, pseudo-dom, json-fs-query,
   si-funciona and collect-your-stuff. battleship, quizzes and workout-planner already link to their own running app.
   Progress: title-switcher done (2026-11-05, a "Try them" section under the grid: own lines, speed, blink, order,
@@ -117,6 +117,11 @@ steps where Joshua picks, tests or approves before the PR merges.
   pseudo-dom done (2026-11-05): "same question, two DOMs": CSS selectors and four predefined changes (add a class,
   append, remove, click with its bubbling path) run on pseudo-dom and on the browser's own DOM (an inert document),
   answers side by side with a ✓ when they agree.
+  json-fs-query done (2026-11-05): a library database (authors, books, members, loans; built by json-fs-query itself,
+  `npm run build:library`) queried in the browser over fetch(): browse a record, ask one of 8 questions (where, sort,
+  merge, is null, dates, on-joins, group by, like) or write your own read; results as a table. Writes show
+  json-fs-query's own "only works in Node" message (json-fs-query#105, released in 3.1.2). Step 7's sandboxes are all
+  done.
 - [x] **7a. Project pages restyle:** the 12 pages under `/projects/<name>/` (back link, header, actions, demo)
   move from the old `projects/shared.css` (155 lines, pre-redesign) to the site's Tailwind classes, tokens, fonts and
   light/dark; then `shared.css` is deleted. One PR for all 12, since they share one structure. Each page's demo is

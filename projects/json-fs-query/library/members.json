@@ -1,0 +1,40 @@
+{
+  "path": "members",
+  "definition": [
+    {
+      "name": "_id",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "joined",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    }
+  ],
+  "keys": [
+    {
+      "type": "primary",
+      "fields": [
+        "_id"
+      ],
+      "lookup": "pk__id.json"
+    }
+  ],
+  "entries": [
+    "ana.json",
+    "ben.json",
+    "chloe.json",
+    "dev.json",
+    "emeka.json",
+    "fran.json"
+  ]
+}

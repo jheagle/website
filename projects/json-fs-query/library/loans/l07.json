@@ -1,0 +1,8 @@
+{
+  "_id": "l07",
+  "book_id": "emma",
+  "member_id": "chloe",
+  "loaned": "2026-09-06",
+  "due": "2026-09-27",
+  "returned": "2026-09-30"
+}
