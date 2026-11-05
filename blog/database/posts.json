@@ -1,0 +1,65 @@
+{
+  "path": "posts",
+  "definition": [
+    {
+      "name": "_id",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "date",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "summary",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "tags",
+      "type": "array",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "image",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false,
+      "nullable": true
+    },
+    {
+      "name": "body",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    }
+  ],
+  "keys": [
+    {
+      "type": "primary",
+      "fields": [
+        "_id"
+      ],
+      "lookup": "pk__id.json"
+    },
+    {
+      "type": "index",
+      "fields": [
+        "date"
+      ],
+      "lookup": "index_date.json"
+    }
+  ],
+  "entries": []
+}

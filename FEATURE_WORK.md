@@ -140,12 +140,24 @@ steps where Joshua picks, tests or approves before the PR merges.
   Done 2026-11-05: Joshua picked option A (white "JH" in Lexend ExtraBold on fuchsia-700; also shown: dark, and one
   adapting to light/dark). `icon.svg` is the source; `npm run build:icons` makes `favicon.ico` (16/32/48 PNGs,
   1.7 KB, was 370 KB) and a square 180 px `apple-touch-icon.png`; all 15 pages link the three.
-- [ ] **8. Tier 2 blog infrastructure ✱:** read-only, static pages powered by json-fs-query (posts stored as
-  json-fs-query data, a listing page and a post page). Joshua answers three scoping questions first: where posts
-  live, how a post is written (Markdown or JSON-DOM), and URLs.
-- [ ] **9. First Tier 2 posts ✱:** fitness journey and "why I gave up on grass". Claude drafts from the local
-  `CONTENT-DRAFT.md`, Joshua approves the wording, then the two homepage links come back. Keep the fitness post easy
-  to move to evanget.fit later.
+- [x] **8. Tier 2 blog infrastructure ✱:** decided with Joshua 2026-11-05 and built: posts are written in Markdown
+  with a small header (title, date, slug, summary, tags, image), stored in a json-fs-query database (`blog/database/`,
+  the store of record; `npm run blog:export -- <slug>` gives a post back as Markdown, the start of a full export), and
+  built (`npm run blog:build`, part of `npm run build`) into static pages: `/blog/<year>/<slug>/` (the URL Joshua
+  picked), a page per year, the `/blog/` listing and an RSS feed (`/blog/feed.xml`, full text). Static because sharing
+  needs it: LinkedIn, X, Bluesky and Medium read Open Graph / Twitter tags without running JavaScript; each page names
+  its canonical URL so Medium cross-posts credit this site. Markdown becomes HTML with marked; posts are styled with
+  Tailwind's typography plugin (`prose`), mapped to the site's tokens. The blog starts empty until a post is approved.
+- [ ] **8b. Book reviews ✱:** Joshua's reading list lives in a Google Sheet, which stays the source of truth (editable
+  anywhere). Import its CSV export into the same database (`books`, plus `post_books` to link posts that discuss a
+  book): a sortable `/books/` list with short reviews, a page per reviewed book, long reviews as blog posts linked both
+  ways. Some books cover controversial or NSFW topics: tag them and hide them by default behind a visible toggle, so
+  they stay available to anyone looking for recommendations.
+- [ ] **9. First Tier 2 posts ✱:** drafts written 2026-11-05 (local-only `BLOG-DRAFTS/`, with [TODO] gaps for Joshua):
+  "Forty kilometres for forty" (the birthday runs; once it's up, the homepage keeps "a birthday tradition of running
+  my age in kilometres" and links the post, without "39 km / 40 km", so the age is only in the post), "Why I gave up on
+  grass", and "From a checkup to a half marathon" (keep it easy to move to evanget.fit). Joshua approves the wording,
+  then `npm run blog:import` each, and the homepage links come back.
 - [ ] **10. `llms.txt`:** a plain-text summary of the site and its projects for AI tools and agents.
 - [ ] **11. Asset fingerprinting:** a build step that stamps local CSS/JS URLs in the pages with a content hash
   (`site.css?v=3f21a`), so a changed file gets a new URL and browsers fetch it at once. GitHub Pages caches for

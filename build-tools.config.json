@@ -29,6 +29,9 @@
       "testPathIgnorePatterns": [
         "/node_modules",
         "/projects"
+      ],
+      "transformIgnorePatterns": [
+        "/node_modules/(?!marked/)"
       ]
     },
     "path": "assets/js",
