@@ -102,6 +102,12 @@
 }
 
 @layer base {
+  /* The hidden attribute must win over display utilities (flex, inline-flex, ...), which would otherwise override the
+     browser's own [hidden] { display: none }; preflight has this rule, and it's off here. until-found stays findable. */
+  [hidden]:where(:not([hidden='until-found'])) {
+    display: none !important;
+  }
+
   :root {
     color-scheme: light dark;
     background-color: var(--color-background);

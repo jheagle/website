@@ -16,6 +16,8 @@ describe('base layer (assets/tailwind/site.css)', () => {
     ;['--font-sans', '--font-heading', '--font-mono', '--color-background', '--color-foreground', '--color-muted', '--color-link', '--color-accent', '--color-rule']
       .forEach(token => expect(builtCss).toContain(`${token}:`))
     expect(builtCss).toContain('@layer base{')
+    // the hidden attribute beats display utilities (a flex label or an inline-flex button stayed visible without it)
+    expect(builtCss).toMatch(/\[hidden\]:where\(:not\(\[hidden=["']?until-found["']?\]\)\)\{display:none!important\}/)
   })
 
   test.each(pages)('%s preloads fonts that the stylesheet uses and that exist', page => {
