@@ -108,6 +108,9 @@ steps where Joshua picks, tests or approves before the PR merges.
   collect-your-stuff done (2026-11-05): Queue / Stack / Linked list modes, one call at a time (enqueue/dequeue/peek,
   push/pop/peek, append/prepend/insertAfter/remove on a tapped item, a doubly-linked switch), each call and its return
   value shown, the collection redrawn from the library's own state.
+  matrix-dom done (2026-11-05): a 10 by 10 board with three modes: Line (getLinePoints between two tapped cells),
+  Neighbours (adjacentPoints vs adjacentEdgePoints), and Place a fleet (Battleship's own method: getLinesOfLength,
+  drop lines crossing a ship, pick one at random; each ship's cells labelled with its length).
 - [x] **7a. Project pages restyle:** the 12 pages under `/projects/<name>/` (back link, header, actions, demo)
   move from the old `projects/shared.css` (155 lines, pre-redesign) to the site's Tailwind classes, tokens, fonts and
   light/dark; then `shared.css` is deleted. One PR for all 12, since they share one structure. Each page's demo is
@@ -118,6 +121,11 @@ steps where Joshua picks, tests or approves before the PR merges.
   `<nav aria-label='Project links'>`. The title-switcher page shows the shared sandbox and loads the site's own
   `/browser/vendor/titleSwitcher.min.js` (its demo copy on this branch predated the 2.2.3 security fix).
   si-funciona and collect-your-stuff keep their demos, restyled, until their sandboxes replace them in step 7.
+- [ ] **7b. Site icon ✱:** the 2018 favicon (white slab-serif "JH" on indigo) predates the redesign: its letters touch
+  the edges, it's hard to read at 16px, and `favicon.ico` is 370KB (six uncompressed bitmaps). Keep the JH-on-rounded-
+  square idea, redrawn in Lexend Bold (outlined to shapes) on the fuchsia accent; Joshua picks from 2-3 options shown at
+  real tab sizes in light and dark. Ship an SVG icon, a small `favicon.ico` (16/32/48, PNG-compressed) and a 180px
+  `apple-touch-icon`, linked from every page, with a test.
 - [ ] **8. Tier 2 blog infrastructure ✱:** read-only, static pages powered by json-fs-query (posts stored as
   json-fs-query data, a listing page and a post page). Joshua answers three scoping questions first: where posts
   live, how a post is written (Markdown or JSON-DOM), and URLs.

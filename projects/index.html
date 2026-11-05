@@ -66,6 +66,14 @@
                  the same sandbox the collect-your-stuff page uses; it needs the deferred /browser/vendor/collectYourStuff.min.js -->
             <div data-sandbox='collect-your-stuff'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
         </article>
+
+        <article class='mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6'>
+            <h3 class='mt-0 mb-1 text-xl'><a class='text-foreground no-underline hover:underline' href='/projects/matrix-dom/'>Matrix DOM</a></h3>
+            <p class='mt-0 mb-5 text-sm text-muted'>The grid geometry under Battleship's board (and this page's project grid). Draw lines, check neighbours, place a fleet.</p>
+            <!-- Filled in by /dist/sandboxes/matrixDomSandboxInit.js (assets/js/sandboxes/matrixDomSandbox.js), the same
+                 sandbox the matrix-dom page uses; here window.matrixDom comes from /browser/joshuaHome.js -->
+            <div data-sandbox='matrix-dom'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
+        </article>
     </section>
 </main>
 
@@ -78,5 +86,6 @@
 <script type='module' src='/dist/sandboxes/siFuncionaSandboxInit.js'></script>
 <script src='/browser/vendor/collectYourStuff.min.js' defer></script>
 <script type='module' src='/dist/sandboxes/collectYourStuffSandboxInit.js'></script>
+<script type='module' src='/dist/sandboxes/matrixDomSandboxInit.js'></script>
 </body>
 </html>
