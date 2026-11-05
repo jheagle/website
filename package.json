@@ -36,6 +36,7 @@
     "json-dom": "github:jheagle/JSON-DOM",
     "json-dom-components": "github:jheagle/json-dom-components",
     "matrix-dom": "github:jheagle/matrix-DOM",
+    "pseudo-dom": "^1.2.0",
     "si-funciona": "^2.9.1",
     "title-switcher": "^2.2.3"
   },
@@ -53,7 +54,6 @@
     "jest": "^29.7.0",
     "js-build-tools": "^8.0.0",
     "playwright": "^1.64.1",
-    "pseudo-dom": "^1.1.0",
     "sharp": "^0.35.5",
     "signal-exit": "^4.1.0",
     "tailwindcss": "^4.3.3"

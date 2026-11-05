@@ -37,6 +37,14 @@ Runs the real library (<a href="https://www.npmjs.com/package/si-funciona">https
 nothing a visitor types is run as code. Rendered into each <code>&lt;div data-sandbox=&#39;si-funciona&#39;&gt;</code>, so /projects/ and
 the si-funciona page share one sandbox.</p>
 </dd>
+<dt><a href="#module_pseudoDomSandbox">pseudoDomSandbox</a></dt>
+<dd><p>The pseudo-dom sandbox, &quot;same question, two DOMs&quot;: pseudo-dom imitates the browser&#39;s DOM for tests in Node, so the
+page asks it and the real browser DOM the same questions (CSS selectors, then a few predefined changes) and shows
+both answers side by side. Runs the real library (pseudo-dom), loaded as window.pseudoDom.</p>
+<p>The real side parses visitor HTML in a separate, inert document (document.implementation.createHTMLDocument), where
+scripts and handlers like onerror never run; pseudo-dom never runs anything either. Rendered into each
+<code>&lt;div data-sandbox=&#39;pseudo-dom&#39;&gt;</code>, so /projects/ and the pseudo-dom page share one sandbox.</p>
+</dd>
 <dt><a href="#module_matrixDomSandbox">matrixDomSandbox</a></dt>
 <dd><p>The matrix-dom sandbox: a 10 by 10 board to try the grid geometry Battleship is built on. Draw a line between two
 cells, see a cell&#39;s neighbours, or place a fleet the way Battleship does.
@@ -385,6 +393,144 @@ Render the sandbox into the page's `<div data-sandbox='si-funciona'>` and wire i
 | document | <code>Document</code> |  | 
 | window | <code>Window</code> |  | 
 | [library] | <code>Object</code> | <code>window.siFunciona</code> | 
+
+<a name="module_pseudoDomSandbox"></a>
+
+## pseudoDomSandbox
+The pseudo-dom sandbox, "same question, two DOMs": pseudo-dom imitates the browser's DOM for tests in Node, so the
+page asks it and the real browser DOM the same questions (CSS selectors, then a few predefined changes) and shows
+both answers side by side. Runs the real library (pseudo-dom), loaded as window.pseudoDom.
+
+The real side parses visitor HTML in a separate, inert document (document.implementation.createHTMLDocument), where
+scripts and handlers like onerror never run; pseudo-dom never runs anything either. Rendered into each
+`<div data-sandbox='pseudo-dom'>`, so /projects/ and the pseudo-dom page share one sandbox.
+
+
+* [pseudoDomSandbox](#module_pseudoDomSandbox)
+    * [.exampleHtml](#module_pseudoDomSandbox.exampleHtml)
+    * [.suggestedSelectors](#module_pseudoDomSandbox.suggestedSelectors)
+    * [.changes](#module_pseudoDomSandbox.changes) : <code>Object.&lt;string, {label: string, code: string, run: function(Element, Document, Array.&lt;string&gt;): void}&gt;</code>
+    * [.matchTexts](#module_pseudoDomSandbox.matchTexts) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.normalizeHtml](#module_pseudoDomSandbox.normalizeHtml) ⇒ <code>string</code>
+    * [.prettyHtml](#module_pseudoDomSandbox.prettyHtml) ⇒ <code>string</code>
+    * [.buildRoots](#module_pseudoDomSandbox.buildRoots) ⇒ <code>Object</code>
+    * [.compareQuery](#module_pseudoDomSandbox.compareQuery) ⇒ <code>Object</code>
+    * [.compareChange](#module_pseudoDomSandbox.compareChange) ⇒ <code>Object</code>
+    * [.markup](#module_pseudoDomSandbox.markup)
+    * [.initPseudoDomSandbox](#module_pseudoDomSandbox.initPseudoDomSandbox) ⇒ <code>Object</code> \| <code>null</code>
+
+<a name="module_pseudoDomSandbox.exampleHtml"></a>
+
+### pseudoDomSandbox.exampleHtml
+Starting HTML to try.
+
+**Kind**: static constant of [<code>pseudoDomSandbox</code>](#module_pseudoDomSandbox)  
+<a name="module_pseudoDomSandbox.suggestedSelectors"></a>
+
+### pseudoDomSandbox.suggestedSelectors
+Selectors to try with one tap.
+
+**Kind**: static constant of [<code>pseudoDomSandbox</code>](#module_pseudoDomSandbox)  
+<a name="module_pseudoDomSandbox.changes"></a>
+
+### pseudoDomSandbox.changes : <code>Object.&lt;string, {label: string, code: string, run: function(Element, Document, Array.&lt;string&gt;): void}&gt;</code>
+The predefined changes: each runs the same code on a root element of either DOM, and may log what it saw.
+
+**Kind**: static constant of [<code>pseudoDomSandbox</code>](#module_pseudoDomSandbox)  
+<a name="module_pseudoDomSandbox.matchTexts"></a>
+
+### pseudoDomSandbox.matchTexts ⇒ <code>Array.&lt;string&gt;</code>
+The text of each match, for comparing and showing.
+
+**Kind**: static constant of [<code>pseudoDomSandbox</code>](#module_pseudoDomSandbox)  
+
+| Param | Type |
+| --- | --- |
+| root | <code>Element</code> | 
+| selector | <code>string</code> | 
+
+<a name="module_pseudoDomSandbox.normalizeHtml"></a>
+
+### pseudoDomSandbox.normalizeHtml ⇒ <code>string</code>
+HTML with formatting whitespace between tags removed, so both DOMs' output compares fairly.
+
+**Kind**: static constant of [<code>pseudoDomSandbox</code>](#module_pseudoDomSandbox)  
+
+| Param | Type |
+| --- | --- |
+| html | <code>string</code> | 
+
+<a name="module_pseudoDomSandbox.prettyHtml"></a>
+
+### pseudoDomSandbox.prettyHtml ⇒ <code>string</code>
+Indent HTML one tag per line, for reading the two results side by side.
+
+**Kind**: static constant of [<code>pseudoDomSandbox</code>](#module_pseudoDomSandbox)  
+
+| Param | Type |
+| --- | --- |
+| html | <code>string</code> | 
+
+<a name="module_pseudoDomSandbox.buildRoots"></a>
+
+### pseudoDomSandbox.buildRoots ⇒ <code>Object</code>
+Two fresh roots holding the same HTML: one in pseudo-dom, one in an inert real document.
+
+**Kind**: static constant of [<code>pseudoDomSandbox</code>](#module_pseudoDomSandbox)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| library | <code>Object</code> | The pseudo-dom exports. |
+| document | <code>Document</code> | The page's document (for createHTMLDocument). |
+| html | <code>string</code> |  |
+
+<a name="module_pseudoDomSandbox.compareQuery"></a>
+
+### pseudoDomSandbox.compareQuery ⇒ <code>Object</code>
+Ask both DOMs the same selector.
+
+**Kind**: static constant of [<code>pseudoDomSandbox</code>](#module_pseudoDomSandbox)  
+
+| Param | Type |
+| --- | --- |
+| library | <code>Object</code> | 
+| document | <code>Document</code> | 
+| html | <code>string</code> | 
+| selector | <code>string</code> | 
+
+<a name="module_pseudoDomSandbox.compareChange"></a>
+
+### pseudoDomSandbox.compareChange ⇒ <code>Object</code>
+Run a predefined change on both DOMs.
+
+**Kind**: static constant of [<code>pseudoDomSandbox</code>](#module_pseudoDomSandbox)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| library | <code>Object</code> |  |
+| document | <code>Document</code> |  |
+| html | <code>string</code> |  |
+| name | <code>string</code> | A key of changes. |
+
+<a name="module_pseudoDomSandbox.markup"></a>
+
+### pseudoDomSandbox.markup
+The sandbox's static markup (no visitor data), styled with Tailwind classes; assets/tailwind/site.css scans this
+folder for them.
+
+**Kind**: static constant of [<code>pseudoDomSandbox</code>](#module_pseudoDomSandbox)  
+<a name="module_pseudoDomSandbox.initPseudoDomSandbox"></a>
+
+### pseudoDomSandbox.initPseudoDomSandbox ⇒ <code>Object</code> \| <code>null</code>
+Render the sandbox into the page's `<div data-sandbox='pseudo-dom'>` and wire it up. One per page.
+
+**Kind**: static constant of [<code>pseudoDomSandbox</code>](#module_pseudoDomSandbox)  
+
+| Param | Type | Default |
+| --- | --- | --- |
+| document | <code>Document</code> |  | 
+| window | <code>Window</code> |  | 
+| [library] | <code>Object</code> | <code>window.pseudoDom</code> | 
 
 <a name="module_matrixDomSandbox"></a>
 

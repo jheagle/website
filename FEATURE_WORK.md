@@ -114,6 +114,9 @@ steps where Joshua picks, tests or approves before the PR merges.
   json-dom done (2026-11-05): edit a structure in json-dom's own JSON format (or load Card / List / Table) and json-dom
   renders it live next to the HTML it built; visitor JSON is allowlisted first (tags, attributes, safe links), with
   anything dropped listed.
+  pseudo-dom done (2026-11-05): "same question, two DOMs": CSS selectors and four predefined changes (add a class,
+  append, remove, click with its bubbling path) run on pseudo-dom and on the browser's own DOM (an inert document),
+  answers side by side with a ✓ when they agree.
 - [x] **7a. Project pages restyle:** the 12 pages under `/projects/<name>/` (back link, header, actions, demo)
   move from the old `projects/shared.css` (155 lines, pre-redesign) to the site's Tailwind classes, tokens, fonts and
   light/dark; then `shared.css` is deleted. One PR for all 12, since they share one structure. Each page's demo is
