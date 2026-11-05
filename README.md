@@ -33,7 +33,7 @@ stays open.</p>
 <dt><a href="#projectGrid">projectGrid(projects)</a> ⇒ <code>DomItem</code></dt>
 <dd><p>Builds a matrix-dom grid of project tiles, one per entry in <code>projects</code>, in display order
 (row-major: left to right, then top to bottom). Any trailing columns left over when <code>projects.length</code>
-doesn&#39;t divide evenly into <code>columns</code> are left empty (marked &#39;tile-empty&#39;, hidden via CSS).</p>
+doesn&#39;t divide evenly into <code>columns</code> are left empty (marked &#39;tile-empty&#39;, and <code>invisible</code>).</p>
 </dd>
 </dl>
 
@@ -135,7 +135,7 @@ A single tile's content: an icon badge plus title/description, all wrapped in on
 ## projectGrid(projects) ⇒ <code>DomItem</code>
 Builds a matrix-dom grid of project tiles, one per entry in `projects`, in display order
 (row-major: left to right, then top to bottom). Any trailing columns left over when `projects.length`
-doesn't divide evenly into `columns` are left empty (marked 'tile-empty', hidden via CSS).
+doesn't divide evenly into `columns` are left empty (marked 'tile-empty', and `invisible`).
 
 **Kind**: global function  
 

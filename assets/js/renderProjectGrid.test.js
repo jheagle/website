@@ -27,7 +27,8 @@ describe('projects/index.html', () => {
       ...[...document.head.querySelectorAll('script[src]')].map(script => script.getAttribute('src')),
       ...[...head.matchAll(/import \w+ from '([^']+)'/g)].map(match => match[1])
     ]
-    expect(urls).toEqual(expect.arrayContaining(['/browser/tailwind/site.css', '/browser/css/project-grid.css', '/browser/joshuaHome.js']))
+    expect(urls).toEqual(expect.arrayContaining(['/browser/tailwind/site.css', '/browser/joshuaHome.js']))
+    expect(urls).not.toContain('/browser/css/project-grid.css')
     urls.forEach(url => expect({ url, exists: fs.existsSync(path.join(rootDir, url)) }).toEqual({ url, exists: true }))
   })
 

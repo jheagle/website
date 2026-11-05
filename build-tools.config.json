@@ -1,7 +1,6 @@
 {
   "cleanPaths": [
-    "dist",
-    "browser/css"
+    "dist"
   ],
   "browser": {
     "enabled": true,
@@ -21,10 +20,7 @@
     ]
   },
   "sass": {
-    "enabled": true,
-    "from": "assets/sass/**/*.+(scss|sass)",
-    "path": "assets/sass",
-    "to": "browser/css"
+    "enabled": false
   },
   "srcPath": "assets/js",
   "test": {
