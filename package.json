@@ -17,6 +17,7 @@
     "build:fonts": "node scripts/copy-fonts.mjs",
     "build:vendor": "node scripts/copy-vendor.mjs",
     "build:library": "node scripts/build-library-database.mjs",
+    "build:icons": "node scripts/build-icons.mjs",
     "compare:browsers": "node scripts/compare-browsers.cjs",
     "watch:css": "tailwindcss -i assets/tailwind/site.css -o browser/tailwind/site.css --watch",
     "lint": "gulp lint",
