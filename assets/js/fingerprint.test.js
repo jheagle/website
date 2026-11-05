@@ -9,6 +9,10 @@ const write = (root, file, content) => {
 }
 const read = (root, file) => fs.readFileSync(path.join(root, file), 'utf8')
 
+// `npm run build` runs the tests in parallel with rebuilding dist/, before the stamps and the sitemap are written, so
+// the checks that the built site is current only run outside the build (`npm test`); the build ends by making them true
+const afterBuild = process.env.npm_lifecycle_event === 'build' ? test.skip : test
+
 describe('fingerprint', () => {
   let root
   beforeEach(() => {
@@ -73,7 +77,7 @@ describe('fingerprint', () => {
     expect(read(root, 'index.html')).toBe("<script src='/dist/gone.js'></script>")
   })
 
-  test('the site\'s own stamps are current (run `npm run build:fingerprint` after building if this fails)', () => {
+  afterBuild('the site\'s own stamps are current (run `npm run build:fingerprint` after building if this fails)', () => {
     const { changed, missing } = fingerprintSite(path.join(__dirname, '../..'), { write: false })
     expect(changed).toEqual([])
     expect(missing).toEqual([])

@@ -168,9 +168,11 @@ steps where Joshua picks, tests or approves before the PR merges.
   left alone. A test fails if any stamp in the repo is stale (`node scripts/fingerprint.cjs --check` says which). Only
   a query string, so any static server still serves the file without it. Left as is: a visitor holding a cached page
   (up to 10 minutes on Pages) still asks for the old stamp, and gets the new file.
-- [ ] **11b. `robots.txt` and `sitemap.xml`:** found while doing `llms.txt`: let crawlers in, point them at a sitemap
-  listing every page (homepage, /projects/ and each project page, quizzes, the blog listing and each post), generated
-  in the build so blog posts join it automatically; keep generated docs out of it.
+- [x] **11b. `robots.txt` and `sitemap.xml`:** found while doing `llms.txt`. `robots.txt` lets every crawler in (AI
+  tools included) and names the sitemap; `scripts/sitemap.cjs` (`npm run build:sitemap`, run by `blog:build` and so by
+  `build`) lists every page, blog posts with their date, leaving out the 404 page, `noindex` pages and generated docs.
+  Every page now names its canonical URL (most had none; battleship's game page pointed at `http://battleship.local/`),
+  and a test checks each listed page's canonical is its own address and the sitemap is current.
 - [ ] **12. Before leaving draft ✱:** re-sync with `main`, run the full test suite, check the live-site paths
   (`/projects/*`, docs, bundles), a final pass in Firefox, Chrome and Safari (a real Apple device if available), then
   copy this file into #124 and delete it. Joshua merges #124.
