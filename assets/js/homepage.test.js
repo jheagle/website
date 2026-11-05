@@ -42,15 +42,30 @@ describe('index.html', () => {
     hrefs.forEach(href => expect(sectionIds).toContain(href.slice(1)))
   })
 
-  test('loads one script, the nav module, and Tailwind is the only stylesheet (no grid/sass)', () => {
+  test('loads the title-switcher bundle then the site module (both deferred), and Tailwind is the only stylesheet', () => {
     expect(document.head.querySelectorAll('script').length).toBe(0)
     const scripts = [...document.body.querySelectorAll('script')]
-    expect(scripts.map(script => [script.getAttribute('type'), script.getAttribute('src')])).toEqual([['module', '/dist/siteNavInit.js']])
-    expect(fs.existsSync(path.join(rootDir, 'dist/siteNavInit.js'))).toBe(true)
-    expect(fs.existsSync(path.join(rootDir, 'dist/siteNav.js'))).toBe(true)
+    expect(scripts.map(script => [script.getAttribute('type'), script.getAttribute('src'), script.hasAttribute('defer')]))
+      .toEqual([[null, '/browser/vendor/titleSwitcher.min.js', true], ['module', '/dist/siteInit.js', false]])
+    ;['browser/vendor/titleSwitcher.min.js', 'dist/siteInit.js', 'dist/siteNav.js', 'dist/roleTitles.js']
+      .forEach(file => expect({ file, exists: fs.existsSync(path.join(rootDir, file)) }).toEqual({ file, exists: true }))
     const stylesheets = [...document.head.querySelectorAll("link[rel='stylesheet']")].map(link => link.getAttribute('href'))
     expect(stylesheets).toEqual(['/browser/tailwind/site.css'])
     expect(fs.existsSync(path.join(rootDir, stylesheets[0]))).toBe(true)
+  })
+
+  test('the role line is real, static text; the lines to type sit in a <template> that readers and ATS skip', () => {
+    const role = document.getElementById('role')
+    expect(role.textContent.trim()).toBe('Full-Stack Engineer')
+    expect(role.hasAttribute('data-animated')).toBe(false)
+    const template = document.getElementById('role-titles')
+    expect(template.tagName.toLowerCase()).toBe('template')
+  })
+
+  test('smooth scrolling to sections, switched off for reduced motion', () => {
+    const html = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf8')
+    const classes = html.match(/<html[^>]*class='([^']*)'/)[1].split(' ')
+    expect(classes).toEqual(expect.arrayContaining(['scroll-smooth', 'motion-reduce:scroll-auto']))
   })
 
   test('the nav works without its script: the Menu button starts hidden and the link list starts open', () => {

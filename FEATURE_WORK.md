@@ -87,8 +87,13 @@ steps where Joshua picks, tests or approves before the PR merges.
   (light and dark) and a real iPhone. Tried and rejected earlier (the old site): a bottom nav for thumb reach.
 - [x] **5. `/projects/` restyle:** the tiles use the tokens (fixes the light tiles in dark mode), and Tailwind
   replaces the old `project-grid` sass.
-- [ ] **6. Small details ✱:** the title-switcher typing effect over real static text, smooth scrolling to sections,
+- [x] **6. Small details ✱:** the title-switcher typing effect over real static text, smooth scrolling to sections,
   short transitions (colour, the nav hiding and returning). All off for reduced motion. Joshua judges the feel.
+  Built 2026-11-04: the role line types five lines with title-switcher 2.2.2 (Full-Stack Engineer / Architecture &
+  refactoring / Shared tooling & TypeScript libraries / Directing AI coding agents / Runner, artist, gardener); the
+  static role stays for readers and ATS; nothing animates for reduced motion. `scroll-smooth motion-reduce:scroll-auto`
+  on `<html>`. Along the way: title-switcher#27 (cursor colour, span leak), js-build-tools 8.1.0 (no proposal or
+  iterator-helper polyfills), title-switcher 2.2.2 (6KB, no dependencies), si-funciona 2.9.1 (−32%).
 - [ ] **7. Show-and-tell sandboxes on `/projects/`:** small live demos people can try in the page. One PR per
   project: title-switcher (already has a bundle on the site), json-dom, matrix-dom, pseudo-dom, json-fs-query,
   si-funciona and collect-your-stuff. battleship, quizzes and workout-planner already link to their own running app.

@@ -15,6 +15,14 @@ it a row whatever the attribute says).</li>
 <p>Without this script the nav is still a plain, pinned list of links: the Menu button stays <code>hidden</code> and the list
 stays open.</p>
 </dd>
+<dt><a href="#module_roleTitles">roleTitles</a></dt>
+<dd><p>The typing effect on the homepage&#39;s role line, run by title-switcher (<a href="https://www.npmjs.com/package/title-switcher">https://www.npmjs.com/package/title-switcher</a>).</p>
+<p>The page&#39;s real text stays put: the role line&#39;s static &quot;Full-Stack Engineer&quot; is what screen readers, applicant
+tracking systems and visitors without JavaScript get. The lines to type live in a <code>&lt;template&gt;</code>, which browsers
+don&#39;t render and readers don&#39;t read. This module copies them into an <code>aria-hidden</code> span, tucks the static text
+away visually (<code>data-animated</code> on the line switches its <code>group-data-animated:sr-only</code> class on), and starts the
+typing. When the visitor&#39;s system asks for reduced motion, nothing changes at all.</p>
+</dd>
 </dl>
 
 ## Constants
@@ -114,6 +122,42 @@ Wire up the nav.
 | --- | --- |
 | document | <code>Document</code> | 
 | window | <code>Window</code> | 
+
+<a name="module_roleTitles"></a>
+
+## roleTitles
+The typing effect on the homepage's role line, run by title-switcher (https://www.npmjs.com/package/title-switcher).
+
+The page's real text stays put: the role line's static "Full-Stack Engineer" is what screen readers, applicant
+tracking systems and visitors without JavaScript get. The lines to type live in a `<template>`, which browsers
+don't render and readers don't read. This module copies them into an `aria-hidden` span, tucks the static text
+away visually (`data-animated` on the line switches its `group-data-animated:sr-only` class on), and starts the
+typing. When the visitor's system asks for reduced motion, nothing changes at all.
+
+
+* [roleTitles](#module_roleTitles)
+    * [.timing](#module_roleTitles.timing)
+    * [.startRoleTitles](#module_roleTitles.startRoleTitles) ⇒ <code>Object</code> \| <code>null</code>
+
+<a name="module_roleTitles.timing"></a>
+
+### roleTitles.timing
+Typing speed (ms per character) and the cursor's blink interval (ms), passed to title-switcher.
+
+**Kind**: static constant of [<code>roleTitles</code>](#module_roleTitles)  
+<a name="module_roleTitles.startRoleTitles"></a>
+
+### roleTitles.startRoleTitles ⇒ <code>Object</code> \| <code>null</code>
+Start the typing effect, unless something it needs is missing or the visitor prefers reduced motion.
+
+**Kind**: static constant of [<code>roleTitles</code>](#module_roleTitles)  
+**Returns**: <code>Object</code> \| <code>null</code> - The running TitleSwitcher, or null when it didn't start.  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| document | <code>Document</code> |  |  |
+| window | <code>Window</code> |  |  |
+| [TitleSwitcher] | <code>function</code> | <code>window.TitleSwitcher</code> | The title-switcher class (swappable in tests). |
 
 <a name="projects"></a>
 
