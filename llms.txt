@@ -1,0 +1,50 @@
+# Joshua Heagle
+
+> Joshua Evan Heagle (most people call him Evan) is a full-stack engineer in the Greater Toronto Area. He works on
+> architecture, refactoring and shared tooling, directs AI coding agents through real work, and maintains a family of
+> open-source TypeScript libraries that build on each other. Open to full-time roles and contracts.
+
+This site is static HTML. Every page reads fine without JavaScript, apart from the live demos on /projects/.
+
+## About
+
+- [Home](https://joshuaheagle.com/): who he is, what he's doing now, how he works, selected work, experience and contact
+- [Resume (PDF)](https://joshuaheagle.com/assets/documents/Joshua_Heagle_Resume.pdf): the full work history
+- [Blog](https://joshuaheagle.com/blog/): writing on fitness, gardening, building things and what he learns along the way ([RSS](https://joshuaheagle.com/blog/feed.xml))
+
+Work history in brief: Full-Stack Engineer at BIC (formerly Inkbox), Toronto, April 2021 to present, now on BIC's
+Global Supply Chain team; Software Developer II at Benevity, Toronto, 2017 to 2021; earlier at BID13, Techcom, 3conx and
+Jackpine (2013 to 2017). Computer Engineering Technology, Computer Science, Algonquin College (2010 to 2013). Main
+stack: PHP/Laravel, TypeScript and JavaScript, Node.
+
+Contact: joshuaheagle@gmail.com, [LinkedIn](https://ca.linkedin.com/in/joshuaheagle), [GitHub](https://github.com/jheagle).
+
+## Projects
+
+All of them, with live demos of the ones that run in a browser: [Projects](https://joshuaheagle.com/projects/).
+Each project page links its generated API documentation at `<page>docs/`.
+
+### The libraries (published on npm)
+
+- [Sí, funciona](https://joshuaheagle.com/projects/si-funciona/): dependency-light, fully typed general-purpose utility functions (npm `si-funciona`, [source](https://github.com/jheagle/si-funciona))
+- [Collect your stuff (and go)!](https://joshuaheagle.com/projects/collect-your-stuff/): classic collection types, such as queues, stacks and linked lists, fully typed (npm `collect-your-stuff`, [source](https://github.com/jheagle/collect-your-stuff))
+- [json-fs-query](https://joshuaheagle.com/projects/json-fs-query/): a query engine that treats a folder of JSON files as a database, with a small SQL-like language; reads also work in the browser (npm `json-fs-query`, [source](https://github.com/jheagle/json-fs-query))
+- [Pseudo DOM](https://joshuaheagle.com/projects/pseudo-dom/): a mock of the browser DOM for tests in Node, with real CSS selector matching (npm `pseudo-dom`, [source](https://github.com/jheagle/pseudo-dom))
+- [Title Switcher](https://joshuaheagle.com/projects/title-switcher/): the typing effect that cycles through titles, as on this site's homepage (npm `title-switcher`, [source](https://github.com/jheagle/title-switcher))
+- [Test Filesystem](https://joshuaheagle.com/projects/test-filesystem/): set up and tear down a temporary directory for filesystem tests (npm `test-filesystem`, [source](https://github.com/jheagle/test-filesystem))
+
+### The rendering stack and the game that proves it
+
+- [JSON DOM](https://joshuaheagle.com/projects/json-dom/): a from-scratch virtual-DOM framework with a composable trait system, including a render-only mode that forwards events to a server
+- [Matrix DOM](https://joshuaheagle.com/projects/matrix-dom/): grid and matrix geometry on top of JSON DOM, used by Battleship's board and by this site's project grid
+- [Battleship](https://joshuaheagle.com/projects/battleship/): a multiplayer-ready game built on the whole stack ([play it](https://joshuaheagle.com/projects/battleship/play.html), [source](https://github.com/jheagle/battleship))
+
+### Build tooling
+
+- [js-build-tools](https://joshuaheagle.com/projects/js-build-tools/): the shared Gulp-based build, test and documentation pipeline used across these packages (npm `js-build-tools`, [source](https://github.com/jheagle/js-build-tools))
+- [Common Exports](https://joshuaheagle.com/projects/common-exports/): converts ES modules to CommonJS for dual-format builds (npm `common-exports`, [source](https://github.com/jheagle/common-exports))
+
+### Apps
+
+- [Quizzes](https://joshuaheagle.com/quizzes/): dynamic forms described as JSON DOM data, a form.io alternative
+- [Workout Planner](https://joshuaheagle.com/projects/workout-planner/): an early, evolving idea for workout tracking ([source](https://github.com/jheagle/workout-planner))
