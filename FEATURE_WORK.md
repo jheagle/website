@@ -158,7 +158,9 @@ steps where Joshua picks, tests or approves before the PR merges.
   my age in kilometres" and links the post, without "39 km / 40 km", so the age is only in the post), "Why I gave up on
   grass", and "From a checkup to a half marathon" (keep it easy to move to evanget.fit). Joshua approves the wording,
   then `npm run blog:import` each, and the homepage links come back.
-- [ ] **10. `llms.txt`:** a plain-text summary of the site and its projects for AI tools and agents.
+- [x] **10. `llms.txt`:** a plain-text summary of the site and its projects for AI tools and agents, in the
+  llms.txt format (h1, a blockquote summary, then link lists). A test checks every site link exists and every project in
+  the grid is listed, so it can't drift silently; JSON DOM and Matrix DOM link only their pages (private repos).
 - [ ] **11. Asset fingerprinting:** a build step that stamps local CSS/JS URLs in the pages with a content hash
   (`site.css?v=3f21a`), so a changed file gets a new URL and browsers fetch it at once. GitHub Pages caches for
   10 minutes (`max-age=600`), and merging the redesign changes nearly every asset, so without this a visitor could
