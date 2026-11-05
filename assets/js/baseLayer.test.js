@@ -13,7 +13,7 @@ describe('base layer (assets/tailwind/site.css)', () => {
   })
 
   test('the built stylesheet carries the design tokens and the base layer', () => {
-    ;['--font-sans', '--font-heading', '--font-mono', '--color-background', '--color-foreground', '--color-muted', '--color-link']
+    ;['--font-sans', '--font-heading', '--font-mono', '--color-background', '--color-foreground', '--color-muted', '--color-link', '--color-accent', '--color-rule']
       .forEach(token => expect(builtCss).toContain(`${token}:`))
     expect(builtCss).toContain('@layer base{')
   })
