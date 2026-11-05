@@ -1,7264 +1,4284 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.siFunciona = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
-
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.for-each.js");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var _main = require("./main");
-Object.keys(_main).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (key in exports && exports[key] === _main[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _main[key];
-    }
-  });
-});
-},{"./main":80,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.for-each.js":219}],2:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "BasicQueue", {
-  enumerable: true,
-  get: function () {
-    return _BasicQueue.default;
-  }
-});
-Object.defineProperty(exports, "addUniqueToArray", {
-  enumerable: true,
-  get: function () {
-    return _addUniqueToArray.default;
-  }
-});
-Object.defineProperty(exports, "buildArray", {
-  enumerable: true,
-  get: function () {
-    return _buildArray.default;
-  }
-});
-Object.defineProperty(exports, "buildArrayOfReferences", {
-  enumerable: true,
-  get: function () {
-    return _buildArrayOfReferences.default;
-  }
-});
-Object.defineProperty(exports, "compareArrays", {
-  enumerable: true,
-  get: function () {
-    return _compareArrays.default;
-  }
-});
-exports.default = void 0;
-Object.defineProperty(exports, "mergeArrays", {
-  enumerable: true,
-  get: function () {
-    return _mergeArrays.default;
-  }
-});
-Object.defineProperty(exports, "uniqueArray", {
-  enumerable: true,
-  get: function () {
-    return _uniqueArray.default;
-  }
-});
-var _addUniqueToArray = _interopRequireDefault(require("./arrays/addUniqueToArray"));
-var _BasicQueue = _interopRequireDefault(require("./arrays/BasicQueue"));
-var _buildArray = _interopRequireDefault(require("./arrays/buildArray"));
-var _buildArrayOfReferences = _interopRequireDefault(require("./arrays/buildArrayOfReferences"));
-var _compareArrays = _interopRequireDefault(require("./arrays/compareArrays"));
-var _mergeArrays = _interopRequireDefault(require("./arrays/mergeArrays"));
-var _uniqueArray = _interopRequireDefault(require("./arrays/uniqueArray"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Utilities for building, merging, deduplicating and comparing arrays, plus a basic FIFO queue (BasicQueue) for
- * use with functionHelpers' queueManager/queueTimeout.
- */
-var _default = exports.default = {
-  addUniqueToArray: _addUniqueToArray.default,
-  BasicQueue: _BasicQueue.default,
-  buildArray: _buildArray.default,
-  buildArrayOfReferences: _buildArrayOfReferences.default,
-  compareArrays: _compareArrays.default,
-  mergeArrays: _mergeArrays.default,
-  uniqueArray: _uniqueArray.default
-};
-},{"./arrays/BasicQueue":3,"./arrays/addUniqueToArray":4,"./arrays/buildArray":5,"./arrays/buildArrayOfReferences":6,"./arrays/compareArrays":7,"./arrays/mergeArrays":8,"./arrays/uniqueArray":9}],3:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Class BasicQueue is a functional example of a queue to be used with queueManager.
- */
-class BasicQueue {
-  /**
-   * @param innerList - Items to pre-populate the queue with, in order.
-   */
-  constructor(innerList = []) {
-    this.innerList = innerList;
-  }
-  /**
-   * Remove and return the next item in the queue
-   */
-  dequeue() {
-    return this.innerList.shift();
-  }
-  /**
-   * Check if the queue is empty
-   */
-  empty() {
-    return !this.size();
-  }
-  /**
-   * Add an item to the end of the queue
-   * @param data
-   */
-  enqueue(data) {
-    this.innerList.push(data);
-    return this;
-  }
-  /**
-   * Retrieve the next item from the queue
-   */
-  peek() {
-    return this.empty() ? null : this.innerList[0];
-  }
-  /**
-   * Get the quantity of items in the queue
-   */
-  size() {
-    return this.innerList.length;
-  }
-}
-var _default = exports.default = BasicQueue;
-},{}],4:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/es.array.includes.js");
-/**
- * Having an array and a potential new array element, check if the element is in the array, if not append to array.
- * @param item - An potential array element, possibly a DomItem
- * @param array - An array where an element may be appended.
- */
-const addUniqueToArray = (item, array) => !array.includes(item) ? array.concat([item]) : array;
-var _default = exports.default = addUniqueToArray;
-},{"core-js/modules/es.array.includes.js":205}],5:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _cloneObject = _interopRequireDefault(require("../objects/cloneObject"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Leverage buildArrayBase to generate an array filled with a copy of the provided item.
- * The length defines how long the array should be.
- * @param item - The item to be used for each array element
- * @param length - The desired length of the array
- */
-const buildArray = (item, length) => {
-  const arr = [];
-  while (arr.length < length) {
-    const cloned = (0, _cloneObject.default)(item);
-    arr.push(cloned);
-  }
-  return arr;
-};
-var _default = exports.default = buildArray;
-},{"../objects/cloneObject":46}],6:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Leverage buildArrayBase to generate an array filled with references to the provided item.
- * The length defines how long the array should be.
- * @param item - The item to be used for each array element
- * @param length - The desired length of the array
- */
-const buildArrayOfReferences = (item, length) => {
-  const arr = [];
-  while (arr.length < length) {
-    arr.push(item);
-  }
-  return arr;
-};
-var _default = exports.default = buildArrayOfReferences;
-},{}],7:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.every.js");
-require("core-js/modules/esnext.iterator.map.js");
-require("core-js/modules/esnext.iterator.reduce.js");
-var _isObject = _interopRequireDefault(require("../objects/isObject"));
-var _mergeArrays = _interopRequireDefault(require("./mergeArrays"));
-var _objectKeys = _interopRequireDefault(require("../objects/objectKeys"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Compare two Arrays and return the Object where the value for each property is as follows:
- * -1 to indicate val1 is less than val2
- * 0 to indicate both values are the equal
- * 1 to indicate val1 is greater than val2
- * The returned Object uses the element values as the property names
- * This functions works by first creating a concatenated array of all unique values. Then for each unique values,
- * convert to a string and use it as a new property name. Array filter each array checking if it has the unique value.
- * Use the lengths of these filtered arrays to compare. So if the first array has the value and the second one doesn't
- * the first length will be one or more and the second will be zero, if the both have the value then both will be one
- * or more.
- * @example
- * // example of input and resulting output
- * compareArrays(
- *   ['match1', 'firstMismatch1', 'match2', 'firstMismatch2', 'badMatch1'],
- *   ['match1', 'match2', 'secondMismatch1', 'badMatch1', 'badMatch1']
- * )
- * // unique array
- * ['match1', 'firstMismatch1', 'match2', 'firstMismatch2', 'badMatch1', 'secondMismatch1']
- * // result object
- * [
- *   {
- *     value: 'match1',
- *     keys: [[0], [0]],
- *     result: [0, 0]
- *   },
- *   {
- *     value: 'firstMismatch1',
- *     keys: [[1], []],
- *     result: [1, -1]
- *   },
- *   {
- *     value: 'match2',
- *     keys: [[2], [1]],
- *     result: [0, 0]
- *   },
- *   {
- *     value: 'firstMismatch2',
- *     keys: [[3], []],
- *     result: [1, -1]
- *   },
- *   {
- *     value: 'badMatch1',
- *     keys: [[4], [3, 4]],
- *     result: [0, 0]
- *   },
- *   {
- *     value: 'secondMismatch1',
- *     keys: [[], [2]],
- *     result: [-1, 1]
- *   }
- * ]
- *
- * @param arrays - The arrays to compare
- */
-const compareArrays = (...arrays) => (0, _mergeArrays.default)(...arrays).reduce((results, attr) => {
-  const attrType = typeof attr;
-  const useArray = Array.isArray(attr);
-  const keys = arrays.map(array => array.reduce((results, current, key) => {
-    const currentType = typeof current;
-    if (attrType !== currentType) {
-      return results;
-    }
-    if (!(0, _isObject.default)(attr)) {
-      return current === attr ? [...results, key] : results;
-    }
-    if (useArray !== Array.isArray(current)) {
-      return results;
-    }
-    const compareKeys = useArray ? compareArrays(attr, current) : compareArrays((0, _objectKeys.default)(attr), (0, _objectKeys.default)(current));
-    return compareKeys.every(compare => compare.result.every(result => result === 0)) ? [...results, key] : results;
-  }, []));
-  const arrayResults = keys.map(array => array.length ? 1 : -1);
-  return [...results, {
-    value: attr,
-    keys,
-    result: arrayResults.every(result => result === 1) ? arrayResults.map(result => 0) : arrayResults
-  }];
-}, []);
-var _default = exports.default = compareArrays;
-},{"../objects/isObject":56,"../objects/objectKeys":61,"./mergeArrays":8,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.every.js":216,"core-js/modules/esnext.iterator.map.js":220,"core-js/modules/esnext.iterator.reduce.js":221}],8:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/es.array.includes.js");
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.filter.js");
-require("core-js/modules/esnext.iterator.map.js");
-require("core-js/modules/esnext.iterator.reduce.js");
-var _uniqueArray = _interopRequireDefault(require("./uniqueArray"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Take multiple arrays and then filter all these into one unique array.
- * @param arrays - Provide multiple arrays to create one unique array
- */
-const mergeArrays = (...arrays) => arrays.map(_uniqueArray.default).reduce((merged, arr) => [...merged, ...arr.filter(attr => !merged.includes(attr))], []);
-var _default = exports.default = mergeArrays;
-},{"./uniqueArray":9,"core-js/modules/es.array.includes.js":205,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.filter.js":217,"core-js/modules/esnext.iterator.map.js":220,"core-js/modules/esnext.iterator.reduce.js":221}],9:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.filter.js");
-/**
- * Remove duplicate values from an array. uniqueArray
- * @param array - The array to make unique
- */
-const uniqueArray = array => array.filter((item, index) => array.indexOf(item) === index);
-var _default = exports.default = uniqueArray;
-},{"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.filter.js":217}],10:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "assignDescriptor", {
-  enumerable: true,
-  get: function () {
-    return _assignDescriptor.default;
-  }
-});
-Object.defineProperty(exports, "assignDescriptorDetail", {
-  enumerable: true,
-  get: function () {
-    return _assignDescriptorDetail.default;
-  }
-});
-Object.defineProperty(exports, "checkClearValues", {
-  enumerable: true,
-  get: function () {
-    return _checkClearValues.default;
-  }
-});
-Object.defineProperty(exports, "checkDescriptorComplete", {
-  enumerable: true,
-  get: function () {
-    return _checkDescriptorComplete.default;
-  }
-});
-Object.defineProperty(exports, "cloneDescriptor", {
-  enumerable: true,
-  get: function () {
-    return _cloneDescriptor.default;
-  }
-});
-Object.defineProperty(exports, "cloneDescriptorDetail", {
-  enumerable: true,
-  get: function () {
-    return _cloneDescriptorDetail.default;
-  }
-});
-Object.defineProperty(exports, "compareDescriptor", {
-  enumerable: true,
-  get: function () {
-    return _compareDescriptor.default;
-  }
-});
-exports.default = void 0;
-Object.defineProperty(exports, "describeObject", {
-  enumerable: true,
-  get: function () {
-    return _describeObject.default;
-  }
-});
-Object.defineProperty(exports, "describeObjectDetail", {
-  enumerable: true,
-  get: function () {
-    return _describeObjectDetail.default;
-  }
-});
-Object.defineProperty(exports, "describeObjectMap", {
-  enumerable: true,
-  get: function () {
-    return _describeObjectMap.default;
-  }
-});
-Object.defineProperty(exports, "nextReference", {
-  enumerable: true,
-  get: function () {
-    return _nextReference.default;
-  }
-});
-Object.defineProperty(exports, "sameDescriptor", {
-  enumerable: true,
-  get: function () {
-    return _sameDescriptor.default;
-  }
-});
-var _assignDescriptor = _interopRequireDefault(require("./descriptors/assignDescriptor"));
-var _assignDescriptorDetail = _interopRequireDefault(require("./descriptors/assignDescriptorDetail"));
-var _checkClearValues = _interopRequireDefault(require("./descriptors/checkClearValues"));
-var _checkDescriptorComplete = _interopRequireDefault(require("./descriptors/checkDescriptorComplete"));
-var _cloneDescriptor = _interopRequireDefault(require("./descriptors/cloneDescriptor"));
-var _cloneDescriptorDetail = _interopRequireDefault(require("./descriptors/cloneDescriptorDetail"));
-var _compareDescriptor = _interopRequireDefault(require("./descriptors/compareDescriptor"));
-var _describeObject = _interopRequireDefault(require("./descriptors/describeObject"));
-var _describeObjectMap = _interopRequireDefault(require("./descriptors/describeObjectMap"));
-var _describeObjectDetail = _interopRequireDefault(require("./descriptors/describeObjectDetail"));
-var _nextReference = _interopRequireDefault(require("./descriptors/nextReference"));
-var _sameDescriptor = _interopRequireDefault(require("./descriptors/sameDescriptor"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * A "descriptor" is a flat, serializable snapshot of an object or array's shape: for each property, its type(s),
- * whether it's nullable, and - if the property's own value is itself an object/array - a reference to that nested
- * value's own descriptor elsewhere in the same list, rather than nesting descriptors inside descriptors. This flat,
- * reference-based structure is what lets these utilities walk deeply nested and even circular object graphs (an
- * object that contains itself, directly or indirectly) without infinite recursion, since a value that's already
- * been described is simply pointed to again instead of re-described.
- *
- * Start with {@link module:objectDescriptors.describeObjectMap}, which takes any real object or array and produces
- * this flat list of descriptors for you - the other functions here (comparing, merging, cloning descriptors) are
- * building blocks used internally, or useful once you already have descriptors to work with directly.
- *
- * The concrete use this module has earned its keep on: describing two objects and comparing the results tells
- * you whether they're the same shape and values even when they're different references entirely (see
- * {@link module:objectDescriptors.sameDescriptor}/{@link module:objectDescriptors.compareDescriptor}) - useful
- * anywhere you need to check that two objects genuinely match without caring whether they're literally the same
- * instance. A descriptor also doubles as a flat, structured summary of an object's shape, which can be handy for
- * discussion or assessment purposes (e.g. describing what an object looks like without dumping the whole thing).
- */
-var _default = exports.default = {
-  assignDescriptor: _assignDescriptor.default,
-  assignDescriptorDetail: _assignDescriptorDetail.default,
-  checkClearValues: _checkClearValues.default,
-  checkDescriptorComplete: _checkDescriptorComplete.default,
-  cloneDescriptor: _cloneDescriptor.default,
-  cloneDescriptorDetail: _cloneDescriptorDetail.default,
-  compareDescriptor: _compareDescriptor.default,
-  describeObject: _describeObject.default,
-  describeObjectMap: _describeObjectMap.default,
-  describeObjectDetail: _describeObjectDetail.default,
-  nextReference: _nextReference.default,
-  sameDescriptor: _sameDescriptor.default
-};
-},{"./descriptors/assignDescriptor":11,"./descriptors/assignDescriptorDetail":12,"./descriptors/checkClearValues":13,"./descriptors/checkDescriptorComplete":14,"./descriptors/cloneDescriptor":15,"./descriptors/cloneDescriptorDetail":16,"./descriptors/compareDescriptor":17,"./descriptors/describeObject":18,"./descriptors/describeObjectDetail":19,"./descriptors/describeObjectMap":20,"./descriptors/nextReference":21,"./descriptors/sameDescriptor":22}],11:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.every.js");
-require("core-js/modules/esnext.iterator.filter.js");
-require("core-js/modules/esnext.iterator.find.js");
-require("core-js/modules/esnext.iterator.for-each.js");
-require("core-js/modules/esnext.iterator.map.js");
-require("core-js/modules/esnext.iterator.reduce.js");
-var _assignDescriptorDetail = _interopRequireDefault(require("./assignDescriptorDetail"));
-var _cloneDescriptor = _interopRequireDefault(require("./cloneDescriptor"));
-var _compareArrays = _interopRequireDefault(require("../arrays/compareArrays"));
-var _uniqueArray = _interopRequireDefault(require("../arrays/uniqueArray"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Apply one or more descriptors to an existing descriptor so that they represent a merged version of the descriptors.
- * Used to widen a descriptor as more differently-shaped objects are described into it (e.g. array elements of
- * different types), rather than replacing it outright.
- * @param originalMap - The base descriptor to merge onto (not mutated - a
- * clone is merged and returned).
- * @param  descriptors - One or more further descriptors to merge in.
- * @returns A new descriptor representing the merge of all of the above.
- */
-const assignDescriptor = (originalMap, ...descriptors) => descriptors.reduce((assignedDescriptor, descriptor) => {
-  const detailsDiff = (0, _compareArrays.default)(assignedDescriptor.keys, descriptor.keys);
-  detailsDiff.forEach(diff => {
-    const existingDetail = assignedDescriptor.details.find(detail => detail.key === diff.value);
-    const newDetail = descriptor.details.find(detail => detail.key === diff.value);
-    if (diff.result.every(result => result === 0)) {
-      assignedDescriptor.details[existingDetail.index] = (0, _assignDescriptorDetail.default)(existingDetail, newDetail);
-      return assignedDescriptor;
-    }
-    const useDetail = diff.result[0] > 0 ? existingDetail : newDetail;
-    if (!useDetail) {
-      assignedDescriptor.details[existingDetail.index].optional = true;
-      return assignedDescriptor;
-    }
-    const useIndex = diff.result[0] > 0 ? useDetail.index : assignedDescriptor.length;
-    assignedDescriptor.details[useIndex] = Object.assign({}, useDetail, {
-      index: useIndex,
-      optional: true
-    });
-    assignedDescriptor.length = assignedDescriptor.length < assignedDescriptor.details.length ? assignedDescriptor.details.length : assignedDescriptor.length;
-    return assignedDescriptor;
-  });
-  assignedDescriptor.keys = (0, _uniqueArray.default)(assignedDescriptor.details.map(detail => detail.key));
-  assignedDescriptor.references = (0, _uniqueArray.default)(assignedDescriptor.details.filter(detail => detail.isReference).map(detail => detail.index));
-  assignedDescriptor.isArray = assignedDescriptor.length ? assignedDescriptor.details.every(detail => typeof detail.key === 'number') : assignedDescriptor.isArray;
-  assignedDescriptor.complete = !assignedDescriptor.references.length || assignedDescriptor.complete || descriptor.complete;
-  return assignedDescriptor;
-}, (0, _cloneDescriptor.default)(originalMap));
-var _default = exports.default = assignDescriptor;
-},{"../arrays/compareArrays":7,"../arrays/uniqueArray":9,"./assignDescriptorDetail":12,"./cloneDescriptor":15,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.every.js":216,"core-js/modules/esnext.iterator.filter.js":217,"core-js/modules/esnext.iterator.find.js":218,"core-js/modules/esnext.iterator.for-each.js":219,"core-js/modules/esnext.iterator.map.js":220,"core-js/modules/esnext.iterator.reduce.js":221}],12:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.reduce.js");
-var _cloneDescriptorDetail = _interopRequireDefault(require("./cloneDescriptorDetail"));
-var _uniqueArray = _interopRequireDefault(require("../arrays/uniqueArray"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Assign properties from other details onto an existing detail, widening it (e.g. combining `type`/`value` arrays,
- * OR-ing boolean flags like `nullable`/`optional`) rather than overwriting it - the per-property counterpart to
- * {@link module:objectDescriptors.assignDescriptor}.
- * @param originalDetail - The base detail to merge onto (not mutated -
- * a clone is merged and returned).
- * @param  details - One or more further details to merge in.
- * @returns A new detail representing the merge of all of the above.
- */
-const assignDescriptorDetail = (originalDetail, ...details) => details.reduce((existingDetail, newDetail) => {
-  existingDetail.type = (0, _uniqueArray.default)([...existingDetail.type, ...newDetail.type]);
-  existingDetail.value = (0, _uniqueArray.default)([...existingDetail.value, ...newDetail.value]);
-  existingDetail.nullable = existingDetail.nullable || newDetail.nullable;
-  existingDetail.optional = existingDetail.optional || newDetail.optional;
-  existingDetail.circular = existingDetail.circular || newDetail.circular;
-  existingDetail.isReference = existingDetail.isReference || newDetail.isReference;
-  existingDetail.isInstance = existingDetail.isInstance || newDetail.isInstance;
-  existingDetail.arrayReference = [existingDetail.arrayReference, newDetail.arrayReference].find(ref => typeof ref === 'number');
-  existingDetail.objectReference = [existingDetail.objectReference, newDetail.objectReference].find(ref => typeof ref === 'number');
-  existingDetail.arrayReference = typeof existingDetail.arrayReference === 'undefined' ? null : existingDetail.arrayReference;
-  existingDetail.objectReference = typeof existingDetail.objectReference === 'undefined' ? null : existingDetail.objectReference;
-  return existingDetail;
-}, (0, _cloneDescriptorDetail.default)(originalDetail));
-var _default = exports.default = assignDescriptorDetail;
-},{"../arrays/uniqueArray":9,"./cloneDescriptorDetail":16,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.reduce.js":221}],13:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.map.js");
-var _setValue = _interopRequireDefault(require("../objects/setValue"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Once a descriptor is complete (all its references have been resolved), its details' actual `value` arrays are no
- * longer needed to build the descriptor further - clear them to save memory, unless `keepValues` says otherwise.
- * @param descriptor - The descriptor to check.
- * @param keepValues - Set true to keep the values even once the descriptor is complete.
- * @returns The same descriptor, with `details[].value` cleared if applicable.
- */
-const checkClearValues = (descriptor, keepValues = false) => (0, _setValue.default)('details', descriptor.complete && !keepValues ? descriptor.details.map(detail => (0, _setValue.default)('value', [], detail)) : descriptor.details, descriptor);
-var _default = exports.default = checkClearValues;
-},{"../objects/setValue":65,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.map.js":220}],14:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.every.js");
-var _setValue = _interopRequireDefault(require("../objects/setValue"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Check if every property this descriptor references (i.e. every nested object/array it points to) has actually
- * had its own descriptor built yet, and set the descriptor's `complete` flag to true if so.
- * @param descriptor - The descriptor to check.
- * @returns The same descriptor, with `complete` updated.
- */
-const checkDescriptorComplete = descriptor => (0, _setValue.default)('complete', descriptor.references.every(refId => [descriptor.details[refId].arrayReference, descriptor.details[refId].objectReference].some(ref => typeof ref === 'number')), descriptor);
-var _default = exports.default = checkDescriptorComplete;
-},{"../objects/setValue":65,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.every.js":216}],15:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.map.js");
-var _cloneDescriptorDetail = _interopRequireDefault(require("./cloneDescriptorDetail"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Make a copy of an object descriptor so that the original will not be mutated.
- * @param originalMap - The descriptor to copy.
- * @returns A new, independent copy.
- */
-const cloneDescriptor = originalMap => {
-  const copyMap = {};
-  // @ts-ignore
-  copyMap['index'] = originalMap.index || 0;
-  // @ts-ignore
-  copyMap['details'] = originalMap.details.map(_cloneDescriptorDetail.default);
-  // @ts-ignore
-  copyMap['length'] = originalMap.length;
-  // @ts-ignore
-  copyMap['keys'] = originalMap.keys.map(key => key);
-  // @ts-ignore
-  copyMap['references'] = originalMap.references.map(reference => reference);
-  // @ts-ignore
-  copyMap['isArray'] = originalMap.isArray;
-  // @ts-ignore
-  copyMap['complete'] = originalMap.complete;
-  return copyMap;
-};
-var _default = exports.default = cloneDescriptor;
-},{"./cloneDescriptorDetail":16,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.map.js":220}],16:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.for-each.js");
-require("core-js/modules/esnext.iterator.map.js");
-var _objectKeys = _interopRequireDefault(require("../objects/objectKeys"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Get a new copy of an existing descriptor detail so that the original will not be mutated.
- * @param originalDetail - The detail to copy.
- * @returns A new, independent copy.
- */
-const cloneDescriptorDetail = originalDetail => {
-  const copyDetail = {};
-  (0, _objectKeys.default)(originalDetail).forEach(key => {
-    // @ts-ignore
-    copyDetail[key] = Array.isArray(originalDetail[key]) ? originalDetail[key].map(value => value) : originalDetail[key];
-  });
-  return copyDetail;
-};
-var _default = exports.default = cloneDescriptorDetail;
-},{"../objects/objectKeys":61,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.for-each.js":219,"core-js/modules/esnext.iterator.map.js":220}],17:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/es.array.includes.js");
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.every.js");
-require("core-js/modules/esnext.iterator.find.js");
-require("core-js/modules/esnext.iterator.some.js");
-/**
- * Check if two descriptors are the same or similar, in that the smaller one's keys are all present in the larger
- * one and their types line up - used to detect when a newly-described value actually matches a descriptor already
- * in the map, so it can be pointed at instead of creating a duplicate.
- * @param descriptor1 - The first descriptor to compare.
- * @param descriptor2 - The second descriptor to compare.
- * @returns True if the descriptors describe a compatible shape.
- */
-const compareDescriptor = (descriptor1, descriptor2) => {
-  if (descriptor1.isArray !== descriptor2.isArray) {
-    return false;
-  }
-  if (descriptor1.length === 0 || descriptor2.length === 0) {
-    return descriptor1.length === descriptor2.length;
-  }
-  const smallerDescriptor = descriptor1.length <= descriptor2.length ? descriptor1 : descriptor2;
-  const largerDescriptor = descriptor2.length >= descriptor1.length ? descriptor2 : descriptor1;
-  return smallerDescriptor.keys.every(key => largerDescriptor.keys.includes(key)) ? smallerDescriptor.details.every(detail => detail.type.some(type => largerDescriptor.details.find(foundDetail => foundDetail.key === detail.key).type.includes(type))) : false;
-};
-var _default = exports.default = compareDescriptor;
-},{"core-js/modules/es.array.includes.js":205,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.every.js":216,"core-js/modules/esnext.iterator.find.js":218,"core-js/modules/esnext.iterator.some.js":222}],18:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _assignDescriptorDetail = _interopRequireDefault(require("./assignDescriptorDetail"));
-var _describeObjectDetail = _interopRequireDefault(require("./describeObjectDetail"));
-var _objectKeys = _interopRequireDefault(require("../objects/objectKeys"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Trace a single object or array (not its nested objects/arrays - see
- * {@link module:objectDescriptors.describeObjectMap} for that) and return the descriptor which defines its own
- * structure and attributes.
- * @param object - The object or array to describe.
- */
-const describeObject = object => {
-  const descriptor = {
-    index: 0,
-    details: [],
-    length: 0,
-    keys: [],
-    references: [],
-    isArray: false,
-    complete: false
-  };
-  const keys = (0, _objectKeys.default)(object);
-  for (let i = 0; i < keys.length; ++i) {
-    const key = keys[i];
-    // @ts-ignore
-    const newDetail = (0, _describeObjectDetail.default)(object[key], key, descriptor.length++);
-    if (typeof key === 'number' && descriptor.details.length) {
-      descriptor.details[0] = (0, _assignDescriptorDetail.default)(descriptor.details[0], newDetail);
-      descriptor.keys = [0];
-      if (newDetail.isReference) {
-        descriptor.references = [0];
-      }
-      continue;
-    }
-    descriptor.details.push(newDetail);
-    descriptor.keys.push(newDetail.key);
-    if (newDetail.isReference) {
-      descriptor.references.push(newDetail.index);
-    }
-  }
-  descriptor.isArray = Array.isArray(object);
-  descriptor.complete = !descriptor.references.length;
-  return descriptor;
-};
-var _default = exports.default = describeObject;
-},{"../objects/objectKeys":61,"./assignDescriptorDetail":12,"./describeObjectDetail":19}],19:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _emptyObject = _interopRequireDefault(require("../objects/emptyObject"));
-var _isCloneable = _interopRequireDefault(require("../objects/isCloneable"));
-var _isInstanceObject = _interopRequireDefault(require("../objects/isInstanceObject"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Trace a single property's value and produce the descriptorDetail describing it (type, nullability, whether it
- * references a nested object/array, etc.) - the per-property building block used by
- * {@link module:objectDescriptors.describeObject}.
- * @param value - The property's value to describe.
- * @param key - The property name (or array index) this value belongs to.
- * @param index - This detail's intended position within its parent descriptor's `details` array.
- */
-const describeObjectDetail = (value, key = 0, index = 0) => {
-  const type = typeof value;
-  return {
-    index,
-    key,
-    type: [type],
-    value: [value],
-    nullable: value === null,
-    optional: false,
-    circular: false,
-    isReference: (0, _isCloneable.default)(value) && !(0, _emptyObject.default)(value),
-    isInstance: (0, _isInstanceObject.default)(value),
-    arrayReference: null,
-    objectReference: null
-  };
-};
-var _default = exports.default = describeObjectDetail;
-},{"../objects/emptyObject":51,"../objects/isCloneable":53,"../objects/isInstanceObject":55}],20:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.find.js");
-require("core-js/modules/esnext.iterator.for-each.js");
-var _assignDescriptor = _interopRequireDefault(require("./assignDescriptor"));
-var _checkClearValues = _interopRequireDefault(require("./checkClearValues"));
-var _checkDescriptorComplete = _interopRequireDefault(require("./checkDescriptorComplete"));
-var _compareDescriptor = _interopRequireDefault(require("./compareDescriptor"));
-var _describeObject = _interopRequireDefault(require("./describeObject"));
-var _nextReference = _interopRequireDefault(require("./nextReference"));
-var _sameDescriptor = _interopRequireDefault(require("./sameDescriptor"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Trace out the entire object including nested objects, producing a flat descriptorMap - see the
- * {@link module:objectDescriptors} module description for what a descriptor represents and why it's flat. This is
- * the main entry point into this module: start here to describe a real object/array before comparing, merging, or
- * inspecting its structure with the other functions in this module.
- * @example
- * describeObjectMap({ name: 'example', tags: ['a', 'b'] })
- * // [
- * //   { index: 0, details: [...], length: 2, keys: ['name', 'tags'], references: [1], isArray: false, complete: true },
- * //   { index: 1, details: [...], length: 2, keys: [0], references: [], isArray: true, complete: true }
- * // ]
- * // descriptorMap[0] describes the top-level object; its 'tags' property is a reference (references: [1]) to
- * // descriptorMap[1], which separately describes that nested array. descriptorMap[1]'s own `length` (2) reflects
- * // the array's actual length, but `keys` has only one entry (0) since both elements share the same type
- * // ('string') and are described together by a single, representative descriptorDetail.
- * @param object - The real object or array to describe.
- * @param options
- * @param options.mapLimit - Stop describing further nested references once the map reaches
- * this many descriptors - a safety limit for extremely large or deeply-referenced structures.
- * @param options.depthLimit - How many levels of nested objects/arrays to describe; `-1` means no
- * limit, `0` describes only the top level, etc.
- * @param options.keepValues - By default, each detail's actual values are cleared once its
- * descriptor is complete (to save memory) - set true to keep them.
- */
-const describeObjectMap = (object, {
-  mapLimit = 1000000000,
-  depthLimit = -1,
-  keepValues = false
-} = {}) => {
-  const descriptorMap = [(0, _describeObject.default)(object)];
-  descriptorMap[0].index = 0;
-  const describeReferences = (descriptor, currentDetail, limit = -1, returnCallback = returnMap => returnMap) => {
-    let index = descriptorMap.length;
-    const nextRef = currentDetail ? (0, _nextReference.default)(descriptor, currentDetail.index) : undefined;
-    const nextDetail = typeof nextRef !== 'undefined' ? descriptor.details[nextRef] : null;
-    if (currentDetail) {
-      const vals = descriptor.isArray ? currentDetail.value : [currentDetail.value[currentDetail.value.length - 1]];
-      vals.forEach(val => {
-        const tempDescriptor = (0, _describeObject.default)(val);
-        const existingDescriptorIndex = descriptorMap.findIndex(existingDescriptor => (0, _compareDescriptor.default)(tempDescriptor, existingDescriptor));
-        if (existingDescriptorIndex >= 0) {
-          index = existingDescriptorIndex;
-          if (tempDescriptor.length && (0, _sameDescriptor.default)(tempDescriptor, descriptorMap[existingDescriptorIndex])) {
-            currentDetail.circular = true;
-            descriptor.details[currentDetail.index] = currentDetail;
-          }
-        }
-        if (index >= mapLimit) {
-          return descriptorMap;
-        }
-        if (limit === 0) {
-          return descriptorMap;
-        }
-        if (tempDescriptor.isArray) {
-          index = currentDetail.arrayReference ?? index;
-          descriptor.details[currentDetail.index].arrayReference = index;
-        } else {
-          index = currentDetail.objectReference ?? index;
-          descriptor.details[currentDetail.index].objectReference = index;
-        }
-        tempDescriptor.index = index;
-        if (existingDescriptorIndex < 0) {
-          descriptorMap[index] = descriptorMap[index] ? (0, _assignDescriptor.default)(descriptorMap[index], tempDescriptor) : tempDescriptor;
-        }
-        descriptorMap[descriptor.index] = (0, _assignDescriptor.default)(descriptorMap[descriptor.index], descriptor);
-        currentDetail = descriptorMap[descriptor.index].details.find(detail => detail.key === currentDetail.key);
-        if (!currentDetail.circular) {
-          const newReference = (0, _nextReference.default)(tempDescriptor, -1);
-          const newDetail = typeof newReference !== 'undefined' ? tempDescriptor.details[newReference] : null;
-          return describeReferences(tempDescriptor, newDetail, --limit, returnMap => describeReferences(descriptor, nextDetail, --limit));
-        }
-      });
-    }
-    descriptorMap[descriptor.index] = (0, _assignDescriptor.default)(descriptorMap[descriptor.index], (0, _checkDescriptorComplete.default)(descriptor));
-    descriptorMap[descriptor.index] = (0, _checkClearValues.default)(descriptorMap[descriptor.index], keepValues);
-    return nextDetail ? describeReferences(descriptor, nextDetail, --limit) : returnCallback(descriptorMap);
-  };
-  const descriptor = descriptorMap[0];
-  const currentReference = (0, _nextReference.default)(descriptor, -1);
-  if (typeof currentReference === 'undefined') {
-    descriptorMap[0] = (0, _assignDescriptor.default)(descriptorMap[0], (0, _checkDescriptorComplete.default)(descriptor));
-    descriptorMap[0] = (0, _checkClearValues.default)(descriptorMap[0], keepValues);
-    return descriptorMap;
-  }
-  return describeReferences(descriptor, descriptor.details[currentReference], depthLimit);
-};
-var _default = exports.default = describeObjectMap;
-},{"./assignDescriptor":11,"./checkClearValues":13,"./checkDescriptorComplete":14,"./compareDescriptor":17,"./describeObject":18,"./nextReference":21,"./sameDescriptor":22,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.find.js":218,"core-js/modules/esnext.iterator.for-each.js":219}],21:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.find.js");
-var _objectKeys = _interopRequireDefault(require("../objects/objectKeys"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Find the index (within `descriptor.details`) of the next referenced property - after `currentReference` - whose
- * own nested object/array still needs its descriptor built. Used to walk through a descriptor's references one at
- * a time while building out a descriptorMap.
- * @param descriptor - The descriptor whose references to search.
- * @param currentReference - The `details` index already processed - search continues after this one.
- * @returns The next detail index to process, or `undefined` if none remain.
- */
-const nextReference = (descriptor, currentReference) => descriptor.references.find(nextRef => {
-  if (nextRef <= currentReference) {
-    return false;
-  }
-  const val = descriptor.details[nextRef].value[descriptor.details[nextRef].value.length - 1];
-  if (typeof val !== 'object' || val === null || typeof val === 'undefined' || descriptor.details[nextRef].circular || descriptor.details[nextRef].isInstance) {
-    return false;
-  }
-  return !!(0, _objectKeys.default)(val).length;
-});
-var _default = exports.default = nextReference;
-},{"../objects/objectKeys":61,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.find.js":218}],22:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/es.array.includes.js");
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.every.js");
-require("core-js/modules/esnext.iterator.some.js");
-/**
- * Check if two descriptors describe the exact same underlying values (not just compatible types, like
- * {@link module:objectDescriptors.compareDescriptor} does) - used to detect genuine circular references, where a
- * nested value's descriptor turns out to be identical to one of its own ancestors.
- * @param descriptor1 - The first descriptor to compare.
- * @param descriptor2 - The second descriptor to compare.
- * @returns True if every detail's values match at the same position.
- */
-const sameDescriptor = (descriptor1, descriptor2) => descriptor1.details.every((detail, index) => detail.value.some(dVal => descriptor2.details[index].value.includes(dVal)));
-var _default = exports.default = sameDescriptor;
-},{"core-js/modules/es.array.includes.js":205,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.every.js":216,"core-js/modules/esnext.iterator.some.js":222}],23:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "callWithParams", {
-  enumerable: true,
-  get: function () {
-    return _callWithParams.default;
-  }
-});
-Object.defineProperty(exports, "curry", {
-  enumerable: true,
-  get: function () {
-    return _curry.default;
-  }
-});
-exports.default = void 0;
-Object.defineProperty(exports, "delay", {
-  enumerable: true,
-  get: function () {
-    return _delay.default;
-  }
-});
-Object.defineProperty(exports, "makeBasicQueue", {
-  enumerable: true,
-  get: function () {
-    return _makeBasicQueue.default;
-  }
-});
-Object.defineProperty(exports, "onBodyLoad", {
-  enumerable: true,
-  get: function () {
-    return _onBodyLoad.default;
-  }
-});
-Object.defineProperty(exports, "pipe", {
-  enumerable: true,
-  get: function () {
-    return _pipe.default;
-  }
-});
-Object.defineProperty(exports, "preloadParams", {
-  enumerable: true,
-  get: function () {
-    return _preloadParams.default;
-  }
-});
-Object.defineProperty(exports, "queueManager", {
-  enumerable: true,
-  get: function () {
-    return _queueManager.default;
-  }
-});
-Object.defineProperty(exports, "queueTimeout", {
-  enumerable: true,
-  get: function () {
-    return _queueTimeout.default;
-  }
-});
-Object.defineProperty(exports, "relevancyFilter", {
-  enumerable: true,
-  get: function () {
-    return _relevancyFilter.default;
-  }
-});
-Object.defineProperty(exports, "trace", {
-  enumerable: true,
-  get: function () {
-    return _trace.default;
-  }
-});
-var _callWithParams = _interopRequireDefault(require("./functions/callWithParams"));
-var _curry = _interopRequireDefault(require("./functions/curry"));
-var _delay = _interopRequireDefault(require("./functions/delay"));
-var _makeBasicQueue = _interopRequireDefault(require("./functions/makeBasicQueue"));
-var _onBodyLoad = _interopRequireDefault(require("./functions/onBodyLoad"));
-var _pipe = _interopRequireDefault(require("./functions/pipe"));
-var _preloadParams = _interopRequireDefault(require("./functions/preloadParams"));
-var _queueManager = _interopRequireDefault(require("./functions/queueManager"));
-var _queueTimeout = _interopRequireDefault(require("./functions/queueTimeout"));
-var _relevancyFilter = _interopRequireDefault(require("./functions/relevancyFilter"));
-var _trace = _interopRequireDefault(require("./functions/trace"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Manage how functions are called with these utilities.
- */
-var _default = exports.default = {
-  callWithParams: _callWithParams.default,
-  curry: _curry.default,
-  delay: _delay.default,
-  makeBasicQueue: _makeBasicQueue.default,
-  onBodyLoad: _onBodyLoad.default,
-  pipe: _pipe.default,
-  preloadParams: _preloadParams.default,
-  queueManager: _queueManager.default,
-  queueTimeout: _queueTimeout.default,
-  relevancyFilter: _relevancyFilter.default,
-  trace: _trace.default
-};
-},{"./functions/callWithParams":24,"./functions/curry":25,"./functions/delay":26,"./functions/makeBasicQueue":27,"./functions/onBodyLoad":28,"./functions/pipe":29,"./functions/preloadParams":30,"./functions/queueManager":31,"./functions/queueTimeout":32,"./functions/relevancyFilter":33,"./functions/trace":34}],24:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Given a function, call with the correct number of parameters from an array of possible parameters.
- * @param fn - The function to be called
- * @param params - Array of possible function parameters
- * @param minimum - Minimum number of parameters to use in the function
- */
-const callWithParams = (fn, params = [], minimum = 2) => fn(...params.slice(0, fn.length || minimum));
-var _default = exports.default = callWithParams;
-},{}],25:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Return a curried version of the passed function.
- * The returned function expects the same number of arguments minus the ones provided.
- * fn is the name of the function being curried.
- * @param fn - Receives a function to be curried
- */
-const curry = fn => (...args) => args.length >= fn.length ? fn(...args) : (...a) => curry(fn)(...[...args, ...a]);
-var _default = exports.default = curry;
-},{}],26:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("regenerator-runtime/runtime");
-/**
- * Provide a timeout which returns a promise.
- * @param time - Delay in milliseconds
- */
-const delay = (time = 0) => {
-  let cancel = () => undefined;
-  return {
-    resolver: new Promise((resolve, reject) => {
-      if (isNaN(time)) {
-        reject(new Error(`Invalid delay: ${time}`));
-      } else {
-        const timeoutId = setTimeout(resolve, time, `Delayed for: ${time}`);
-        cancel = () => {
-          clearTimeout(timeoutId);
-          reject(new Error(`Cancelled delay: ${time}`));
-        };
-      }
-    }),
-    cancel
-  };
-};
-var _default = exports.default = delay;
-},{"regenerator-runtime/runtime":255}],27:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _BasicQueue = _interopRequireDefault(require("../arrays/BasicQueue"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Create an instance of a basic queue.
- * @param initialQueue - Items to pre-populate the queue with, in order.
- */
-const makeBasicQueue = (initialQueue = []) => {
-  return new _BasicQueue.default(initialQueue);
-};
-var _default = exports.default = makeBasicQueue;
-},{"../arrays/BasicQueue":3}],28:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _queueManager = _interopRequireDefault(require("./queueManager"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-const queue = [];
-const manager = (0, _queueManager.default)();
-manager.start();
-let observer = null;
-const doReset = () => {
-  observer = null;
-};
-const initializeObserver = async () => {
-  observer = new MutationObserver(() => {
-    if (document.body) {
-      while (queue.length) {
-        manager.push(queue.shift());
-      }
-      observer.disconnect();
-      doReset();
-    }
-  });
-  observer.observe(document.documentElement, {
-    childList: true
-  });
-  return observer;
-};
-/**
- * Prepare functions to be called once the body is available.
- * @param callback
- * @param reset
- */
-const onBodyLoad = (callback, reset = false) => {
-  if (reset) {
-    doReset();
-  }
-  queue.push(callback);
-  if (observer === null) {
-    initializeObserver();
-  }
-  return queue;
-};
-var _default = exports.default = onBodyLoad;
-},{"./queueManager":31}],29:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.reduce.js");
-/**
- * Take one or more function with a single parameter and return value.
- * Pass a parameter and the value will be transformed by each function then returned.
- * @param fns - Takes a series of functions having the same parameter
- */
-const pipe = (...fns) => x => fns.reduce((y, f) => f(y), x);
-var _default = exports.default = pipe;
-},{"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.reduce.js":221}],30:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Provide an array of parameters to be used with a function, allow the function to be called later
- * with the missing parameter.
- * @param fn - The function to be called
- * @param params - The parameters to preload
- * @param unassignedParam - Position of missing parameter (zero indexed)
- */
-const preloadParams = (fn, params = [], unassignedParam = 0) => missing => {
-  params.splice(unassignedParam, 0, missing);
-  return fn(...params);
-};
-var _default = exports.default = preloadParams;
-},{}],31:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.for-each.js");
-require("regenerator-runtime/runtime");
-var _makeBasicQueue = _interopRequireDefault(require("./makeBasicQueue"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Manage functions to run sequentially.
- * @param queue - The queue to manage. Pass a plain array to have it converted into a
- * {@link module:arrayHelpers.BasicQueue} automatically, or a custom queue implementing `IsQueue`; omit it (or pass
- * `null`) to have one created for you.
- */
-const queueManager = (queue = null) => {
-  let isRunning = false;
-  let isPaused = true;
-  /**
-   * Convert a function to a queueable object.
-   * @param resolve
-   * @param reject
-   * @param fn
-   * @param args
-   */
-  const makeQueuedRunnable = (resolve, reject, fn, ...args) => {
-    const generator = function* () {
-      const item = yield;
-      if (typeof item.fn !== 'function') {
-        return reject(item);
-      }
-      try {
-        return resolve(item.fn(...item.args));
-      } catch (error) {
-        // A function which throws rejects its own promise (as one which returns a rejected promise does), instead of
-        // throwing out of whichever function happened to finish just before it and starting the next item.
-        return reject(error);
-      }
-    }();
-    // Prepare the generator to be used on the subsequent call
-    generator.next();
-    return {
-      item: {
-        fn,
-        args
-      },
-      generator
-    };
-  };
-  /**
-   * After an item is run, THEN run this function to reset isRunning
-   * @param result
-   */
-  const postRun = result => {
-    isRunning = false;
-    runNextItem();
-    return result;
-  };
-  /**
-   * When a queued function throws (or returns a promise which rejects), carry on with the rest of the queue and pass the
-   * error on to whoever queued it - otherwise the queue would stay marked as running and never start another function.
-   * @param error
-   * @throws {*} The same error
-   */
-  const postFailedRun = error => {
-    isRunning = false;
-    runNextItem();
-    throw error;
-  };
-  /**
-   * When ready, runs the next queued runnable generator.
-   */
-  const runNextItem = () => {
-    if (!isPaused && !queue.empty() && !isRunning) {
-      isRunning = true;
-      let toRun = queue.dequeue();
-      if (typeof toRun === 'undefined' || toRun === null) {
-        return null;
-      }
-      if (typeof toRun === 'function') {
-        new Promise((resolve, reject) => {
-          toRun = makeQueuedRunnable(resolve, reject, toRun);
-          runNextItem();
-        }).then(postRun, postFailedRun);
-      }
-      if ('success' in toRun) {
-        // Some run responses return an object with 'success' property.
-        console.info(toRun.success);
-        return null;
-      }
-      if (!toRun.generator || 'error' in toRun) {
-        // Some run responses return an object with an 'error' property
-        let errorMessage = 'Verify queued function implements "done()" state.';
-        if ('error' in toRun && toRun.error) {
-          errorMessage = `[${toRun.error}]: ${errorMessage}`;
-        }
-        throw new Error(errorMessage);
-      }
-      if (toRun.generator && toRun.item) {
-        // Ensure the returned result has both the generator and the item to be valid
-        return toRun.generator.next(toRun.item);
-      }
-    }
-    return null;
-  };
-  /**
-   * Add a function into the queue to be run when ready.
-   * @param fn - The function to run when ready
-   * @param args - Optional arguments to apply when the function is ready to be run
-   * @returns Promise
-   */
-  const pushAnother = (fn, ...args) => new Promise((resolve, reject) => {
-    queue.enqueue(makeQueuedRunnable(resolve, reject, fn, ...args));
-    runNextItem();
-  }).then(postRun, postFailedRun);
-  if (Array.isArray(queue)) {
-    const queueArray = queue;
-    queue = (0, _makeBasicQueue.default)();
-    queueArray.forEach(queued => pushAnother(queued));
-  }
-  if (queue === null) {
-    queue = (0, _makeBasicQueue.default)();
-  }
-  runNextItem();
-  return {
-    start: () => {
-      isPaused = false;
-      runNextItem();
-    },
-    pause: () => {
-      isPaused = true;
-    },
-    push: pushAnother
-  };
-};
-var _default = exports.default = queueManager;
-},{"./makeBasicQueue":27,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.for-each.js":219,"regenerator-runtime/runtime":255}],32:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("regenerator-runtime/runtime");
-var _delay = _interopRequireDefault(require("./delay"));
-var _queueManager = _interopRequireDefault(require("./queueManager"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Manage functions to run sequentially with delays.
- * @param queueManagerHandle
- */
-const queueTimeout = (queueManagerHandle = null) => {
-  const manager = queueManagerHandle || (0, _queueManager.default)();
-  manager.start();
-  return (fn, time = 0, ...args) => manager.push(() => (0, _delay.default)(time).resolver.then(() => fn(...args)));
-};
-var _default = exports.default = queueTimeout;
-},{"./delay":26,"./queueManager":31,"regenerator-runtime/runtime":255}],33:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.filter.js");
-require("core-js/modules/esnext.iterator.map.js");
-/**
- * Remove elements out of relevance range and update the max relevance.
- * @param map
- * @param options
- * @param options.mapLimit - Only filter once the map exceeds this many entries.
- * @param options.relevancyRange - How many of the most-recent relevance values to keep.
- */
-const relevancyFilter = (map, {
-  mapLimit = 1000,
-  relevancyRange = 100
-} = {}) => {
-  if (map.length <= mapLimit) {
-    return map;
-  }
-  const minRelevance = map.length - relevancyRange;
-  const filtered = map.filter(reference => reference.relevance >= minRelevance);
-  return filtered.map(reference => {
-    reference.relevance = reference.relevance > filtered.length ? filtered.length : reference.relevance;
-    return reference;
-  });
-};
-var _default = exports.default = relevancyFilter;
-},{"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.filter.js":217,"core-js/modules/esnext.iterator.map.js":220}],34:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("regenerator-runtime/runtime");
-var _cloneObject = _interopRequireDefault(require("../objects/cloneObject"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Output the value with label to the console and return the value to not interrupt the code - useful for
- * inspecting a value mid-pipe/mid-chain without altering the result.
- * @param label - Pass an identifying label of the value being output.
- * @param useClone - Determines if the logged data should be a clone of the original to preserve
- * its state at the time of logging (rather than a live reference that may show later mutations).
- */
-const trace = (label, useClone = true) => value => {
-  // noinspection JSForgottenDebugStatementInspection
-  console.info(`${label}: `, useClone ? (0, _cloneObject.default)(value) : value);
-  return value;
-};
-var _default = exports.default = trace;
-},{"../objects/cloneObject":46,"regenerator-runtime/runtime":255}],35:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "absoluteMax", {
-  enumerable: true,
-  get: function () {
-    return _absoluteMax.default;
-  }
-});
-Object.defineProperty(exports, "absoluteMin", {
-  enumerable: true,
-  get: function () {
-    return _absoluteMin.default;
-  }
-});
-Object.defineProperty(exports, "compare", {
-  enumerable: true,
-  get: function () {
-    return _compare.default;
-  }
-});
-exports.default = void 0;
-Object.defineProperty(exports, "greatestCommonDivisor", {
-  enumerable: true,
-  get: function () {
-    return _greatestCommonDivisor.default;
-  }
-});
-Object.defineProperty(exports, "leastCommonMultiple", {
-  enumerable: true,
-  get: function () {
-    return _leastCommonMultiple.default;
-  }
-});
-Object.defineProperty(exports, "lowestCommonDenominator", {
-  enumerable: true,
-  get: function () {
-    return _lowestCommonDenominator.default;
-  }
-});
-Object.defineProperty(exports, "randomInteger", {
-  enumerable: true,
-  get: function () {
-    return _randomInteger.default;
-  }
-});
-Object.defineProperty(exports, "randomNumber", {
-  enumerable: true,
-  get: function () {
-    return _randomNumber.default;
-  }
-});
-Object.defineProperty(exports, "simplestRatio", {
-  enumerable: true,
-  get: function () {
-    return _simplestRatio.default;
-  }
-});
-var _absoluteMax = _interopRequireDefault(require("./numbers/absoluteMax"));
-var _absoluteMin = _interopRequireDefault(require("./numbers/absoluteMin"));
-var _compare = _interopRequireDefault(require("./numbers/compare"));
-var _greatestCommonDivisor = _interopRequireDefault(require("./numbers/greatestCommonDivisor"));
-var _leastCommonMultiple = _interopRequireDefault(require("./numbers/leastCommonMultiple"));
-var _lowestCommonDenominator = _interopRequireDefault(require("./numbers/lowestCommonDenominator"));
-var _randomInteger = _interopRequireDefault(require("./numbers/randomInteger"));
-var _randomNumber = _interopRequireDefault(require("./numbers/randomNumber"));
-var _simplestRatio = _interopRequireDefault(require("./numbers/simplestRatio"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Some number comparators and random number generators.
- */
-var _default = exports.default = {
-  absoluteMax: _absoluteMax.default,
-  absoluteMin: _absoluteMin.default,
-  compare: _compare.default,
-  greatestCommonDivisor: _greatestCommonDivisor.default,
-  leastCommonMultiple: _leastCommonMultiple.default,
-  lowestCommonDenominator: _lowestCommonDenominator.default,
-  randomInteger: _randomInteger.default,
-  randomNumber: _randomNumber.default,
-  simplestRatio: _simplestRatio.default
-};
-},{"./numbers/absoluteMax":36,"./numbers/absoluteMin":37,"./numbers/compare":38,"./numbers/greatestCommonDivisor":39,"./numbers/leastCommonMultiple":40,"./numbers/lowestCommonDenominator":41,"./numbers/randomInteger":42,"./numbers/randomNumber":43,"./numbers/simplestRatio":44}],36:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Helper for returning the absolute max value
- * @param num1 - A number to compare
- * @param num2 - Another number to be compared against
- */
-const absoluteMax = (num1, num2) => Math.abs(num1) > Math.abs(num2) ? num1 : num2;
-var _default = exports.default = absoluteMax;
-},{}],37:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Helper for returning the absolute min value
- * @param num1 - A number to compare
- * @param num2 - Another number to be compared against
- */
-const absoluteMin = (num1, num2) => Math.abs(num1) < Math.abs(num2) ? num1 : num2;
-var _default = exports.default = absoluteMin;
-},{}],38:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Compare two numbers and return:
- * -1 to indicate val1 is less than val2
- * 0 to indicate both values are the equal
- * 1 to indicate val1 is greater than val2
- * @param val1 - The first number to compare
- * @param val2 - The second number to compare
- */
-const compare = (val1, val2) => val1 === val2 ? 0 : val1 > val2 ? 1 : -1;
-var _default = exports.default = compare;
-},{}],39:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Return the highest number that can be divided into both numbers.
- * @param num1 - First number to assess
- * @param num2 - Second number to compare for common divisor
- */
-const greatestCommonDivisor = (num1, num2) => num2 === 0 ? num1 : greatestCommonDivisor(num2, num1 % num2);
-var _default = exports.default = greatestCommonDivisor;
-},{}],40:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _greatestCommonDivisor = _interopRequireDefault(require("./greatestCommonDivisor"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Helper for calculating the multiplier that would make each number relative to each other.
- * @param num1 - A number to compare
- * @param num2 - Another number to be compared against
- */
-const leastCommonMultiple = (num1, num2) => num1 === 0 || num2 === 0 ? 0 : num1 * num2 / (0, _greatestCommonDivisor.default)(num1, num2);
-var _default = exports.default = leastCommonMultiple;
-},{"./greatestCommonDivisor":39}],41:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.reduce.js");
-var _leastCommonMultiple = _interopRequireDefault(require("./leastCommonMultiple"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Find the smallest number that all the given numbers divide into evenly, by reducing them pairwise with
- * leastCommonMultiple.
- * @param numbers - Two or more numbers to find the lowest common denominator of.
- */
-const lowestCommonDenominator = (...numbers) => numbers.reduce((num1, num2) => (0, _leastCommonMultiple.default)(num1, num2), 1);
-var _default = exports.default = lowestCommonDenominator;
-},{"./leastCommonMultiple":40,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.reduce.js":221}],42:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Create a single random integer from a set of `range` possible values, starting at the optional offset.
- * With no offset the result is 0 to range - 1 (so range is the number of possible values, the same as an array length
- * when choosing an index). The distance between the result numbers can be adjusted with interval.
- * @example
- * randomInteger(1) // always 0 (one possible value)
- * randomInteger(2) // 0 or 1
- * randomInteger(3, 1, 5) // 5, 10 or 15
- * items[randomInteger(items.length)] // a random valid index
- * @param range - The number of possible values (0-99 would be 100 for range)
- * @param offset - Choose the starting number (1-10 would be 1 for offset, 10 for range)
- * @param interval - Choose the distance between numbers (5, 10, 15 would be 5 for interval, 1 for
- * offset, 3 for range)
- */
-const randomInteger = (range, offset = 0, interval = 1) => (Math.floor(Math.random() * range) + offset) * interval;
-var _default = exports.default = randomInteger;
-},{}],43:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Create a single random number from offset up to (but never including) offset + range. With optional offset,
- * the distance between the result numbers can be adjusted with interval. Matches randomInteger, which gives the
- * whole numbers of the same span.
- * @param range - Choose the breadth of the random number (0 up to, but not including, 100 would be 100 for range)
- * @param offset - Choose the starting number (1 up to, but not including, 10 would be 1 for offset, 9 for range)
- * @param interval - Choose the multiplier applied to the result (~5, ~10, ~15 would be 5 for interval,
- * 1 for offset, 2 for range)
- */
-const randomNumber = (range, offset = 0, interval = 1) => (Math.random() * range + offset) * interval;
-var _default = exports.default = randomNumber;
-},{}],44:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.map.js");
-require("core-js/modules/esnext.iterator.reduce.js");
-var _greatestCommonDivisor = _interopRequireDefault(require("./greatestCommonDivisor"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Reduce several numbers to their simplest form / ratio
- * @param numbers - Array of numbers to simplify
- */
-const simplestRatio = (...numbers) => {
-  if (numbers.length === 0) {
-    return [];
-  }
-  let commonDivisor = numbers.reduce((num1, num2) => (0, _greatestCommonDivisor.default)(num1, num2), 0);
-  // Set to positive so that when we divide the numbers they retain their +/-
-  commonDivisor = Math.abs(commonDivisor);
-  // Simplify the numbers, handle zero
-  return numbers.map(num => commonDivisor === 0 ? 0 : num / commonDivisor);
-};
-var _default = exports.default = simplestRatio;
-},{"./greatestCommonDivisor":39,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.map.js":220,"core-js/modules/esnext.iterator.reduce.js":221}],45:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "cloneObject", {
-  enumerable: true,
-  get: function () {
-    return _cloneObject.default;
-  }
-});
-exports.default = void 0;
-Object.defineProperty(exports, "dotGet", {
-  enumerable: true,
-  get: function () {
-    return _dotGet.default;
-  }
-});
-Object.defineProperty(exports, "dotNotate", {
-  enumerable: true,
-  get: function () {
-    return _dotNotate.default;
-  }
-});
-Object.defineProperty(exports, "dotSet", {
-  enumerable: true,
-  get: function () {
-    return _dotSet.default;
-  }
-});
-Object.defineProperty(exports, "dotUnset", {
-  enumerable: true,
-  get: function () {
-    return _dotUnset.default;
-  }
-});
-Object.defineProperty(exports, "emptyObject", {
-  enumerable: true,
-  get: function () {
-    return _emptyObject.default;
-  }
-});
-Object.defineProperty(exports, "filterObject", {
-  enumerable: true,
-  get: function () {
-    return _filterObject.default;
-  }
-});
-Object.defineProperty(exports, "isCloneable", {
-  enumerable: true,
-  get: function () {
-    return _isCloneable.default;
-  }
-});
-Object.defineProperty(exports, "isEqual", {
-  enumerable: true,
-  get: function () {
-    return _isEqual.default;
-  }
-});
-Object.defineProperty(exports, "isInstanceObject", {
-  enumerable: true,
-  get: function () {
-    return _isInstanceObject.default;
-  }
-});
-Object.defineProperty(exports, "isObject", {
-  enumerable: true,
-  get: function () {
-    return _isObject.default;
-  }
-});
-Object.defineProperty(exports, "mapObject", {
-  enumerable: true,
-  get: function () {
-    return _mapObject.default;
-  }
-});
-Object.defineProperty(exports, "mergeObjects", {
-  enumerable: true,
-  get: function () {
-    return _mergeObjects.default;
-  }
-});
-Object.defineProperty(exports, "mergeObjectsBase", {
-  enumerable: true,
-  get: function () {
-    return _mergeObjectsBase.default;
-  }
-});
-Object.defineProperty(exports, "mergeObjectsMutable", {
-  enumerable: true,
-  get: function () {
-    return _mergeObjectsMutable.default;
-  }
-});
-Object.defineProperty(exports, "objectKeys", {
-  enumerable: true,
-  get: function () {
-    return _objectKeys.default;
-  }
-});
-Object.defineProperty(exports, "objectValues", {
-  enumerable: true,
-  get: function () {
-    return _objectValues.default;
-  }
-});
-Object.defineProperty(exports, "reduceObject", {
-  enumerable: true,
-  get: function () {
-    return _reduceObject.default;
-  }
-});
-Object.defineProperty(exports, "setAndReturnValue", {
-  enumerable: true,
-  get: function () {
-    return _setAndReturnValue.default;
-  }
-});
-Object.defineProperty(exports, "setValue", {
-  enumerable: true,
-  get: function () {
-    return _setValue.default;
-  }
-});
-var _cloneObject = _interopRequireDefault(require("./objects/cloneObject"));
-var _dotGet = _interopRequireDefault(require("./objects/dotGet"));
-var _dotNotate = _interopRequireDefault(require("./objects/dotNotate"));
-var _dotSet = _interopRequireDefault(require("./objects/dotSet"));
-var _dotUnset = _interopRequireDefault(require("./objects/dotUnset"));
-var _emptyObject = _interopRequireDefault(require("./objects/emptyObject"));
-var _filterObject = _interopRequireDefault(require("./objects/filterObject"));
-var _isCloneable = _interopRequireDefault(require("./objects/isCloneable"));
-var _isEqual = _interopRequireDefault(require("./objects/isEqual"));
-var _isInstanceObject = _interopRequireDefault(require("./objects/isInstanceObject"));
-var _isObject = _interopRequireDefault(require("./objects/isObject"));
-var _mapObject = _interopRequireDefault(require("./objects/mapObject"));
-var _mergeObjects = _interopRequireDefault(require("./objects/mergeObjects"));
-var _mergeObjectsBase = _interopRequireDefault(require("./objects/mergeObjectsBase"));
-var _mergeObjectsMutable = _interopRequireDefault(require("./objects/mergeObjectsMutable"));
-var _objectKeys = _interopRequireDefault(require("./objects/objectKeys"));
-var _objectValues = _interopRequireDefault(require("./objects/objectValues"));
-var _reduceObject = _interopRequireDefault(require("./objects/reduceObject"));
-var _setAndReturnValue = _interopRequireDefault(require("./objects/setAndReturnValue"));
-var _setValue = _interopRequireDefault(require("./objects/setValue"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Simplify working with object by providing array-like parsing. Also, provides cloning and merging along with accessors that always have a return value for optimal nesting.
- */
-var _default = exports.default = {
-  cloneObject: _cloneObject.default,
-  dotGet: _dotGet.default,
-  dotNotate: _dotNotate.default,
-  dotSet: _dotSet.default,
-  dotUnset: _dotUnset.default,
-  emptyObject: _emptyObject.default,
-  filterObject: _filterObject.default,
-  isCloneable: _isCloneable.default,
-  isEqual: _isEqual.default,
-  isInstanceObject: _isInstanceObject.default,
-  isObject: _isObject.default,
-  mapObject: _mapObject.default,
-  mergeObjects: _mergeObjects.default,
-  mergeObjectsBase: _mergeObjectsBase.default,
-  mergeObjectsMutable: _mergeObjectsMutable.default,
-  objectKeys: _objectKeys.default,
-  objectValues: _objectValues.default,
-  reduceObject: _reduceObject.default,
-  setAndReturnValue: _setAndReturnValue.default,
-  setValue: _setValue.default
-};
-},{"./objects/cloneObject":46,"./objects/dotGet":47,"./objects/dotNotate":48,"./objects/dotSet":49,"./objects/dotUnset":50,"./objects/emptyObject":51,"./objects/filterObject":52,"./objects/isCloneable":53,"./objects/isEqual":54,"./objects/isInstanceObject":55,"./objects/isObject":56,"./objects/mapObject":57,"./objects/mergeObjects":58,"./objects/mergeObjectsBase":59,"./objects/mergeObjectsMutable":60,"./objects/objectKeys":61,"./objects/objectValues":62,"./objects/reduceObject":63,"./objects/setAndReturnValue":64,"./objects/setValue":65}],46:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _mergeObjectsBase = _interopRequireDefault(require("./mergeObjectsBase"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Clone objects for manipulation without data corruption, returns a copy of the provided object.
- * @param object - The original object that is being cloned
- * @param options
- * @param options.mapLimit - Deprecated and ignored (circular references are handled without trimming).
- * @param options.depthLimit - Control how many nested levels deep will be used, -1 = no limit, >-1 = nth level limited.
- * @param options.relevancyRange - Deprecated and ignored: see mapLimit.
- */
-const cloneObject = (object, {
-  mapLimit = 100,
-  depthLimit = -1,
-  relevancyRange = 1000
-} = {}) => (0, _mergeObjectsBase.default)({
-  mapLimit,
-  depthLimit,
-  relevancyRange,
-  useClone: true
-})(object);
-var _default = exports.default = cloneObject;
-},{"./mergeObjectsBase":59}],47:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _isObject = _interopRequireDefault(require("./isObject"));
-var _strAfter = _interopRequireDefault(require("../strings/strAfter"));
-var _strBefore = _interopRequireDefault(require("../strings/strBefore"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Get a nested property value from an object.
- * @param arrayObject - The array or object to get the property from
- * @param dotNotation - The path to the property
- * @param defaultValue - The default value to return if the property is not found
- * @returns The value of the property
- */
-const dotGet = (arrayObject, dotNotation, defaultValue = null) => {
-  let key = (0, _strBefore.default)(dotNotation, '.');
-  const lastKey = !key;
-  if (lastKey) {
-    key = dotNotation;
-  }
-  if (key === '*') {
-    const result = [];
-    for (const wildKey in arrayObject) {
-      // @ts-ignore
-      const wildValue = arrayObject[wildKey];
-      if (lastKey) {
-        // @ts-ignore
-        result[wildKey] = wildValue;
-        continue;
-      }
-      if (!(0, _isObject.default)(wildValue)) {
-        continue;
-      }
-      // @ts-ignore
-      result[wildKey] = dotGet(wildValue, (0, _strAfter.default)(dotNotation, '.'), defaultValue);
-    }
-    return result;
-  }
-  if (lastKey) {
-    // @ts-ignore
-    return arrayObject[dotNotation] ?? defaultValue;
-  }
-  // @ts-ignore
-  if (typeof arrayObject[key] === 'undefined') {
-    return defaultValue;
-  }
-  // @ts-ignore
-  const next = arrayObject[key];
-  if (!(0, _isObject.default)(next)) {
-    return defaultValue;
-  }
-  return dotGet(next, (0, _strAfter.default)(dotNotation, '.'), defaultValue);
-};
-var _default = exports.default = dotGet;
-},{"../strings/strAfter":73,"../strings/strBefore":75,"./isObject":56}],48:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.map.js");
-var _emptyObject = _interopRequireDefault(require("./emptyObject"));
-var _isObject = _interopRequireDefault(require("./isObject"));
-var _regexEscape = _interopRequireDefault(require("../strings/regexEscape"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Convert an array of keys into a regex, return a function to test if incoming keys match.
- * @inner
- * @param retainObjects - An array of keys to retain as objects
- * @returns The dot-notated array
- */
-const handleRetainObjects = (retainObjects = []) => {
-  if (!retainObjects.length) {
-    /**
-     * Bypass the test function if there are no retainObjects.
-     */
-    return (currentKey, value, results) => false;
-  }
-  // Escape the keys, or their dots (and any other special character) would act as regex wildcards
-  retainObjects = retainObjects.map(_regexEscape.default);
-  const retainRegex = new RegExp(`(${retainObjects.join('|')})$`);
-  /**
-   * Test if a key should be retained as an object.
-   * @param currentKey - The key to test
-   * @param value - The value of the key
-   * @param results - The results object to add to
-   */
-  return (currentKey, value, results) => {
-    if (!currentKey.match(retainRegex)) {
-      return false;
-    }
-    // @ts-ignore
-    results[currentKey] = value;
-    return true;
-  };
-};
-/**
- * The underlying logic function for converting arrays to dot-notation.
- * @inner
- * @param arrayObject - The array or object to dot-notate
- * @param didRetain - The test function to see if a key should be retained
- * @param prepend - The path for the property being processed
- * @param results - The final array to return
- * @returns The dot-notated object
- */
-const performDotNotate = (arrayObject, didRetain, prepend = '', results = {}) => {
-  // @ts-ignore
-  for (const key in arrayObject) {
-    // @ts-ignore
-    const value = arrayObject[key];
-    const currentKey = `${prepend}${key}`;
-    if (didRetain(currentKey, value, results)) {
-      continue;
-    }
-    // An empty object/array has no keys to flatten into - recursing into one would silently drop currentKey
-    // from the result entirely, rather than keeping it as the empty value it actually is. Treat it as a leaf.
-    if ((0, _isObject.default)(value) && !(0, _emptyObject.default)(value)) {
-      performDotNotate(value, didRetain, `${currentKey}.`, results);
-      continue;
-    }
-    results[currentKey] = value;
-  }
-  return results;
-};
-/**
- * Convert an array or object to a single dimensional associative array with dot notation.
- * @param arrayObject - The array or object to dot-notate
- * @param retainObjects - An array of keys to retain as objects
- * @returns The dot-notated object
- */
-const dotNotate = (arrayObject, retainObjects = []) => performDotNotate(arrayObject, handleRetainObjects(retainObjects));
-var _default = exports.default = dotNotate;
-},{"../strings/regexEscape":71,"./emptyObject":51,"./isObject":56,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.map.js":220}],49:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _isObject = _interopRequireDefault(require("./isObject"));
-var _strAfter = _interopRequireDefault(require("../strings/strAfter"));
-var _strBefore = _interopRequireDefault(require("../strings/strBefore"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Set a nested property value an object.
- * @param arrayObject - The array or object to set the property on
- * @param dotNotation - The path for the property
- * @param value - The default value to return if the property is not found
- * @returns The modified object
- */
-const dotSet = (arrayObject, dotNotation, value = null) => {
-  let key = (0, _strBefore.default)(dotNotation, '.');
-  const lastKey = !key;
-  if (lastKey) {
-    key = dotNotation;
-  }
-  if (key === '*') {
-    for (const wildKey in arrayObject) {
-      if (lastKey) {
-        // @ts-ignore
-        arrayObject[wildKey] = value;
-        continue;
-      }
-      // @ts-ignore
-      if (!(0, _isObject.default)(arrayObject[wildKey])) {
-        continue;
-      }
-      // @ts-ignore
-      dotSet(arrayObject[wildKey], (0, _strAfter.default)(dotNotation, '.'), value);
-    }
-    return arrayObject;
-  }
-  if (lastKey) {
-    // @ts-ignore
-    arrayObject[dotNotation] = value;
-    return arrayObject;
-  }
-  // @ts-ignore
-  const next = arrayObject[key] ?? [];
-  // @ts-ignore
-  arrayObject[key] = dotSet(next, (0, _strAfter.default)(dotNotation, '.'), value);
-  return arrayObject;
-};
-var _default = exports.default = dotSet;
-},{"../strings/strAfter":73,"../strings/strBefore":75,"./isObject":56}],50:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _isObject = _interopRequireDefault(require("./isObject"));
-var _strAfter = _interopRequireDefault(require("../strings/strAfter"));
-var _strBefore = _interopRequireDefault(require("../strings/strBefore"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Unset a nested property value an object.
- * @param arrayObject - The array or object to set the property on
- * @param dotNotation - The path for the property
- * @returns The modified object
- */
-const dotUnset = (arrayObject, dotNotation) => {
-  let key = (0, _strBefore.default)(dotNotation, '.');
-  const lastKey = !key;
-  if (lastKey) {
-    key = dotNotation;
-  }
-  if (key === '*') {
-    for (const wildKey in arrayObject) {
-      if (lastKey) {
-        // @ts-ignore
-        delete arrayObject[wildKey];
-        continue;
-      }
-      // @ts-ignore
-      if (!(0, _isObject.default)(arrayObject[wildKey])) {
-        continue;
-      }
-      // @ts-ignore
-      dotUnset(arrayObject[wildKey], (0, _strAfter.default)(dotNotation, '.'));
-    }
-    return arrayObject;
-  }
-  if (lastKey) {
-    // @ts-ignore
-    delete arrayObject[dotNotation];
-    return arrayObject;
-  }
-  // @ts-ignore
-  const next = arrayObject[key] ?? [];
-  // @ts-ignore
-  arrayObject[key] = dotUnset(next, (0, _strAfter.default)(dotNotation, '.'));
-  return arrayObject;
-};
-var _default = exports.default = dotUnset;
-},{"../strings/strAfter":73,"../strings/strBefore":75,"./isObject":56}],51:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _isObject = _interopRequireDefault(require("./isObject"));
-var _objectKeys = _interopRequireDefault(require("./objectKeys"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Helper function for testing if the item is an Object or Array that does not have any properties
- * @param item - Object or Array to test
- */
-const emptyObject = item => (typeof item === 'function' || (0, _isObject.default)(item)) && !(0, _objectKeys.default)(item).length;
-var _default = exports.default = emptyObject;
-},{"./isObject":56,"./objectKeys":61}],52:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.filter.js");
-require("core-js/modules/esnext.iterator.reduce.js");
-var _callWithParams = _interopRequireDefault(require("../functions/callWithParams"));
-var _objectKeys = _interopRequireDefault(require("./objectKeys"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * This function is intended to replicate behaviour of the Array.filter() function but for Objects.
- * If an array is passed in instead then it will perform standard filter(). It is recommended to
- * always use the standard filter() function when it is known that the object is actually an array.
- * @param obj - The Object (or Array) to be filtered
- * @param fn - The function to be processed for each filtered property
- * @param thisArg - Optional. Value to use as this when executing callback.
- */
-const filterObject = (obj, fn, thisArg = undefined) => Array.isArray(obj) ? obj.filter(fn, thisArg) : (0, _objectKeys.default)(obj, true).reduce((newObj, curr) => {
-  if ((0, _callWithParams.default)(fn.bind(thisArg), [obj[curr], curr, obj], 2)) {
-    newObj[curr] = obj[curr];
-  } else {
-    delete newObj[curr];
-  }
-  return newObj;
-}, {});
-var _default = exports.default = filterObject;
-},{"../functions/callWithParams":24,"./objectKeys":61,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.filter.js":217,"core-js/modules/esnext.iterator.reduce.js":221}],53:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _isInstanceObject = _interopRequireDefault(require("./isInstanceObject"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Determine if the value is a reference instance
- * @param value
- */
-const isCloneable = value => typeof value === 'object' && value !== null && !(0, _isInstanceObject.default)(value);
-var _default = exports.default = isCloneable;
-},{"./isInstanceObject":55}],54:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/es.regexp.flags.js");
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.every.js");
-require("core-js/modules/esnext.iterator.some.js");
-require("core-js/modules/esnext.map.delete-all.js");
-require("core-js/modules/esnext.map.every.js");
-require("core-js/modules/esnext.map.filter.js");
-require("core-js/modules/esnext.map.find.js");
-require("core-js/modules/esnext.map.find-key.js");
-require("core-js/modules/esnext.map.includes.js");
-require("core-js/modules/esnext.map.key-of.js");
-require("core-js/modules/esnext.map.map-keys.js");
-require("core-js/modules/esnext.map.map-values.js");
-require("core-js/modules/esnext.map.merge.js");
-require("core-js/modules/esnext.map.reduce.js");
-require("core-js/modules/esnext.map.some.js");
-require("core-js/modules/esnext.map.update.js");
-require("core-js/modules/esnext.set.add-all.js");
-require("core-js/modules/esnext.set.delete-all.js");
-require("core-js/modules/esnext.set.difference.js");
-require("core-js/modules/esnext.set.every.js");
-require("core-js/modules/esnext.set.filter.js");
-require("core-js/modules/esnext.set.find.js");
-require("core-js/modules/esnext.set.intersection.js");
-require("core-js/modules/esnext.set.is-disjoint-from.js");
-require("core-js/modules/esnext.set.is-subset-of.js");
-require("core-js/modules/esnext.set.is-superset-of.js");
-require("core-js/modules/esnext.set.join.js");
-require("core-js/modules/esnext.set.map.js");
-require("core-js/modules/esnext.set.reduce.js");
-require("core-js/modules/esnext.set.some.js");
-require("core-js/modules/esnext.set.symmetric-difference.js");
-require("core-js/modules/esnext.set.union.js");
-require("core-js/modules/esnext.weak-map.delete-all.js");
-require("core-js/modules/esnext.weak-set.add-all.js");
-require("core-js/modules/esnext.weak-set.delete-all.js");
-const sameValueZero = (first, second) => first === second || Number.isNaN(first) && Number.isNaN(second);
-const compare = (first, second, seen) => {
-  if (sameValueZero(first, second)) {
-    return true;
-  }
-  if (typeof first !== 'object' || typeof second !== 'object' || first === null || second === null) {
-    // Different primitives, or a function (which is only equal to itself), or an object against a primitive
-    return false;
-  }
-  if (Object.getPrototypeOf(first) !== Object.getPrototypeOf(second)) {
-    return false;
-  }
-  // A pair which is already being compared further up is not a difference (this is what makes circular references work)
-  const comparing = seen.get(first);
-  if (comparing && comparing.has(second)) {
-    return true;
-  }
-  if (comparing) {
-    comparing.add(second);
-  } else {
-    seen.set(first, new WeakSet([second]));
-  }
-  if (first instanceof Date) {
-    return first.getTime() === second.getTime();
-  }
-  if (first instanceof RegExp) {
-    return first.source === second.source && first.flags === second.flags;
-  }
-  if (first instanceof Map) {
-    return first.size === second.size && Array.from(first.entries()).every(([key, value]) => second.has(key) && compare(value, second.get(key), seen));
-  }
-  if (first instanceof Set) {
-    const others = Array.from(second.values());
-    return first.size === second.size && Array.from(first.values()).every(value => others.some(other => compare(value, other, seen)));
-  }
-  if (Array.isArray(first) && first.length !== second.length) {
-    return false;
-  }
-  const firstKeys = Object.keys(first);
-  const secondKeys = Object.keys(second);
-  return firstKeys.length === secondKeys.length && firstKeys.every(key => Object.prototype.hasOwnProperty.call(second, key) && compare(first[key], second[key], seen));
-};
-/**
- * Check whether two values are equal by value, however they are stored: two separately made arrays or objects with the
- * same contents are equal, while two references only need to be the same when the value is a function.
- * - Primitives are equal when they are the same value (and NaN equals NaN)
- * - Arrays are equal when they have the same elements in the same order
- * - Objects are equal when they have the same prototype (the same kind of object) and the same own properties with
- * equal values, the order of the properties does not matter
- * - Dates, regular expressions, Maps and Sets are compared by what they hold
- * - Circular references are handled: a pair of objects which is already being compared is taken to be equal
- * @param first - The first value.
- * @param second - The second value.
- * @returns True when the values are equal.
- */
-const isEqual = (first, second) => compare(first, second, new WeakMap());
-var _default = exports.default = isEqual;
-},{"core-js/modules/es.regexp.flags.js":214,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.every.js":216,"core-js/modules/esnext.iterator.some.js":222,"core-js/modules/esnext.map.delete-all.js":223,"core-js/modules/esnext.map.every.js":224,"core-js/modules/esnext.map.filter.js":225,"core-js/modules/esnext.map.find-key.js":226,"core-js/modules/esnext.map.find.js":227,"core-js/modules/esnext.map.includes.js":228,"core-js/modules/esnext.map.key-of.js":229,"core-js/modules/esnext.map.map-keys.js":230,"core-js/modules/esnext.map.map-values.js":231,"core-js/modules/esnext.map.merge.js":232,"core-js/modules/esnext.map.reduce.js":233,"core-js/modules/esnext.map.some.js":234,"core-js/modules/esnext.map.update.js":235,"core-js/modules/esnext.set.add-all.js":236,"core-js/modules/esnext.set.delete-all.js":237,"core-js/modules/esnext.set.difference.js":238,"core-js/modules/esnext.set.every.js":239,"core-js/modules/esnext.set.filter.js":240,"core-js/modules/esnext.set.find.js":241,"core-js/modules/esnext.set.intersection.js":242,"core-js/modules/esnext.set.is-disjoint-from.js":243,"core-js/modules/esnext.set.is-subset-of.js":244,"core-js/modules/esnext.set.is-superset-of.js":245,"core-js/modules/esnext.set.join.js":246,"core-js/modules/esnext.set.map.js":247,"core-js/modules/esnext.set.reduce.js":248,"core-js/modules/esnext.set.some.js":249,"core-js/modules/esnext.set.symmetric-difference.js":250,"core-js/modules/esnext.set.union.js":251,"core-js/modules/esnext.weak-map.delete-all.js":252,"core-js/modules/esnext.weak-set.add-all.js":253,"core-js/modules/esnext.weak-set.delete-all.js":254}],55:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/es.array.includes.js");
-var _isObject = _interopRequireDefault(require("./isObject"));
-var _objectKeys = _interopRequireDefault(require("./objectKeys"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Check if the current object has inherited properties.
- * @param object
- */
-const isInstanceObject = object => {
-  if (typeof object !== 'function' && !(0, _isObject.default)(object)) {
-    return false;
-  }
-  if (!['Array', 'Function', 'Object'].includes(object.constructor.name)) {
-    return true;
-  }
-  return object.constructor.name !== 'Array' && (0, _objectKeys.default)(object, true).length > (0, _objectKeys.default)(object).length;
-};
-var _default = exports.default = isInstanceObject;
-},{"./isObject":56,"./objectKeys":61,"core-js/modules/es.array.includes.js":205}],56:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Check if the provided thing is an object / array.
- * @param object
- */
-const isObject = object => typeof object === 'object' && object !== null;
-var _default = exports.default = isObject;
-},{}],57:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.map.js");
-require("core-js/modules/esnext.iterator.reduce.js");
-var _callWithParams = _interopRequireDefault(require("../functions/callWithParams"));
-var _objectKeys = _interopRequireDefault(require("./objectKeys"));
-var _setValue = _interopRequireDefault(require("./setValue"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * This function is intended to replicate behaviour of the Array.map() function but for Objects.
- * If an array is passed in instead then it will perform standard map(). It is recommended to
- * always use the standard map() function when it is known that the object is actually an array.
- * @param obj - The Object (or Array) to be mapped
- * @param fn - The function to be processed for each mapped property
- * @param thisArg - Optional. Value to use as this when executing callback.
- */
-const mapObject = (obj, fn, thisArg = undefined) => Array.isArray(obj) ? obj.map(fn, thisArg) : (0, _objectKeys.default)(obj, true).reduce((newObj, curr) => (0, _setValue.default)(curr, (0, _callWithParams.default)(fn.bind(thisArg), [obj[curr], curr, obj], 2), newObj), {});
-var _default = exports.default = mapObject;
-},{"../functions/callWithParams":24,"./objectKeys":61,"./setValue":65,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.map.js":220,"core-js/modules/esnext.iterator.reduce.js":221}],58:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _mergeObjectsBase = _interopRequireDefault(require("./mergeObjectsBase"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Uses mergeObjectsBase deep merge objects and arrays, merge by value.
- * @see {@link module:objectHelpers~mergeObjectsCallback}
- * @param objects - Provide a list of objects which will be merged starting from the end up into the first
- */
-const mergeObjects = (0, _mergeObjectsBase.default)({
-  useClone: true
-});
-var _default = exports.default = mergeObjects;
-},{"./mergeObjectsBase":59}],59:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.map.js");
-require("core-js/modules/esnext.iterator.reduce.js");
-require("core-js/modules/esnext.map.delete-all.js");
-require("core-js/modules/esnext.map.every.js");
-require("core-js/modules/esnext.map.filter.js");
-require("core-js/modules/esnext.map.find.js");
-require("core-js/modules/esnext.map.find-key.js");
-require("core-js/modules/esnext.map.includes.js");
-require("core-js/modules/esnext.map.key-of.js");
-require("core-js/modules/esnext.map.map-keys.js");
-require("core-js/modules/esnext.map.map-values.js");
-require("core-js/modules/esnext.map.merge.js");
-require("core-js/modules/esnext.map.reduce.js");
-require("core-js/modules/esnext.map.some.js");
-require("core-js/modules/esnext.map.update.js");
-var _isCloneable = _interopRequireDefault(require("./isCloneable"));
-var _reduceObject = _interopRequireDefault(require("./reduceObject"));
-var _setValue = _interopRequireDefault(require("./setValue"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Perform a deep merge of objects. This will return a function that will combine all objects and sub-objects.
- * Objects having the same attributes will overwrite from last object to first.
- * Every call of the returned function keeps its own record of the objects it has already visited (so circular
- * references are followed only once, and an object which is referenced in several places is merged once), and nothing
- * is remembered between calls: the results of separate calls never share state or go stale.
- * @param options
- * @param options.mapLimit - Deprecated and ignored: the record of visited objects is now scoped to a
- * single call, so it does not need trimming.
- * @param options.depthLimit - Control how many nested levels deep will be used, -1 = no limit, >-1 = nth level limited.
- * @param options.relevancyRange - Deprecated and ignored: see mapLimit.
- * @param options.map] - A predetermined list of references (source and the object it should
- * resolve to) which every call starts from. It is only read, never added to.
- * @param options.useClone
- */
-const mergeObjectsBase = ({
-  depthLimit = -1,
-  map = [],
-  useClone = false
-} = {}) => {
-  const merge = (visited, depth, objects) => {
-    const firstObject = useClone ? Array.isArray(objects[0]) ? [] : {} : objects.shift();
-    if (objects.length < 1) {
-      return firstObject;
-    }
-    if (depth === 0) {
-      return firstObject;
-    }
-    return objects.reduce((newObj, arg) => {
-      if (!arg) {
-        return newObj;
-      }
-      if (!visited.has(arg)) {
-        visited.set(arg, newObj);
-      }
-      return (0, _reduceObject.default)(arg, (returnObj, value, key) => {
-        if ((0, _isCloneable.default)(value)) {
-          if (visited.has(value)) {
-            return (0, _setValue.default)(key, visited.get(value), returnObj);
-          }
-          let objectValue = newObj[key];
-          if (!(0, _isCloneable.default)(objectValue) || !objectValue) {
-            if (!useClone) {
-              // Merging by reference: the source object is used as it is, there is nothing to merge it into.
-              visited.set(value, value);
-              return (0, _setValue.default)(key, value, returnObj);
-            }
-            objectValue = Array.isArray(value) ? [] : {};
-          }
-          return (0, _setValue.default)(key, merge(visited, depth - 1, [objectValue, value]), returnObj);
-        }
-        return (0, _setValue.default)(key, value, returnObj);
-      }, newObj);
-    }, firstObject || {});
-  };
-  return (...objects) => merge(new Map(map.map(({
-    source,
-    object
-  }) => [source, object])), depthLimit, objects);
-};
-var _default = exports.default = mergeObjectsBase;
-},{"./isCloneable":53,"./reduceObject":63,"./setValue":65,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.map.js":220,"core-js/modules/esnext.iterator.reduce.js":221,"core-js/modules/esnext.map.delete-all.js":223,"core-js/modules/esnext.map.every.js":224,"core-js/modules/esnext.map.filter.js":225,"core-js/modules/esnext.map.find-key.js":226,"core-js/modules/esnext.map.find.js":227,"core-js/modules/esnext.map.includes.js":228,"core-js/modules/esnext.map.key-of.js":229,"core-js/modules/esnext.map.map-keys.js":230,"core-js/modules/esnext.map.map-values.js":231,"core-js/modules/esnext.map.merge.js":232,"core-js/modules/esnext.map.reduce.js":233,"core-js/modules/esnext.map.some.js":234,"core-js/modules/esnext.map.update.js":235}],60:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _mergeObjectsBase = _interopRequireDefault(require("./mergeObjectsBase"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Uses mergeObjectsBase deep merge objects and arrays, merge by reference.
- * @see {@link module:objectHelpers~mergeObjectsCallback}
- * @param objects - Provide a list of objects which will be merged starting from the end up into the first
- */
-const mergeObjectsMutable = (0, _mergeObjectsBase.default)();
-var _default = exports.default = mergeObjectsMutable;
-},{"./mergeObjectsBase":59}],61:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _isObject = _interopRequireDefault(require("./isObject"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Get an array of keys from any object or array. Will return empty array when invalid or there are no keys.
- * Optional flag will include the inherited keys from prototype chain when set.
- * @param object
- * @param includeInherited
- */
-const objectKeys = (object, includeInherited = false) => {
-  if (typeof object !== 'function' && !(0, _isObject.default)(object)) {
-    return [];
-  }
-  if (includeInherited) {
-    const propNames = Object.getOwnPropertyNames(object);
-    if (propNames.length) {
-      return propNames;
-    }
-  }
-  const keys = [];
-  for (const key in object) {
-    if (includeInherited || Object.prototype.hasOwnProperty.call(object, key)) {
-      if (Array.isArray(object)) {
-        keys.push(parseInt(key));
-        continue;
-      }
-      keys.push(key);
-    }
-  }
-  return keys;
-};
-var _default = exports.default = objectKeys;
-},{"./isObject":56}],62:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.map.js");
-var _objectKeys = _interopRequireDefault(require("./objectKeys"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Get an array of values from any object or array. Will return empty array when invalid or there are no values.
- * Optional flag will include the inherited values from prototype chain when set.
- * @param object
- * @param includeInherited
- */
-const objectValues = (object, includeInherited = false) => (0, _objectKeys.default)(object, includeInherited).map(key => object[key]);
-var _default = exports.default = objectValues;
-},{"./objectKeys":61,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.map.js":220}],63:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.reduce.js");
-var _callWithParams = _interopRequireDefault(require("../functions/callWithParams"));
-var _objectKeys = _interopRequireDefault(require("./objectKeys"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * This function is intended to replicate behaviour of the Array.reduce() function but for Objects.
- * If an array is passed in instead then it will perform standard reduce(). It is recommended to
- * always use the standard reduce() function when it is known that the object is actually an array.
- * @param obj - The Object (or Array) to be filtered
- * @param fn - The function to be processed for each filtered property
- * @param initialValue - Optional. Value to use as the first argument to the first call of the
- * callback. If no initial value is supplied, the first element in the array will be used. Calling reduce on an empty
- * array without an initial value is an error.
- */
-const reduceObject = (obj, fn, initialValue = obj[(0, _objectKeys.default)(obj)[0]] || obj[0]) => Array.isArray(obj) ? obj.reduce(fn, initialValue) : (0, _objectKeys.default)(obj, true).reduce((newObj, curr) => (0, _callWithParams.default)(fn, [newObj, obj[curr], curr, obj], 2), initialValue);
-var _default = exports.default = reduceObject;
-},{"../functions/callWithParams":24,"./objectKeys":61,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.reduce.js":221}],64:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Set a value on an item, then return the value
- * @param item - An object or array to be updated
- * @param key - The key on the item which will have its value set
- * @param value - Any value to be applied to the key
- */
-const setAndReturnValue = (item, key, value) => {
-  item[key] = value;
-  return value;
-};
-var _default = exports.default = setAndReturnValue;
-},{}],65:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Set a value on an item, then return the item.
- * NOTE: Argument order designed for usage with pipe
- * @param key - The key on the item which will have its value set
- * @param value - Any value to be applied to the key
- * @param item - An object or array to be updated
- */
-const setValue = (key, value, item) => {
-  // @ts-ignore
-  item[key] = value;
-  return item;
-};
-var _default = exports.default = setValue;
-},{}],66:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "camelCase", {
-  enumerable: true,
-  get: function () {
-    return _camelCase.default;
-  }
-});
-exports.default = void 0;
-Object.defineProperty(exports, "kabobCase", {
-  enumerable: true,
-  get: function () {
-    return _kabobCase.default;
-  }
-});
-Object.defineProperty(exports, "makeFilepath", {
-  enumerable: true,
-  get: function () {
-    return _makeFilepath.default;
-  }
-});
-Object.defineProperty(exports, "makeRelativePath", {
-  enumerable: true,
-  get: function () {
-    return _makeRelativePath.default;
-  }
-});
-Object.defineProperty(exports, "regexEscape", {
-  enumerable: true,
-  get: function () {
-    return _regexEscape.default;
-  }
-});
-Object.defineProperty(exports, "snakeCase", {
-  enumerable: true,
-  get: function () {
-    return _snakeCase.default;
-  }
-});
-Object.defineProperty(exports, "strAfter", {
-  enumerable: true,
-  get: function () {
-    return _strAfter.default;
-  }
-});
-Object.defineProperty(exports, "strAfterLast", {
-  enumerable: true,
-  get: function () {
-    return _strAfterLast.default;
-  }
-});
-Object.defineProperty(exports, "strBefore", {
-  enumerable: true,
-  get: function () {
-    return _strBefore.default;
-  }
-});
-Object.defineProperty(exports, "strBeforeLast", {
-  enumerable: true,
-  get: function () {
-    return _strBeforeLast.default;
-  }
-});
-Object.defineProperty(exports, "titleCase", {
-  enumerable: true,
-  get: function () {
-    return _titleCase.default;
-  }
-});
-Object.defineProperty(exports, "ucFirst", {
-  enumerable: true,
-  get: function () {
-    return _ucFirst.default;
-  }
-});
-Object.defineProperty(exports, "words", {
-  enumerable: true,
-  get: function () {
-    return _words.default;
-  }
-});
-var _camelCase = _interopRequireDefault(require("./strings/camelCase"));
-var _kabobCase = _interopRequireDefault(require("./strings/kabobCase"));
-var _makeFilepath = _interopRequireDefault(require("./strings/makeFilepath"));
-var _makeRelativePath = _interopRequireDefault(require("./strings/makeRelativePath"));
-var _regexEscape = _interopRequireDefault(require("./strings/regexEscape"));
-var _snakeCase = _interopRequireDefault(require("./strings/snakeCase"));
-var _strAfter = _interopRequireDefault(require("./strings/strAfter"));
-var _strAfterLast = _interopRequireDefault(require("./strings/strAfterLast"));
-var _strBefore = _interopRequireDefault(require("./strings/strBefore"));
-var _strBeforeLast = _interopRequireDefault(require("./strings/strBeforeLast"));
-var _titleCase = _interopRequireDefault(require("./strings/titleCase"));
-var _ucFirst = _interopRequireDefault(require("./strings/ucFirst"));
-var _words = _interopRequireDefault(require("./strings/words"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Manage how strings are manipulated with these utilities.
- */
-var _default = exports.default = {
-  camelCase: _camelCase.default,
-  kabobCase: _kabobCase.default,
-  makeFilepath: _makeFilepath.default,
-  makeRelativePath: _makeRelativePath.default,
-  regexEscape: _regexEscape.default,
-  snakeCase: _snakeCase.default,
-  strAfter: _strAfter.default,
-  strAfterLast: _strAfterLast.default,
-  strBefore: _strBefore.default,
-  strBeforeLast: _strBeforeLast.default,
-  titleCase: _titleCase.default,
-  ucFirst: _ucFirst.default,
-  words: _words.default
-};
-},{"./strings/camelCase":67,"./strings/kabobCase":68,"./strings/makeFilepath":69,"./strings/makeRelativePath":70,"./strings/regexEscape":71,"./strings/snakeCase":72,"./strings/strAfter":73,"./strings/strAfterLast":74,"./strings/strBefore":75,"./strings/strBeforeLast":76,"./strings/titleCase":77,"./strings/ucFirst":78,"./strings/words":79}],67:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.reduce.js");
-var _ucFirst = _interopRequireDefault(require("./ucFirst"));
-var _words = _interopRequireDefault(require("./words"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Given a string in kebab-case, snake_case or 'Sentence case', convert to camelCase.
- * @param str - The string to convert.
- */
-const camelCase = str => (0, _words.default)(str).reduce((camel, part) => camel ? camel.concat((0, _ucFirst.default)(part)) : part.toLowerCase(), '');
-var _default = exports.default = camelCase;
-},{"./ucFirst":78,"./words":79,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.reduce.js":221}],68:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.reduce.js");
-var _words = _interopRequireDefault(require("./words"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Given a string in snake_case, camelCase or 'Sentence case', convert to kabob-case.
- * @param str - The string to convert.
- */
-const kabobCase = str => (0, _words.default)(str).reduce((kabob, part) => kabob ? kabob.concat('-' + part.toLowerCase()) : part.toLowerCase(), '');
-var _default = exports.default = kabobCase;
-},{"./words":79,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.reduce.js":221}],69:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.makeFilepath = exports.default = void 0;
-var _strBeforeLast = _interopRequireDefault(require("./strBeforeLast"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Format the given path so that it does not have trailing slashes and also correctly appends a path.
- * @param root - The base path to start from.
- * @param append - A path to append to `root` - may itself use `./` or `../` segments.
- */
-const makeFilepath = (root, append = '') => {
-  if (root.startsWith('./')) {
-    root = root.slice(2);
-  }
-  if (root.startsWith('/')) {
-    root = root.slice(1);
-  }
-  if (root.endsWith('/')) {
-    root = root.slice(0, -1);
-  }
-  if (append.startsWith('/')) {
-    append = append.slice(1);
-  }
-  if (append.startsWith('./')) {
-    append = append.slice(2);
-  }
-  if (append.startsWith('../')) {
-    if (!root) {
-      return append.endsWith('/') ? append.slice(0, -1) : append;
-    }
-    append = append.slice(3);
-    root = (0, _strBeforeLast.default)(root, '/');
-    return makeFilepath(root, append);
-  }
-  if (append.endsWith('/')) {
-    append = append.slice(0, -1);
-  }
-  if (!root) {
-    return append;
-  }
-  return append ? `${root}/${append}` : root;
-};
-exports.makeFilepath = makeFilepath;
-var _default = exports.default = makeFilepath;
-},{"./strBeforeLast":76}],70:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.makeRelativePath = exports.default = void 0;
-var _strBefore = _interopRequireDefault(require("./strBefore"));
-var _strAfter = _interopRequireDefault(require("./strAfter"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Compare two file paths and simplify them to a relative path.
- * @param fromFile - The path of the file the resulting relative path will be used from.
- * @param toFile - The path of the file being referenced.
- * @returns `toFile` expressed relative to `fromFile`.
- */
-const makeRelativePath = (fromFile, toFile) => {
-  let relativePath = toFile;
-  let nextPart = fromFile;
-  let firstPart = (0, _strBefore.default)(nextPart, '/');
-  let hasMatches = false;
-  while (firstPart && relativePath.startsWith(firstPart)) {
-    relativePath = (0, _strAfter.default)(relativePath, `${firstPart}/`);
-    nextPart = (0, _strAfter.default)(nextPart, `${firstPart}/`);
-    firstPart = (0, _strBefore.default)(nextPart, '/');
-    hasMatches = true;
-  }
-  if (!hasMatches) {
-    // No similar base paths, use the path as-is
-    return relativePath;
-  }
-  let relativePrefix = '';
-  const nextParts = nextPart.split('/');
-  if (nextParts.length < 2) {
-    relativePrefix = './';
-  }
-  for (let i = 1; i < nextParts.length; ++i) {
-    relativePrefix += '../';
-  }
-  return relativePrefix + relativePath;
-};
-exports.makeRelativePath = makeRelativePath;
-var _default = exports.default = makeRelativePath;
-},{"./strAfter":73,"./strBefore":75}],71:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.regexEscape = exports.default = void 0;
-/**
- * Take a string and escape the regex characters.
- * @param str - The string to escape, so it can be used literally inside a `RegExp`.
- */
-const regexEscape = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-exports.regexEscape = regexEscape;
-var _default = exports.default = regexEscape;
-},{}],72:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.reduce.js");
-var _words = _interopRequireDefault(require("./words"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Given a string in kebab-case, camelCase or 'Sentence case', convert to snake_case.
- * @param str - The string to convert.
- */
-const snakeCase = str => (0, _words.default)(str).reduce((snake, part) => snake ? snake.concat('_' + part.toLowerCase()) : part.toLowerCase(), '');
-var _default = exports.default = snakeCase;
-},{"./words":79,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.reduce.js":221}],73:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Retrieve the string part after the search match.
- * @param str - The string to search within.
- * @param search - The substring to search for.
- * @returns The portion of `str` after the first occurrence of `search`, or `''` if not found.
- */
-const strAfter = (str, search) => {
-  const index = str.indexOf(search);
-  return index === -1 ? '' : str.substring(index + search.length);
-};
-var _default = exports.default = strAfter;
-},{}],74:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Retrieve the string part after the last search match.
- * @param str - The string to search within.
- * @param search - The substring to search for.
- * @returns The portion of `str` after the last occurrence of `search`, or `''` if not found.
- */
-const strAfterLast = (str, search) => {
-  const index = str.lastIndexOf(search);
-  return index === -1 ? '' : str.substring(index + search.length);
-};
-var _default = exports.default = strAfterLast;
-},{}],75:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Retrieve the string part before the search match.
- * @param str - The string to search within.
- * @param search - The substring to search for.
- * @returns The portion of `str` before the first occurrence of `search`, or `''` if not found.
- */
-const strBefore = (str, search) => {
-  const index = str.indexOf(search);
-  return index === -1 ? '' : str.slice(0, index);
-};
-var _default = exports.default = strBefore;
-},{}],76:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Retrieve the string part before the last search match.
- * @param str - The string to search within.
- * @param search - The substring to search for.
- * @returns The portion of `str` before the last occurrence of `search`, or `''` if not found.
- */
-const strBeforeLast = (str, search) => {
-  const index = str.lastIndexOf(search);
-  return index === -1 ? '' : str.substring(0, index);
-};
-var _default = exports.default = strBeforeLast;
-},{}],77:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.reduce.js");
-var _ucFirst = _interopRequireDefault(require("./ucFirst"));
-var _words = _interopRequireDefault(require("./words"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-/**
- * Given a string in kebab-case, snake_case, camelCase or 'Sentence case', convert to 'Title Case'.
- * @param str - The string to convert.
- */
-const titleCase = str => (0, _words.default)(str).reduce((title, part) => title ? title.concat(' ' + (0, _ucFirst.default)(part)) : (0, _ucFirst.default)(part), '');
-var _default = exports.default = titleCase;
-},{"./ucFirst":78,"./words":79,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.reduce.js":221}],78:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Given a string, make the first character uppercase and the rest lowercase.
- * @param str - The string to convert.
- */
-const ucFirst = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-var _default = exports.default = ucFirst;
-},{}],79:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-/**
- * Split a string into sets of numbers or letters - the shared tokenizer behind camelCase/kabobCase/snakeCase/
- * titleCase, so each can rebuild the string in its own casing style.
- * @param str - The string to split.
- */
-const words = str => str.match(/\d+|[A-Z]?[a-z]+|[A-Za-z]+/g);
-var _default = exports.default = words;
-},{}],80:[function(require,module,exports){
-"use strict";
-
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.for-each.js");
-require("core-js/modules/esnext.weak-map.delete-all.js");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var _exportNames = {};
-exports.default = void 0;
-var _arrays = _interopRequireWildcard(require("./helpers/arrays"));
-Object.keys(_arrays).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  if (key in exports && exports[key] === _arrays[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _arrays[key];
-    }
-  });
-});
-var _descriptors = _interopRequireWildcard(require("./helpers/descriptors"));
-Object.keys(_descriptors).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  if (key in exports && exports[key] === _descriptors[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _descriptors[key];
-    }
-  });
-});
-var _functions = _interopRequireWildcard(require("./helpers/functions"));
-Object.keys(_functions).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  if (key in exports && exports[key] === _functions[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _functions[key];
-    }
-  });
-});
-var _numbers = _interopRequireWildcard(require("./helpers/numbers"));
-Object.keys(_numbers).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  if (key in exports && exports[key] === _numbers[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _numbers[key];
-    }
-  });
-});
-var _objects = _interopRequireWildcard(require("./helpers/objects"));
-Object.keys(_objects).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  if (key in exports && exports[key] === _objects[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _objects[key];
-    }
-  });
-});
-var _strings = _interopRequireWildcard(require("./helpers/strings"));
-Object.keys(_strings).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  if (key in exports && exports[key] === _strings[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _strings[key];
-    }
-  });
-});
-function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
-/**
- * All the siFunciona system functions for stringing together functions and simplifying logic.
- */
-
-// Every function is available by name (import { curry } from 'si-funciona', require('si-funciona').curry) ...
-
-// ... and all together on the default export (import siFunciona from 'si-funciona', require('si-funciona').default)
-const siFunciona = Object.assign({}, _arrays.default, _descriptors.default, _functions.default, _numbers.default, _objects.default, _strings.default);
-var _default = exports.default = siFunciona;
-if (void 0) {
-  // @ts-ignore
-  (void 0)['siFunciona'] = siFunciona;
-} else if (typeof window !== 'undefined') {
-  // @ts-ignore
-  window['siFunciona'] = siFunciona;
-}
-},{"./helpers/arrays":2,"./helpers/descriptors":10,"./helpers/functions":23,"./helpers/numbers":35,"./helpers/objects":45,"./helpers/strings":66,"core-js/modules/esnext.iterator.constructor.js":215,"core-js/modules/esnext.iterator.for-each.js":219,"core-js/modules/esnext.weak-map.delete-all.js":252}],81:[function(require,module,exports){
-'use strict';
-var isCallable = require('../internals/is-callable');
-var tryToString = require('../internals/try-to-string');
-
-var $TypeError = TypeError;
-
-// `Assert: IsCallable(argument) is true`
-module.exports = function (argument) {
-  if (isCallable(argument)) return argument;
-  throw new $TypeError(tryToString(argument) + ' is not a function');
-};
-
-},{"../internals/is-callable":133,"../internals/try-to-string":197}],82:[function(require,module,exports){
-'use strict';
-var has = require('../internals/map-helpers').has;
-
-// Perform ? RequireInternalSlot(M, [[MapData]])
-module.exports = function (it) {
-  has(it);
-  return it;
-};
-
-},{"../internals/map-helpers":152}],83:[function(require,module,exports){
-'use strict';
-var has = require('../internals/set-helpers').has;
-
-// Perform ? RequireInternalSlot(M, [[SetData]])
-module.exports = function (it) {
-  has(it);
-  return it;
-};
-
-},{"../internals/set-helpers":174}],84:[function(require,module,exports){
-'use strict';
-var has = require('../internals/weak-map-helpers').has;
-
-// Perform ? RequireInternalSlot(M, [[WeakMapData]])
-module.exports = function (it) {
-  has(it);
-  return it;
-};
-
-},{"../internals/weak-map-helpers":202}],85:[function(require,module,exports){
-'use strict';
-var has = require('../internals/weak-set-helpers').has;
-
-// Perform ? RequireInternalSlot(M, [[WeakSetData]])
-module.exports = function (it) {
-  has(it);
-  return it;
-};
-
-},{"../internals/weak-set-helpers":203}],86:[function(require,module,exports){
-'use strict';
-var wellKnownSymbol = require('../internals/well-known-symbol');
-var create = require('../internals/object-create');
-var defineProperty = require('../internals/object-define-property').f;
-
-var UNSCOPABLES = wellKnownSymbol('unscopables');
-var ArrayPrototype = Array.prototype;
-
-// Array.prototype[@@unscopables]
-// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
-if (ArrayPrototype[UNSCOPABLES] === undefined) {
-  defineProperty(ArrayPrototype, UNSCOPABLES, {
-    configurable: true,
-    value: create(null)
-  });
-}
-
-// add a key to Array.prototype[@@unscopables]
-module.exports = function (key) {
-  ArrayPrototype[UNSCOPABLES][key] = true;
-};
-
-},{"../internals/object-create":155,"../internals/object-define-property":157,"../internals/well-known-symbol":204}],87:[function(require,module,exports){
-'use strict';
-var isPrototypeOf = require('../internals/object-is-prototype-of');
-
-var $TypeError = TypeError;
-
-module.exports = function (it, Prototype) {
-  if (isPrototypeOf(Prototype, it)) return it;
-  throw new $TypeError('Incorrect invocation');
-};
-
-},{"../internals/object-is-prototype-of":162}],88:[function(require,module,exports){
-'use strict';
-var isObject = require('../internals/is-object');
-
-var $String = String;
-var $TypeError = TypeError;
-
-// `Assert: Type(argument) is Object`
-module.exports = function (argument) {
-  if (isObject(argument)) return argument;
-  throw new $TypeError($String(argument) + ' is not an object');
-};
-
-},{"../internals/is-object":137}],89:[function(require,module,exports){
-'use strict';
-var toIndexedObject = require('../internals/to-indexed-object');
-var toAbsoluteIndex = require('../internals/to-absolute-index');
-var lengthOfArrayLike = require('../internals/length-of-array-like');
-
-// `Array.prototype.{ indexOf, includes }` methods implementation
-var createMethod = function (IS_INCLUDES) {
-  return function ($this, el, fromIndex) {
-    var O = toIndexedObject($this);
-    var length = lengthOfArrayLike(O);
-    if (length === 0) return !IS_INCLUDES && -1;
-    var index = toAbsoluteIndex(fromIndex, length);
-    var value;
-    // Array#includes uses SameValueZero equality algorithm
-    // eslint-disable-next-line no-self-compare -- NaN check
-    if (IS_INCLUDES && el !== el) while (length > index) {
-      value = O[index++];
-      // eslint-disable-next-line no-self-compare -- NaN check
-      if (value !== value) return true;
-    // Array#indexOf ignores holes, Array#includes - not
-    } else for (;length > index; index++) {
-      if ((IS_INCLUDES || index in O) && O[index] === el) return IS_INCLUDES || index || 0;
-    } return !IS_INCLUDES && -1;
-  };
-};
-
-module.exports = {
-  // `Array.prototype.includes` method
-  // https://tc39.es/ecma262/#sec-array.prototype.includes
-  includes: createMethod(true),
-  // `Array.prototype.indexOf` method
-  // https://tc39.es/ecma262/#sec-array.prototype.indexof
-  indexOf: createMethod(false)
-};
-
-},{"../internals/length-of-array-like":150,"../internals/to-absolute-index":187,"../internals/to-indexed-object":188}],90:[function(require,module,exports){
-'use strict';
-var anObject = require('../internals/an-object');
-var iteratorClose = require('../internals/iterator-close');
-
-// call something on iterator step with safe closing on error
-module.exports = function (iterator, fn, value, ENTRIES) {
-  try {
-    return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
-  } catch (error) {
-    iteratorClose(iterator, 'throw', error);
-  }
-};
-
-},{"../internals/an-object":88,"../internals/iterator-close":144}],91:[function(require,module,exports){
-'use strict';
-var uncurryThis = require('../internals/function-uncurry-this');
-
-var toString = uncurryThis({}.toString);
-var stringSlice = uncurryThis(''.slice);
-
-module.exports = function (it) {
-  return stringSlice(toString(it), 8, -1);
-};
-
-},{"../internals/function-uncurry-this":117}],92:[function(require,module,exports){
-'use strict';
-var TO_STRING_TAG_SUPPORT = require('../internals/to-string-tag-support');
-var isCallable = require('../internals/is-callable');
-var classofRaw = require('../internals/classof-raw');
-var wellKnownSymbol = require('../internals/well-known-symbol');
-
-var TO_STRING_TAG = wellKnownSymbol('toStringTag');
-var $Object = Object;
-
-// ES3 wrong here
-var CORRECT_ARGUMENTS = classofRaw(function () { return arguments; }()) === 'Arguments';
-
-// fallback for IE11 Script Access Denied error
-var tryGet = function (it, key) {
-  try {
-    return it[key];
-  } catch (error) { /* empty */ }
-};
-
-// getting tag from ES6+ `Object.prototype.toString`
-module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
-  var O, tag, result;
-  return it === undefined ? 'Undefined' : it === null ? 'Null'
-    // @@toStringTag case
-    : typeof (tag = tryGet(O = $Object(it), TO_STRING_TAG)) == 'string' ? tag
-    // builtinTag case
-    : CORRECT_ARGUMENTS ? classofRaw(O)
-    // ES3 arguments fallback
-    : (result = classofRaw(O)) === 'Object' && isCallable(O.callee) ? 'Arguments' : result;
-};
-
-},{"../internals/classof-raw":91,"../internals/is-callable":133,"../internals/to-string-tag-support":195,"../internals/well-known-symbol":204}],93:[function(require,module,exports){
-'use strict';
-var hasOwn = require('../internals/has-own-property');
-var ownKeys = require('../internals/own-keys');
-var getOwnPropertyDescriptorModule = require('../internals/object-get-own-property-descriptor');
-var definePropertyModule = require('../internals/object-define-property');
-
-module.exports = function (target, source, exceptions) {
-  var keys = ownKeys(source);
-  var defineProperty = definePropertyModule.f;
-  var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
-  for (var i = 0; i < keys.length; i++) {
-    var key = keys[i];
-    if (!hasOwn(target, key) && !(exceptions && hasOwn(exceptions, key))) {
-      defineProperty(target, key, getOwnPropertyDescriptor(source, key));
-    }
-  }
-};
-
-},{"../internals/has-own-property":125,"../internals/object-define-property":157,"../internals/object-get-own-property-descriptor":158,"../internals/own-keys":167}],94:[function(require,module,exports){
-'use strict';
-var fails = require('../internals/fails');
-
-module.exports = !fails(function () {
-  function F() { /* empty */ }
-  F.prototype.constructor = null;
-  // eslint-disable-next-line es/no-object-getprototypeof -- required for testing
-  return Object.getPrototypeOf(new F()) !== F.prototype;
-});
-
-},{"../internals/fails":109}],95:[function(require,module,exports){
-'use strict';
-// `CreateIterResultObject` abstract operation
-// https://tc39.es/ecma262/#sec-createiterresultobject
-module.exports = function (value, done) {
-  return { value: value, done: done };
-};
-
-},{}],96:[function(require,module,exports){
-'use strict';
-var DESCRIPTORS = require('../internals/descriptors');
-var definePropertyModule = require('../internals/object-define-property');
-var createPropertyDescriptor = require('../internals/create-property-descriptor');
-
-module.exports = DESCRIPTORS ? function (object, key, value) {
-  return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
-} : function (object, key, value) {
-  object[key] = value;
-  return object;
-};
-
-},{"../internals/create-property-descriptor":97,"../internals/descriptors":103,"../internals/object-define-property":157}],97:[function(require,module,exports){
-'use strict';
-module.exports = function (bitmap, value) {
-  return {
-    enumerable: !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable: !(bitmap & 4),
-    value: value
-  };
-};
-
-},{}],98:[function(require,module,exports){
-'use strict';
-var DESCRIPTORS = require('../internals/descriptors');
-var definePropertyModule = require('../internals/object-define-property');
-var createPropertyDescriptor = require('../internals/create-property-descriptor');
-
-module.exports = function (object, key, value) {
-  if (DESCRIPTORS) definePropertyModule.f(object, key, createPropertyDescriptor(0, value));
-  else object[key] = value;
-};
-
-},{"../internals/create-property-descriptor":97,"../internals/descriptors":103,"../internals/object-define-property":157}],99:[function(require,module,exports){
-'use strict';
-var makeBuiltIn = require('../internals/make-built-in');
-var defineProperty = require('../internals/object-define-property');
-
-module.exports = function (target, name, descriptor) {
-  if (descriptor.get) makeBuiltIn(descriptor.get, name, { getter: true });
-  if (descriptor.set) makeBuiltIn(descriptor.set, name, { setter: true });
-  return defineProperty.f(target, name, descriptor);
-};
-
-},{"../internals/make-built-in":151,"../internals/object-define-property":157}],100:[function(require,module,exports){
-'use strict';
-var isCallable = require('../internals/is-callable');
-var definePropertyModule = require('../internals/object-define-property');
-var makeBuiltIn = require('../internals/make-built-in');
-var defineGlobalProperty = require('../internals/define-global-property');
-
-module.exports = function (O, key, value, options) {
-  if (!options) options = {};
-  var simple = options.enumerable;
-  var name = options.name !== undefined ? options.name : key;
-  if (isCallable(value)) makeBuiltIn(value, name, options);
-  if (options.global) {
-    if (simple) O[key] = value;
-    else defineGlobalProperty(key, value);
-  } else {
+var siFunciona = (() => {
+  var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __esm = (fn, res, err) => function __init() {
+    if (err) throw err[0];
     try {
-      if (!options.unsafe) delete O[key];
-      else if (O[key]) simple = true;
-    } catch (error) { /* empty */ }
-    if (simple) O[key] = value;
-    else definePropertyModule.f(O, key, {
-      value: value,
-      enumerable: false,
-      configurable: !options.nonConfigurable,
-      writable: !options.nonWritable
-    });
-  } return O;
-};
-
-},{"../internals/define-global-property":102,"../internals/is-callable":133,"../internals/make-built-in":151,"../internals/object-define-property":157}],101:[function(require,module,exports){
-'use strict';
-var defineBuiltIn = require('../internals/define-built-in');
-
-module.exports = function (target, src, options) {
-  for (var key in src) defineBuiltIn(target, key, src[key], options);
-  return target;
-};
-
-},{"../internals/define-built-in":100}],102:[function(require,module,exports){
-'use strict';
-var globalThis = require('../internals/global-this');
-
-// eslint-disable-next-line es/no-object-defineproperty -- safe
-var defineProperty = Object.defineProperty;
-
-module.exports = function (key, value) {
-  try {
-    defineProperty(globalThis, key, { value: value, configurable: true, writable: true });
-  } catch (error) {
-    globalThis[key] = value;
-  } return value;
-};
-
-},{"../internals/global-this":124}],103:[function(require,module,exports){
-'use strict';
-var fails = require('../internals/fails');
-
-// Detect IE8's incomplete defineProperty implementation
-module.exports = !fails(function () {
-  // eslint-disable-next-line es/no-object-defineproperty -- required for testing
-  return Object.defineProperty({}, 1, { get: function () { return 7; } })[1] !== 7;
-});
-
-},{"../internals/fails":109}],104:[function(require,module,exports){
-'use strict';
-var globalThis = require('../internals/global-this');
-var isObject = require('../internals/is-object');
-
-var document = globalThis.document;
-// typeof document.createElement is 'object' in old IE
-var EXISTS = isObject(document) && isObject(document.createElement);
-
-module.exports = function (it) {
-  return EXISTS ? document.createElement(it) : {};
-};
-
-},{"../internals/global-this":124,"../internals/is-object":137}],105:[function(require,module,exports){
-'use strict';
-// IE8- don't enum bug keys
-module.exports = [
-  'constructor',
-  'hasOwnProperty',
-  'isPrototypeOf',
-  'propertyIsEnumerable',
-  'toLocaleString',
-  'toString',
-  'valueOf'
-];
-
-},{}],106:[function(require,module,exports){
-'use strict';
-var globalThis = require('../internals/global-this');
-
-var navigator = globalThis.navigator;
-var userAgent = navigator && navigator.userAgent;
-
-module.exports = userAgent ? String(userAgent) : '';
-
-},{"../internals/global-this":124}],107:[function(require,module,exports){
-'use strict';
-var globalThis = require('../internals/global-this');
-var userAgent = require('../internals/environment-user-agent');
-
-var process = globalThis.process;
-var Deno = globalThis.Deno;
-var versions = process && process.versions || Deno && Deno.version;
-var v8 = versions && versions.v8;
-var match, version;
-
-if (v8) {
-  match = v8.split('.');
-  // in old Chrome, versions of V8 isn't V8 = Chrome / 10
-  // but their correct versions are not interesting for us
-  version = match[0] > 0 && match[0] < 4 ? 1 : +(match[0] + match[1]);
-}
-
-// BrowserFS NodeJS `process` polyfill incorrectly set `.v8` to `0.0`
-// so check `userAgent` even if `.v8` exists, but 0
-if (!version && userAgent) {
-  match = userAgent.match(/Edge\/(\d+)/);
-  if (!match || match[1] >= 74) {
-    match = userAgent.match(/Chrome\/(\d+)/);
-    if (match) version = +match[1];
-  }
-}
-
-module.exports = version;
-
-},{"../internals/environment-user-agent":106,"../internals/global-this":124}],108:[function(require,module,exports){
-'use strict';
-var globalThis = require('../internals/global-this');
-var getOwnPropertyDescriptor = require('../internals/object-get-own-property-descriptor').f;
-var createNonEnumerableProperty = require('../internals/create-non-enumerable-property');
-var defineBuiltIn = require('../internals/define-built-in');
-var defineGlobalProperty = require('../internals/define-global-property');
-var copyConstructorProperties = require('../internals/copy-constructor-properties');
-var isForced = require('../internals/is-forced');
-
-/*
-  options.target         - name of the target object
-  options.global         - target is the global object
-  options.stat           - export as static methods of target
-  options.proto          - export as prototype methods of target
-  options.real           - real prototype method for the `pure` version
-  options.forced         - export even if the native feature is available
-  options.bind           - bind methods to the target, required for the `pure` version
-  options.wrap           - wrap constructors to preventing global pollution, required for the `pure` version
-  options.unsafe         - use the simple assignment of property instead of delete + defineProperty
-  options.sham           - add a flag to not completely full polyfills
-  options.enumerable     - export as enumerable property
-  options.dontCallGetSet - prevent calling a getter on target
-  options.name           - the .name of the function if it does not match the key
-*/
-module.exports = function (options, source) {
-  var TARGET = options.target;
-  var GLOBAL = options.global;
-  var STATIC = options.stat;
-  var FORCED, target, key, targetProperty, sourceProperty, descriptor;
-  if (GLOBAL) {
-    target = globalThis;
-  } else if (STATIC) {
-    target = globalThis[TARGET] || defineGlobalProperty(TARGET, {});
-  } else {
-    target = globalThis[TARGET] && globalThis[TARGET].prototype;
-  }
-  if (target) for (key in source) {
-    sourceProperty = source[key];
-    if (options.dontCallGetSet) {
-      descriptor = getOwnPropertyDescriptor(target, key);
-      targetProperty = descriptor && descriptor.value;
-    } else targetProperty = target[key];
-    FORCED = isForced(GLOBAL ? key : TARGET + (STATIC ? '.' : '#') + key, options.forced);
-    // contained in target
-    if (!FORCED && targetProperty !== undefined) {
-      if (typeof sourceProperty == typeof targetProperty) continue;
-      copyConstructorProperties(sourceProperty, targetProperty);
+      return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
+    } catch (e) {
+      throw err = [e], e;
     }
-    // add a flag to not completely full polyfills
-    if (options.sham || (targetProperty && targetProperty.sham)) {
-      createNonEnumerableProperty(sourceProperty, 'sham', true);
-    }
-    defineBuiltIn(target, key, sourceProperty, options);
-  }
-};
-
-},{"../internals/copy-constructor-properties":93,"../internals/create-non-enumerable-property":96,"../internals/define-built-in":100,"../internals/define-global-property":102,"../internals/global-this":124,"../internals/is-forced":134,"../internals/object-get-own-property-descriptor":158}],109:[function(require,module,exports){
-'use strict';
-module.exports = function (exec) {
-  try {
-    return !!exec();
-  } catch (error) {
-    return true;
-  }
-};
-
-},{}],110:[function(require,module,exports){
-'use strict';
-var NATIVE_BIND = require('../internals/function-bind-native');
-
-var FunctionPrototype = Function.prototype;
-var apply = FunctionPrototype.apply;
-var call = FunctionPrototype.call;
-
-// eslint-disable-next-line es/no-function-prototype-bind, es/no-reflect -- safe
-module.exports = typeof Reflect == 'object' && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function () {
-  return call.apply(apply, arguments);
-});
-
-},{"../internals/function-bind-native":112}],111:[function(require,module,exports){
-'use strict';
-var uncurryThis = require('../internals/function-uncurry-this-clause');
-var aCallable = require('../internals/a-callable');
-var NATIVE_BIND = require('../internals/function-bind-native');
-
-var bind = uncurryThis(uncurryThis.bind);
-
-// optional / simple context binding
-module.exports = function (fn, that) {
-  aCallable(fn);
-  return that === undefined ? fn : NATIVE_BIND ? bind(fn, that) : function (/* ...args */) {
-    return fn.apply(that, arguments);
   };
-};
-
-},{"../internals/a-callable":81,"../internals/function-bind-native":112,"../internals/function-uncurry-this-clause":116}],112:[function(require,module,exports){
-'use strict';
-var fails = require('../internals/fails');
-
-module.exports = !fails(function () {
-  // eslint-disable-next-line es/no-function-prototype-bind -- safe
-  var test = function () { /* empty */ }.bind();
-  // eslint-disable-next-line no-prototype-builtins -- safe
-  return typeof test != 'function' || test.hasOwnProperty('prototype');
-});
-
-},{"../internals/fails":109}],113:[function(require,module,exports){
-'use strict';
-var NATIVE_BIND = require('../internals/function-bind-native');
-
-var call = Function.prototype.call;
-// eslint-disable-next-line es/no-function-prototype-bind -- safe
-module.exports = NATIVE_BIND ? call.bind(call) : function () {
-  return call.apply(call, arguments);
-};
-
-},{"../internals/function-bind-native":112}],114:[function(require,module,exports){
-'use strict';
-var DESCRIPTORS = require('../internals/descriptors');
-var hasOwn = require('../internals/has-own-property');
-
-var FunctionPrototype = Function.prototype;
-// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-var getDescriptor = DESCRIPTORS && Object.getOwnPropertyDescriptor;
-
-var EXISTS = hasOwn(FunctionPrototype, 'name');
-// additional protection from minified / mangled / dropped function names
-var PROPER = EXISTS && function something() { /* empty */ }.name === 'something';
-var CONFIGURABLE = EXISTS && (!DESCRIPTORS || (DESCRIPTORS && getDescriptor(FunctionPrototype, 'name').configurable));
-
-module.exports = {
-  EXISTS: EXISTS,
-  PROPER: PROPER,
-  CONFIGURABLE: CONFIGURABLE
-};
-
-},{"../internals/descriptors":103,"../internals/has-own-property":125}],115:[function(require,module,exports){
-'use strict';
-var uncurryThis = require('../internals/function-uncurry-this');
-var aCallable = require('../internals/a-callable');
-
-module.exports = function (object, key, method) {
-  try {
-    // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-    return uncurryThis(aCallable(Object.getOwnPropertyDescriptor(object, key)[method]));
-  } catch (error) { /* empty */ }
-};
-
-},{"../internals/a-callable":81,"../internals/function-uncurry-this":117}],116:[function(require,module,exports){
-'use strict';
-var classofRaw = require('../internals/classof-raw');
-var uncurryThis = require('../internals/function-uncurry-this');
-
-module.exports = function (fn) {
-  // Nashorn bug:
-  //   https://github.com/zloirock/core-js/issues/1128
-  //   https://github.com/zloirock/core-js/issues/1130
-  if (classofRaw(fn) === 'Function') return uncurryThis(fn);
-};
-
-},{"../internals/classof-raw":91,"../internals/function-uncurry-this":117}],117:[function(require,module,exports){
-'use strict';
-var NATIVE_BIND = require('../internals/function-bind-native');
-
-var FunctionPrototype = Function.prototype;
-var call = FunctionPrototype.call;
-// eslint-disable-next-line es/no-function-prototype-bind -- safe
-var uncurryThisWithBind = NATIVE_BIND && FunctionPrototype.bind.bind(call, call);
-
-module.exports = NATIVE_BIND ? uncurryThisWithBind : function (fn) {
-  return function () {
-    return call.apply(fn, arguments);
-  };
-};
-
-},{"../internals/function-bind-native":112}],118:[function(require,module,exports){
-'use strict';
-var globalThis = require('../internals/global-this');
-var isCallable = require('../internals/is-callable');
-
-var aFunction = function (argument) {
-  return isCallable(argument) ? argument : undefined;
-};
-
-module.exports = function (namespace, method) {
-  return arguments.length < 2 ? aFunction(globalThis[namespace]) : globalThis[namespace] && globalThis[namespace][method];
-};
-
-},{"../internals/global-this":124,"../internals/is-callable":133}],119:[function(require,module,exports){
-'use strict';
-// `GetIteratorDirect(obj)` abstract operation
-// https://tc39.es/ecma262/#sec-getiteratordirect
-module.exports = function (obj) {
-  return {
-    iterator: obj,
-    next: obj.next,
-    done: false
-  };
-};
-
-},{}],120:[function(require,module,exports){
-'use strict';
-var call = require('../internals/function-call');
-var isCallable = require('../internals/is-callable');
-var anObject = require('../internals/an-object');
-var tryToString = require('../internals/try-to-string');
-var getIteratorMethod = require('../internals/get-iterator-method-internal');
-
-var $TypeError = TypeError;
-
-module.exports = function (argument, usingIterator) {
-  var iteratorMethod = arguments.length < 2 ? getIteratorMethod(argument) : usingIterator;
-  if (isCallable(iteratorMethod)) return anObject(call(iteratorMethod, argument));
-  throw new $TypeError(tryToString(argument) + ' is not iterable');
-};
-
-},{"../internals/an-object":88,"../internals/function-call":113,"../internals/get-iterator-method-internal":121,"../internals/is-callable":133,"../internals/try-to-string":197}],121:[function(require,module,exports){
-'use strict';
-var classof = require('../internals/classof-raw');
-var isNullOrUndefined = require('../internals/is-null-or-undefined');
-var getMethod = require('../internals/get-method');
-var wellKnownSymbol = require('../internals/well-known-symbol');
-
-var ITERATOR = wellKnownSymbol('iterator');
-var ArrayPrototype = Array.prototype;
-
-module.exports = function (it) {
-  if (!isNullOrUndefined(it)) return getMethod(it, ITERATOR)
-    || getMethod(it, '@@iterator')
-    || (classof(it) === 'Arguments' ? ArrayPrototype[ITERATOR] : undefined);
-};
-
-},{"../internals/classof-raw":91,"../internals/get-method":122,"../internals/is-null-or-undefined":136,"../internals/well-known-symbol":204}],122:[function(require,module,exports){
-'use strict';
-var aCallable = require('../internals/a-callable');
-var isNullOrUndefined = require('../internals/is-null-or-undefined');
-
-// `GetMethod` abstract operation
-// https://tc39.es/ecma262/#sec-getmethod
-module.exports = function (V, P) {
-  var func = V[P];
-  return isNullOrUndefined(func) ? undefined : aCallable(func);
-};
-
-},{"../internals/a-callable":81,"../internals/is-null-or-undefined":136}],123:[function(require,module,exports){
-'use strict';
-var aCallable = require('../internals/a-callable');
-var anObject = require('../internals/an-object');
-var call = require('../internals/function-call');
-var toIntegerOrInfinity = require('../internals/to-integer-or-infinity');
-var getIteratorDirect = require('../internals/get-iterator-direct');
-
-var INVALID_SIZE = 'Invalid size';
-var $RangeError = RangeError;
-var $TypeError = TypeError;
-var max = Math.max;
-
-var SetRecord = function (set, intSize) {
-  this.set = set;
-  this.size = max(intSize, 0);
-  this.has = aCallable(set.has);
-  this.keys = aCallable(set.keys);
-};
-
-SetRecord.prototype = {
-  getIterator: function () {
-    return getIteratorDirect(anObject(call(this.keys, this.set)));
-  },
-  includes: function (it) {
-    return call(this.has, this.set, it);
-  }
-};
-
-// `GetSetRecord` abstract operation
-// https://tc39.es/proposal-set-methods/#sec-getsetrecord
-module.exports = function (obj) {
-  anObject(obj);
-  var numSize = +obj.size;
-  // NOTE: If size is undefined, then numSize will be NaN
-  // eslint-disable-next-line no-self-compare -- NaN check
-  if (numSize !== numSize) throw new $TypeError(INVALID_SIZE);
-  var intSize = toIntegerOrInfinity(numSize);
-  if (intSize < 0) throw new $RangeError(INVALID_SIZE);
-  return new SetRecord(obj, intSize);
-};
-
-},{"../internals/a-callable":81,"../internals/an-object":88,"../internals/function-call":113,"../internals/get-iterator-direct":119,"../internals/to-integer-or-infinity":189}],124:[function(require,module,exports){
-(function (global){(function (){
-'use strict';
-var check = function (it) {
-  return it && it.Math === Math && it;
-};
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-module.exports =
-  // eslint-disable-next-line es/no-global-this -- safe
-  check(typeof globalThis == 'object' && globalThis) ||
-  check(typeof window == 'object' && window) ||
-  // eslint-disable-next-line no-restricted-globals -- safe
-  check(typeof self == 'object' && self) ||
-  check(typeof global == 'object' && global) ||
-  check(typeof this == 'object' && this) ||
-  // eslint-disable-next-line no-new-func -- fallback
-  (function () { return this; })() || Function('return this')();
-
-}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],125:[function(require,module,exports){
-'use strict';
-var uncurryThis = require('../internals/function-uncurry-this');
-var toObject = require('../internals/to-object');
-
-var hasOwnProperty = uncurryThis({}.hasOwnProperty);
-
-// `HasOwnProperty` abstract operation
-// https://tc39.es/ecma262/#sec-hasownproperty
-// eslint-disable-next-line es/no-object-hasown -- safe
-module.exports = Object.hasOwn || function hasOwn(it, key) {
-  return hasOwnProperty(toObject(it), key);
-};
-
-},{"../internals/function-uncurry-this":117,"../internals/to-object":191}],126:[function(require,module,exports){
-'use strict';
-module.exports = {};
-
-},{}],127:[function(require,module,exports){
-'use strict';
-var getBuiltIn = require('../internals/get-built-in');
-
-module.exports = getBuiltIn('document', 'documentElement');
-
-},{"../internals/get-built-in":118}],128:[function(require,module,exports){
-'use strict';
-var DESCRIPTORS = require('../internals/descriptors');
-var fails = require('../internals/fails');
-var createElement = require('../internals/document-create-element');
-
-// Thanks to IE8 for its funny defineProperty
-module.exports = !DESCRIPTORS && !fails(function () {
-  // eslint-disable-next-line es/no-object-defineproperty -- required for testing
-  return Object.defineProperty(createElement('div'), 'a', {
-    get: function () { return 7; }
-  }).a !== 7;
-});
-
-},{"../internals/descriptors":103,"../internals/document-create-element":104,"../internals/fails":109}],129:[function(require,module,exports){
-'use strict';
-var uncurryThis = require('../internals/function-uncurry-this');
-var fails = require('../internals/fails');
-var classof = require('../internals/classof-raw');
-
-var $Object = Object;
-var split = uncurryThis(''.split);
-
-// fallback for non-array-like ES3 and non-enumerable old V8 strings
-module.exports = fails(function () {
-  // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
-  // eslint-disable-next-line no-prototype-builtins -- safe
-  return !$Object('z').propertyIsEnumerable(0);
-}) ? function (it) {
-  return classof(it) === 'String' ? split(it, '') : $Object(it);
-} : $Object;
-
-},{"../internals/classof-raw":91,"../internals/fails":109,"../internals/function-uncurry-this":117}],130:[function(require,module,exports){
-'use strict';
-var uncurryThis = require('../internals/function-uncurry-this');
-var isCallable = require('../internals/is-callable');
-var store = require('../internals/shared-store');
-
-var functionToString = uncurryThis(Function.toString);
-
-// this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
-if (!isCallable(store.inspectSource)) {
-  store.inspectSource = function (it) {
-    return functionToString(it);
-  };
-}
-
-module.exports = store.inspectSource;
-
-},{"../internals/function-uncurry-this":117,"../internals/is-callable":133,"../internals/shared-store":184}],131:[function(require,module,exports){
-'use strict';
-var NATIVE_WEAK_MAP = require('../internals/weak-map-basic-detection');
-var globalThis = require('../internals/global-this');
-var isObject = require('../internals/is-object');
-var createNonEnumerableProperty = require('../internals/create-non-enumerable-property');
-var hasOwn = require('../internals/has-own-property');
-var shared = require('../internals/shared-store');
-var sharedKey = require('../internals/shared-key');
-var hiddenKeys = require('../internals/hidden-keys');
-
-var OBJECT_ALREADY_INITIALIZED = 'Object already initialized';
-var TypeError = globalThis.TypeError;
-var WeakMap = globalThis.WeakMap;
-var set, get, has;
-
-var enforce = function (it) {
-  return has(it) ? get(it) : set(it, {});
-};
-
-var getterFor = function (TYPE) {
-  return function (it) {
-    var state;
-    if (!isObject(it) || (state = get(it)).type !== TYPE) {
-      throw new TypeError('Incompatible receiver, ' + TYPE + ' required');
-    } return state;
-  };
-};
-
-if (NATIVE_WEAK_MAP || shared.state) {
-  var store = shared.state || (shared.state = new WeakMap());
-  /* eslint-disable no-self-assign -- prototype methods protection */
-  store.get = store.get;
-  store.has = store.has;
-  store.set = store.set;
-  /* eslint-enable no-self-assign -- prototype methods protection */
-  set = function (it, metadata) {
-    if (store.has(it)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
-    metadata.facade = it;
-    store.set(it, metadata);
-    return metadata;
-  };
-  get = function (it) {
-    return store.get(it) || {};
-  };
-  has = function (it) {
-    return store.has(it);
-  };
-} else {
-  var STATE = sharedKey('state');
-  hiddenKeys[STATE] = true;
-  set = function (it, metadata) {
-    if (hasOwn(it, STATE)) throw new TypeError(OBJECT_ALREADY_INITIALIZED);
-    metadata.facade = it;
-    createNonEnumerableProperty(it, STATE, metadata);
-    return metadata;
-  };
-  get = function (it) {
-    return hasOwn(it, STATE) ? it[STATE] : {};
-  };
-  has = function (it) {
-    return hasOwn(it, STATE);
-  };
-}
-
-module.exports = {
-  set: set,
-  get: get,
-  has: has,
-  enforce: enforce,
-  getterFor: getterFor
-};
-
-},{"../internals/create-non-enumerable-property":96,"../internals/global-this":124,"../internals/has-own-property":125,"../internals/hidden-keys":126,"../internals/is-object":137,"../internals/shared-key":183,"../internals/shared-store":184,"../internals/weak-map-basic-detection":201}],132:[function(require,module,exports){
-'use strict';
-var wellKnownSymbol = require('../internals/well-known-symbol');
-var Iterators = require('../internals/iterators');
-
-var ITERATOR = wellKnownSymbol('iterator');
-var ArrayPrototype = Array.prototype;
-
-// check on default Array iterator
-module.exports = function (it) {
-  return it !== undefined && (Iterators.Array === it || ArrayPrototype[ITERATOR] === it);
-};
-
-},{"../internals/iterators":149,"../internals/well-known-symbol":204}],133:[function(require,module,exports){
-'use strict';
-// https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot
-var documentAll = typeof document == 'object' && document.all;
-
-// `IsCallable` abstract operation
-// https://tc39.es/ecma262/#sec-iscallable
-// eslint-disable-next-line unicorn/no-typeof-undefined -- required for testing
-module.exports = typeof documentAll == 'undefined' && documentAll !== undefined ? function (argument) {
-  return typeof argument == 'function' || argument === documentAll;
-} : function (argument) {
-  return typeof argument == 'function';
-};
-
-},{}],134:[function(require,module,exports){
-'use strict';
-var fails = require('../internals/fails');
-var isCallable = require('../internals/is-callable');
-
-var replacement = /#|\.prototype\./;
-
-var isForced = function (feature, detection) {
-  var value = data[normalize(feature)];
-  return value === POLYFILL ? true
-    : value === NATIVE ? false
-    : isCallable(detection) ? fails(detection)
-    : !!detection;
-};
-
-var normalize = isForced.normalize = function (string) {
-  return String(string).replace(replacement, '.').toLowerCase();
-};
-
-var data = isForced.data = {};
-var NATIVE = isForced.NATIVE = 'N';
-var POLYFILL = isForced.POLYFILL = 'P';
-
-module.exports = isForced;
-
-},{"../internals/fails":109,"../internals/is-callable":133}],135:[function(require,module,exports){
-'use strict';
-var classof = require('../internals/classof-raw');
-var wellKnownSymbol = require('../internals/well-known-symbol');
-
-var ITERATOR = wellKnownSymbol('iterator');
-
-module.exports = function (it) {
-  return it[ITERATOR] !== undefined
-    || it['@@iterator'] !== undefined
-    || classof(it) === 'Arguments';
-};
-
-},{"../internals/classof-raw":91,"../internals/well-known-symbol":204}],136:[function(require,module,exports){
-'use strict';
-// we can't use just `it == null` since of `document.all` special case
-// https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot-aec
-module.exports = function (it) {
-  return it === null || it === undefined;
-};
-
-},{}],137:[function(require,module,exports){
-'use strict';
-var isCallable = require('../internals/is-callable');
-
-module.exports = function (it) {
-  return typeof it == 'object' ? it !== null : isCallable(it);
-};
-
-},{"../internals/is-callable":133}],138:[function(require,module,exports){
-'use strict';
-module.exports = false;
-
-},{}],139:[function(require,module,exports){
-'use strict';
-var getBuiltIn = require('../internals/get-built-in');
-var isCallable = require('../internals/is-callable');
-var isPrototypeOf = require('../internals/object-is-prototype-of');
-var USE_SYMBOL_AS_UID = require('../internals/use-symbol-as-uid');
-
-var $Object = Object;
-
-module.exports = USE_SYMBOL_AS_UID ? function (it) {
-  return typeof it == 'symbol';
-} : function (it) {
-  var $Symbol = getBuiltIn('Symbol');
-  return isCallable($Symbol) && isPrototypeOf($Symbol.prototype, $Object(it));
-};
-
-},{"../internals/get-built-in":118,"../internals/is-callable":133,"../internals/object-is-prototype-of":162,"../internals/use-symbol-as-uid":199}],140:[function(require,module,exports){
-'use strict';
-var call = require('../internals/function-call');
-
-module.exports = function (record, fn, ITERATOR_INSTEAD_OF_RECORD) {
-  var iterator = ITERATOR_INSTEAD_OF_RECORD ? record : record.iterator;
-  var next = record.next;
-  var step, result;
-  while (!(step = call(next, iterator)).done) {
-    result = fn(step.value);
-    if (result !== undefined) return result;
-  }
-};
-
-},{"../internals/function-call":113}],141:[function(require,module,exports){
-'use strict';
-var bind = require('../internals/function-bind-context');
-var call = require('../internals/function-call');
-var anObject = require('../internals/an-object');
-var tryToString = require('../internals/try-to-string');
-var isArrayIteratorMethod = require('../internals/is-array-iterator-method');
-var lengthOfArrayLike = require('../internals/length-of-array-like');
-var isPrototypeOf = require('../internals/object-is-prototype-of');
-var getIterator = require('../internals/get-iterator-internal');
-var getIteratorMethod = require('../internals/get-iterator-method-internal');
-var iteratorClose = require('../internals/iterator-close');
-
-var $TypeError = TypeError;
-
-var Result = function (stopped, result) {
-  this.stopped = stopped;
-  this.result = result;
-};
-
-var ResultPrototype = Result.prototype;
-
-module.exports = function (iterable, unboundFunction, options) {
-  var that = options && options.that;
-  var AS_ENTRIES = !!(options && options.AS_ENTRIES);
-  var IS_RECORD = !!(options && options.IS_RECORD);
-  var IS_ITERATOR = !!(options && options.IS_ITERATOR);
-  var INTERRUPTED = !!(options && options.INTERRUPTED);
-  var fn = bind(unboundFunction, that);
-  var iterator, iterFn, index, length, result, next, step;
-
-  var stop = function (condition) {
-    var $iterator = iterator;
-    iterator = undefined;
-    if ($iterator) iteratorClose($iterator, 'normal');
-    return new Result(true, condition);
-  };
-
-  var callFn = function (value) {
-    if (AS_ENTRIES) {
-      anObject(value);
-      return INTERRUPTED ? fn(value[0], value[1], stop) : fn(value[0], value[1]);
-    } return INTERRUPTED ? fn(value, stop) : fn(value);
-  };
-
-  if (IS_RECORD) {
-    iterator = iterable.iterator;
-  } else if (IS_ITERATOR) {
-    iterator = iterable;
-  } else {
-    iterFn = getIteratorMethod(iterable);
-    if (!iterFn) throw new $TypeError(tryToString(iterable) + ' is not iterable');
-    // optimisation for array iterators
-    if (isArrayIteratorMethod(iterFn)) {
-      for (index = 0, length = lengthOfArrayLike(iterable); length > index; index++) {
-        result = callFn(iterable[index]);
-        if (result && isPrototypeOf(ResultPrototype, result)) return result;
-      } return new Result(false);
-    }
-    iterator = getIterator(iterable, iterFn);
-  }
-
-  next = IS_RECORD ? iterable.next : iterator.next;
-  while (!(step = call(next, iterator)).done) {
-    // `IteratorValue` errors should propagate without closing the iterator
-    var value = step.value;
+  var __commonJS = (cb, mod) => function __require() {
     try {
-      result = callFn(value);
-    } catch (error) {
-      if (iterator) iteratorClose(iterator, 'throw', error);
-      else throw error;
+      return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+    } catch (e) {
+      throw mod = 0, e;
     }
-    if (typeof result == 'object' && result && isPrototypeOf(ResultPrototype, result)) return result;
-  } return new Result(false);
-};
+  };
 
-},{"../internals/an-object":88,"../internals/function-bind-context":111,"../internals/function-call":113,"../internals/get-iterator-internal":120,"../internals/get-iterator-method-internal":121,"../internals/is-array-iterator-method":132,"../internals/iterator-close":144,"../internals/length-of-array-like":150,"../internals/object-is-prototype-of":162,"../internals/try-to-string":197}],142:[function(require,module,exports){
-'use strict';
-// release references held by exhausted / closed iterator helpers to allow GC of the source chain
-module.exports = function (state) {
-  state.iterator = state.next = state.nextHandler = state.mapper = state.predicate = state.inner =
-    state.iterables = state.iters = state.openIters = state.padding = state.finishResults = state.buffer = null;
-};
-
-},{}],143:[function(require,module,exports){
-'use strict';
-var iteratorClose = require('../internals/iterator-close');
-
-module.exports = function (iters, kind, value) {
-  for (var i = iters.length - 1; i >= 0; i--) {
-    if (iters[i] === undefined) continue;
-    try {
-      value = iteratorClose(iters[i].iterator, kind, value);
-    } catch (error) {
-      kind = 'throw';
-      value = error;
-    }
-  }
-  if (kind === 'throw') throw value;
-  return value;
-};
-
-},{"../internals/iterator-close":144}],144:[function(require,module,exports){
-'use strict';
-var call = require('../internals/function-call');
-var anObject = require('../internals/an-object');
-var getMethod = require('../internals/get-method');
-
-module.exports = function (iterator, kind, value) {
-  var innerResult, innerError;
-  anObject(iterator);
-  try {
-    innerResult = getMethod(iterator, 'return');
-    if (!innerResult) {
-      if (kind === 'throw') throw value;
-      return value;
-    }
-    innerResult = call(innerResult, iterator);
-  } catch (error) {
-    innerError = true;
-    innerResult = error;
-  }
-  if (kind === 'throw') throw value;
-  if (innerError) throw innerResult;
-  anObject(innerResult);
-  return value;
-};
-
-},{"../internals/an-object":88,"../internals/function-call":113,"../internals/get-method":122}],145:[function(require,module,exports){
-'use strict';
-var call = require('../internals/function-call');
-var create = require('../internals/object-create');
-var createNonEnumerableProperty = require('../internals/create-non-enumerable-property');
-var defineBuiltIns = require('../internals/define-built-ins');
-var wellKnownSymbol = require('../internals/well-known-symbol');
-var InternalStateModule = require('../internals/internal-state');
-var getMethod = require('../internals/get-method');
-var IteratorPrototype = require('../internals/iterators-core').IteratorPrototype;
-var createIterResultObject = require('../internals/create-iter-result-object');
-var iteratorClose = require('../internals/iterator-close');
-var iteratorCloseAll = require('../internals/iterator-close-all');
-var cleanupState = require('../internals/iterator-cleanup-state');
-
-var TO_STRING_TAG = wellKnownSymbol('toStringTag');
-var ITERATOR_HELPER = 'IteratorHelper';
-var WRAP_FOR_VALID_ITERATOR = 'WrapForValidIterator';
-var NORMAL = 'normal';
-var THROW = 'throw';
-var setInternalState = InternalStateModule.set;
-
-var createIteratorProxyPrototype = function (IS_ITERATOR) {
-  var getInternalState = InternalStateModule.getterFor(IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER);
-
-  return defineBuiltIns(create(IteratorPrototype), {
-    next: function next() {
-      var state = getInternalState(this);
-      // for simplification:
-      //   for `%WrapForValidIteratorPrototype%.next` or with `state.returnHandlerResult` our `nextHandler` returns `IterResultObject`
-      //   for `%IteratorHelperPrototype%.next` - just a value
-      if (IS_ITERATOR) return state.nextHandler();
-      if (state.done) return createIterResultObject(undefined, true);
-      try {
-        var result = state.nextHandler();
-        if (state.done) cleanupState(state);
-        return state.returnHandlerResult ? result : createIterResultObject(result, state.done);
-      } catch (error) {
-        state.done = true;
-        cleanupState(state);
-        throw error;
-      }
-    },
-    'return': function () {
-      var state = getInternalState(this);
-      var iterator = state.iterator;
-      var inner = state.inner;
-      var openIters = state.openIters;
-      var done = state.done;
-      state.done = true;
-      if (IS_ITERATOR) {
-        var returnMethod = getMethod(iterator, 'return');
-        return returnMethod ? call(returnMethod, iterator) : createIterResultObject(undefined, true);
-      }
-      cleanupState(state);
-      if (done) return createIterResultObject(undefined, true);
-      if (inner) try {
-        iteratorClose(inner.iterator, NORMAL);
-      } catch (error) {
-        return iteratorClose(iterator, THROW, error);
-      }
-      if (openIters) try {
-        iteratorCloseAll(openIters, NORMAL);
-      } catch (error) {
-        if (iterator) return iteratorClose(iterator, THROW, error);
-        throw error;
-      }
-      if (iterator) iteratorClose(iterator, NORMAL);
-      return createIterResultObject(undefined, true);
+  // js-build-tools-inject:process
+  var init_process = __esm({
+    "js-build-tools-inject:process"() {
     }
   });
-};
 
-var WrapForValidIteratorPrototype = createIteratorProxyPrototype(true);
-var IteratorHelperPrototype = createIteratorProxyPrototype(false);
-
-createNonEnumerableProperty(IteratorHelperPrototype, TO_STRING_TAG, 'Iterator Helper');
-
-module.exports = function (nextHandler, IS_ITERATOR, RETURN_HANDLER_RESULT) {
-  var IteratorProxy = function Iterator(record, state) {
-    if (state) {
-      state.iterator = record.iterator;
-      state.next = record.next;
-    } else state = record;
-    state.type = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
-    state.returnHandlerResult = !!RETURN_HANDLER_RESULT;
-    state.nextHandler = nextHandler;
-    state.counter = 0;
-    state.done = false;
-    setInternalState(this, state);
-  };
-
-  IteratorProxy.prototype = IS_ITERATOR ? WrapForValidIteratorPrototype : IteratorHelperPrototype;
-
-  return IteratorProxy;
-};
-
-},{"../internals/create-iter-result-object":95,"../internals/create-non-enumerable-property":96,"../internals/define-built-ins":101,"../internals/function-call":113,"../internals/get-method":122,"../internals/internal-state":131,"../internals/iterator-cleanup-state":142,"../internals/iterator-close":144,"../internals/iterator-close-all":143,"../internals/iterators-core":148,"../internals/object-create":155,"../internals/well-known-symbol":204}],146:[function(require,module,exports){
-'use strict';
-// Should throw an error on invalid iterator
-// https://issues.chromium.org/issues/336839115
-module.exports = function (methodName, argument) {
-  // eslint-disable-next-line es/no-iterator -- required for testing
-  var method = typeof Iterator == 'function' && Iterator.prototype[methodName];
-  if (method) try {
-    method.call({ next: null }, argument).next();
-  } catch (error) {
-    return true;
-  }
-};
-
-},{}],147:[function(require,module,exports){
-'use strict';
-var globalThis = require('../internals/global-this');
-
-// https://github.com/tc39/ecma262/pull/3467
-module.exports = function (METHOD_NAME, ExpectedError) {
-  var Iterator = globalThis.Iterator;
-  var IteratorPrototype = Iterator && Iterator.prototype;
-  var method = IteratorPrototype && IteratorPrototype[METHOD_NAME];
-
-  var CLOSED = false;
-
-  if (method) try {
-    method.call({
-      next: function () { return { done: true }; },
-      'return': function () { CLOSED = true; }
-    }, -1);
-  } catch (error) {
-    // https://bugs.webkit.org/show_bug.cgi?id=291195
-    if (!(error instanceof ExpectedError)) CLOSED = false;
-  }
-
-  if (!CLOSED) return method;
-};
-
-},{"../internals/global-this":124}],148:[function(require,module,exports){
-'use strict';
-var fails = require('../internals/fails');
-var isCallable = require('../internals/is-callable');
-var isObject = require('../internals/is-object');
-var create = require('../internals/object-create');
-var getPrototypeOf = require('../internals/object-get-prototype-of');
-var defineBuiltIn = require('../internals/define-built-in');
-var wellKnownSymbol = require('../internals/well-known-symbol');
-var IS_PURE = require('../internals/is-pure');
-
-var ITERATOR = wellKnownSymbol('iterator');
-var BUGGY_SAFARI_ITERATORS = false;
-
-// `%IteratorPrototype%` object
-// https://tc39.es/ecma262/#sec-%iteratorprototype%-object
-var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
-
-/* eslint-disable es/no-array-prototype-keys -- safe */
-if ([].keys) {
-  arrayIterator = [].keys();
-  // Safari 8 has buggy iterators w/o `next`
-  if (!('next' in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
-  else {
-    PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
-    if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
-  }
-}
-
-var NEW_ITERATOR_PROTOTYPE = !isObject(IteratorPrototype) || fails(function () {
-  var test = {};
-  // FF44- legacy iterators case
-  return IteratorPrototype[ITERATOR].call(test) !== test;
-});
-
-if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype = {};
-else if (IS_PURE) IteratorPrototype = create(IteratorPrototype);
-
-// `%IteratorPrototype%[@@iterator]()` method
-// https://tc39.es/ecma262/#sec-%iteratorprototype%-@@iterator
-if (!isCallable(IteratorPrototype[ITERATOR])) {
-  defineBuiltIn(IteratorPrototype, ITERATOR, function () {
-    return this;
+  // node_modules/core-js/internals/global-this.js
+  var require_global_this = __commonJS({
+    "node_modules/core-js/internals/global-this.js"(exports, module) {
+      "use strict";
+      init_process();
+      var check = function(it) {
+        return it && it.Math === Math && it;
+      };
+      module.exports = // eslint-disable-next-line es/no-global-this -- safe
+      check(typeof globalThis == "object" && globalThis) || check(typeof window == "object" && window) || // eslint-disable-next-line no-restricted-globals -- safe
+      check(typeof self == "object" && self) || check(typeof globalThis == "object" && globalThis) || check(typeof exports == "object" && exports) || // eslint-disable-next-line no-new-func -- fallback
+      /* @__PURE__ */ (function() {
+        return this;
+      })() || Function("return this")();
+    }
   });
-}
 
-module.exports = {
-  IteratorPrototype: IteratorPrototype,
-  BUGGY_SAFARI_ITERATORS: BUGGY_SAFARI_ITERATORS
-};
-
-},{"../internals/define-built-in":100,"../internals/fails":109,"../internals/is-callable":133,"../internals/is-object":137,"../internals/is-pure":138,"../internals/object-create":155,"../internals/object-get-prototype-of":161,"../internals/well-known-symbol":204}],149:[function(require,module,exports){
-'use strict';
-module.exports = Object.create ? Object.create(null) : {};
-
-},{}],150:[function(require,module,exports){
-'use strict';
-var toLength = require('../internals/to-length');
-
-// `LengthOfArrayLike` abstract operation
-// https://tc39.es/ecma262/#sec-lengthofarraylike
-module.exports = function (obj) {
-  return toLength(obj.length);
-};
-
-},{"../internals/to-length":190}],151:[function(require,module,exports){
-'use strict';
-var uncurryThis = require('../internals/function-uncurry-this');
-var fails = require('../internals/fails');
-var isCallable = require('../internals/is-callable');
-var hasOwn = require('../internals/has-own-property');
-var DESCRIPTORS = require('../internals/descriptors');
-var CONFIGURABLE_FUNCTION_NAME = require('../internals/function-name').CONFIGURABLE;
-var inspectSource = require('../internals/inspect-source');
-var InternalStateModule = require('../internals/internal-state');
-
-var enforceInternalState = InternalStateModule.enforce;
-var getInternalState = InternalStateModule.get;
-var $String = String;
-// eslint-disable-next-line es/no-object-defineproperty -- safe
-var defineProperty = Object.defineProperty;
-var stringSlice = uncurryThis(''.slice);
-var replace = uncurryThis(''.replace);
-var join = uncurryThis([].join);
-
-var CONFIGURABLE_LENGTH = DESCRIPTORS && !fails(function () {
-  return defineProperty(function () { /* empty */ }, 'length', { value: 8 }).length !== 8;
-});
-
-var TEMPLATE = String(String).split('String');
-
-var makeBuiltIn = module.exports = function (value, name, options) {
-  if (stringSlice($String(name), 0, 7) === 'Symbol(') {
-    name = '[' + replace($String(name), /^Symbol\(([^)]*)\).*$/, '$1') + ']';
-  }
-  if (options && options.getter) name = 'get ' + name;
-  if (options && options.setter) name = 'set ' + name;
-  if (!hasOwn(value, 'name') || (CONFIGURABLE_FUNCTION_NAME && value.name !== name)) {
-    if (DESCRIPTORS) defineProperty(value, 'name', { value: name, configurable: true });
-    else value.name = name;
-  }
-  if (CONFIGURABLE_LENGTH && options && hasOwn(options, 'arity') && value.length !== options.arity) {
-    defineProperty(value, 'length', { value: options.arity });
-  }
-  try {
-    if (options && hasOwn(options, 'constructor') && options.constructor) {
-      if (DESCRIPTORS) defineProperty(value, 'prototype', { writable: false });
-    // in V8 ~ Chrome 53, prototypes of some methods, like `Array.prototype.values`, are non-writable
-    } else if (value.prototype) value.prototype = undefined;
-  } catch (error) { /* empty */ }
-  var state = enforceInternalState(value);
-  if (!hasOwn(state, 'source')) {
-    state.source = join(TEMPLATE, typeof name == 'string' ? name : '');
-  } return value;
-};
-
-// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
-// eslint-disable-next-line no-extend-native -- required
-Function.prototype.toString = makeBuiltIn(function toString() {
-  return isCallable(this) && getInternalState(this).source || inspectSource(this);
-}, 'toString');
-
-},{"../internals/descriptors":103,"../internals/fails":109,"../internals/function-name":114,"../internals/function-uncurry-this":117,"../internals/has-own-property":125,"../internals/inspect-source":130,"../internals/internal-state":131,"../internals/is-callable":133}],152:[function(require,module,exports){
-'use strict';
-var uncurryThis = require('../internals/function-uncurry-this');
-
-// eslint-disable-next-line es/no-map -- safe
-var MapPrototype = Map.prototype;
-
-module.exports = {
-  // eslint-disable-next-line es/no-map -- safe
-  Map: Map,
-  set: uncurryThis(MapPrototype.set),
-  get: uncurryThis(MapPrototype.get),
-  has: uncurryThis(MapPrototype.has),
-  remove: uncurryThis(MapPrototype['delete']),
-  proto: MapPrototype
-};
-
-},{"../internals/function-uncurry-this":117}],153:[function(require,module,exports){
-'use strict';
-var uncurryThis = require('../internals/function-uncurry-this');
-var iterateSimple = require('../internals/iterate-simple');
-var MapHelpers = require('../internals/map-helpers');
-
-var Map = MapHelpers.Map;
-var MapPrototype = MapHelpers.proto;
-var forEach = uncurryThis(MapPrototype.forEach);
-var entries = uncurryThis(MapPrototype.entries);
-var next = entries(new Map()).next;
-
-module.exports = function (map, fn, interruptible) {
-  return interruptible ? iterateSimple({ iterator: entries(map), next: next }, function (entry) {
-    return fn(entry[1], entry[0]);
-  }) : forEach(map, fn);
-};
-
-},{"../internals/function-uncurry-this":117,"../internals/iterate-simple":140,"../internals/map-helpers":152}],154:[function(require,module,exports){
-'use strict';
-var ceil = Math.ceil;
-var floor = Math.floor;
-
-// `Math.trunc` method
-// https://tc39.es/ecma262/#sec-math.trunc
-// eslint-disable-next-line es/no-math-trunc -- safe
-module.exports = Math.trunc || function trunc(x) {
-  var n = +x;
-  return (n > 0 ? floor : ceil)(n);
-};
-
-},{}],155:[function(require,module,exports){
-'use strict';
-/* global ActiveXObject -- old IE, WSH */
-var anObject = require('../internals/an-object');
-var definePropertiesModule = require('../internals/object-define-properties');
-var enumBugKeys = require('../internals/enum-bug-keys');
-var hiddenKeys = require('../internals/hidden-keys');
-var html = require('../internals/html');
-var documentCreateElement = require('../internals/document-create-element');
-var sharedKey = require('../internals/shared-key');
-
-var GT = '>';
-var LT = '<';
-var PROTOTYPE = 'prototype';
-var SCRIPT = 'script';
-var IE_PROTO = sharedKey('IE_PROTO');
-
-var EmptyConstructor = function () { /* empty */ };
-
-var scriptTag = function (content) {
-  return LT + SCRIPT + GT + content + LT + '/' + SCRIPT + GT;
-};
-
-// Create object with fake `null` prototype: use ActiveX Object with cleared prototype
-var NullProtoObjectViaActiveX = function (activeXDocument) {
-  activeXDocument.write(scriptTag(''));
-  activeXDocument.close();
-  var temp = activeXDocument.parentWindow.Object;
-  // eslint-disable-next-line no-useless-assignment -- avoid memory leak
-  activeXDocument = null;
-  return temp;
-};
-
-// Create object with fake `null` prototype: use iframe Object with cleared prototype
-var NullProtoObjectViaIFrame = function () {
-  // Thrash, waste and sodomy: IE GC bug
-  var iframe = documentCreateElement('iframe');
-  var JS = 'java' + SCRIPT + ':';
-  var iframeDocument;
-  iframe.style.display = 'none';
-  html.appendChild(iframe);
-  // https://github.com/zloirock/core-js/issues/475
-  iframe.src = String(JS);
-  iframeDocument = iframe.contentWindow.document;
-  iframeDocument.open();
-  iframeDocument.write(scriptTag('document.F=Object'));
-  iframeDocument.close();
-  return iframeDocument.F;
-};
-
-// Check for document.domain and active x support
-// No need to use active x approach when document.domain is not set
-// see https://github.com/es-shims/es5-shim/issues/150
-// variation of https://github.com/kitcambridge/es5-shim/commit/4f738ac066346
-// avoid IE GC bug
-var activeXDocument;
-var NullProtoObject = function () {
-  try {
-    activeXDocument = new ActiveXObject('htmlfile');
-  } catch (error) { /* ignore */ }
-  NullProtoObject = typeof document != 'undefined'
-    ? document.domain && activeXDocument
-      ? NullProtoObjectViaActiveX(activeXDocument) // old IE
-      : NullProtoObjectViaIFrame()
-    : NullProtoObjectViaActiveX(activeXDocument); // WSH
-  var length = enumBugKeys.length;
-  while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys[length]];
-  return NullProtoObject();
-};
-
-hiddenKeys[IE_PROTO] = true;
-
-// `Object.create` method
-// https://tc39.es/ecma262/#sec-object.create
-// eslint-disable-next-line es/no-object-create -- safe
-module.exports = Object.create || function create(O, Properties) {
-  var result;
-  if (O !== null) {
-    EmptyConstructor[PROTOTYPE] = anObject(O);
-    result = new EmptyConstructor();
-    EmptyConstructor[PROTOTYPE] = null;
-    // add "__proto__" for Object.getPrototypeOf polyfill
-    result[IE_PROTO] = O;
-  } else result = NullProtoObject();
-  return Properties === undefined ? result : definePropertiesModule.f(result, Properties);
-};
-
-},{"../internals/an-object":88,"../internals/document-create-element":104,"../internals/enum-bug-keys":105,"../internals/hidden-keys":126,"../internals/html":127,"../internals/object-define-properties":156,"../internals/shared-key":183}],156:[function(require,module,exports){
-'use strict';
-var DESCRIPTORS = require('../internals/descriptors');
-var V8_PROTOTYPE_DEFINE_BUG = require('../internals/v8-prototype-define-bug');
-var definePropertyModule = require('../internals/object-define-property');
-var anObject = require('../internals/an-object');
-var toIndexedObject = require('../internals/to-indexed-object');
-var objectKeys = require('../internals/object-keys');
-
-// `Object.defineProperties` method
-// https://tc39.es/ecma262/#sec-object.defineproperties
-// eslint-disable-next-line es/no-object-defineproperties -- safe
-exports.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
-  anObject(O);
-  var props = toIndexedObject(Properties);
-  var keys = objectKeys(Properties);
-  var length = keys.length;
-  var index = 0;
-  var key;
-  while (length > index) definePropertyModule.f(O, key = keys[index++], props[key]);
-  return O;
-};
-
-},{"../internals/an-object":88,"../internals/descriptors":103,"../internals/object-define-property":157,"../internals/object-keys":164,"../internals/to-indexed-object":188,"../internals/v8-prototype-define-bug":200}],157:[function(require,module,exports){
-'use strict';
-var DESCRIPTORS = require('../internals/descriptors');
-var IE8_DOM_DEFINE = require('../internals/ie8-dom-define');
-var V8_PROTOTYPE_DEFINE_BUG = require('../internals/v8-prototype-define-bug');
-var anObject = require('../internals/an-object');
-var toPropertyKey = require('../internals/to-property-key');
-
-var $TypeError = TypeError;
-// eslint-disable-next-line es/no-object-defineproperty -- safe
-var $defineProperty = Object.defineProperty;
-// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-var ENUMERABLE = 'enumerable';
-var CONFIGURABLE = 'configurable';
-var WRITABLE = 'writable';
-
-// `Object.defineProperty` method
-// https://tc39.es/ecma262/#sec-object.defineproperty
-exports.f = DESCRIPTORS ? V8_PROTOTYPE_DEFINE_BUG ? function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPropertyKey(P);
-  anObject(Attributes);
-  if (typeof O === 'function' && P === 'prototype' && 'value' in Attributes && WRITABLE in Attributes && !Attributes[WRITABLE]) {
-    var current = $getOwnPropertyDescriptor(O, P);
-    if (current && current[WRITABLE]) {
-      O[P] = Attributes.value;
-      Attributes = {
-        configurable: CONFIGURABLE in Attributes ? Attributes[CONFIGURABLE] : current[CONFIGURABLE],
-        enumerable: ENUMERABLE in Attributes ? Attributes[ENUMERABLE] : current[ENUMERABLE],
-        writable: false
+  // node_modules/core-js/internals/fails.js
+  var require_fails = __commonJS({
+    "node_modules/core-js/internals/fails.js"(exports, module) {
+      "use strict";
+      init_process();
+      module.exports = function(exec) {
+        try {
+          return !!exec();
+        } catch (error) {
+          return true;
+        }
       };
     }
-  } return $defineProperty(O, P, Attributes);
-} : $defineProperty : function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPropertyKey(P);
-  anObject(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return $defineProperty(O, P, Attributes);
-  } catch (error) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw new $TypeError('Accessors not supported');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-},{"../internals/an-object":88,"../internals/descriptors":103,"../internals/ie8-dom-define":128,"../internals/to-property-key":193,"../internals/v8-prototype-define-bug":200}],158:[function(require,module,exports){
-'use strict';
-var DESCRIPTORS = require('../internals/descriptors');
-var call = require('../internals/function-call');
-var propertyIsEnumerableModule = require('../internals/object-property-is-enumerable');
-var createPropertyDescriptor = require('../internals/create-property-descriptor');
-var toIndexedObject = require('../internals/to-indexed-object');
-var toPropertyKey = require('../internals/to-property-key');
-var hasOwn = require('../internals/has-own-property');
-var IE8_DOM_DEFINE = require('../internals/ie8-dom-define');
-
-// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-
-// `Object.getOwnPropertyDescriptor` method
-// https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
-exports.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
-  O = toIndexedObject(O);
-  P = toPropertyKey(P);
-  if (IE8_DOM_DEFINE) try {
-    return $getOwnPropertyDescriptor(O, P);
-  } catch (error) { /* empty */ }
-  if (hasOwn(O, P)) return createPropertyDescriptor(!call(propertyIsEnumerableModule.f, O, P), O[P]);
-};
-
-},{"../internals/create-property-descriptor":97,"../internals/descriptors":103,"../internals/function-call":113,"../internals/has-own-property":125,"../internals/ie8-dom-define":128,"../internals/object-property-is-enumerable":165,"../internals/to-indexed-object":188,"../internals/to-property-key":193}],159:[function(require,module,exports){
-'use strict';
-var internalObjectKeys = require('../internals/object-keys-internal');
-var enumBugKeys = require('../internals/enum-bug-keys');
-
-var hiddenKeys = enumBugKeys.concat('length', 'prototype');
-
-// `Object.getOwnPropertyNames` method
-// https://tc39.es/ecma262/#sec-object.getownpropertynames
-// eslint-disable-next-line es/no-object-getownpropertynames -- safe
-exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
-  return internalObjectKeys(O, hiddenKeys);
-};
-
-},{"../internals/enum-bug-keys":105,"../internals/object-keys-internal":163}],160:[function(require,module,exports){
-'use strict';
-// eslint-disable-next-line es/no-object-getownpropertysymbols -- safe
-exports.f = Object.getOwnPropertySymbols;
-
-},{}],161:[function(require,module,exports){
-'use strict';
-var hasOwn = require('../internals/has-own-property');
-var isCallable = require('../internals/is-callable');
-var toObject = require('../internals/to-object');
-var sharedKey = require('../internals/shared-key');
-var CORRECT_PROTOTYPE_GETTER = require('../internals/correct-prototype-getter');
-
-var IE_PROTO = sharedKey('IE_PROTO');
-var $Object = Object;
-var ObjectPrototype = $Object.prototype;
-
-// `Object.getPrototypeOf` method
-// https://tc39.es/ecma262/#sec-object.getprototypeof
-// eslint-disable-next-line es/no-object-getprototypeof -- safe
-module.exports = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function (O) {
-  var object = toObject(O);
-  if (hasOwn(object, IE_PROTO)) return object[IE_PROTO];
-  var constructor = object.constructor;
-  if (isCallable(constructor) && object instanceof constructor) {
-    return constructor.prototype;
-  } return object instanceof $Object ? ObjectPrototype : null;
-};
-
-},{"../internals/correct-prototype-getter":94,"../internals/has-own-property":125,"../internals/is-callable":133,"../internals/shared-key":183,"../internals/to-object":191}],162:[function(require,module,exports){
-'use strict';
-var uncurryThis = require('../internals/function-uncurry-this');
-
-module.exports = uncurryThis({}.isPrototypeOf);
-
-},{"../internals/function-uncurry-this":117}],163:[function(require,module,exports){
-'use strict';
-var uncurryThis = require('../internals/function-uncurry-this');
-var hasOwn = require('../internals/has-own-property');
-var toIndexedObject = require('../internals/to-indexed-object');
-var indexOf = require('../internals/array-includes').indexOf;
-var hiddenKeys = require('../internals/hidden-keys');
-
-var push = uncurryThis([].push);
-
-module.exports = function (object, names) {
-  var O = toIndexedObject(object);
-  var i = 0;
-  var result = [];
-  var key;
-  for (key in O) !hasOwn(hiddenKeys, key) && hasOwn(O, key) && push(result, key);
-  // Don't enum bug & hidden keys
-  while (names.length > i) if (hasOwn(O, key = names[i++])) {
-    ~indexOf(result, key) || push(result, key);
-  }
-  return result;
-};
-
-},{"../internals/array-includes":89,"../internals/function-uncurry-this":117,"../internals/has-own-property":125,"../internals/hidden-keys":126,"../internals/to-indexed-object":188}],164:[function(require,module,exports){
-'use strict';
-var internalObjectKeys = require('../internals/object-keys-internal');
-var enumBugKeys = require('../internals/enum-bug-keys');
-
-// `Object.keys` method
-// https://tc39.es/ecma262/#sec-object.keys
-// eslint-disable-next-line es/no-object-keys -- safe
-module.exports = Object.keys || function keys(O) {
-  return internalObjectKeys(O, enumBugKeys);
-};
-
-},{"../internals/enum-bug-keys":105,"../internals/object-keys-internal":163}],165:[function(require,module,exports){
-'use strict';
-var $propertyIsEnumerable = {}.propertyIsEnumerable;
-// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-
-// Nashorn ~ JDK8 bug
-var NASHORN_BUG = getOwnPropertyDescriptor && !$propertyIsEnumerable.call({ 1: 2 }, 1);
-
-// `Object.prototype.propertyIsEnumerable` method implementation
-// https://tc39.es/ecma262/#sec-object.prototype.propertyisenumerable
-exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
-  var descriptor = getOwnPropertyDescriptor(this, V);
-  return !!descriptor && descriptor.enumerable;
-} : $propertyIsEnumerable;
-
-},{}],166:[function(require,module,exports){
-'use strict';
-var call = require('../internals/function-call');
-var isCallable = require('../internals/is-callable');
-var isObject = require('../internals/is-object');
-
-var $TypeError = TypeError;
-
-// `OrdinaryToPrimitive` abstract operation
-// https://tc39.es/ecma262/#sec-ordinarytoprimitive
-module.exports = function (input, pref) {
-  var fn, val;
-  if (pref === 'string' && isCallable(fn = input.toString) && !isObject(val = call(fn, input))) return val;
-  if (isCallable(fn = input.valueOf) && !isObject(val = call(fn, input))) return val;
-  if (pref !== 'string' && isCallable(fn = input.toString) && !isObject(val = call(fn, input))) return val;
-  throw new $TypeError("Can't convert object to primitive value");
-};
-
-},{"../internals/function-call":113,"../internals/is-callable":133,"../internals/is-object":137}],167:[function(require,module,exports){
-'use strict';
-var getBuiltIn = require('../internals/get-built-in');
-var uncurryThis = require('../internals/function-uncurry-this');
-var getOwnPropertyNamesModule = require('../internals/object-get-own-property-names');
-var getOwnPropertySymbolsModule = require('../internals/object-get-own-property-symbols');
-var anObject = require('../internals/an-object');
-
-var concat = uncurryThis([].concat);
-
-// all object keys, includes non-enumerable and symbols
-module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
-  var keys = getOwnPropertyNamesModule.f(anObject(it));
-  var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
-  return getOwnPropertySymbols ? concat(keys, getOwnPropertySymbols(it)) : keys;
-};
-
-},{"../internals/an-object":88,"../internals/function-uncurry-this":117,"../internals/get-built-in":118,"../internals/object-get-own-property-names":159,"../internals/object-get-own-property-symbols":160}],168:[function(require,module,exports){
-'use strict';
-var globalThis = require('../internals/global-this');
-var fails = require('../internals/fails');
-
-// babel-minify and Closure Compiler transpiles RegExp('.', 'd') -> /./d and it causes SyntaxError
-var RegExp = globalThis.RegExp;
-
-var FLAGS_GETTER_IS_CORRECT = !fails(function () {
-  var INDICES_SUPPORT = true;
-  try {
-    RegExp('.', 'd');
-  } catch (error) {
-    INDICES_SUPPORT = false;
-  }
-
-  var O = {};
-  // modern V8 bug
-  var calls = '';
-  var expected = INDICES_SUPPORT ? 'dgimsy' : 'gimsy';
-
-  var addGetter = function (key, chr) {
-    // eslint-disable-next-line es/no-object-defineproperty -- safe
-    Object.defineProperty(O, key, { get: function () {
-      calls += chr;
-      return true;
-    } });
-  };
-
-  var pairs = {
-    dotAll: 's',
-    global: 'g',
-    ignoreCase: 'i',
-    multiline: 'm',
-    sticky: 'y'
-  };
-
-  if (INDICES_SUPPORT) pairs.hasIndices = 'd';
-
-  for (var key in pairs) addGetter(key, pairs[key]);
-
-  // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-  var result = Object.getOwnPropertyDescriptor(RegExp.prototype, 'flags').get.call(O);
-
-  return result !== expected || calls !== expected;
-});
-
-module.exports = { correct: FLAGS_GETTER_IS_CORRECT };
-
-},{"../internals/fails":109,"../internals/global-this":124}],169:[function(require,module,exports){
-'use strict';
-var anObject = require('../internals/an-object');
-
-// `RegExp.prototype.flags` getter implementation
-// https://tc39.es/ecma262/#sec-get-regexp.prototype.flags
-module.exports = function () {
-  var that = anObject(this);
-  var result = '';
-  if (that.hasIndices) result += 'd';
-  if (that.global) result += 'g';
-  if (that.ignoreCase) result += 'i';
-  if (that.multiline) result += 'm';
-  if (that.dotAll) result += 's';
-  if (that.unicode) result += 'u';
-  if (that.unicodeSets) result += 'v';
-  if (that.sticky) result += 'y';
-  return result;
-};
-
-},{"../internals/an-object":88}],170:[function(require,module,exports){
-'use strict';
-var isNullOrUndefined = require('../internals/is-null-or-undefined');
-
-var $TypeError = TypeError;
-
-// `RequireObjectCoercible` abstract operation
-// https://tc39.es/ecma262/#sec-requireobjectcoercible
-module.exports = function (it) {
-  if (isNullOrUndefined(it)) throw new $TypeError("Can't call method on " + it);
-  return it;
-};
-
-},{"../internals/is-null-or-undefined":136}],171:[function(require,module,exports){
-'use strict';
-// `SameValueZero` abstract operation
-// https://tc39.es/ecma262/#sec-samevaluezero
-module.exports = function (x, y) {
-  // eslint-disable-next-line no-self-compare -- NaN check
-  return x === y || x !== x && y !== y;
-};
-
-},{}],172:[function(require,module,exports){
-'use strict';
-var SetHelpers = require('../internals/set-helpers');
-var iterate = require('../internals/set-iterate');
-
-var Set = SetHelpers.Set;
-var add = SetHelpers.add;
-
-module.exports = function (set) {
-  var result = new Set();
-  iterate(set, function (it) {
-    add(result, it);
-  });
-  return result;
-};
-
-},{"../internals/set-helpers":174,"../internals/set-iterate":179}],173:[function(require,module,exports){
-'use strict';
-var aSet = require('../internals/a-set');
-var SetHelpers = require('../internals/set-helpers');
-var clone = require('../internals/set-clone');
-var size = require('../internals/set-size');
-var getSetRecord = require('../internals/get-set-record');
-var iterateSet = require('../internals/set-iterate');
-var iterateSimple = require('../internals/iterate-simple');
-
-var has = SetHelpers.has;
-var remove = SetHelpers.remove;
-
-// `Set.prototype.difference` method
-// https://tc39.es/ecma262/#sec-set.prototype.difference
-module.exports = function difference(other) {
-  var O = aSet(this);
-  var otherRec = getSetRecord(other);
-  var result = clone(O);
-  if (size(result) <= otherRec.size) iterateSet(result, function (e) {
-    if (otherRec.includes(e)) remove(result, e);
-  });
-  else iterateSimple(otherRec.getIterator(), function (e) {
-    if (has(result, e)) remove(result, e);
-  });
-  return result;
-};
-
-},{"../internals/a-set":83,"../internals/get-set-record":123,"../internals/iterate-simple":140,"../internals/set-clone":172,"../internals/set-helpers":174,"../internals/set-iterate":179,"../internals/set-size":180}],174:[function(require,module,exports){
-'use strict';
-var uncurryThis = require('../internals/function-uncurry-this');
-
-// eslint-disable-next-line es/no-set -- safe
-var SetPrototype = Set.prototype;
-
-module.exports = {
-  // eslint-disable-next-line es/no-set -- safe
-  Set: Set,
-  add: uncurryThis(SetPrototype.add),
-  has: uncurryThis(SetPrototype.has),
-  remove: uncurryThis(SetPrototype['delete']),
-  proto: SetPrototype
-};
-
-},{"../internals/function-uncurry-this":117}],175:[function(require,module,exports){
-'use strict';
-var aSet = require('../internals/a-set');
-var SetHelpers = require('../internals/set-helpers');
-var size = require('../internals/set-size');
-var getSetRecord = require('../internals/get-set-record');
-var iterateSet = require('../internals/set-iterate');
-var iterateSimple = require('../internals/iterate-simple');
-
-var Set = SetHelpers.Set;
-var add = SetHelpers.add;
-var has = SetHelpers.has;
-
-// `Set.prototype.intersection` method
-// https://tc39.es/ecma262/#sec-set.prototype.intersection
-module.exports = function intersection(other) {
-  var O = aSet(this);
-  var otherRec = getSetRecord(other);
-  var result = new Set();
-
-  if (size(O) > otherRec.size) {
-    iterateSimple(otherRec.getIterator(), function (e) {
-      if (has(O, e)) add(result, e);
-    });
-  } else {
-    iterateSet(O, function (e) {
-      if (otherRec.includes(e)) add(result, e);
-    });
-  }
-
-  return result;
-};
-
-},{"../internals/a-set":83,"../internals/get-set-record":123,"../internals/iterate-simple":140,"../internals/set-helpers":174,"../internals/set-iterate":179,"../internals/set-size":180}],176:[function(require,module,exports){
-'use strict';
-var aSet = require('../internals/a-set');
-var has = require('../internals/set-helpers').has;
-var size = require('../internals/set-size');
-var getSetRecord = require('../internals/get-set-record');
-var iterateSet = require('../internals/set-iterate');
-var iterateSimple = require('../internals/iterate-simple');
-var iteratorClose = require('../internals/iterator-close');
-
-// `Set.prototype.isDisjointFrom` method
-// https://tc39.es/ecma262/#sec-set.prototype.isdisjointfrom
-module.exports = function isDisjointFrom(other) {
-  var O = aSet(this);
-  var otherRec = getSetRecord(other);
-  if (size(O) <= otherRec.size) return iterateSet(O, function (e) {
-    if (otherRec.includes(e)) return false;
-  }, true) !== false;
-  var iterator = otherRec.getIterator();
-  return iterateSimple(iterator, function (e) {
-    if (has(O, e)) return iteratorClose(iterator.iterator, 'normal', false);
-  }) !== false;
-};
-
-},{"../internals/a-set":83,"../internals/get-set-record":123,"../internals/iterate-simple":140,"../internals/iterator-close":144,"../internals/set-helpers":174,"../internals/set-iterate":179,"../internals/set-size":180}],177:[function(require,module,exports){
-'use strict';
-var aSet = require('../internals/a-set');
-var size = require('../internals/set-size');
-var iterate = require('../internals/set-iterate');
-var getSetRecord = require('../internals/get-set-record');
-
-// `Set.prototype.isSubsetOf` method
-// https://tc39.es/ecma262/#sec-set.prototype.issubsetof
-module.exports = function isSubsetOf(other) {
-  var O = aSet(this);
-  var otherRec = getSetRecord(other);
-  if (size(O) > otherRec.size) return false;
-  return iterate(O, function (e) {
-    if (!otherRec.includes(e)) return false;
-  }, true) !== false;
-};
-
-},{"../internals/a-set":83,"../internals/get-set-record":123,"../internals/set-iterate":179,"../internals/set-size":180}],178:[function(require,module,exports){
-'use strict';
-var aSet = require('../internals/a-set');
-var has = require('../internals/set-helpers').has;
-var size = require('../internals/set-size');
-var getSetRecord = require('../internals/get-set-record');
-var iterateSimple = require('../internals/iterate-simple');
-var iteratorClose = require('../internals/iterator-close');
-
-// `Set.prototype.isSupersetOf` method
-// https://tc39.es/ecma262/#sec-set.prototype.issupersetof
-module.exports = function isSupersetOf(other) {
-  var O = aSet(this);
-  var otherRec = getSetRecord(other);
-  if (size(O) < otherRec.size) return false;
-  var iterator = otherRec.getIterator();
-  return iterateSimple(iterator, function (e) {
-    if (!has(O, e)) return iteratorClose(iterator.iterator, 'normal', false);
-  }) !== false;
-};
-
-},{"../internals/a-set":83,"../internals/get-set-record":123,"../internals/iterate-simple":140,"../internals/iterator-close":144,"../internals/set-helpers":174,"../internals/set-size":180}],179:[function(require,module,exports){
-'use strict';
-var uncurryThis = require('../internals/function-uncurry-this');
-var iterateSimple = require('../internals/iterate-simple');
-var SetHelpers = require('../internals/set-helpers');
-
-var Set = SetHelpers.Set;
-var SetPrototype = SetHelpers.proto;
-var forEach = uncurryThis(SetPrototype.forEach);
-var keys = uncurryThis(SetPrototype.keys);
-var next = keys(new Set()).next;
-
-module.exports = function (set, fn, interruptible) {
-  return interruptible ? iterateSimple({ iterator: keys(set), next: next }, fn) : forEach(set, fn);
-};
-
-},{"../internals/function-uncurry-this":117,"../internals/iterate-simple":140,"../internals/set-helpers":174}],180:[function(require,module,exports){
-'use strict';
-var uncurryThisAccessor = require('../internals/function-uncurry-this-accessor');
-var SetHelpers = require('../internals/set-helpers');
-
-module.exports = uncurryThisAccessor(SetHelpers.proto, 'size', 'get') || function (set) {
-  return set.size;
-};
-
-},{"../internals/function-uncurry-this-accessor":115,"../internals/set-helpers":174}],181:[function(require,module,exports){
-'use strict';
-var aSet = require('../internals/a-set');
-var SetHelpers = require('../internals/set-helpers');
-var clone = require('../internals/set-clone');
-var getSetRecord = require('../internals/get-set-record');
-var iterateSimple = require('../internals/iterate-simple');
-
-var add = SetHelpers.add;
-var has = SetHelpers.has;
-var remove = SetHelpers.remove;
-
-// `Set.prototype.symmetricDifference` method
-// https://tc39.es/ecma262/#sec-set.prototype.symmetricdifference
-module.exports = function symmetricDifference(other) {
-  var O = aSet(this);
-  var keysIter = getSetRecord(other).getIterator();
-  var result = clone(O);
-  iterateSimple(keysIter, function (e) {
-    if (has(O, e)) remove(result, e);
-    else add(result, e);
-  });
-  return result;
-};
-
-},{"../internals/a-set":83,"../internals/get-set-record":123,"../internals/iterate-simple":140,"../internals/set-clone":172,"../internals/set-helpers":174}],182:[function(require,module,exports){
-'use strict';
-var aSet = require('../internals/a-set');
-var add = require('../internals/set-helpers').add;
-var clone = require('../internals/set-clone');
-var getSetRecord = require('../internals/get-set-record');
-var iterateSimple = require('../internals/iterate-simple');
-
-// `Set.prototype.union` method
-// https://tc39.es/ecma262/#sec-set.prototype.union
-module.exports = function union(other) {
-  var O = aSet(this);
-  var keysIter = getSetRecord(other).getIterator();
-  var result = clone(O);
-  iterateSimple(keysIter, function (it) {
-    add(result, it);
-  });
-  return result;
-};
-
-},{"../internals/a-set":83,"../internals/get-set-record":123,"../internals/iterate-simple":140,"../internals/set-clone":172,"../internals/set-helpers":174}],183:[function(require,module,exports){
-'use strict';
-var shared = require('../internals/shared');
-var uid = require('../internals/uid');
-
-var keys = shared('keys');
-
-module.exports = function (key) {
-  return keys[key] || (keys[key] = uid(key));
-};
-
-},{"../internals/shared":185,"../internals/uid":198}],184:[function(require,module,exports){
-'use strict';
-var IS_PURE = require('../internals/is-pure');
-var globalThis = require('../internals/global-this');
-var defineGlobalProperty = require('../internals/define-global-property');
-
-var SHARED = '__core-js_shared__';
-var store = module.exports = globalThis[SHARED] || defineGlobalProperty(SHARED, {});
-
-(store.versions || (store.versions = [])).push({
-  version: '3.51.0',
-  mode: IS_PURE ? 'pure' : 'global',
-  copyright: '© 2013–2025 Denis Pushkarev (zloirock.ru), 2025–2026 CoreJS Company (core-js.io). All rights reserved.',
-  license: 'https://github.com/zloirock/core-js/blob/v3.51.0/LICENSE',
-  source: 'https://github.com/zloirock/core-js'
-});
-
-},{"../internals/define-global-property":102,"../internals/global-this":124,"../internals/is-pure":138}],185:[function(require,module,exports){
-'use strict';
-var store = require('../internals/shared-store');
-// eslint-disable-next-line es/no-object-create -- safe
-var create = Object.create || Object;
-
-module.exports = function (key, value) {
-  return store[key] || (store[key] = value || create(null));
-};
-
-},{"../internals/shared-store":184}],186:[function(require,module,exports){
-'use strict';
-/* eslint-disable es/no-symbol -- required for testing */
-var V8_VERSION = require('../internals/environment-v8-version');
-var fails = require('../internals/fails');
-var globalThis = require('../internals/global-this');
-
-var $String = globalThis.String;
-
-// eslint-disable-next-line es/no-object-getownpropertysymbols -- required for testing
-module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
-  var symbol = Symbol('symbol detection');
-  // Chrome 38 Symbol has incorrect toString conversion
-  // `get-own-property-symbols` polyfill symbols converted to object are not Symbol instances
-  // nb: Do not call `String` directly to avoid this being optimized out to `symbol+''` which will,
-  // of course, fail.
-  return !$String(symbol) || !(Object(symbol) instanceof Symbol) ||
-    // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
-    !Symbol.sham && V8_VERSION && V8_VERSION < 41;
-});
-
-},{"../internals/environment-v8-version":107,"../internals/fails":109,"../internals/global-this":124}],187:[function(require,module,exports){
-'use strict';
-var toIntegerOrInfinity = require('../internals/to-integer-or-infinity');
-
-var max = Math.max;
-var min = Math.min;
-
-// Helper for a popular repeating case of the spec:
-// Let integer be ? ToInteger(index).
-// If integer < 0, let result be max((length + integer), 0); else let result be min(integer, length).
-module.exports = function (index, length) {
-  var integer = toIntegerOrInfinity(index);
-  return integer < 0 ? max(integer + length, 0) : min(integer, length);
-};
-
-},{"../internals/to-integer-or-infinity":189}],188:[function(require,module,exports){
-'use strict';
-// toObject with fallback for non-array-like ES3 strings
-var IndexedObject = require('../internals/indexed-object');
-var requireObjectCoercible = require('../internals/require-object-coercible');
-
-module.exports = function (it) {
-  return IndexedObject(requireObjectCoercible(it));
-};
-
-},{"../internals/indexed-object":129,"../internals/require-object-coercible":170}],189:[function(require,module,exports){
-'use strict';
-var trunc = require('../internals/math-trunc');
-
-// `ToIntegerOrInfinity` abstract operation
-// https://tc39.es/ecma262/#sec-tointegerorinfinity
-module.exports = function (argument) {
-  var number = +argument;
-  // eslint-disable-next-line no-self-compare -- NaN check
-  return number !== number || number === 0 ? 0 : trunc(number);
-};
-
-},{"../internals/math-trunc":154}],190:[function(require,module,exports){
-'use strict';
-var toIntegerOrInfinity = require('../internals/to-integer-or-infinity');
-
-var min = Math.min;
-
-// `ToLength` abstract operation
-// https://tc39.es/ecma262/#sec-tolength
-module.exports = function (argument) {
-  var len = toIntegerOrInfinity(argument);
-  return len > 0 ? min(len, 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
-};
-
-},{"../internals/to-integer-or-infinity":189}],191:[function(require,module,exports){
-'use strict';
-var requireObjectCoercible = require('../internals/require-object-coercible');
-
-var $Object = Object;
-
-// `ToObject` abstract operation
-// https://tc39.es/ecma262/#sec-toobject
-module.exports = function (argument) {
-  return $Object(requireObjectCoercible(argument));
-};
-
-},{"../internals/require-object-coercible":170}],192:[function(require,module,exports){
-'use strict';
-var call = require('../internals/function-call');
-var isObject = require('../internals/is-object');
-var isSymbol = require('../internals/is-symbol');
-var getMethod = require('../internals/get-method');
-var ordinaryToPrimitive = require('../internals/ordinary-to-primitive');
-var wellKnownSymbol = require('../internals/well-known-symbol');
-
-var $TypeError = TypeError;
-var TO_PRIMITIVE = wellKnownSymbol('toPrimitive');
-
-// `ToPrimitive` abstract operation
-// https://tc39.es/ecma262/#sec-toprimitive
-module.exports = function (input, pref) {
-  if (!isObject(input) || isSymbol(input)) return input;
-  var exoticToPrim = getMethod(input, TO_PRIMITIVE);
-  var result;
-  if (exoticToPrim) {
-    if (pref === undefined) pref = 'default';
-    result = call(exoticToPrim, input, pref);
-    if (!isObject(result) || isSymbol(result)) return result;
-    throw new $TypeError("Can't convert object to primitive value");
-  }
-  if (pref === undefined) pref = 'number';
-  return ordinaryToPrimitive(input, pref);
-};
-
-},{"../internals/function-call":113,"../internals/get-method":122,"../internals/is-object":137,"../internals/is-symbol":139,"../internals/ordinary-to-primitive":166,"../internals/well-known-symbol":204}],193:[function(require,module,exports){
-'use strict';
-var toPrimitive = require('../internals/to-primitive');
-var isSymbol = require('../internals/is-symbol');
-
-// `ToPropertyKey` abstract operation
-// https://tc39.es/ecma262/#sec-topropertykey
-module.exports = function (argument) {
-  var key = toPrimitive(argument, 'string');
-  return isSymbol(key) ? key : key + '';
-};
-
-},{"../internals/is-symbol":139,"../internals/to-primitive":192}],194:[function(require,module,exports){
-'use strict';
-var getBuiltIn = require('../internals/get-built-in');
-var isCallable = require('../internals/is-callable');
-var isIterable = require('../internals/is-iterable');
-var isObject = require('../internals/is-object');
-
-var Set = getBuiltIn('Set');
-
-var isSetLike = function (it) {
-  return isObject(it)
-    && typeof it.size == 'number'
-    && isCallable(it.has)
-    && isCallable(it.keys);
-};
-
-// fallback old -> new set methods proposal arguments
-module.exports = function (it) {
-  if (isSetLike(it)) return it;
-  return isIterable(it) ? new Set(it) : it;
-};
-
-},{"../internals/get-built-in":118,"../internals/is-callable":133,"../internals/is-iterable":135,"../internals/is-object":137}],195:[function(require,module,exports){
-'use strict';
-var wellKnownSymbol = require('../internals/well-known-symbol');
-
-var TO_STRING_TAG = wellKnownSymbol('toStringTag');
-var test = {};
-// eslint-disable-next-line unicorn/no-immediate-mutation -- ES3 syntax limitation
-test[TO_STRING_TAG] = 'z';
-
-module.exports = String(test) === '[object z]';
-
-},{"../internals/well-known-symbol":204}],196:[function(require,module,exports){
-'use strict';
-var classof = require('../internals/classof');
-
-var $String = String;
-
-module.exports = function (argument) {
-  if (classof(argument) === 'Symbol') throw new TypeError('Cannot convert a Symbol value to a string');
-  return $String(argument);
-};
-
-},{"../internals/classof":92}],197:[function(require,module,exports){
-'use strict';
-var $String = String;
-
-module.exports = function (argument) {
-  try {
-    return $String(argument);
-  } catch (error) {
-    return 'Object';
-  }
-};
-
-},{}],198:[function(require,module,exports){
-'use strict';
-var uncurryThis = require('../internals/function-uncurry-this');
-
-var id = 0;
-var postfix = Math.random();
-var toString = uncurryThis(1.1.toString);
-
-module.exports = function (key) {
-  return 'Symbol(' + (key === undefined ? '' : key) + ')_' + toString(++id + postfix, 36);
-};
-
-},{"../internals/function-uncurry-this":117}],199:[function(require,module,exports){
-'use strict';
-/* eslint-disable es/no-symbol -- required for testing */
-var NATIVE_SYMBOL = require('../internals/symbol-constructor-detection');
-
-module.exports = NATIVE_SYMBOL &&
-  !Symbol.sham &&
-  typeof Symbol.iterator == 'symbol';
-
-},{"../internals/symbol-constructor-detection":186}],200:[function(require,module,exports){
-'use strict';
-var DESCRIPTORS = require('../internals/descriptors');
-var fails = require('../internals/fails');
-
-// V8 ~ Chrome 36-
-// https://bugs.chromium.org/p/v8/issues/detail?id=3334
-module.exports = DESCRIPTORS && fails(function () {
-  // eslint-disable-next-line es/no-object-defineproperty -- required for testing
-  return Object.defineProperty(function () { /* empty */ }, 'prototype', {
-    value: 42,
-    writable: false
-  }).prototype !== 42;
-});
-
-},{"../internals/descriptors":103,"../internals/fails":109}],201:[function(require,module,exports){
-'use strict';
-var globalThis = require('../internals/global-this');
-var isCallable = require('../internals/is-callable');
-
-var WeakMap = globalThis.WeakMap;
-
-module.exports = isCallable(WeakMap) && /native code/.test(String(WeakMap));
-
-},{"../internals/global-this":124,"../internals/is-callable":133}],202:[function(require,module,exports){
-'use strict';
-var uncurryThis = require('../internals/function-uncurry-this');
-
-// eslint-disable-next-line es/no-weak-map -- safe
-var WeakMapPrototype = WeakMap.prototype;
-
-module.exports = {
-  // eslint-disable-next-line es/no-weak-map -- safe
-  WeakMap: WeakMap,
-  set: uncurryThis(WeakMapPrototype.set),
-  get: uncurryThis(WeakMapPrototype.get),
-  has: uncurryThis(WeakMapPrototype.has),
-  remove: uncurryThis(WeakMapPrototype['delete'])
-};
-
-},{"../internals/function-uncurry-this":117}],203:[function(require,module,exports){
-'use strict';
-var uncurryThis = require('../internals/function-uncurry-this');
-
-// eslint-disable-next-line es/no-weak-set -- safe
-var WeakSetPrototype = WeakSet.prototype;
-
-module.exports = {
-  // eslint-disable-next-line es/no-weak-set -- safe
-  WeakSet: WeakSet,
-  add: uncurryThis(WeakSetPrototype.add),
-  has: uncurryThis(WeakSetPrototype.has),
-  remove: uncurryThis(WeakSetPrototype['delete'])
-};
-
-},{"../internals/function-uncurry-this":117}],204:[function(require,module,exports){
-'use strict';
-var globalThis = require('../internals/global-this');
-var shared = require('../internals/shared');
-var hasOwn = require('../internals/has-own-property');
-var uid = require('../internals/uid');
-var NATIVE_SYMBOL = require('../internals/symbol-constructor-detection');
-var USE_SYMBOL_AS_UID = require('../internals/use-symbol-as-uid');
-
-var Symbol = globalThis.Symbol;
-var WellKnownSymbolsStore = shared('wks');
-var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol['for'] || Symbol : Symbol && Symbol.withoutSetter || uid;
-
-module.exports = function (name) {
-  if (!hasOwn(WellKnownSymbolsStore, name)) {
-    WellKnownSymbolsStore[name] = NATIVE_SYMBOL && hasOwn(Symbol, name)
-      ? Symbol[name]
-      : createWellKnownSymbol('Symbol.' + name);
-  } return WellKnownSymbolsStore[name];
-};
-
-},{"../internals/global-this":124,"../internals/has-own-property":125,"../internals/shared":185,"../internals/symbol-constructor-detection":186,"../internals/uid":198,"../internals/use-symbol-as-uid":199}],205:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var $includes = require('../internals/array-includes').includes;
-var fails = require('../internals/fails');
-var addToUnscopables = require('../internals/add-to-unscopables');
-
-// FF99+ bug
-var BROKEN_ON_SPARSE = fails(function () {
-  // eslint-disable-next-line es/no-array-prototype-includes -- detection
-  return !Array(1).includes();
-});
-
-// Safari 26.4- bug
-var BROKEN_ON_SPARSE_WITH_FROM_INDEX = fails(function () {
-  // eslint-disable-next-line no-sparse-arrays, es/no-array-prototype-includes -- detection
-  return [, 1].includes(undefined, 1);
-});
-
-// `Array.prototype.includes` method
-// https://tc39.es/ecma262/#sec-array.prototype.includes
-$({ target: 'Array', proto: true, forced: BROKEN_ON_SPARSE || BROKEN_ON_SPARSE_WITH_FROM_INDEX }, {
-  includes: function includes(el /* , fromIndex = 0 */) {
-    return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
-
-// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
-addToUnscopables('includes');
-
-},{"../internals/add-to-unscopables":86,"../internals/array-includes":89,"../internals/export":108,"../internals/fails":109}],206:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var globalThis = require('../internals/global-this');
-var anInstance = require('../internals/an-instance');
-var anObject = require('../internals/an-object');
-var isCallable = require('../internals/is-callable');
-var getPrototypeOf = require('../internals/object-get-prototype-of');
-var defineBuiltInAccessor = require('../internals/define-built-in-accessor');
-var createProperty = require('../internals/create-property');
-var fails = require('../internals/fails');
-var hasOwn = require('../internals/has-own-property');
-var wellKnownSymbol = require('../internals/well-known-symbol');
-var IteratorPrototype = require('../internals/iterators-core').IteratorPrototype;
-var DESCRIPTORS = require('../internals/descriptors');
-var IS_PURE = require('../internals/is-pure');
-
-var CONSTRUCTOR = 'constructor';
-var ITERATOR = 'Iterator';
-var TO_STRING_TAG = wellKnownSymbol('toStringTag');
-
-var $TypeError = TypeError;
-var NativeIterator = globalThis[ITERATOR];
-
-// FF56- have non-standard global helper `Iterator`
-var FORCED = IS_PURE
-  || !isCallable(NativeIterator)
-  || NativeIterator.prototype !== IteratorPrototype
-  // FF44- non-standard `Iterator` passes previous tests
-  || !fails(function () { NativeIterator({}); });
-
-var IteratorConstructor = function Iterator() {
-  anInstance(this, IteratorPrototype);
-  if (getPrototypeOf(this) === IteratorPrototype) throw new $TypeError('Abstract class Iterator not directly constructable');
-};
-
-var defineIteratorPrototypeAccessor = function (key, value) {
-  if (DESCRIPTORS) {
-    defineBuiltInAccessor(IteratorPrototype, key, {
-      configurable: true,
-      get: function () {
-        return value;
-      },
-      set: function (replacement) {
-        anObject(this);
-        if (this === IteratorPrototype) throw new $TypeError("You can't redefine this property");
-        if (hasOwn(this, key)) this[key] = replacement;
-        else createProperty(this, key, replacement);
-      }
-    });
-  } else IteratorPrototype[key] = value;
-};
-
-if (!hasOwn(IteratorPrototype, TO_STRING_TAG)) defineIteratorPrototypeAccessor(TO_STRING_TAG, ITERATOR);
-
-if (FORCED || !hasOwn(IteratorPrototype, CONSTRUCTOR) || IteratorPrototype[CONSTRUCTOR] === Object) {
-  defineIteratorPrototypeAccessor(CONSTRUCTOR, IteratorConstructor);
-}
-
-IteratorConstructor.prototype = IteratorPrototype;
-
-// `Iterator` constructor
-// https://tc39.es/ecma262/#sec-iterator
-$({ global: true, constructor: true, forced: FORCED }, {
-  Iterator: IteratorConstructor
-});
-
-},{"../internals/an-instance":87,"../internals/an-object":88,"../internals/create-property":98,"../internals/define-built-in-accessor":99,"../internals/descriptors":103,"../internals/export":108,"../internals/fails":109,"../internals/global-this":124,"../internals/has-own-property":125,"../internals/is-callable":133,"../internals/is-pure":138,"../internals/iterators-core":148,"../internals/object-get-prototype-of":161,"../internals/well-known-symbol":204}],207:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var call = require('../internals/function-call');
-var iterate = require('../internals/iterate');
-var aCallable = require('../internals/a-callable');
-var anObject = require('../internals/an-object');
-var getIteratorDirect = require('../internals/get-iterator-direct');
-var iteratorClose = require('../internals/iterator-close');
-var iteratorHelperWithoutClosingOnEarlyError = require('../internals/iterator-helper-without-closing-on-early-error');
-
-var everyWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError('every', TypeError);
-
-// `Iterator.prototype.every` method
-// https://tc39.es/ecma262/#sec-iterator.prototype.every
-$({ target: 'Iterator', proto: true, real: true, forced: everyWithoutClosingOnEarlyError }, {
-  every: function every(predicate) {
-    anObject(this);
-    try {
-      aCallable(predicate);
-    } catch (error) {
-      iteratorClose(this, 'throw', error);
-    }
-
-    if (everyWithoutClosingOnEarlyError) return call(everyWithoutClosingOnEarlyError, this, predicate);
-
-    var record = getIteratorDirect(this);
-    var counter = 0;
-    return !iterate(record, function (value, stop) {
-      if (!predicate(value, counter++)) return stop();
-    }, { IS_RECORD: true, INTERRUPTED: true }).stopped;
-  }
-});
-
-},{"../internals/a-callable":81,"../internals/an-object":88,"../internals/export":108,"../internals/function-call":113,"../internals/get-iterator-direct":119,"../internals/iterate":141,"../internals/iterator-close":144,"../internals/iterator-helper-without-closing-on-early-error":147}],208:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var call = require('../internals/function-call');
-var aCallable = require('../internals/a-callable');
-var anObject = require('../internals/an-object');
-var getIteratorDirect = require('../internals/get-iterator-direct');
-var createIteratorProxy = require('../internals/iterator-create-proxy');
-var callWithSafeIterationClosing = require('../internals/call-with-safe-iteration-closing');
-var IS_PURE = require('../internals/is-pure');
-var iteratorClose = require('../internals/iterator-close');
-var iteratorHelperThrowsOnInvalidIterator = require('../internals/iterator-helper-throws-on-invalid-iterator');
-var iteratorHelperWithoutClosingOnEarlyError = require('../internals/iterator-helper-without-closing-on-early-error');
-
-var FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator('filter', function () { /* empty */ });
-var filterWithoutClosingOnEarlyError = !IS_PURE && !FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR
-  && iteratorHelperWithoutClosingOnEarlyError('filter', TypeError);
-
-var FORCED = IS_PURE || FILTER_WITHOUT_THROWING_ON_INVALID_ITERATOR || filterWithoutClosingOnEarlyError;
-
-var IteratorProxy = createIteratorProxy(function () {
-  var iterator = this.iterator;
-  var predicate = this.predicate;
-  var next = this.next;
-  var result, done, value;
-  while (true) {
-    result = anObject(call(next, iterator));
-    done = this.done = !!result.done;
-    if (done) return;
-    value = result.value;
-    if (callWithSafeIterationClosing(iterator, predicate, [value, this.counter++], true)) return value;
-  }
-});
-
-// `Iterator.prototype.filter` method
-// https://tc39.es/ecma262/#sec-iterator.prototype.filter
-$({ target: 'Iterator', proto: true, real: true, forced: FORCED }, {
-  filter: function filter(predicate) {
-    anObject(this);
-    try {
-      aCallable(predicate);
-    } catch (error) {
-      iteratorClose(this, 'throw', error);
-    }
-
-    if (filterWithoutClosingOnEarlyError) return call(filterWithoutClosingOnEarlyError, this, predicate);
-
-    return new IteratorProxy(getIteratorDirect(this), {
-      predicate: predicate
-    });
-  }
-});
-
-},{"../internals/a-callable":81,"../internals/an-object":88,"../internals/call-with-safe-iteration-closing":90,"../internals/export":108,"../internals/function-call":113,"../internals/get-iterator-direct":119,"../internals/is-pure":138,"../internals/iterator-close":144,"../internals/iterator-create-proxy":145,"../internals/iterator-helper-throws-on-invalid-iterator":146,"../internals/iterator-helper-without-closing-on-early-error":147}],209:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var call = require('../internals/function-call');
-var iterate = require('../internals/iterate');
-var aCallable = require('../internals/a-callable');
-var anObject = require('../internals/an-object');
-var getIteratorDirect = require('../internals/get-iterator-direct');
-var iteratorClose = require('../internals/iterator-close');
-var iteratorHelperWithoutClosingOnEarlyError = require('../internals/iterator-helper-without-closing-on-early-error');
-
-var findWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError('find', TypeError);
-
-// `Iterator.prototype.find` method
-// https://tc39.es/ecma262/#sec-iterator.prototype.find
-$({ target: 'Iterator', proto: true, real: true, forced: findWithoutClosingOnEarlyError }, {
-  find: function find(predicate) {
-    anObject(this);
-    try {
-      aCallable(predicate);
-    } catch (error) {
-      iteratorClose(this, 'throw', error);
-    }
-
-    if (findWithoutClosingOnEarlyError) return call(findWithoutClosingOnEarlyError, this, predicate);
-
-    var record = getIteratorDirect(this);
-    var counter = 0;
-    return iterate(record, function (value, stop) {
-      if (predicate(value, counter++)) return stop(value);
-    }, { IS_RECORD: true, INTERRUPTED: true }).result;
-  }
-});
-
-},{"../internals/a-callable":81,"../internals/an-object":88,"../internals/export":108,"../internals/function-call":113,"../internals/get-iterator-direct":119,"../internals/iterate":141,"../internals/iterator-close":144,"../internals/iterator-helper-without-closing-on-early-error":147}],210:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var call = require('../internals/function-call');
-var iterate = require('../internals/iterate');
-var aCallable = require('../internals/a-callable');
-var anObject = require('../internals/an-object');
-var getIteratorDirect = require('../internals/get-iterator-direct');
-var iteratorClose = require('../internals/iterator-close');
-var iteratorHelperWithoutClosingOnEarlyError = require('../internals/iterator-helper-without-closing-on-early-error');
-
-var forEachWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError('forEach', TypeError);
-
-// `Iterator.prototype.forEach` method
-// https://tc39.es/ecma262/#sec-iterator.prototype.foreach
-$({ target: 'Iterator', proto: true, real: true, forced: forEachWithoutClosingOnEarlyError }, {
-  forEach: function forEach(fn) {
-    anObject(this);
-    try {
-      aCallable(fn);
-    } catch (error) {
-      iteratorClose(this, 'throw', error);
-    }
-
-    if (forEachWithoutClosingOnEarlyError) return call(forEachWithoutClosingOnEarlyError, this, fn);
-
-    var record = getIteratorDirect(this);
-    var counter = 0;
-    iterate(record, function (value) {
-      fn(value, counter++);
-    }, { IS_RECORD: true });
-  }
-});
-
-},{"../internals/a-callable":81,"../internals/an-object":88,"../internals/export":108,"../internals/function-call":113,"../internals/get-iterator-direct":119,"../internals/iterate":141,"../internals/iterator-close":144,"../internals/iterator-helper-without-closing-on-early-error":147}],211:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var call = require('../internals/function-call');
-var aCallable = require('../internals/a-callable');
-var anObject = require('../internals/an-object');
-var getIteratorDirect = require('../internals/get-iterator-direct');
-var createIteratorProxy = require('../internals/iterator-create-proxy');
-var callWithSafeIterationClosing = require('../internals/call-with-safe-iteration-closing');
-var iteratorClose = require('../internals/iterator-close');
-var iteratorHelperThrowsOnInvalidIterator = require('../internals/iterator-helper-throws-on-invalid-iterator');
-var iteratorHelperWithoutClosingOnEarlyError = require('../internals/iterator-helper-without-closing-on-early-error');
-var IS_PURE = require('../internals/is-pure');
-
-var MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator('map', function () { /* empty */ });
-var mapWithoutClosingOnEarlyError = !IS_PURE && !MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR
-  && iteratorHelperWithoutClosingOnEarlyError('map', TypeError);
-
-var FORCED = IS_PURE || MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR || mapWithoutClosingOnEarlyError;
-
-var IteratorProxy = createIteratorProxy(function () {
-  var iterator = this.iterator;
-  var result = anObject(call(this.next, iterator));
-  var done = this.done = !!result.done;
-  if (!done) return callWithSafeIterationClosing(iterator, this.mapper, [result.value, this.counter++], true);
-});
-
-// `Iterator.prototype.map` method
-// https://tc39.es/ecma262/#sec-iterator.prototype.map
-$({ target: 'Iterator', proto: true, real: true, forced: FORCED }, {
-  map: function map(mapper) {
-    anObject(this);
-    try {
-      aCallable(mapper);
-    } catch (error) {
-      iteratorClose(this, 'throw', error);
-    }
-
-    if (mapWithoutClosingOnEarlyError) return call(mapWithoutClosingOnEarlyError, this, mapper);
-
-    return new IteratorProxy(getIteratorDirect(this), {
-      mapper: mapper
-    });
-  }
-});
-
-},{"../internals/a-callable":81,"../internals/an-object":88,"../internals/call-with-safe-iteration-closing":90,"../internals/export":108,"../internals/function-call":113,"../internals/get-iterator-direct":119,"../internals/is-pure":138,"../internals/iterator-close":144,"../internals/iterator-create-proxy":145,"../internals/iterator-helper-throws-on-invalid-iterator":146,"../internals/iterator-helper-without-closing-on-early-error":147}],212:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var iterate = require('../internals/iterate');
-var aCallable = require('../internals/a-callable');
-var anObject = require('../internals/an-object');
-var getIteratorDirect = require('../internals/get-iterator-direct');
-var iteratorClose = require('../internals/iterator-close');
-var iteratorHelperWithoutClosingOnEarlyError = require('../internals/iterator-helper-without-closing-on-early-error');
-var apply = require('../internals/function-apply');
-var fails = require('../internals/fails');
-
-var $TypeError = TypeError;
-
-// https://bugs.webkit.org/show_bug.cgi?id=291651
-var FAILS_ON_INITIAL_UNDEFINED = fails(function () {
-  // eslint-disable-next-line es/no-iterator-prototype-reduce, es/no-array-prototype-keys, array-callback-return -- required for testing
-  [].keys().reduce(function () { /* empty */ }, undefined);
-});
-
-var reduceWithoutClosingOnEarlyError = !FAILS_ON_INITIAL_UNDEFINED && iteratorHelperWithoutClosingOnEarlyError('reduce', $TypeError);
-
-// `Iterator.prototype.reduce` method
-// https://tc39.es/ecma262/#sec-iterator.prototype.reduce
-$({ target: 'Iterator', proto: true, real: true, forced: FAILS_ON_INITIAL_UNDEFINED || reduceWithoutClosingOnEarlyError }, {
-  reduce: function reduce(reducer /* , initialValue */) {
-    anObject(this);
-    try {
-      aCallable(reducer);
-    } catch (error) {
-      iteratorClose(this, 'throw', error);
-    }
-
-    var noInitial = arguments.length < 2;
-    var accumulator = noInitial ? undefined : arguments[1];
-    if (reduceWithoutClosingOnEarlyError) {
-      return apply(reduceWithoutClosingOnEarlyError, this, noInitial ? [reducer] : [reducer, accumulator]);
-    }
-    var record = getIteratorDirect(this);
-    var counter = 0;
-    iterate(record, function (value) {
-      if (noInitial) {
-        noInitial = false;
-        accumulator = value;
-      } else {
-        accumulator = reducer(accumulator, value, counter);
-      }
-      counter++;
-    }, { IS_RECORD: true });
-    if (noInitial) throw new $TypeError('Reduce of empty iterator with no initial value');
-    return accumulator;
-  }
-});
-
-},{"../internals/a-callable":81,"../internals/an-object":88,"../internals/export":108,"../internals/fails":109,"../internals/function-apply":110,"../internals/get-iterator-direct":119,"../internals/iterate":141,"../internals/iterator-close":144,"../internals/iterator-helper-without-closing-on-early-error":147}],213:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var call = require('../internals/function-call');
-var iterate = require('../internals/iterate');
-var aCallable = require('../internals/a-callable');
-var anObject = require('../internals/an-object');
-var getIteratorDirect = require('../internals/get-iterator-direct');
-var iteratorClose = require('../internals/iterator-close');
-var iteratorHelperWithoutClosingOnEarlyError = require('../internals/iterator-helper-without-closing-on-early-error');
-
-var someWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError('some', TypeError);
-
-// `Iterator.prototype.some` method
-// https://tc39.es/ecma262/#sec-iterator.prototype.some
-$({ target: 'Iterator', proto: true, real: true, forced: someWithoutClosingOnEarlyError }, {
-  some: function some(predicate) {
-    anObject(this);
-    try {
-      aCallable(predicate);
-    } catch (error) {
-      iteratorClose(this, 'throw', error);
-    }
-
-    if (someWithoutClosingOnEarlyError) return call(someWithoutClosingOnEarlyError, this, predicate);
-
-    var record = getIteratorDirect(this);
-    var counter = 0;
-    return iterate(record, function (value, stop) {
-      if (predicate(value, counter++)) return stop();
-    }, { IS_RECORD: true, INTERRUPTED: true }).stopped;
-  }
-});
-
-},{"../internals/a-callable":81,"../internals/an-object":88,"../internals/export":108,"../internals/function-call":113,"../internals/get-iterator-direct":119,"../internals/iterate":141,"../internals/iterator-close":144,"../internals/iterator-helper-without-closing-on-early-error":147}],214:[function(require,module,exports){
-'use strict';
-var DESCRIPTORS = require('../internals/descriptors');
-var defineBuiltInAccessor = require('../internals/define-built-in-accessor');
-var regExpFlagsDetection = require('../internals/regexp-flags-detection');
-var regExpFlagsGetterImplementation = require('../internals/regexp-flags');
-
-// `RegExp.prototype.flags` getter
-// https://tc39.es/ecma262/#sec-get-regexp.prototype.flags
-if (DESCRIPTORS && !regExpFlagsDetection.correct) {
-  defineBuiltInAccessor(RegExp.prototype, 'flags', {
-    configurable: true,
-    get: regExpFlagsGetterImplementation
   });
 
-  regExpFlagsDetection.correct = true;
-}
-
-},{"../internals/define-built-in-accessor":99,"../internals/descriptors":103,"../internals/regexp-flags":169,"../internals/regexp-flags-detection":168}],215:[function(require,module,exports){
-'use strict';
-// TODO: Remove from `core-js@4`
-require('../modules/es.iterator.constructor');
-
-},{"../modules/es.iterator.constructor":206}],216:[function(require,module,exports){
-'use strict';
-// TODO: Remove from `core-js@4`
-require('../modules/es.iterator.every');
-
-},{"../modules/es.iterator.every":207}],217:[function(require,module,exports){
-'use strict';
-// TODO: Remove from `core-js@4`
-require('../modules/es.iterator.filter');
-
-},{"../modules/es.iterator.filter":208}],218:[function(require,module,exports){
-'use strict';
-// TODO: Remove from `core-js@4`
-require('../modules/es.iterator.find');
-
-},{"../modules/es.iterator.find":209}],219:[function(require,module,exports){
-'use strict';
-// TODO: Remove from `core-js@4`
-require('../modules/es.iterator.for-each');
-
-},{"../modules/es.iterator.for-each":210}],220:[function(require,module,exports){
-'use strict';
-// TODO: Remove from `core-js@4`
-require('../modules/es.iterator.map');
-
-},{"../modules/es.iterator.map":211}],221:[function(require,module,exports){
-'use strict';
-// TODO: Remove from `core-js@4`
-require('../modules/es.iterator.reduce');
-
-},{"../modules/es.iterator.reduce":212}],222:[function(require,module,exports){
-'use strict';
-// TODO: Remove from `core-js@4`
-require('../modules/es.iterator.some');
-
-},{"../modules/es.iterator.some":213}],223:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var aMap = require('../internals/a-map');
-var remove = require('../internals/map-helpers').remove;
-
-// `Map.prototype.deleteAll` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Map', proto: true, real: true, forced: true }, {
-  deleteAll: function deleteAll(/* ...elements */) {
-    var collection = aMap(this);
-    var allDeleted = true;
-    var wasDeleted;
-    for (var k = 0, len = arguments.length; k < len; k++) {
-      wasDeleted = remove(collection, arguments[k]);
-      allDeleted = allDeleted && wasDeleted;
-    } return !!allDeleted;
-  }
-});
-
-},{"../internals/a-map":82,"../internals/export":108,"../internals/map-helpers":152}],224:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var bind = require('../internals/function-bind-context');
-var aMap = require('../internals/a-map');
-var iterate = require('../internals/map-iterate');
-
-// `Map.prototype.every` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Map', proto: true, real: true, forced: true }, {
-  every: function every(callbackfn /* , thisArg */) {
-    var map = aMap(this);
-    var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-    return iterate(map, function (value, key) {
-      if (!boundFunction(value, key, map)) return false;
-    }, true) !== false;
-  }
-});
-
-},{"../internals/a-map":82,"../internals/export":108,"../internals/function-bind-context":111,"../internals/map-iterate":153}],225:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var bind = require('../internals/function-bind-context');
-var aMap = require('../internals/a-map');
-var MapHelpers = require('../internals/map-helpers');
-var iterate = require('../internals/map-iterate');
-
-var Map = MapHelpers.Map;
-var set = MapHelpers.set;
-
-// `Map.prototype.filter` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Map', proto: true, real: true, forced: true }, {
-  filter: function filter(callbackfn /* , thisArg */) {
-    var map = aMap(this);
-    var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-    var newMap = new Map();
-    iterate(map, function (value, key) {
-      if (boundFunction(value, key, map)) set(newMap, key, value);
-    });
-    return newMap;
-  }
-});
-
-},{"../internals/a-map":82,"../internals/export":108,"../internals/function-bind-context":111,"../internals/map-helpers":152,"../internals/map-iterate":153}],226:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var bind = require('../internals/function-bind-context');
-var aMap = require('../internals/a-map');
-var iterate = require('../internals/map-iterate');
-
-// `Map.prototype.findKey` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Map', proto: true, real: true, forced: true }, {
-  findKey: function findKey(callbackfn /* , thisArg */) {
-    var map = aMap(this);
-    var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-    var result = iterate(map, function (value, key) {
-      if (boundFunction(value, key, map)) return { key: key };
-    }, true);
-    return result && result.key;
-  }
-});
-
-},{"../internals/a-map":82,"../internals/export":108,"../internals/function-bind-context":111,"../internals/map-iterate":153}],227:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var bind = require('../internals/function-bind-context');
-var aMap = require('../internals/a-map');
-var iterate = require('../internals/map-iterate');
-
-// `Map.prototype.find` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Map', proto: true, real: true, forced: true }, {
-  find: function find(callbackfn /* , thisArg */) {
-    var map = aMap(this);
-    var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-    var result = iterate(map, function (value, key) {
-      if (boundFunction(value, key, map)) return { value: value };
-    }, true);
-    return result && result.value;
-  }
-});
-
-},{"../internals/a-map":82,"../internals/export":108,"../internals/function-bind-context":111,"../internals/map-iterate":153}],228:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var sameValueZero = require('../internals/same-value-zero');
-var aMap = require('../internals/a-map');
-var iterate = require('../internals/map-iterate');
-
-// `Map.prototype.includes` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Map', proto: true, real: true, forced: true }, {
-  includes: function includes(searchElement) {
-    return iterate(aMap(this), function (value) {
-      if (sameValueZero(value, searchElement)) return true;
-    }, true) === true;
-  }
-});
-
-},{"../internals/a-map":82,"../internals/export":108,"../internals/map-iterate":153,"../internals/same-value-zero":171}],229:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var aMap = require('../internals/a-map');
-var iterate = require('../internals/map-iterate');
-
-// `Map.prototype.keyOf` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Map', proto: true, real: true, forced: true }, {
-  keyOf: function keyOf(searchElement) {
-    var result = iterate(aMap(this), function (value, key) {
-      if (value === searchElement) return { key: key };
-    }, true);
-    return result && result.key;
-  }
-});
-
-},{"../internals/a-map":82,"../internals/export":108,"../internals/map-iterate":153}],230:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var bind = require('../internals/function-bind-context');
-var aMap = require('../internals/a-map');
-var MapHelpers = require('../internals/map-helpers');
-var iterate = require('../internals/map-iterate');
-
-var Map = MapHelpers.Map;
-var set = MapHelpers.set;
-
-// `Map.prototype.mapKeys` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Map', proto: true, real: true, forced: true }, {
-  mapKeys: function mapKeys(callbackfn /* , thisArg */) {
-    var map = aMap(this);
-    var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-    var newMap = new Map();
-    iterate(map, function (value, key) {
-      set(newMap, boundFunction(value, key, map), value);
-    });
-    return newMap;
-  }
-});
-
-},{"../internals/a-map":82,"../internals/export":108,"../internals/function-bind-context":111,"../internals/map-helpers":152,"../internals/map-iterate":153}],231:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var bind = require('../internals/function-bind-context');
-var aMap = require('../internals/a-map');
-var MapHelpers = require('../internals/map-helpers');
-var iterate = require('../internals/map-iterate');
-
-var Map = MapHelpers.Map;
-var set = MapHelpers.set;
-
-// `Map.prototype.mapValues` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Map', proto: true, real: true, forced: true }, {
-  mapValues: function mapValues(callbackfn /* , thisArg */) {
-    var map = aMap(this);
-    var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-    var newMap = new Map();
-    iterate(map, function (value, key) {
-      set(newMap, key, boundFunction(value, key, map));
-    });
-    return newMap;
-  }
-});
-
-},{"../internals/a-map":82,"../internals/export":108,"../internals/function-bind-context":111,"../internals/map-helpers":152,"../internals/map-iterate":153}],232:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var aMap = require('../internals/a-map');
-var iterate = require('../internals/iterate');
-var set = require('../internals/map-helpers').set;
-
-// `Map.prototype.merge` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Map', proto: true, real: true, arity: 1, forced: true }, {
-  // eslint-disable-next-line no-unused-vars -- required for `.length`
-  merge: function merge(iterable /* ...iterables */) {
-    var map = aMap(this);
-    var argumentsLength = arguments.length;
-    var i = 0;
-    while (i < argumentsLength) {
-      iterate(arguments[i++], function (key, value) {
-        set(map, key, value);
-      }, { AS_ENTRIES: true });
-    }
-    return map;
-  }
-});
-
-},{"../internals/a-map":82,"../internals/export":108,"../internals/iterate":141,"../internals/map-helpers":152}],233:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var aCallable = require('../internals/a-callable');
-var aMap = require('../internals/a-map');
-var iterate = require('../internals/map-iterate');
-
-var $TypeError = TypeError;
-
-// `Map.prototype.reduce` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Map', proto: true, real: true, forced: true }, {
-  reduce: function reduce(callbackfn /* , initialValue */) {
-    var map = aMap(this);
-    var noInitial = arguments.length < 2;
-    var accumulator = noInitial ? undefined : arguments[1];
-    aCallable(callbackfn);
-    iterate(map, function (value, key) {
-      if (noInitial) {
-        noInitial = false;
-        accumulator = value;
-      } else {
-        accumulator = callbackfn(accumulator, value, key, map);
-      }
-    });
-    if (noInitial) throw new $TypeError('Reduce of empty map with no initial value');
-    return accumulator;
-  }
-});
-
-},{"../internals/a-callable":81,"../internals/a-map":82,"../internals/export":108,"../internals/map-iterate":153}],234:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var bind = require('../internals/function-bind-context');
-var aMap = require('../internals/a-map');
-var iterate = require('../internals/map-iterate');
-
-// `Map.prototype.some` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Map', proto: true, real: true, forced: true }, {
-  some: function some(callbackfn /* , thisArg */) {
-    var map = aMap(this);
-    var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-    return iterate(map, function (value, key) {
-      if (boundFunction(value, key, map)) return true;
-    }, true) === true;
-  }
-});
-
-},{"../internals/a-map":82,"../internals/export":108,"../internals/function-bind-context":111,"../internals/map-iterate":153}],235:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var aCallable = require('../internals/a-callable');
-var aMap = require('../internals/a-map');
-var MapHelpers = require('../internals/map-helpers');
-
-var $TypeError = TypeError;
-var get = MapHelpers.get;
-var has = MapHelpers.has;
-var set = MapHelpers.set;
-
-// `Map.prototype.update` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Map', proto: true, real: true, forced: true }, {
-  update: function update(key, callback /* , thunk */) {
-    var map = aMap(this);
-    var length = arguments.length;
-    aCallable(callback);
-    var isPresentInMap = has(map, key);
-    if (!isPresentInMap && length < 3) {
-      throw new $TypeError('Updating absent value');
-    }
-    var value = isPresentInMap ? get(map, key) : aCallable(length > 2 ? arguments[2] : undefined)(key, map);
-    set(map, key, callback(value, key, map));
-    return map;
-  }
-});
-
-},{"../internals/a-callable":81,"../internals/a-map":82,"../internals/export":108,"../internals/map-helpers":152}],236:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var aSet = require('../internals/a-set');
-var add = require('../internals/set-helpers').add;
-
-// `Set.prototype.addAll` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Set', proto: true, real: true, forced: true }, {
-  addAll: function addAll(/* ...elements */) {
-    var set = aSet(this);
-    for (var k = 0, len = arguments.length; k < len; k++) {
-      add(set, arguments[k]);
-    } return set;
-  }
-});
-
-},{"../internals/a-set":83,"../internals/export":108,"../internals/set-helpers":174}],237:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var aSet = require('../internals/a-set');
-var remove = require('../internals/set-helpers').remove;
-
-// `Set.prototype.deleteAll` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Set', proto: true, real: true, forced: true }, {
-  deleteAll: function deleteAll(/* ...elements */) {
-    var collection = aSet(this);
-    var allDeleted = true;
-    var wasDeleted;
-    for (var k = 0, len = arguments.length; k < len; k++) {
-      wasDeleted = remove(collection, arguments[k]);
-      allDeleted = allDeleted && wasDeleted;
-    } return !!allDeleted;
-  }
-});
-
-},{"../internals/a-set":83,"../internals/export":108,"../internals/set-helpers":174}],238:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var call = require('../internals/function-call');
-var toSetLike = require('../internals/to-set-like');
-var $difference = require('../internals/set-difference');
-
-// `Set.prototype.difference` method
-// https://github.com/tc39/proposal-set-methods
-// TODO: Obsolete version, remove from `core-js@4`
-$({ target: 'Set', proto: true, real: true, forced: true }, {
-  difference: function difference(other) {
-    return call($difference, this, toSetLike(other));
-  }
-});
-
-},{"../internals/export":108,"../internals/function-call":113,"../internals/set-difference":173,"../internals/to-set-like":194}],239:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var bind = require('../internals/function-bind-context');
-var aSet = require('../internals/a-set');
-var iterate = require('../internals/set-iterate');
-
-// `Set.prototype.every` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Set', proto: true, real: true, forced: true }, {
-  every: function every(callbackfn /* , thisArg */) {
-    var set = aSet(this);
-    var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-    return iterate(set, function (value) {
-      if (!boundFunction(value, value, set)) return false;
-    }, true) !== false;
-  }
-});
-
-},{"../internals/a-set":83,"../internals/export":108,"../internals/function-bind-context":111,"../internals/set-iterate":179}],240:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var bind = require('../internals/function-bind-context');
-var aSet = require('../internals/a-set');
-var SetHelpers = require('../internals/set-helpers');
-var iterate = require('../internals/set-iterate');
-
-var Set = SetHelpers.Set;
-var add = SetHelpers.add;
-
-// `Set.prototype.filter` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Set', proto: true, real: true, forced: true }, {
-  filter: function filter(callbackfn /* , thisArg */) {
-    var set = aSet(this);
-    var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-    var newSet = new Set();
-    iterate(set, function (value) {
-      if (boundFunction(value, value, set)) add(newSet, value);
-    });
-    return newSet;
-  }
-});
-
-},{"../internals/a-set":83,"../internals/export":108,"../internals/function-bind-context":111,"../internals/set-helpers":174,"../internals/set-iterate":179}],241:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var bind = require('../internals/function-bind-context');
-var aSet = require('../internals/a-set');
-var iterate = require('../internals/set-iterate');
-
-// `Set.prototype.find` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Set', proto: true, real: true, forced: true }, {
-  find: function find(callbackfn /* , thisArg */) {
-    var set = aSet(this);
-    var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-    var result = iterate(set, function (value) {
-      if (boundFunction(value, value, set)) return { value: value };
-    }, true);
-    return result && result.value;
-  }
-});
-
-},{"../internals/a-set":83,"../internals/export":108,"../internals/function-bind-context":111,"../internals/set-iterate":179}],242:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var call = require('../internals/function-call');
-var toSetLike = require('../internals/to-set-like');
-var $intersection = require('../internals/set-intersection');
-
-// `Set.prototype.intersection` method
-// https://github.com/tc39/proposal-set-methods
-// TODO: Obsolete version, remove from `core-js@4`
-$({ target: 'Set', proto: true, real: true, forced: true }, {
-  intersection: function intersection(other) {
-    return call($intersection, this, toSetLike(other));
-  }
-});
-
-},{"../internals/export":108,"../internals/function-call":113,"../internals/set-intersection":175,"../internals/to-set-like":194}],243:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var call = require('../internals/function-call');
-var toSetLike = require('../internals/to-set-like');
-var $isDisjointFrom = require('../internals/set-is-disjoint-from');
-
-// `Set.prototype.isDisjointFrom` method
-// https://github.com/tc39/proposal-set-methods
-// TODO: Obsolete version, remove from `core-js@4`
-$({ target: 'Set', proto: true, real: true, forced: true }, {
-  isDisjointFrom: function isDisjointFrom(other) {
-    return call($isDisjointFrom, this, toSetLike(other));
-  }
-});
-
-},{"../internals/export":108,"../internals/function-call":113,"../internals/set-is-disjoint-from":176,"../internals/to-set-like":194}],244:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var call = require('../internals/function-call');
-var toSetLike = require('../internals/to-set-like');
-var $isSubsetOf = require('../internals/set-is-subset-of');
-
-// `Set.prototype.isSubsetOf` method
-// https://github.com/tc39/proposal-set-methods
-// TODO: Obsolete version, remove from `core-js@4`
-$({ target: 'Set', proto: true, real: true, forced: true }, {
-  isSubsetOf: function isSubsetOf(other) {
-    return call($isSubsetOf, this, toSetLike(other));
-  }
-});
-
-},{"../internals/export":108,"../internals/function-call":113,"../internals/set-is-subset-of":177,"../internals/to-set-like":194}],245:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var call = require('../internals/function-call');
-var toSetLike = require('../internals/to-set-like');
-var $isSupersetOf = require('../internals/set-is-superset-of');
-
-// `Set.prototype.isSupersetOf` method
-// https://github.com/tc39/proposal-set-methods
-// TODO: Obsolete version, remove from `core-js@4`
-$({ target: 'Set', proto: true, real: true, forced: true }, {
-  isSupersetOf: function isSupersetOf(other) {
-    return call($isSupersetOf, this, toSetLike(other));
-  }
-});
-
-},{"../internals/export":108,"../internals/function-call":113,"../internals/set-is-superset-of":178,"../internals/to-set-like":194}],246:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var uncurryThis = require('../internals/function-uncurry-this');
-var aSet = require('../internals/a-set');
-var iterate = require('../internals/set-iterate');
-var toString = require('../internals/to-string');
-
-var arrayJoin = uncurryThis([].join);
-var push = uncurryThis([].push);
-
-// `Set.prototype.join` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Set', proto: true, real: true, forced: true }, {
-  join: function join(separator) {
-    var set = aSet(this);
-    var sep = separator === undefined ? ',' : toString(separator);
-    var array = [];
-    iterate(set, function (value) {
-      push(array, value);
-    });
-    return arrayJoin(array, sep);
-  }
-});
-
-},{"../internals/a-set":83,"../internals/export":108,"../internals/function-uncurry-this":117,"../internals/set-iterate":179,"../internals/to-string":196}],247:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var bind = require('../internals/function-bind-context');
-var aSet = require('../internals/a-set');
-var SetHelpers = require('../internals/set-helpers');
-var iterate = require('../internals/set-iterate');
-
-var Set = SetHelpers.Set;
-var add = SetHelpers.add;
-
-// `Set.prototype.map` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Set', proto: true, real: true, forced: true }, {
-  map: function map(callbackfn /* , thisArg */) {
-    var set = aSet(this);
-    var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-    var newSet = new Set();
-    iterate(set, function (value) {
-      add(newSet, boundFunction(value, value, set));
-    });
-    return newSet;
-  }
-});
-
-},{"../internals/a-set":83,"../internals/export":108,"../internals/function-bind-context":111,"../internals/set-helpers":174,"../internals/set-iterate":179}],248:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var aCallable = require('../internals/a-callable');
-var aSet = require('../internals/a-set');
-var iterate = require('../internals/set-iterate');
-
-var $TypeError = TypeError;
-
-// `Set.prototype.reduce` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Set', proto: true, real: true, forced: true }, {
-  reduce: function reduce(callbackfn /* , initialValue */) {
-    var set = aSet(this);
-    var noInitial = arguments.length < 2;
-    var accumulator = noInitial ? undefined : arguments[1];
-    aCallable(callbackfn);
-    iterate(set, function (value) {
-      if (noInitial) {
-        noInitial = false;
-        accumulator = value;
-      } else {
-        accumulator = callbackfn(accumulator, value, value, set);
-      }
-    });
-    if (noInitial) throw new $TypeError('Reduce of empty set with no initial value');
-    return accumulator;
-  }
-});
-
-},{"../internals/a-callable":81,"../internals/a-set":83,"../internals/export":108,"../internals/set-iterate":179}],249:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var bind = require('../internals/function-bind-context');
-var aSet = require('../internals/a-set');
-var iterate = require('../internals/set-iterate');
-
-// `Set.prototype.some` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'Set', proto: true, real: true, forced: true }, {
-  some: function some(callbackfn /* , thisArg */) {
-    var set = aSet(this);
-    var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-    return iterate(set, function (value) {
-      if (boundFunction(value, value, set)) return true;
-    }, true) === true;
-  }
-});
-
-},{"../internals/a-set":83,"../internals/export":108,"../internals/function-bind-context":111,"../internals/set-iterate":179}],250:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var call = require('../internals/function-call');
-var toSetLike = require('../internals/to-set-like');
-var $symmetricDifference = require('../internals/set-symmetric-difference');
-
-// `Set.prototype.symmetricDifference` method
-// https://github.com/tc39/proposal-set-methods
-// TODO: Obsolete version, remove from `core-js@4`
-$({ target: 'Set', proto: true, real: true, forced: true }, {
-  symmetricDifference: function symmetricDifference(other) {
-    return call($symmetricDifference, this, toSetLike(other));
-  }
-});
-
-},{"../internals/export":108,"../internals/function-call":113,"../internals/set-symmetric-difference":181,"../internals/to-set-like":194}],251:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var call = require('../internals/function-call');
-var toSetLike = require('../internals/to-set-like');
-var $union = require('../internals/set-union');
-
-// `Set.prototype.union` method
-// https://github.com/tc39/proposal-set-methods
-// TODO: Obsolete version, remove from `core-js@4`
-$({ target: 'Set', proto: true, real: true, forced: true }, {
-  union: function union(other) {
-    return call($union, this, toSetLike(other));
-  }
-});
-
-},{"../internals/export":108,"../internals/function-call":113,"../internals/set-union":182,"../internals/to-set-like":194}],252:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var aWeakMap = require('../internals/a-weak-map');
-var remove = require('../internals/weak-map-helpers').remove;
-
-// `WeakMap.prototype.deleteAll` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'WeakMap', proto: true, real: true, forced: true }, {
-  deleteAll: function deleteAll(/* ...elements */) {
-    var collection = aWeakMap(this);
-    var allDeleted = true;
-    var wasDeleted;
-    for (var k = 0, len = arguments.length; k < len; k++) {
-      wasDeleted = remove(collection, arguments[k]);
-      allDeleted = allDeleted && wasDeleted;
-    } return !!allDeleted;
-  }
-});
-
-},{"../internals/a-weak-map":84,"../internals/export":108,"../internals/weak-map-helpers":202}],253:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var aWeakSet = require('../internals/a-weak-set');
-var add = require('../internals/weak-set-helpers').add;
-
-// `WeakSet.prototype.addAll` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'WeakSet', proto: true, real: true, forced: true }, {
-  addAll: function addAll(/* ...elements */) {
-    var set = aWeakSet(this);
-    for (var k = 0, len = arguments.length; k < len; k++) {
-      add(set, arguments[k]);
-    } return set;
-  }
-});
-
-},{"../internals/a-weak-set":85,"../internals/export":108,"../internals/weak-set-helpers":203}],254:[function(require,module,exports){
-'use strict';
-var $ = require('../internals/export');
-var aWeakSet = require('../internals/a-weak-set');
-var remove = require('../internals/weak-set-helpers').remove;
-
-// `WeakSet.prototype.deleteAll` method
-// https://github.com/tc39/proposal-collection-methods
-$({ target: 'WeakSet', proto: true, real: true, forced: true }, {
-  deleteAll: function deleteAll(/* ...elements */) {
-    var collection = aWeakSet(this);
-    var allDeleted = true;
-    var wasDeleted;
-    for (var k = 0, len = arguments.length; k < len; k++) {
-      wasDeleted = remove(collection, arguments[k]);
-      allDeleted = allDeleted && wasDeleted;
-    } return !!allDeleted;
-  }
-});
-
-},{"../internals/a-weak-set":85,"../internals/export":108,"../internals/weak-set-helpers":203}],255:[function(require,module,exports){
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var runtime = (function (exports) {
-  "use strict";
-
-  var Op = Object.prototype;
-  var hasOwn = Op.hasOwnProperty;
-  var defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; };
-  var undefined; // More compressible than void 0.
-  var $Symbol = typeof Symbol === "function" ? Symbol : {};
-  var iteratorSymbol = $Symbol.iterator || "@@iterator";
-  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
-  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
-
-  function define(obj, key, value) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-    return obj[key];
-  }
-  try {
-    // IE 8 has a broken Object.defineProperty that only works on DOM objects.
-    define({}, "");
-  } catch (err) {
-    define = function(obj, key, value) {
-      return obj[key] = value;
-    };
-  }
-
-  function wrap(innerFn, outerFn, self, tryLocsList) {
-    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
-    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
-    var generator = Object.create(protoGenerator.prototype);
-    var context = new Context(tryLocsList || []);
-
-    // The ._invoke method unifies the implementations of the .next,
-    // .throw, and .return methods.
-    defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) });
-
-    return generator;
-  }
-  exports.wrap = wrap;
-
-  // Try/catch helper to minimize deoptimizations. Returns a completion
-  // record like context.tryEntries[i].completion. This interface could
-  // have been (and was previously) designed to take a closure to be
-  // invoked without arguments, but in all the cases we care about we
-  // already have an existing method we want to call, so there's no need
-  // to create a new function object. We can even get away with assuming
-  // the method takes exactly one argument, since that happens to be true
-  // in every case, so we don't have to touch the arguments object. The
-  // only additional allocation required is the completion record, which
-  // has a stable shape and so hopefully should be cheap to allocate.
-  function tryCatch(fn, obj, arg) {
-    try {
-      return { type: "normal", arg: fn.call(obj, arg) };
-    } catch (err) {
-      return { type: "throw", arg: err };
-    }
-  }
-
-  var GenStateSuspendedStart = "suspendedStart";
-  var GenStateSuspendedYield = "suspendedYield";
-  var GenStateExecuting = "executing";
-  var GenStateCompleted = "completed";
-
-  // Returning this object from the innerFn has the same effect as
-  // breaking out of the dispatch switch statement.
-  var ContinueSentinel = {};
-
-  // Dummy constructor functions that we use as the .constructor and
-  // .constructor.prototype properties for functions that return Generator
-  // objects. For full spec compliance, you may wish to configure your
-  // minifier not to mangle the names of these two functions.
-  function Generator() {}
-  function GeneratorFunction() {}
-  function GeneratorFunctionPrototype() {}
-
-  // This is a polyfill for %IteratorPrototype% for environments that
-  // don't natively support it.
-  var IteratorPrototype = {};
-  define(IteratorPrototype, iteratorSymbol, function () {
-    return this;
-  });
-
-  var getProto = Object.getPrototypeOf;
-  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
-  if (NativeIteratorPrototype &&
-      NativeIteratorPrototype !== Op &&
-      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
-    // This environment has a native %IteratorPrototype%; use it instead
-    // of the polyfill.
-    IteratorPrototype = NativeIteratorPrototype;
-  }
-
-  var Gp = GeneratorFunctionPrototype.prototype =
-    Generator.prototype = Object.create(IteratorPrototype);
-  GeneratorFunction.prototype = GeneratorFunctionPrototype;
-  defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: true });
-  defineProperty(
-    GeneratorFunctionPrototype,
-    "constructor",
-    { value: GeneratorFunction, configurable: true }
-  );
-  GeneratorFunction.displayName = define(
-    GeneratorFunctionPrototype,
-    toStringTagSymbol,
-    "GeneratorFunction"
-  );
-
-  // Helper for defining the .next, .throw, and .return methods of the
-  // Iterator interface in terms of a single ._invoke method.
-  function defineIteratorMethods(prototype) {
-    ["next", "throw", "return"].forEach(function(method) {
-      define(prototype, method, function(arg) {
-        return this._invoke(method, arg);
+  // node_modules/core-js/internals/descriptors.js
+  var require_descriptors = __commonJS({
+    "node_modules/core-js/internals/descriptors.js"(exports, module) {
+      "use strict";
+      init_process();
+      var fails = require_fails();
+      module.exports = !fails(function() {
+        return Object.defineProperty({}, 1, { get: function() {
+          return 7;
+        } })[1] !== 7;
       });
-    });
-  }
-
-  exports.isGeneratorFunction = function(genFun) {
-    var ctor = typeof genFun === "function" && genFun.constructor;
-    return ctor
-      ? ctor === GeneratorFunction ||
-        // For the native GeneratorFunction constructor, the best we can
-        // do is to check its .name property.
-        (ctor.displayName || ctor.name) === "GeneratorFunction"
-      : false;
-  };
-
-  exports.mark = function(genFun) {
-    if (Object.setPrototypeOf) {
-      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
-    } else {
-      genFun.__proto__ = GeneratorFunctionPrototype;
-      define(genFun, toStringTagSymbol, "GeneratorFunction");
     }
-    genFun.prototype = Object.create(Gp);
-    return genFun;
-  };
+  });
 
-  // Within the body of any async function, `await x` is transformed to
-  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
-  // `hasOwn.call(value, "__await")` to determine if the yielded value is
-  // meant to be awaited.
-  exports.awrap = function(arg) {
-    return { __await: arg };
-  };
+  // node_modules/core-js/internals/function-bind-native.js
+  var require_function_bind_native = __commonJS({
+    "node_modules/core-js/internals/function-bind-native.js"(exports, module) {
+      "use strict";
+      init_process();
+      var fails = require_fails();
+      module.exports = !fails(function() {
+        var test = function() {
+        }.bind();
+        return typeof test != "function" || test.hasOwnProperty("prototype");
+      });
+    }
+  });
 
-  function AsyncIterator(generator, PromiseImpl) {
-    function invoke(method, arg, resolve, reject) {
-      var record = tryCatch(generator[method], generator, arg);
-      if (record.type === "throw") {
-        reject(record.arg);
+  // node_modules/core-js/internals/function-call.js
+  var require_function_call = __commonJS({
+    "node_modules/core-js/internals/function-call.js"(exports, module) {
+      "use strict";
+      init_process();
+      var NATIVE_BIND = require_function_bind_native();
+      var call = Function.prototype.call;
+      module.exports = NATIVE_BIND ? call.bind(call) : function() {
+        return call.apply(call, arguments);
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/object-property-is-enumerable.js
+  var require_object_property_is_enumerable = __commonJS({
+    "node_modules/core-js/internals/object-property-is-enumerable.js"(exports) {
+      "use strict";
+      init_process();
+      var $propertyIsEnumerable = {}.propertyIsEnumerable;
+      var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+      var NASHORN_BUG = getOwnPropertyDescriptor && !$propertyIsEnumerable.call({ 1: 2 }, 1);
+      exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
+        var descriptor = getOwnPropertyDescriptor(this, V);
+        return !!descriptor && descriptor.enumerable;
+      } : $propertyIsEnumerable;
+    }
+  });
+
+  // node_modules/core-js/internals/create-property-descriptor.js
+  var require_create_property_descriptor = __commonJS({
+    "node_modules/core-js/internals/create-property-descriptor.js"(exports, module) {
+      "use strict";
+      init_process();
+      module.exports = function(bitmap, value) {
+        return {
+          enumerable: !(bitmap & 1),
+          configurable: !(bitmap & 2),
+          writable: !(bitmap & 4),
+          value
+        };
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/function-uncurry-this.js
+  var require_function_uncurry_this = __commonJS({
+    "node_modules/core-js/internals/function-uncurry-this.js"(exports, module) {
+      "use strict";
+      init_process();
+      var NATIVE_BIND = require_function_bind_native();
+      var FunctionPrototype = Function.prototype;
+      var call = FunctionPrototype.call;
+      var uncurryThisWithBind = NATIVE_BIND && FunctionPrototype.bind.bind(call, call);
+      module.exports = NATIVE_BIND ? uncurryThisWithBind : function(fn) {
+        return function() {
+          return call.apply(fn, arguments);
+        };
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/classof-raw.js
+  var require_classof_raw = __commonJS({
+    "node_modules/core-js/internals/classof-raw.js"(exports, module) {
+      "use strict";
+      init_process();
+      var uncurryThis = require_function_uncurry_this();
+      var toString = uncurryThis({}.toString);
+      var stringSlice = uncurryThis("".slice);
+      module.exports = function(it) {
+        return stringSlice(toString(it), 8, -1);
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/indexed-object.js
+  var require_indexed_object = __commonJS({
+    "node_modules/core-js/internals/indexed-object.js"(exports, module) {
+      "use strict";
+      init_process();
+      var uncurryThis = require_function_uncurry_this();
+      var fails = require_fails();
+      var classof = require_classof_raw();
+      var $Object = Object;
+      var split = uncurryThis("".split);
+      module.exports = fails(function() {
+        return !$Object("z").propertyIsEnumerable(0);
+      }) ? function(it) {
+        return classof(it) === "String" ? split(it, "") : $Object(it);
+      } : $Object;
+    }
+  });
+
+  // node_modules/core-js/internals/is-null-or-undefined.js
+  var require_is_null_or_undefined = __commonJS({
+    "node_modules/core-js/internals/is-null-or-undefined.js"(exports, module) {
+      "use strict";
+      init_process();
+      module.exports = function(it) {
+        return it === null || it === void 0;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/require-object-coercible.js
+  var require_require_object_coercible = __commonJS({
+    "node_modules/core-js/internals/require-object-coercible.js"(exports, module) {
+      "use strict";
+      init_process();
+      var isNullOrUndefined = require_is_null_or_undefined();
+      var $TypeError = TypeError;
+      module.exports = function(it) {
+        if (isNullOrUndefined(it)) throw new $TypeError("Can't call method on " + it);
+        return it;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/to-indexed-object.js
+  var require_to_indexed_object = __commonJS({
+    "node_modules/core-js/internals/to-indexed-object.js"(exports, module) {
+      "use strict";
+      init_process();
+      var IndexedObject = require_indexed_object();
+      var requireObjectCoercible = require_require_object_coercible();
+      module.exports = function(it) {
+        return IndexedObject(requireObjectCoercible(it));
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/is-callable.js
+  var require_is_callable = __commonJS({
+    "node_modules/core-js/internals/is-callable.js"(exports, module) {
+      "use strict";
+      init_process();
+      var documentAll = typeof document == "object" && document.all;
+      module.exports = typeof documentAll == "undefined" && documentAll !== void 0 ? function(argument) {
+        return typeof argument == "function" || argument === documentAll;
+      } : function(argument) {
+        return typeof argument == "function";
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/is-object.js
+  var require_is_object = __commonJS({
+    "node_modules/core-js/internals/is-object.js"(exports, module) {
+      "use strict";
+      init_process();
+      var isCallable = require_is_callable();
+      module.exports = function(it) {
+        return typeof it == "object" ? it !== null : isCallable(it);
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/get-built-in.js
+  var require_get_built_in = __commonJS({
+    "node_modules/core-js/internals/get-built-in.js"(exports, module) {
+      "use strict";
+      init_process();
+      var globalThis2 = require_global_this();
+      var isCallable = require_is_callable();
+      var aFunction = function(argument) {
+        return isCallable(argument) ? argument : void 0;
+      };
+      module.exports = function(namespace, method) {
+        return arguments.length < 2 ? aFunction(globalThis2[namespace]) : globalThis2[namespace] && globalThis2[namespace][method];
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/object-is-prototype-of.js
+  var require_object_is_prototype_of = __commonJS({
+    "node_modules/core-js/internals/object-is-prototype-of.js"(exports, module) {
+      "use strict";
+      init_process();
+      var uncurryThis = require_function_uncurry_this();
+      module.exports = uncurryThis({}.isPrototypeOf);
+    }
+  });
+
+  // node_modules/core-js/internals/environment-user-agent.js
+  var require_environment_user_agent = __commonJS({
+    "node_modules/core-js/internals/environment-user-agent.js"(exports, module) {
+      "use strict";
+      init_process();
+      var globalThis2 = require_global_this();
+      var navigator = globalThis2.navigator;
+      var userAgent = navigator && navigator.userAgent;
+      module.exports = userAgent ? String(userAgent) : "";
+    }
+  });
+
+  // node_modules/core-js/internals/environment-v8-version.js
+  var require_environment_v8_version = __commonJS({
+    "node_modules/core-js/internals/environment-v8-version.js"(exports, module) {
+      "use strict";
+      init_process();
+      var globalThis2 = require_global_this();
+      var userAgent = require_environment_user_agent();
+      var process = globalThis2.process;
+      var Deno = globalThis2.Deno;
+      var versions = process && process.versions || Deno && Deno.version;
+      var v8 = versions && versions.v8;
+      var match;
+      var version;
+      if (v8) {
+        match = v8.split(".");
+        version = match[0] > 0 && match[0] < 4 ? 1 : +(match[0] + match[1]);
+      }
+      if (!version && userAgent) {
+        match = userAgent.match(/Edge\/(\d+)/);
+        if (!match || match[1] >= 74) {
+          match = userAgent.match(/Chrome\/(\d+)/);
+          if (match) version = +match[1];
+        }
+      }
+      module.exports = version;
+    }
+  });
+
+  // node_modules/core-js/internals/symbol-constructor-detection.js
+  var require_symbol_constructor_detection = __commonJS({
+    "node_modules/core-js/internals/symbol-constructor-detection.js"(exports, module) {
+      "use strict";
+      init_process();
+      var V8_VERSION = require_environment_v8_version();
+      var fails = require_fails();
+      var globalThis2 = require_global_this();
+      var $String = globalThis2.String;
+      module.exports = !!Object.getOwnPropertySymbols && !fails(function() {
+        var symbol = /* @__PURE__ */ Symbol("symbol detection");
+        return !$String(symbol) || !(Object(symbol) instanceof Symbol) || // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
+        !Symbol.sham && V8_VERSION && V8_VERSION < 41;
+      });
+    }
+  });
+
+  // node_modules/core-js/internals/use-symbol-as-uid.js
+  var require_use_symbol_as_uid = __commonJS({
+    "node_modules/core-js/internals/use-symbol-as-uid.js"(exports, module) {
+      "use strict";
+      init_process();
+      var NATIVE_SYMBOL = require_symbol_constructor_detection();
+      module.exports = NATIVE_SYMBOL && !Symbol.sham && typeof Symbol.iterator == "symbol";
+    }
+  });
+
+  // node_modules/core-js/internals/is-symbol.js
+  var require_is_symbol = __commonJS({
+    "node_modules/core-js/internals/is-symbol.js"(exports, module) {
+      "use strict";
+      init_process();
+      var getBuiltIn = require_get_built_in();
+      var isCallable = require_is_callable();
+      var isPrototypeOf = require_object_is_prototype_of();
+      var USE_SYMBOL_AS_UID = require_use_symbol_as_uid();
+      var $Object = Object;
+      module.exports = USE_SYMBOL_AS_UID ? function(it) {
+        return typeof it == "symbol";
+      } : function(it) {
+        var $Symbol = getBuiltIn("Symbol");
+        return isCallable($Symbol) && isPrototypeOf($Symbol.prototype, $Object(it));
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/try-to-string.js
+  var require_try_to_string = __commonJS({
+    "node_modules/core-js/internals/try-to-string.js"(exports, module) {
+      "use strict";
+      init_process();
+      var $String = String;
+      module.exports = function(argument) {
+        try {
+          return $String(argument);
+        } catch (error) {
+          return "Object";
+        }
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/a-callable.js
+  var require_a_callable = __commonJS({
+    "node_modules/core-js/internals/a-callable.js"(exports, module) {
+      "use strict";
+      init_process();
+      var isCallable = require_is_callable();
+      var tryToString = require_try_to_string();
+      var $TypeError = TypeError;
+      module.exports = function(argument) {
+        if (isCallable(argument)) return argument;
+        throw new $TypeError(tryToString(argument) + " is not a function");
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/get-method.js
+  var require_get_method = __commonJS({
+    "node_modules/core-js/internals/get-method.js"(exports, module) {
+      "use strict";
+      init_process();
+      var aCallable = require_a_callable();
+      var isNullOrUndefined = require_is_null_or_undefined();
+      module.exports = function(V, P) {
+        var func = V[P];
+        return isNullOrUndefined(func) ? void 0 : aCallable(func);
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/ordinary-to-primitive.js
+  var require_ordinary_to_primitive = __commonJS({
+    "node_modules/core-js/internals/ordinary-to-primitive.js"(exports, module) {
+      "use strict";
+      init_process();
+      var call = require_function_call();
+      var isCallable = require_is_callable();
+      var isObject = require_is_object();
+      var $TypeError = TypeError;
+      module.exports = function(input, pref) {
+        var fn, val;
+        if (pref === "string" && isCallable(fn = input.toString) && !isObject(val = call(fn, input))) return val;
+        if (isCallable(fn = input.valueOf) && !isObject(val = call(fn, input))) return val;
+        if (pref !== "string" && isCallable(fn = input.toString) && !isObject(val = call(fn, input))) return val;
+        throw new $TypeError("Can't convert object to primitive value");
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/is-pure.js
+  var require_is_pure = __commonJS({
+    "node_modules/core-js/internals/is-pure.js"(exports, module) {
+      "use strict";
+      init_process();
+      module.exports = false;
+    }
+  });
+
+  // node_modules/core-js/internals/define-global-property.js
+  var require_define_global_property = __commonJS({
+    "node_modules/core-js/internals/define-global-property.js"(exports, module) {
+      "use strict";
+      init_process();
+      var globalThis2 = require_global_this();
+      var defineProperty = Object.defineProperty;
+      module.exports = function(key, value) {
+        try {
+          defineProperty(globalThis2, key, { value, configurable: true, writable: true });
+        } catch (error) {
+          globalThis2[key] = value;
+        }
+        return value;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/shared-store.js
+  var require_shared_store = __commonJS({
+    "node_modules/core-js/internals/shared-store.js"(exports, module) {
+      "use strict";
+      init_process();
+      var IS_PURE = require_is_pure();
+      var globalThis2 = require_global_this();
+      var defineGlobalProperty = require_define_global_property();
+      var SHARED = "__core-js_shared__";
+      var store = module.exports = globalThis2[SHARED] || defineGlobalProperty(SHARED, {});
+      (store.versions || (store.versions = [])).push({
+        version: "3.51.0",
+        mode: IS_PURE ? "pure" : "global",
+        copyright: "\xA9 2013\u20132025 Denis Pushkarev (zloirock.ru), 2025\u20132026 CoreJS Company (core-js.io). All rights reserved.",
+        license: "https://github.com/zloirock/core-js/blob/v3.51.0/LICENSE",
+        source: "https://github.com/zloirock/core-js"
+      });
+    }
+  });
+
+  // node_modules/core-js/internals/shared.js
+  var require_shared = __commonJS({
+    "node_modules/core-js/internals/shared.js"(exports, module) {
+      "use strict";
+      init_process();
+      var store = require_shared_store();
+      var create = Object.create || Object;
+      module.exports = function(key, value) {
+        return store[key] || (store[key] = value || create(null));
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/to-object.js
+  var require_to_object = __commonJS({
+    "node_modules/core-js/internals/to-object.js"(exports, module) {
+      "use strict";
+      init_process();
+      var requireObjectCoercible = require_require_object_coercible();
+      var $Object = Object;
+      module.exports = function(argument) {
+        return $Object(requireObjectCoercible(argument));
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/has-own-property.js
+  var require_has_own_property = __commonJS({
+    "node_modules/core-js/internals/has-own-property.js"(exports, module) {
+      "use strict";
+      init_process();
+      var uncurryThis = require_function_uncurry_this();
+      var toObject = require_to_object();
+      var hasOwnProperty = uncurryThis({}.hasOwnProperty);
+      module.exports = Object.hasOwn || function hasOwn(it, key) {
+        return hasOwnProperty(toObject(it), key);
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/uid.js
+  var require_uid = __commonJS({
+    "node_modules/core-js/internals/uid.js"(exports, module) {
+      "use strict";
+      init_process();
+      var uncurryThis = require_function_uncurry_this();
+      var id = 0;
+      var postfix = Math.random();
+      var toString = uncurryThis(1.1.toString);
+      module.exports = function(key) {
+        return "Symbol(" + (key === void 0 ? "" : key) + ")_" + toString(++id + postfix, 36);
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/well-known-symbol.js
+  var require_well_known_symbol = __commonJS({
+    "node_modules/core-js/internals/well-known-symbol.js"(exports, module) {
+      "use strict";
+      init_process();
+      var globalThis2 = require_global_this();
+      var shared = require_shared();
+      var hasOwn = require_has_own_property();
+      var uid = require_uid();
+      var NATIVE_SYMBOL = require_symbol_constructor_detection();
+      var USE_SYMBOL_AS_UID = require_use_symbol_as_uid();
+      var Symbol2 = globalThis2.Symbol;
+      var WellKnownSymbolsStore = shared("wks");
+      var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol2["for"] || Symbol2 : Symbol2 && Symbol2.withoutSetter || uid;
+      module.exports = function(name) {
+        if (!hasOwn(WellKnownSymbolsStore, name)) {
+          WellKnownSymbolsStore[name] = NATIVE_SYMBOL && hasOwn(Symbol2, name) ? Symbol2[name] : createWellKnownSymbol("Symbol." + name);
+        }
+        return WellKnownSymbolsStore[name];
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/to-primitive.js
+  var require_to_primitive = __commonJS({
+    "node_modules/core-js/internals/to-primitive.js"(exports, module) {
+      "use strict";
+      init_process();
+      var call = require_function_call();
+      var isObject = require_is_object();
+      var isSymbol = require_is_symbol();
+      var getMethod = require_get_method();
+      var ordinaryToPrimitive = require_ordinary_to_primitive();
+      var wellKnownSymbol = require_well_known_symbol();
+      var $TypeError = TypeError;
+      var TO_PRIMITIVE = wellKnownSymbol("toPrimitive");
+      module.exports = function(input, pref) {
+        if (!isObject(input) || isSymbol(input)) return input;
+        var exoticToPrim = getMethod(input, TO_PRIMITIVE);
+        var result;
+        if (exoticToPrim) {
+          if (pref === void 0) pref = "default";
+          result = call(exoticToPrim, input, pref);
+          if (!isObject(result) || isSymbol(result)) return result;
+          throw new $TypeError("Can't convert object to primitive value");
+        }
+        if (pref === void 0) pref = "number";
+        return ordinaryToPrimitive(input, pref);
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/to-property-key.js
+  var require_to_property_key = __commonJS({
+    "node_modules/core-js/internals/to-property-key.js"(exports, module) {
+      "use strict";
+      init_process();
+      var toPrimitive = require_to_primitive();
+      var isSymbol = require_is_symbol();
+      module.exports = function(argument) {
+        var key = toPrimitive(argument, "string");
+        return isSymbol(key) ? key : key + "";
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/document-create-element.js
+  var require_document_create_element = __commonJS({
+    "node_modules/core-js/internals/document-create-element.js"(exports, module) {
+      "use strict";
+      init_process();
+      var globalThis2 = require_global_this();
+      var isObject = require_is_object();
+      var document2 = globalThis2.document;
+      var EXISTS = isObject(document2) && isObject(document2.createElement);
+      module.exports = function(it) {
+        return EXISTS ? document2.createElement(it) : {};
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/ie8-dom-define.js
+  var require_ie8_dom_define = __commonJS({
+    "node_modules/core-js/internals/ie8-dom-define.js"(exports, module) {
+      "use strict";
+      init_process();
+      var DESCRIPTORS = require_descriptors();
+      var fails = require_fails();
+      var createElement = require_document_create_element();
+      module.exports = !DESCRIPTORS && !fails(function() {
+        return Object.defineProperty(createElement("div"), "a", {
+          get: function() {
+            return 7;
+          }
+        }).a !== 7;
+      });
+    }
+  });
+
+  // node_modules/core-js/internals/object-get-own-property-descriptor.js
+  var require_object_get_own_property_descriptor = __commonJS({
+    "node_modules/core-js/internals/object-get-own-property-descriptor.js"(exports) {
+      "use strict";
+      init_process();
+      var DESCRIPTORS = require_descriptors();
+      var call = require_function_call();
+      var propertyIsEnumerableModule = require_object_property_is_enumerable();
+      var createPropertyDescriptor = require_create_property_descriptor();
+      var toIndexedObject = require_to_indexed_object();
+      var toPropertyKey = require_to_property_key();
+      var hasOwn = require_has_own_property();
+      var IE8_DOM_DEFINE = require_ie8_dom_define();
+      var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+      exports.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
+        O = toIndexedObject(O);
+        P = toPropertyKey(P);
+        if (IE8_DOM_DEFINE) try {
+          return $getOwnPropertyDescriptor(O, P);
+        } catch (error) {
+        }
+        if (hasOwn(O, P)) return createPropertyDescriptor(!call(propertyIsEnumerableModule.f, O, P), O[P]);
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/v8-prototype-define-bug.js
+  var require_v8_prototype_define_bug = __commonJS({
+    "node_modules/core-js/internals/v8-prototype-define-bug.js"(exports, module) {
+      "use strict";
+      init_process();
+      var DESCRIPTORS = require_descriptors();
+      var fails = require_fails();
+      module.exports = DESCRIPTORS && fails(function() {
+        return Object.defineProperty(function() {
+        }, "prototype", {
+          value: 42,
+          writable: false
+        }).prototype !== 42;
+      });
+    }
+  });
+
+  // node_modules/core-js/internals/an-object.js
+  var require_an_object = __commonJS({
+    "node_modules/core-js/internals/an-object.js"(exports, module) {
+      "use strict";
+      init_process();
+      var isObject = require_is_object();
+      var $String = String;
+      var $TypeError = TypeError;
+      module.exports = function(argument) {
+        if (isObject(argument)) return argument;
+        throw new $TypeError($String(argument) + " is not an object");
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/object-define-property.js
+  var require_object_define_property = __commonJS({
+    "node_modules/core-js/internals/object-define-property.js"(exports) {
+      "use strict";
+      init_process();
+      var DESCRIPTORS = require_descriptors();
+      var IE8_DOM_DEFINE = require_ie8_dom_define();
+      var V8_PROTOTYPE_DEFINE_BUG = require_v8_prototype_define_bug();
+      var anObject = require_an_object();
+      var toPropertyKey = require_to_property_key();
+      var $TypeError = TypeError;
+      var $defineProperty = Object.defineProperty;
+      var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+      var ENUMERABLE = "enumerable";
+      var CONFIGURABLE = "configurable";
+      var WRITABLE = "writable";
+      exports.f = DESCRIPTORS ? V8_PROTOTYPE_DEFINE_BUG ? function defineProperty(O, P, Attributes) {
+        anObject(O);
+        P = toPropertyKey(P);
+        anObject(Attributes);
+        if (typeof O === "function" && P === "prototype" && "value" in Attributes && WRITABLE in Attributes && !Attributes[WRITABLE]) {
+          var current = $getOwnPropertyDescriptor(O, P);
+          if (current && current[WRITABLE]) {
+            O[P] = Attributes.value;
+            Attributes = {
+              configurable: CONFIGURABLE in Attributes ? Attributes[CONFIGURABLE] : current[CONFIGURABLE],
+              enumerable: ENUMERABLE in Attributes ? Attributes[ENUMERABLE] : current[ENUMERABLE],
+              writable: false
+            };
+          }
+        }
+        return $defineProperty(O, P, Attributes);
+      } : $defineProperty : function defineProperty(O, P, Attributes) {
+        anObject(O);
+        P = toPropertyKey(P);
+        anObject(Attributes);
+        if (IE8_DOM_DEFINE) try {
+          return $defineProperty(O, P, Attributes);
+        } catch (error) {
+        }
+        if ("get" in Attributes || "set" in Attributes) throw new $TypeError("Accessors not supported");
+        if ("value" in Attributes) O[P] = Attributes.value;
+        return O;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/create-non-enumerable-property.js
+  var require_create_non_enumerable_property = __commonJS({
+    "node_modules/core-js/internals/create-non-enumerable-property.js"(exports, module) {
+      "use strict";
+      init_process();
+      var DESCRIPTORS = require_descriptors();
+      var definePropertyModule = require_object_define_property();
+      var createPropertyDescriptor = require_create_property_descriptor();
+      module.exports = DESCRIPTORS ? function(object, key, value) {
+        return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
+      } : function(object, key, value) {
+        object[key] = value;
+        return object;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/function-name.js
+  var require_function_name = __commonJS({
+    "node_modules/core-js/internals/function-name.js"(exports, module) {
+      "use strict";
+      init_process();
+      var DESCRIPTORS = require_descriptors();
+      var hasOwn = require_has_own_property();
+      var FunctionPrototype = Function.prototype;
+      var getDescriptor = DESCRIPTORS && Object.getOwnPropertyDescriptor;
+      var EXISTS = hasOwn(FunctionPrototype, "name");
+      var PROPER = EXISTS && function something() {
+      }.name === "something";
+      var CONFIGURABLE = EXISTS && (!DESCRIPTORS || DESCRIPTORS && getDescriptor(FunctionPrototype, "name").configurable);
+      module.exports = {
+        EXISTS,
+        PROPER,
+        CONFIGURABLE
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/inspect-source.js
+  var require_inspect_source = __commonJS({
+    "node_modules/core-js/internals/inspect-source.js"(exports, module) {
+      "use strict";
+      init_process();
+      var uncurryThis = require_function_uncurry_this();
+      var isCallable = require_is_callable();
+      var store = require_shared_store();
+      var functionToString = uncurryThis(Function.toString);
+      if (!isCallable(store.inspectSource)) {
+        store.inspectSource = function(it) {
+          return functionToString(it);
+        };
+      }
+      module.exports = store.inspectSource;
+    }
+  });
+
+  // node_modules/core-js/internals/weak-map-basic-detection.js
+  var require_weak_map_basic_detection = __commonJS({
+    "node_modules/core-js/internals/weak-map-basic-detection.js"(exports, module) {
+      "use strict";
+      init_process();
+      var globalThis2 = require_global_this();
+      var isCallable = require_is_callable();
+      var WeakMap2 = globalThis2.WeakMap;
+      module.exports = isCallable(WeakMap2) && /native code/.test(String(WeakMap2));
+    }
+  });
+
+  // node_modules/core-js/internals/shared-key.js
+  var require_shared_key = __commonJS({
+    "node_modules/core-js/internals/shared-key.js"(exports, module) {
+      "use strict";
+      init_process();
+      var shared = require_shared();
+      var uid = require_uid();
+      var keys = shared("keys");
+      module.exports = function(key) {
+        return keys[key] || (keys[key] = uid(key));
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/hidden-keys.js
+  var require_hidden_keys = __commonJS({
+    "node_modules/core-js/internals/hidden-keys.js"(exports, module) {
+      "use strict";
+      init_process();
+      module.exports = {};
+    }
+  });
+
+  // node_modules/core-js/internals/internal-state.js
+  var require_internal_state = __commonJS({
+    "node_modules/core-js/internals/internal-state.js"(exports, module) {
+      "use strict";
+      init_process();
+      var NATIVE_WEAK_MAP = require_weak_map_basic_detection();
+      var globalThis2 = require_global_this();
+      var isObject = require_is_object();
+      var createNonEnumerableProperty = require_create_non_enumerable_property();
+      var hasOwn = require_has_own_property();
+      var shared = require_shared_store();
+      var sharedKey = require_shared_key();
+      var hiddenKeys = require_hidden_keys();
+      var OBJECT_ALREADY_INITIALIZED = "Object already initialized";
+      var TypeError2 = globalThis2.TypeError;
+      var WeakMap2 = globalThis2.WeakMap;
+      var set;
+      var get;
+      var has;
+      var enforce = function(it) {
+        return has(it) ? get(it) : set(it, {});
+      };
+      var getterFor = function(TYPE) {
+        return function(it) {
+          var state;
+          if (!isObject(it) || (state = get(it)).type !== TYPE) {
+            throw new TypeError2("Incompatible receiver, " + TYPE + " required");
+          }
+          return state;
+        };
+      };
+      if (NATIVE_WEAK_MAP || shared.state) {
+        store = shared.state || (shared.state = new WeakMap2());
+        store.get = store.get;
+        store.has = store.has;
+        store.set = store.set;
+        set = function(it, metadata) {
+          if (store.has(it)) throw new TypeError2(OBJECT_ALREADY_INITIALIZED);
+          metadata.facade = it;
+          store.set(it, metadata);
+          return metadata;
+        };
+        get = function(it) {
+          return store.get(it) || {};
+        };
+        has = function(it) {
+          return store.has(it);
+        };
       } else {
-        var result = record.arg;
-        var value = result.value;
-        if (value &&
-            typeof value === "object" &&
-            hasOwn.call(value, "__await")) {
-          return PromiseImpl.resolve(value.__await).then(function(value) {
-            invoke("next", value, resolve, reject);
-          }, function(err) {
-            invoke("throw", err, resolve, reject);
+        STATE = sharedKey("state");
+        hiddenKeys[STATE] = true;
+        set = function(it, metadata) {
+          if (hasOwn(it, STATE)) throw new TypeError2(OBJECT_ALREADY_INITIALIZED);
+          metadata.facade = it;
+          createNonEnumerableProperty(it, STATE, metadata);
+          return metadata;
+        };
+        get = function(it) {
+          return hasOwn(it, STATE) ? it[STATE] : {};
+        };
+        has = function(it) {
+          return hasOwn(it, STATE);
+        };
+      }
+      var store;
+      var STATE;
+      module.exports = {
+        set,
+        get,
+        has,
+        enforce,
+        getterFor
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/make-built-in.js
+  var require_make_built_in = __commonJS({
+    "node_modules/core-js/internals/make-built-in.js"(exports, module) {
+      "use strict";
+      init_process();
+      var uncurryThis = require_function_uncurry_this();
+      var fails = require_fails();
+      var isCallable = require_is_callable();
+      var hasOwn = require_has_own_property();
+      var DESCRIPTORS = require_descriptors();
+      var CONFIGURABLE_FUNCTION_NAME = require_function_name().CONFIGURABLE;
+      var inspectSource = require_inspect_source();
+      var InternalStateModule = require_internal_state();
+      var enforceInternalState = InternalStateModule.enforce;
+      var getInternalState = InternalStateModule.get;
+      var $String = String;
+      var defineProperty = Object.defineProperty;
+      var stringSlice = uncurryThis("".slice);
+      var replace = uncurryThis("".replace);
+      var join = uncurryThis([].join);
+      var CONFIGURABLE_LENGTH = DESCRIPTORS && !fails(function() {
+        return defineProperty(function() {
+        }, "length", { value: 8 }).length !== 8;
+      });
+      var TEMPLATE = String(String).split("String");
+      var makeBuiltIn = module.exports = function(value, name, options) {
+        if (stringSlice($String(name), 0, 7) === "Symbol(") {
+          name = "[" + replace($String(name), /^Symbol\(([^)]*)\).*$/, "$1") + "]";
+        }
+        if (options && options.getter) name = "get " + name;
+        if (options && options.setter) name = "set " + name;
+        if (!hasOwn(value, "name") || CONFIGURABLE_FUNCTION_NAME && value.name !== name) {
+          if (DESCRIPTORS) defineProperty(value, "name", { value: name, configurable: true });
+          else value.name = name;
+        }
+        if (CONFIGURABLE_LENGTH && options && hasOwn(options, "arity") && value.length !== options.arity) {
+          defineProperty(value, "length", { value: options.arity });
+        }
+        try {
+          if (options && hasOwn(options, "constructor") && options.constructor) {
+            if (DESCRIPTORS) defineProperty(value, "prototype", { writable: false });
+          } else if (value.prototype) value.prototype = void 0;
+        } catch (error) {
+        }
+        var state = enforceInternalState(value);
+        if (!hasOwn(state, "source")) {
+          state.source = join(TEMPLATE, typeof name == "string" ? name : "");
+        }
+        return value;
+      };
+      Function.prototype.toString = makeBuiltIn(function toString() {
+        return isCallable(this) && getInternalState(this).source || inspectSource(this);
+      }, "toString");
+    }
+  });
+
+  // node_modules/core-js/internals/define-built-in.js
+  var require_define_built_in = __commonJS({
+    "node_modules/core-js/internals/define-built-in.js"(exports, module) {
+      "use strict";
+      init_process();
+      var isCallable = require_is_callable();
+      var definePropertyModule = require_object_define_property();
+      var makeBuiltIn = require_make_built_in();
+      var defineGlobalProperty = require_define_global_property();
+      module.exports = function(O, key, value, options) {
+        if (!options) options = {};
+        var simple = options.enumerable;
+        var name = options.name !== void 0 ? options.name : key;
+        if (isCallable(value)) makeBuiltIn(value, name, options);
+        if (options.global) {
+          if (simple) O[key] = value;
+          else defineGlobalProperty(key, value);
+        } else {
+          try {
+            if (!options.unsafe) delete O[key];
+            else if (O[key]) simple = true;
+          } catch (error) {
+          }
+          if (simple) O[key] = value;
+          else definePropertyModule.f(O, key, {
+            value,
+            enumerable: false,
+            configurable: !options.nonConfigurable,
+            writable: !options.nonWritable
           });
         }
-
-        return PromiseImpl.resolve(value).then(function(unwrapped) {
-          // When a yielded Promise is resolved, its final value becomes
-          // the .value of the Promise<{value,done}> result for the
-          // current iteration.
-          result.value = unwrapped;
-          resolve(result);
-        }, function(error) {
-          // If a rejected Promise was yielded, throw the rejection back
-          // into the async generator function so it can be handled there.
-          return invoke("throw", error, resolve, reject);
-        });
-      }
+        return O;
+      };
     }
-
-    var previousPromise;
-
-    function enqueue(method, arg) {
-      function callInvokeWithMethodAndArg() {
-        return new PromiseImpl(function(resolve, reject) {
-          invoke(method, arg, resolve, reject);
-        });
-      }
-
-      return previousPromise =
-        // If enqueue has been called before, then we want to wait until
-        // all previous Promises have been resolved before calling invoke,
-        // so that results are always delivered in the correct order. If
-        // enqueue has not been called before, then it is important to
-        // call invoke immediately, without waiting on a callback to fire,
-        // so that the async generator function has the opportunity to do
-        // any necessary setup in a predictable way. This predictability
-        // is why the Promise constructor synchronously invokes its
-        // executor callback, and why async functions synchronously
-        // execute code before the first await. Since we implement simple
-        // async functions in terms of async generators, it is especially
-        // important to get this right, even though it requires care.
-        previousPromise ? previousPromise.then(
-          callInvokeWithMethodAndArg,
-          // Avoid propagating failures to Promises returned by later
-          // invocations of the iterator.
-          callInvokeWithMethodAndArg
-        ) : callInvokeWithMethodAndArg();
-    }
-
-    // Define the unified helper method that is used to implement .next,
-    // .throw, and .return (see defineIteratorMethods).
-    defineProperty(this, "_invoke", { value: enqueue });
-  }
-
-  defineIteratorMethods(AsyncIterator.prototype);
-  define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
-    return this;
   });
-  exports.AsyncIterator = AsyncIterator;
 
-  // Note that simple async functions are implemented on top of
-  // AsyncIterator objects; they just return a Promise for the value of
-  // the final result produced by the iterator.
-  exports.async = function(innerFn, outerFn, self, tryLocsList, PromiseImpl) {
-    if (PromiseImpl === void 0) PromiseImpl = Promise;
+  // node_modules/core-js/internals/math-trunc.js
+  var require_math_trunc = __commonJS({
+    "node_modules/core-js/internals/math-trunc.js"(exports, module) {
+      "use strict";
+      init_process();
+      var ceil = Math.ceil;
+      var floor = Math.floor;
+      module.exports = Math.trunc || function trunc(x) {
+        var n = +x;
+        return (n > 0 ? floor : ceil)(n);
+      };
+    }
+  });
 
-    var iter = new AsyncIterator(
-      wrap(innerFn, outerFn, self, tryLocsList),
-      PromiseImpl
-    );
+  // node_modules/core-js/internals/to-integer-or-infinity.js
+  var require_to_integer_or_infinity = __commonJS({
+    "node_modules/core-js/internals/to-integer-or-infinity.js"(exports, module) {
+      "use strict";
+      init_process();
+      var trunc = require_math_trunc();
+      module.exports = function(argument) {
+        var number = +argument;
+        return number !== number || number === 0 ? 0 : trunc(number);
+      };
+    }
+  });
 
-    return exports.isGeneratorFunction(outerFn)
-      ? iter // If outerFn is a generator, return the full iterator.
-      : iter.next().then(function(result) {
-          return result.done ? result.value : iter.next();
+  // node_modules/core-js/internals/to-absolute-index.js
+  var require_to_absolute_index = __commonJS({
+    "node_modules/core-js/internals/to-absolute-index.js"(exports, module) {
+      "use strict";
+      init_process();
+      var toIntegerOrInfinity = require_to_integer_or_infinity();
+      var max = Math.max;
+      var min = Math.min;
+      module.exports = function(index, length) {
+        var integer = toIntegerOrInfinity(index);
+        return integer < 0 ? max(integer + length, 0) : min(integer, length);
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/to-length.js
+  var require_to_length = __commonJS({
+    "node_modules/core-js/internals/to-length.js"(exports, module) {
+      "use strict";
+      init_process();
+      var toIntegerOrInfinity = require_to_integer_or_infinity();
+      var min = Math.min;
+      module.exports = function(argument) {
+        var len = toIntegerOrInfinity(argument);
+        return len > 0 ? min(len, 9007199254740991) : 0;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/length-of-array-like.js
+  var require_length_of_array_like = __commonJS({
+    "node_modules/core-js/internals/length-of-array-like.js"(exports, module) {
+      "use strict";
+      init_process();
+      var toLength = require_to_length();
+      module.exports = function(obj) {
+        return toLength(obj.length);
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/array-includes.js
+  var require_array_includes = __commonJS({
+    "node_modules/core-js/internals/array-includes.js"(exports, module) {
+      "use strict";
+      init_process();
+      var toIndexedObject = require_to_indexed_object();
+      var toAbsoluteIndex = require_to_absolute_index();
+      var lengthOfArrayLike = require_length_of_array_like();
+      var createMethod = function(IS_INCLUDES) {
+        return function($this, el, fromIndex) {
+          var O = toIndexedObject($this);
+          var length = lengthOfArrayLike(O);
+          if (length === 0) return !IS_INCLUDES && -1;
+          var index = toAbsoluteIndex(fromIndex, length);
+          var value;
+          if (IS_INCLUDES && el !== el) while (length > index) {
+            value = O[index++];
+            if (value !== value) return true;
+          }
+          else for (; length > index; index++) {
+            if ((IS_INCLUDES || index in O) && O[index] === el) return IS_INCLUDES || index || 0;
+          }
+          return !IS_INCLUDES && -1;
+        };
+      };
+      module.exports = {
+        // `Array.prototype.includes` method
+        // https://tc39.es/ecma262/#sec-array.prototype.includes
+        includes: createMethod(true),
+        // `Array.prototype.indexOf` method
+        // https://tc39.es/ecma262/#sec-array.prototype.indexof
+        indexOf: createMethod(false)
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/object-keys-internal.js
+  var require_object_keys_internal = __commonJS({
+    "node_modules/core-js/internals/object-keys-internal.js"(exports, module) {
+      "use strict";
+      init_process();
+      var uncurryThis = require_function_uncurry_this();
+      var hasOwn = require_has_own_property();
+      var toIndexedObject = require_to_indexed_object();
+      var indexOf = require_array_includes().indexOf;
+      var hiddenKeys = require_hidden_keys();
+      var push = uncurryThis([].push);
+      module.exports = function(object, names) {
+        var O = toIndexedObject(object);
+        var i = 0;
+        var result = [];
+        var key;
+        for (key in O) !hasOwn(hiddenKeys, key) && hasOwn(O, key) && push(result, key);
+        while (names.length > i) if (hasOwn(O, key = names[i++])) {
+          ~indexOf(result, key) || push(result, key);
+        }
+        return result;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/enum-bug-keys.js
+  var require_enum_bug_keys = __commonJS({
+    "node_modules/core-js/internals/enum-bug-keys.js"(exports, module) {
+      "use strict";
+      init_process();
+      module.exports = [
+        "constructor",
+        "hasOwnProperty",
+        "isPrototypeOf",
+        "propertyIsEnumerable",
+        "toLocaleString",
+        "toString",
+        "valueOf"
+      ];
+    }
+  });
+
+  // node_modules/core-js/internals/object-get-own-property-names.js
+  var require_object_get_own_property_names = __commonJS({
+    "node_modules/core-js/internals/object-get-own-property-names.js"(exports) {
+      "use strict";
+      init_process();
+      var internalObjectKeys = require_object_keys_internal();
+      var enumBugKeys = require_enum_bug_keys();
+      var hiddenKeys = enumBugKeys.concat("length", "prototype");
+      exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
+        return internalObjectKeys(O, hiddenKeys);
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/object-get-own-property-symbols.js
+  var require_object_get_own_property_symbols = __commonJS({
+    "node_modules/core-js/internals/object-get-own-property-symbols.js"(exports) {
+      "use strict";
+      init_process();
+      exports.f = Object.getOwnPropertySymbols;
+    }
+  });
+
+  // node_modules/core-js/internals/own-keys.js
+  var require_own_keys = __commonJS({
+    "node_modules/core-js/internals/own-keys.js"(exports, module) {
+      "use strict";
+      init_process();
+      var getBuiltIn = require_get_built_in();
+      var uncurryThis = require_function_uncurry_this();
+      var getOwnPropertyNamesModule = require_object_get_own_property_names();
+      var getOwnPropertySymbolsModule = require_object_get_own_property_symbols();
+      var anObject = require_an_object();
+      var concat = uncurryThis([].concat);
+      module.exports = getBuiltIn("Reflect", "ownKeys") || function ownKeys(it) {
+        var keys = getOwnPropertyNamesModule.f(anObject(it));
+        var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
+        return getOwnPropertySymbols ? concat(keys, getOwnPropertySymbols(it)) : keys;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/copy-constructor-properties.js
+  var require_copy_constructor_properties = __commonJS({
+    "node_modules/core-js/internals/copy-constructor-properties.js"(exports, module) {
+      "use strict";
+      init_process();
+      var hasOwn = require_has_own_property();
+      var ownKeys = require_own_keys();
+      var getOwnPropertyDescriptorModule = require_object_get_own_property_descriptor();
+      var definePropertyModule = require_object_define_property();
+      module.exports = function(target, source, exceptions) {
+        var keys = ownKeys(source);
+        var defineProperty = definePropertyModule.f;
+        var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
+        for (var i = 0; i < keys.length; i++) {
+          var key = keys[i];
+          if (!hasOwn(target, key) && !(exceptions && hasOwn(exceptions, key))) {
+            defineProperty(target, key, getOwnPropertyDescriptor(source, key));
+          }
+        }
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/is-forced.js
+  var require_is_forced = __commonJS({
+    "node_modules/core-js/internals/is-forced.js"(exports, module) {
+      "use strict";
+      init_process();
+      var fails = require_fails();
+      var isCallable = require_is_callable();
+      var replacement = /#|\.prototype\./;
+      var isForced = function(feature, detection) {
+        var value = data[normalize(feature)];
+        return value === POLYFILL ? true : value === NATIVE ? false : isCallable(detection) ? fails(detection) : !!detection;
+      };
+      var normalize = isForced.normalize = function(string) {
+        return String(string).replace(replacement, ".").toLowerCase();
+      };
+      var data = isForced.data = {};
+      var NATIVE = isForced.NATIVE = "N";
+      var POLYFILL = isForced.POLYFILL = "P";
+      module.exports = isForced;
+    }
+  });
+
+  // node_modules/core-js/internals/export.js
+  var require_export = __commonJS({
+    "node_modules/core-js/internals/export.js"(exports, module) {
+      "use strict";
+      init_process();
+      var globalThis2 = require_global_this();
+      var getOwnPropertyDescriptor = require_object_get_own_property_descriptor().f;
+      var createNonEnumerableProperty = require_create_non_enumerable_property();
+      var defineBuiltIn = require_define_built_in();
+      var defineGlobalProperty = require_define_global_property();
+      var copyConstructorProperties = require_copy_constructor_properties();
+      var isForced = require_is_forced();
+      module.exports = function(options, source) {
+        var TARGET = options.target;
+        var GLOBAL = options.global;
+        var STATIC = options.stat;
+        var FORCED, target, key, targetProperty, sourceProperty, descriptor;
+        if (GLOBAL) {
+          target = globalThis2;
+        } else if (STATIC) {
+          target = globalThis2[TARGET] || defineGlobalProperty(TARGET, {});
+        } else {
+          target = globalThis2[TARGET] && globalThis2[TARGET].prototype;
+        }
+        if (target) for (key in source) {
+          sourceProperty = source[key];
+          if (options.dontCallGetSet) {
+            descriptor = getOwnPropertyDescriptor(target, key);
+            targetProperty = descriptor && descriptor.value;
+          } else targetProperty = target[key];
+          FORCED = isForced(GLOBAL ? key : TARGET + (STATIC ? "." : "#") + key, options.forced);
+          if (!FORCED && targetProperty !== void 0) {
+            if (typeof sourceProperty == typeof targetProperty) continue;
+            copyConstructorProperties(sourceProperty, targetProperty);
+          }
+          if (options.sham || targetProperty && targetProperty.sham) {
+            createNonEnumerableProperty(sourceProperty, "sham", true);
+          }
+          defineBuiltIn(target, key, sourceProperty, options);
+        }
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/object-keys.js
+  var require_object_keys = __commonJS({
+    "node_modules/core-js/internals/object-keys.js"(exports, module) {
+      "use strict";
+      init_process();
+      var internalObjectKeys = require_object_keys_internal();
+      var enumBugKeys = require_enum_bug_keys();
+      module.exports = Object.keys || function keys(O) {
+        return internalObjectKeys(O, enumBugKeys);
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/object-define-properties.js
+  var require_object_define_properties = __commonJS({
+    "node_modules/core-js/internals/object-define-properties.js"(exports) {
+      "use strict";
+      init_process();
+      var DESCRIPTORS = require_descriptors();
+      var V8_PROTOTYPE_DEFINE_BUG = require_v8_prototype_define_bug();
+      var definePropertyModule = require_object_define_property();
+      var anObject = require_an_object();
+      var toIndexedObject = require_to_indexed_object();
+      var objectKeys = require_object_keys();
+      exports.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
+        anObject(O);
+        var props = toIndexedObject(Properties);
+        var keys = objectKeys(Properties);
+        var length = keys.length;
+        var index = 0;
+        var key;
+        while (length > index) definePropertyModule.f(O, key = keys[index++], props[key]);
+        return O;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/html.js
+  var require_html = __commonJS({
+    "node_modules/core-js/internals/html.js"(exports, module) {
+      "use strict";
+      init_process();
+      var getBuiltIn = require_get_built_in();
+      module.exports = getBuiltIn("document", "documentElement");
+    }
+  });
+
+  // node_modules/core-js/internals/object-create.js
+  var require_object_create = __commonJS({
+    "node_modules/core-js/internals/object-create.js"(exports, module) {
+      "use strict";
+      init_process();
+      var anObject = require_an_object();
+      var definePropertiesModule = require_object_define_properties();
+      var enumBugKeys = require_enum_bug_keys();
+      var hiddenKeys = require_hidden_keys();
+      var html = require_html();
+      var documentCreateElement = require_document_create_element();
+      var sharedKey = require_shared_key();
+      var GT = ">";
+      var LT = "<";
+      var PROTOTYPE = "prototype";
+      var SCRIPT = "script";
+      var IE_PROTO = sharedKey("IE_PROTO");
+      var EmptyConstructor = function() {
+      };
+      var scriptTag = function(content) {
+        return LT + SCRIPT + GT + content + LT + "/" + SCRIPT + GT;
+      };
+      var NullProtoObjectViaActiveX = function(activeXDocument2) {
+        activeXDocument2.write(scriptTag(""));
+        activeXDocument2.close();
+        var temp = activeXDocument2.parentWindow.Object;
+        activeXDocument2 = null;
+        return temp;
+      };
+      var NullProtoObjectViaIFrame = function() {
+        var iframe = documentCreateElement("iframe");
+        var JS = "java" + SCRIPT + ":";
+        var iframeDocument;
+        iframe.style.display = "none";
+        html.appendChild(iframe);
+        iframe.src = String(JS);
+        iframeDocument = iframe.contentWindow.document;
+        iframeDocument.open();
+        iframeDocument.write(scriptTag("document.F=Object"));
+        iframeDocument.close();
+        return iframeDocument.F;
+      };
+      var activeXDocument;
+      var NullProtoObject = function() {
+        try {
+          activeXDocument = new ActiveXObject("htmlfile");
+        } catch (error) {
+        }
+        NullProtoObject = typeof document != "undefined" ? document.domain && activeXDocument ? NullProtoObjectViaActiveX(activeXDocument) : NullProtoObjectViaIFrame() : NullProtoObjectViaActiveX(activeXDocument);
+        var length = enumBugKeys.length;
+        while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys[length]];
+        return NullProtoObject();
+      };
+      hiddenKeys[IE_PROTO] = true;
+      module.exports = Object.create || function create(O, Properties) {
+        var result;
+        if (O !== null) {
+          EmptyConstructor[PROTOTYPE] = anObject(O);
+          result = new EmptyConstructor();
+          EmptyConstructor[PROTOTYPE] = null;
+          result[IE_PROTO] = O;
+        } else result = NullProtoObject();
+        return Properties === void 0 ? result : definePropertiesModule.f(result, Properties);
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/add-to-unscopables.js
+  var require_add_to_unscopables = __commonJS({
+    "node_modules/core-js/internals/add-to-unscopables.js"(exports, module) {
+      "use strict";
+      init_process();
+      var wellKnownSymbol = require_well_known_symbol();
+      var create = require_object_create();
+      var defineProperty = require_object_define_property().f;
+      var UNSCOPABLES = wellKnownSymbol("unscopables");
+      var ArrayPrototype = Array.prototype;
+      if (ArrayPrototype[UNSCOPABLES] === void 0) {
+        defineProperty(ArrayPrototype, UNSCOPABLES, {
+          configurable: true,
+          value: create(null)
         });
-  };
-
-  function makeInvokeMethod(innerFn, self, context) {
-    var state = GenStateSuspendedStart;
-
-    return function invoke(method, arg) {
-      if (state === GenStateExecuting) {
-        throw new Error("Generator is already running");
       }
+      module.exports = function(key) {
+        ArrayPrototype[UNSCOPABLES][key] = true;
+      };
+    }
+  });
 
-      if (state === GenStateCompleted) {
-        if (method === "throw") {
-          throw arg;
+  // node_modules/core-js/modules/es.array.includes.js
+  var require_es_array_includes = __commonJS({
+    "node_modules/core-js/modules/es.array.includes.js"() {
+      "use strict";
+      init_process();
+      var $ = require_export();
+      var $includes = require_array_includes().includes;
+      var fails = require_fails();
+      var addToUnscopables = require_add_to_unscopables();
+      var BROKEN_ON_SPARSE = fails(function() {
+        return !Array(1).includes();
+      });
+      var BROKEN_ON_SPARSE_WITH_FROM_INDEX = fails(function() {
+        return [, 1].includes(void 0, 1);
+      });
+      $({ target: "Array", proto: true, forced: BROKEN_ON_SPARSE || BROKEN_ON_SPARSE_WITH_FROM_INDEX }, {
+        includes: function includes(el) {
+          return $includes(this, el, arguments.length > 1 ? arguments[1] : void 0);
         }
+      });
+      addToUnscopables("includes");
+    }
+  });
 
-        // Be forgiving, per GeneratorResume behavior specified since ES2015:
-        // ES2015 spec, step 3: https://262.ecma-international.org/6.0/#sec-generatorresume
-        // Latest spec, step 2: https://tc39.es/ecma262/#sec-generatorresume
-        return doneResult();
+  // dist/helpers/arrays/addUniqueToArray.js
+  var require_addUniqueToArray = __commonJS({
+    "dist/helpers/arrays/addUniqueToArray.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      require_es_array_includes();
+      var addUniqueToArray = (item, array) => !array.includes(item) ? array.concat([item]) : array;
+      var _default = exports.default = addUniqueToArray;
+    }
+  });
+
+  // dist/helpers/arrays/BasicQueue.js
+  var require_BasicQueue = __commonJS({
+    "dist/helpers/arrays/BasicQueue.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var BasicQueue = class {
+        /**
+         * @param innerList - Items to pre-populate the queue with, in order.
+         */
+        constructor(innerList = []) {
+          this.innerList = innerList;
+        }
+        /**
+         * Remove and return the next item in the queue
+         */
+        dequeue() {
+          return this.innerList.shift();
+        }
+        /**
+         * Check if the queue is empty
+         */
+        empty() {
+          return !this.size();
+        }
+        /**
+         * Add an item to the end of the queue
+         * @param data
+         */
+        enqueue(data) {
+          this.innerList.push(data);
+          return this;
+        }
+        /**
+         * Retrieve the next item from the queue
+         */
+        peek() {
+          return this.empty() ? null : this.innerList[0];
+        }
+        /**
+         * Get the quantity of items in the queue
+         */
+        size() {
+          return this.innerList.length;
+        }
+      };
+      var _default = exports.default = BasicQueue;
+    }
+  });
+
+  // dist/helpers/objects/isObject.js
+  var require_isObject = __commonJS({
+    "dist/helpers/objects/isObject.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var isObject = (object) => typeof object === "object" && object !== null;
+      var _default = exports.default = isObject;
+    }
+  });
+
+  // dist/helpers/objects/objectKeys.js
+  var require_objectKeys = __commonJS({
+    "dist/helpers/objects/objectKeys.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _isObject = _interopRequireDefault(require_isObject());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
       }
-
-      context.method = method;
-      context.arg = arg;
-
-      while (true) {
-        var delegate = context.delegate;
-        if (delegate) {
-          var delegateResult = maybeInvokeDelegate(delegate, context);
-          if (delegateResult) {
-            if (delegateResult === ContinueSentinel) continue;
-            return delegateResult;
+      var objectKeys = (object, includeInherited = false) => {
+        if (typeof object !== "function" && !(0, _isObject.default)(object)) {
+          return [];
+        }
+        if (includeInherited) {
+          const propNames = Object.getOwnPropertyNames(object);
+          if (propNames.length) {
+            return propNames;
           }
         }
-
-        if (context.method === "next") {
-          // Setting context._sent for legacy support of Babel's
-          // function.sent implementation.
-          context.sent = context._sent = context.arg;
-
-        } else if (context.method === "throw") {
-          if (state === GenStateSuspendedStart) {
-            state = GenStateCompleted;
-            throw context.arg;
+        const keys = [];
+        for (const key in object) {
+          if (includeInherited || Object.prototype.hasOwnProperty.call(object, key)) {
+            if (Array.isArray(object)) {
+              keys.push(parseInt(key));
+              continue;
+            }
+            keys.push(key);
           }
-
-          context.dispatchException(context.arg);
-
-        } else if (context.method === "return") {
-          context.abrupt("return", context.arg);
         }
+        return keys;
+      };
+      var _default = exports.default = objectKeys;
+    }
+  });
 
-        state = GenStateExecuting;
+  // dist/helpers/objects/isInstanceObject.js
+  var require_isInstanceObject = __commonJS({
+    "dist/helpers/objects/isInstanceObject.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      require_es_array_includes();
+      var _isObject = _interopRequireDefault(require_isObject());
+      var _objectKeys = _interopRequireDefault(require_objectKeys());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var isInstanceObject = (object) => {
+        if (typeof object !== "function" && !(0, _isObject.default)(object)) {
+          return false;
+        }
+        if (!["Array", "Function", "Object"].includes(object.constructor.name)) {
+          return true;
+        }
+        return object.constructor.name !== "Array" && (0, _objectKeys.default)(object, true).length > (0, _objectKeys.default)(object).length;
+      };
+      var _default = exports.default = isInstanceObject;
+    }
+  });
 
-        var record = tryCatch(innerFn, self, context);
-        if (record.type === "normal") {
-          // If an exception is thrown from innerFn, we leave state ===
-          // GenStateExecuting and loop back for another invocation.
-          state = context.done
-            ? GenStateCompleted
-            : GenStateSuspendedYield;
+  // dist/helpers/objects/isCloneable.js
+  var require_isCloneable = __commonJS({
+    "dist/helpers/objects/isCloneable.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _isInstanceObject = _interopRequireDefault(require_isInstanceObject());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var isCloneable = (value) => typeof value === "object" && value !== null && !(0, _isInstanceObject.default)(value);
+      var _default = exports.default = isCloneable;
+    }
+  });
 
-          if (record.arg === ContinueSentinel) {
+  // dist/helpers/functions/callWithParams.js
+  var require_callWithParams = __commonJS({
+    "dist/helpers/functions/callWithParams.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var callWithParams = (fn, params = [], minimum = 2) => fn(...params.slice(0, fn.length || minimum));
+      var _default = exports.default = callWithParams;
+    }
+  });
+
+  // dist/helpers/objects/reduceObject.js
+  var require_reduceObject = __commonJS({
+    "dist/helpers/objects/reduceObject.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _callWithParams = _interopRequireDefault(require_callWithParams());
+      var _objectKeys = _interopRequireDefault(require_objectKeys());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var reduceObject = (obj, fn, initialValue = obj[(0, _objectKeys.default)(obj)[0]] || obj[0]) => Array.isArray(obj) ? obj.reduce(fn, initialValue) : (0, _objectKeys.default)(obj, true).reduce((newObj, curr) => (0, _callWithParams.default)(fn, [newObj, obj[curr], curr, obj], 2), initialValue);
+      var _default = exports.default = reduceObject;
+    }
+  });
+
+  // dist/helpers/objects/setValue.js
+  var require_setValue = __commonJS({
+    "dist/helpers/objects/setValue.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var setValue = (key, value, item) => {
+        item[key] = value;
+        return item;
+      };
+      var _default = exports.default = setValue;
+    }
+  });
+
+  // dist/helpers/objects/mergeObjectsBase.js
+  var require_mergeObjectsBase = __commonJS({
+    "dist/helpers/objects/mergeObjectsBase.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _isCloneable = _interopRequireDefault(require_isCloneable());
+      var _reduceObject = _interopRequireDefault(require_reduceObject());
+      var _setValue = _interopRequireDefault(require_setValue());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var mergeObjectsBase = ({
+        depthLimit = -1,
+        map = [],
+        useClone = false
+      } = {}) => {
+        const merge = (visited, depth, objects) => {
+          const firstObject = useClone ? Array.isArray(objects[0]) ? [] : {} : objects.shift();
+          if (objects.length < 1) {
+            return firstObject;
+          }
+          if (depth === 0) {
+            return firstObject;
+          }
+          return objects.reduce((newObj, arg) => {
+            if (!arg) {
+              return newObj;
+            }
+            if (!visited.has(arg)) {
+              visited.set(arg, newObj);
+            }
+            return (0, _reduceObject.default)(arg, (returnObj, value, key) => {
+              if ((0, _isCloneable.default)(value)) {
+                if (visited.has(value)) {
+                  return (0, _setValue.default)(key, visited.get(value), returnObj);
+                }
+                let objectValue = newObj[key];
+                if (!(0, _isCloneable.default)(objectValue) || !objectValue) {
+                  if (!useClone) {
+                    visited.set(value, value);
+                    return (0, _setValue.default)(key, value, returnObj);
+                  }
+                  objectValue = Array.isArray(value) ? [] : {};
+                }
+                return (0, _setValue.default)(key, merge(visited, depth - 1, [objectValue, value]), returnObj);
+              }
+              return (0, _setValue.default)(key, value, returnObj);
+            }, newObj);
+          }, firstObject || {});
+        };
+        return (...objects) => merge(new Map(map.map(({
+          source,
+          object
+        }) => [source, object])), depthLimit, objects);
+      };
+      var _default = exports.default = mergeObjectsBase;
+    }
+  });
+
+  // dist/helpers/objects/cloneObject.js
+  var require_cloneObject = __commonJS({
+    "dist/helpers/objects/cloneObject.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _mergeObjectsBase = _interopRequireDefault(require_mergeObjectsBase());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var cloneObject = (object, {
+        mapLimit = 100,
+        depthLimit = -1,
+        relevancyRange = 1e3
+      } = {}) => (0, _mergeObjectsBase.default)({
+        mapLimit,
+        depthLimit,
+        relevancyRange,
+        useClone: true
+      })(object);
+      var _default = exports.default = cloneObject;
+    }
+  });
+
+  // dist/helpers/arrays/buildArray.js
+  var require_buildArray = __commonJS({
+    "dist/helpers/arrays/buildArray.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _cloneObject = _interopRequireDefault(require_cloneObject());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var buildArray = (item, length) => {
+        const arr = [];
+        while (arr.length < length) {
+          const cloned = (0, _cloneObject.default)(item);
+          arr.push(cloned);
+        }
+        return arr;
+      };
+      var _default = exports.default = buildArray;
+    }
+  });
+
+  // dist/helpers/arrays/buildArrayOfReferences.js
+  var require_buildArrayOfReferences = __commonJS({
+    "dist/helpers/arrays/buildArrayOfReferences.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var buildArrayOfReferences = (item, length) => {
+        const arr = [];
+        while (arr.length < length) {
+          arr.push(item);
+        }
+        return arr;
+      };
+      var _default = exports.default = buildArrayOfReferences;
+    }
+  });
+
+  // dist/helpers/arrays/uniqueArray.js
+  var require_uniqueArray = __commonJS({
+    "dist/helpers/arrays/uniqueArray.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var uniqueArray = (array) => array.filter((item, index) => array.indexOf(item) === index);
+      var _default = exports.default = uniqueArray;
+    }
+  });
+
+  // dist/helpers/arrays/mergeArrays.js
+  var require_mergeArrays = __commonJS({
+    "dist/helpers/arrays/mergeArrays.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      require_es_array_includes();
+      var _uniqueArray = _interopRequireDefault(require_uniqueArray());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var mergeArrays = (...arrays) => arrays.map(_uniqueArray.default).reduce((merged, arr) => [...merged, ...arr.filter((attr) => !merged.includes(attr))], []);
+      var _default = exports.default = mergeArrays;
+    }
+  });
+
+  // dist/helpers/arrays/compareArrays.js
+  var require_compareArrays = __commonJS({
+    "dist/helpers/arrays/compareArrays.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _isObject = _interopRequireDefault(require_isObject());
+      var _mergeArrays = _interopRequireDefault(require_mergeArrays());
+      var _objectKeys = _interopRequireDefault(require_objectKeys());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var compareArrays = (...arrays) => (0, _mergeArrays.default)(...arrays).reduce((results, attr) => {
+        const attrType = typeof attr;
+        const useArray = Array.isArray(attr);
+        const keys = arrays.map((array) => array.reduce((results2, current, key) => {
+          const currentType = typeof current;
+          if (attrType !== currentType) {
+            return results2;
+          }
+          if (!(0, _isObject.default)(attr)) {
+            return current === attr ? [...results2, key] : results2;
+          }
+          if (useArray !== Array.isArray(current)) {
+            return results2;
+          }
+          const compareKeys = useArray ? compareArrays(attr, current) : compareArrays((0, _objectKeys.default)(attr), (0, _objectKeys.default)(current));
+          return compareKeys.every((compare) => compare.result.every((result) => result === 0)) ? [...results2, key] : results2;
+        }, []));
+        const arrayResults = keys.map((array) => array.length ? 1 : -1);
+        return [...results, {
+          value: attr,
+          keys,
+          result: arrayResults.every((result) => result === 1) ? arrayResults.map((result) => 0) : arrayResults
+        }];
+      }, []);
+      var _default = exports.default = compareArrays;
+    }
+  });
+
+  // dist/helpers/arrays.js
+  var require_arrays = __commonJS({
+    "dist/helpers/arrays.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      Object.defineProperty(exports, "BasicQueue", {
+        enumerable: true,
+        get: function() {
+          return _BasicQueue.default;
+        }
+      });
+      Object.defineProperty(exports, "addUniqueToArray", {
+        enumerable: true,
+        get: function() {
+          return _addUniqueToArray.default;
+        }
+      });
+      Object.defineProperty(exports, "buildArray", {
+        enumerable: true,
+        get: function() {
+          return _buildArray.default;
+        }
+      });
+      Object.defineProperty(exports, "buildArrayOfReferences", {
+        enumerable: true,
+        get: function() {
+          return _buildArrayOfReferences.default;
+        }
+      });
+      Object.defineProperty(exports, "compareArrays", {
+        enumerable: true,
+        get: function() {
+          return _compareArrays.default;
+        }
+      });
+      exports.default = void 0;
+      Object.defineProperty(exports, "mergeArrays", {
+        enumerable: true,
+        get: function() {
+          return _mergeArrays.default;
+        }
+      });
+      Object.defineProperty(exports, "uniqueArray", {
+        enumerable: true,
+        get: function() {
+          return _uniqueArray.default;
+        }
+      });
+      var _addUniqueToArray = _interopRequireDefault(require_addUniqueToArray());
+      var _BasicQueue = _interopRequireDefault(require_BasicQueue());
+      var _buildArray = _interopRequireDefault(require_buildArray());
+      var _buildArrayOfReferences = _interopRequireDefault(require_buildArrayOfReferences());
+      var _compareArrays = _interopRequireDefault(require_compareArrays());
+      var _mergeArrays = _interopRequireDefault(require_mergeArrays());
+      var _uniqueArray = _interopRequireDefault(require_uniqueArray());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var _default = exports.default = {
+        addUniqueToArray: _addUniqueToArray.default,
+        BasicQueue: _BasicQueue.default,
+        buildArray: _buildArray.default,
+        buildArrayOfReferences: _buildArrayOfReferences.default,
+        compareArrays: _compareArrays.default,
+        mergeArrays: _mergeArrays.default,
+        uniqueArray: _uniqueArray.default
+      };
+    }
+  });
+
+  // dist/helpers/descriptors/cloneDescriptorDetail.js
+  var require_cloneDescriptorDetail = __commonJS({
+    "dist/helpers/descriptors/cloneDescriptorDetail.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _objectKeys = _interopRequireDefault(require_objectKeys());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var cloneDescriptorDetail = (originalDetail) => {
+        const copyDetail = {};
+        (0, _objectKeys.default)(originalDetail).forEach((key) => {
+          copyDetail[key] = Array.isArray(originalDetail[key]) ? originalDetail[key].map((value) => value) : originalDetail[key];
+        });
+        return copyDetail;
+      };
+      var _default = exports.default = cloneDescriptorDetail;
+    }
+  });
+
+  // dist/helpers/descriptors/assignDescriptorDetail.js
+  var require_assignDescriptorDetail = __commonJS({
+    "dist/helpers/descriptors/assignDescriptorDetail.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _cloneDescriptorDetail = _interopRequireDefault(require_cloneDescriptorDetail());
+      var _uniqueArray = _interopRequireDefault(require_uniqueArray());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var assignDescriptorDetail = (originalDetail, ...details) => details.reduce((existingDetail, newDetail) => {
+        existingDetail.type = (0, _uniqueArray.default)([...existingDetail.type, ...newDetail.type]);
+        existingDetail.value = (0, _uniqueArray.default)([...existingDetail.value, ...newDetail.value]);
+        existingDetail.nullable = existingDetail.nullable || newDetail.nullable;
+        existingDetail.optional = existingDetail.optional || newDetail.optional;
+        existingDetail.circular = existingDetail.circular || newDetail.circular;
+        existingDetail.isReference = existingDetail.isReference || newDetail.isReference;
+        existingDetail.isInstance = existingDetail.isInstance || newDetail.isInstance;
+        existingDetail.arrayReference = [existingDetail.arrayReference, newDetail.arrayReference].find((ref) => typeof ref === "number");
+        existingDetail.objectReference = [existingDetail.objectReference, newDetail.objectReference].find((ref) => typeof ref === "number");
+        existingDetail.arrayReference = typeof existingDetail.arrayReference === "undefined" ? null : existingDetail.arrayReference;
+        existingDetail.objectReference = typeof existingDetail.objectReference === "undefined" ? null : existingDetail.objectReference;
+        return existingDetail;
+      }, (0, _cloneDescriptorDetail.default)(originalDetail));
+      var _default = exports.default = assignDescriptorDetail;
+    }
+  });
+
+  // dist/helpers/descriptors/cloneDescriptor.js
+  var require_cloneDescriptor = __commonJS({
+    "dist/helpers/descriptors/cloneDescriptor.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _cloneDescriptorDetail = _interopRequireDefault(require_cloneDescriptorDetail());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var cloneDescriptor = (originalMap) => {
+        const copyMap = {};
+        copyMap["index"] = originalMap.index || 0;
+        copyMap["details"] = originalMap.details.map(_cloneDescriptorDetail.default);
+        copyMap["length"] = originalMap.length;
+        copyMap["keys"] = originalMap.keys.map((key) => key);
+        copyMap["references"] = originalMap.references.map((reference) => reference);
+        copyMap["isArray"] = originalMap.isArray;
+        copyMap["complete"] = originalMap.complete;
+        return copyMap;
+      };
+      var _default = exports.default = cloneDescriptor;
+    }
+  });
+
+  // dist/helpers/descriptors/assignDescriptor.js
+  var require_assignDescriptor = __commonJS({
+    "dist/helpers/descriptors/assignDescriptor.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _assignDescriptorDetail = _interopRequireDefault(require_assignDescriptorDetail());
+      var _cloneDescriptor = _interopRequireDefault(require_cloneDescriptor());
+      var _compareArrays = _interopRequireDefault(require_compareArrays());
+      var _uniqueArray = _interopRequireDefault(require_uniqueArray());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var assignDescriptor = (originalMap, ...descriptors) => descriptors.reduce((assignedDescriptor, descriptor) => {
+        const detailsDiff = (0, _compareArrays.default)(assignedDescriptor.keys, descriptor.keys);
+        detailsDiff.forEach((diff) => {
+          const existingDetail = assignedDescriptor.details.find((detail) => detail.key === diff.value);
+          const newDetail = descriptor.details.find((detail) => detail.key === diff.value);
+          if (diff.result.every((result) => result === 0)) {
+            assignedDescriptor.details[existingDetail.index] = (0, _assignDescriptorDetail.default)(existingDetail, newDetail);
+            return assignedDescriptor;
+          }
+          const useDetail = diff.result[0] > 0 ? existingDetail : newDetail;
+          if (!useDetail) {
+            assignedDescriptor.details[existingDetail.index].optional = true;
+            return assignedDescriptor;
+          }
+          const useIndex = diff.result[0] > 0 ? useDetail.index : assignedDescriptor.length;
+          assignedDescriptor.details[useIndex] = Object.assign({}, useDetail, {
+            index: useIndex,
+            optional: true
+          });
+          assignedDescriptor.length = assignedDescriptor.length < assignedDescriptor.details.length ? assignedDescriptor.details.length : assignedDescriptor.length;
+          return assignedDescriptor;
+        });
+        assignedDescriptor.keys = (0, _uniqueArray.default)(assignedDescriptor.details.map((detail) => detail.key));
+        assignedDescriptor.references = (0, _uniqueArray.default)(assignedDescriptor.details.filter((detail) => detail.isReference).map((detail) => detail.index));
+        assignedDescriptor.isArray = assignedDescriptor.length ? assignedDescriptor.details.every((detail) => typeof detail.key === "number") : assignedDescriptor.isArray;
+        assignedDescriptor.complete = !assignedDescriptor.references.length || assignedDescriptor.complete || descriptor.complete;
+        return assignedDescriptor;
+      }, (0, _cloneDescriptor.default)(originalMap));
+      var _default = exports.default = assignDescriptor;
+    }
+  });
+
+  // dist/helpers/descriptors/checkClearValues.js
+  var require_checkClearValues = __commonJS({
+    "dist/helpers/descriptors/checkClearValues.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _setValue = _interopRequireDefault(require_setValue());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var checkClearValues = (descriptor, keepValues = false) => (0, _setValue.default)("details", descriptor.complete && !keepValues ? descriptor.details.map((detail) => (0, _setValue.default)("value", [], detail)) : descriptor.details, descriptor);
+      var _default = exports.default = checkClearValues;
+    }
+  });
+
+  // dist/helpers/descriptors/checkDescriptorComplete.js
+  var require_checkDescriptorComplete = __commonJS({
+    "dist/helpers/descriptors/checkDescriptorComplete.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _setValue = _interopRequireDefault(require_setValue());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var checkDescriptorComplete = (descriptor) => (0, _setValue.default)("complete", descriptor.references.every((refId) => [descriptor.details[refId].arrayReference, descriptor.details[refId].objectReference].some((ref) => typeof ref === "number")), descriptor);
+      var _default = exports.default = checkDescriptorComplete;
+    }
+  });
+
+  // dist/helpers/descriptors/compareDescriptor.js
+  var require_compareDescriptor = __commonJS({
+    "dist/helpers/descriptors/compareDescriptor.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      require_es_array_includes();
+      var compareDescriptor = (descriptor1, descriptor2) => {
+        if (descriptor1.isArray !== descriptor2.isArray) {
+          return false;
+        }
+        if (descriptor1.length === 0 || descriptor2.length === 0) {
+          return descriptor1.length === descriptor2.length;
+        }
+        const smallerDescriptor = descriptor1.length <= descriptor2.length ? descriptor1 : descriptor2;
+        const largerDescriptor = descriptor2.length >= descriptor1.length ? descriptor2 : descriptor1;
+        return smallerDescriptor.keys.every((key) => largerDescriptor.keys.includes(key)) ? smallerDescriptor.details.every((detail) => detail.type.some((type) => largerDescriptor.details.find((foundDetail) => foundDetail.key === detail.key).type.includes(type))) : false;
+      };
+      var _default = exports.default = compareDescriptor;
+    }
+  });
+
+  // dist/helpers/objects/emptyObject.js
+  var require_emptyObject = __commonJS({
+    "dist/helpers/objects/emptyObject.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _isObject = _interopRequireDefault(require_isObject());
+      var _objectKeys = _interopRequireDefault(require_objectKeys());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var emptyObject = (item) => (typeof item === "function" || (0, _isObject.default)(item)) && !(0, _objectKeys.default)(item).length;
+      var _default = exports.default = emptyObject;
+    }
+  });
+
+  // dist/helpers/descriptors/describeObjectDetail.js
+  var require_describeObjectDetail = __commonJS({
+    "dist/helpers/descriptors/describeObjectDetail.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _emptyObject = _interopRequireDefault(require_emptyObject());
+      var _isCloneable = _interopRequireDefault(require_isCloneable());
+      var _isInstanceObject = _interopRequireDefault(require_isInstanceObject());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var describeObjectDetail = (value, key = 0, index = 0) => {
+        const type = typeof value;
+        return {
+          index,
+          key,
+          type: [type],
+          value: [value],
+          nullable: value === null,
+          optional: false,
+          circular: false,
+          isReference: (0, _isCloneable.default)(value) && !(0, _emptyObject.default)(value),
+          isInstance: (0, _isInstanceObject.default)(value),
+          arrayReference: null,
+          objectReference: null
+        };
+      };
+      var _default = exports.default = describeObjectDetail;
+    }
+  });
+
+  // dist/helpers/descriptors/describeObject.js
+  var require_describeObject = __commonJS({
+    "dist/helpers/descriptors/describeObject.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _assignDescriptorDetail = _interopRequireDefault(require_assignDescriptorDetail());
+      var _describeObjectDetail = _interopRequireDefault(require_describeObjectDetail());
+      var _objectKeys = _interopRequireDefault(require_objectKeys());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var describeObject = (object) => {
+        const descriptor = {
+          index: 0,
+          details: [],
+          length: 0,
+          keys: [],
+          references: [],
+          isArray: false,
+          complete: false
+        };
+        const keys = (0, _objectKeys.default)(object);
+        for (let i = 0; i < keys.length; ++i) {
+          const key = keys[i];
+          const newDetail = (0, _describeObjectDetail.default)(object[key], key, descriptor.length++);
+          if (typeof key === "number" && descriptor.details.length) {
+            descriptor.details[0] = (0, _assignDescriptorDetail.default)(descriptor.details[0], newDetail);
+            descriptor.keys = [0];
+            if (newDetail.isReference) {
+              descriptor.references = [0];
+            }
             continue;
           }
-
-          return {
-            value: record.arg,
-            done: context.done
-          };
-
-        } else if (record.type === "throw") {
-          state = GenStateCompleted;
-          // Dispatch the exception by looping back around to the
-          // context.dispatchException(context.arg) call above.
-          context.method = "throw";
-          context.arg = record.arg;
-        }
-      }
-    };
-  }
-
-  // Call delegate.iterator[context.method](context.arg) and handle the
-  // result, either by returning a { value, done } result from the
-  // delegate iterator, or by modifying context.method and context.arg,
-  // setting context.delegate to null, and returning the ContinueSentinel.
-  function maybeInvokeDelegate(delegate, context) {
-    var methodName = context.method;
-    var method = delegate.iterator[methodName];
-    if (method === undefined) {
-      // A .throw or .return when the delegate iterator has no .throw
-      // method, or a missing .next method, always terminate the
-      // yield* loop.
-      context.delegate = null;
-
-      // Note: ["return"] must be used for ES3 parsing compatibility.
-      if (methodName === "throw" && delegate.iterator["return"]) {
-        // If the delegate iterator has a return method, give it a
-        // chance to clean up.
-        context.method = "return";
-        context.arg = undefined;
-        maybeInvokeDelegate(delegate, context);
-
-        if (context.method === "throw") {
-          // If maybeInvokeDelegate(context) changed context.method from
-          // "return" to "throw", let that override the TypeError below.
-          return ContinueSentinel;
-        }
-      }
-      if (methodName !== "return") {
-        context.method = "throw";
-        context.arg = new TypeError(
-          "The iterator does not provide a '" + methodName + "' method");
-      }
-
-      return ContinueSentinel;
-    }
-
-    var record = tryCatch(method, delegate.iterator, context.arg);
-
-    if (record.type === "throw") {
-      context.method = "throw";
-      context.arg = record.arg;
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    var info = record.arg;
-
-    if (! info) {
-      context.method = "throw";
-      context.arg = new TypeError("iterator result is not an object");
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    if (info.done) {
-      // Assign the result of the finished delegate to the temporary
-      // variable specified by delegate.resultName (see delegateYield).
-      context[delegate.resultName] = info.value;
-
-      // Resume execution at the desired location (see delegateYield).
-      context.next = delegate.nextLoc;
-
-      // If context.method was "throw" but the delegate handled the
-      // exception, let the outer generator proceed normally. If
-      // context.method was "next", forget context.arg since it has been
-      // "consumed" by the delegate iterator. If context.method was
-      // "return", allow the original .return call to continue in the
-      // outer generator.
-      if (context.method !== "return") {
-        context.method = "next";
-        context.arg = undefined;
-      }
-
-    } else {
-      // Re-yield the result returned by the delegate method.
-      return info;
-    }
-
-    // The delegate iterator is finished, so forget it and continue with
-    // the outer generator.
-    context.delegate = null;
-    return ContinueSentinel;
-  }
-
-  // Define Generator.prototype.{next,throw,return} in terms of the
-  // unified ._invoke helper method.
-  defineIteratorMethods(Gp);
-
-  define(Gp, toStringTagSymbol, "Generator");
-
-  // A Generator should always return itself as the iterator object when the
-  // @@iterator function is called on it. Some browsers' implementations of the
-  // iterator prototype chain incorrectly implement this, causing the Generator
-  // object to not be returned from this call. This ensures that doesn't happen.
-  // See https://github.com/facebook/regenerator/issues/274 for more details.
-  define(Gp, iteratorSymbol, function() {
-    return this;
-  });
-
-  define(Gp, "toString", function() {
-    return "[object Generator]";
-  });
-
-  function pushTryEntry(locs) {
-    var entry = { tryLoc: locs[0] };
-
-    if (1 in locs) {
-      entry.catchLoc = locs[1];
-    }
-
-    if (2 in locs) {
-      entry.finallyLoc = locs[2];
-      entry.afterLoc = locs[3];
-    }
-
-    this.tryEntries.push(entry);
-  }
-
-  function resetTryEntry(entry) {
-    var record = entry.completion || {};
-    record.type = "normal";
-    delete record.arg;
-    entry.completion = record;
-  }
-
-  function Context(tryLocsList) {
-    // The root entry object (effectively a try statement without a catch
-    // or a finally block) gives us a place to store values thrown from
-    // locations where there is no enclosing try statement.
-    this.tryEntries = [{ tryLoc: "root" }];
-    tryLocsList.forEach(pushTryEntry, this);
-    this.reset(true);
-  }
-
-  exports.keys = function(val) {
-    var object = Object(val);
-    var keys = [];
-    for (var key in object) {
-      keys.push(key);
-    }
-    keys.reverse();
-
-    // Rather than returning an object with a next method, we keep
-    // things simple and return the next function itself.
-    return function next() {
-      while (keys.length) {
-        var key = keys.pop();
-        if (key in object) {
-          next.value = key;
-          next.done = false;
-          return next;
-        }
-      }
-
-      // To avoid creating an additional object, we just hang the .value
-      // and .done properties off the next function object itself. This
-      // also ensures that the minifier will not anonymize the function.
-      next.done = true;
-      return next;
-    };
-  };
-
-  function values(iterable) {
-    if (iterable != null) {
-      var iteratorMethod = iterable[iteratorSymbol];
-      if (iteratorMethod) {
-        return iteratorMethod.call(iterable);
-      }
-
-      if (typeof iterable.next === "function") {
-        return iterable;
-      }
-
-      if (!isNaN(iterable.length)) {
-        var i = -1, next = function next() {
-          while (++i < iterable.length) {
-            if (hasOwn.call(iterable, i)) {
-              next.value = iterable[i];
-              next.done = false;
-              return next;
-            }
-          }
-
-          next.value = undefined;
-          next.done = true;
-
-          return next;
-        };
-
-        return next.next = next;
-      }
-    }
-
-    throw new TypeError(typeof iterable + " is not iterable");
-  }
-  exports.values = values;
-
-  function doneResult() {
-    return { value: undefined, done: true };
-  }
-
-  Context.prototype = {
-    constructor: Context,
-
-    reset: function(skipTempReset) {
-      this.prev = 0;
-      this.next = 0;
-      // Resetting context._sent for legacy support of Babel's
-      // function.sent implementation.
-      this.sent = this._sent = undefined;
-      this.done = false;
-      this.delegate = null;
-
-      this.method = "next";
-      this.arg = undefined;
-
-      this.tryEntries.forEach(resetTryEntry);
-
-      if (!skipTempReset) {
-        for (var name in this) {
-          // Not sure about the optimal order of these conditions:
-          if (name.charAt(0) === "t" &&
-              hasOwn.call(this, name) &&
-              !isNaN(+name.slice(1))) {
-            this[name] = undefined;
+          descriptor.details.push(newDetail);
+          descriptor.keys.push(newDetail.key);
+          if (newDetail.isReference) {
+            descriptor.references.push(newDetail.index);
           }
         }
-      }
-    },
-
-    stop: function() {
-      this.done = true;
-
-      var rootEntry = this.tryEntries[0];
-      var rootRecord = rootEntry.completion;
-      if (rootRecord.type === "throw") {
-        throw rootRecord.arg;
-      }
-
-      return this.rval;
-    },
-
-    dispatchException: function(exception) {
-      if (this.done) {
-        throw exception;
-      }
-
-      var context = this;
-      function handle(loc, caught) {
-        record.type = "throw";
-        record.arg = exception;
-        context.next = loc;
-
-        if (caught) {
-          // If the dispatched exception was caught by a catch block,
-          // then let that catch block handle the exception normally.
-          context.method = "next";
-          context.arg = undefined;
-        }
-
-        return !! caught;
-      }
-
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        var record = entry.completion;
-
-        if (entry.tryLoc === "root") {
-          // Exception thrown outside of any try block that could handle
-          // it, so set the completion value of the entire function to
-          // throw the exception.
-          return handle("end");
-        }
-
-        if (entry.tryLoc <= this.prev) {
-          var hasCatch = hasOwn.call(entry, "catchLoc");
-          var hasFinally = hasOwn.call(entry, "finallyLoc");
-
-          if (hasCatch && hasFinally) {
-            if (this.prev < entry.catchLoc) {
-              return handle(entry.catchLoc, true);
-            } else if (this.prev < entry.finallyLoc) {
-              return handle(entry.finallyLoc);
-            }
-
-          } else if (hasCatch) {
-            if (this.prev < entry.catchLoc) {
-              return handle(entry.catchLoc, true);
-            }
-
-          } else if (hasFinally) {
-            if (this.prev < entry.finallyLoc) {
-              return handle(entry.finallyLoc);
-            }
-
-          } else {
-            throw new Error("try statement without catch or finally");
-          }
-        }
-      }
-    },
-
-    abrupt: function(type, arg) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc <= this.prev &&
-            hasOwn.call(entry, "finallyLoc") &&
-            this.prev < entry.finallyLoc) {
-          var finallyEntry = entry;
-          break;
-        }
-      }
-
-      if (finallyEntry &&
-          (type === "break" ||
-           type === "continue") &&
-          finallyEntry.tryLoc <= arg &&
-          arg <= finallyEntry.finallyLoc) {
-        // Ignore the finally entry if control is not jumping to a
-        // location outside the try/catch block.
-        finallyEntry = null;
-      }
-
-      var record = finallyEntry ? finallyEntry.completion : {};
-      record.type = type;
-      record.arg = arg;
-
-      if (finallyEntry) {
-        this.method = "next";
-        this.next = finallyEntry.finallyLoc;
-        return ContinueSentinel;
-      }
-
-      return this.complete(record);
-    },
-
-    complete: function(record, afterLoc) {
-      if (record.type === "throw") {
-        throw record.arg;
-      }
-
-      if (record.type === "break" ||
-          record.type === "continue") {
-        this.next = record.arg;
-      } else if (record.type === "return") {
-        this.rval = this.arg = record.arg;
-        this.method = "return";
-        this.next = "end";
-      } else if (record.type === "normal" && afterLoc) {
-        this.next = afterLoc;
-      }
-
-      return ContinueSentinel;
-    },
-
-    finish: function(finallyLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.finallyLoc === finallyLoc) {
-          this.complete(entry.completion, entry.afterLoc);
-          resetTryEntry(entry);
-          return ContinueSentinel;
-        }
-      }
-    },
-
-    "catch": function(tryLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc === tryLoc) {
-          var record = entry.completion;
-          if (record.type === "throw") {
-            var thrown = record.arg;
-            resetTryEntry(entry);
-          }
-          return thrown;
-        }
-      }
-
-      // The context.catch method must only be called with a location
-      // argument that corresponds to a known catch block.
-      throw new Error("illegal catch attempt");
-    },
-
-    delegateYield: function(iterable, resultName, nextLoc) {
-      this.delegate = {
-        iterator: values(iterable),
-        resultName: resultName,
-        nextLoc: nextLoc
+        descriptor.isArray = Array.isArray(object);
+        descriptor.complete = !descriptor.references.length;
+        return descriptor;
       };
-
-      if (this.method === "next") {
-        // Deliberately forget the last sent value so that we don't
-        // accidentally pass it on to the delegate.
-        this.arg = undefined;
-      }
-
-      return ContinueSentinel;
+      var _default = exports.default = describeObject;
     }
-  };
+  });
 
-  // Regardless of whether this script is executing as a CommonJS module
-  // or not, return the runtime object so that we can declare the variable
-  // regeneratorRuntime in the outer scope, which allows this module to be
-  // injected easily by `bin/regenerator --include-runtime script.js`.
-  return exports;
+  // dist/helpers/descriptors/nextReference.js
+  var require_nextReference = __commonJS({
+    "dist/helpers/descriptors/nextReference.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _objectKeys = _interopRequireDefault(require_objectKeys());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var nextReference = (descriptor, currentReference) => descriptor.references.find((nextRef) => {
+        if (nextRef <= currentReference) {
+          return false;
+        }
+        const val = descriptor.details[nextRef].value[descriptor.details[nextRef].value.length - 1];
+        if (typeof val !== "object" || val === null || typeof val === "undefined" || descriptor.details[nextRef].circular || descriptor.details[nextRef].isInstance) {
+          return false;
+        }
+        return !!(0, _objectKeys.default)(val).length;
+      });
+      var _default = exports.default = nextReference;
+    }
+  });
 
-}(
-  // If this script is executing as a CommonJS module, use module.exports
-  // as the regeneratorRuntime namespace. Otherwise create a new empty
-  // object. Either way, the resulting object will be used to initialize
-  // the regeneratorRuntime variable at the top of this file.
-  typeof module === "object" ? module.exports : {}
-));
+  // dist/helpers/descriptors/sameDescriptor.js
+  var require_sameDescriptor = __commonJS({
+    "dist/helpers/descriptors/sameDescriptor.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      require_es_array_includes();
+      var sameDescriptor = (descriptor1, descriptor2) => descriptor1.details.every((detail, index) => detail.value.some((dVal) => descriptor2.details[index].value.includes(dVal)));
+      var _default = exports.default = sameDescriptor;
+    }
+  });
 
-try {
-  regeneratorRuntime = runtime;
-} catch (accidentalStrictMode) {
-  // This module should not be running in strict mode, so the above
-  // assignment should always work unless something is misconfigured. Just
-  // in case runtime.js accidentally runs in strict mode, in modern engines
-  // we can explicitly access globalThis. In older engines we can escape
-  // strict mode using a global Function call. This could conceivably fail
-  // if a Content Security Policy forbids using Function, but in that case
-  // the proper solution is to fix the accidental strict mode problem. If
-  // you've misconfigured your bundler to force strict mode and applied a
-  // CSP to forbid Function, and you're not willing to fix either of those
-  // problems, please detail your unique predicament in a GitHub issue.
-  if (typeof globalThis === "object") {
-    globalThis.regeneratorRuntime = runtime;
-  } else {
-    Function("r", "regeneratorRuntime = r")(runtime);
-  }
-}
+  // dist/helpers/descriptors/describeObjectMap.js
+  var require_describeObjectMap = __commonJS({
+    "dist/helpers/descriptors/describeObjectMap.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _assignDescriptor = _interopRequireDefault(require_assignDescriptor());
+      var _checkClearValues = _interopRequireDefault(require_checkClearValues());
+      var _checkDescriptorComplete = _interopRequireDefault(require_checkDescriptorComplete());
+      var _compareDescriptor = _interopRequireDefault(require_compareDescriptor());
+      var _describeObject = _interopRequireDefault(require_describeObject());
+      var _nextReference = _interopRequireDefault(require_nextReference());
+      var _sameDescriptor = _interopRequireDefault(require_sameDescriptor());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var describeObjectMap = (object, {
+        mapLimit = 1e9,
+        depthLimit = -1,
+        keepValues = false
+      } = {}) => {
+        const descriptorMap = [(0, _describeObject.default)(object)];
+        descriptorMap[0].index = 0;
+        const describeReferences = (descriptor2, currentDetail, limit = -1, returnCallback = (returnMap) => returnMap) => {
+          let index = descriptorMap.length;
+          const nextRef = currentDetail ? (0, _nextReference.default)(descriptor2, currentDetail.index) : void 0;
+          const nextDetail = typeof nextRef !== "undefined" ? descriptor2.details[nextRef] : null;
+          if (currentDetail) {
+            const vals = descriptor2.isArray ? currentDetail.value : [currentDetail.value[currentDetail.value.length - 1]];
+            vals.forEach((val) => {
+              const tempDescriptor = (0, _describeObject.default)(val);
+              const existingDescriptorIndex = descriptorMap.findIndex((existingDescriptor) => (0, _compareDescriptor.default)(tempDescriptor, existingDescriptor));
+              if (existingDescriptorIndex >= 0) {
+                index = existingDescriptorIndex;
+                if (tempDescriptor.length && (0, _sameDescriptor.default)(tempDescriptor, descriptorMap[existingDescriptorIndex])) {
+                  currentDetail.circular = true;
+                  descriptor2.details[currentDetail.index] = currentDetail;
+                }
+              }
+              if (index >= mapLimit) {
+                return descriptorMap;
+              }
+              if (limit === 0) {
+                return descriptorMap;
+              }
+              if (tempDescriptor.isArray) {
+                index = currentDetail.arrayReference ?? index;
+                descriptor2.details[currentDetail.index].arrayReference = index;
+              } else {
+                index = currentDetail.objectReference ?? index;
+                descriptor2.details[currentDetail.index].objectReference = index;
+              }
+              tempDescriptor.index = index;
+              if (existingDescriptorIndex < 0) {
+                descriptorMap[index] = descriptorMap[index] ? (0, _assignDescriptor.default)(descriptorMap[index], tempDescriptor) : tempDescriptor;
+              }
+              descriptorMap[descriptor2.index] = (0, _assignDescriptor.default)(descriptorMap[descriptor2.index], descriptor2);
+              currentDetail = descriptorMap[descriptor2.index].details.find((detail) => detail.key === currentDetail.key);
+              if (!currentDetail.circular) {
+                const newReference = (0, _nextReference.default)(tempDescriptor, -1);
+                const newDetail = typeof newReference !== "undefined" ? tempDescriptor.details[newReference] : null;
+                return describeReferences(tempDescriptor, newDetail, --limit, (returnMap) => describeReferences(descriptor2, nextDetail, --limit));
+              }
+            });
+          }
+          descriptorMap[descriptor2.index] = (0, _assignDescriptor.default)(descriptorMap[descriptor2.index], (0, _checkDescriptorComplete.default)(descriptor2));
+          descriptorMap[descriptor2.index] = (0, _checkClearValues.default)(descriptorMap[descriptor2.index], keepValues);
+          return nextDetail ? describeReferences(descriptor2, nextDetail, --limit) : returnCallback(descriptorMap);
+        };
+        const descriptor = descriptorMap[0];
+        const currentReference = (0, _nextReference.default)(descriptor, -1);
+        if (typeof currentReference === "undefined") {
+          descriptorMap[0] = (0, _assignDescriptor.default)(descriptorMap[0], (0, _checkDescriptorComplete.default)(descriptor));
+          descriptorMap[0] = (0, _checkClearValues.default)(descriptorMap[0], keepValues);
+          return descriptorMap;
+        }
+        return describeReferences(descriptor, descriptor.details[currentReference], depthLimit);
+      };
+      var _default = exports.default = describeObjectMap;
+    }
+  });
 
-},{}]},{},[1])(1)
-});
+  // dist/helpers/descriptors.js
+  var require_descriptors2 = __commonJS({
+    "dist/helpers/descriptors.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      Object.defineProperty(exports, "assignDescriptor", {
+        enumerable: true,
+        get: function() {
+          return _assignDescriptor.default;
+        }
+      });
+      Object.defineProperty(exports, "assignDescriptorDetail", {
+        enumerable: true,
+        get: function() {
+          return _assignDescriptorDetail.default;
+        }
+      });
+      Object.defineProperty(exports, "checkClearValues", {
+        enumerable: true,
+        get: function() {
+          return _checkClearValues.default;
+        }
+      });
+      Object.defineProperty(exports, "checkDescriptorComplete", {
+        enumerable: true,
+        get: function() {
+          return _checkDescriptorComplete.default;
+        }
+      });
+      Object.defineProperty(exports, "cloneDescriptor", {
+        enumerable: true,
+        get: function() {
+          return _cloneDescriptor.default;
+        }
+      });
+      Object.defineProperty(exports, "cloneDescriptorDetail", {
+        enumerable: true,
+        get: function() {
+          return _cloneDescriptorDetail.default;
+        }
+      });
+      Object.defineProperty(exports, "compareDescriptor", {
+        enumerable: true,
+        get: function() {
+          return _compareDescriptor.default;
+        }
+      });
+      exports.default = void 0;
+      Object.defineProperty(exports, "describeObject", {
+        enumerable: true,
+        get: function() {
+          return _describeObject.default;
+        }
+      });
+      Object.defineProperty(exports, "describeObjectDetail", {
+        enumerable: true,
+        get: function() {
+          return _describeObjectDetail.default;
+        }
+      });
+      Object.defineProperty(exports, "describeObjectMap", {
+        enumerable: true,
+        get: function() {
+          return _describeObjectMap.default;
+        }
+      });
+      Object.defineProperty(exports, "nextReference", {
+        enumerable: true,
+        get: function() {
+          return _nextReference.default;
+        }
+      });
+      Object.defineProperty(exports, "sameDescriptor", {
+        enumerable: true,
+        get: function() {
+          return _sameDescriptor.default;
+        }
+      });
+      var _assignDescriptor = _interopRequireDefault(require_assignDescriptor());
+      var _assignDescriptorDetail = _interopRequireDefault(require_assignDescriptorDetail());
+      var _checkClearValues = _interopRequireDefault(require_checkClearValues());
+      var _checkDescriptorComplete = _interopRequireDefault(require_checkDescriptorComplete());
+      var _cloneDescriptor = _interopRequireDefault(require_cloneDescriptor());
+      var _cloneDescriptorDetail = _interopRequireDefault(require_cloneDescriptorDetail());
+      var _compareDescriptor = _interopRequireDefault(require_compareDescriptor());
+      var _describeObject = _interopRequireDefault(require_describeObject());
+      var _describeObjectMap = _interopRequireDefault(require_describeObjectMap());
+      var _describeObjectDetail = _interopRequireDefault(require_describeObjectDetail());
+      var _nextReference = _interopRequireDefault(require_nextReference());
+      var _sameDescriptor = _interopRequireDefault(require_sameDescriptor());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var _default = exports.default = {
+        assignDescriptor: _assignDescriptor.default,
+        assignDescriptorDetail: _assignDescriptorDetail.default,
+        checkClearValues: _checkClearValues.default,
+        checkDescriptorComplete: _checkDescriptorComplete.default,
+        cloneDescriptor: _cloneDescriptor.default,
+        cloneDescriptorDetail: _cloneDescriptorDetail.default,
+        compareDescriptor: _compareDescriptor.default,
+        describeObject: _describeObject.default,
+        describeObjectMap: _describeObjectMap.default,
+        describeObjectDetail: _describeObjectDetail.default,
+        nextReference: _nextReference.default,
+        sameDescriptor: _sameDescriptor.default
+      };
+    }
+  });
+
+  // dist/helpers/functions/curry.js
+  var require_curry = __commonJS({
+    "dist/helpers/functions/curry.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var curry = (fn) => (...args) => args.length >= fn.length ? fn(...args) : (...a) => curry(fn)(...[...args, ...a]);
+      var _default = exports.default = curry;
+    }
+  });
+
+  // dist/helpers/functions/delay.js
+  var require_delay = __commonJS({
+    "dist/helpers/functions/delay.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var delay = (time = 0) => {
+        let cancel = () => void 0;
+        return {
+          resolver: new Promise((resolve, reject) => {
+            if (isNaN(time)) {
+              reject(new Error(`Invalid delay: ${time}`));
+            } else {
+              const timeoutId = setTimeout(resolve, time, `Delayed for: ${time}`);
+              cancel = () => {
+                clearTimeout(timeoutId);
+                reject(new Error(`Cancelled delay: ${time}`));
+              };
+            }
+          }),
+          cancel
+        };
+      };
+      var _default = exports.default = delay;
+    }
+  });
+
+  // dist/helpers/functions/makeBasicQueue.js
+  var require_makeBasicQueue = __commonJS({
+    "dist/helpers/functions/makeBasicQueue.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _BasicQueue = _interopRequireDefault(require_BasicQueue());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var makeBasicQueue = (initialQueue = []) => {
+        return new _BasicQueue.default(initialQueue);
+      };
+      var _default = exports.default = makeBasicQueue;
+    }
+  });
+
+  // dist/helpers/functions/queueManager.js
+  var require_queueManager = __commonJS({
+    "dist/helpers/functions/queueManager.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _makeBasicQueue = _interopRequireDefault(require_makeBasicQueue());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var queueManager = (queue = null) => {
+        let isRunning = false;
+        let isPaused = true;
+        const makeQueuedRunnable = (resolve, reject, fn, ...args) => {
+          const generator = (function* () {
+            const item = yield;
+            if (typeof item.fn !== "function") {
+              return reject(item);
+            }
+            try {
+              return resolve(item.fn(...item.args));
+            } catch (error) {
+              return reject(error);
+            }
+          })();
+          generator.next();
+          return {
+            item: {
+              fn,
+              args
+            },
+            generator
+          };
+        };
+        const postRun = (result) => {
+          isRunning = false;
+          runNextItem();
+          return result;
+        };
+        const postFailedRun = (error) => {
+          isRunning = false;
+          runNextItem();
+          throw error;
+        };
+        const runNextItem = () => {
+          if (!isPaused && !queue.empty() && !isRunning) {
+            isRunning = true;
+            let toRun = queue.dequeue();
+            if (typeof toRun === "undefined" || toRun === null) {
+              return null;
+            }
+            if (typeof toRun === "function") {
+              new Promise((resolve, reject) => {
+                toRun = makeQueuedRunnable(resolve, reject, toRun);
+                runNextItem();
+              }).then(postRun, postFailedRun);
+            }
+            if ("success" in toRun) {
+              console.info(toRun.success);
+              return null;
+            }
+            if (!toRun.generator || "error" in toRun) {
+              let errorMessage = 'Verify queued function implements "done()" state.';
+              if ("error" in toRun && toRun.error) {
+                errorMessage = `[${toRun.error}]: ${errorMessage}`;
+              }
+              throw new Error(errorMessage);
+            }
+            if (toRun.generator && toRun.item) {
+              return toRun.generator.next(toRun.item);
+            }
+          }
+          return null;
+        };
+        const pushAnother = (fn, ...args) => new Promise((resolve, reject) => {
+          queue.enqueue(makeQueuedRunnable(resolve, reject, fn, ...args));
+          runNextItem();
+        }).then(postRun, postFailedRun);
+        if (Array.isArray(queue)) {
+          const queueArray = queue;
+          queue = (0, _makeBasicQueue.default)();
+          queueArray.forEach((queued) => pushAnother(queued));
+        }
+        if (queue === null) {
+          queue = (0, _makeBasicQueue.default)();
+        }
+        runNextItem();
+        return {
+          start: () => {
+            isPaused = false;
+            runNextItem();
+          },
+          pause: () => {
+            isPaused = true;
+          },
+          push: pushAnother
+        };
+      };
+      var _default = exports.default = queueManager;
+    }
+  });
+
+  // dist/helpers/functions/onBodyLoad.js
+  var require_onBodyLoad = __commonJS({
+    "dist/helpers/functions/onBodyLoad.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _queueManager = _interopRequireDefault(require_queueManager());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var queue = [];
+      var manager = (0, _queueManager.default)();
+      manager.start();
+      var observer = null;
+      var doReset = () => {
+        observer = null;
+      };
+      var initializeObserver = async () => {
+        observer = new MutationObserver(() => {
+          if (document.body) {
+            while (queue.length) {
+              manager.push(queue.shift());
+            }
+            observer.disconnect();
+            doReset();
+          }
+        });
+        observer.observe(document.documentElement, {
+          childList: true
+        });
+        return observer;
+      };
+      var onBodyLoad = (callback, reset = false) => {
+        if (reset) {
+          doReset();
+        }
+        queue.push(callback);
+        if (observer === null) {
+          initializeObserver();
+        }
+        return queue;
+      };
+      var _default = exports.default = onBodyLoad;
+    }
+  });
+
+  // dist/helpers/functions/pipe.js
+  var require_pipe = __commonJS({
+    "dist/helpers/functions/pipe.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var pipe = (...fns) => (x) => fns.reduce((y, f) => f(y), x);
+      var _default = exports.default = pipe;
+    }
+  });
+
+  // dist/helpers/functions/preloadParams.js
+  var require_preloadParams = __commonJS({
+    "dist/helpers/functions/preloadParams.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var preloadParams = (fn, params = [], unassignedParam = 0) => (missing) => {
+        params.splice(unassignedParam, 0, missing);
+        return fn(...params);
+      };
+      var _default = exports.default = preloadParams;
+    }
+  });
+
+  // dist/helpers/functions/queueTimeout.js
+  var require_queueTimeout = __commonJS({
+    "dist/helpers/functions/queueTimeout.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _delay = _interopRequireDefault(require_delay());
+      var _queueManager = _interopRequireDefault(require_queueManager());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var queueTimeout = (queueManagerHandle = null) => {
+        const manager = queueManagerHandle || (0, _queueManager.default)();
+        manager.start();
+        return (fn, time = 0, ...args) => manager.push(() => (0, _delay.default)(time).resolver.then(() => fn(...args)));
+      };
+      var _default = exports.default = queueTimeout;
+    }
+  });
+
+  // dist/helpers/functions/relevancyFilter.js
+  var require_relevancyFilter = __commonJS({
+    "dist/helpers/functions/relevancyFilter.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var relevancyFilter = (map, {
+        mapLimit = 1e3,
+        relevancyRange = 100
+      } = {}) => {
+        if (map.length <= mapLimit) {
+          return map;
+        }
+        const minRelevance = map.length - relevancyRange;
+        const filtered = map.filter((reference) => reference.relevance >= minRelevance);
+        return filtered.map((reference) => {
+          reference.relevance = reference.relevance > filtered.length ? filtered.length : reference.relevance;
+          return reference;
+        });
+      };
+      var _default = exports.default = relevancyFilter;
+    }
+  });
+
+  // dist/helpers/functions/trace.js
+  var require_trace = __commonJS({
+    "dist/helpers/functions/trace.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _cloneObject = _interopRequireDefault(require_cloneObject());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var trace = (label, useClone = true) => (value) => {
+        console.info(`${label}: `, useClone ? (0, _cloneObject.default)(value) : value);
+        return value;
+      };
+      var _default = exports.default = trace;
+    }
+  });
+
+  // dist/helpers/functions.js
+  var require_functions = __commonJS({
+    "dist/helpers/functions.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      Object.defineProperty(exports, "callWithParams", {
+        enumerable: true,
+        get: function() {
+          return _callWithParams.default;
+        }
+      });
+      Object.defineProperty(exports, "curry", {
+        enumerable: true,
+        get: function() {
+          return _curry.default;
+        }
+      });
+      exports.default = void 0;
+      Object.defineProperty(exports, "delay", {
+        enumerable: true,
+        get: function() {
+          return _delay.default;
+        }
+      });
+      Object.defineProperty(exports, "makeBasicQueue", {
+        enumerable: true,
+        get: function() {
+          return _makeBasicQueue.default;
+        }
+      });
+      Object.defineProperty(exports, "onBodyLoad", {
+        enumerable: true,
+        get: function() {
+          return _onBodyLoad.default;
+        }
+      });
+      Object.defineProperty(exports, "pipe", {
+        enumerable: true,
+        get: function() {
+          return _pipe.default;
+        }
+      });
+      Object.defineProperty(exports, "preloadParams", {
+        enumerable: true,
+        get: function() {
+          return _preloadParams.default;
+        }
+      });
+      Object.defineProperty(exports, "queueManager", {
+        enumerable: true,
+        get: function() {
+          return _queueManager.default;
+        }
+      });
+      Object.defineProperty(exports, "queueTimeout", {
+        enumerable: true,
+        get: function() {
+          return _queueTimeout.default;
+        }
+      });
+      Object.defineProperty(exports, "relevancyFilter", {
+        enumerable: true,
+        get: function() {
+          return _relevancyFilter.default;
+        }
+      });
+      Object.defineProperty(exports, "trace", {
+        enumerable: true,
+        get: function() {
+          return _trace.default;
+        }
+      });
+      var _callWithParams = _interopRequireDefault(require_callWithParams());
+      var _curry = _interopRequireDefault(require_curry());
+      var _delay = _interopRequireDefault(require_delay());
+      var _makeBasicQueue = _interopRequireDefault(require_makeBasicQueue());
+      var _onBodyLoad = _interopRequireDefault(require_onBodyLoad());
+      var _pipe = _interopRequireDefault(require_pipe());
+      var _preloadParams = _interopRequireDefault(require_preloadParams());
+      var _queueManager = _interopRequireDefault(require_queueManager());
+      var _queueTimeout = _interopRequireDefault(require_queueTimeout());
+      var _relevancyFilter = _interopRequireDefault(require_relevancyFilter());
+      var _trace = _interopRequireDefault(require_trace());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var _default = exports.default = {
+        callWithParams: _callWithParams.default,
+        curry: _curry.default,
+        delay: _delay.default,
+        makeBasicQueue: _makeBasicQueue.default,
+        onBodyLoad: _onBodyLoad.default,
+        pipe: _pipe.default,
+        preloadParams: _preloadParams.default,
+        queueManager: _queueManager.default,
+        queueTimeout: _queueTimeout.default,
+        relevancyFilter: _relevancyFilter.default,
+        trace: _trace.default
+      };
+    }
+  });
+
+  // dist/helpers/numbers/absoluteMax.js
+  var require_absoluteMax = __commonJS({
+    "dist/helpers/numbers/absoluteMax.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var absoluteMax = (num1, num2) => Math.abs(num1) > Math.abs(num2) ? num1 : num2;
+      var _default = exports.default = absoluteMax;
+    }
+  });
+
+  // dist/helpers/numbers/absoluteMin.js
+  var require_absoluteMin = __commonJS({
+    "dist/helpers/numbers/absoluteMin.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var absoluteMin = (num1, num2) => Math.abs(num1) < Math.abs(num2) ? num1 : num2;
+      var _default = exports.default = absoluteMin;
+    }
+  });
+
+  // dist/helpers/numbers/compare.js
+  var require_compare = __commonJS({
+    "dist/helpers/numbers/compare.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var compare = (val1, val2) => val1 === val2 ? 0 : val1 > val2 ? 1 : -1;
+      var _default = exports.default = compare;
+    }
+  });
+
+  // dist/helpers/numbers/greatestCommonDivisor.js
+  var require_greatestCommonDivisor = __commonJS({
+    "dist/helpers/numbers/greatestCommonDivisor.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var greatestCommonDivisor = (num1, num2) => num2 === 0 ? num1 : greatestCommonDivisor(num2, num1 % num2);
+      var _default = exports.default = greatestCommonDivisor;
+    }
+  });
+
+  // dist/helpers/numbers/leastCommonMultiple.js
+  var require_leastCommonMultiple = __commonJS({
+    "dist/helpers/numbers/leastCommonMultiple.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _greatestCommonDivisor = _interopRequireDefault(require_greatestCommonDivisor());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var leastCommonMultiple = (num1, num2) => num1 === 0 || num2 === 0 ? 0 : num1 * num2 / (0, _greatestCommonDivisor.default)(num1, num2);
+      var _default = exports.default = leastCommonMultiple;
+    }
+  });
+
+  // dist/helpers/numbers/lowestCommonDenominator.js
+  var require_lowestCommonDenominator = __commonJS({
+    "dist/helpers/numbers/lowestCommonDenominator.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _leastCommonMultiple = _interopRequireDefault(require_leastCommonMultiple());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var lowestCommonDenominator = (...numbers) => numbers.reduce((num1, num2) => (0, _leastCommonMultiple.default)(num1, num2), 1);
+      var _default = exports.default = lowestCommonDenominator;
+    }
+  });
+
+  // dist/helpers/numbers/randomInteger.js
+  var require_randomInteger = __commonJS({
+    "dist/helpers/numbers/randomInteger.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var randomInteger = (range, offset = 0, interval = 1) => (Math.floor(Math.random() * range) + offset) * interval;
+      var _default = exports.default = randomInteger;
+    }
+  });
+
+  // dist/helpers/numbers/randomNumber.js
+  var require_randomNumber = __commonJS({
+    "dist/helpers/numbers/randomNumber.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var randomNumber = (range, offset = 0, interval = 1) => (Math.random() * range + offset) * interval;
+      var _default = exports.default = randomNumber;
+    }
+  });
+
+  // dist/helpers/numbers/simplestRatio.js
+  var require_simplestRatio = __commonJS({
+    "dist/helpers/numbers/simplestRatio.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _greatestCommonDivisor = _interopRequireDefault(require_greatestCommonDivisor());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var simplestRatio = (...numbers) => {
+        if (numbers.length === 0) {
+          return [];
+        }
+        let commonDivisor = numbers.reduce((num1, num2) => (0, _greatestCommonDivisor.default)(num1, num2), 0);
+        commonDivisor = Math.abs(commonDivisor);
+        return numbers.map((num) => commonDivisor === 0 ? 0 : num / commonDivisor);
+      };
+      var _default = exports.default = simplestRatio;
+    }
+  });
+
+  // dist/helpers/numbers.js
+  var require_numbers = __commonJS({
+    "dist/helpers/numbers.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      Object.defineProperty(exports, "absoluteMax", {
+        enumerable: true,
+        get: function() {
+          return _absoluteMax.default;
+        }
+      });
+      Object.defineProperty(exports, "absoluteMin", {
+        enumerable: true,
+        get: function() {
+          return _absoluteMin.default;
+        }
+      });
+      Object.defineProperty(exports, "compare", {
+        enumerable: true,
+        get: function() {
+          return _compare.default;
+        }
+      });
+      exports.default = void 0;
+      Object.defineProperty(exports, "greatestCommonDivisor", {
+        enumerable: true,
+        get: function() {
+          return _greatestCommonDivisor.default;
+        }
+      });
+      Object.defineProperty(exports, "leastCommonMultiple", {
+        enumerable: true,
+        get: function() {
+          return _leastCommonMultiple.default;
+        }
+      });
+      Object.defineProperty(exports, "lowestCommonDenominator", {
+        enumerable: true,
+        get: function() {
+          return _lowestCommonDenominator.default;
+        }
+      });
+      Object.defineProperty(exports, "randomInteger", {
+        enumerable: true,
+        get: function() {
+          return _randomInteger.default;
+        }
+      });
+      Object.defineProperty(exports, "randomNumber", {
+        enumerable: true,
+        get: function() {
+          return _randomNumber.default;
+        }
+      });
+      Object.defineProperty(exports, "simplestRatio", {
+        enumerable: true,
+        get: function() {
+          return _simplestRatio.default;
+        }
+      });
+      var _absoluteMax = _interopRequireDefault(require_absoluteMax());
+      var _absoluteMin = _interopRequireDefault(require_absoluteMin());
+      var _compare = _interopRequireDefault(require_compare());
+      var _greatestCommonDivisor = _interopRequireDefault(require_greatestCommonDivisor());
+      var _leastCommonMultiple = _interopRequireDefault(require_leastCommonMultiple());
+      var _lowestCommonDenominator = _interopRequireDefault(require_lowestCommonDenominator());
+      var _randomInteger = _interopRequireDefault(require_randomInteger());
+      var _randomNumber = _interopRequireDefault(require_randomNumber());
+      var _simplestRatio = _interopRequireDefault(require_simplestRatio());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var _default = exports.default = {
+        absoluteMax: _absoluteMax.default,
+        absoluteMin: _absoluteMin.default,
+        compare: _compare.default,
+        greatestCommonDivisor: _greatestCommonDivisor.default,
+        leastCommonMultiple: _leastCommonMultiple.default,
+        lowestCommonDenominator: _lowestCommonDenominator.default,
+        randomInteger: _randomInteger.default,
+        randomNumber: _randomNumber.default,
+        simplestRatio: _simplestRatio.default
+      };
+    }
+  });
+
+  // dist/helpers/strings/strAfter.js
+  var require_strAfter = __commonJS({
+    "dist/helpers/strings/strAfter.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var strAfter = (str, search) => {
+        const index = str.indexOf(search);
+        return index === -1 ? "" : str.substring(index + search.length);
+      };
+      var _default = exports.default = strAfter;
+    }
+  });
+
+  // dist/helpers/strings/strBefore.js
+  var require_strBefore = __commonJS({
+    "dist/helpers/strings/strBefore.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var strBefore = (str, search) => {
+        const index = str.indexOf(search);
+        return index === -1 ? "" : str.slice(0, index);
+      };
+      var _default = exports.default = strBefore;
+    }
+  });
+
+  // dist/helpers/objects/dotGet.js
+  var require_dotGet = __commonJS({
+    "dist/helpers/objects/dotGet.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _isObject = _interopRequireDefault(require_isObject());
+      var _strAfter = _interopRequireDefault(require_strAfter());
+      var _strBefore = _interopRequireDefault(require_strBefore());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var dotGet = (arrayObject, dotNotation, defaultValue = null) => {
+        let key = (0, _strBefore.default)(dotNotation, ".");
+        const lastKey = !key;
+        if (lastKey) {
+          key = dotNotation;
+        }
+        if (key === "*") {
+          const result = [];
+          for (const wildKey in arrayObject) {
+            const wildValue = arrayObject[wildKey];
+            if (lastKey) {
+              result[wildKey] = wildValue;
+              continue;
+            }
+            if (!(0, _isObject.default)(wildValue)) {
+              continue;
+            }
+            result[wildKey] = dotGet(wildValue, (0, _strAfter.default)(dotNotation, "."), defaultValue);
+          }
+          return result;
+        }
+        if (lastKey) {
+          return arrayObject[dotNotation] ?? defaultValue;
+        }
+        if (typeof arrayObject[key] === "undefined") {
+          return defaultValue;
+        }
+        const next = arrayObject[key];
+        if (!(0, _isObject.default)(next)) {
+          return defaultValue;
+        }
+        return dotGet(next, (0, _strAfter.default)(dotNotation, "."), defaultValue);
+      };
+      var _default = exports.default = dotGet;
+    }
+  });
+
+  // dist/helpers/strings/regexEscape.js
+  var require_regexEscape = __commonJS({
+    "dist/helpers/strings/regexEscape.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.regexEscape = exports.default = void 0;
+      var regexEscape = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      exports.regexEscape = regexEscape;
+      var _default = exports.default = regexEscape;
+    }
+  });
+
+  // dist/helpers/objects/dotNotate.js
+  var require_dotNotate = __commonJS({
+    "dist/helpers/objects/dotNotate.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _emptyObject = _interopRequireDefault(require_emptyObject());
+      var _isObject = _interopRequireDefault(require_isObject());
+      var _regexEscape = _interopRequireDefault(require_regexEscape());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var handleRetainObjects = (retainObjects = []) => {
+        if (!retainObjects.length) {
+          return (currentKey, value, results) => false;
+        }
+        retainObjects = retainObjects.map(_regexEscape.default);
+        const retainRegex = new RegExp(`(${retainObjects.join("|")})$`);
+        return (currentKey, value, results) => {
+          if (!currentKey.match(retainRegex)) {
+            return false;
+          }
+          results[currentKey] = value;
+          return true;
+        };
+      };
+      var performDotNotate = (arrayObject, didRetain, prepend = "", results = {}) => {
+        for (const key in arrayObject) {
+          const value = arrayObject[key];
+          const currentKey = `${prepend}${key}`;
+          if (didRetain(currentKey, value, results)) {
+            continue;
+          }
+          if ((0, _isObject.default)(value) && !(0, _emptyObject.default)(value)) {
+            performDotNotate(value, didRetain, `${currentKey}.`, results);
+            continue;
+          }
+          results[currentKey] = value;
+        }
+        return results;
+      };
+      var dotNotate = (arrayObject, retainObjects = []) => performDotNotate(arrayObject, handleRetainObjects(retainObjects));
+      var _default = exports.default = dotNotate;
+    }
+  });
+
+  // dist/helpers/objects/dotSet.js
+  var require_dotSet = __commonJS({
+    "dist/helpers/objects/dotSet.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _isObject = _interopRequireDefault(require_isObject());
+      var _strAfter = _interopRequireDefault(require_strAfter());
+      var _strBefore = _interopRequireDefault(require_strBefore());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var dotSet = (arrayObject, dotNotation, value = null) => {
+        let key = (0, _strBefore.default)(dotNotation, ".");
+        const lastKey = !key;
+        if (lastKey) {
+          key = dotNotation;
+        }
+        if (key === "*") {
+          for (const wildKey in arrayObject) {
+            if (lastKey) {
+              arrayObject[wildKey] = value;
+              continue;
+            }
+            if (!(0, _isObject.default)(arrayObject[wildKey])) {
+              continue;
+            }
+            dotSet(arrayObject[wildKey], (0, _strAfter.default)(dotNotation, "."), value);
+          }
+          return arrayObject;
+        }
+        if (lastKey) {
+          arrayObject[dotNotation] = value;
+          return arrayObject;
+        }
+        const next = arrayObject[key] ?? [];
+        arrayObject[key] = dotSet(next, (0, _strAfter.default)(dotNotation, "."), value);
+        return arrayObject;
+      };
+      var _default = exports.default = dotSet;
+    }
+  });
+
+  // dist/helpers/objects/dotUnset.js
+  var require_dotUnset = __commonJS({
+    "dist/helpers/objects/dotUnset.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _isObject = _interopRequireDefault(require_isObject());
+      var _strAfter = _interopRequireDefault(require_strAfter());
+      var _strBefore = _interopRequireDefault(require_strBefore());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var dotUnset = (arrayObject, dotNotation) => {
+        let key = (0, _strBefore.default)(dotNotation, ".");
+        const lastKey = !key;
+        if (lastKey) {
+          key = dotNotation;
+        }
+        if (key === "*") {
+          for (const wildKey in arrayObject) {
+            if (lastKey) {
+              delete arrayObject[wildKey];
+              continue;
+            }
+            if (!(0, _isObject.default)(arrayObject[wildKey])) {
+              continue;
+            }
+            dotUnset(arrayObject[wildKey], (0, _strAfter.default)(dotNotation, "."));
+          }
+          return arrayObject;
+        }
+        if (lastKey) {
+          delete arrayObject[dotNotation];
+          return arrayObject;
+        }
+        const next = arrayObject[key] ?? [];
+        arrayObject[key] = dotUnset(next, (0, _strAfter.default)(dotNotation, "."));
+        return arrayObject;
+      };
+      var _default = exports.default = dotUnset;
+    }
+  });
+
+  // dist/helpers/objects/filterObject.js
+  var require_filterObject = __commonJS({
+    "dist/helpers/objects/filterObject.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _callWithParams = _interopRequireDefault(require_callWithParams());
+      var _objectKeys = _interopRequireDefault(require_objectKeys());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var filterObject = (obj, fn, thisArg = void 0) => Array.isArray(obj) ? obj.filter(fn, thisArg) : (0, _objectKeys.default)(obj, true).reduce((newObj, curr) => {
+        if ((0, _callWithParams.default)(fn.bind(thisArg), [obj[curr], curr, obj], 2)) {
+          newObj[curr] = obj[curr];
+        } else {
+          delete newObj[curr];
+        }
+        return newObj;
+      }, {});
+      var _default = exports.default = filterObject;
+    }
+  });
+
+  // node_modules/core-js/internals/define-built-in-accessor.js
+  var require_define_built_in_accessor = __commonJS({
+    "node_modules/core-js/internals/define-built-in-accessor.js"(exports, module) {
+      "use strict";
+      init_process();
+      var makeBuiltIn = require_make_built_in();
+      var defineProperty = require_object_define_property();
+      module.exports = function(target, name, descriptor) {
+        if (descriptor.get) makeBuiltIn(descriptor.get, name, { getter: true });
+        if (descriptor.set) makeBuiltIn(descriptor.set, name, { setter: true });
+        return defineProperty.f(target, name, descriptor);
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/regexp-flags-detection.js
+  var require_regexp_flags_detection = __commonJS({
+    "node_modules/core-js/internals/regexp-flags-detection.js"(exports, module) {
+      "use strict";
+      init_process();
+      var globalThis2 = require_global_this();
+      var fails = require_fails();
+      var RegExp2 = globalThis2.RegExp;
+      var FLAGS_GETTER_IS_CORRECT = !fails(function() {
+        var INDICES_SUPPORT = true;
+        try {
+          RegExp2(".", "d");
+        } catch (error) {
+          INDICES_SUPPORT = false;
+        }
+        var O = {};
+        var calls = "";
+        var expected = INDICES_SUPPORT ? "dgimsy" : "gimsy";
+        var addGetter = function(key2, chr) {
+          Object.defineProperty(O, key2, { get: function() {
+            calls += chr;
+            return true;
+          } });
+        };
+        var pairs = {
+          dotAll: "s",
+          global: "g",
+          ignoreCase: "i",
+          multiline: "m",
+          sticky: "y"
+        };
+        if (INDICES_SUPPORT) pairs.hasIndices = "d";
+        for (var key in pairs) addGetter(key, pairs[key]);
+        var result = Object.getOwnPropertyDescriptor(RegExp2.prototype, "flags").get.call(O);
+        return result !== expected || calls !== expected;
+      });
+      module.exports = { correct: FLAGS_GETTER_IS_CORRECT };
+    }
+  });
+
+  // node_modules/core-js/internals/regexp-flags.js
+  var require_regexp_flags = __commonJS({
+    "node_modules/core-js/internals/regexp-flags.js"(exports, module) {
+      "use strict";
+      init_process();
+      var anObject = require_an_object();
+      module.exports = function() {
+        var that = anObject(this);
+        var result = "";
+        if (that.hasIndices) result += "d";
+        if (that.global) result += "g";
+        if (that.ignoreCase) result += "i";
+        if (that.multiline) result += "m";
+        if (that.dotAll) result += "s";
+        if (that.unicode) result += "u";
+        if (that.unicodeSets) result += "v";
+        if (that.sticky) result += "y";
+        return result;
+      };
+    }
+  });
+
+  // node_modules/core-js/modules/es.regexp.flags.js
+  var require_es_regexp_flags = __commonJS({
+    "node_modules/core-js/modules/es.regexp.flags.js"() {
+      "use strict";
+      init_process();
+      var DESCRIPTORS = require_descriptors();
+      var defineBuiltInAccessor = require_define_built_in_accessor();
+      var regExpFlagsDetection = require_regexp_flags_detection();
+      var regExpFlagsGetterImplementation = require_regexp_flags();
+      if (DESCRIPTORS && !regExpFlagsDetection.correct) {
+        defineBuiltInAccessor(RegExp.prototype, "flags", {
+          configurable: true,
+          get: regExpFlagsGetterImplementation
+        });
+        regExpFlagsDetection.correct = true;
+      }
+    }
+  });
+
+  // dist/helpers/objects/isEqual.js
+  var require_isEqual = __commonJS({
+    "dist/helpers/objects/isEqual.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      require_es_regexp_flags();
+      var sameValueZero = (first, second) => first === second || Number.isNaN(first) && Number.isNaN(second);
+      var compare = (first, second, seen) => {
+        if (sameValueZero(first, second)) {
+          return true;
+        }
+        if (typeof first !== "object" || typeof second !== "object" || first === null || second === null) {
+          return false;
+        }
+        if (Object.getPrototypeOf(first) !== Object.getPrototypeOf(second)) {
+          return false;
+        }
+        const comparing = seen.get(first);
+        if (comparing && comparing.has(second)) {
+          return true;
+        }
+        if (comparing) {
+          comparing.add(second);
+        } else {
+          seen.set(first, new WeakSet([second]));
+        }
+        if (first instanceof Date) {
+          return first.getTime() === second.getTime();
+        }
+        if (first instanceof RegExp) {
+          return first.source === second.source && first.flags === second.flags;
+        }
+        if (first instanceof Map) {
+          return first.size === second.size && Array.from(first.entries()).every(([key, value]) => second.has(key) && compare(value, second.get(key), seen));
+        }
+        if (first instanceof Set) {
+          const others = Array.from(second.values());
+          return first.size === second.size && Array.from(first.values()).every((value) => others.some((other) => compare(value, other, seen)));
+        }
+        if (Array.isArray(first) && first.length !== second.length) {
+          return false;
+        }
+        const firstKeys = Object.keys(first);
+        const secondKeys = Object.keys(second);
+        return firstKeys.length === secondKeys.length && firstKeys.every((key) => Object.prototype.hasOwnProperty.call(second, key) && compare(first[key], second[key], seen));
+      };
+      var isEqual = (first, second) => compare(first, second, /* @__PURE__ */ new WeakMap());
+      var _default = exports.default = isEqual;
+    }
+  });
+
+  // dist/helpers/objects/mapObject.js
+  var require_mapObject = __commonJS({
+    "dist/helpers/objects/mapObject.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _callWithParams = _interopRequireDefault(require_callWithParams());
+      var _objectKeys = _interopRequireDefault(require_objectKeys());
+      var _setValue = _interopRequireDefault(require_setValue());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var mapObject = (obj, fn, thisArg = void 0) => Array.isArray(obj) ? obj.map(fn, thisArg) : (0, _objectKeys.default)(obj, true).reduce((newObj, curr) => (0, _setValue.default)(curr, (0, _callWithParams.default)(fn.bind(thisArg), [obj[curr], curr, obj], 2), newObj), {});
+      var _default = exports.default = mapObject;
+    }
+  });
+
+  // dist/helpers/objects/mergeObjects.js
+  var require_mergeObjects = __commonJS({
+    "dist/helpers/objects/mergeObjects.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _mergeObjectsBase = _interopRequireDefault(require_mergeObjectsBase());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var mergeObjects = (0, _mergeObjectsBase.default)({
+        useClone: true
+      });
+      var _default = exports.default = mergeObjects;
+    }
+  });
+
+  // dist/helpers/objects/mergeObjectsMutable.js
+  var require_mergeObjectsMutable = __commonJS({
+    "dist/helpers/objects/mergeObjectsMutable.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _mergeObjectsBase = _interopRequireDefault(require_mergeObjectsBase());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var mergeObjectsMutable = (0, _mergeObjectsBase.default)();
+      var _default = exports.default = mergeObjectsMutable;
+    }
+  });
+
+  // dist/helpers/objects/objectValues.js
+  var require_objectValues = __commonJS({
+    "dist/helpers/objects/objectValues.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _objectKeys = _interopRequireDefault(require_objectKeys());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var objectValues = (object, includeInherited = false) => (0, _objectKeys.default)(object, includeInherited).map((key) => object[key]);
+      var _default = exports.default = objectValues;
+    }
+  });
+
+  // dist/helpers/objects/setAndReturnValue.js
+  var require_setAndReturnValue = __commonJS({
+    "dist/helpers/objects/setAndReturnValue.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var setAndReturnValue = (item, key, value) => {
+        item[key] = value;
+        return value;
+      };
+      var _default = exports.default = setAndReturnValue;
+    }
+  });
+
+  // dist/helpers/objects.js
+  var require_objects = __commonJS({
+    "dist/helpers/objects.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      Object.defineProperty(exports, "cloneObject", {
+        enumerable: true,
+        get: function() {
+          return _cloneObject.default;
+        }
+      });
+      exports.default = void 0;
+      Object.defineProperty(exports, "dotGet", {
+        enumerable: true,
+        get: function() {
+          return _dotGet.default;
+        }
+      });
+      Object.defineProperty(exports, "dotNotate", {
+        enumerable: true,
+        get: function() {
+          return _dotNotate.default;
+        }
+      });
+      Object.defineProperty(exports, "dotSet", {
+        enumerable: true,
+        get: function() {
+          return _dotSet.default;
+        }
+      });
+      Object.defineProperty(exports, "dotUnset", {
+        enumerable: true,
+        get: function() {
+          return _dotUnset.default;
+        }
+      });
+      Object.defineProperty(exports, "emptyObject", {
+        enumerable: true,
+        get: function() {
+          return _emptyObject.default;
+        }
+      });
+      Object.defineProperty(exports, "filterObject", {
+        enumerable: true,
+        get: function() {
+          return _filterObject.default;
+        }
+      });
+      Object.defineProperty(exports, "isCloneable", {
+        enumerable: true,
+        get: function() {
+          return _isCloneable.default;
+        }
+      });
+      Object.defineProperty(exports, "isEqual", {
+        enumerable: true,
+        get: function() {
+          return _isEqual.default;
+        }
+      });
+      Object.defineProperty(exports, "isInstanceObject", {
+        enumerable: true,
+        get: function() {
+          return _isInstanceObject.default;
+        }
+      });
+      Object.defineProperty(exports, "isObject", {
+        enumerable: true,
+        get: function() {
+          return _isObject.default;
+        }
+      });
+      Object.defineProperty(exports, "mapObject", {
+        enumerable: true,
+        get: function() {
+          return _mapObject.default;
+        }
+      });
+      Object.defineProperty(exports, "mergeObjects", {
+        enumerable: true,
+        get: function() {
+          return _mergeObjects.default;
+        }
+      });
+      Object.defineProperty(exports, "mergeObjectsBase", {
+        enumerable: true,
+        get: function() {
+          return _mergeObjectsBase.default;
+        }
+      });
+      Object.defineProperty(exports, "mergeObjectsMutable", {
+        enumerable: true,
+        get: function() {
+          return _mergeObjectsMutable.default;
+        }
+      });
+      Object.defineProperty(exports, "objectKeys", {
+        enumerable: true,
+        get: function() {
+          return _objectKeys.default;
+        }
+      });
+      Object.defineProperty(exports, "objectValues", {
+        enumerable: true,
+        get: function() {
+          return _objectValues.default;
+        }
+      });
+      Object.defineProperty(exports, "reduceObject", {
+        enumerable: true,
+        get: function() {
+          return _reduceObject.default;
+        }
+      });
+      Object.defineProperty(exports, "setAndReturnValue", {
+        enumerable: true,
+        get: function() {
+          return _setAndReturnValue.default;
+        }
+      });
+      Object.defineProperty(exports, "setValue", {
+        enumerable: true,
+        get: function() {
+          return _setValue.default;
+        }
+      });
+      var _cloneObject = _interopRequireDefault(require_cloneObject());
+      var _dotGet = _interopRequireDefault(require_dotGet());
+      var _dotNotate = _interopRequireDefault(require_dotNotate());
+      var _dotSet = _interopRequireDefault(require_dotSet());
+      var _dotUnset = _interopRequireDefault(require_dotUnset());
+      var _emptyObject = _interopRequireDefault(require_emptyObject());
+      var _filterObject = _interopRequireDefault(require_filterObject());
+      var _isCloneable = _interopRequireDefault(require_isCloneable());
+      var _isEqual = _interopRequireDefault(require_isEqual());
+      var _isInstanceObject = _interopRequireDefault(require_isInstanceObject());
+      var _isObject = _interopRequireDefault(require_isObject());
+      var _mapObject = _interopRequireDefault(require_mapObject());
+      var _mergeObjects = _interopRequireDefault(require_mergeObjects());
+      var _mergeObjectsBase = _interopRequireDefault(require_mergeObjectsBase());
+      var _mergeObjectsMutable = _interopRequireDefault(require_mergeObjectsMutable());
+      var _objectKeys = _interopRequireDefault(require_objectKeys());
+      var _objectValues = _interopRequireDefault(require_objectValues());
+      var _reduceObject = _interopRequireDefault(require_reduceObject());
+      var _setAndReturnValue = _interopRequireDefault(require_setAndReturnValue());
+      var _setValue = _interopRequireDefault(require_setValue());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var _default = exports.default = {
+        cloneObject: _cloneObject.default,
+        dotGet: _dotGet.default,
+        dotNotate: _dotNotate.default,
+        dotSet: _dotSet.default,
+        dotUnset: _dotUnset.default,
+        emptyObject: _emptyObject.default,
+        filterObject: _filterObject.default,
+        isCloneable: _isCloneable.default,
+        isEqual: _isEqual.default,
+        isInstanceObject: _isInstanceObject.default,
+        isObject: _isObject.default,
+        mapObject: _mapObject.default,
+        mergeObjects: _mergeObjects.default,
+        mergeObjectsBase: _mergeObjectsBase.default,
+        mergeObjectsMutable: _mergeObjectsMutable.default,
+        objectKeys: _objectKeys.default,
+        objectValues: _objectValues.default,
+        reduceObject: _reduceObject.default,
+        setAndReturnValue: _setAndReturnValue.default,
+        setValue: _setValue.default
+      };
+    }
+  });
+
+  // dist/helpers/strings/ucFirst.js
+  var require_ucFirst = __commonJS({
+    "dist/helpers/strings/ucFirst.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var ucFirst = (str) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+      var _default = exports.default = ucFirst;
+    }
+  });
+
+  // dist/helpers/strings/words.js
+  var require_words = __commonJS({
+    "dist/helpers/strings/words.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var words = (str) => str.match(/\d+|[A-Z]?[a-z]+|[A-Za-z]+/g);
+      var _default = exports.default = words;
+    }
+  });
+
+  // dist/helpers/strings/camelCase.js
+  var require_camelCase = __commonJS({
+    "dist/helpers/strings/camelCase.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _ucFirst = _interopRequireDefault(require_ucFirst());
+      var _words = _interopRequireDefault(require_words());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var camelCase = (str) => (0, _words.default)(str).reduce((camel, part) => camel ? camel.concat((0, _ucFirst.default)(part)) : part.toLowerCase(), "");
+      var _default = exports.default = camelCase;
+    }
+  });
+
+  // dist/helpers/strings/kabobCase.js
+  var require_kabobCase = __commonJS({
+    "dist/helpers/strings/kabobCase.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _words = _interopRequireDefault(require_words());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var kabobCase = (str) => (0, _words.default)(str).reduce((kabob, part) => kabob ? kabob.concat("-" + part.toLowerCase()) : part.toLowerCase(), "");
+      var _default = exports.default = kabobCase;
+    }
+  });
+
+  // dist/helpers/strings/strBeforeLast.js
+  var require_strBeforeLast = __commonJS({
+    "dist/helpers/strings/strBeforeLast.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var strBeforeLast = (str, search) => {
+        const index = str.lastIndexOf(search);
+        return index === -1 ? "" : str.substring(0, index);
+      };
+      var _default = exports.default = strBeforeLast;
+    }
+  });
+
+  // dist/helpers/strings/makeFilepath.js
+  var require_makeFilepath = __commonJS({
+    "dist/helpers/strings/makeFilepath.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.makeFilepath = exports.default = void 0;
+      var _strBeforeLast = _interopRequireDefault(require_strBeforeLast());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var makeFilepath = (root, append = "") => {
+        if (root.startsWith("./")) {
+          root = root.slice(2);
+        }
+        if (root.startsWith("/")) {
+          root = root.slice(1);
+        }
+        if (root.endsWith("/")) {
+          root = root.slice(0, -1);
+        }
+        if (append.startsWith("/")) {
+          append = append.slice(1);
+        }
+        if (append.startsWith("./")) {
+          append = append.slice(2);
+        }
+        if (append.startsWith("../")) {
+          if (!root) {
+            return append.endsWith("/") ? append.slice(0, -1) : append;
+          }
+          append = append.slice(3);
+          root = (0, _strBeforeLast.default)(root, "/");
+          return makeFilepath(root, append);
+        }
+        if (append.endsWith("/")) {
+          append = append.slice(0, -1);
+        }
+        if (!root) {
+          return append;
+        }
+        return append ? `${root}/${append}` : root;
+      };
+      exports.makeFilepath = makeFilepath;
+      var _default = exports.default = makeFilepath;
+    }
+  });
+
+  // dist/helpers/strings/makeRelativePath.js
+  var require_makeRelativePath = __commonJS({
+    "dist/helpers/strings/makeRelativePath.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.makeRelativePath = exports.default = void 0;
+      var _strBefore = _interopRequireDefault(require_strBefore());
+      var _strAfter = _interopRequireDefault(require_strAfter());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var makeRelativePath = (fromFile, toFile) => {
+        let relativePath = toFile;
+        let nextPart = fromFile;
+        let firstPart = (0, _strBefore.default)(nextPart, "/");
+        let hasMatches = false;
+        while (firstPart && relativePath.startsWith(firstPart)) {
+          relativePath = (0, _strAfter.default)(relativePath, `${firstPart}/`);
+          nextPart = (0, _strAfter.default)(nextPart, `${firstPart}/`);
+          firstPart = (0, _strBefore.default)(nextPart, "/");
+          hasMatches = true;
+        }
+        if (!hasMatches) {
+          return relativePath;
+        }
+        let relativePrefix = "";
+        const nextParts = nextPart.split("/");
+        if (nextParts.length < 2) {
+          relativePrefix = "./";
+        }
+        for (let i = 1; i < nextParts.length; ++i) {
+          relativePrefix += "../";
+        }
+        return relativePrefix + relativePath;
+      };
+      exports.makeRelativePath = makeRelativePath;
+      var _default = exports.default = makeRelativePath;
+    }
+  });
+
+  // dist/helpers/strings/snakeCase.js
+  var require_snakeCase = __commonJS({
+    "dist/helpers/strings/snakeCase.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _words = _interopRequireDefault(require_words());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var snakeCase = (str) => (0, _words.default)(str).reduce((snake, part) => snake ? snake.concat("_" + part.toLowerCase()) : part.toLowerCase(), "");
+      var _default = exports.default = snakeCase;
+    }
+  });
+
+  // dist/helpers/strings/strAfterLast.js
+  var require_strAfterLast = __commonJS({
+    "dist/helpers/strings/strAfterLast.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var strAfterLast = (str, search) => {
+        const index = str.lastIndexOf(search);
+        return index === -1 ? "" : str.substring(index + search.length);
+      };
+      var _default = exports.default = strAfterLast;
+    }
+  });
+
+  // dist/helpers/strings/titleCase.js
+  var require_titleCase = __commonJS({
+    "dist/helpers/strings/titleCase.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.default = void 0;
+      var _ucFirst = _interopRequireDefault(require_ucFirst());
+      var _words = _interopRequireDefault(require_words());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var titleCase = (str) => (0, _words.default)(str).reduce((title, part) => title ? title.concat(" " + (0, _ucFirst.default)(part)) : (0, _ucFirst.default)(part), "");
+      var _default = exports.default = titleCase;
+    }
+  });
+
+  // dist/helpers/strings.js
+  var require_strings = __commonJS({
+    "dist/helpers/strings.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      Object.defineProperty(exports, "camelCase", {
+        enumerable: true,
+        get: function() {
+          return _camelCase.default;
+        }
+      });
+      exports.default = void 0;
+      Object.defineProperty(exports, "kabobCase", {
+        enumerable: true,
+        get: function() {
+          return _kabobCase.default;
+        }
+      });
+      Object.defineProperty(exports, "makeFilepath", {
+        enumerable: true,
+        get: function() {
+          return _makeFilepath.default;
+        }
+      });
+      Object.defineProperty(exports, "makeRelativePath", {
+        enumerable: true,
+        get: function() {
+          return _makeRelativePath.default;
+        }
+      });
+      Object.defineProperty(exports, "regexEscape", {
+        enumerable: true,
+        get: function() {
+          return _regexEscape.default;
+        }
+      });
+      Object.defineProperty(exports, "snakeCase", {
+        enumerable: true,
+        get: function() {
+          return _snakeCase.default;
+        }
+      });
+      Object.defineProperty(exports, "strAfter", {
+        enumerable: true,
+        get: function() {
+          return _strAfter.default;
+        }
+      });
+      Object.defineProperty(exports, "strAfterLast", {
+        enumerable: true,
+        get: function() {
+          return _strAfterLast.default;
+        }
+      });
+      Object.defineProperty(exports, "strBefore", {
+        enumerable: true,
+        get: function() {
+          return _strBefore.default;
+        }
+      });
+      Object.defineProperty(exports, "strBeforeLast", {
+        enumerable: true,
+        get: function() {
+          return _strBeforeLast.default;
+        }
+      });
+      Object.defineProperty(exports, "titleCase", {
+        enumerable: true,
+        get: function() {
+          return _titleCase.default;
+        }
+      });
+      Object.defineProperty(exports, "ucFirst", {
+        enumerable: true,
+        get: function() {
+          return _ucFirst.default;
+        }
+      });
+      Object.defineProperty(exports, "words", {
+        enumerable: true,
+        get: function() {
+          return _words.default;
+        }
+      });
+      var _camelCase = _interopRequireDefault(require_camelCase());
+      var _kabobCase = _interopRequireDefault(require_kabobCase());
+      var _makeFilepath = _interopRequireDefault(require_makeFilepath());
+      var _makeRelativePath = _interopRequireDefault(require_makeRelativePath());
+      var _regexEscape = _interopRequireDefault(require_regexEscape());
+      var _snakeCase = _interopRequireDefault(require_snakeCase());
+      var _strAfter = _interopRequireDefault(require_strAfter());
+      var _strAfterLast = _interopRequireDefault(require_strAfterLast());
+      var _strBefore = _interopRequireDefault(require_strBefore());
+      var _strBeforeLast = _interopRequireDefault(require_strBeforeLast());
+      var _titleCase = _interopRequireDefault(require_titleCase());
+      var _ucFirst = _interopRequireDefault(require_ucFirst());
+      var _words = _interopRequireDefault(require_words());
+      function _interopRequireDefault(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      var _default = exports.default = {
+        camelCase: _camelCase.default,
+        kabobCase: _kabobCase.default,
+        makeFilepath: _makeFilepath.default,
+        makeRelativePath: _makeRelativePath.default,
+        regexEscape: _regexEscape.default,
+        snakeCase: _snakeCase.default,
+        strAfter: _strAfter.default,
+        strAfterLast: _strAfterLast.default,
+        strBefore: _strBefore.default,
+        strBeforeLast: _strBeforeLast.default,
+        titleCase: _titleCase.default,
+        ucFirst: _ucFirst.default,
+        words: _words.default
+      };
+    }
+  });
+
+  // dist/main.js
+  var require_main = __commonJS({
+    "dist/main.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      var _exportNames = {};
+      exports.default = void 0;
+      var _arrays = _interopRequireWildcard(require_arrays());
+      Object.keys(_arrays).forEach(function(key) {
+        if (key === "default" || key === "__esModule") return;
+        if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+        if (key in exports && exports[key] === _arrays[key]) return;
+        Object.defineProperty(exports, key, {
+          enumerable: true,
+          get: function() {
+            return _arrays[key];
+          }
+        });
+      });
+      var _descriptors = _interopRequireWildcard(require_descriptors2());
+      Object.keys(_descriptors).forEach(function(key) {
+        if (key === "default" || key === "__esModule") return;
+        if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+        if (key in exports && exports[key] === _descriptors[key]) return;
+        Object.defineProperty(exports, key, {
+          enumerable: true,
+          get: function() {
+            return _descriptors[key];
+          }
+        });
+      });
+      var _functions = _interopRequireWildcard(require_functions());
+      Object.keys(_functions).forEach(function(key) {
+        if (key === "default" || key === "__esModule") return;
+        if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+        if (key in exports && exports[key] === _functions[key]) return;
+        Object.defineProperty(exports, key, {
+          enumerable: true,
+          get: function() {
+            return _functions[key];
+          }
+        });
+      });
+      var _numbers = _interopRequireWildcard(require_numbers());
+      Object.keys(_numbers).forEach(function(key) {
+        if (key === "default" || key === "__esModule") return;
+        if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+        if (key in exports && exports[key] === _numbers[key]) return;
+        Object.defineProperty(exports, key, {
+          enumerable: true,
+          get: function() {
+            return _numbers[key];
+          }
+        });
+      });
+      var _objects = _interopRequireWildcard(require_objects());
+      Object.keys(_objects).forEach(function(key) {
+        if (key === "default" || key === "__esModule") return;
+        if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+        if (key in exports && exports[key] === _objects[key]) return;
+        Object.defineProperty(exports, key, {
+          enumerable: true,
+          get: function() {
+            return _objects[key];
+          }
+        });
+      });
+      var _strings = _interopRequireWildcard(require_strings());
+      Object.keys(_strings).forEach(function(key) {
+        if (key === "default" || key === "__esModule") return;
+        if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+        if (key in exports && exports[key] === _strings[key]) return;
+        Object.defineProperty(exports, key, {
+          enumerable: true,
+          get: function() {
+            return _strings[key];
+          }
+        });
+      });
+      var e;
+      function _interopRequireWildcard(t, r) {
+        if (!r && t && t.__esModule) return t;
+        var n, a, o = Object.defineProperty, f = { __proto__: null, default: t };
+        if (Object(t) !== t) return f;
+        if (e || "function" != typeof WeakMap || (e = /* @__PURE__ */ new WeakMap()), e) {
+          if (e.has(t)) return e.get(t);
+          e.set(t, f);
+        }
+        for (a in t) "default" !== a && {}.hasOwnProperty.call(t, a) && ((n = o && Object.getOwnPropertyDescriptor(t, a)) && (n.get || n.set) ? o(f, a, n) : f[a] = t[a]);
+        return f;
+      }
+      var siFunciona = Object.assign({}, _arrays.default, _descriptors.default, _functions.default, _numbers.default, _objects.default, _strings.default);
+      var _default = exports.default = siFunciona;
+      if (void 0) {
+        (void 0)["siFunciona"] = siFunciona;
+      } else if (typeof window !== "undefined") {
+        window["siFunciona"] = siFunciona;
+      }
+    }
+  });
+
+  // dist/browser.js
+  var require_browser = __commonJS({
+    "dist/browser.js"(exports) {
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      var _main = require_main();
+      Object.keys(_main).forEach(function(key) {
+        if (key === "default" || key === "__esModule") return;
+        if (key in exports && exports[key] === _main[key]) return;
+        Object.defineProperty(exports, key, {
+          enumerable: true,
+          get: function() {
+            return _main[key];
+          }
+        });
+      });
+    }
+  });
+  return require_browser();
+})();
+if (typeof module === 'object' && module && module.exports) { module.exports = siFunciona }
