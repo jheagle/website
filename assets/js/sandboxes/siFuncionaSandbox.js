@@ -9,36 +9,88 @@
  */
 
 /**
- * The functions on offer, grouped as in the picker. Each input has a kind: 'text', 'number' or 'json'.
- * @type {Array<{group: string, name: string, about: string, inputs: Array<{label: string, kind: string, value: string}>}>}
+ * The functions on offer, grouped as in the picker. Each input has a kind: 'text', 'number', 'numbers' or 'json'. An entry can
+ * show several functions at once with its own `run` (and a `label` for the picker).
+ * @type {Array<{group: string, name: string, label: (string|undefined), about: string, inputs: Array<{label: string, kind: string, value: string}>, run: (Function|undefined)}>}
  */
 export const functions = [
-  { group: 'Strings', name: 'camelCase', about: 'Joins the words, capitalising all but the first.', inputs: [{ label: 'Text', kind: 'text', value: 'some kabob-case example' }] },
-  { group: 'Strings', name: 'kabobCase', about: 'Lower-case words joined with hyphens.', inputs: [{ label: 'Text', kind: 'text', value: 'Some Title Case example' }] },
-  { group: 'Strings', name: 'snakeCase', about: 'Lower-case words joined with underscores.', inputs: [{ label: 'Text', kind: 'text', value: 'someCamelCaseExample' }] },
-  { group: 'Strings', name: 'titleCase', about: 'Capitalises each word, joined with spaces.', inputs: [{ label: 'Text', kind: 'text', value: 'some_snake_case example' }] },
-  { group: 'Strings', name: 'words', about: 'Splits text into words, whatever the casing or separators.', inputs: [{ label: 'Text', kind: 'text', value: 'someMixed_case-String here' }] },
-  { group: 'Strings', name: 'strBefore', about: 'Everything before the first match.', inputs: [{ label: 'Text', kind: 'text', value: 'user@example.com' }, { label: 'Search', kind: 'text', value: '@' }] },
-  { group: 'Strings', name: 'strAfter', about: 'Everything after the first match.', inputs: [{ label: 'Text', kind: 'text', value: 'user@example.com' }, { label: 'Search', kind: 'text', value: '@' }] },
+  {
+    group: 'Strings',
+    name: 'caseConversion',
+    label: 'camelCase / kabobCase / snakeCase / titleCase',
+    about: 'The four case helpers at once. They all split the text with words(), so any mix of casing and separators works.',
+    inputs: [{ label: 'Text', kind: 'text', value: 'some_mixed-Case example2 Text' }],
+    run: (library, [text]) => ({ camelCase: library.camelCase(text), kabobCase: library.kabobCase(text), snakeCase: library.snakeCase(text), titleCase: library.titleCase(text) })
+  },
+  { group: 'Strings', name: 'words', about: 'Splits text into words, whatever the casing or separators (numbers stay whole).', inputs: [{ label: 'Text', kind: 'text', value: 'someCamelCase_and-kabob text2' }] },
   { group: 'Objects', name: 'dotNotate', about: 'Flattens nested objects and arrays into dot-notation keys.', inputs: [{ label: 'Object (JSON)', kind: 'json', value: '{ "user": { "name": "Evan", "sports": ["running", "lifting"] } }' }] },
   { group: 'Objects', name: 'dotGet', about: 'Reads a nested value by its dot-notation path.', inputs: [{ label: 'Object (JSON)', kind: 'json', value: '{ "user": { "name": "Evan", "sports": ["running", "lifting"] } }' }, { label: 'Path', kind: 'text', value: 'user.sports.1' }] },
+  {
+    group: 'Objects',
+    name: 'cloneObject',
+    about: 'A deep copy. Each side copies the object, then sets the path below on its copy: with a plain spread copy ({ ...object }) the nested change leaks back into the original; with cloneObject it doesn\'t. It copies circular references too.',
+    inputs: [
+      { label: 'Object (JSON)', kind: 'json', value: '{ "user": { "name": "Evan", "sports": ["running", "lifting"] } }' },
+      { label: 'Path to change in the copy', kind: 'text', value: 'user.name' },
+      { label: 'New value (JSON)', kind: 'json', value: '"Josh"' }
+    ],
+    run: (library, [object, path, value]) => {
+      // Two identical originals, so each copy's edit can only reach its own
+      const viaSpread = JSON.parse(JSON.stringify(object))
+      const viaClone = JSON.parse(JSON.stringify(object))
+      library.dotSet({ ...viaSpread }, path, value)
+      library.dotSet(library.cloneObject(viaClone), path, value)
+      return { originalAfterSpreadCopyEdit: viaSpread, originalAfterCloneObjectEdit: viaClone }
+    }
+  },
   { group: 'Objects', name: 'mergeObjects', about: 'Deep-merges objects into a new one; later values win.', inputs: [{ label: 'First (JSON)', kind: 'json', value: '{ "a": 1, "b": { "c": 2 } }' }, { label: 'Second (JSON)', kind: 'json', value: '{ "b": { "d": 3 }, "e": 4 }' }] },
   { group: 'Objects', name: 'isEqual', about: 'Deep equality: same structure and same values.', inputs: [{ label: 'First (JSON)', kind: 'json', value: '{ "a": [1, 2, { "b": 3 }] }' }, { label: 'Second (JSON)', kind: 'json', value: '{ "a": [1, 2, { "b": 3 }] }' }] },
+  {
+    group: 'Arrays',
+    name: 'compareArrays',
+    about: 'Compares arrays value by value: for each array, 1 = only there, 0 = in both, -1 = missing; keys are the positions. Summarised first, then the raw result.',
+    inputs: [{ label: 'First (JSON)', kind: 'json', value: '["apple", "banana", "cherry", "apple"]' }, { label: 'Second (JSON)', kind: 'json', value: '["banana", "date", "cherry"]' }],
+    run: (library, [first, second]) => {
+      const raw = library.compareArrays(first, second)
+      const pick = test => raw.filter(entry => test(entry.result)).map(entry => entry.value)
+      return {
+        onlyInFirst: pick(([a, b]) => a === 1 && b === -1),
+        inBoth: pick(([a, b]) => a === 0 && b === 0),
+        onlyInSecond: pick(([a, b]) => a === -1 && b === 1),
+        raw
+      }
+    }
+  },
   { group: 'Arrays', name: 'uniqueArray', about: 'Drops repeated values, keeping the first of each.', inputs: [{ label: 'Array (JSON)', kind: 'json', value: '[3, 1, 3, 2, 1, "a", "a"]' }] },
   { group: 'Arrays', name: 'mergeArrays', about: 'Joins arrays, keeping each value once.', inputs: [{ label: 'First (JSON)', kind: 'json', value: '[1, 2, 3]' }, { label: 'Second (JSON)', kind: 'json', value: '[3, 4, 5]' }] },
-  { group: 'Numbers', name: 'simplestRatio', about: 'Reduces numbers to their simplest ratio.', inputs: [{ label: 'First', kind: 'number', value: '16' }, { label: 'Second', kind: 'number', value: '24' }] },
-  { group: 'Numbers', name: 'absoluteMax', about: 'Whichever number is furthest from zero.', inputs: [{ label: 'First', kind: 'number', value: '-12' }, { label: 'Second', kind: 'number', value: '7' }] }
+  {
+    group: 'Numbers',
+    name: 'ratios',
+    label: 'simplestRatio / greatestCommonDivisor / lowestCommonDenominator',
+    about: 'Whole numbers in, ratio maths out: the simplest ratio, the biggest number that divides them all, and the smallest number they all divide into.',
+    inputs: [{ label: 'Whole numbers (comma-separated)', kind: 'numbers', value: '16, 24, 40' }],
+    run: (library, [numbers]) => ({
+      simplestRatio: library.simplestRatio(...numbers),
+      greatestCommonDivisor: numbers.reduce((first, second) => library.greatestCommonDivisor(first, second)),
+      lowestCommonDenominator: library.lowestCommonDenominator(...numbers)
+    })
+  }
 ]
 
 /**
  * Turn one input's text into its argument.
- * @param {string} kind 'text', 'number' or 'json'
+ * @param {string} kind 'text', 'number', 'numbers' (a comma-separated list of whole numbers) or 'json'
  * @param {string} text
  * @returns {*}
  * @throws {Error} For JSON that doesn't parse, or text that isn't a number.
  */
 export const parseInput = (kind, text) => {
   if (kind === 'json') return JSON.parse(text)
+  if (kind === 'numbers') {
+    const numbers = text.split(/[\s,]+/).filter(Boolean).map(Number)
+    if (!numbers.length || numbers.some(number => !Number.isInteger(number) || number <= 0)) throw new Error('use whole numbers above zero, separated by commas')
+    return numbers
+  }
   if (kind === 'number') {
     const number = Number(text)
     if (text.trim() === '' || Number.isNaN(number)) throw new Error(`"${text}" isn't a number`)
@@ -62,10 +114,10 @@ export const formatValue = value => value === undefined ? 'undefined' : JSON.str
  * @returns {{call: string, result: string, error: string|null}}
  */
 export const runFunction = (library, fn, texts) => {
-  const call = `${fn.name}(${texts.map((text, index) => fn.inputs[index].kind === 'text' ? JSON.stringify(text) : text.trim()).join(', ')})`
+  const call = `${fn.label || fn.name}(${texts.map((text, index) => fn.inputs[index].kind === 'text' ? JSON.stringify(text) : text.trim()).join(', ')})`
   try {
     const args = texts.map((text, index) => parseInput(fn.inputs[index].kind, text))
-    return { call, result: formatValue(library[fn.name](...args)), error: null }
+    return { call, result: formatValue(fn.run ? fn.run(library, args) : library[fn.name](...args)), error: null }
   } catch (error) {
     return { call, result: '', error: error.message }
   }
@@ -95,16 +147,112 @@ export const markup = `<div class='grid gap-6 md:grid-cols-2'>
 </div>`
 
 /**
+ * The queueTimeout demo's markup (static), shown below the function explorer.
+ */
+export const queueMarkup = `<div class='mt-8 border-t border-rule pt-6'>
+  <h4 class='mt-0 mb-1 text-lg'>One after another: <code class='rounded bg-foreground/8 px-1 py-px font-mono text-base'>queueTimeout</code></h4>
+  <p class='mt-0 mb-5 max-w-prose text-sm text-muted'>Each step waits its delay <em>after the step before it</em>. That's how Battleship paces its attacks and animations. Plain <code class='rounded bg-foreground/8 px-1 py-px'>setTimeout</code> starts every delay at once, so short delays jump the line. Run both and compare the order.</p>
+  <div class='grid gap-6 md:grid-cols-2'>
+    <form id='qt-form' class='flex flex-col gap-3'>
+      <div id='qt-steps' class='flex flex-col gap-2'></div>
+      <div><button id='qt-run' class='cursor-pointer rounded-lg border-0 bg-accent px-4 py-2 font-heading font-semibold text-background disabled:cursor-not-allowed disabled:opacity-50' type='submit'>Run both</button></div>
+    </form>
+    <div class='flex flex-col gap-4'>
+      <div><p class='mt-0 mb-1.5 font-mono text-sm font-semibold'>setTimeout</p><ol id='qt-plain' class='m-0 flex min-h-9 list-none flex-wrap gap-2 p-0'></ol></div>
+      <div><p class='mt-0 mb-1.5 font-mono text-sm font-semibold'>queueTimeout</p><ol id='qt-queued' class='m-0 flex min-h-9 list-none flex-wrap gap-2 p-0'></ol></div>
+    </div>
+  </div>
+</div>`
+
+/** The queue demo's starting steps: a long delay first, so the two orders differ. */
+export const queueSteps = [{ label: 'A', delay: 1000 }, { label: 'B', delay: 200 }, { label: 'C', delay: 500 }]
+
+/**
+ * When each step fires: all at once from the start (setTimeout), or each after the one before (queueTimeout).
+ * @param {Array<{label: string, delay: number}>} steps
+ * @returns {{plain: Array<{label: string, at: number}>, queued: Array<{label: string, at: number}>}} Each in firing order.
+ */
+export const expectedOrder = steps => {
+  let elapsed = 0
+  const queued = steps.map(step => ({ label: step.label, at: (elapsed += step.delay) }))
+  const plain = steps.map(step => ({ label: step.label, at: step.delay })).sort((a, b) => a.at - b.at)
+  return { plain, queued }
+}
+
+/**
+ * Wire up the queueTimeout demo inside an already rendered sandbox.
+ * @param {Document} document
+ * @param {Window} window
+ * @param {Object} library The si-funciona exports (for queueTimeout).
+ * @returns {{run: function(): Promise<void>}}
+ */
+export const initQueueDemo = (document, window, library) => {
+  const stepsBox = document.getElementById('qt-steps')
+  const runButton = document.getElementById('qt-run')
+  stepsBox.replaceChildren(...queueSteps.map((step, index) => {
+    const row = document.createElement('div')
+    row.className = 'flex items-end gap-2'
+    const field = (text, value, attributes, classes) => {
+      const label = document.createElement('label')
+      label.className = `flex flex-col gap-1 text-sm font-semibold ${classes}`
+      label.textContent = text
+      const input = document.createElement('input')
+      input.className = fieldClasses
+      for (const [name, attribute] of Object.entries(attributes)) input.setAttribute(name, attribute)
+      input.value = value
+      label.appendChild(input)
+      return label
+    }
+    row.append(
+      field('Step', step.label, { 'data-step-label': String(index), maxlength: '12' }, 'w-24'),
+      field('Delay (ms)', String(step.delay), { 'data-step-delay': String(index), type: 'number', min: '0', max: '3000', step: '50' }, 'grow')
+    )
+    return row
+  }))
+
+  const chip = (label, at) => {
+    const item = document.createElement('li')
+    item.className = 'rounded-md bg-accent px-2.5 py-1 font-mono text-sm text-background'
+    item.textContent = `${label} · ${at} ms`
+    return item
+  }
+
+  const run = () => {
+    const steps = queueSteps.map((step, index) => ({
+      label: document.querySelector(`[data-step-label="${index}"]`).value.trim() || step.label,
+      delay: Math.min(3000, Math.max(0, Math.round(Number(document.querySelector(`[data-step-delay="${index}"]`).value) || 0)))
+    }))
+    const plain = document.getElementById('qt-plain')
+    const queued = document.getElementById('qt-queued')
+    plain.replaceChildren()
+    queued.replaceChildren()
+    runButton.disabled = true
+    const start = window.performance.now()
+    const elapsed = () => Math.round(window.performance.now() - start)
+    const plainDone = steps.map(step => new Promise(resolve => window.setTimeout(() => resolve(plain.appendChild(chip(step.label, elapsed()))), step.delay)))
+    const queue = library.queueTimeout()
+    const queuedDone = steps.map(step => queue(() => queued.appendChild(chip(step.label, elapsed())), step.delay))
+    return Promise.all([...plainDone, ...queuedDone]).then(() => { runButton.disabled = false })
+  }
+
+  document.getElementById('qt-form').addEventListener('submit', event => {
+    event.preventDefault()
+    run()
+  })
+  return { run }
+}
+
+/**
  * Render the sandbox into the page's `<div data-sandbox='si-funciona'>` and wire it up. One per page (fixed ids).
  * @param {Document} document
  * @param {Window} window
  * @param {Object} [library=window.siFunciona]
- * @returns {{select: function(string): void, update: function(): void}|null} null when the sandbox isn't on the page.
+ * @returns {{select: function(string): void, update: function(): void, queueDemo: Object|null}|null} null when the sandbox isn't on the page.
  */
 export const initSiFuncionaSandbox = (document, window, library = window.siFunciona) => {
   const mount = document.querySelector('[data-sandbox="si-funciona"]')
   if (!mount || !library) return null
-  if (!mount.querySelector('#sf-form')) mount.innerHTML = markup
+  if (!mount.querySelector('#sf-form')) mount.innerHTML = markup + queueMarkup
   const picker = document.getElementById('sf-function')
   const inputs = document.getElementById('sf-inputs')
   let current = functions[0]
@@ -119,7 +267,7 @@ export const initSiFuncionaSandbox = (document, window, library = window.siFunci
     }
     const option = document.createElement('option')
     option.value = fn.name
-    option.textContent = fn.name
+    option.textContent = fn.label || fn.name
     groups[fn.group].appendChild(option)
   }
 
@@ -155,5 +303,6 @@ export const initSiFuncionaSandbox = (document, window, library = window.siFunci
   picker.addEventListener('change', () => select(picker.value))
   document.getElementById('sf-form').addEventListener('submit', event => event.preventDefault())
   select(current.name)
-  return { select, update }
+  const queueDemo = document.getElementById('qt-form') ? initQueueDemo(document, window, library) : null
+  return { select, update, queueDemo }
 }

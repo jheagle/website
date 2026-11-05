@@ -248,17 +248,22 @@ the si-funciona page share one sandbox.
 
 
 * [siFuncionaSandbox](#module_siFuncionaSandbox)
-    * [.functions](#module_siFuncionaSandbox.functions) : <code>Array.&lt;{group: string, name: string, about: string, inputs: Array.&lt;{label: string, kind: string, value: string}&gt;}&gt;</code>
+    * [.functions](#module_siFuncionaSandbox.functions) : <code>Array.&lt;{group: string, name: string, label: (string\|undefined), about: string, inputs: Array.&lt;{label: string, kind: string, value: string}&gt;, run: (function()\|undefined)}&gt;</code>
     * [.parseInput](#module_siFuncionaSandbox.parseInput) ⇒ <code>\*</code>
     * [.formatValue](#module_siFuncionaSandbox.formatValue) ⇒ <code>string</code>
     * [.runFunction](#module_siFuncionaSandbox.runFunction) ⇒ <code>Object</code>
     * [.markup](#module_siFuncionaSandbox.markup)
+    * [.queueMarkup](#module_siFuncionaSandbox.queueMarkup)
+    * [.queueSteps](#module_siFuncionaSandbox.queueSteps)
+    * [.expectedOrder](#module_siFuncionaSandbox.expectedOrder) ⇒ <code>Object</code>
+    * [.initQueueDemo](#module_siFuncionaSandbox.initQueueDemo) ⇒ <code>Object</code>
     * [.initSiFuncionaSandbox](#module_siFuncionaSandbox.initSiFuncionaSandbox) ⇒ <code>Object</code> \| <code>null</code>
 
 <a name="module_siFuncionaSandbox.functions"></a>
 
-### siFuncionaSandbox.functions : <code>Array.&lt;{group: string, name: string, about: string, inputs: Array.&lt;{label: string, kind: string, value: string}&gt;}&gt;</code>
-The functions on offer, grouped as in the picker. Each input has a kind: 'text', 'number' or 'json'.
+### siFuncionaSandbox.functions : <code>Array.&lt;{group: string, name: string, label: (string\|undefined), about: string, inputs: Array.&lt;{label: string, kind: string, value: string}&gt;, run: (function()\|undefined)}&gt;</code>
+The functions on offer, grouped as in the picker. Each input has a kind: 'text', 'number', 'numbers' or 'json'. An entry can
+show several functions at once with its own `run` (and a `label` for the picker).
 
 **Kind**: static constant of [<code>siFuncionaSandbox</code>](#module_siFuncionaSandbox)  
 <a name="module_siFuncionaSandbox.parseInput"></a>
@@ -274,7 +279,7 @@ Turn one input's text into its argument.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| kind | <code>string</code> | 'text', 'number' or 'json' |
+| kind | <code>string</code> | 'text', 'number', 'numbers' (a comma-separated list of whole numbers) or 'json' |
 | text | <code>string</code> |  |
 
 <a name="module_siFuncionaSandbox.formatValue"></a>
@@ -308,6 +313,43 @@ The sandbox's static markup (no visitor data), styled with Tailwind classes; ass
 folder for them.
 
 **Kind**: static constant of [<code>siFuncionaSandbox</code>](#module_siFuncionaSandbox)  
+<a name="module_siFuncionaSandbox.queueMarkup"></a>
+
+### siFuncionaSandbox.queueMarkup
+The queueTimeout demo's markup (static), shown below the function explorer.
+
+**Kind**: static constant of [<code>siFuncionaSandbox</code>](#module_siFuncionaSandbox)  
+<a name="module_siFuncionaSandbox.queueSteps"></a>
+
+### siFuncionaSandbox.queueSteps
+The queue demo's starting steps: a long delay first, so the two orders differ.
+
+**Kind**: static constant of [<code>siFuncionaSandbox</code>](#module_siFuncionaSandbox)  
+<a name="module_siFuncionaSandbox.expectedOrder"></a>
+
+### siFuncionaSandbox.expectedOrder ⇒ <code>Object</code>
+When each step fires: all at once from the start (setTimeout), or each after the one before (queueTimeout).
+
+**Kind**: static constant of [<code>siFuncionaSandbox</code>](#module_siFuncionaSandbox)  
+**Returns**: <code>Object</code> - Each in firing order.  
+
+| Param | Type |
+| --- | --- |
+| steps | <code>Array.&lt;{label: string, delay: number}&gt;</code> | 
+
+<a name="module_siFuncionaSandbox.initQueueDemo"></a>
+
+### siFuncionaSandbox.initQueueDemo ⇒ <code>Object</code>
+Wire up the queueTimeout demo inside an already rendered sandbox.
+
+**Kind**: static constant of [<code>siFuncionaSandbox</code>](#module_siFuncionaSandbox)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| document | <code>Document</code> |  |
+| window | <code>Window</code> |  |
+| library | <code>Object</code> | The si-funciona exports (for queueTimeout). |
+
 <a name="module_siFuncionaSandbox.initSiFuncionaSandbox"></a>
 
 ### siFuncionaSandbox.initSiFuncionaSandbox ⇒ <code>Object</code> \| <code>null</code>
