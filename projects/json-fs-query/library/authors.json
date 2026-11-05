@@ -1,0 +1,42 @@
+{
+  "path": "authors",
+  "definition": [
+    {
+      "name": "_id",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "country",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    }
+  ],
+  "keys": [
+    {
+      "type": "primary",
+      "fields": [
+        "_id"
+      ],
+      "lookup": "pk__id.json"
+    }
+  ],
+  "entries": [
+    "le-guin.json",
+    "tolkien.json",
+    "butler.json",
+    "pratchett.json",
+    "austen.json",
+    "shelley.json",
+    "asimov.json",
+    "atwood.json"
+  ]
+}

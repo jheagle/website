@@ -11,6 +11,8 @@
  * - json-dom: its sandbox, on the json-dom page (/projects/ already has window.jsonDom from joshuaHome.js). The
  *   bundle defines window.jsonDom.
  * - pseudo-dom: its sandbox (assets/js/sandboxes/pseudoDomSandbox.js). The bundle defines window.pseudoDom.
+ * - json-fs-query: its sandbox (assets/js/sandboxes/jsonFsQuerySandbox.js), reading projects/json-fs-query/library/
+ *   over fetch(). The bundle defines window.jsonFsQuery.
  *
  * Run by `npm run build`; run it on its own with `npm run build:vendor` after updating one of these packages.
  */
@@ -25,7 +27,8 @@ const files = [
   ['collect-your-stuff/browser/collect-your-stuff.min.js', 'collectYourStuff.min.js'],
   ['matrix-dom/browser/matrix-dom.min.js', 'matrixDom.min.js'],
   ['json-dom/browser/jsonDom.min.js', 'jsonDom.min.js'],
-  ['pseudo-dom/browser/pseudo-dom.min.js', 'pseudoDom.min.js']
+  ['pseudo-dom/browser/pseudo-dom.min.js', 'pseudoDom.min.js'],
+  ['json-fs-query/browser/jsonFsQuery.min.js', 'jsonFsQuery.min.js']
 ]
 
 fs.mkdirSync(outDir, { recursive: true })

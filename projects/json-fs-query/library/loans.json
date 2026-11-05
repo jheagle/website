@@ -1,0 +1,98 @@
+{
+  "path": "loans",
+  "definition": [
+    {
+      "name": "_id",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "book_id",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "member_id",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "loaned",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "due",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "returned",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false,
+      "nullable": true
+    }
+  ],
+  "keys": [
+    {
+      "type": "primary",
+      "fields": [
+        "_id"
+      ],
+      "lookup": "pk__id.json"
+    },
+    {
+      "type": "foreign",
+      "fields": [
+        "book_id"
+      ],
+      "lookup": "fk_book_id.json",
+      "references": [
+        {
+          "fields": [
+            "books._id"
+          ],
+          "lookup": "books.json"
+        }
+      ]
+    },
+    {
+      "type": "foreign",
+      "fields": [
+        "member_id"
+      ],
+      "lookup": "fk_member_id.json",
+      "references": [
+        {
+          "fields": [
+            "members._id"
+          ],
+          "lookup": "members.json"
+        }
+      ]
+    }
+  ],
+  "entries": [
+    "l01.json",
+    "l02.json",
+    "l03.json",
+    "l04.json",
+    "l05.json",
+    "l06.json",
+    "l07.json",
+    "l08.json",
+    "l09.json",
+    "l10.json",
+    "l11.json",
+    "l12.json",
+    "l13.json",
+    "l14.json",
+    "l15.json"
+  ]
+}

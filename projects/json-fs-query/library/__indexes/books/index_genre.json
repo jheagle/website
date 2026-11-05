@@ -1,0 +1,38 @@
+[
+  {
+    "value": "Fantasy",
+    "record": [
+      "earthsea.json",
+      "hobbit.json",
+      "fellowship.json",
+      "guards.json",
+      "small-gods.json"
+    ]
+  },
+  {
+    "value": "Science fiction",
+    "record": [
+      "dispossessed.json",
+      "left-hand.json",
+      "kindred.json",
+      "parable.json",
+      "foundation.json",
+      "i-robot.json",
+      "handmaid.json"
+    ]
+  },
+  {
+    "value": "Classic",
+    "record": [
+      "pride.json",
+      "emma.json",
+      "frankenstein.json"
+    ]
+  },
+  {
+    "value": "Historical",
+    "record": [
+      "alias-grace.json"
+    ]
+  }
+]
