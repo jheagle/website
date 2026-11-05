@@ -1,0 +1,6 @@
+# Everything here is public: crawlers, search engines and AI tools are all welcome.
+# A plain-text summary for AI tools is at https://joshuaheagle.com/llms.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://joshuaheagle.com/sitemap.xml
