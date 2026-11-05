@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-CA">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>JSON DOM | Joshua Heagle</title>
-    <link rel="stylesheet" href="../shared.css">
+    <link rel="preload" href="/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/browser/fonts/lexend-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/browser/tailwind/site.css">
     <script src="./browser/jsonDom.min.js"></script>
 </head>
-<body>
-<div class="page">
-    <a class="back-link" href="/projects/">&larr; Back to projects</a>
-    <div class="project-header">
-        <h1>JSON DOM</h1>
-        <p>A from-scratch virtual-DOM framework in TypeScript, built around a composable trait system rather than
+<body class="mx-auto max-w-3xl px-5 pt-6 pb-16 lg:pt-14">
+<div>
+    <a class="mb-5 inline-block font-heading" href="/projects/">&larr; Back to projects</a>
+    <div class="mb-6 border-b border-rule pb-4">
+        <h1 class="m-0 mb-1.5 text-4xl/tight tracking-tight lg:text-5xl">JSON DOM</h1>
+        <p class="m-0 text-muted">A from-scratch virtual-DOM framework in TypeScript, built around a composable trait system rather than
             deep inheritance.</p>
     </div>
-    <div class="actions">
-        <a class="primary" href="./docs/">Documentation</a>
-    </div>
-    <p class="hint">Source is private, but the framework is proven out in <a href="../battleship">Battleship</a>,
-        a full game built on top of it. Open the browser console to interact with <code>jsonDom</code> directly.</p>
+    <nav class="my-5 flex flex-wrap gap-2.5" aria-label="Project links">
+        <a class="rounded-lg bg-accent px-4 py-2 font-heading font-semibold text-background no-underline hover:opacity-90" href="./docs/">Documentation</a>
+    </nav>
+    <p class="text-muted">Source is private, but the framework is proven out in <a href="../battleship">Battleship</a>,
+        a full game built on top of it. Open the browser console to interact with <code class="rounded bg-foreground/8 px-1 py-px">jsonDom</code> directly.</p>
 </div>
 <script type="module">
   window.addEventListener('DOMContentLoaded', () => {

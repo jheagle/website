@@ -100,12 +100,16 @@ steps where Joshua picks, tests or approves before the PR merges.
   Progress: title-switcher done (2026-11-05, a "Try them" section under the grid: own lines, speed, blink, order,
   pause). Testing it found a security bug in title-switcher itself (typed text became live HTML; title-switcher#30,
   released as 2.2.3), and two pseudo-dom form-field gaps (tracked in TASKS.md).
-- [ ] **7a. Project pages restyle:** the 12 pages under `/projects/<name>/` (back link, header, actions, demo)
+- [x] **7a. Project pages restyle:** the 12 pages under `/projects/<name>/` (back link, header, actions, demo)
   move from the old `projects/shared.css` (155 lines, pre-redesign) to the site's Tailwind classes, tokens, fonts and
   light/dark; then `shared.css` is deleted. One PR for all 12, since they share one structure. Each page's demo is
   replaced by that project's sandbox from step 7 (the sandboxes render into `<div data-sandbox='<name>'>`, so
   `/projects/` and the project page show the same one). Out of scope: the generated docs (`/docs/`) and the full apps
   (battleship, workout-planner, quizzes), which keep their own looks.
+  Done 2026-11-05: 13 pages (the 12 plus `quizzes/`, which also used `shared.css`); action links are now a
+  `<nav aria-label='Project links'>`. The title-switcher page shows the shared sandbox and loads the site's own
+  `/browser/vendor/titleSwitcher.min.js` (its demo copy on this branch predated the 2.2.3 security fix).
+  si-funciona and collect-your-stuff keep their demos, restyled, until their sandboxes replace them in step 7.
 - [ ] **8. Tier 2 blog infrastructure ✱:** read-only, static pages powered by json-fs-query (posts stored as
   json-fs-query data, a listing page and a post page). Joshua answers three scoping questions first: where posts
   live, how a post is written (Markdown or JSON-DOM), and URLs.

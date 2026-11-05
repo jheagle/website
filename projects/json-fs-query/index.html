@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-CA">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>json-fs-query | Joshua Heagle</title>
-    <link rel="stylesheet" href="../shared.css">
+    <link rel="preload" href="/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/browser/fonts/lexend-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/browser/tailwind/site.css">
 </head>
-<body>
-<div class="page">
-    <a class="back-link" href="/projects/">&larr; Back to projects</a>
-    <div class="project-header">
-        <h1>JSON Filesystem Query</h1>
-        <p>A small query engine that treats a folder of JSON files as a database, with a SQL-like query string
+<body class="mx-auto max-w-3xl px-5 pt-6 pb-16 lg:pt-14">
+<div>
+    <a class="mb-5 inline-block font-heading" href="/projects/">&larr; Back to projects</a>
+    <div class="mb-6 border-b border-rule pb-4">
+        <h1 class="m-0 mb-1.5 text-4xl/tight tracking-tight lg:text-5xl">JSON Filesystem Query</h1>
+        <p class="m-0 text-muted">A small query engine that treats a folder of JSON files as a database, with a SQL-like query string
             instead of a query builder API.</p>
     </div>
-    <div class="actions">
-        <a class="primary" href="./docs/">Documentation</a>
-        <a href="https://github.com/jheagle/json-fs-query" target="_blank">View on GitHub</a>
-    </div>
-    <p class="hint">It reads and writes real files, so it's Node-only and there's no browser bundle to demo here. Its
-        public API (<code>configure</code>, <code>create</code>, <code>query</code>, <code>describe</code>,
-        <code>drop</code>) is in the docs, and <a href="../workout-planner/">Workout Planner</a> runs on it.</p>
+    <nav class="my-5 flex flex-wrap gap-2.5" aria-label="Project links">
+        <a class="rounded-lg bg-accent px-4 py-2 font-heading font-semibold text-background no-underline hover:opacity-90" href="./docs/">Documentation</a>
+        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="https://github.com/jheagle/json-fs-query" target="_blank">View on GitHub</a>
+    </nav>
+    <p class="text-muted">It reads and writes real files, so it's Node-only and there's no browser bundle to demo here. Its
+        public API (<code class="rounded bg-foreground/8 px-1 py-px">configure</code>, <code class="rounded bg-foreground/8 px-1 py-px">create</code>, <code class="rounded bg-foreground/8 px-1 py-px">query</code>, <code class="rounded bg-foreground/8 px-1 py-px">describe</code>,
+        <code class="rounded bg-foreground/8 px-1 py-px">drop</code>) is in the docs, and <a href="../workout-planner/">Workout Planner</a> runs on it.</p>
 </div>
 </body>
 </html>

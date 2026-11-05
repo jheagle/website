@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-CA">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>js-build-tools | Joshua Heagle</title>
-    <link rel="stylesheet" href="../shared.css">
+    <link rel="preload" href="/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/browser/fonts/lexend-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/browser/tailwind/site.css">
 </head>
-<body>
-<div class="page">
-    <a class="back-link" href="/projects/">&larr; Back to projects</a>
-    <div class="project-header">
-        <h1>js-build-tools</h1>
-        <p>The shared build, test and documentation pipeline (Gulp-based) behind every other project here: TypeScript
+<body class="mx-auto max-w-3xl px-5 pt-6 pb-16 lg:pt-14">
+<div>
+    <a class="mb-5 inline-block font-heading" href="/projects/">&larr; Back to projects</a>
+    <div class="mb-6 border-b border-rule pb-4">
+        <h1 class="m-0 mb-1.5 text-4xl/tight tracking-tight lg:text-5xl">js-build-tools</h1>
+        <p class="m-0 text-muted">The shared build, test and documentation pipeline (Gulp-based) behind every other project here: TypeScript
             compiling, CommonJS distribution files, browser bundles, Jest, linting, and TypeDoc or jsdoc HTML docs.</p>
     </div>
-    <div class="actions">
-        <a class="primary" href="./docs/">Documentation</a>
-        <a href="https://github.com/jheagle/js-build-tools" target="_blank">View on GitHub</a>
-    </div>
-    <p class="hint">It runs in Node as part of each project's build, so there's no browser demo. Its output is
+    <nav class="my-5 flex flex-wrap gap-2.5" aria-label="Project links">
+        <a class="rounded-lg bg-accent px-4 py-2 font-heading font-semibold text-background no-underline hover:opacity-90" href="./docs/">Documentation</a>
+        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="https://github.com/jheagle/js-build-tools" target="_blank">View on GitHub</a>
+    </nav>
+    <p class="text-muted">It runs in Node as part of each project's build, so there's no browser demo. Its output is
         everywhere on this site, though: every bundle and every Documentation link here came from it.</p>
 </div>
 </body>

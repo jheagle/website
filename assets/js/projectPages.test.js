@@ -23,12 +23,12 @@ const parsePage = href => {
 
 describe.each(projects.map(project => [project.href]))('%s', href => {
   const document = parsePage(href)
-  const actions = [...document.body.querySelectorAll('.actions a')]
+  const actions = [...document.body.querySelectorAll("nav[aria-label='Project links'] a")]
   const labels = actions.map(link => link.textContent)
 
   test('has Documentation first, then GitHub (if public), then the demo (if any), and nothing else', () => {
     expect(labels[0]).toBe('Documentation')
-    expect(actions[0].getAttribute('class')).toBe('primary')
+    expect(actions[0].getAttribute('class').split(' ')).toContain('bg-accent')
     const expected = ['Documentation']
     if (!privateRepos.includes(href)) expected.push('View on GitHub')
     const demo = labels.find(label => demoLabels.includes(label))
@@ -49,7 +49,15 @@ describe.each(projects.map(project => [project.href]))('%s', href => {
     })
   })
 
+  test('uses the site\'s stylesheet and Tailwind classes only (no old shared.css, no inline styles)', () => {
+    const html = fs.readFileSync(path.join(rootDir, href, 'index.html'), 'utf8')
+    expect(html).toContain('<link rel="stylesheet" href="/browser/tailwind/site.css">')
+    expect(html).not.toContain('shared.css')
+    expect(html).not.toMatch(/<style[\s>]/)
+    expect(html).not.toMatch(/\sstyle=/)
+  })
+
   test('links back to /projects/', () => {
-    expect(document.body.querySelector('a.back-link').getAttribute('href')).toBe('/projects/')
+    expect(document.body.querySelector('a').getAttribute('href')).toBe('/projects/')
   })
 })
