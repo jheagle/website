@@ -111,6 +111,9 @@ steps where Joshua picks, tests or approves before the PR merges.
   matrix-dom done (2026-11-05): a 10 by 10 board with three modes: Line (getLinePoints between two tapped cells),
   Neighbours (adjacentPoints vs adjacentEdgePoints), and Place a fleet (Battleship's own method: getLinesOfLength,
   drop lines crossing a ship, pick one at random; each ship's cells labelled with its length).
+  json-dom done (2026-11-05): edit a structure in json-dom's own JSON format (or load Card / List / Table) and json-dom
+  renders it live next to the HTML it built; visitor JSON is allowlisted first (tags, attributes, safe links), with
+  anything dropped listed.
 - [x] **7a. Project pages restyle:** the 12 pages under `/projects/<name>/` (back link, header, actions, demo)
   move from the old `projects/shared.css` (155 lines, pre-redesign) to the site's Tailwind classes, tokens, fonts and
   light/dark; then `shared.css` is deleted. One PR for all 12, since they share one structure. Each page's demo is

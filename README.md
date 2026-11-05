@@ -44,6 +44,14 @@ Runs the real library (matrix-dom), loaded as window.matrixDom: on /projects/ th
 it, and the matrix-dom page loads it from browser/vendor.</p>
 <p>Rendered into each <code>&lt;div data-sandbox=&#39;matrix-dom&#39;&gt;</code>, so /projects/ and the matrix-dom page share one sandbox.</p>
 </dd>
+<dt><a href="#module_jsonDomSandbox">jsonDomSandbox</a></dt>
+<dd><p>The json-dom sandbox: describe a piece of page as JSON (json-dom&#39;s own item format) and watch json-dom render it,
+next to the HTML it produced. Runs the real library (json-dom), loaded as window.jsonDom: on /projects/ the site&#39;s
+own bundle defines it, and the json-dom page loads it from browser/vendor.</p>
+<p>Visitor JSON goes through an allowlist first: only plain content tags and a few safe attributes render, so nothing
+like onclick, <script> or a javascript: link can run. Whatever was dropped is listed. Rendered into each
+<code>&lt;div data-sandbox=&#39;json-dom&#39;&gt;</code>, so /projects/ and the json-dom page share one sandbox.</p>
+</dd>
 <dt><a href="#module_collectYourStuffSandbox">collectYourStuffSandbox</a></dt>
 <dd><p>The collect-your-stuff sandbox: try a Queue, a Stack and a (doubly) linked list one call at a time, and see the
 collection redrawn after each call from the library&#39;s own state.
@@ -466,6 +474,102 @@ Render the sandbox into the page's `<div data-sandbox='matrix-dom'>` and wire it
 | document | <code>Document</code> |  | 
 | window | <code>Window</code> |  | 
 | [library] | <code>Object</code> | <code>window.matrixDom</code> | 
+
+<a name="module_jsonDomSandbox"></a>
+
+## jsonDomSandbox
+The json-dom sandbox: describe a piece of page as JSON (json-dom's own item format) and watch json-dom render it,
+next to the HTML it produced. Runs the real library (json-dom), loaded as window.jsonDom: on /projects/ the site's
+own bundle defines it, and the json-dom page loads it from browser/vendor.
+
+Visitor JSON goes through an allowlist first: only plain content tags and a few safe attributes render, so nothing
+like onclick, <script> or a javascript: link can run. Whatever was dropped is listed. Rendered into each
+`<div data-sandbox='json-dom'>`, so /projects/ and the json-dom page share one sandbox.
+
+
+* [jsonDomSandbox](#module_jsonDomSandbox)
+    * [.allowedTags](#module_jsonDomSandbox.allowedTags)
+    * [.allowedAttributes](#module_jsonDomSandbox.allowedAttributes)
+    * [.examples](#module_jsonDomSandbox.examples)
+    * [.isSafeHref](#module_jsonDomSandbox.isSafeHref) ⇒ <code>boolean</code>
+    * [.sanitize](#module_jsonDomSandbox.sanitize) ⇒ <code>Object</code> \| <code>null</code>
+    * [.prettyHtml](#module_jsonDomSandbox.prettyHtml) ⇒ <code>string</code>
+    * [.markup](#module_jsonDomSandbox.markup)
+    * [.initJsonDomSandbox](#module_jsonDomSandbox.initJsonDomSandbox) ⇒ <code>Object</code> \| <code>null</code>
+
+<a name="module_jsonDomSandbox.allowedTags"></a>
+
+### jsonDomSandbox.allowedTags
+The tags a visitor's structure may use. '#text' is a text node (its text goes in nodeValue).
+
+**Kind**: static constant of [<code>jsonDomSandbox</code>](#module_jsonDomSandbox)  
+<a name="module_jsonDomSandbox.allowedAttributes"></a>
+
+### jsonDomSandbox.allowedAttributes
+The attributes a visitor's structure may set.
+
+**Kind**: static constant of [<code>jsonDomSandbox</code>](#module_jsonDomSandbox)  
+<a name="module_jsonDomSandbox.examples"></a>
+
+### jsonDomSandbox.examples
+Starting structures to load with one tap.
+
+**Kind**: static constant of [<code>jsonDomSandbox</code>](#module_jsonDomSandbox)  
+<a name="module_jsonDomSandbox.isSafeHref"></a>
+
+### jsonDomSandbox.isSafeHref ⇒ <code>boolean</code>
+Whether a link is safe to keep: http(s), mailto, a page path or an anchor (never javascript: or data:).
+
+**Kind**: static constant of [<code>jsonDomSandbox</code>](#module_jsonDomSandbox)  
+
+| Param | Type |
+| --- | --- |
+| href | <code>string</code> | 
+
+<a name="module_jsonDomSandbox.sanitize"></a>
+
+### jsonDomSandbox.sanitize ⇒ <code>Object</code> \| <code>null</code>
+Keep only allowed tags, attributes and links, recording what was dropped.
+
+**Kind**: static constant of [<code>jsonDomSandbox</code>](#module_jsonDomSandbox)  
+**Returns**: <code>Object</code> \| <code>null</code> - A clean item, or null when the whole item was dropped.  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| item | <code>\*</code> |  | A visitor's item (parsed JSON). |
+| dropped | <code>Array.&lt;string&gt;</code> |  | Collects a note for each thing removed. |
+| [where] | <code>string</code> | <code>&quot;&#x27;root&#x27;&quot;</code> | Where in the structure this item is, for the notes. |
+
+<a name="module_jsonDomSandbox.prettyHtml"></a>
+
+### jsonDomSandbox.prettyHtml ⇒ <code>string</code>
+Indent HTML one tag per line, for reading (whitespace inside text is left alone).
+
+**Kind**: static constant of [<code>jsonDomSandbox</code>](#module_jsonDomSandbox)  
+
+| Param | Type |
+| --- | --- |
+| html | <code>string</code> | 
+
+<a name="module_jsonDomSandbox.markup"></a>
+
+### jsonDomSandbox.markup
+The sandbox's static markup (no visitor data), styled with Tailwind classes; assets/tailwind/site.css scans this
+folder for them.
+
+**Kind**: static constant of [<code>jsonDomSandbox</code>](#module_jsonDomSandbox)  
+<a name="module_jsonDomSandbox.initJsonDomSandbox"></a>
+
+### jsonDomSandbox.initJsonDomSandbox ⇒ <code>Object</code> \| <code>null</code>
+Render the sandbox into the page's `<div data-sandbox='json-dom'>` and wire it up. One per page.
+
+**Kind**: static constant of [<code>jsonDomSandbox</code>](#module_jsonDomSandbox)  
+
+| Param | Type | Default |
+| --- | --- | --- |
+| document | <code>Document</code> |  | 
+| window | <code>Window</code> |  | 
+| [library] | <code>Object</code> | <code>window.jsonDom</code> | 
 
 <a name="module_collectYourStuffSandbox"></a>
 

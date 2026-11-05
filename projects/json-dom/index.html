@@ -7,7 +7,6 @@
     <link rel="preload" href="/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/browser/fonts/lexend-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/browser/tailwind/site.css">
-    <script src="./browser/jsonDom.min.js"></script>
 </head>
 <body class="mx-auto max-w-3xl px-5 pt-6 pb-16 lg:pt-14">
 <div>
@@ -19,14 +18,20 @@
     </div>
     <nav class="my-5 flex flex-wrap gap-2.5" aria-label="Project links">
         <a class="rounded-lg bg-accent px-4 py-2 font-heading font-semibold text-background no-underline hover:opacity-90" href="./docs/">Documentation</a>
+        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="#demo">Try the demo</a>
     </nav>
     <p class="text-muted">Source is private, but the framework is proven out in <a href="../battleship">Battleship</a>,
-        a full game built on top of it. Open the browser console to interact with <code class="rounded bg-foreground/8 px-1 py-px">jsonDom</code> directly.</p>
+        a full game built on top of it. Try it below, or open the browser console to use <code class="rounded bg-foreground/8 px-1 py-px">jsonDom</code> directly.</p>
+
+    <section id="demo" class="mt-7 scroll-mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6">
+        <h2 class="mt-0 mb-1 text-xl">Try it</h2>
+        <p class="mt-0 mb-5 text-sm text-muted">Describe part of a page as data and json-dom builds it. The same sandbox is on the projects page.</p>
+        <!-- Filled in by /dist/sandboxes/jsonDomSandboxInit.js (assets/js/sandboxes/jsonDomSandbox.js) -->
+        <div data-sandbox="json-dom"><noscript><p class="m-0 text-sm">This demo needs JavaScript.</p></noscript></div>
+    </section>
 </div>
-<script type="module">
-  window.addEventListener('DOMContentLoaded', () => {
-    console.log(jsonDom, 'JSON DOM')
-  })
-</script>
+<!-- The site's own json-dom dependency (package.json), the build the site's bundle also uses -->
+<script src="/browser/vendor/jsonDom.min.js" defer></script>
+<script type="module" src="/dist/sandboxes/jsonDomSandboxInit.js"></script>
 </body>
 </html>
