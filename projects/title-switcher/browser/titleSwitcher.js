@@ -285,6 +285,7 @@ var titleSwitcher = (() => {
         });
         return length;
       };
+      var escapeHtml = (text) => text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
       var typedPartialHtml = (domObject, remaining) => {
         let html = "";
         const children = Array.prototype.slice.call(domObject.childNodes);
@@ -307,7 +308,7 @@ var titleSwitcher = (() => {
               }
               --remaining;
             }
-            html += taken;
+            html += escapeHtml(taken);
           } else if (child.nodeType === 1) {
             const result = typedPartialHtml(child, remaining);
             if (result.html) {
