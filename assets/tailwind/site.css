@@ -13,6 +13,7 @@
 @source "../../index.html";
 @source "../../projects/index.html";
 @source "../js/templates";
+@source "../js/sandboxes";
 
 /* Self-hosted variable fonts from Fontsource (OFL), latin subset only. `npm run build:fonts` copies the files into
    browser/fonts. font-display: swap shows the fallback font straight away instead of invisible text. */

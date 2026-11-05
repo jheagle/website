@@ -23,6 +23,13 @@ don&#39;t render and readers don&#39;t read. This module copies them into an <co
 away visually (<code>data-animated</code> on the line switches its <code>group-data-animated:sr-only</code> class on), and starts the
 typing. When the visitor&#39;s system asks for reduced motion, nothing changes at all.</p>
 </dd>
+<dt><a href="#module_titleSwitcherSandbox">titleSwitcherSandbox</a></dt>
+<dd><p>The title-switcher sandbox on /projects/: visitors type their own lines, set the speed and order, and watch
+title-switcher (<a href="https://www.npmjs.com/package/title-switcher">https://www.npmjs.com/package/title-switcher</a>) type them out.</p>
+<p>title-switcher has no &quot;stop&quot;: pause() only stops it from moving to the next line. So each (re)start builds a
+fresh container on the stage and lets the old instance finish in the background, detached and unseen.
+The lines become text nodes (never HTML), so whatever a visitor types is shown, not run.</p>
+</dd>
 </dl>
 
 ## Constants
@@ -158,6 +165,69 @@ Start the typing effect, unless something it needs is missing or the visitor pre
 | document | <code>Document</code> |  |  |
 | window | <code>Window</code> |  |  |
 | [TitleSwitcher] | <code>function</code> | <code>window.TitleSwitcher</code> | The title-switcher class (swappable in tests). |
+
+<a name="module_titleSwitcherSandbox"></a>
+
+## titleSwitcherSandbox
+The title-switcher sandbox on /projects/: visitors type their own lines, set the speed and order, and watch
+title-switcher (https://www.npmjs.com/package/title-switcher) type them out.
+
+title-switcher has no "stop": pause() only stops it from moving to the next line. So each (re)start builds a
+fresh container on the stage and lets the old instance finish in the background, detached and unseen.
+The lines become text nodes (never HTML), so whatever a visitor types is shown, not run.
+
+
+* [titleSwitcherSandbox](#module_titleSwitcherSandbox)
+    * [.markup](#module_titleSwitcherSandbox.markup)
+    * [.parseLines](#module_titleSwitcherSandbox.parseLines) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.buildTitles](#module_titleSwitcherSandbox.buildTitles) ⇒ <code>HTMLElement</code>
+    * [.initTitleSwitcherSandbox](#module_titleSwitcherSandbox.initTitleSwitcherSandbox) ⇒ <code>Object</code> \| <code>null</code>
+
+<a name="module_titleSwitcherSandbox.markup"></a>
+
+### titleSwitcherSandbox.markup
+The sandbox's controls and stage. Static markup (no visitor data goes in here), styled with Tailwind classes;
+assets/tailwind/site.css scans this folder for them. Rendered into each `<div data-sandbox='title-switcher'>`,
+so /projects/ and the title-switcher page share one sandbox.
+
+**Kind**: static constant of [<code>titleSwitcherSandbox</code>](#module_titleSwitcherSandbox)  
+<a name="module_titleSwitcherSandbox.parseLines"></a>
+
+### titleSwitcherSandbox.parseLines ⇒ <code>Array.&lt;string&gt;</code>
+The visitor's lines: one per row, trimmed, blank rows dropped.
+
+**Kind**: static constant of [<code>titleSwitcherSandbox</code>](#module_titleSwitcherSandbox)  
+
+| Param | Type |
+| --- | --- |
+| text | <code>string</code> | 
+
+<a name="module_titleSwitcherSandbox.buildTitles"></a>
+
+### titleSwitcherSandbox.buildTitles ⇒ <code>HTMLElement</code>
+Build a fresh title container (one span per line) for title-switcher to animate.
+
+**Kind**: static constant of [<code>titleSwitcherSandbox</code>](#module_titleSwitcherSandbox)  
+
+| Param | Type |
+| --- | --- |
+| document | <code>Document</code> | 
+| lines | <code>Array.&lt;string&gt;</code> | 
+
+<a name="module_titleSwitcherSandbox.initTitleSwitcherSandbox"></a>
+
+### titleSwitcherSandbox.initTitleSwitcherSandbox ⇒ <code>Object</code> \| <code>null</code>
+Render the sandbox into the page's `<div data-sandbox='title-switcher'>` and wire it up. One sandbox per page (its
+ids are fixed). Starts on its own unless the visitor prefers reduced motion; then it waits for Start.
+
+**Kind**: static constant of [<code>titleSwitcherSandbox</code>](#module_titleSwitcherSandbox)  
+**Returns**: <code>Object</code> \| <code>null</code> - null when the sandbox isn't on the page.  
+
+| Param | Type | Default |
+| --- | --- | --- |
+| document | <code>Document</code> |  | 
+| window | <code>Window</code> |  | 
+| [TitleSwitcher] | <code>function</code> | <code>window.TitleSwitcher</code> | 
 
 <a name="projects"></a>
 

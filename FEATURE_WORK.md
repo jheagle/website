@@ -97,6 +97,15 @@ steps where Joshua picks, tests or approves before the PR merges.
 - [ ] **7. Show-and-tell sandboxes on `/projects/`:** small live demos people can try in the page. One PR per
   project: title-switcher (already has a bundle on the site), json-dom, matrix-dom, pseudo-dom, json-fs-query,
   si-funciona and collect-your-stuff. battleship, quizzes and workout-planner already link to their own running app.
+  Progress: title-switcher done (2026-11-05, a "Try them" section under the grid: own lines, speed, blink, order,
+  pause). Testing it found a security bug in title-switcher itself (typed text became live HTML; title-switcher#30,
+  released as 2.2.3), and two pseudo-dom form-field gaps (tracked in TASKS.md).
+- [ ] **7a. Project pages restyle:** the 12 pages under `/projects/<name>/` (back link, header, actions, demo)
+  move from the old `projects/shared.css` (155 lines, pre-redesign) to the site's Tailwind classes, tokens, fonts and
+  light/dark; then `shared.css` is deleted. One PR for all 12, since they share one structure. Each page's demo is
+  replaced by that project's sandbox from step 7 (the sandboxes render into `<div data-sandbox='<name>'>`, so
+  `/projects/` and the project page show the same one). Out of scope: the generated docs (`/docs/`) and the full apps
+  (battleship, workout-planner, quizzes), which keep their own looks.
 - [ ] **8. Tier 2 blog infrastructure ✱:** read-only, static pages powered by json-fs-query (posts stored as
   json-fs-query data, a listing page and a post page). Joshua answers three scoping questions first: where posts
   live, how a post is written (Markdown or JSON-DOM), and URLs.
@@ -104,7 +113,13 @@ steps where Joshua picks, tests or approves before the PR merges.
   `CONTENT-DRAFT.md`, Joshua approves the wording, then the two homepage links come back. Keep the fitness post easy
   to move to evanget.fit later.
 - [ ] **10. `llms.txt`:** a plain-text summary of the site and its projects for AI tools and agents.
-- [ ] **11. Before leaving draft ✱:** re-sync with `main`, run the full test suite, check the live-site paths
+- [ ] **11. Asset fingerprinting:** a build step that stamps local CSS/JS URLs in the pages with a content hash
+  (`site.css?v=3f21a`), so a changed file gets a new URL and browsers fetch it at once. GitHub Pages caches for
+  10 minutes (`max-age=600`), and merging the redesign changes nearly every asset, so without this a visitor could
+  get old JS with new CSS for a while (seen locally 2026-11-05: the /projects/ tiles as bare links). Cover the inline
+  module imports on /projects/ and modules imported by other modules (`siteInit.js` → `siteNav.js`), by stamping the
+  import specifiers too or bundling each entry.
+- [ ] **12. Before leaving draft ✱:** re-sync with `main`, run the full test suite, check the live-site paths
   (`/projects/*`, docs, bundles), a final pass in Firefox, Chrome and Safari (a real Apple device if available), then
   copy this file into #124 and delete it. Joshua merges #124.
 

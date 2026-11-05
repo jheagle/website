@@ -38,10 +38,25 @@
     <noscript>
         <p>The project grid needs JavaScript. Every project is also on <a href='https://github.com/jheagle'>GitHub</a>.</p>
     </noscript>
+
+    <section id='try' class='mt-16 scroll-mt-6'>
+        <h2 class='mt-0 mb-2 text-3xl'>Try them</h2>
+        <p class='mt-0 mb-8 max-w-prose text-muted'>Small live demos of the libraries that run in a browser. Change the inputs and watch them work.</p>
+
+        <article class='rounded-lg border border-rule bg-foreground/4 p-5 md:p-6'>
+            <h3 class='mt-0 mb-1 text-xl'><a class='text-foreground no-underline hover:underline' href='/projects/title-switcher/'>Title Switcher</a></h3>
+            <p class='mt-0 mb-5 text-sm text-muted'>The typing effect from the top of my homepage. Type your own lines, one per row.</p>
+            <!-- Filled in by /dist/sandboxes/titleSwitcherSandboxInit.js (assets/js/sandboxes/titleSwitcherSandbox.js), the
+                 same sandbox the title-switcher page uses; it needs the deferred /browser/vendor/titleSwitcher.min.js -->
+            <div data-sandbox='title-switcher'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
+        </article>
+    </section>
 </main>
 
 <footer class='mt-12 border-t border-rule pt-4 text-sm text-muted'>
     <p>Joshua Heagle &copy; 2026</p>
 </footer>
+<script src='/browser/vendor/titleSwitcher.min.js' defer></script>
+<script type='module' src='/dist/sandboxes/titleSwitcherSandboxInit.js'></script>
 </body>
 </html>
