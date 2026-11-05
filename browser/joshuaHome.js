@@ -6460,7 +6460,7 @@ var joshuaHome = (() => {
          * @param settings.prev The reference to the previous linker if any
          * @param settings.children The references to child linkers if any
          * @param settings.parent The reference to a parent linker if any
-         * @param listClass Give the type of list to use for storing the children
+         * @param settings.listClass Give the type of list to use for storing the children
          */
         constructor({
           data = null,
@@ -6784,7 +6784,7 @@ var joshuaHome = (() => {
           if (!this.empty()) {
             this.enqueue(next);
           }
-          return next.run.call(next);
+          return next.run();
         }
         /**
          * Return true if the queue is empty (there are no tasks in the queue list)
@@ -7642,7 +7642,6 @@ var joshuaHome = (() => {
         }
         /**
          * Check if a given thing is Runnable
-         * @memberof Runnable
          * @param thing The value to check, or nothing to check whether this class is Runnable.
          */
         static isRunnable(thing) {

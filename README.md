@@ -37,6 +37,13 @@ Runs the real library (<a href="https://www.npmjs.com/package/si-funciona">https
 nothing a visitor types is run as code. Rendered into each <code>&lt;div data-sandbox=&#39;si-funciona&#39;&gt;</code>, so /projects/ and
 the si-funciona page share one sandbox.</p>
 </dd>
+<dt><a href="#module_collectYourStuffSandbox">collectYourStuffSandbox</a></dt>
+<dd><p>The collect-your-stuff sandbox: try a Queue, a Stack and a (doubly) linked list one call at a time, and see the
+collection redrawn after each call from the library&#39;s own state.
+Runs the real library (<a href="https://www.npmjs.com/package/collect-your-stuff">https://www.npmjs.com/package/collect-your-stuff</a>), loaded as window.collectYourStuff.</p>
+<p>Values are shown with textContent, so whatever a visitor types is displayed, not run. Rendered into each
+<code>&lt;div data-sandbox=&#39;collect-your-stuff&#39;&gt;</code>, so /projects/ and the collect-your-stuff page share one sandbox.</p>
+</dd>
 </dl>
 
 ## Constants
@@ -363,6 +370,128 @@ Render the sandbox into the page's `<div data-sandbox='si-funciona'>` and wire i
 | document | <code>Document</code> |  | 
 | window | <code>Window</code> |  | 
 | [library] | <code>Object</code> | <code>window.siFunciona</code> | 
+
+<a name="module_collectYourStuffSandbox"></a>
+
+## collectYourStuffSandbox
+The collect-your-stuff sandbox: try a Queue, a Stack and a (doubly) linked list one call at a time, and see the
+collection redrawn after each call from the library's own state.
+Runs the real library (https://www.npmjs.com/package/collect-your-stuff), loaded as window.collectYourStuff.
+
+Values are shown with textContent, so whatever a visitor types is displayed, not run. Rendered into each
+`<div data-sandbox='collect-your-stuff'>`, so /projects/ and the collect-your-stuff page share one sandbox.
+
+
+* [collectYourStuffSandbox](#module_collectYourStuffSandbox)
+    * [.modes](#module_collectYourStuffSandbox.modes)
+    * [.nextLabel](#module_collectYourStuffSandbox.nextLabel) ⇒ <code>string</code>
+    * [.readList](#module_collectYourStuffSandbox.readList) ⇒ <code>Array.&lt;\*&gt;</code>
+    * [.formatValue](#module_collectYourStuffSandbox.formatValue) ⇒ <code>string</code>
+    * [.createState](#module_collectYourStuffSandbox.createState) ⇒ <code>Object</code>
+    * [.runOperation](#module_collectYourStuffSandbox.runOperation) ⇒ <code>Object</code>
+    * [.contents](#module_collectYourStuffSandbox.contents) ⇒ <code>Array.&lt;\*&gt;</code>
+    * [.markup](#module_collectYourStuffSandbox.markup)
+    * [.initCollectYourStuffSandbox](#module_collectYourStuffSandbox.initCollectYourStuffSandbox) ⇒ <code>Object</code> \| <code>null</code>
+
+<a name="module_collectYourStuffSandbox.modes"></a>
+
+### collectYourStuffSandbox.modes
+The modes, their operations, and one line on how each collection behaves.
+
+**Kind**: static constant of [<code>collectYourStuffSandbox</code>](#module_collectYourStuffSandbox)  
+<a name="module_collectYourStuffSandbox.nextLabel"></a>
+
+### collectYourStuffSandbox.nextLabel ⇒ <code>string</code>
+The next label to suggest: A, B, … Z, then AA, AB, …
+
+**Kind**: static constant of [<code>collectYourStuffSandbox</code>](#module_collectYourStuffSandbox)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| count | <code>number</code> | How many have been suggested so far. |
+
+<a name="module_collectYourStuffSandbox.readList"></a>
+
+### collectYourStuffSandbox.readList ⇒ <code>Array.&lt;\*&gt;</code>
+Read a linked list's values in order.
+
+**Kind**: static constant of [<code>collectYourStuffSandbox</code>](#module_collectYourStuffSandbox)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| list | <code>Object</code> | Anything with forEach(node => …) over nodes with .data. |
+
+<a name="module_collectYourStuffSandbox.formatValue"></a>
+
+### collectYourStuffSandbox.formatValue ⇒ <code>string</code>
+Show a value the way it reads in code.
+
+**Kind**: static constant of [<code>collectYourStuffSandbox</code>](#module_collectYourStuffSandbox)  
+
+| Param | Type |
+| --- | --- |
+| value | <code>\*</code> | 
+
+<a name="module_collectYourStuffSandbox.createState"></a>
+
+### collectYourStuffSandbox.createState ⇒ <code>Object</code>
+A fresh state: an empty Queue, Stack and list, built with the library's own classes.
+
+**Kind**: static constant of [<code>collectYourStuffSandbox</code>](#module_collectYourStuffSandbox)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| library | <code>Object</code> |  | The collect-your-stuff exports. |
+| [doubly] | <code>boolean</code> | <code>false</code> | A DoublyLinkedList instead of a LinkedList. |
+
+<a name="module_collectYourStuffSandbox.runOperation"></a>
+
+### collectYourStuffSandbox.runOperation ⇒ <code>Object</code>
+Run one operation on the state, through the library.
+
+**Kind**: static constant of [<code>collectYourStuffSandbox</code>](#module_collectYourStuffSandbox)  
+**Returns**: <code>Object</code> - The call as it reads in code, what it returned, and a
+message when it can't run (no list item selected).  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| state | <code>Object</code> |  |
+| mode | <code>string</code> | 'queue', 'stack' or 'list' |
+| operation | <code>string</code> | One of that mode's operations. |
+| value | <code>string</code> | The value to add (for adding operations). |
+| selected | <code>number</code> \| <code>null</code> | The selected list position (for insertAfter and remove). |
+
+<a name="module_collectYourStuffSandbox.contents"></a>
+
+### collectYourStuffSandbox.contents ⇒ <code>Array.&lt;\*&gt;</code>
+The values to draw for a mode: queue front first, stack top first, list first to last.
+
+**Kind**: static constant of [<code>collectYourStuffSandbox</code>](#module_collectYourStuffSandbox)  
+
+| Param | Type |
+| --- | --- |
+| state | <code>Object</code> | 
+| mode | <code>string</code> | 
+
+<a name="module_collectYourStuffSandbox.markup"></a>
+
+### collectYourStuffSandbox.markup
+The sandbox's static markup (no visitor data), styled with Tailwind classes; assets/tailwind/site.css scans this
+folder for them.
+
+**Kind**: static constant of [<code>collectYourStuffSandbox</code>](#module_collectYourStuffSandbox)  
+<a name="module_collectYourStuffSandbox.initCollectYourStuffSandbox"></a>
+
+### collectYourStuffSandbox.initCollectYourStuffSandbox ⇒ <code>Object</code> \| <code>null</code>
+Render the sandbox into the page's `<div data-sandbox='collect-your-stuff'>` and wire it up. One per page.
+
+**Kind**: static constant of [<code>collectYourStuffSandbox</code>](#module_collectYourStuffSandbox)  
+
+| Param | Type | Default |
+| --- | --- | --- |
+| document | <code>Document</code> |  | 
+| window | <code>Window</code> |  | 
+| [library] | <code>Object</code> | <code>window.collectYourStuff</code> | 
 
 <a name="projects"></a>
 

@@ -32,6 +32,7 @@
     }
   },
   "dependencies": {
+    "collect-your-stuff": "^2.4.0",
     "json-dom": "github:jheagle/JSON-DOM",
     "json-dom-components": "github:jheagle/json-dom-components",
     "matrix-dom": "github:jheagle/matrix-DOM",

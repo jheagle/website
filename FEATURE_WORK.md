@@ -105,6 +105,9 @@ steps where Joshua picks, tests or approves before the PR merges.
   `mergeObjects`, `isEqual`, `uniqueArray`, `mergeArrays`, and the ratio maths together; plus a `queueTimeout` vs
   `setTimeout` race (how Battleship paces its animations). Descriptors left out (they may move out of si-funciona).
   Found along the way: `words()` keeps an acronym joined to the next word (TASKS.md).
+  collect-your-stuff done (2026-11-05): Queue / Stack / Linked list modes, one call at a time (enqueue/dequeue/peek,
+  push/pop/peek, append/prepend/insertAfter/remove on a tapped item, a doubly-linked switch), each call and its return
+  value shown, the collection redrawn from the library's own state.
 - [x] **7a. Project pages restyle:** the 12 pages under `/projects/<name>/` (back link, header, actions, demo)
   move from the old `projects/shared.css` (155 lines, pre-redesign) to the site's Tailwind classes, tokens, fonts and
   light/dark; then `shared.css` is deleted. One PR for all 12, since they share one structure. Each page's demo is
