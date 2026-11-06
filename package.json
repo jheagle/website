@@ -42,7 +42,7 @@
     "collect-your-stuff": "^2.4.0",
     "json-dom": "github:jheagle/JSON-DOM",
     "json-dom-components": "github:jheagle/json-dom-components",
-    "json-fs-query": "^3.1.4",
+    "json-fs-query": "^3.2.0",
     "matrix-dom": "github:jheagle/matrix-DOM",
     "pseudo-dom": "^1.2.0",
     "si-funciona": "^2.9.1",

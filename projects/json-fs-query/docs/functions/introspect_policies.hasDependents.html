@@ -19,9 +19,9 @@
 <div class="tsd-comment tsd-typography"><p>Check whether any other record, in any entity, still has a single-field foreign key pointing
 at entity.property = value - the mirror image of foreignKeyExists(), which checks the opposite
 direction (that a new/updated foreign key value points at something real). Used to RESTRICT a
-delete or update that would otherwise leave a dangling reference behind. Scans every record in
-the database via the __RECORDS registry, the same &quot;no index needed, just look&quot; approach as
-keyUnique()/foreignKeyExists() - correctness over speed, matching this project's overall scale.</p>
+delete or update that would otherwise leave a dangling reference behind. Looks at every record in
+the database (via the __RECORDS registry) for a foreign key to entity.property. A foreign key field with an index
+(each one gets one) is answered from it; otherwise that record's rows are read.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -31,7 +31,7 @@ keyUnique()/foreignKeyExists() - correctness over speed, matching this project's
 <li><span><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">any</span></span></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/json-fs-query/blob/main/src/data/introspect/policies/hasDependents.ts#L19">src/data/introspect/policies/hasDependents.ts:19</a></li></ul></aside></div></li></ul></section></div>
+<li>Defined in <a href="https://github.com/jheagle/json-fs-query/blob/main/src/data/introspect/policies/hasDependents.ts#L20">src/data/introspect/policies/hasDependents.ts:20</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
