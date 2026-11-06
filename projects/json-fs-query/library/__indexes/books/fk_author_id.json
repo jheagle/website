@@ -1,0 +1,58 @@
+[
+  {
+    "value": "le-guin",
+    "record": [
+      "earthsea.json",
+      "dispossessed.json",
+      "left-hand.json"
+    ]
+  },
+  {
+    "value": "tolkien",
+    "record": [
+      "hobbit.json",
+      "fellowship.json"
+    ]
+  },
+  {
+    "value": "butler",
+    "record": [
+      "kindred.json",
+      "parable.json"
+    ]
+  },
+  {
+    "value": "pratchett",
+    "record": [
+      "guards.json",
+      "small-gods.json"
+    ]
+  },
+  {
+    "value": "austen",
+    "record": [
+      "pride.json",
+      "emma.json"
+    ]
+  },
+  {
+    "value": "shelley",
+    "record": [
+      "frankenstein.json"
+    ]
+  },
+  {
+    "value": "asimov",
+    "record": [
+      "foundation.json",
+      "i-robot.json"
+    ]
+  },
+  {
+    "value": "atwood",
+    "record": [
+      "handmaid.json",
+      "alias-grace.json"
+    ]
+  }
+]

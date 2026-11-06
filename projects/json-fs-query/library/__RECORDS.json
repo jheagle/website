@@ -1,0 +1,36 @@
+{
+  "path": "",
+  "definition": [
+    {
+      "name": "path",
+      "type": "string",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "definition",
+      "type": "object",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "keys",
+      "type": "array",
+      "optional": false,
+      "autoGenerate": false
+    },
+    {
+      "name": "entries",
+      "type": "array",
+      "optional": false,
+      "autoGenerate": false
+    }
+  ],
+  "keys": [],
+  "entries": [
+    "authors.json",
+    "books.json",
+    "members.json",
+    "loans.json"
+  ]
+}

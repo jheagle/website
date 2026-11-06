@@ -1,32 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-CA">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Pseudo DOM | Joshua Heagle</title>
-    <link rel="stylesheet" href="../shared.css">
-    <script src="./browser/pseudo-dom.js"></script>
+    <link rel="canonical" href="https://joshuaheagle.com/projects/pseudo-dom/">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preload" href="/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/browser/fonts/lexend-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/browser/tailwind/site.css?v=fece30e0dc">
 </head>
-<body>
-<div class="page">
-    <a class="back-link" href="/#work">&larr; Back to projects</a>
-    <div class="project-header">
-        <h1>Pseudo DOM</h1>
-        <p>A comprehensive mock of the browser DOM for Node - real <code>querySelector</code>, event dispatch, and
+<body class="mx-auto max-w-3xl px-5 pt-6 pb-16 lg:pt-14">
+<div>
+    <a class="mb-5 inline-block font-heading" href="/projects/">&larr; Back to projects</a>
+    <div class="mb-6 border-b border-rule pb-4">
+        <h1 class="m-0 mb-1.5 text-4xl/tight tracking-tight lg:text-5xl">Pseudo DOM</h1>
+        <p class="m-0 text-muted">A comprehensive mock of the browser DOM for Node - real <code class="rounded bg-foreground/8 px-1 py-px">querySelector</code>, event dispatch, and
             HTML parsing, without a browser.</p>
     </div>
-    <div class="actions">
-        <a class="primary" href="https://github.com/jheagle/pseudo-dom" target="_blank">View on GitHub</a>
-        <a href="./docs">Documentation</a>
-    </div>
-    <p class="hint">This one mocks the DOM for environments that don't have one (Node, tests) - since you're already
-        in a real browser, <code>installGlobal()</code> has nothing to do here. See the GitHub README for a runnable
-        example, or open the console to look at <code>pseudoDom</code> directly.</p>
+    <nav class="my-5 flex flex-wrap gap-2.5" aria-label="Project links">
+        <a class="rounded-lg bg-accent px-4 py-2 font-heading font-semibold text-background no-underline hover:opacity-90" href="./docs/">Documentation</a>
+        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="https://github.com/jheagle/pseudo-dom" target="_blank">View on GitHub</a>
+        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="#demo">Try the demo</a>
+    </nav>
+    <p class="text-muted">It mocks the DOM for environments that don't have one (Node, tests). Since you're in a real
+        browser, the demo below puts that to the test: it asks pseudo-dom and this browser's own DOM the same questions
+        and shows both answers. Or open the console to use <code class="rounded bg-foreground/8 px-1 py-px">pseudoDom</code> directly.</p>
+
+    <section id="demo" class="mt-7 scroll-mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6">
+        <h2 class="mt-0 mb-1 text-xl">Try it: same question, two DOMs</h2>
+        <p class="mt-0 mb-5 text-sm text-muted">Edit the HTML, try a selector, or run a change. The same sandbox is on the projects page.</p>
+        <!-- Filled in by /dist/sandboxes/pseudoDomSandboxInit.js (assets/js/sandboxes/pseudoDomSandbox.js) -->
+        <div data-sandbox="pseudo-dom"><noscript><p class="m-0 text-sm">This demo needs JavaScript.</p></noscript></div>
+    </section>
 </div>
-<script type="module">
-  window.addEventListener('DOMContentLoaded', () => {
-    console.log(pseudoDom, 'Pseudo DOM')
-  })
-</script>
+<!-- The site's own pseudo-dom dependency (package.json), the same build /projects/ uses -->
+<script src="/browser/vendor/pseudoDom.min.js?v=4d233de5be" defer></script>
+<script type="module" src="/dist/sandboxes/pseudoDomSandboxInit.js?v=1553ec8dce"></script>
 </body>
 </html>

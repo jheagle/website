@@ -1,0 +1,50 @@
+[
+  {
+    "value": "le-guin",
+    "record": [
+      "le-guin.json"
+    ]
+  },
+  {
+    "value": "tolkien",
+    "record": [
+      "tolkien.json"
+    ]
+  },
+  {
+    "value": "butler",
+    "record": [
+      "butler.json"
+    ]
+  },
+  {
+    "value": "pratchett",
+    "record": [
+      "pratchett.json"
+    ]
+  },
+  {
+    "value": "austen",
+    "record": [
+      "austen.json"
+    ]
+  },
+  {
+    "value": "shelley",
+    "record": [
+      "shelley.json"
+    ]
+  },
+  {
+    "value": "asimov",
+    "record": [
+      "asimov.json"
+    ]
+  },
+  {
+    "value": "atwood",
+    "record": [
+      "atwood.json"
+    ]
+  }
+]

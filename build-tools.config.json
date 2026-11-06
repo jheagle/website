@@ -1,4 +1,7 @@
 {
+  "cleanPaths": [
+    "dist"
+  ],
   "browser": {
     "enabled": true,
     "name": "joshuaHome"
@@ -9,9 +12,7 @@
     "to": "dist"
   },
   "images": {
-    "enabled": true,
-    "from": "assets/img/*",
-    "to": "browser/img"
+    "enabled": false
   },
   "readme": {
     "from": [
@@ -19,10 +20,7 @@
     ]
   },
   "sass": {
-    "enabled": true,
-    "from": "assets/sass/**/*.+(scss|sass)",
-    "path": "assets/sass",
-    "to": "browser/css"
+    "enabled": false
   },
   "srcPath": "assets/js",
   "test": {
@@ -31,6 +29,9 @@
       "testPathIgnorePatterns": [
         "/node_modules",
         "/projects"
+      ],
+      "transformIgnorePatterns": [
+        "/node_modules/(?!marked/)"
       ]
     },
     "path": "assets/js",

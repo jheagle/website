@@ -1,4 +1,4 @@
-import element from './element.js'
+import element from './element.js?v=95daa9de0a'
 const form = (action = '', method = '', children = [], className = null, attributes = {}) => {
   if (action) {
     attributes.action = action

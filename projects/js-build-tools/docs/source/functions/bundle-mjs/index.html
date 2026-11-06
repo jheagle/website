@@ -28,7 +28,7 @@ const resolveShim = (request) => {
 
 /**
  * Browser stand-ins for the Node built-ins that browserify used to provide and that real bundles still reach:
- * `path` (json-file-db) and `process` (guarded `typeof process` checks in debug and css-select's dependencies).
+ * `path` (json-fs-query) and `process` (guarded `typeof process` checks in debug and css-select's dependencies).
  * Any other built-in is first looked up as an ordinary package (so a project can install its own shim, e.g.
  * `events` or `buffer`), and otherwise becomes an empty object, the way browserify always treated `fs`.
  * @type {Object&lt;string, string>}

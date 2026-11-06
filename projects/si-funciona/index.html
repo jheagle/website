@@ -1,56 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-CA">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Sí, funciona | Joshua Heagle</title>
-    <link rel="stylesheet" href="../shared.css">
-    <script src="./browser/siFunciona.js"></script>
+    <link rel="canonical" href="https://joshuaheagle.com/projects/si-funciona/">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preload" href="/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/browser/fonts/lexend-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/browser/tailwind/site.css?v=fece30e0dc">
 </head>
-<body>
-<div class="page">
-    <a class="back-link" href="/#work">&larr; Back to projects</a>
-    <div class="project-header">
-        <h1>Sí, funciona</h1>
-        <p>Dependency-light, fully-typed general-purpose utility functions - arrays, objects, strings, functions,
+<body class="mx-auto max-w-3xl px-5 pt-6 pb-16 lg:pt-14">
+<div>
+    <a class="mb-5 inline-block font-heading" href="/projects/">&larr; Back to projects</a>
+    <div class="mb-6 border-b border-rule pb-4">
+        <h1 class="m-0 mb-1.5 text-4xl/tight tracking-tight lg:text-5xl">Sí, funciona</h1>
+        <p class="m-0 text-muted">Dependency-light, fully-typed general-purpose utility functions - arrays, objects, strings, functions,
             numbers.</p>
     </div>
-    <div class="actions">
-        <a class="primary" href="https://github.com/jheagle/si-funciona" target="_blank">View on GitHub</a>
-        <a href="./docs">Documentation</a>
-    </div>
-    <p class="hint">Try the string-case helpers below, or open the console to use <code>siFunciona</code>
+    <nav class="my-5 flex flex-wrap gap-2.5" aria-label="Project links">
+        <a class="rounded-lg bg-accent px-4 py-2 font-heading font-semibold text-background no-underline hover:opacity-90" href="./docs/">Documentation</a>
+        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="https://github.com/jheagle/si-funciona" target="_blank">View on GitHub</a>
+        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="#demo">Try the demo</a>
+    </nav>
+    <p class="text-muted">Try some of its functions below, or open the console to use <code class="rounded bg-foreground/8 px-1 py-px">siFunciona</code>
         directly.</p>
 
-    <div class="demo">
-        <h2>String case conversion</h2>
-        <label for="case-input">Type something</label>
-        <input id="case-input" type="text" value="some-kabob-case example" autocomplete="off">
-        <div class="output">
-            <pre id="case-output"></pre>
-        </div>
-    </div>
+    <section id="demo" class="mt-7 scroll-mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6">
+        <h2 class="mt-0 mb-1 text-xl">Try it</h2>
+        <p class="mt-0 mb-5 text-sm text-muted">Pick a function, change its inputs, and the result updates as you type. The same sandbox is on the projects page.</p>
+        <!-- Filled in by /dist/sandboxes/siFuncionaSandboxInit.js (assets/js/sandboxes/siFuncionaSandbox.js) -->
+        <div data-sandbox="si-funciona"><noscript><p class="m-0 text-sm">This demo needs JavaScript.</p></noscript></div>
+    </section>
 </div>
-<script type="module">
-  const { camelCase, kabobCase, snakeCase, titleCase } = siFunciona
-  const input = document.getElementById('case-input')
-  const output = document.getElementById('case-output')
-
-  const render = () => {
-    const value = input.value
-    output.textContent = [
-      `camelCase: ${camelCase(value)}`,
-      `kabobCase: ${kabobCase(value)}`,
-      `snakeCase: ${snakeCase(value)}`,
-      `titleCase: ${titleCase(value)}`
-    ].join('\n')
-  }
-
-  input.addEventListener('input', render)
-  window.addEventListener('DOMContentLoaded', () => {
-    render()
-    console.log(siFunciona, 'Sí, funciona')
-  })
-</script>
+<!-- The site's own si-funciona dependency (package.json), the same build /projects/ uses -->
+<script src="/browser/vendor/siFunciona.min.js?v=8b03d510fc" defer></script>
+<script type="module" src="/dist/sandboxes/siFuncionaSandboxInit.js?v=2d8745b295"></script>
 </body>
 </html>

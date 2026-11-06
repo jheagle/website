@@ -1,0 +1,82 @@
+[
+  {
+    "value": "hobbit",
+    "record": [
+      "l01.json",
+      "l09.json",
+      "l15.json"
+    ]
+  },
+  {
+    "value": "kindred",
+    "record": [
+      "l02.json"
+    ]
+  },
+  {
+    "value": "dispossessed",
+    "record": [
+      "l03.json"
+    ]
+  },
+  {
+    "value": "guards",
+    "record": [
+      "l04.json"
+    ]
+  },
+  {
+    "value": "foundation",
+    "record": [
+      "l05.json"
+    ]
+  },
+  {
+    "value": "pride",
+    "record": [
+      "l06.json"
+    ]
+  },
+  {
+    "value": "emma",
+    "record": [
+      "l07.json"
+    ]
+  },
+  {
+    "value": "frankenstein",
+    "record": [
+      "l08.json"
+    ]
+  },
+  {
+    "value": "fellowship",
+    "record": [
+      "l10.json"
+    ]
+  },
+  {
+    "value": "earthsea",
+    "record": [
+      "l11.json"
+    ]
+  },
+  {
+    "value": "left-hand",
+    "record": [
+      "l12.json"
+    ]
+  },
+  {
+    "value": "handmaid",
+    "record": [
+      "l13.json"
+    ]
+  },
+  {
+    "value": "parable",
+    "record": [
+      "l14.json"
+    ]
+  }
+]

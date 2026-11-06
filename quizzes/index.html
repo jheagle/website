@@ -1,21 +1,32 @@
 <!DOCTYPE html>
+<html lang="en-CA">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Quizzes</title>
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="./browser/css/main.css">
-    <script src="./browser/quizzes.js"></script>
+    <title>Quizzes | Joshua Heagle</title>
+    <link rel="canonical" href="https://joshuaheagle.com/quizzes/">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preload" href="/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/browser/fonts/lexend-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/browser/tailwind/site.css?v=fece30e0dc">
+    <script src="./browser/quizzes.js?v=a50d8f97f7"></script>
 </head>
-<body>
-<p>
-    Check the Browser Console to play with the available functions on <code>quizzes</code> for Quizzes.
-</p>
-<a href="./138cb946-fd1a-4b61-a8cc-f82c4ed92f1b">See a sample quiz</a>
-<script type="module">
-  window.addEventListener('DOMContentLoaded', () => {
-    console.log(quizzes, 'Quizzes')
-  })
-</script>
+<body class="mx-auto max-w-3xl px-5 pt-6 pb-16 lg:pt-14">
+<div>
+    <a class="mb-5 inline-block font-heading" href="/projects/">&larr; Back to projects</a>
+    <div class="mb-6 border-b border-rule pb-4">
+        <h1 class="m-0 mb-1.5 text-4xl/tight tracking-tight lg:text-5xl">Quizzes</h1>
+        <p class="m-0 text-muted">Dynamic forms and quizzes built with <a href="../projects/json-dom/">JSON DOM</a>, as a lightweight
+            alternative to form.io. Each quiz is defined as JSON-DOM structure and looked up by its own unique ID.</p>
+    </div>
+    <nav class="my-5 flex flex-wrap gap-2.5" aria-label="Project links">
+        <a class="rounded-lg bg-accent px-4 py-2 font-heading font-semibold text-background no-underline hover:opacity-90" href="./docs/">Documentation</a>
+        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="https://github.com/jheagle/quizzes" target="_blank">View on GitHub</a>
+        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="./138cb946-fd1a-4b61-a8cc-f82c4ed92f1b/">Try the demo</a>
+    </nav>
+    <p class="text-muted">The demo is a sample quiz. Open the browser console to use <code class="rounded bg-foreground/8 px-1 py-px">quizzes</code> directly.</p>
+</div>
 </body>
+</html>

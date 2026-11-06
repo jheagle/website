@@ -1,65 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-CA">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Collect your stuff (and go)! | Joshua Heagle</title>
-    <link rel="stylesheet" href="../shared.css">
-    <script src="./browser/collect-your-stuff.js"></script>
+    <link rel="canonical" href="https://joshuaheagle.com/projects/collect-your-stuff/">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preload" href="/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/browser/fonts/lexend-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/browser/tailwind/site.css?v=fece30e0dc">
 </head>
-<body>
-<div class="page">
-    <a class="back-link" href="/#work">&larr; Back to projects</a>
-    <div class="project-header">
-        <h1>Collect your stuff (and go)!</h1>
-        <p>Classic collection types - linked lists, doubly-linked lists, tree lists, queues, stacks - built on a
-            shared <code>Linker</code>/<code>Arrayable</code> foundation.</p>
+<body class="mx-auto max-w-3xl px-5 pt-6 pb-16 lg:pt-14">
+<div>
+    <a class="mb-5 inline-block font-heading" href="/projects/">&larr; Back to projects</a>
+    <div class="mb-6 border-b border-rule pb-4">
+        <h1 class="m-0 mb-1.5 text-4xl/tight tracking-tight lg:text-5xl">Collect your stuff (and go)!</h1>
+        <p class="m-0 text-muted">Classic collection types - linked lists, doubly-linked lists, tree lists, queues, stacks - built on a
+            shared <code class="rounded bg-foreground/8 px-1 py-px">Linker</code>/<code class="rounded bg-foreground/8 px-1 py-px">Arrayable</code> foundation.</p>
     </div>
-    <div class="actions">
-        <a class="primary" href="https://github.com/jheagle/collect-your-stuff" target="_blank">View on GitHub</a>
-        <a href="./docs">Documentation</a>
-    </div>
-    <p class="hint">Try Queue (FIFO) vs Stack (LIFO) below, or open the console to use
-        <code>collectYourStuff</code> directly.</p>
+    <nav class="my-5 flex flex-wrap gap-2.5" aria-label="Project links">
+        <a class="rounded-lg bg-accent px-4 py-2 font-heading font-semibold text-background no-underline hover:opacity-90" href="./docs/">Documentation</a>
+        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="https://github.com/jheagle/collect-your-stuff" target="_blank">View on GitHub</a>
+        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="#demo">Try the demo</a>
+    </nav>
+    <p class="text-muted">Try a queue, a stack and a linked list below, or open the console to use
+        <code class="rounded bg-foreground/8 px-1 py-px">collectYourStuff</code> directly.</p>
 
-    <div class="demo">
-        <h2>Queue vs Stack</h2>
-        <label for="items-input">Comma-separated items, added in this order</label>
-        <input id="items-input" type="text" value="first, second, third, fourth" autocomplete="off">
-        <div class="output">
-            <pre id="items-output"></pre>
-        </div>
-    </div>
+    <section id="demo" class="mt-7 scroll-mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6">
+        <h2 class="mt-0 mb-1 text-xl">Try it</h2>
+        <p class="mt-0 mb-5 text-sm text-muted">Add and take items one call at a time and watch the collection change. The same sandbox is on the projects page.</p>
+        <!-- Filled in by /dist/sandboxes/collectYourStuffSandboxInit.js (assets/js/sandboxes/collectYourStuffSandbox.js) -->
+        <div data-sandbox="collect-your-stuff"><noscript><p class="m-0 text-sm">This demo needs JavaScript.</p></noscript></div>
+    </section>
 </div>
-<script type="module">
-  const { Queue, Stack } = collectYourStuff
-  const input = document.getElementById('items-input')
-  const output = document.getElementById('items-output')
-
-  const drain = (collection, takeOne) => {
-    const order = []
-    while (!collection.empty()) {
-      order.push(takeOne(collection))
-    }
-    return order
-  }
-
-  const render = () => {
-    const items = input.value.split(',').map(item => item.trim()).filter(Boolean)
-    const queueOrder = drain(Queue.fromArray(items), q => q.dequeue())
-    const stackOrder = drain(Stack.fromArray(items), s => s.pop())
-    output.textContent = [
-      `Added:              ${items.join(', ')}`,
-      `Queue.dequeue() ->  ${queueOrder.join(', ')}  (first in, first out)`,
-      `Stack.pop() ->      ${stackOrder.join(', ')}  (last in, first out)`
-    ].join('\n')
-  }
-
-  input.addEventListener('input', render)
-  window.addEventListener('DOMContentLoaded', () => {
-    render()
-    console.log(collectYourStuff, 'Collect your stuff (and go)!')
-  })
-</script>
+<!-- The site's own collect-your-stuff dependency (package.json), the same build /projects/ uses -->
+<script src="/browser/vendor/collectYourStuff.min.js?v=b74fef1d93" defer></script>
+<script type="module" src="/dist/sandboxes/collectYourStuffSandboxInit.js?v=63aeeff107"></script>
 </body>
 </html>

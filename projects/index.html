@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang='en-CA'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Projects | Joshua Heagle</title>
+    <link rel='canonical' href='https://joshuaheagle.com/projects/'>
+    <meta name='description' content="Joshua Heagle's open-source projects: a family of TypeScript libraries, the build tooling under them, and the games and apps built on top.">
+    <link rel='icon' href='/favicon.ico' sizes='32x32'>
+    <link rel='icon' href='/icon.svg' type='image/svg+xml'>
+    <link rel='apple-touch-icon' href='/apple-touch-icon.png'>
+    <link rel='preload' href='/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
+    <link rel='preload' href='/browser/fonts/lexend-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
+    <link rel='stylesheet' href='/browser/tailwind/site.css?v=fece30e0dc'>
+    <script src='/browser/joshuaHome.js?v=e30ceb0414'></script>
+    <script type='module'>
+      import projectGrid from '/dist/templates/projectGrid.js?v=3da5c9d08f'
+      import projects from '/dist/data/projectList.js?v=931ced749c'
+
+      const documentItem = jsonDom.documentItem
+      // Capture the hand-authored HTML into items once, so renderHtml's insert doesn't wipe out real children it
+      // doesn't know about yet. Only call this once per page: a second full-tree pass throws in a real browser.
+      jsonDom.updateDomItems(documentItem)
+      const gridItem = jsonDom.getItemByElement(documentItem.body, document.getElementById('project-grid'))
+      jsonDom.renderHtml(projectGrid(projects), gridItem, 0)
+    </script>
+</head>
+<body class='mx-auto max-w-6xl px-5 pt-6 pb-16 lg:pt-14'>
+<header class='mb-8'>
+    <p class='mt-0 mb-4'><a class='font-heading' href='/'>&larr; Joshua Heagle</a></p>
+    <h1 class='m-0 text-4xl/tight tracking-tight lg:text-5xl'>Projects</h1>
+</header>
+
+<main>
+    <p class='mt-0 mb-8 max-w-prose'>
+        A family of open-source TypeScript libraries that build on each other, the build and test tooling underneath
+        them, and the games and apps built on top. Each project's page has its source and docs, and many have something
+        you can try right in the browser.
+    </p>
+    <div id='project-grid'></div>
+    <noscript>
+        <p>The project grid needs JavaScript. Every project is also on <a href='https://github.com/jheagle'>GitHub</a>.</p>
+    </noscript>
+
+    <section id='try' class='mt-16 scroll-mt-6'>
+        <h2 class='mt-0 mb-2 text-3xl'>Try them</h2>
+        <p class='mt-0 mb-8 max-w-prose text-muted'>Small live demos of the libraries that run in a browser. Change the inputs and watch them work.</p>
+
+        <article class='rounded-lg border border-rule bg-foreground/4 p-5 md:p-6'>
+            <h3 class='mt-0 mb-1 text-xl'><a class='text-foreground no-underline hover:underline' href='/projects/title-switcher/'>Title Switcher</a></h3>
+            <p class='mt-0 mb-5 text-sm text-muted'>The typing effect from the top of my homepage. Type your own lines, one per row.</p>
+            <!-- Filled in by /dist/sandboxes/titleSwitcherSandboxInit.js (assets/js/sandboxes/titleSwitcherSandbox.js), the
+                 same sandbox the title-switcher page uses; it needs the deferred /browser/vendor/titleSwitcher.min.js -->
+            <div data-sandbox='title-switcher'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
+        </article>
+
+        <article class='mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6'>
+            <h3 class='mt-0 mb-1 text-xl'><a class='text-foreground no-underline hover:underline' href='/projects/si-funciona/'>Sí, funciona</a></h3>
+            <p class='mt-0 mb-5 text-sm text-muted'>Utility functions you can run here. Pick one, change its inputs, and the result updates as you type.</p>
+            <!-- Filled in by /dist/sandboxes/siFuncionaSandboxInit.js (assets/js/sandboxes/siFuncionaSandbox.js), the same
+                 sandbox the si-funciona page uses; it needs the deferred /browser/vendor/siFunciona.min.js -->
+            <div data-sandbox='si-funciona'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
+        </article>
+
+        <article class='mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6'>
+            <h3 class='mt-0 mb-1 text-xl'><a class='text-foreground no-underline hover:underline' href='/projects/collect-your-stuff/'>Collect your stuff (and go)!</a></h3>
+            <p class='mt-0 mb-5 text-sm text-muted'>Queues, stacks and linked lists. Add and take items one call at a time and watch the collection change.</p>
+            <!-- Filled in by /dist/sandboxes/collectYourStuffSandboxInit.js (assets/js/sandboxes/collectYourStuffSandbox.js),
+                 the same sandbox the collect-your-stuff page uses; it needs the deferred /browser/vendor/collectYourStuff.min.js -->
+            <div data-sandbox='collect-your-stuff'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
+        </article>
+
+        <article class='mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6'>
+            <h3 class='mt-0 mb-1 text-xl'><a class='text-foreground no-underline hover:underline' href='/projects/matrix-dom/'>Matrix DOM</a></h3>
+            <p class='mt-0 mb-5 text-sm text-muted'>The grid geometry under Battleship's board (and this page's project grid). Draw lines, check neighbours, place a fleet.</p>
+            <!-- Filled in by /dist/sandboxes/matrixDomSandboxInit.js (assets/js/sandboxes/matrixDomSandbox.js), the same
+                 sandbox the matrix-dom page uses; here window.matrixDom comes from /browser/joshuaHome.js -->
+            <div data-sandbox='matrix-dom'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
+        </article>
+
+        <article class='mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6'>
+            <h3 class='mt-0 mb-1 text-xl'><a class='text-foreground no-underline hover:underline' href='/projects/json-dom/'>JSON DOM</a></h3>
+            <p class='mt-0 mb-5 text-sm text-muted'>Describe part of a page as data and json-dom builds it. Edit the JSON and the result re-renders as you type.</p>
+            <!-- Filled in by /dist/sandboxes/jsonDomSandboxInit.js (assets/js/sandboxes/jsonDomSandbox.js), the same sandbox
+                 the json-dom page uses; here window.jsonDom comes from /browser/joshuaHome.js -->
+            <div data-sandbox='json-dom'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
+        </article>
+
+        <article class='mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6'>
+            <h3 class='mt-0 mb-1 text-xl'><a class='text-foreground no-underline hover:underline' href='/projects/pseudo-dom/'>Pseudo DOM</a></h3>
+            <p class='mt-0 mb-5 text-sm text-muted'>A DOM for tests in Node, checked against the real thing: the page asks both the same question and shows both answers.</p>
+            <!-- Filled in by /dist/sandboxes/pseudoDomSandboxInit.js (assets/js/sandboxes/pseudoDomSandbox.js), the same
+                 sandbox the pseudo-dom page uses; it needs the deferred /browser/vendor/pseudoDom.min.js -->
+            <div data-sandbox='pseudo-dom'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
+        </article>
+
+        <article class='mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6'>
+            <h3 class='mt-0 mb-1 text-xl'><a class='text-foreground no-underline hover:underline' href='/projects/json-fs-query/'>json-fs-query</a></h3>
+            <p class='mt-0 mb-5 text-sm text-muted'>A folder of JSON files as a database. This one is a small library: authors, books, members and loans (its "today" is 2026-11-01). Ask a question or write your own read.</p>
+            <!-- Filled in by /dist/sandboxes/jsonFsQuerySandboxInit.js (assets/js/sandboxes/jsonFsQuerySandbox.js), the same
+                 sandbox the json-fs-query page uses; it needs the deferred /browser/vendor/jsonFsQuery.min.js -->
+            <div data-sandbox='json-fs-query'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
+        </article>
+    </section>
+</main>
+
+<footer class='mt-12 border-t border-rule pt-4 text-sm text-muted'>
+    <p>Joshua Heagle &copy; 2026</p>
+</footer>
+<script src='/browser/vendor/titleSwitcher.min.js?v=a86a0173ae' defer></script>
+<script type='module' src='/dist/sandboxes/titleSwitcherSandboxInit.js?v=eaf25c449c'></script>
+<script src='/browser/vendor/siFunciona.min.js?v=8b03d510fc' defer></script>
+<script type='module' src='/dist/sandboxes/siFuncionaSandboxInit.js?v=2d8745b295'></script>
+<script src='/browser/vendor/collectYourStuff.min.js?v=b74fef1d93' defer></script>
+<script type='module' src='/dist/sandboxes/collectYourStuffSandboxInit.js?v=63aeeff107'></script>
+<script type='module' src='/dist/sandboxes/matrixDomSandboxInit.js?v=0490701f6c'></script>
+<script type='module' src='/dist/sandboxes/jsonDomSandboxInit.js?v=36247b5f7d'></script>
+<script src='/browser/vendor/pseudoDom.min.js?v=4d233de5be' defer></script>
+<script type='module' src='/dist/sandboxes/pseudoDomSandboxInit.js?v=1553ec8dce'></script>
+<script src='/browser/vendor/jsonFsQuery.min.js?v=dfe1022a21' defer></script>
+<script type='module' src='/dist/sandboxes/jsonFsQuerySandboxInit.js?v=92ac737bb2'></script>
+</body>
+</html>
