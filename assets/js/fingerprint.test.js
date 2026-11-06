@@ -1,3 +1,4 @@
+const { execFileSync } = require('child_process')
 const fs = require('fs')
 const os = require('os')
 const path = require('path')
@@ -34,6 +35,18 @@ describe('fingerprint', () => {
   afterEach(() => fs.rmSync(root, { recursive: true, force: true }))
 
   test('finds pages, skipping generated docs folders', () => {
+    expect(findPages(root).map(page => path.relative(root, page))).toEqual(['index.html', path.join('sub', 'page.html')])
+  })
+
+  test('in a git checkout, finds the pages git would include: not ignored ones, not deleted ones', () => {
+    const git = (...args) => execFileSync('git', args, { cwd: root, stdio: 'ignore' })
+    git('init', '-q')
+    write(root, '.gitignore', 'mockups/\n')
+    write(root, 'mockups/option-a.html', '<p>local only</p>')
+    write(root, 'gone.html', '<p>deleted</p>')
+    git('add', 'index.html', 'gone.html')
+    fs.rmSync(path.join(root, 'gone.html'))
+    // sub/page.html is new and not ignored, like a freshly built blog post, so it counts
     expect(findPages(root).map(page => path.relative(root, page))).toEqual(['index.html', path.join('sub', 'page.html')])
   })
 
