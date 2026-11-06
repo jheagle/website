@@ -18,6 +18,7 @@
  *   node scripts/fingerprint.cjs --check   list what's stale, exit 1 if anything is
  * @module fingerprint
  */
+const { execFileSync } = require('node:child_process')
 const crypto = require('node:crypto')
 const fs = require('node:fs')
 const path = require('node:path')
@@ -45,11 +46,22 @@ const stamp = /\?v=[0-9a-f]+$/
 const hash = content => crypto.createHash('sha256').update(content).digest('hex').slice(0, 10)
 
 /**
- * Every page of the site, as absolute paths, sorted.
+ * Every page of the site, as absolute paths, sorted. In a git checkout that's the .html files git knows about or would
+ * add (tracked, or new and not ignored, like a freshly built blog post), so local-only files (drafts, mockups listed in
+ * .gitignore or .git/info/exclude) never get stamped or listed in the sitemap; elsewhere, every .html file under root.
+ * Generated docs folders are left out either way.
  * @param {string} root
  * @returns {string[]}
  */
 const findPages = root => {
+  const fromGit = gitFiles(root)
+  if (fromGit) {
+    return fromGit
+      .filter(file => file.endsWith('.html') && !file.split('/').some(part => skippedFolders.has(part)))
+      .map(file => path.join(root, file))
+      .filter(file => fs.existsSync(file))
+      .sort()
+  }
   const pages = []
   const walk = folder => {
     for (const entry of fs.readdirSync(folder, { withFileTypes: true })) {
@@ -62,6 +74,23 @@ const findPages = root => {
   }
   walk(root)
   return pages.sort()
+}
+
+/**
+ * The files git would include under root (tracked, plus untracked ones that aren't ignored), relative to root; null
+ * when root isn't the top of a git checkout.
+ * @param {string} root
+ * @returns {string[]|null}
+ */
+const gitFiles = root => {
+  try {
+    const top = execFileSync('git', ['rev-parse', '--show-toplevel'], { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim()
+    if (fs.realpathSync(top) !== fs.realpathSync(root)) return null
+    return execFileSync('git', ['ls-files', '-z', '--cached', '--others', '--exclude-standard'], { cwd: root, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 })
+      .split('\0').filter(Boolean)
+  } catch {
+    return null
+  }
 }
 
 /**
