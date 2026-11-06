@@ -177,6 +177,11 @@ steps where Joshua picks, tests or approves before the PR merges.
   favicon links that broke at nested addresses, links to an `/about` that no longer exists). Restyled with Tailwind
   around Joshua's original "The Mishap" dialogue, now chat bubbles; root-relative links to pages that exist, `noindex`,
   no canonical; a test keeps every link root-relative and real.
+- [x] **11d. The sample quiz page:** found in step 12's cross-browser pass: `/quizzes/<id>/` ("Try the demo") was
+  still browser defaults (serif, no header) and wiped its own `<body>` to render. Now the site's header and fonts, the
+  quiz rendered into a `#quiz` container (the quizzes bundle's older JSON DOM has no getItemByElement, so the item is
+  found among body's children), styled from that container through its elements since the markup comes from the
+  quizzes components; bigger radio tap targets.
 - [ ] **12. Before leaving draft ✱:** re-sync with `main`, run the full test suite, check the live-site paths
   (`/projects/*`, docs, bundles), a final pass in Firefox, Chrome and Safari (a real Apple device if available), then
   copy this file into #124 and delete it. Joshua merges #124.
