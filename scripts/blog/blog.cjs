@@ -90,9 +90,7 @@ const postPath = post => `/blog/${post.date.slice(0, 4)}/${post.slug}/`
 
 /** Point json-fs-query at the blog database, creating its record the first time. */
 const openDatabase = async (databasePath = defaults.databasePath) => {
-  // The record's folder too: git doesn't keep empty folders, so a fresh clone of the site has posts.json but no posts/,
-  // and json-fs-query's insert doesn't create it
-  fs.mkdirSync(path.join(databasePath, 'posts'), { recursive: true })
+  fs.mkdirSync(databasePath, { recursive: true })
   configure({ databasePath })
   await query(`create if not exists posts (
     _id string, title string, date string, summary string, tags array, image string null, body string,
