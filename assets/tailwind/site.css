@@ -18,6 +18,7 @@
 @source "../../projects/index.html";
 @source "../../projects/*/index.html";
 @source "../../quizzes/index.html";
+@source "../../quizzes/*/index.html";
 @source "../../blog/**/*.html";
 @source "../../scripts/blog";
 @source "../js/templates";
