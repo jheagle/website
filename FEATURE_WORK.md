@@ -173,6 +173,10 @@ steps where Joshua picks, tests or approves before the PR merges.
   `build`) lists every page, blog posts with their date, leaving out the 404 page, `noindex` pages and generated docs.
   Every page now names its canonical URL (most had none; battleship's game page pointed at `http://battleship.local/`),
   and a test checks each listed page's canonical is its own address and the sitemap is current.
+- [x] **11c. The 404 page:** found while doing the sitemap: still the 2016 page (inline styles, Comic Sans, relative
+  favicon links that broke at nested addresses, links to an `/about` that no longer exists). Restyled with Tailwind
+  around Joshua's original "The Mishap" dialogue, now chat bubbles; root-relative links to pages that exist, `noindex`,
+  no canonical; a test keeps every link root-relative and real.
 - [ ] **12. Before leaving draft ✱:** re-sync with `main`, run the full test suite, check the live-site paths
   (`/projects/*`, docs, bundles), a final pass in Firefox, Chrome and Safari (a real Apple device if available), then
   copy this file into #124 and delete it. Joshua merges #124.
