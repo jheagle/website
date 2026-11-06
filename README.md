@@ -23,6 +23,13 @@ don&#39;t render and readers don&#39;t read. This module copies them into an <co
 away visually (<code>data-animated</code> on the line switches its <code>group-data-animated:sr-only</code> class on), and starts the
 typing. When the visitor&#39;s system asks for reduced motion, nothing changes at all.</p>
 </dd>
+<dt><a href="#module_booksFilter">booksFilter</a></dt>
+<dd><p>The topic filter on /books/: one toggle per tag. A book shows unless one of its tags is switched off. Tags listed in
+the filter&#39;s data-hidden-by-default start off, so those books are hidden but one tap away. The choice is kept in the
+address (<code>?show=</code> for default-hidden tags switched on, <code>?hide=</code> for others switched off), so a link can share it.</p>
+<p>Hiding is presentation only: every book is in the page&#39;s HTML. Without JavaScript the filter stays hidden and every
+book shows.</p>
+</dd>
 <dt><a href="#module_titleSwitcherSandbox">titleSwitcherSandbox</a></dt>
 <dd><p>The title-switcher sandbox on /projects/: visitors type their own lines, set the speed and order, and watch
 title-switcher (<a href="https://www.npmjs.com/package/title-switcher">https://www.npmjs.com/package/title-switcher</a>) type them out.</p>
@@ -210,6 +217,59 @@ Start the typing effect, unless something it needs is missing or the visitor pre
 | document | <code>Document</code> |  |  |
 | window | <code>Window</code> |  |  |
 | [TitleSwitcher] | <code>function</code> | <code>window.TitleSwitcher</code> | The title-switcher class (swappable in tests). |
+
+<a name="module_booksFilter"></a>
+
+## booksFilter
+The topic filter on /books/: one toggle per tag. A book shows unless one of its tags is switched off. Tags listed in
+the filter's data-hidden-by-default start off, so those books are hidden but one tap away. The choice is kept in the
+address (`?show=` for default-hidden tags switched on, `?hide=` for others switched off), so a link can share it.
+
+Hiding is presentation only: every book is in the page's HTML. Without JavaScript the filter stays hidden and every
+book shows.
+
+
+* [booksFilter](#module_booksFilter)
+    * [.tagsOff](#module_booksFilter.tagsOff) ⇒ <code>Set.&lt;string&gt;</code>
+    * [.queryFor](#module_booksFilter.queryFor) ⇒ <code>string</code>
+    * [.initBooksFilter](#module_booksFilter.initBooksFilter) ⇒ <code>Object</code> \| <code>null</code>
+
+<a name="module_booksFilter.tagsOff"></a>
+
+### booksFilter.tagsOff ⇒ <code>Set.&lt;string&gt;</code>
+Which tags are off, from the defaults and the address.
+
+**Kind**: static constant of [<code>booksFilter</code>](#module_booksFilter)  
+
+| Param | Type |
+| --- | --- |
+| hiddenByDefault | <code>Array.&lt;string&gt;</code> | 
+| params | <code>URLSearchParams</code> | 
+
+<a name="module_booksFilter.queryFor"></a>
+
+### booksFilter.queryFor ⇒ <code>string</code>
+The address's query for this state: only what differs from the defaults.
+
+**Kind**: static constant of [<code>booksFilter</code>](#module_booksFilter)  
+**Returns**: <code>string</code> - Starting with '?', or '' for the defaults.  
+
+| Param | Type |
+| --- | --- |
+| hiddenByDefault | <code>Array.&lt;string&gt;</code> | 
+| off | <code>Set.&lt;string&gt;</code> | 
+
+<a name="module_booksFilter.initBooksFilter"></a>
+
+### booksFilter.initBooksFilter ⇒ <code>Object</code> \| <code>null</code>
+Wire up the filter. Does nothing on a page without one.
+
+**Kind**: static constant of [<code>booksFilter</code>](#module_booksFilter)  
+
+| Param | Type |
+| --- | --- |
+| document | <code>Document</code> | 
+| window | <code>Window</code> | 
 
 <a name="module_titleSwitcherSandbox"></a>
 
