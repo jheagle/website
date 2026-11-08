@@ -61,6 +61,19 @@
 <footer class='mt-12 border-t border-rule pt-4 text-sm text-muted'>
     <p>Joshua Heagle &copy; 2026</p>
 </footer>
+<script>
+  // Project folders renamed to their npm names: an old link (a docs page too) goes to the same page under the new name,
+  // or to the project's page when that page no longer exists. New names aren't in the map, so it can't loop.
+  (() => {
+    const renamed = { 'json-file-db': 'json-fs-query', 'test-fs': 'test-filesystem', 'json-dom-demo': 'json-dom' }
+    const match = location.pathname.match(/^\/projects\/([^/]+)(\/.*)?$/)
+    if (!match || !Object.hasOwn(renamed, match[1])) return
+    const project = `/projects/${renamed[match[1]]}/`
+    const target = `/projects/${renamed[match[1]]}${match[2] || '/'}`
+    const go = page => location.replace(page + location.search + location.hash)
+    fetch(target, { method: 'HEAD' }).then(response => go(response.ok ? target : project), () => go(project))
+  })()
+</script>
 <script data-goatcounter="https://joshuaheagle.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

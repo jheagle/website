@@ -45,11 +45,11 @@ describe('index.html', () => {
     hrefs.forEach(href => expect(sectionIds).toContain(href.slice(1)))
   })
 
-  test('loads the title-switcher bundle then the site module (both deferred), and Tailwind is the only stylesheet', () => {
+  test('loads the title-switcher bundle, the site module (both deferred), then GoatCounter once; Tailwind is the only stylesheet', () => {
     expect(document.head.querySelectorAll('script').length).toBe(0)
     const scripts = [...document.body.querySelectorAll('script')]
     expect(scripts.map(script => [script.getAttribute('type'), unstamped(script.getAttribute('src')), script.hasAttribute('defer')]))
-      .toEqual([[null, '/browser/vendor/titleSwitcher.min.js', true], ['module', '/dist/siteInit.js', false]])
+      .toEqual([[null, '/browser/vendor/titleSwitcher.min.js', true], ['module', '/dist/siteInit.js', false], [null, '//gc.zgo.at/count.js', false]])
     ;['browser/vendor/titleSwitcher.min.js', 'dist/siteInit.js', 'dist/siteNav.js', 'dist/roleTitles.js']
       .forEach(file => expect({ file, exists: fs.existsSync(path.join(rootDir, file)) }).toEqual({ file, exists: true }))
     const stylesheets = [...document.head.querySelectorAll("link[rel='stylesheet']")].map(link => unstamped(link.getAttribute('href')))
