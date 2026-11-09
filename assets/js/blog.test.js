@@ -73,6 +73,7 @@ describe('blog', () => {
     expect(page).toContain("<meta property='og:title' content='A test post with &quot;quotes&quot; &amp; it&#39;s apostrophe | Joshua Heagle'>")
     expect(page).toContain("<meta property='og:image' content='https://joshuaheagle.com/assets/img/profile/headshot-2026.jpg'>")
     expect(page).toContain("<meta property='article:published_time' content='2026-11-05'>")
+    expect(page).toContain("<meta name='author' content='Joshua Heagle'>")
     expect(page).toContain("<meta name='twitter:card' content='summary_large_image'>")
     expect(page).toContain('<strong>bold</strong>')
     // the title is the page's own <h1>; the body's leading "# A test post" isn't repeated
