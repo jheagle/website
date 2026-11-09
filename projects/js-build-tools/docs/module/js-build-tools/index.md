@@ -55,13 +55,17 @@ Creates the minified file for every bundle (the primary bundle, plus any additio
 
 <MemberHeading id="compilereadme" depth="3" name="compileReadme" sig="compileReadme" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/compilereadme-mjs/#L9" sourceLabel="compileReadme.mjs:9" />
+<MemberMeta badges="static" sourceHref="/source/functions/compilereadme-mjs/#L12" sourceLabel="compileReadme.mjs:12" />
 
-Generate the README.md file based off of the template, then append the generated documentation.
+Generate the README.md file based off of the template, then append the generated documentation. Does nothing when readme.enabled is false, so a project can keep a hand-written readme (or none).
+
+**Parameters**
+
+- `done` (function, optional)
 
 **Returns**
 
-- `stream.Stream`
+- `*`
 
 <MemberHeading id="copyfiles" depth="3" name="copyFiles" sig="copyFiles" />
 

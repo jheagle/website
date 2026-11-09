@@ -19,6 +19,7 @@ kind: guide
 - [functions/jsdocDocs.mjs](/source/functions/jsdocdocs-mjs/)
 - [functions/lint.mjs](/source/functions/lint-mjs/)
 - [functions/partials.mjs](/source/functions/partials-mjs/)
+- [functions/partials/addToDocsPages.mjs](/source/functions/partials/addtodocspages-mjs/)
 - [functions/partials/addToReadme.mjs](/source/functions/partials/addtoreadme-mjs/)
 - [functions/partials/beginWatcher.mjs](/source/functions/partials/beginwatcher-mjs/)
 - [functions/partials/cacheFiles.mjs](/source/functions/partials/cachefiles-mjs/)

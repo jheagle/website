@@ -20,7 +20,7 @@ Micro-functions used as components for the main gulp functions.
 
 <MemberHeading id="resolvepeerdir" depth="3" name="resolvePeerDir" sig="resolvePeerDir(name: string, options: Object): string" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/jsdocdocsfor-mjs/#L35" sourceLabel="jsdocDocsFor.mjs:35" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/jsdocdocsfor-mjs/#L36" sourceLabel="jsdocDocsFor.mjs:36" />
 
 Resolve the installed directory of an optional peer dependency, from the project being built rather than from this package. Deliberately not requirePeer/importPeer's own `require(name + '/package.json')` approach - that breaks for any package whose own package.json restricts its exports map and does not expose that subpath (clean-jsdoc-theme does; confirmed live, not assumed - resolving its own package.json throws ERR_PACKAGE_PATH_NOT_EXPORTED in plain Node, and a differently-shaped MODULE_NOT_FOUND under Jest's own resolver, which still is not "not installed" either way). Walking Node's own real module-lookup directories (require.resolve.paths) and checking each on disk sidesteps the exports map entirely - this only ever reads whether `<dir>/<name>/package.json` exists, never asks the module system to resolve a restricted subpath.
 
@@ -70,6 +70,22 @@ Read a tsconfig.json file into real typescript.CompilerOptions values, using onl
 - `ts.CompilerOptions` — TypeScript's compiler options
 
 ## Other
+
+<MemberHeading id="addtodocspages" depth="3" name="addToDocsPages" sig="addToDocsPages" />
+
+<MemberMeta badges="static" sourceHref="/source/functions/partials/addtodocspages-mjs/#L32" sourceLabel="addToDocsPages.mjs:32" />
+
+Add the HTML of docs.headHtml and docs.bodyHtml to every page of the generated documentation: the first just before `</head>`, the second just before `</body>`, for example an analytics script the rest of the site has. Both engines (TypeDoc and jsdoc) run it after generating, so a setting works the same with either. A setting left false adds nothing, and a page without the tag is left as it is.
+
+**Parameters**
+
+- `outPath` (string, optional, default: "gulpConfig.get('docs.to')") — The directory the documentation was generated into.
+- `headHtml` (string | false, optional, default: "gulpConfig.get('docs.headHtml')") — The HTML to add before `</head>`.
+- `bodyHtml` (string | false, optional, default: "gulpConfig.get('docs.bodyHtml')") — The HTML to add before `</body>`.
+
+**Returns**
+
+- `number` — How many pages were changed.
 
 <MemberHeading id="addtoreadme" depth="3" name="addToReadme" sig="addToReadme" />
 
@@ -263,7 +279,7 @@ Move and optimize images into the browser directory.
 
 <MemberHeading id="resolvejsdocbin" depth="3" name="resolveJsdocBin" sig="resolveJsdocBin" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/jsdocdocsfor-mjs/#L56" sourceLabel="jsdocDocsFor.mjs:56" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/jsdocdocsfor-mjs/#L57" sourceLabel="jsdocDocsFor.mjs:57" />
 
 Resolve jsdoc's own CLI entry point. jsdoc has no stable programmatic Node API for generating HTML docs (unlike TypeDoc's Application.bootstrap()/convert()/generateDocs()) - gulp-jsdoc3, the established gulp wrapper, is stale, and its own README admits jsdoc does not support piped input in the first place, a real anti-pattern for this project's own gulp-stream conventions. Running its real CLI via child_process is the portable way in - confirmed via `npm view jsdoc bin`, which reports "jsdoc.js" at the package root.
 
@@ -277,7 +293,7 @@ Resolve jsdoc's own CLI entry point. jsdoc has no stable programmatic Node API f
 
 <MemberHeading id="resolvejsdoctheme" depth="3" name="resolveJsdocTheme" sig="resolveJsdocTheme" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/jsdocdocsfor-mjs/#L68" sourceLabel="jsdocDocsFor.mjs:68" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/jsdocdocsfor-mjs/#L69" sourceLabel="jsdocDocsFor.mjs:69" />
 
 Resolve a jsdoc theme package's own template directory, for jsdoc's own opts.template config key: the folder holding its publish.js. That is the package root for a classic jsdoc template (clean-jsdoc-theme 4.x included), but `dist` for a bundled one (clean-jsdoc-theme 5.x).
 
@@ -292,7 +308,7 @@ Resolve a jsdoc theme package's own template directory, for jsdoc's own opts.tem
 
 <MemberHeading id="jsdocdocsfor" depth="3" name="jsdocDocsFor" sig="jsdocDocsFor" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/jsdocdocsfor-mjs/#L87" sourceLabel="jsdocDocsFor.mjs:87" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/jsdocdocsfor-mjs/#L88" sourceLabel="jsdocDocsFor.mjs:88" />
 
 Generate the HTML documentation of a plain-JavaScript project with jsdoc, using jsdoc.base.js's own shared config (plugins, includePattern/excludePattern) as the starting point rather than a parallel one - the same base a project's own .jsdoc.conf.js has always been able to extend, just with source.include and the output options generated here instead of hand-maintained per project. Configure this with 'docs.from', 'docs.to', 'docs.index', 'docs.theme' and 'docs.title'.
 
@@ -450,9 +466,9 @@ One ESLint instance is built from the first file's own cwd and reused for the re
 
 <MemberHeading id="readmetemplate" depth="3" name="readmeTemplate" sig="readmeTemplate" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/readmetemplate-mjs/#L10" sourceLabel="readmeTemplate.mjs:10" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/readmetemplate-mjs/#L14" sourceLabel="readmeTemplate.mjs:14" />
 
-Copy a readme template into the README.md file.
+Copy a readme template into the README.md file. Without the template (readme.template names a file which does not exist, or is empty), the readme starts empty instead, so it holds only the generated documentation; set readme.enabled to false to keep a hand-written readme instead.
 
 **Returns**
 
@@ -606,7 +622,7 @@ Starting at the source directory, find all the ts files and convert them into th
 
 <MemberHeading id="loadtypedoc" depth="3" name="loadTypeDoc" sig="loadTypeDoc" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/typedocsfor-mjs/#L19" sourceLabel="typeDocsFor.mjs:19" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/typedocsfor-mjs/#L20" sourceLabel="typeDocsFor.mjs:20" />
 
 Find the TypeDoc of the project being built (an optional peer dependency, only needed when the docs task is enabled) and load it, so projects which do not document TypeScript never need it installed.
 
@@ -624,7 +640,7 @@ Find the TypeDoc of the project being built (an optional peer dependency, only n
 
 <MemberHeading id="describeexports" depth="3" name="describeExports" sig="describeExports" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/typedocsfor-mjs/#L47" sourceLabel="typeDocsFor.mjs:47" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/typedocsfor-mjs/#L48" sourceLabel="typeDocsFor.mjs:48" />
 
 Describe what a source file exports: whether it has a default export, and whether it has any named exports.
 
@@ -639,7 +655,7 @@ Describe what a source file exports: whether it has a default export, and whethe
 
 <MemberHeading id="describefolder" depth="3" name="describeFolder" sig="describeFolder" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/typedocsfor-mjs/#L85" sourceLabel="typeDocsFor.mjs:85" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/typedocsfor-mjs/#L86" sourceLabel="typeDocsFor.mjs:86" />
 
 The description of a folder for its module: the first doc comment of the folder's index file, without its tags (@module, @file, ...), or an empty string when there is none.
 
@@ -653,7 +669,7 @@ The description of a folder for its module: the first doc comment of the folder'
 
 <MemberHeading id="describefile" depth="3" name="describeFile" sig="describeFile" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/typedocsfor-mjs/#L98" sourceLabel="typeDocsFor.mjs:98" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/typedocsfor-mjs/#L99" sourceLabel="typeDocsFor.mjs:99" />
 
 The description of a source file for its module: its first doc comment without the tags (@module, @file, ...), when that comment is a header (it is followed by an import or export, so it does not document a declaration itself), or an empty string.
 
@@ -667,7 +683,7 @@ The description of a source file for its module: its first doc comment without t
 
 <MemberHeading id="writedocentries" depth="3" name="writeDocEntries" sig="writeDocEntries" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/typedocsfor-mjs/#L123" sourceLabel="typeDocsFor.mjs:123" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/typedocsfor-mjs/#L124" sourceLabel="typeDocsFor.mjs:124" />
 
 Write one entry file per folder of the source directory into the entry directory. TypeDoc makes a module of every entry file, so the modules of the documentation mirror the folders. Nested folders are modules of their own, named by their path (utilities/parsers), and a folder's module holds only the files directly in it. The default export of each source file is re-exported under the name of the file (the source files hold one function each), and anything else a file exports is re-exported as it is (that is where the types.ts files go). Index files (the barrels), tests and declaration files are left out, but the first doc comment of a folder's index file becomes the description of its module. A file which sits beside the folders (not an index, main or browser file) is a module of its own, described by its header comment. A source directory with no folders gets a single entry called index.
 
@@ -683,7 +699,7 @@ Write one entry file per folder of the source directory into the entry directory
 
 <MemberHeading id="typedocsfor" depth="3" name="typeDocsFor" sig="typeDocsFor" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/typedocsfor-mjs/#L182" sourceLabel="typeDocsFor.mjs:182" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/typedocsfor-mjs/#L183" sourceLabel="typeDocsFor.mjs:183" />
 
 Generate the HTML documentation of a TypeScript project with TypeDoc, straight from the TypeScript source, so the types (and the comments on them) are documented from where they are defined. The modules mirror the folders of the source, see [writeDocEntries](/module/partials#writedocentries). Configure this with 'docs.from', 'docs.to', 'docs.index', 'docs.title', 'docs.tsconfig' and 'docs.logLevel'.
 

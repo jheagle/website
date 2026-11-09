@@ -7,7 +7,7 @@ description: Configurations for compiling typescript into JS files.
 
 # TsConfig
 
-<SourceLink href="/source/gulp-config-mjs/#L196" label="gulp.config.mjs:196" />
+<SourceLink href="/source/gulp-config-mjs/#L203" label="gulp.config.mjs:203" />
 
 Configurations for compiling typescript into JS files.
 
