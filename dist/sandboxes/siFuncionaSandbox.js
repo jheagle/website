@@ -246,10 +246,10 @@ export const markup = `<div class='grid gap-6 md:grid-cols-2'>
     <div id='sf-inputs' class='flex flex-col gap-4'></div>
   </form>
   <div class='flex min-w-0 flex-col gap-2'>
-    <p class='m-0 text-sm font-semibold'>Call</p>
-    <pre class='m-0 overflow-x-auto rounded-md bg-foreground/8 p-3 text-sm'><code id='sf-call'></code></pre>
-    <p class='m-0 text-sm font-semibold'>Result</p>
-    <pre class='m-0 min-h-24 overflow-x-auto rounded-md bg-foreground/8 p-3 text-sm'><code id='sf-result'></code></pre>
+    <p id='sf-call-label' class='m-0 text-sm font-semibold'>Call</p>
+    <pre tabindex='0' aria-labelledby='sf-call-label' class='m-0 overflow-x-auto rounded-md bg-foreground/8 p-3 text-sm'><code id='sf-call'></code></pre>
+    <p id='sf-result-label' class='m-0 text-sm font-semibold'>Result</p>
+    <pre tabindex='0' aria-labelledby='sf-result-label' class='m-0 min-h-24 overflow-x-auto rounded-md bg-foreground/8 p-3 text-sm'><code id='sf-result'></code></pre>
     <p id='sf-error' class='m-0 text-sm text-accent' role='status'></p>
   </div>
 </div>`;

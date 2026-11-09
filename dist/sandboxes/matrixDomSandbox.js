@@ -62,7 +62,7 @@ export const markup = `<div class='grid grid-cols-1 gap-6 md:grid-cols-2'>
     <div id='md-modes' class='flex flex-wrap gap-1.5' role='group' aria-label='Mode'></div>
     <p id='md-about' class='m-0 text-sm text-muted'></p>
     <div id='md-actions' class='flex flex-wrap gap-1.5'></div>
-    <pre class='m-0 overflow-x-auto rounded-md bg-foreground/8 p-3 text-sm'><code id='md-call'>// each call shows up here</code></pre>
+    <pre tabindex='0' aria-label='The last call' class='m-0 overflow-x-auto rounded-md bg-foreground/8 p-3 text-sm'><code id='md-call'>// each call shows up here</code></pre>
     <p id='md-note' class='m-0 text-sm text-muted' role='status'></p>
   </div>
   <div id='md-board' class='grid aspect-square w-full max-w-sm grid-cols-10 gap-px self-start rounded-md border border-rule bg-rule p-px' role='grid' aria-label='Board, 10 by 10'></div>

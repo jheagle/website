@@ -174,10 +174,10 @@ export const markup = `<div class='grid grid-cols-1 gap-6 md:grid-cols-2'>
   </div>
   <div class='flex min-w-0 flex-col gap-2'>
     <p id='pd-verdict' class='m-0 font-heading text-lg' role='status'></p>
-    <pre class='m-0 overflow-x-auto rounded-md bg-foreground/8 p-3 text-sm'><code id='pd-code'></code></pre>
+    <pre tabindex='0' aria-label='The code' class='m-0 overflow-x-auto rounded-md bg-foreground/8 p-3 text-sm'><code id='pd-code'></code></pre>
     <div class='grid grid-cols-1 gap-2'>
-      <div class='min-w-0'><p class='mt-0 mb-1 text-sm font-semibold'>Real browser DOM</p><pre class='m-0 min-h-20 overflow-x-auto rounded-md border border-rule p-3 text-sm'><code id='pd-real'></code></pre></div>
-      <div class='min-w-0'><p class='mt-0 mb-1 text-sm font-semibold'>pseudo-dom</p><pre class='m-0 min-h-20 overflow-x-auto rounded-md border border-rule p-3 text-sm'><code id='pd-pseudo'></code></pre></div>
+      <div class='min-w-0'><p id='pd-real-label' class='mt-0 mb-1 text-sm font-semibold'>Real browser DOM</p><pre tabindex='0' aria-labelledby='pd-real-label' class='m-0 min-h-20 overflow-x-auto rounded-md border border-rule p-3 text-sm'><code id='pd-real'></code></pre></div>
+      <div class='min-w-0'><p id='pd-pseudo-label' class='mt-0 mb-1 text-sm font-semibold'>pseudo-dom</p><pre tabindex='0' aria-labelledby='pd-pseudo-label' class='m-0 min-h-20 overflow-x-auto rounded-md border border-rule p-3 text-sm'><code id='pd-pseudo'></code></pre></div>
     </div>
   </div>
 </div>`
