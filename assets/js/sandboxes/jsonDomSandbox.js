@@ -121,8 +121,8 @@ export const markup = `<div class='grid grid-cols-1 gap-6 md:grid-cols-2'>
   <div class='flex min-w-0 flex-col gap-2'>
     <p class='m-0 text-sm font-semibold'>Rendered by json-dom</p>
     <div id='jd-preview' class='min-h-24 overflow-x-auto rounded-md border border-dashed border-rule p-4'></div>
-    <p class='m-0 text-sm font-semibold'>The HTML it built</p>
-    <pre class='m-0 max-h-72 overflow-auto rounded-md bg-foreground/8 p-3 text-sm'><code id='jd-html'></code></pre>
+    <p id='jd-html-label' class='m-0 text-sm font-semibold'>The HTML it built</p>
+    <pre tabindex='0' aria-labelledby='jd-html-label' class='m-0 max-h-72 overflow-auto rounded-md bg-foreground/8 p-3 text-sm'><code id='jd-html'></code></pre>
     <ul id='jd-dropped' class='m-0 pl-5 text-sm text-muted'></ul>
   </div>
 </div>`

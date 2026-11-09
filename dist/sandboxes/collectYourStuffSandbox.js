@@ -183,7 +183,7 @@ export const markup = `<div class='flex flex-col gap-5'>
     <ol id='cys-items' class='m-0 flex list-none flex-wrap items-center gap-1 p-0'></ol>
     <p id='cys-empty' class='m-0 text-sm text-muted'>Empty. Add something.</p>
   </div>
-  <pre class='m-0 overflow-x-auto rounded-md bg-foreground/8 p-3 text-sm'><code id='cys-call'>// each call shows up here</code></pre>
+  <pre tabindex='0' aria-label='The last call' class='m-0 overflow-x-auto rounded-md bg-foreground/8 p-3 text-sm'><code id='cys-call'>// each call shows up here</code></pre>
   <p id='cys-error' class='m-0 text-sm text-accent' role='status'></p>
 </div>`;
 
