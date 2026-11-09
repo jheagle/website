@@ -62,12 +62,24 @@ describe('siFuncionaSandbox', () => {
     expect(runFunction(siFunciona, fn, ['{ not json'])).toEqual(expect.objectContaining({ result: '', error: expect.any(String) }))
   })
 
+  test('the queueTimeout heading is one level below where the sandbox sits: h4 by default, or the mount\'s data-heading-level', () => {
+    expect(queueMarkup()).toMatch(/^<div[^>]*>\s*<h4[^>]*>One after another/)
+    expect(queueMarkup(3)).toMatch(/<h3 [^>]*>One after another[\s\S]*?<\/h3>/)
+    for (const [page, level] of [['projects/index.html', 4], ['projects/si-funciona/index.html', 3]]) {
+      const { document } = generateDocument({})
+      document.body.innerHTML = fs.readFileSync(path.join(__dirname, '../../../', page), 'utf8').match(/<body[^>]*>([\s\S]*?)<\/body>/i)[1]
+      initSiFuncionaSandbox(document, {}, siFunciona)
+      const heading = [...document.querySelectorAll('h3, h4')].find(h => h.textContent.startsWith('One after another'))
+      expect([page, heading.tagName.toLowerCase()]).toEqual([page, `h${level}`])
+    }
+  })
+
   describe('in a page', () => {
     const html = fs.readFileSync(path.join(__dirname, '../../../projects/index.html'), 'utf8')
     const setup = () => {
       const { document } = generateDocument({})
       document.body.innerHTML = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i)[1]
-      document.querySelector('[data-sandbox="si-funciona"]').innerHTML = markup + queueMarkup
+      document.querySelector('[data-sandbox="si-funciona"]').innerHTML = markup + queueMarkup()
       return document
     }
 
