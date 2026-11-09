@@ -15,9 +15,7 @@
     "enabled": false
   },
   "readme": {
-    "from": [
-      "assets/js/**/!(*.test).js"
-    ]
+    "enabled": false
   },
   "sass": {
     "enabled": false

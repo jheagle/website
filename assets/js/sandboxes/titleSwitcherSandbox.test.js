@@ -9,12 +9,6 @@ const setup = () => {
   const { document } = generateDocument({})
   document.body.innerHTML = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i)[1]
   document.querySelector('[data-sandbox="title-switcher"]').innerHTML = markup
-  // pseudo-dom 1.1.0 gaps (tracked in tasks/pseudo-dom notes): a <textarea>'s value doesn't start from its text,
-  // and the disabled property doesn't reflect the attribute. Do here what a browser does on load.
-  const lines = document.getElementById('ts-lines')
-  lines.value = lines.textContent
-  const pause = document.getElementById('ts-pause')
-  pause.disabled = pause.hasAttribute('disabled')
   const started = []
   class FakeTitleSwitcher {
     constructor (selector) { this.selector = selector; this.paused = false }

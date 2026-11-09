@@ -3827,7 +3827,7 @@ var joshuaHome = (() => {
         value: true
       });
       exports.default = void 0;
-      var words = (str) => str.match(/\d+|[A-Z]?[a-z]+|[A-Za-z]+/g);
+      var words = (str) => str.match(/\d+|[A-Z]+(?=[A-Z][a-z])|[A-Z]?[a-z]+|[A-Z]+/g);
       var _default = exports.default = words;
     }
   });
