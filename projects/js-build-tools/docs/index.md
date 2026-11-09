@@ -27,7 +27,7 @@ It is recommended to install gulp with the `-g` flag, so that you can run it wit
 
 ## Configuration
 
-In your project's root directory, create a `build-tools.config.json` file. This can contain any of the following (values provided are the defaults):
+In your project's root directory, create a `build-tools.config.json` file. Every setting is optional: leave out any you don't change, and it keeps the default shown here (with no file at all, every setting is its default). Set only what your project needs, for example `{ "browser": { "name": "my-package" } }`. New settings are always added with a default that keeps the build doing what it did, so an existing config never needs changing to upgrade.
 
 ```
 {
@@ -35,7 +35,7 @@ In your project's root directory, create a `build-tools.config.json` file. This 
     // 'true' to generate browser bundled files; 'false' for node environment only
     "enabled": true,
     // The name to use for the browser-bundled output file (.js will be appended).
-    "name": "my-package",
+    "name": "default",
     // The search pattern used for retrieving compiled distribution files.
     "from": "dist/**/*.js",
     // Module names or file paths which resolve to an empty object ({}) in the bundle instead of their real contents.
@@ -53,6 +53,8 @@ In your project's root directory, create a `build-tools.config.json` file. This 
     "dist",
     "browser"
   ],
+  // Files to copy elsewhere, only when you run the copyFiles task (see 'Configure copy files').
+  "copyFiles": [],
   "dist": {
     // Name of the entry the distribution file.
     "main": "dist/main",
@@ -62,20 +64,35 @@ In your project's root directory, create a `build-tools.config.json` file. This 
     "to": "dist"
   },
   "docs": {
-    // Toggle generating the HTML documentation from the TypeScript source (see 'Configure TypeScript documentation').
+    // jsdoc with clean-jsdoc-theme 5.x only: the path the documentation is served from (see 'Configure HTML
+    // documentation').
+    "basePath": false,
+    // HTML added to every page of the documentation just before </body>, false for none.
+    "bodyHtml": false,
+    // Toggle generating the HTML documentation from the source (see 'Configure HTML documentation').
     // When on, the build does this instead of generating the readme from the jsdoc comments.
     "enabled": false,
-    // The directory holding the TypeScript source, each folder in it becomes a module of the documentation.
+    // The directory holding the source, each folder in it becomes a module of the documentation.
     "from": "src",
+    // TypeDoc only: the git revision the "Defined in" source links point to, false for the current commit.
+    "gitRevision": false,
+    // HTML added to every page of the documentation just before </head>, false for none.
+    "headHtml": false,
+    // Generate the documentation as part of build; false to only generate it with the docs task.
+    "inBuild": true,
     // The markdown file used as the front page of the documentation.
     "index": "MAIN.md",
     // How much TypeDoc reports: Verbose, Info, Warn, Error or None.
     "logLevel": "Warn",
+    // 'typedoc' or 'jsdoc', false to infer it from typescript.enabled.
+    "method": false,
+    // jsdoc only: the theme package to render with.
+    "theme": "clean-jsdoc-theme",
     // The name of the documentation, defaults to the name in your package.json.
     "title": "",
     // The directory to generate the documentation in (it is cleared first).
     "to": "docs",
-    // The tsconfig file to read the source with, false to use the one of 'typescript.config'.
+    // TypeDoc only: the tsconfig file to read the source with, false to use the one of 'typescript.config'.
     "tsconfig": false
   },
   "fonts": {
@@ -98,8 +115,15 @@ In your project's root directory, create a `build-tools.config.json` file. This 
     // Path to output images
     "to": "browser/img"
   },
+  "lint": {
+    // Rule overrides on top of the shared lint config (see 'Configure lint rule overrides').
+    "rules": {}
+  },
   "readme": {
-    // The file which will be pre-fixed to your README.md output.
+    // Generate the readme; false keeps a hand-written readme (or none): neither build nor the readme task writes it.
+    "enabled": true,
+    // The file which will be pre-fixed to your README.md output. When it doesn't exist, the readme holds only the
+    // generated documentation.
     "template": "MAIN.md",
     // Options for formatting the output readme.
     "options": "utf8",
@@ -509,7 +533,7 @@ The shared `babel.config.js` (see 'Configure Babel') already includes `@babel/pr
 - **TypeDoc** (for a TypeScript project) - every folder in your source directory becomes a module of the documentation, the default export of each file (one function per file) is listed under the name of the file, and everything else a file exports (for example the types in a `types.ts`) is listed as it is. Index files, tests and declaration files are left out. A file which sits directly in the source directory, beside the folders, is a module of its own (unless it is `index` or `main`). The first comment of a folder's `index.ts` (or the header comment of such a file) describes its module. The comments on your code are the documentation, and the types come from the code itself, so `@module`, `@memberOf`, `@typedef` and the `{Type}` of `@param` are not needed. `typedoc` is an optional peer dependency (like `typescript`), install it in your project with `npm install --save-dev typedoc` (this needs a `typescript` version it supports).
 - **jsdoc** (for a plain JavaScript project, where TypeDoc has no real types to read) - scans your source (`.js`, `.mjs` and `.cjs` files, leaving out tests and minified `.min.js` copies) recursively with jsdoc itself, rendered with a modern theme (`clean-jsdoc-theme` by default, used instead of jsdoc's own classic default template) instead of the manual `.jsdoc.conf.js` setup described further below. `jsdoc` and whichever theme you configure are optional peer dependencies, install them with `npm install --save-dev jsdoc clean-jsdoc-theme` (or your own chosen theme package).
 
-Add the following to the exports in your `build-tools.config.json`:
+Turn it on with `"docs": { "enabled": true }` in your `build-tools.config.json`. These are the settings, with their defaults (all optional, set only the ones you change):
 
 ```
 {
@@ -518,8 +542,11 @@ Add the following to the exports in your `build-tools.config.json`:
     // "/projects/my-lib/docs/". The theme's links start at the site root, so documentation served below it needs
     // this. Left false, it is served from the site root
     "basePath": false,
+    // HTML added to every page just before </body>, with either engine: for example the analytics script the rest of
+    // your site has (see below). False adds nothing
+    "bodyHtml": false,
     // Generate the documentation from the source
-    "enabled": true,
+    "enabled": false,
     // The directory holding the source, each folder in it becomes a module (TypeDoc) or is scanned recursively (jsdoc).
     // jsdoc also takes a list of directories and files, for example ["functions", "gulpfile.base.mjs"]
     "from": "src",
@@ -527,6 +554,8 @@ Add the following to the exports in your `build-tools.config.json`:
     // commit, so every commit changes every page; a branch name such as "main" keeps them the same until the
     // documentation itself changes
     "gitRevision": false,
+    // HTML added to every page just before </head>, with either engine. False adds nothing
+    "headHtml": false,
     // Generate the documentation as part of build (the default). Set it to false to only generate it when you run
     // the docs task yourself (see below)
     "inBuild": true,
@@ -543,6 +572,17 @@ Add the following to the exports in your `build-tools.config.json`:
     "title": "",
     // Where the HTML is generated (the directory is cleared first)
     "to": "docs"
+  }
+}
+```
+
+`docs.headHtml` and `docs.bodyHtml` go into every page either engine generates, after it has generated them, so documentation published into a website can carry what the site's own pages do. For example, to count visits to the documentation with the site's GoatCounter:
+
+```
+{
+  "docs": {
+    "enabled": true,
+    "bodyHtml": "<script data-goatcounter=\"https://example.goatcounter.com/count\" async src=\"//gc.zgo.at/count.js\"></script>"
   }
 }
 ```

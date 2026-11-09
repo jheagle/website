@@ -169,31 +169,34 @@ Configurations for linting (see [module:partials.neostandardLint](/module/partia
 
 <MemberHeading id="readmeconfig" depth="3" name="ReadmeConfig" sig="ReadmeConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L142" sourceLabel="gulp.config.mjs:142" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L145" sourceLabel="gulp.config.mjs:145" />
 
 Configurations to compile and generate the Readme file.
 
 **Properties**
 
+- `enabled` ([BooleanSetting](/module/gulpconfig#booleansetting)) — Generate the readme (the default). Turn it off to keep a hand-written readme, or none: neither build nor the readme task writes it then.
 - `file` ([StringSetting](/module/gulpconfig#stringsetting)) — The name of the output documentation markdown file.
 - `from` ([StringSetting](/module/gulpconfig#stringsetting)) — Location of files to use for compiling documentation into the readme.
 - `fromEsm` ([ArrayableSetting](/module/gulpconfig#arrayablesetting)) — Additional `.mjs` files to document alongside `from`, converted on the fly since the readme generator only recognizes `.js` files - see 'Configure including ESM files in the generated readme'. Empty by default: a project that never sets this gets exactly the readme it always did.
 - `options` ([ArrayableSetting](/module/gulpconfig#arrayablesetting)) — Options for formatting the output readme.
-- `template` ([StringSetting](/module/gulpconfig#stringsetting)) — The file which will be pre-fixed to your README.md output.
+- `template` ([StringSetting](/module/gulpconfig#stringsetting)) — The file which will be pre-fixed to your README.md output. When it doesn't exist, the readme holds only the generated documentation.
 - `to` ([StringSetting](/module/gulpconfig#stringsetting)) — The directory to output the readme file in.
 
 <MemberHeading id="docsconfig" depth="3" name="DocsConfig" sig="DocsConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L172" sourceLabel="gulp.config.mjs:172" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L179" sourceLabel="gulp.config.mjs:179" />
 
 Configurations for generating the HTML documentation of a project's own source, with either TypeDoc (real TypeScript types) or jsdoc (a modern theme over jsdoc's own classic default) - see docs.method.
 
 **Properties**
 
 - `basePath` ([FlagStringSetting](/module/gulpconfig#flagstringsetting)) — The path the documentation is served from, such as '/projects/my-lib/docs/' (jsdoc with clean-jsdoc-theme 5.x only). The theme's links start at the site root, so documentation served below it needs this. False (the default) serves it from the site root.
+- `bodyHtml` ([FlagStringSetting](/module/gulpconfig#flagstringsetting)) — HTML added to every page of the documentation just before `</body>`, with either engine, for example the analytics script the rest of the site has. False (the default) adds nothing.
 - `enabled` ([BooleanSetting](/module/gulpconfig#booleansetting)) — Toggle generating the documentation from the source. When it is on the build does this instead of generating the readme from the jsdoc comments of the compiled files.
 - `from` ([ArrayableSetting](/module/gulpconfig#arrayablesetting)) — The directory holding the source, each folder in it becomes a module (TypeDoc) or is scanned recursively (jsdoc). jsdoc also takes a list of directories and files.
 - `gitRevision` ([FlagStringSetting](/module/gulpconfig#flagstringsetting)) — The git revision TypeDoc's "Defined in" source links point to (TypeDoc only). False (the default) is TypeDoc's own: the current commit, which changes every page on every commit. A branch name such as 'main' keeps the pages unchanged until the documentation itself changes; '{branch}' is the branch being built.
+- `headHtml` ([FlagStringSetting](/module/gulpconfig#flagstringsetting)) — HTML added to every page of the documentation just before `</head>`, with either engine. False (the default) adds nothing.
 - `inBuild` ([BooleanSetting](/module/gulpconfig#booleansetting)) — Generate the documentation as part of build (the default). Turn it off to only generate it when you run the docs task yourself (gulp docs), for example when docs.to points into another repository and you only want to publish the documentation of a release.
 - `index` ([StringSetting](/module/gulpconfig#stringsetting)) — The markdown file used as the front page of the documentation.
 - `logLevel` ([StringSetting](/module/gulpconfig#stringsetting)) — How much TypeDoc reports: Verbose, Info, Warn, Error or None. Not used by jsdoc.
@@ -205,7 +208,7 @@ Configurations for generating the HTML documentation of a project's own source, 
 
 <MemberHeading id="sassconfig" depth="3" name="SassConfig" sig="SassConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L180" sourceLabel="gulp.config.mjs:180" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L187" sourceLabel="gulp.config.mjs:187" />
 
 Configurations to compile and copy the sass files into css.
 
@@ -218,7 +221,7 @@ Configurations to compile and copy the sass files into css.
 
 <MemberHeading id="testconfig" depth="3" name="TestConfig" sig="TestConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L188" sourceLabel="gulp.config.mjs:188" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L195" sourceLabel="gulp.config.mjs:195" />
 
 Configurations for running the test suite.
 
@@ -230,7 +233,7 @@ Configurations for running the test suite.
 
 <MemberHeading id="tsconfig" depth="3" name="TsConfig" sig="TsConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L196" sourceLabel="gulp.config.mjs:196" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L203" sourceLabel="gulp.config.mjs:203" />
 
 Configurations for compiling typescript into JS files.
 
@@ -243,7 +246,7 @@ Configurations for compiling typescript into JS files.
 
 <MemberHeading id="configurations" depth="3" name="Configurations" sig="Configurations: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L216" sourceLabel="gulp.config.mjs:216" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L223" sourceLabel="gulp.config.mjs:223" />
 
 A set of Configurations options defined by Settings.
 
@@ -266,7 +269,7 @@ A set of Configurations options defined by Settings.
 
 <MemberHeading id="get" depth="3" name="get" sig="get" />
 
-<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L342" sourceLabel="gulp.config.mjs:342" />
+<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L352" sourceLabel="gulp.config.mjs:352" />
 
 Retrieve a value from the configurations, default may be returned.
 
@@ -281,7 +284,7 @@ Retrieve a value from the configurations, default may be returned.
 
 <MemberHeading id="set" depth="3" name="set" sig="set" />
 
-<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L351" sourceLabel="gulp.config.mjs:351" />
+<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L361" sourceLabel="gulp.config.mjs:361" />
 
 Specify a value for the configurations to use.
 

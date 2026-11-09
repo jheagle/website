@@ -24,6 +24,16 @@ way to point this package at their own data directory.</p>
 that would leave another record's foreign key pointing at a value that no longer exists -
 mirroring MySQL's own foreign_key_checks setting, which is also toggleable rather than always
 on, since strict enforcement isn't always what every consumer wants.</p>
+<p>readConcurrency (default 16) is how many entry files a read has in flight at once (see retrieveFiles): in a browser,
+how many requests run together.</p>
+<p>format (default 'compact') is how files are written: 'compact' (no whitespace: smaller files that parse faster) or
+'pretty' (indented by 2 spaces, for reading data in diffs). Either is read; formatDatabase rewrites a whole database
+in one.</p>
+<p>packedReads (default: true in a browser, false in Node) is whether reads use a record's packed file (see
+packDatabase) when it has one that matches the record, instead of reading each entry file.</p>
+<p>fetchOptions (default none) is passed to every fetch() a browser read makes, as fetch's second argument: for example
+{ cache: 'no-cache' }, so a page whose data a local server writes always checks for a newer file instead of reading
+one from the browser's cache. Not used in Node.</p>
 <p>Changing databasePath while calls are still running or queued throws (see trackDatabaseCall): await them first.</p>
 </div>
 <div class="tsd-parameters">
@@ -34,9 +44,12 @@ on, since strict enforcement isn't always what every consumer wants.</p>
 <div class="tsd-comment tsd-typography">
 <div class="tsd-tag-throws">
 <h4 class="tsd-anchor-link" id="throws">Throws<a href="#throws" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>When databasePath would point to another folder while database calls are in progress.</p>
+</div>
+<div class="tsd-tag-throws">
+<h4 class="tsd-anchor-link" id="throws-1">Throws<a href="#throws-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>When format is neither 'compact' nor 'pretty'.</p>
 </div></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/json-fs-query/blob/main/src/data/utilities/config.ts#L55">src/data/utilities/config.ts:55</a></li></ul></aside></div></li></ul></section></div>
+<li>Defined in <a href="https://github.com/jheagle/json-fs-query/blob/main/src/data/utilities/config.ts#L119">claude-1000/-home-jheagle/446db35c-4cb6-4977-aa5c-9e1be9fdf34a/scratchpad/t2/json-fs-query/src/data/utilities/config.ts:119</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -54,4 +67,5 @@ on, since strict enforcement isn't always what every consumer wants.</p>
 <ul class="tsd-small-nested-navigation" id="tsd-nav-container">
 <li>Loading...</li></ul></nav></div></div></div><footer>
 <p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer>
-<div class="overlay"></div></body></html>
+<div class="overlay"></div><script data-goatcounter="https://joshuaheagle.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body></html>
