@@ -148,7 +148,8 @@ const head = ({ title, description, canonical, image, type = 'website', publishe
     <meta property='og:url' content='${escapeHtml(canonical)}'>
     <meta property='og:site_name' content='Joshua Heagle'>${image ? `
     <meta property='og:image' content='${escapeHtml(image)}'>` : ''}${published ? `
-    <meta property='article:published_time' content='${published}'>` : ''}
+    <meta property='article:published_time' content='${published}'>
+    <meta name='author' content='Joshua Heagle'>` : ''}
     <meta name='twitter:card' content='${image ? 'summary_large_image' : 'summary'}'>
     <link rel='icon' href='/favicon.ico' sizes='32x32'>
     <link rel='icon' href='/icon.svg' type='image/svg+xml'>
