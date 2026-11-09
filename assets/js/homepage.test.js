@@ -32,7 +32,7 @@ describe('index.html', () => {
   })
 
   test('has every content section in reading order, and none of the old grid-layout sections', () => {
-    const ids = [...document.body.querySelectorAll('main > section')].map(section => section.getAttribute('id'))
+    const ids = [...document.body.querySelectorAll('main > article > section')].map(section => section.getAttribute('id'))
     expect(ids).toEqual(sectionIds)
 
     const removed = ['intro', 'profile', 'work', 'work-grid', 'rates', 'opportunities', 'live-cam', 'main']
@@ -45,11 +45,11 @@ describe('index.html', () => {
     hrefs.forEach(href => expect(sectionIds).toContain(href.slice(1)))
   })
 
-  test('loads the title-switcher bundle then the site module (both deferred), and Tailwind is the only stylesheet', () => {
+  test('loads the title-switcher bundle, the site module (both deferred), then GoatCounter once; Tailwind is the only stylesheet', () => {
     expect(document.head.querySelectorAll('script').length).toBe(0)
     const scripts = [...document.body.querySelectorAll('script')]
     expect(scripts.map(script => [script.getAttribute('type'), unstamped(script.getAttribute('src')), script.hasAttribute('defer')]))
-      .toEqual([[null, '/browser/vendor/titleSwitcher.min.js', true], ['module', '/dist/siteInit.js', false]])
+      .toEqual([[null, '/browser/vendor/titleSwitcher.min.js', true], ['module', '/dist/siteInit.js', false], [null, '//gc.zgo.at/count.js', false]])
     ;['browser/vendor/titleSwitcher.min.js', 'dist/siteInit.js', 'dist/siteNav.js', 'dist/roleTitles.js']
       .forEach(file => expect({ file, exists: fs.existsSync(path.join(rootDir, file)) }).toEqual({ file, exists: true }))
     const stylesheets = [...document.head.querySelectorAll("link[rel='stylesheet']")].map(link => unstamped(link.getAttribute('href')))
@@ -78,11 +78,14 @@ describe('index.html', () => {
     expect(document.getElementById('site-nav-links').hasAttribute('data-closed')).toBe(false)
   })
 
-  test('every section leaves room for the pinned nav when a link jumps to it (64px bar on phones, 48px from md up)', () => {
-    document.body.querySelectorAll('main > section').forEach(section => {
-      const classes = section.getAttribute('class').split(' ')
-      expect({ id: section.getAttribute('id'), scrollMargin: classes.includes('scroll-mt-16') && classes.includes('md:scroll-mt-12') })
-        .toEqual({ id: section.getAttribute('id'), scrollMargin: true })
+  test('a jump to any section leaves room for the pinned nav (64px bar on phones, 48px from md up)', () => {
+    // Scroll padding on <html>, not scroll-mt-* on each section: reader views (Firefox's Readability, Safari's Reader)
+    // score class names containing "scroll" as page furniture, and Safari's dropped every section because of it.
+    const htmlClasses = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf8').match(/<html[^>]*class='([^']*)'/)[1].split(' ')
+    expect(htmlClasses).toEqual(expect.arrayContaining(['scroll-pt-16', 'md:scroll-pt-12']))
+    document.body.querySelectorAll('main section').forEach(section => {
+      expect({ id: section.getAttribute('id'), classes: section.getAttribute('class') })
+        .toEqual({ id: section.getAttribute('id'), classes: expect.not.stringContaining('scroll') })
     })
   })
 
