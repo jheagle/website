@@ -171,16 +171,6 @@ Generates a table for a workout plan.
 
 - `DomItem`
 
-<MemberHeading id="copydatabase" depth="3" name="copyDatabase" sig="copyDatabase" />
-
-<MemberMeta sourceHref="/source/data/copydatabase-js/#L8" sourceLabel="copyDatabase.js:8" />
-
-Copy the real database/ directory into an isolated test directory, so insert/update tests have real seed data to work with without ever touching the actual database/ this app runs against.
-
-**Parameters**
-
-- `destination`
-
 <MemberHeading id="localdate" depth="3" name="localDate" sig="localDate" />
 
 <MemberMeta sourceHref="/source/data/localdate-js/#L7" sourceLabel="localDate.js:7" />
@@ -203,39 +193,59 @@ Rank muscles by how much they need attention right now, from a real read of the 
 - `workoutsWithMuscles` — every row from the workouts-joined-to-muscles query, each carrying a `.muscles` array (the muscles that workout's exercise worked)
 - `today` — injectable for testing; defaults to the real current time (only its local date counts)
 
-<MemberHeading id="getmusclepriority" depth="3" name="getMusclePriority" sig="getMusclePriority" />
+<MemberHeading id="createreads" depth="3" name="createReads" sig="createReads" />
 
-<MemberMeta sourceHref="/source/data/workoutqueries-js/#L9" sourceLabel="workoutQueries.js:9" />
+<MemberMeta sourceHref="/source/data/reads-js/#L10" sourceLabel="reads.js:10" />
 
-Rank every muscle by how much it needs attention right now, from a real read of the database.
-
-**Parameters**
-
-- `today` — injectable for testing; defaults to the real current time
-
-<MemberHeading id="getexercisesformuscle" depth="3" name="getExercisesForMuscle" sig="getExercisesForMuscle" />
-
-<MemberMeta sourceHref="/source/data/workoutqueries-js/#L24" sourceLabel="workoutQueries.js:24" />
-
-Every exercise linked to a given muscle, via exercise_muscle.
+The app's reads, given the json-fs-query `query` and `quote` to run them with: Node's (workoutQueries.js, for the API server and the tests) or the browser build's (browserReads.js, for the page, which reads database/ from its own origin over fetch()). Reads need no server; only writes do.
 
 **Parameters**
 
-- `muscleId`
+- `jsonFsQuery` (Object)
 
-<MemberHeading id="getlastsession" depth="3" name="getLastSession" sig="getLastSession" />
+**Returns**
 
-<MemberMeta sourceHref="/source/data/workoutqueries-js/#L36" sourceLabel="workoutQueries.js:36" />
+- `Object`
 
-The most recently logged workout for a given exercise, or null if it's never been logged.
+<MemberHeading id="exercise" depth="3" name="exercise" sig="exercise" />
+
+<MemberMeta sourceHref="/source/data/testdatabase-js/#L11" sourceLabel="testDatabase.js:11" />
+
+A value that is the \_id of the exercise with this name, once it's inserted: exercises' ids are generated on insert (json-fs-query's `auto` replaces any \_id given), so rows refer to them through this.
 
 **Parameters**
 
-- `exerciseId`
+- `name` (string)
+
+**Returns**
+
+- `function`
+
+<MemberHeading id="seedrows" depth="3" name="seedRows" sig="seedRows" />
+
+<MemberMeta sourceHref="/source/data/testdatabase-js/#L18" sourceLabel="testDatabase.js:18" />
+
+The rows every test database starts with: the app's original seed data (14 muscles, 3 exercises each linked to one muscle, and 6 workouts on 2024-06-02 and 2024-06-05). Fixed here, so tests never depend on the real database/, which changes with every workout logged.
+
+<MemberHeading id="createtestdatabase" depth="3" name="createTestDatabase" sig="createTestDatabase" />
+
+<MemberMeta sourceHref="/source/data/testdatabase-js/#L69" sourceLabel="testDatabase.js:69" />
+
+Build a test database at destination: every record the real database has, with the same fields and keys (read from its record files, so a schema change reaches the tests), holding only the given rows. Configures json-fs-query to use it.
+
+**Parameters**
+
+- `destination` (string) — The folder to create the test database in.
+- `rows` (Object.\<string, Array.\<Object>>, optional, default: "seedRows") — The rows to insert, by record, in an order that keeps the foreign keys valid.
+- `source` (string, optional, default: "'database/'") — The real database whose schema is copied.
+
+**Returns**
+
+- `Promise.<Object.<string, Array.<Object>>>` — The inserted rows by record (with their generated ids).
 
 <MemberHeading id="logworkout" depth="3" name="logWorkout" sig="logWorkout" />
 
-<MemberMeta sourceHref="/source/data/workoutqueries-js/#L52" sourceLabel="workoutQueries.js:52" />
+<MemberMeta sourceHref="/source/data/workoutqueries-js/#L20" sourceLabel="workoutQueries.js:20" />
 
 Log a new workout entry.
 
@@ -251,7 +261,7 @@ Log a new workout entry.
 
 <MemberHeading id="updateworkout" depth="3" name="updateWorkout" sig="updateWorkout" />
 
-<MemberMeta sourceHref="/source/data/workoutqueries-js/#L78" sourceLabel="workoutQueries.js:78" />
+<MemberMeta sourceHref="/source/data/workoutqueries-js/#L46" sourceLabel="workoutQueries.js:46" />
 
 Update an existing workout entry - e.g. correcting the plan with what was actually done.
 
@@ -262,7 +272,7 @@ Update an existing workout entry - e.g. correcting the plan with what was actual
 
 <MemberHeading id="addexercise" depth="3" name="addExercise" sig="addExercise" />
 
-<MemberMeta sourceHref="/source/data/workoutqueries-js/#L106" sourceLabel="workoutQueries.js:106" />
+<MemberMeta sourceHref="/source/data/workoutqueries-js/#L74" sourceLabel="workoutQueries.js:74" />
 
 Add a new exercise, with the muscles it works (primary/secondary, by whatever rank you give).
 
