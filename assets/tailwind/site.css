@@ -21,6 +21,8 @@
 @source "../../quizzes/*/index.html";
 @source "../../blog/**/*.html";
 @source "../../scripts/blog";
+@source "../../books/*.html";
+@source "../../scripts/books";
 @source "../js/templates";
 @source "../js/sandboxes";
 
