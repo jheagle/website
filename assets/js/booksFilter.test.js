@@ -30,7 +30,7 @@ describe('booksFilter', () => {
     load()
     expect(document.getElementById('book-filters').hidden).toBe(false)
     expect(visible()).toEqual(['history-one', 'plain'])
-    expect(document.getElementById('book-filter-status').textContent).toBe('Showing 2 of 4 books. 2 hidden by topic: nsfw.')
+    expect(document.getElementById('book-filter-status').textContent).toBe('Showing 2 of 4 books. 2 hidden by topic: nsfw, polyamory, sensitive.')
     const sections = [...document.querySelectorAll('main section')]
     expect(sections.map(section => [section.querySelector('h2').textContent, section.hidden])).toEqual([['2026', false], ['2025', true]])
     expect(document.querySelector("[data-tag='nsfw']").getAttribute('aria-pressed')).toBe('false')

@@ -1,0 +1,31 @@
+{
+  "tags": {
+    "pyschology": "psychology",
+    "psyhology": "psychology",
+    "physchology": "psychology",
+    "ficion": "fiction",
+    "geograph": "geography",
+    "philosophy.resiliance": [
+      "philosophy",
+      "resilience"
+    ],
+    "lifestyles": "lifestyle"
+  },
+  "books": {
+    "She Comes First": [
+      "nsfw"
+    ],
+    "The Ethical Slut": [
+      "nsfw"
+    ],
+    "The Kink Machine: The hidden business of adult entertainment": [
+      "nsfw"
+    ],
+    "Ask Me About Polyamory: The best of kimchi cuddles": [
+      "polyamory"
+    ],
+    "The State of Affairs": [
+      "sensitive"
+    ]
+  }
+}

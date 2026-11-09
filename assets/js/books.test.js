@@ -89,7 +89,7 @@ describe('books', () => {
     expect(page).toContain("<link rel='canonical' href='https://joshuaheagle.com/books/'>")
     expect(page).toContain('Devon Price, Phd')
     expect(page).toContain('Did not finish, didn&#39;t like it')
-    expect(page).toContain("data-hidden-by-default='nsfw'")
+    expect(page).toContain("data-hidden-by-default='nsfw,polyamory,sensitive'")
     expect(page).toContain("<script type='module' src='/dist/booksFilterInit.js'></script>")
     expect(page).toContain("data-tags='relationships,nsfw'")
     expect(page).not.toContain('Not For The Site')
@@ -108,5 +108,49 @@ describe('books', () => {
     const page = books.renderBooks(books.parseBooks('Title,Author,Date,Finished\nX,Y,2026-01-01,').books)
     expect(page).not.toContain('book-filters')
     expect(page).not.toContain('booksFilterInit')
+  })
+
+  test('corrections fix tags as typed (to one tag or several), add tags to a book by title, and name the titles no book has', () => {
+    const corrections = {
+      tags: { psyhology: 'psychology', 'philosophy.resiliance': ['philosophy', 'resilience'] },
+      books: { 'a spicy one': ['nsfw'], 'Keep It Quiet': ['private'], 'Renamed In The Sheet': ['nsfw'] }
+    }
+    const text = 'Title,Author,Date,Finished,Tags\nA Spicy One,X,,,"Psyhology, psychology"\nDeep,Y,,,philosophy.resiliance\nKeep It Quiet,Z,,,\n'
+    const { books: list, skippedPrivate, unmatchedCorrections } = books.parseBooks(text, corrections)
+    expect(list.map(book => [book.title, book.tags])).toEqual([['A Spicy One', ['psychology', 'nsfw']], ['Deep', ['philosophy', 'resilience']]])
+    expect(skippedPrivate).toBe(1)
+    expect(unmatchedCorrections).toEqual(['Renamed In The Sheet'])
+  })
+
+  test('readCorrections reads books/corrections.json, and gives none without the file', () => {
+    const file = path.join(dir, 'corrections.json')
+    expect(books.readCorrections(file)).toEqual({ tags: {}, books: {} })
+    fs.writeFileSync(file, JSON.stringify({ tags: { ficion: 'fiction' } }))
+    expect(books.readCorrections(file)).toEqual({ tags: { ficion: 'fiction' }, books: {} })
+  })
+
+  test('similarTags names likely typos (the rarer tag first), and leaves different short tags alone', () => {
+    const list = [['psychology'], ['psychology'], ['pyschology'], ['lifestyle'], ['lifestyles', 'lifestyle'], ['fiction'], ['fiction'], ['ficion'], ['data'], ['date'], ['sex'], ['set'], ['health'], ['wealth']]
+      .map(tags => ({ tags }))
+    expect(books.similarTags(list)).toEqual([['ficion', 'fiction'], ['health', 'wealth'], ['lifestyles', 'lifestyle'], ['pyschology', 'psychology']])
+  })
+
+  test('the Format column is read, stored and shown', async () => {
+    const text = 'Title,Author,Date,Finished,Format\nHeard,A,2026-01-01,2026-01-02,Audiobook\nRead,B,2026-01-03,,ecomic\nPlain,C,,,\n'
+    const { books: list } = books.parseBooks(text)
+    expect(list.map(book => book.format)).toEqual(['audiobook', 'ecomic', null])
+    const databasePath = path.join(dir, 'database/')
+    expect(await books.importBooks(list, databasePath)).toBe(3)
+    expect((await books.readBooks(databasePath)).map(book => book.format)).toEqual(['audiobook', 'ecomic', null])
+    const page = books.renderBooks(await books.readBooks(databasePath))
+    expect(page).toContain('>Audiobook</p>')
+    expect(page).toContain('>E-comic</p>')
+    expect(books.formatLabel('graphic novel')).toBe('Graphic novel')
+  })
+
+  test('an empty list imports as an empty record', async () => {
+    const databasePath = path.join(dir, 'database/')
+    expect(await books.importBooks([], databasePath)).toBe(0)
+    expect(await books.readBooks(databasePath)).toEqual([])
   })
 })

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang='en-CA'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Books | Joshua Heagle</title>
+    <meta name='description' content='What Joshua Heagle has been reading, with notes: finished, in progress, and the ones he stopped.'>
+    <link rel='canonical' href='https://joshuaheagle.com/books/'>
+    <meta property='og:type' content='website'>
+    <meta property='og:title' content='Books | Joshua Heagle'>
+    <meta property='og:description' content='What Joshua Heagle has been reading, with notes: finished, in progress, and the ones he stopped.'>
+    <meta property='og:url' content='https://joshuaheagle.com/books/'>
+    <meta property='og:site_name' content='Joshua Heagle'>
+    <meta name='twitter:card' content='summary'>
+    <link rel='icon' href='/favicon.ico' sizes='32x32'>
+    <link rel='icon' href='/icon.svg' type='image/svg+xml'>
+    <link rel='apple-touch-icon' href='/apple-touch-icon.png'>
+    <link rel='preload' href='/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
+    <link rel='preload' href='/browser/fonts/lexend-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
+    <link rel='stylesheet' href='/browser/tailwind/site.css?v=58cdf08281'>
+    <script type='module' src='/dist/booksFilterInit.js?v=dbce5b3064'></script>
+</head>
+<body class='mx-auto max-w-3xl px-5 pt-6 pb-16 lg:pt-14'>
+<header class='mb-8'>
+    <a class='mb-5 inline-block font-heading' href='/'>&larr; Joshua Heagle</a>
+    <h1 class='m-0 text-4xl/tight tracking-tight lg:text-5xl'>Books</h1>
+    <p class='mt-3 mb-0 max-w-prose text-muted'>What I've been reading: 32 books, newest first, including the ones I didn't finish.</p>
+    <!-- The topic filter, wired up by /dist/booksFilterInit.js; without JavaScript it stays hidden and every book shows -->
+    <div id='book-filters' class='mt-6' data-hidden-by-default='nsfw,polyamory,sensitive' hidden>
+        <p class='mt-0 mb-2 text-sm font-semibold'>Topics <span class='font-normal text-muted'>(tap to show or hide)</span></p>
+        <div class='flex flex-wrap gap-2' role='group' aria-label='Topics'>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='adventure' aria-pressed='true'>adventure</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='advice' aria-pressed='true'>advice</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='anatomy' aria-pressed='true'>anatomy</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='betrayal' aria-pressed='true'>betrayal</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='biology' aria-pressed='true'>biology</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='business' aria-pressed='true'>business</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='capitalism' aria-pressed='true'>capitalism</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='classism' aria-pressed='true'>classism</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='colonisation' aria-pressed='true'>colonisation</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='comic' aria-pressed='true'>comic</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='culture' aria-pressed='true'>culture</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='data' aria-pressed='true'>data</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='economics' aria-pressed='true'>economics</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='fantasy' aria-pressed='true'>fantasy</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='feminism' aria-pressed='true'>feminism</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='fiction' aria-pressed='true'>fiction</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='fitness' aria-pressed='true'>fitness</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='geography' aria-pressed='true'>geography</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='healing' aria-pressed='true'>healing</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='health' aria-pressed='true'>health</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='history' aria-pressed='true'>history</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='hope' aria-pressed='true'>hope</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='human body' aria-pressed='true'>human body</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='human rights' aria-pressed='true'>human rights</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='humour' aria-pressed='true'>humour</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='innovation' aria-pressed='true'>innovation</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='intersectionality' aria-pressed='true'>intersectionality</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='lifestyle' aria-pressed='true'>lifestyle</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='medical' aria-pressed='true'>medical</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='mental health' aria-pressed='true'>mental health</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='monogamy' aria-pressed='true'>monogamy</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='nsfw' aria-pressed='true'>nsfw</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='open relationships' aria-pressed='true'>open relationships</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='philosophy' aria-pressed='true'>philosophy</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='polyamory' aria-pressed='true'>polyamory</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='psychology' aria-pressed='true'>psychology</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='purity culture' aria-pressed='true'>purity culture</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='race awareness' aria-pressed='true'>race awareness</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='relationships' aria-pressed='true'>relationships</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='religion' aria-pressed='true'>religion</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='resilience' aria-pressed='true'>resilience</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='romance' aria-pressed='true'>romance</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='self-help' aria-pressed='true'>self-help</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='sensitive' aria-pressed='true'>sensitive</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='sex' aria-pressed='true'>sex</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='social awareness' aria-pressed='true'>social awareness</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='social studies' aria-pressed='true'>social studies</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='society' aria-pressed='true'>society</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='statistics' aria-pressed='true'>statistics</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='technology' aria-pressed='true'>technology</button>
+            <button type='button' class='cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background' data-tag='trauma' aria-pressed='true'>trauma</button>
+        </div>
+        <p id='book-filter-status' class='mt-3 mb-0 text-sm text-muted' role='status'></p>
+    </div>
+</header>
+<main>
+    <section class='mb-10'>
+        <h2 class='mt-0 mb-1 text-2xl'>In progress</h2>
+        <ol class='m-0 list-none p-0'>
+            <li id='the-silk-roads' class='border-b border-rule py-4' data-tags='history,geography,religion,culture,society,social studies,economics'>
+                <p class='m-0 font-heading text-lg'>The Silk Roads</p>
+                <p class='m-0 text-muted'>Peter Frankopan</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started November 5, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Book</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>history · geography · religion · culture · society · social studies · economics</p>
+            </li>
+            <li id='invisible-women' class='border-b border-rule py-4' data-tags='statistics,social studies,society,culture,feminism,human rights,intersectionality'>
+                <p class='m-0 font-heading text-lg'>Invisible Women</p>
+                <p class='m-0 text-muted'>Caroline Criado-Perez</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started October 22, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>statistics · social studies · society · culture · feminism · human rights · intersectionality</p>
+            </li>
+            <li id='sword-of-destiny' class='border-b border-rule py-4' data-tags='fiction,fantasy,romance,adventure'>
+                <p class='m-0 font-heading text-lg'>Sword of Destiny</p>
+                <p class='m-0 text-muted'>Andrzej Sapkowski</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started August 20, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Ebook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>fiction · fantasy · romance · adventure</p>
+            </li>
+        </ol>
+    </section>
+    <section class='mb-10'>
+        <h2 class='mt-0 mb-1 text-2xl'>2026</h2>
+        <ol class='m-0 list-none p-0'>
+            <li id='unlearning-shame-how-we-can-reject-self-blame-culture' class='border-b border-rule py-4' data-tags='psychology,mental health,human rights,purity culture,healing,trauma'>
+                <p class='m-0 font-heading text-lg'>Unlearning Shame: How we can reject self-blame culture</p>
+                <p class='m-0 text-muted'>Devon Price, Phd</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started September 13, 2026, finished September 20, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>psychology · mental health · human rights · purity culture · healing · trauma</p>
+            </li>
+            <li id='how-europe-underdeveloped-africa' class='border-b border-rule py-4' data-tags='social studies,capitalism,society,philosophy,economics,history,colonisation,classism'>
+                <p class='m-0 font-heading text-lg'>How Europe Underdeveloped Africa</p>
+                <p class='m-0 text-muted'>Walter Rodney</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started August 9, 2026, finished August 28, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>social studies · capitalism · society · philosophy · economics · history · colonisation · classism</p>
+            </li>
+            <li id='the-communist-manifesto' class='border-b border-rule py-4' data-tags='social studies,capitalism,society,philosophy'>
+                <p class='m-0 font-heading text-lg'>The Communist Manifesto</p>
+                <p class='m-0 text-muted'>Karl Marx</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started August 9, 2026, did not finish <span class='ml-1 rounded-full border border-rule px-2 py-px text-xs'>DNF</span></p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Ebook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>social studies · capitalism · society · philosophy</p>
+            </li>
+            <li id='the-kink-machine-the-hidden-business-of-adult-entertainment' class='border-b border-rule py-4' data-tags='social studies,economics,purity culture,nsfw'>
+                <p class='m-0 font-heading text-lg'>The Kink Machine: The hidden business of adult entertainment</p>
+                <p class='m-0 text-muted'>Patricia Nilsson, Alex Barker</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started July 24, 2026, finished July 24, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>social studies · economics · purity culture · nsfw</p>
+            </li>
+            <li id='adult-add' class='border-b border-rule py-4' data-tags='psychology,mental health'>
+                <p class='m-0 font-heading text-lg'>Adult ADD</p>
+                <p class='m-0 text-muted'>Stephanie Moulton Sarkis</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started June 18, 2026, did not finish <span class='ml-1 rounded-full border border-rule px-2 py-px text-xs'>DNF</span></p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Ebook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>psychology · mental health</p>
+            </li>
+            <li id='driven-to-distraction' class='border-b border-rule py-4' data-tags='psychology,mental health,self-help'>
+                <p class='m-0 font-heading text-lg'>Driven to Distraction</p>
+                <p class='m-0 text-muted'>Edward M. Hallowell</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started May 27, 2026, finished June 3, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>psychology · mental health · self-help</p>
+            </li>
+            <li id='replaceable-you' class='border-b border-rule py-4' data-tags='biology,anatomy,history,innovation,human body,medical'>
+                <p class='m-0 font-heading text-lg'>Replaceable You</p>
+                <p class='m-0 text-muted'>Mary Roach</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started May 5, 2026, finished May 11, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>biology · anatomy · history · innovation · human body · medical</p>
+            </li>
+            <li id='bad-feminist' class='border-b border-rule py-4' data-tags='social studies,feminism,society,purity culture,mental health,philosophy,intersectionality'>
+                <p class='m-0 font-heading text-lg'>Bad Feminist</p>
+                <p class='m-0 text-muted'>Roxane Gay</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started April 16, 2026, finished April 27, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>social studies · feminism · society · purity culture · mental health · philosophy · intersectionality</p>
+            </li>
+            <li id='difficult-women' class='border-b border-rule py-4' data-tags='fiction,social studies,society,purity culture,intersectionality,trauma'>
+                <p class='m-0 font-heading text-lg'>Difficult Women</p>
+                <p class='m-0 text-muted'>Roxane Gay</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started April 15, 2026, did not finish <span class='ml-1 rounded-full border border-rule px-2 py-px text-xs'>DNF</span></p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Ebook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>fiction · social studies · society · purity culture · intersectionality · trauma</p>
+            </li>
+            <li id='the-non-monogamy-playbook-exploring-polyamory-and-open-relationships' class='border-b border-rule py-4' data-tags='relationships,psychology,lifestyle,social studies,purity culture,polyamory,open relationships'>
+                <p class='m-0 font-heading text-lg'>The Non-monogamy Playbook: Exploring Polyamory and Open Relationships</p>
+                <p class='m-0 text-muted'>Ruby Rare</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started April 5, 2026, finished April 14, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>relationships · psychology · lifestyle · social studies · purity culture · polyamory · open relationships</p>
+            </li>
+            <li id='becoming-a-data-head' class='border-b border-rule py-4' data-tags='technology,statistics,data,business,economics'>
+                <p class='m-0 font-heading text-lg'>Becoming a Data Head</p>
+                <p class='m-0 text-muted'>Alex J. Gutman, Jordan Goldmeier</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started March 3, 2026, finished April 3, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>technology · statistics · data · business · economics</p>
+            </li>
+            <li id='fear-of-black-consciousness' class='border-b border-rule py-4' data-tags='social studies,trauma,intersectionality,society,psychology,race awareness,classism,capitalism,human rights,culture'>
+                <p class='m-0 font-heading text-lg'>Fear of Black Consciousness</p>
+                <p class='m-0 text-muted'>Lewis R. Gordon</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started March 8, 2026, finished March 19, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>social studies · trauma · intersectionality · society · psychology · race awareness · classism · capitalism · human rights · culture</p>
+            </li>
+            <li id='the-will-to-change' class='border-b border-rule py-4' data-tags='psychology,mental health,social awareness,self-help,feminism'>
+                <p class='m-0 font-heading text-lg'>The Will to Change</p>
+                <p class='m-0 text-muted'>Bell Hooks</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started January 21, 2026, finished February 3, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>psychology · mental health · social awareness · self-help · feminism</p>
+            </li>
+            <li id='all-about-love' class='border-b border-rule py-4' data-tags='social studies,culture,philosophy'>
+                <p class='m-0 font-heading text-lg'>All about love</p>
+                <p class='m-0 text-muted'>Bell Hooks</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started January 20, 2026, did not finish <span class='ml-1 rounded-full border border-rule px-2 py-px text-xs'>DNF</span></p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0'>Did not finish, didn&#39;t like it</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>social studies · culture · philosophy</p>
+            </li>
+            <li id='the-polyamory-breakup-book' class='border-b border-rule py-4' data-tags='relationships,psychology,lifestyle,social studies,purity culture,polyamory,open relationships,self-help'>
+                <p class='m-0 font-heading text-lg'>The Polyamory Breakup Book</p>
+                <p class='m-0 text-muted'>Kathy Labriola</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started January 15, 2026, finished January 20, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>relationships · psychology · lifestyle · social studies · purity culture · polyamory · open relationships · self-help</p>
+            </li>
+            <li id='the-ethical-slut' class='border-b border-rule py-4' data-tags='purity culture,psychology,lifestyle,healing,trauma,social awareness,philosophy,open relationships,mental health,nsfw'>
+                <p class='m-0 font-heading text-lg'>The Ethical Slut</p>
+                <p class='m-0 text-muted'>Janet W. Hardy and Dossier Easton</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started January 7, 2026, finished January 15, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>purity culture · psychology · lifestyle · healing · trauma · social awareness · philosophy · open relationships · mental health · nsfw</p>
+            </li>
+            <li id='polywise' class='border-b border-rule py-4' data-tags='relationships,psychology,lifestyle,polyamory,open relationships,self-help,social awareness'>
+                <p class='m-0 font-heading text-lg'>Polywise</p>
+                <p class='m-0 text-muted'>Jessica Fern</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started January 7, 2026, did not finish <span class='ml-1 rounded-full border border-rule px-2 py-px text-xs'>DNF</span></p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Ebook</p>
+                <p class='mt-2 mb-0'>The ebook was hard to read and I was interested in other books.</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>relationships · psychology · lifestyle · polyamory · open relationships · self-help · social awareness</p>
+            </li>
+            <li id='adult-children-of-emotionally-immature-parents' class='border-b border-rule py-4' data-tags='psychology,mental health,self-help'>
+                <p class='m-0 font-heading text-lg'>Adult Children of Emotionally Immature Parents</p>
+                <p class='m-0 text-muted'>Lindsay C Gibson, Psyd</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started January 1, 2026, finished January 7, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>psychology · mental health · self-help</p>
+            </li>
+        </ol>
+    </section>
+    <section class='mb-10'>
+        <h2 class='mt-0 mb-1 text-2xl'>2025</h2>
+        <ol class='m-0 list-none p-0'>
+            <li id='freakonomics-revised-and-expanded' class='border-b border-rule py-4' data-tags='data,statistics,economics,social studies'>
+                <p class='m-0 font-heading text-lg'>Freakonomics: Revised and expanded</p>
+                <p class='m-0 text-muted'>Steven D Levitt &amp; Stephen J Dubner</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started December 12, 2025, finished December 22, 2025</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>data · statistics · economics · social studies</p>
+            </li>
+            <li id='ask-me-about-polyamory-the-best-of-kimchi-cuddles' class='border-b border-rule py-4' data-tags='humour,comic,lifestyle,relationships,polyamory'>
+                <p class='m-0 font-heading text-lg'>Ask Me About Polyamory: The best of kimchi cuddles</p>
+                <p class='m-0 text-muted'>Tikva Wolf</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started December 21, 2025, did not finish <span class='ml-1 rounded-full border border-rule px-2 py-px text-xs'>DNF</span></p>
+                <p class='mt-1 mb-0 text-sm text-muted'>E-comic</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>humour · comic · lifestyle · relationships · polyamory</p>
+            </li>
+            <li id='the-subtle-art-of-not-giving-a-fuck' class='border-b border-rule py-4' data-tags='psychology,self-help,philosophy,resilience'>
+                <p class='m-0 font-heading text-lg'>The Subtle Art of not Giving a Fuck</p>
+                <p class='m-0 text-muted'>Mark Manson</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started December 2, 2025, finished December 4, 2025</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0'>Enjoy the process (workout out), gain the results (nice abs). Responsible for our own situation, fix things yourself.</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>psychology · self-help · philosophy · resilience</p>
+            </li>
+            <li id='everything-is-fucked' class='border-b border-rule py-4' data-tags='psychology,self-help,philosophy,hope'>
+                <p class='m-0 font-heading text-lg'>Everything is Fucked</p>
+                <p class='m-0 text-muted'>Mark Manson</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started November 28, 2025, finished December 2, 2025</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>psychology · self-help · philosophy · hope</p>
+            </li>
+            <li id='the-state-of-affairs' class='border-b border-rule py-4' data-tags='relationships,monogamy,trauma,healing,statistics,lifestyle,betrayal,sensitive'>
+                <p class='m-0 font-heading text-lg'>The State of Affairs</p>
+                <p class='m-0 text-muted'>Esther Perel</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started November 15, 2025, finished December 1, 2025</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>relationships · monogamy · trauma · healing · statistics · lifestyle · betrayal · sensitive</p>
+            </li>
+            <li id='the-seven-principles-of-making-a-marriage-work' class='border-b border-rule py-4' data-tags='relationships,advice,monogamy,healing'>
+                <p class='m-0 font-heading text-lg'>The Seven Principles of Making a Marriage Work</p>
+                <p class='m-0 text-muted'>John M. Gottman, PHD</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started July 5, 2025, finished July 26, 2025</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>relationships · advice · monogamy · healing</p>
+            </li>
+            <li id='feminism-is-for-everybody' class='border-b border-rule py-4' data-tags='feminism,social studies,intersectionality,culture,purity culture,philosophy,society,human rights'>
+                <p class='m-0 font-heading text-lg'>Feminism is for Everybody</p>
+                <p class='m-0 text-muted'>Bell Hooks</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started May 31, 2025, finished June 20, 2025</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>feminism · social studies · intersectionality · culture · purity culture · philosophy · society · human rights</p>
+            </li>
+            <li id='running-is-my-therapy' class='border-b border-rule py-4' data-tags='fitness,mental health,health,lifestyle,healing,statistics'>
+                <p class='m-0 font-heading text-lg'>Running is my Therapy</p>
+                <p class='m-0 text-muted'>Scott Douglas</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started May 22, 2025, did not finish <span class='ml-1 rounded-full border border-rule px-2 py-px text-xs'>DNF</span></p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Book</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>fitness · mental health · health · lifestyle · healing · statistics</p>
+            </li>
+            <li id='the-last-wish' class='border-b border-rule py-4' data-tags='fiction,fantasy,romance,adventure'>
+                <p class='m-0 font-heading text-lg'>The Last Wish</p>
+                <p class='m-0 text-muted'>Andrzej Sapkowski</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started March 5, 2025, finished March 20, 2025</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Ebook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>fiction · fantasy · romance · adventure</p>
+            </li>
+            <li id='she-comes-first' class='border-b border-rule py-4' data-tags='relationships,anatomy,sex,self-help,advice,nsfw'>
+                <p class='m-0 font-heading text-lg'>She Comes First</p>
+                <p class='m-0 text-muted'>Ian Kerner</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started March 7, 2025, finished March 13, 2025</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Ebook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>relationships · anatomy · sex · self-help · advice · nsfw</p>
+            </li>
+            <li id='polysecure' class='border-b border-rule py-4' data-tags='relationships,polyamory,society,lifestyle,psychology'>
+                <p class='m-0 font-heading text-lg'>Polysecure</p>
+                <p class='m-0 text-muted'>Jessica Fern</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started January 2, 2025, finished January 22, 2025</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>relationships · polyamory · society · lifestyle · psychology</p>
+            </li>
+        </ol>
+    </section>
+</main>
+<footer class='mt-12 border-t border-rule pt-4 text-sm text-muted'>
+    <p>Joshua Heagle &copy; 2026</p>
+</footer>
+</body>
+</html>
