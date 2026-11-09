@@ -7,14 +7,12 @@ import fieldset from '../components/fieldset.js?v=9139f217b0'
 import main from '../components/main.js?v=dc7e3a7c15'
 import submit from '../components/submit.js?v=cb23c6b9c5'
 import footer from '../components/footer.js?v=f0fa678d12'
-import header from '../components/header.js?v=50b0d7364f'
-import nav from '../components/nav.js?v=c3acfbc609'
 
 /**
  * Generates a menu with the provided index as the currently selected item.
  * @returns {DomItem}
  */
-const quiz = () => [header([nav()]), main([div([form(null, null, [div([fieldset('These are radios', [radios('radio-options', [{
+const quiz = () => [main([div([form(null, null, [div([fieldset('These are radios', [radios('radio-options', [{
   label: 'Never',
   id: 'never',
   value: 'never'
@@ -70,7 +68,9 @@ const quiz = () => [header([nav()]), main([div([form(null, null, [div([fieldset(
   label: 'Other',
   id: 'other',
   value: 'other'
-}]), div([label('Provide any additional explanation if you want.'), textArea('additional-context')])])], 'follow-up', {
+}]), div([label('Provide any additional explanation if you want.', 'additional-context'), textArea('additional-context', [], null, {
+  id: 'additional-context'
+})])])], 'follow-up', {
   id: 'follow-up'
 })]), div([submit()], 'form-footer')])], 'form-wrapper')]), footer()]
 export default quiz
