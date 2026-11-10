@@ -24,7 +24,7 @@ const parseHtmlFile = (filePath) => {
 describe('index.html', () => {
   const rootDir = path.join(__dirname, '../..')
   const { document } = parseHtmlFile(path.join(rootDir, 'index.html'))
-  const sectionIds = ['hello', 'now', 'how-i-work', 'selected-work', 'projects', 'outside-work', 'experience', 'contact']
+  const sectionIds = ['hello', 'now', 'how-i-work', 'selected-work', 'projects', 'outside-work', 'experience', 'lets-chat']
 
   test('has the current title and heading, without "Senior"', () => {
     expect(document.head.querySelector('title').textContent).toBe('Joshua Heagle | Full-Stack Engineer')
@@ -89,6 +89,12 @@ describe('index.html', () => {
     })
   })
 
+  test('old links to /#contact still land on the contact section, which is not itself named contact', () => {
+    const anchor = document.getElementById('contact')
+    expect(anchor.tagName.toLowerCase()).toBe('span')
+    expect(anchor.nextElementSibling.id).toBe('lets-chat')
+  })
+
   test('every local image, video and link points at a file that exists', () => {
     const local = [
       ...[...document.body.querySelectorAll('img, video')].map(el => el.getAttribute('src')),
@@ -96,8 +102,10 @@ describe('index.html', () => {
     ].filter(url => url && url.startsWith('/'))
     expect(local.length).toBeGreaterThan(0)
     local.forEach(url => {
-      const target = path.join(rootDir, decodeURIComponent(url))
-      const resolved = url.endsWith('/') ? path.join(target, 'index.html') : target
+      // A fragment (/books/#id) points into the page: the file is what has to exist
+      const file = url.split('#')[0]
+      const target = path.join(rootDir, decodeURIComponent(file))
+      const resolved = file.endsWith('/') ? path.join(target, 'index.html') : target
       expect({ url, exists: fs.existsSync(resolved) }).toEqual({ url, exists: true })
     })
   })
