@@ -117,7 +117,7 @@ export const markup = `<div class='flex flex-col gap-5'>
       <span id='jq-status' class='text-sm text-muted' role='status'></span>
     </div>
   </form>
-  <div id='jq-result' class='min-w-0 overflow-x-auto'></div>
+  <div id='jq-result' tabindex='0' role='region' aria-label='Query result' class='min-w-0 overflow-x-auto'></div>
   <details class='text-sm'>
     <summary class='cursor-pointer text-muted'>The raw result (JSON)</summary>
     <pre tabindex='0' aria-label='The raw result (JSON)' class='mt-2 mb-0 max-h-72 overflow-auto rounded-md bg-foreground/8 p-3 text-sm'><code id='jq-raw'></code></pre>

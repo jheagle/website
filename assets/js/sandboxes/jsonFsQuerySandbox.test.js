@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const { generateDocument } = require('pseudo-dom')
 const jsonFsQuery = require('json-fs-query')
-const { databasePath, libraryDate, records, questions, cellText, columnsOf, isGrouped, buildTable } = require('./jsonFsQuerySandbox')
+const { databasePath, libraryDate, records, questions, cellText, columnsOf, isGrouped, buildTable, markup } = require('./jsonFsQuerySandbox')
 
 const rootDir = path.join(__dirname, '../../..')
 
@@ -34,6 +34,15 @@ describe('jsonFsQuerySandbox', () => {
     expect(isGrouped(byMember)).toBe(true)
     expect(byMember.map(group => group.value)).toEqual(['ana', 'ben', 'chloe', 'dev', 'emeka', 'fran'])
     expect(the.every(book => book.title.startsWith('The '))).toBe(true)
+  })
+
+  test('the result box scrolls sideways on a phone, so it is reachable by keyboard and named', () => {
+    const { document } = generateDocument({})
+    document.body.innerHTML = markup
+    const result = document.querySelector('#jq-result')
+    expect(result.getAttribute('tabindex')).toBe('0')
+    expect(result.getAttribute('role')).toBe('region')
+    expect(result.getAttribute('aria-label')).toBe('Query result')
   })
 
   test('cellText reads values, nulls and joined lists for a table cell', () => {
