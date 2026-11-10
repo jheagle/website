@@ -29,7 +29,7 @@ describe('scripts/compare-browsers.cjs', () => {
   test.each([
     ['/index.html', 'home'],
     ['/projects/index.html', 'projects'],
-    ['/projects/battleship/play.html', 'projects-battleship-play-html']
+    ['/projects/cloakfall/play.html', 'projects-cloakfall-play-html']
   ])('pageSlug(%s) is %s', (page, slug) => {
     expect(pageSlug(page)).toBe(slug)
   })

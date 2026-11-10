@@ -1,6 +1,6 @@
 /**
- * The matrix-dom sandbox: a 10 by 10 board to try the grid geometry Battleship is built on. Draw a line between two
- * cells, see a cell's neighbours, or place a fleet the way Battleship does.
+ * The matrix-dom sandbox: a 10 by 10 board to try the grid geometry Cloakfall is built on. Draw a line between two
+ * cells, see a cell's neighbours, or place a fleet the way Cloakfall does.
  * Runs the real libraries: the board is a matrix-dom matrix made an interactive ARIA grid by navigableGrid (arrow
  * keys, Home / End, Enter or Space to tap) and rendered by json-dom. Both are globals (window.matrixDom,
  * window.jsonDom): on /projects/ the site's own bundle defines them, and the matrix-dom page loads them from
@@ -10,7 +10,7 @@
  * @module matrixDomSandbox
  */
 
-/** The board's size, and the fleet Battleship places (ship lengths, longest first). */
+/** The board's size, and the fleet Cloakfall places (ship lengths, longest first). */
 export const size = 10;
 export const fleet = [5, 4, 3, 3, 2];
 
@@ -26,7 +26,7 @@ export const modes = {
   },
   fleet: {
     label: 'Place a fleet',
-    about: 'How Battleship places ships: getLinesOfLength lists every straight line of the ship\'s length, the ones crossing a ship are dropped, and one is picked at random.'
+    about: 'How Cloakfall places ships: getLinesOfLength lists every straight line of the ship\'s length, the ones crossing a ship are dropped, and one is picked at random.'
   }
 };
 
@@ -45,7 +45,7 @@ export const key = point => `${point.x},${point.y}`;
 export const formatPoint = point => `{ x: ${point.x}, y: ${point.y} }`;
 
 /**
- * Every place a ship of this length could go without crossing an occupied cell: Battleship's validPlacements.
+ * Every place a ship of this length could go without crossing an occupied cell: Cloakfall's validPlacements.
  * @param {Object} library The matrix-dom exports.
  * @param {Object} matrix
  * @param {number} length
@@ -188,7 +188,7 @@ export const initMatrixDomSandbox = (document, window, library = window.matrixDo
     }
   };
 
-  // Ships may touch (as in Battleship), so each ship's cells carry its length to tell neighbours apart
+  // Ships may touch (as in Cloakfall), so each ship's cells carry its length to tell neighbours apart
   const drawFleet = () => mark({
     hit: new Set(ships.flat().map(key))
   }, new Map(ships.flatMap(ship => ship.map(shipPoint => [key(shipPoint), String(ship.length)]))));

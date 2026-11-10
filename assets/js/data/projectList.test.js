@@ -3,7 +3,7 @@ const projects = require('./projectList').default
 describe('projects data', () => {
   test('every project links to its own page on this site, not straight to GitHub', () => {
     const links = projects.map(project => project.href)
-    expect(links).toContain('/projects/battleship/')
+    expect(links).toContain('/projects/cloakfall/')
     expect(links).toContain('/projects/js-build-tools/')
     expect(links).toContain('/quizzes/')
     links.forEach(link => expect(link).toMatch(/^\/[\w-]+(\/[\w-]+)?\/$/))
