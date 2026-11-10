@@ -122,6 +122,21 @@ describe('matrixDomSandbox', () => {
       expect(cellAt(5, 5).getAttribute('aria-label')).toBe('Cell 5, 5, diagonal')
     })
 
+    test('fleet mode: each ship cell is named and labelled with its ship length', () => {
+      setup()
+      const sandbox = initMatrixDomSandbox(document, window, matrixDom)
+      sandbox.setMode('fleet')
+      sandbox.placeNext()
+      const shipCells = [...document.querySelectorAll('#md-board [data-hit]')]
+      expect(shipCells).toHaveLength(fleet[0])
+      shipCells.forEach(cell => {
+        expect(cell.textContent).toBe(String(fleet[0]))
+        expect(cell.getAttribute('aria-label')).toBe(`Cell ${cell.getAttribute('data-point').replace(',', ', ')}, ship of ${fleet[0]}`)
+      })
+      sandbox.clear()
+      expect(shipCells[0].getAttribute('aria-label')).not.toMatch(/ship/)
+    })
+
     test('does nothing without its mount or without the libraries', () => {
       setup()
       expect(initMatrixDomSandbox(document, window, null)).toBeNull()
