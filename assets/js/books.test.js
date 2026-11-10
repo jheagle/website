@@ -148,6 +148,26 @@ describe('books', () => {
     expect(books.formatLabel('graphic novel')).toBe('Graphic novel')
   })
 
+  test('a registered cover is linked on import and shown beside the title', async () => {
+    const media = require('../../scripts/media/media.cjs')
+    const sharp = require('sharp')
+    const assetsDir = path.join(dir, 'assets')
+    const mediaPath = path.join(dir, 'media/')
+    fs.mkdirSync(path.join(assetsDir, media.coversFolder), { recursive: true })
+    await sharp({ create: { width: 40, height: 60, channels: 3, background: '#c33' } }).webp().toFile(path.join(assetsDir, media.coversFolder, 'the-last-wish.webp'))
+    expect(await media.registerCovers({ databasePath: mediaPath, assetsDir })).toBe(1)
+    expect(await media.registerCovers({ databasePath: mediaPath, assetsDir })).toBe(1)
+
+    const databasePath = path.join(dir, 'database/')
+    await books.importBooks(books.parseBooks(csv).books, databasePath, mediaPath)
+    const list = await books.readBooks(databasePath, mediaPath)
+    expect(list.find(book => book.id === 'the-last-wish').cover).toEqual({ src: '/assets/img/books/the-last-wish.webp', width: 40, height: 60 })
+    expect(list.find(book => book.id === 'the-silk-roads').cover).toBeNull()
+    const page = books.renderBooks(list)
+    expect(page).toContain("src='/assets/img/books/the-last-wish.webp' width='40' height='60' loading='lazy' decoding='async' alt=''>")
+    expect(page.match(/<img /g)).toHaveLength(1)
+  })
+
   test('an empty list imports as an empty record', async () => {
     const databasePath = path.join(dir, 'database/')
     expect(await books.importBooks([], databasePath)).toBe(0)

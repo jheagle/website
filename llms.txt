@@ -11,6 +11,7 @@ This site is static HTML. Every page reads fine without JavaScript, apart from t
 - [Home](https://joshuaheagle.com/): who he is, what he's doing now, how he works, selected work, experience and contact
 - [Resume (PDF)](https://joshuaheagle.com/assets/documents/Joshua_Heagle_Resume.pdf): the full work history
 - [Blog](https://joshuaheagle.com/blog/): writing on fitness, gardening, building things and what he learns along the way ([RSS](https://joshuaheagle.com/blog/feed.xml))
+- [Books](https://joshuaheagle.com/books/): what he has been reading since January 2025, with covers, dates, formats and notes, including the ones he didn't finish
 
 Work history in brief: Full-Stack Engineer at BIC (formerly Inkbox), Toronto, April 2021 to present, now on BIC's
 Global Supply Chain team; Software Developer II at Benevity, Toronto, 2017 to 2021; earlier at BID13, Techcom, 3conx and

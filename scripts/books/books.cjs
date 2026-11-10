@@ -5,6 +5,9 @@
  *   npm run books:import -- path/to/books.csv   replace the whole list with the sheet's rows
  *   npm run books:build                         write books/index.html (also part of npm run build)
  *
+ * Covers come from the media database (scripts/media/media.cjs): run `npm run media:covers` before an import, and a
+ * book whose id has a cover there gets `cover_id`; the page shows it beside the title (decorative: alt='').
+ *
  * The sheet's headings are matched loosely (case and spacing don't matter): Title, Author (or Authors / Author(s)),
  * Date (or Start / Started: when reading began), Finished (or End: a date, DNF, "<date> DNF", or empty while still
  * reading), Notes, and optionally Format (book, ebook, audiobook, ecomic...) and Tags (comma-separated). Rows with no
@@ -23,6 +26,7 @@ const fs = require('node:fs')
 const path = require('node:path')
 const { configure, query, quote } = require('json-fs-query')
 const { siteUrl, escapeHtml, readableDate } = require('../blog/blog.cjs')
+const { coverId, mediaUrl, readMedia } = require('../media/media.cjs')
 
 const rootDir = path.resolve(__dirname, '../..')
 const defaults = {
@@ -238,20 +242,23 @@ const parseBooks = (text, corrections = { tags: {}, books: {} }) => {
  * @param {string} [databasePath]
  * @returns {Promise<number>} How many were stored.
  */
-const importBooks = async (books, databasePath = defaults.databasePath) => {
+const importBooks = async (books, databasePath = defaults.databasePath, mediaPath = undefined) => {
+  // Covers are registered in the media database (npm run media:covers); a book links to its cover by id
+  const media = await readMedia(mediaPath)
   fs.rmSync(databasePath, { recursive: true, force: true })
   fs.mkdirSync(databasePath, { recursive: true })
   configure({ databasePath })
   await query(`create books (
     _id string, title string, author string, started string null, finished string null, status string,
-    notes string null, format string null, tags array, position int, primary key (_id)
+    notes string null, format string null, tags array, cover_id string null, position int, primary key (_id)
   )`)
   if (!books.length) return 0
   // One statement for the whole list: every row is checked first and the files are written once
   const nullable = value => value === null ? 'null' : quote(value)
   const rows = books.map((book, position) => `(_id = ${quote(book.id)}, title = ${quote(book.title)}, author = ${quote(book.author)},
     started = ${nullable(book.started)}, finished = ${nullable(book.finished)}, status = ${quote(book.status)},
-    notes = ${nullable(book.notes)}, format = ${nullable(book.format ?? null)}, tags = [${book.tags.map(tag => quote(tag)).join(', ')}], position = ${position})`)
+    notes = ${nullable(book.notes)}, format = ${nullable(book.format ?? null)}, tags = [${book.tags.map(tag => quote(tag)).join(', ')}],
+    cover_id = ${nullable(media.has(coverId(book.id)) ? coverId(book.id) : null)}, position = ${position})`)
   await query(`insert books values ${rows.join(',\n  ')}`)
   return books.length
 }
@@ -261,11 +268,15 @@ const importBooks = async (books, databasePath = defaults.databasePath) => {
  * @param {string} [databasePath]
  * @returns {Promise<Array<Object>|null>}
  */
-const readBooks = async (databasePath = defaults.databasePath) => {
+const readBooks = async (databasePath = defaults.databasePath, mediaPath = undefined) => {
   if (!fs.existsSync(path.join(databasePath, 'books.json'))) return null
   configure({ databasePath })
   const [rows] = await query('read books sort position')
-  return rows.map(({ _id, position, ...book }) => ({ id: _id, ...book }))
+  const media = await readMedia(mediaPath)
+  return rows.map(({ _id, position, cover_id: coverKey = null, ...book }) => {
+    const cover = coverKey ? media.get(coverKey) : null
+    return { id: _id, ...book, cover: cover ? { src: mediaUrl(cover.key), width: cover.width, height: cover.height } : null }
+  })
 }
 
 /** The date a book is filed under: when it was finished (or stopped), else when it was started. */
@@ -306,13 +317,16 @@ const describeDates = book => {
 const chipClasses = 'cursor-pointer rounded-full border border-rule bg-transparent px-3 py-1 text-sm text-foreground hover:border-accent aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background'
 
 /** A book in the list. */
-const bookItem = book => `            <li id='${escapeHtml(book.id)}' class='border-b border-rule py-4' data-tags='${escapeHtml(book.tags.join(','))}'>
+const bookItem = book => `            <li id='${escapeHtml(book.id)}' class='flex gap-4 border-b border-rule py-4' data-tags='${escapeHtml(book.tags.join(','))}'>${book.cover ? `
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='${escapeHtml(book.cover.src)}' width='${book.cover.width}' height='${book.cover.height}' loading='lazy' decoding='async' alt=''>` : ''}
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>${escapeHtml(book.title)}</p>
                 <p class='m-0 text-muted'>${escapeHtml(book.author)}</p>${describeDates(book) ? `
                 <p class='mt-1 mb-0 text-sm text-muted'>${escapeHtml(describeDates(book))}${book.status === 'dnf' ? ` <span class='ml-1 rounded-full border border-rule px-2 py-px text-xs'>DNF</span>` : ''}</p>` : ''}${book.format ? `
                 <p class='mt-1 mb-0 text-sm text-muted'>${escapeHtml(formatLabel(book.format))}</p>` : ''}${book.notes ? `
                 <p class='mt-2 mb-0'>${escapeHtml(book.notes)}</p>` : ''}${book.tags.length ? `
                 <p class='mt-2 mb-0 text-sm text-muted'>${book.tags.map(escapeHtml).join(' · ')}</p>` : ''}
+                </div>
             </li>`
 
 /**
@@ -381,12 +395,12 @@ ${section.books.map(bookItem).join('\n')}
 
 /**
  * Write books/index.html from the database; with no database (nothing imported yet) there's no page.
- * @param {{databasePath?: string, outDir?: string}} [options]
+ * @param {{databasePath?: string, outDir?: string, mediaPath?: string}} [options]
  * @returns {Promise<number|null>} How many books are on the page, or null when there's no page.
  */
-const buildBooks = async ({ databasePath = defaults.databasePath, outDir = defaults.outDir } = {}) => {
+const buildBooks = async ({ databasePath = defaults.databasePath, outDir = defaults.outDir, mediaPath = undefined } = {}) => {
   const page = path.join(outDir, 'index.html')
-  const books = await readBooks(databasePath)
+  const books = await readBooks(databasePath, mediaPath)
   if (!books) {
     fs.rmSync(page, { force: true })
     return null
