@@ -17,14 +17,14 @@
     <link rel='apple-touch-icon' href='/apple-touch-icon.png'>
     <link rel='preload' href='/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
     <link rel='preload' href='/browser/fonts/lexend-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
-    <link rel='stylesheet' href='/browser/tailwind/site.css?v=83fec38bab'>
+    <link rel='stylesheet' href='/browser/tailwind/site.css?v=33b57f375c'>
     <script type='module' src='/dist/booksFilterInit.js?v=dbce5b3064'></script>
 </head>
 <body class='mx-auto max-w-3xl px-5 pt-6 pb-16 lg:pt-14'>
 <header class='mb-8'>
     <a class='mb-5 inline-block font-heading' href='/'>&larr; Joshua Heagle</a>
     <h1 class='m-0 text-4xl/tight tracking-tight lg:text-5xl'>Books</h1>
-    <p class='mt-3 mb-0 max-w-prose text-muted'>What I've been reading: 32 books, newest first, including the ones I didn't finish.</p>
+    <p class='mt-3 mb-0 max-w-prose text-muted'>What I've been reading: 33 books, newest first, including the ones I didn't finish.</p>
     <!-- The topic filter, wired up by /dist/booksFilterInit.js; without JavaScript it stays hidden and every book shows -->
     <div id='book-filters' class='mt-6' data-hidden-by-default='nsfw,polyamory,sensitive' hidden>
         <p class='mt-0 mb-2 text-sm font-semibold'>Topics <span class='font-normal text-muted'>(tap to show or hide)</span></p>
@@ -88,242 +88,348 @@
     <section class='mb-10'>
         <h2 class='mt-0 mb-1 text-2xl'>In progress</h2>
         <ol class='m-0 list-none p-0'>
-            <li id='the-silk-roads' class='border-b border-rule py-4' data-tags='history,geography,religion,culture,society,social studies,economics'>
+            <li id='the-silk-roads' class='flex gap-4 border-b border-rule py-4' data-tags='history,geography,religion,culture,society,social studies,economics'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/the-silk-roads.webp' width='240' height='351' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>The Silk Roads</p>
                 <p class='m-0 text-muted'>Peter Frankopan</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started November 5, 2026</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Book</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>history · geography · religion · culture · society · social studies · economics</p>
+                </div>
             </li>
-            <li id='invisible-women' class='border-b border-rule py-4' data-tags='statistics,social studies,society,culture,feminism,human rights,intersectionality'>
-                <p class='m-0 font-heading text-lg'>Invisible Women</p>
-                <p class='m-0 text-muted'>Caroline Criado-Perez</p>
-                <p class='mt-1 mb-0 text-sm text-muted'>Started October 22, 2026</p>
-                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
-                <p class='mt-2 mb-0 text-sm text-muted'>statistics · social studies · society · culture · feminism · human rights · intersectionality</p>
-            </li>
-            <li id='sword-of-destiny' class='border-b border-rule py-4' data-tags='fiction,fantasy,romance,adventure'>
+            <li id='sword-of-destiny' class='flex gap-4 border-b border-rule py-4' data-tags='fiction,fantasy,romance,adventure'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/sword-of-destiny.webp' width='240' height='357' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Sword of Destiny</p>
                 <p class='m-0 text-muted'>Andrzej Sapkowski</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started August 20, 2026</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Ebook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>fiction · fantasy · romance · adventure</p>
+                </div>
             </li>
         </ol>
     </section>
     <section class='mb-10'>
         <h2 class='mt-0 mb-1 text-2xl'>2026</h2>
         <ol class='m-0 list-none p-0'>
-            <li id='unlearning-shame-how-we-can-reject-self-blame-culture' class='border-b border-rule py-4' data-tags='psychology,mental health,human rights,purity culture,healing,trauma'>
+            <li id='invisible-women' class='flex gap-4 border-b border-rule py-4' data-tags='statistics,social studies,society,culture,feminism,human rights,intersectionality'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/invisible-women.webp' width='240' height='240' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
+                <p class='m-0 font-heading text-lg'>Invisible Women</p>
+                <p class='m-0 text-muted'>Caroline Criado-Perez</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started October 22, 2026, finished November 7, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>statistics · social studies · society · culture · feminism · human rights · intersectionality</p>
+                </div>
+            </li>
+            <li id='unlearning-shame-how-we-can-reject-self-blame-culture' class='flex gap-4 border-b border-rule py-4' data-tags='psychology,mental health,human rights,purity culture,healing,trauma'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/unlearning-shame-how-we-can-reject-self-blame-culture.webp' width='240' height='372' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Unlearning Shame: How we can reject self-blame culture</p>
                 <p class='m-0 text-muted'>Devon Price, Phd</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started September 13, 2026, finished September 20, 2026</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>psychology · mental health · human rights · purity culture · healing · trauma</p>
+                </div>
             </li>
-            <li id='how-europe-underdeveloped-africa' class='border-b border-rule py-4' data-tags='social studies,capitalism,society,philosophy,economics,history,colonisation,classism'>
+            <li id='how-europe-underdeveloped-africa' class='flex gap-4 border-b border-rule py-4' data-tags='social studies,capitalism,society,philosophy,economics,history,colonisation,classism'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/how-europe-underdeveloped-africa.webp' width='240' height='242' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>How Europe Underdeveloped Africa</p>
                 <p class='m-0 text-muted'>Walter Rodney</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started August 9, 2026, finished August 28, 2026</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>social studies · capitalism · society · philosophy · economics · history · colonisation · classism</p>
+                </div>
             </li>
-            <li id='the-communist-manifesto' class='border-b border-rule py-4' data-tags='social studies,capitalism,society,philosophy'>
+            <li id='the-communist-manifesto' class='flex gap-4 border-b border-rule py-4' data-tags='social studies,capitalism,society,philosophy'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/the-communist-manifesto.webp' width='240' height='322' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>The Communist Manifesto</p>
                 <p class='m-0 text-muted'>Karl Marx</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started August 9, 2026, did not finish <span class='ml-1 rounded-full border border-rule px-2 py-px text-xs'>DNF</span></p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Ebook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>social studies · capitalism · society · philosophy</p>
+                </div>
             </li>
-            <li id='the-kink-machine-the-hidden-business-of-adult-entertainment' class='border-b border-rule py-4' data-tags='social studies,economics,purity culture,nsfw'>
+            <li id='the-kink-machine-the-hidden-business-of-adult-entertainment' class='flex gap-4 border-b border-rule py-4' data-tags='social studies,economics,purity culture,nsfw'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/the-kink-machine-the-hidden-business-of-adult-entertainment.webp' width='240' height='241' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>The Kink Machine: The hidden business of adult entertainment</p>
                 <p class='m-0 text-muted'>Patricia Nilsson, Alex Barker</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started July 24, 2026, finished July 24, 2026</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>social studies · economics · purity culture · nsfw</p>
+                </div>
             </li>
-            <li id='adult-add' class='border-b border-rule py-4' data-tags='psychology,mental health'>
+            <li id='adult-add' class='flex gap-4 border-b border-rule py-4' data-tags='psychology,mental health'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/adult-add.webp' width='240' height='333' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Adult ADD</p>
                 <p class='m-0 text-muted'>Stephanie Moulton Sarkis</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started June 18, 2026, did not finish <span class='ml-1 rounded-full border border-rule px-2 py-px text-xs'>DNF</span></p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Ebook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>psychology · mental health</p>
+                </div>
             </li>
-            <li id='driven-to-distraction' class='border-b border-rule py-4' data-tags='psychology,mental health,self-help'>
+            <li id='driven-to-distraction' class='flex gap-4 border-b border-rule py-4' data-tags='psychology,mental health,self-help'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/driven-to-distraction.webp' width='240' height='240' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Driven to Distraction</p>
                 <p class='m-0 text-muted'>Edward M. Hallowell</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started May 27, 2026, finished June 3, 2026</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>psychology · mental health · self-help</p>
+                </div>
             </li>
-            <li id='replaceable-you' class='border-b border-rule py-4' data-tags='biology,anatomy,history,innovation,human body,medical'>
+            <li id='replaceable-you' class='flex gap-4 border-b border-rule py-4' data-tags='biology,anatomy,history,innovation,human body,medical'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/replaceable-you.webp' width='240' height='240' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Replaceable You</p>
                 <p class='m-0 text-muted'>Mary Roach</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started May 5, 2026, finished May 11, 2026</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>biology · anatomy · history · innovation · human body · medical</p>
+                </div>
             </li>
-            <li id='bad-feminist' class='border-b border-rule py-4' data-tags='social studies,feminism,society,purity culture,mental health,philosophy,intersectionality'>
+            <li id='bad-feminist' class='flex gap-4 border-b border-rule py-4' data-tags='social studies,feminism,society,purity culture,mental health,philosophy,intersectionality'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/bad-feminist.webp' width='240' height='241' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Bad Feminist</p>
                 <p class='m-0 text-muted'>Roxane Gay</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started April 16, 2026, finished April 27, 2026</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>social studies · feminism · society · purity culture · mental health · philosophy · intersectionality</p>
+                </div>
             </li>
-            <li id='difficult-women' class='border-b border-rule py-4' data-tags='fiction,social studies,society,purity culture,intersectionality,trauma'>
+            <li id='difficult-women' class='flex gap-4 border-b border-rule py-4' data-tags='fiction,social studies,society,purity culture,intersectionality,trauma'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/difficult-women.webp' width='240' height='317' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Difficult Women</p>
                 <p class='m-0 text-muted'>Roxane Gay</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started April 15, 2026, did not finish <span class='ml-1 rounded-full border border-rule px-2 py-px text-xs'>DNF</span></p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Ebook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>fiction · social studies · society · purity culture · intersectionality · trauma</p>
+                </div>
             </li>
-            <li id='the-non-monogamy-playbook-exploring-polyamory-and-open-relationships' class='border-b border-rule py-4' data-tags='relationships,psychology,lifestyle,social studies,purity culture,polyamory,open relationships'>
+            <li id='the-non-monogamy-playbook-exploring-polyamory-and-open-relationships' class='flex gap-4 border-b border-rule py-4' data-tags='relationships,psychology,lifestyle,social studies,purity culture,polyamory,open relationships'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/the-non-monogamy-playbook-exploring-polyamory-and-open-relationships.webp' width='240' height='241' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>The Non-monogamy Playbook: Exploring Polyamory and Open Relationships</p>
                 <p class='m-0 text-muted'>Ruby Rare</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started April 5, 2026, finished April 14, 2026</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>relationships · psychology · lifestyle · social studies · purity culture · polyamory · open relationships</p>
+                </div>
             </li>
-            <li id='becoming-a-data-head' class='border-b border-rule py-4' data-tags='technology,statistics,data,business,economics'>
+            <li id='becoming-a-data-head' class='flex gap-4 border-b border-rule py-4' data-tags='technology,statistics,data,business,economics'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/becoming-a-data-head.webp' width='240' height='240' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Becoming a Data Head</p>
                 <p class='m-0 text-muted'>Alex J. Gutman, Jordan Goldmeier</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started March 3, 2026, finished April 3, 2026</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>technology · statistics · data · business · economics</p>
+                </div>
             </li>
-            <li id='fear-of-black-consciousness' class='border-b border-rule py-4' data-tags='social studies,trauma,intersectionality,society,psychology,race awareness,classism,capitalism,human rights,culture'>
+            <li id='fear-of-black-consciousness' class='flex gap-4 border-b border-rule py-4' data-tags='social studies,trauma,intersectionality,society,psychology,race awareness,classism,capitalism,human rights,culture'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/fear-of-black-consciousness.webp' width='240' height='241' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Fear of Black Consciousness</p>
                 <p class='m-0 text-muted'>Lewis R. Gordon</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started March 8, 2026, finished March 19, 2026</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>social studies · trauma · intersectionality · society · psychology · race awareness · classism · capitalism · human rights · culture</p>
+                </div>
             </li>
-            <li id='the-will-to-change' class='border-b border-rule py-4' data-tags='psychology,mental health,social awareness,self-help,feminism'>
+            <li id='it-s-not-hysteria' class='flex gap-4 border-b border-rule py-4' data-tags='anatomy,health,social awareness,feminism,biology'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/it-s-not-hysteria.webp' width='240' height='240' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
+                <p class='m-0 font-heading text-lg'>It&#39;s Not Hysteria</p>
+                <p class='m-0 text-muted'>Dr. Karen Tang</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Started January 30, 2026, finished February 13, 2026</p>
+                <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
+                <p class='mt-2 mb-0 text-sm text-muted'>anatomy · health · social awareness · feminism · biology</p>
+                </div>
+            </li>
+            <li id='the-will-to-change' class='flex gap-4 border-b border-rule py-4' data-tags='psychology,mental health,social awareness,self-help,feminism'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/the-will-to-change.webp' width='240' height='240' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>The Will to Change</p>
                 <p class='m-0 text-muted'>Bell Hooks</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started January 21, 2026, finished February 3, 2026</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>psychology · mental health · social awareness · self-help · feminism</p>
+                </div>
             </li>
-            <li id='all-about-love' class='border-b border-rule py-4' data-tags='social studies,culture,philosophy'>
+            <li id='all-about-love' class='flex gap-4 border-b border-rule py-4' data-tags='social studies,culture,philosophy'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/all-about-love.webp' width='240' height='322' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>All about love</p>
                 <p class='m-0 text-muted'>Bell Hooks</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started January 20, 2026, did not finish <span class='ml-1 rounded-full border border-rule px-2 py-px text-xs'>DNF</span></p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0'>Did not finish, didn&#39;t like it</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>social studies · culture · philosophy</p>
+                </div>
             </li>
-            <li id='the-polyamory-breakup-book' class='border-b border-rule py-4' data-tags='relationships,psychology,lifestyle,social studies,purity culture,polyamory,open relationships,self-help'>
+            <li id='the-polyamory-breakup-book' class='flex gap-4 border-b border-rule py-4' data-tags='relationships,psychology,lifestyle,social studies,purity culture,polyamory,open relationships,self-help'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/the-polyamory-breakup-book.webp' width='240' height='240' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>The Polyamory Breakup Book</p>
                 <p class='m-0 text-muted'>Kathy Labriola</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started January 15, 2026, finished January 20, 2026</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>relationships · psychology · lifestyle · social studies · purity culture · polyamory · open relationships · self-help</p>
+                </div>
             </li>
-            <li id='the-ethical-slut' class='border-b border-rule py-4' data-tags='purity culture,psychology,lifestyle,healing,trauma,social awareness,philosophy,open relationships,mental health,nsfw'>
+            <li id='the-ethical-slut' class='flex gap-4 border-b border-rule py-4' data-tags='purity culture,psychology,lifestyle,healing,trauma,social awareness,philosophy,open relationships,mental health,nsfw'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/the-ethical-slut.webp' width='240' height='240' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>The Ethical Slut</p>
                 <p class='m-0 text-muted'>Janet W. Hardy and Dossier Easton</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started January 7, 2026, finished January 15, 2026</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>purity culture · psychology · lifestyle · healing · trauma · social awareness · philosophy · open relationships · mental health · nsfw</p>
+                </div>
             </li>
-            <li id='polywise' class='border-b border-rule py-4' data-tags='relationships,psychology,lifestyle,polyamory,open relationships,self-help,social awareness'>
+            <li id='polywise' class='flex gap-4 border-b border-rule py-4' data-tags='relationships,psychology,lifestyle,polyamory,open relationships,self-help,social awareness'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/polywise.webp' width='240' height='319' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Polywise</p>
                 <p class='m-0 text-muted'>Jessica Fern</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started January 7, 2026, did not finish <span class='ml-1 rounded-full border border-rule px-2 py-px text-xs'>DNF</span></p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Ebook</p>
                 <p class='mt-2 mb-0'>The ebook was hard to read and I was interested in other books.</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>relationships · psychology · lifestyle · polyamory · open relationships · self-help · social awareness</p>
+                </div>
             </li>
-            <li id='adult-children-of-emotionally-immature-parents' class='border-b border-rule py-4' data-tags='psychology,mental health,self-help'>
+            <li id='adult-children-of-emotionally-immature-parents' class='flex gap-4 border-b border-rule py-4' data-tags='psychology,mental health,self-help'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/adult-children-of-emotionally-immature-parents.webp' width='240' height='239' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Adult Children of Emotionally Immature Parents</p>
                 <p class='m-0 text-muted'>Lindsay C Gibson, Psyd</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started January 1, 2026, finished January 7, 2026</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>psychology · mental health · self-help</p>
+                </div>
             </li>
         </ol>
     </section>
     <section class='mb-10'>
         <h2 class='mt-0 mb-1 text-2xl'>2025</h2>
         <ol class='m-0 list-none p-0'>
-            <li id='freakonomics-revised-and-expanded' class='border-b border-rule py-4' data-tags='data,statistics,economics,social studies'>
+            <li id='freakonomics-revised-and-expanded' class='flex gap-4 border-b border-rule py-4' data-tags='data,statistics,economics,social studies'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/freakonomics-revised-and-expanded.webp' width='240' height='240' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Freakonomics: Revised and expanded</p>
                 <p class='m-0 text-muted'>Steven D Levitt &amp; Stephen J Dubner</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started December 12, 2025, finished December 22, 2025</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>data · statistics · economics · social studies</p>
+                </div>
             </li>
-            <li id='ask-me-about-polyamory-the-best-of-kimchi-cuddles' class='border-b border-rule py-4' data-tags='humour,comic,lifestyle,relationships,polyamory'>
+            <li id='ask-me-about-polyamory-the-best-of-kimchi-cuddles' class='flex gap-4 border-b border-rule py-4' data-tags='humour,comic,lifestyle,relationships,polyamory'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/ask-me-about-polyamory-the-best-of-kimchi-cuddles.webp' width='240' height='361' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Ask Me About Polyamory: The best of kimchi cuddles</p>
                 <p class='m-0 text-muted'>Tikva Wolf</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started December 21, 2025, did not finish <span class='ml-1 rounded-full border border-rule px-2 py-px text-xs'>DNF</span></p>
                 <p class='mt-1 mb-0 text-sm text-muted'>E-comic</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>humour · comic · lifestyle · relationships · polyamory</p>
+                </div>
             </li>
-            <li id='the-subtle-art-of-not-giving-a-fuck' class='border-b border-rule py-4' data-tags='psychology,self-help,philosophy,resilience'>
+            <li id='the-subtle-art-of-not-giving-a-fuck' class='flex gap-4 border-b border-rule py-4' data-tags='psychology,self-help,philosophy,resilience'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/the-subtle-art-of-not-giving-a-fuck.webp' width='240' height='240' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>The Subtle Art of not Giving a Fuck</p>
                 <p class='m-0 text-muted'>Mark Manson</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started December 2, 2025, finished December 4, 2025</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0'>Enjoy the process (workout out), gain the results (nice abs). Responsible for our own situation, fix things yourself.</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>psychology · self-help · philosophy · resilience</p>
+                </div>
             </li>
-            <li id='everything-is-fucked' class='border-b border-rule py-4' data-tags='psychology,self-help,philosophy,hope'>
+            <li id='everything-is-fucked' class='flex gap-4 border-b border-rule py-4' data-tags='psychology,self-help,philosophy,hope'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/everything-is-fucked.webp' width='240' height='241' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Everything is Fucked</p>
                 <p class='m-0 text-muted'>Mark Manson</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started November 28, 2025, finished December 2, 2025</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>psychology · self-help · philosophy · hope</p>
+                </div>
             </li>
-            <li id='the-state-of-affairs' class='border-b border-rule py-4' data-tags='relationships,monogamy,trauma,healing,statistics,lifestyle,betrayal,sensitive'>
+            <li id='the-state-of-affairs' class='flex gap-4 border-b border-rule py-4' data-tags='relationships,monogamy,trauma,healing,statistics,lifestyle,betrayal,sensitive'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/the-state-of-affairs.webp' width='240' height='240' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>The State of Affairs</p>
                 <p class='m-0 text-muted'>Esther Perel</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started November 15, 2025, finished December 1, 2025</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>relationships · monogamy · trauma · healing · statistics · lifestyle · betrayal · sensitive</p>
+                </div>
             </li>
-            <li id='the-seven-principles-of-making-a-marriage-work' class='border-b border-rule py-4' data-tags='relationships,advice,monogamy,healing'>
+            <li id='the-seven-principles-of-making-a-marriage-work' class='flex gap-4 border-b border-rule py-4' data-tags='relationships,advice,monogamy,healing'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/the-seven-principles-of-making-a-marriage-work.webp' width='240' height='240' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>The Seven Principles of Making a Marriage Work</p>
                 <p class='m-0 text-muted'>John M. Gottman, PHD</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started July 5, 2025, finished July 26, 2025</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>relationships · advice · monogamy · healing</p>
+                </div>
             </li>
-            <li id='feminism-is-for-everybody' class='border-b border-rule py-4' data-tags='feminism,social studies,intersectionality,culture,purity culture,philosophy,society,human rights'>
+            <li id='feminism-is-for-everybody' class='flex gap-4 border-b border-rule py-4' data-tags='feminism,social studies,intersectionality,culture,purity culture,philosophy,society,human rights'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/feminism-is-for-everybody.webp' width='240' height='240' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Feminism is for Everybody</p>
                 <p class='m-0 text-muted'>Bell Hooks</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started May 31, 2025, finished June 20, 2025</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>feminism · social studies · intersectionality · culture · purity culture · philosophy · society · human rights</p>
+                </div>
             </li>
-            <li id='running-is-my-therapy' class='border-b border-rule py-4' data-tags='fitness,mental health,health,lifestyle,healing,statistics'>
+            <li id='running-is-my-therapy' class='flex gap-4 border-b border-rule py-4' data-tags='fitness,mental health,health,lifestyle,healing,statistics'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/running-is-my-therapy.webp' width='240' height='330' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Running is my Therapy</p>
                 <p class='m-0 text-muted'>Scott Douglas</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started May 22, 2025, did not finish <span class='ml-1 rounded-full border border-rule px-2 py-px text-xs'>DNF</span></p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Book</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>fitness · mental health · health · lifestyle · healing · statistics</p>
+                </div>
             </li>
-            <li id='the-last-wish' class='border-b border-rule py-4' data-tags='fiction,fantasy,romance,adventure'>
+            <li id='the-last-wish' class='flex gap-4 border-b border-rule py-4' data-tags='fiction,fantasy,romance,adventure'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/the-last-wish.webp' width='240' height='357' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>The Last Wish</p>
                 <p class='m-0 text-muted'>Andrzej Sapkowski</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started March 5, 2025, finished March 20, 2025</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Ebook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>fiction · fantasy · romance · adventure</p>
+                </div>
             </li>
-            <li id='she-comes-first' class='border-b border-rule py-4' data-tags='relationships,anatomy,sex,self-help,advice,nsfw'>
+            <li id='she-comes-first' class='flex gap-4 border-b border-rule py-4' data-tags='relationships,anatomy,sex,self-help,advice,nsfw'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/she-comes-first.webp' width='240' height='320' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>She Comes First</p>
                 <p class='m-0 text-muted'>Ian Kerner</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started March 7, 2025, finished March 13, 2025</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Ebook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>relationships · anatomy · sex · self-help · advice · nsfw</p>
+                </div>
             </li>
-            <li id='polysecure' class='border-b border-rule py-4' data-tags='relationships,polyamory,society,lifestyle,psychology'>
+            <li id='polysecure' class='flex gap-4 border-b border-rule py-4' data-tags='relationships,polyamory,society,lifestyle,psychology'>
+                <img class='block h-auto w-16 shrink-0 self-start rounded-sm shadow-sm sm:w-20' src='/assets/img/books/polysecure.webp' width='240' height='240' loading='lazy' decoding='async' alt=''>
+                <div class='min-w-0'>
                 <p class='m-0 font-heading text-lg'>Polysecure</p>
                 <p class='m-0 text-muted'>Jessica Fern</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Started January 2, 2025, finished January 22, 2025</p>
                 <p class='mt-1 mb-0 text-sm text-muted'>Audiobook</p>
                 <p class='mt-2 mb-0 text-sm text-muted'>relationships · polyamory · society · lifestyle · psychology</p>
+                </div>
             </li>
         </ol>
     </section>
