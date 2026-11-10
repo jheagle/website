@@ -6,12 +6,12 @@ const projects = require('./data/projectList').default
 const rootDir = path.join(__dirname, '../..')
 // Repos that are private on GitHub, so their pages must not link there.
 const privateRepos = ['/projects/json-dom/', '/projects/matrix-dom/']
-// The demo link's label: "Try the demo" everywhere, except Battleship, where it's a whole game.
+// The demo link's label: "Try the demo" everywhere, except Cloakfall, where it's a whole game.
 const demoLabels = ['Try the demo', 'Play the game']
 
 /**
  * Parse a project page's body into a fresh pseudo-dom document.
- * @param {string} href - the page's site path, e.g. '/projects/battleship/'
+ * @param {string} href - the page's site path, e.g. '/projects/cloakfall/'
  * @returns {object} the parsed document
  */
 const parsePage = href => {

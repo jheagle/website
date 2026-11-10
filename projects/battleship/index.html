@@ -3,32 +3,22 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Battleship | Joshua Heagle</title>
-    <link rel="canonical" href="https://joshuaheagle.com/projects/battleship/">
+    <title>Battleship is now Cloakfall | Joshua Heagle</title>
+    <!-- The game was renamed (Battleship is Hasbro's trademark). This page only sends old links to the new address,
+         keeping the query string, so a shared online-game link (?room=CODE) still lands in its room. -->
+    <meta name="robots" content="noindex">
     <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="preload" href="/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/browser/fonts/lexend-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="canonical" href="https://joshuaheagle.com/projects/cloakfall/">
+    <script>location.replace('/projects/cloakfall/' + location.search + location.hash)</script>
+    <meta http-equiv="refresh" content="0; url=/projects/cloakfall/">
     <link rel="stylesheet" href="/browser/tailwind/site.css?v=83fec38bab">
 </head>
 <body class="mx-auto max-w-3xl px-5 pt-6 pb-16 lg:pt-14">
 <main>
-    <a class="mb-5 inline-block font-heading" href="/projects/">&larr; Back to projects</a>
-    <div class="mb-6 border-b border-rule pb-4">
-        <h1 class="m-0 mb-1.5 text-4xl/tight tracking-tight lg:text-5xl">Battleship</h1>
-        <p class="m-0 text-muted">A full game of Battleship, built as the real-world proving ground for the JSON DOM/Matrix DOM
-            ecosystem - not a toy example, an actual playable app.</p>
-    </div>
-    <nav class="my-5 flex flex-wrap gap-2.5" aria-label="Project links">
-        <a class="rounded-lg bg-accent px-4 py-2 font-heading font-semibold text-background no-underline hover:opacity-90" href="./docs/">Documentation</a>
-        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="https://github.com/jheagle/battleship" target="_blank">View on GitHub</a>
-        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="./play.html">Play the game</a>
-    </nav>
-    <p class="text-muted">Strict TypeScript throughout, with a robot opponent, checkerboard-pattern targeting, and full
-        game-state management built entirely on <a href="../json-dom/">JSON DOM</a>'s trait system and
-        <a href="../matrix-dom/">Matrix DOM</a>'s grid helpers for the board.</p>
+    <h1 class="m-0 mb-1.5 text-4xl/tight tracking-tight">Battleship is now Cloakfall</h1>
+    <p><a href="/projects/cloakfall/">Continue to Cloakfall</a></p>
 </main>
-<script data-goatcounter="https://joshuaheagle.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

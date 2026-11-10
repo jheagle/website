@@ -36,8 +36,8 @@ Each project page links its generated API documentation at `<page>docs/`.
 ### The rendering stack and the game that proves it
 
 - [JSON DOM](https://joshuaheagle.com/projects/json-dom/): a from-scratch virtual-DOM framework with a composable trait system, including a render-only mode that forwards events to a server
-- [Matrix DOM](https://joshuaheagle.com/projects/matrix-dom/): grid and matrix geometry on top of JSON DOM, used by Battleship's board and by this site's project grid
-- [Battleship](https://joshuaheagle.com/projects/battleship/): a multiplayer-ready game built on the whole stack ([play it](https://joshuaheagle.com/projects/battleship/play.html), [source](https://github.com/jheagle/battleship))
+- [Matrix DOM](https://joshuaheagle.com/projects/matrix-dom/): grid and matrix geometry on top of JSON DOM, used by Cloakfall's boards and by this site's project grid
+- [Cloakfall](https://joshuaheagle.com/projects/cloakfall/) (formerly Battleship): a multiplayer, hidden-fleet game built on the whole stack ([play it](https://joshuaheagle.com/projects/cloakfall/play.html), [source](https://github.com/jheagle/cloakfall))
 
 ### Build tooling
 

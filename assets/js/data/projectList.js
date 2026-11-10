@@ -11,8 +11,8 @@
  */
 const projects = [
   {
-    title: 'Battleship',
-    href: '/projects/battleship/',
+    title: 'Cloakfall',
+    href: '/projects/cloakfall/',
     description: 'A full multiplayer-ready game, proving out a from-scratch TypeScript virtual-DOM ecosystem built on a composable trait system.'
   },
   {
@@ -23,7 +23,7 @@ const projects = [
   {
     title: 'Matrix DOM',
     href: '/projects/matrix-dom/',
-    description: 'Grid/matrix geometry helpers used by Battleship\'s board — and by this very project grid.'
+    description: 'Grid/matrix geometry helpers used by Cloakfall\'s boards — and by this very project grid.'
   },
   {
     title: 'Pseudo DOM',

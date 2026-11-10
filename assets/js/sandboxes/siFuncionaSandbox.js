@@ -155,7 +155,7 @@ export const markup = `<div class='grid gap-6 md:grid-cols-2'>
  */
 export const queueMarkup = (level = 4) => `<div class='mt-8 border-t border-rule pt-6'>
   <h${level} class='mt-0 mb-1 text-lg'>One after another: <code class='rounded bg-foreground/8 px-1 py-px font-mono text-base'>queueTimeout</code></h${level}>
-  <p class='mt-0 mb-5 max-w-prose text-sm text-muted'>Each step waits its delay <em>after the step before it</em>. That's how Battleship paces its attacks and animations. Plain <code class='rounded bg-foreground/8 px-1 py-px'>setTimeout</code> starts every delay at once, so short delays jump the line. Run both and compare the order.</p>
+  <p class='mt-0 mb-5 max-w-prose text-sm text-muted'>Each step waits its delay <em>after the step before it</em>. That's how Cloakfall paces its attacks and animations. Plain <code class='rounded bg-foreground/8 px-1 py-px'>setTimeout</code> starts every delay at once, so short delays jump the line. Run both and compare the order.</p>
   <div class='grid gap-6 md:grid-cols-2'>
     <form id='qt-form' class='flex flex-col gap-3'>
       <div id='qt-steps' class='flex flex-col gap-2'></div>
