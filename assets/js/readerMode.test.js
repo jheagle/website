@@ -45,5 +45,10 @@ describe('reader view', () => {
         'https://www.youtube.com/@EvanGetFit'
       ]))
     })
+
+    test('keeps the contact section as prose, not just a list of links (Safari Reader drops link-only sections)', () => {
+      expect(reader.body.textContent).toContain("Let's chat")
+      expect(reader.body.textContent).toContain('Email is the best way to reach me')
+    })
   })
 })
