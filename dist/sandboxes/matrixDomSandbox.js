@@ -1,8 +1,10 @@
 /**
  * The matrix-dom sandbox: a 10 by 10 board to try the grid geometry Battleship is built on. Draw a line between two
  * cells, see a cell's neighbours, or place a fleet the way Battleship does.
- * Runs the real library (matrix-dom), loaded as window.matrixDom: on /projects/ the site's own bundle already defines
- * it, and the matrix-dom page loads it from browser/vendor.
+ * Runs the real libraries: the board is a matrix-dom matrix made an interactive ARIA grid by navigableGrid (arrow
+ * keys, Home / End, Enter or Space to tap) and rendered by json-dom. Both are globals (window.matrixDom,
+ * window.jsonDom): on /projects/ the site's own bundle defines them, and the matrix-dom page loads them from
+ * browser/vendor.
  *
  * Rendered into each `<div data-sandbox='matrix-dom'>`, so /projects/ and the matrix-dom page share one sandbox.
  * @module matrixDomSandbox
@@ -53,6 +55,27 @@ export const formatPoint = point => `{ x: ${point.x}, y: ${point.y} }`;
 export const validPlacements = (library, matrix, length, occupied) => library.getLinesOfLength(library.getAxisLengths(matrix), length).filter(line => !line.some(point => occupied.has(key(point))));
 const buttonClasses = 'cursor-pointer rounded-md border border-rule bg-transparent px-2.5 py-1 font-mono text-sm text-foreground hover:border-accent disabled:cursor-not-allowed disabled:opacity-40 aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-background';
 
+/** The board's classes, per level of the matrix: flex rows of square cells. */
+const boardClasses = {
+  matrix: 'box-border flex aspect-square w-full flex-col rounded-md border border-rule bg-rule p-px',
+  layer: 'flex flex-1 flex-col gap-px',
+  row: 'flex flex-1 gap-px',
+  cell: 'flex min-w-0 flex-1 cursor-pointer items-center justify-center bg-background font-mono text-xs font-semibold text-background hover:bg-foreground/10 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-foreground focus-visible:outline-none data-soft:bg-accent/30 data-hit:bg-accent data-start:outline-2 data-start:-outline-offset-2 data-start:outline-foreground'
+};
+
+/**
+ * A cell's accessible name: its point, then what is marked on it (the colours alone don't say).
+ * @param {{x: number, y: number}} point
+ * @param {{hit?: boolean, soft?: boolean, start?: boolean, ship?: string}} [state]
+ * @returns {string}
+ */
+export const cellLabel = (point, {
+  hit = false,
+  soft = false,
+  start = false,
+  ship = ''
+} = {}) => [`Cell ${point.x}, ${point.y}`, start && 'start', ship ? `ship of ${ship}` : hit && 'marked', soft && !hit && 'diagonal'].filter(Boolean).join(', ');
+
 /**
  * The sandbox's static markup (no visitor data), styled with Tailwind classes; assets/tailwind/site.css scans this
  * folder for them.
@@ -65,7 +88,7 @@ export const markup = `<div class='grid grid-cols-1 gap-6 md:grid-cols-2'>
     <pre tabindex='0' aria-label='The last call' class='m-0 overflow-x-auto rounded-md bg-foreground/8 p-3 text-sm'><code id='md-call'>// each call shows up here</code></pre>
     <p id='md-note' class='m-0 text-sm text-muted' role='status'></p>
   </div>
-  <div id='md-board' class='grid aspect-square w-full max-w-sm grid-cols-10 gap-px self-start rounded-md border border-rule bg-rule p-px' role='grid' aria-label='Board, 10 by 10'></div>
+  <div id='md-board' class='w-full max-w-sm self-start'></div>
 </div>`;
 
 /**
@@ -73,18 +96,41 @@ export const markup = `<div class='grid grid-cols-1 gap-6 md:grid-cols-2'>
  * @param {Document} document
  * @param {Window} window
  * @param {Object} [library=window.matrixDom]
+ * @param {Object} [renderer=window.jsonDom] json-dom, which renders the board
  * @returns {{setMode: function(string): void, tap: function(number, number): void, placeNext: function(): void, clear: function(): void}|null}
  */
-export const initMatrixDomSandbox = (document, window, library = window.matrixDom) => {
+export const initMatrixDomSandbox = (document, window, library = window.matrixDom, renderer = window.jsonDom) => {
   const mount = document.querySelector('[data-sandbox="matrix-dom"]');
-  if (!mount || !library) return null;
+  if (!mount || !library || !renderer) return null;
   if (!mount.querySelector('#md-board')) mount.innerHTML = markup;
   const byId = id => document.getElementById(id);
-  const matrix = library.buildMatrix({
+  const matrix = library.navigableGrid(library.buildMatrix({
     x: size,
     y: size,
     z: 1
-  });
+  }, {
+    matrix: {
+      attributes: {
+        className: boardClasses.matrix,
+        'aria-label': `Board, ${size} by ${size}`
+      }
+    },
+    z: {
+      attributes: {
+        className: boardClasses.layer
+      }
+    },
+    y: {
+      attributes: {
+        className: boardClasses.row
+      }
+    },
+    x: {
+      attributes: {
+        className: boardClasses.cell
+      }
+    }
+  }));
   const point = (x, y) => library.point(x, y, 0);
   let mode = 'line';
   let start = null;
@@ -95,13 +141,19 @@ export const initMatrixDomSandbox = (document, window, library = window.matrixDo
     byId('md-note').textContent = note;
   };
 
-  // Marks: hit = filled fuchsia (a line, a ship, the tapped cell), soft = tinted (neighbours), start = outlined
-  const mark = (keys = {}) => {
+  // Marks: hit = filled fuchsia (a line, a ship, the tapped cell), soft = tinted (neighbours), start = outlined.
+  // ships = each cell's ship length (fleet mode). The cell's name says the same, for screen readers.
+  const mark = (keys = {}, ships = new Map()) => {
     for (const [cellKey, cell] of Object.entries(cells)) {
-      cell.textContent = '';
+      const state = {
+        ship: ships.get(cellKey) || ''
+      };
+      cell.textContent = state.ship;
       for (const name of ['hit', 'soft', 'start']) {
-        if ((keys[name] || new Set()).has(cellKey)) cell.setAttribute(`data-${name}`, '');else cell.removeAttribute(`data-${name}`);
+        state[name] = (keys[name] || new Set()).has(cellKey);
+        if (state[name]) cell.setAttribute(`data-${name}`, '');else cell.removeAttribute(`data-${name}`);
       }
+      cell.setAttribute('aria-label', cellLabel(points[cellKey], state));
     }
   };
   const tap = (x, y) => {
@@ -137,14 +189,9 @@ export const initMatrixDomSandbox = (document, window, library = window.matrixDo
   };
 
   // Ships may touch (as in Battleship), so each ship's cells carry its length to tell neighbours apart
-  const drawFleet = () => {
-    mark({
-      hit: new Set(ships.flat().map(key))
-    });
-    ships.forEach(ship => ship.forEach(shipPoint => {
-      cells[key(shipPoint)].textContent = String(ship.length);
-    }));
-  };
+  const drawFleet = () => mark({
+    hit: new Set(ships.flat().map(key))
+  }, new Map(ships.flatMap(ship => ship.map(shipPoint => [key(shipPoint), String(ship.length)]))));
   const placeNext = () => {
     const length = fleet[ships.length];
     if (length === undefined) return;
@@ -192,17 +239,33 @@ export const initMatrixDomSandbox = (document, window, library = window.matrixDo
     updateActions();
   };
 
-  // The board: one button per point matrix-dom knows, in row order
-  const points = library.getAllPoints(matrix).slice().sort((a, b) => a.y - b.y || a.x - b.x);
-  byId('md-board').replaceChildren(...points.map(cellPoint => {
-    const cell = document.createElement('button');
-    cell.type = 'button';
-    cell.className = 'aspect-square min-w-0 cursor-pointer border-0 bg-background p-0 font-mono text-xs font-semibold text-background hover:bg-foreground/10 data-soft:bg-accent/30 data-hit:bg-accent data-start:outline-2 data-start:-outline-offset-2 data-start:outline-foreground';
-    cell.setAttribute('aria-label', `Cell ${cellPoint.x}, ${cellPoint.y}`);
-    cell.addEventListener('click', () => mode === 'fleet' ? undefined : tap(cellPoint.x, cellPoint.y));
-    cells[key(cellPoint)] = cell;
-    return cell;
-  }));
+  // The board: the matrix itself, rendered by json-dom into #md-board. One click listener on the matrix handles every
+  // cell, and navigableGrid turns Enter / Space on a focused cell into that same click
+  const points = {};
+  matrix.eventListeners.click = [{
+    listenerFunc: event => {
+      const cell = event.target.closest('[role="gridcell"]');
+      const cellPoint = cell && library.getPointFromElement(cell);
+      if (cellPoint && mode !== 'fleet') tap(cellPoint.x, cellPoint.y);
+    },
+    listenerArgs: {},
+    listenerOptions: false
+  }];
+  // #md-board is the root of the board's json-dom tree (a root's parentItem is an empty object), so its listeners bind
+  const board = renderer.createDomItem({
+    nodeName: 'div'
+  });
+  board.element = byId('md-board');
+  board.parentItem = {};
+  byId('md-board').replaceChildren();
+  renderer.renderHtml(matrix, board);
+  library.getAllPoints(matrix).forEach(cellPoint => {
+    const cellKey = key(cellPoint);
+    const cell = library.getDomItemFromPoint(cellPoint, matrix).element;
+    cell.setAttribute('data-point', cellKey);
+    cells[cellKey] = cell;
+    points[cellKey] = cellPoint;
+  });
   for (const [name, {
     label
   }] of Object.entries(modes)) {
