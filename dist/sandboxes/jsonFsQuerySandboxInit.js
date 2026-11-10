@@ -1,4 +1,4 @@
 // Pages with the json-fs-query sandbox load this as a native ES module, after the deferred classic
 // /browser/vendor/jsonFsQuery.min.js (which defines window.jsonFsQuery).
-import { initJsonFsQuerySandbox } from './jsonFsQuerySandbox.js?v=c9bf8cc4bd';
+import { initJsonFsQuerySandbox } from './jsonFsQuerySandbox.js?v=d119099d4b';
 initJsonFsQuerySandbox(document, window);
