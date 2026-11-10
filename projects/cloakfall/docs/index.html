@@ -19,6 +19,10 @@ screen-reader friendly: every cell is named by its coordinate and what it shows 
 <a href="https://github.com/jheagle/matrix-dom">matrix-dom</a> (the grids), with a <a href="http://socket.io">socket.io</a> lobby server for online play.</p>
 <p><em>Formerly &quot;Battleship&quot;: renamed in November 2026, since that name is Hasbro's trademark. The rules of the classic
 pencil-and-paper game are free to use; the name, and Hasbro's own rules text, are not.</em></p>
+<h2 id="icons" class="tsd-anchor-link">Icons<a href="#icons" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p><code>icons/icon.svg</code> is the source: a cloaked ship fading into the dark, its nose caught by a flare. The PNGs and
+<code>favicon.ico</code> (16, 32 and 48 px) in <code>icons/</code> are rendered from it with sharp, the same way the website builds its own
+icons (<code>scripts/build-icons.mjs</code> there). Re-render them after changing the SVG.</p>
 <h2 id="running-locally" class="tsd-anchor-link">Running locally<a href="#running-locally" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
 <p>Solo, hot-seat and robots-only play are just the static page - nothing to run, open the built page
 (e.g. <a href="http://battleship.local">http://battleship.local</a>, the local vhost's name from before the rename) in a browser.</p>
@@ -46,6 +50,7 @@ just the <a href="http://socket.io">socket.io</a> server it talks to for room ho
 <h3>On This Page</h3></summary>
 <div class="tsd-accordion-details"><a href="#cloakfall"><span>Cloakfall</span></a>
 <ul>
+<li><a href="#icons"><span>Icons</span></a></li>
 <li><a href="#running-locally"><span>Running locally</span></a></li></ul></div></details></div>
 <div class="site-menu">
 <nav class="tsd-navigation"><a href="modules.html">cloakfall</a>
