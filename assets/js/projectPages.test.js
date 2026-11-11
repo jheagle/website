@@ -4,8 +4,6 @@ const { generateDocument } = require('pseudo-dom')
 const projects = require('./data/projectList').default
 
 const rootDir = path.join(__dirname, '../..')
-// Repos that are private on GitHub, so their pages must not link there.
-const privateRepos = ['/projects/json-dom/', '/projects/matrix-dom/']
 // The demo link's label: "Try the demo" everywhere, except Cloakfall, where it's a whole game.
 const demoLabels = ['Try the demo', 'Play the game']
 
@@ -26,11 +24,10 @@ describe.each(projects.map(project => [project.href]))('%s', href => {
   const actions = [...document.body.querySelectorAll("nav[aria-label='Project links'] a")]
   const labels = actions.map(link => link.textContent)
 
-  test('has Documentation first, then GitHub (if public), then the demo (if any), and nothing else', () => {
+  test('has Documentation first, then GitHub, then the demo (if any), and nothing else', () => {
     expect(labels[0]).toBe('Documentation')
     expect(actions[0].getAttribute('class').split(' ')).toContain('bg-accent')
-    const expected = ['Documentation']
-    if (!privateRepos.includes(href)) expected.push('View on GitHub')
+    const expected = ['Documentation', 'View on GitHub']
     const demo = labels.find(label => demoLabels.includes(label))
     if (demo) expected.push(demo)
     expect(labels).toEqual(expected)
