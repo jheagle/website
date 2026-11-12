@@ -35,6 +35,7 @@ kind: guide
 - [functions/partials/loadPlaywright.mjs](/source/functions/partials/loadplaywright-mjs/)
 - [functions/partials/minifyFor.mjs](/source/functions/partials/minifyfor-mjs/)
 - [functions/partials/neostandardLint.mjs](/source/functions/partials/neostandardlint-mjs/)
+- [functions/partials/pageTools.mjs](/source/functions/partials/pagetools-mjs/)
 - [functions/partials/readmeTemplate.mjs](/source/functions/partials/readmetemplate-mjs/)
 - [functions/partials/removeDirectory.mjs](/source/functions/partials/removedirectory-mjs/)
 - [functions/partials/resolveDocsMethod.mjs](/source/functions/partials/resolvedocsmethod-mjs/)

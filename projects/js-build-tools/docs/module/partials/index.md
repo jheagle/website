@@ -464,6 +464,62 @@ One ESLint instance is built from the first file's own cwd and reused for the re
 
 - `stream.Transform` — With a `totals` property ({errors, warnings}), complete once the stream ends.
 
+<MemberHeading id="watchpage" depth="3" name="watchPage" sig="watchPage" />
+
+<MemberMeta badges="static" sourceHref="/source/functions/partials/pagetools-mjs/#L17" sourceLabel="pageTools.mjs:17" />
+
+Collect everything that goes wrong on a page from now on: uncaught errors, console errors, requests that fail, and responses with an HTTP error status. Read the returned array whenever you like; it keeps filling while the page runs.
+
+**Parameters**
+
+- `page` (Object) — A Playwright page.
+- `options` (Object, optional)
+  - `options.ignore` (Array.\<RegExp>, optional, default: "\[]") — Messages or URLs to leave out, such as an analytics script that is blocked when testing locally.
+
+**Returns**
+
+- `Array.<string>` — The problems, each as "kind: message", in the order they happened.
+
+<MemberHeading id="clicklabel" depth="3" name="clickLabel" sig="clickLabel" />
+
+<MemberMeta badges="static" sourceHref="/source/functions/partials/pagetools-mjs/#L84" sourceLabel="pageTools.mjs:84" />
+
+Click the visible button (or input of type button/submit) with this label: its exact text or value, otherwise the first whose text or value contains it (whitespace collapsed, case-sensitive). Both ways of clicking find the control the same way. Fails straight away, naming the controls that are there, instead of waiting for a timeout.
+
+**Parameters**
+
+- `page` (Object) — A Playwright page.
+- `label` (string) — The text on the control.
+- `options` (Object, optional)
+  - `options.inPage` (boolean, optional, default: false) — Find and click it in one step inside the page, rather than with Playwright's click (which waits for the element to be stable, and moves the mouse). Use it for a page that replaces its elements while you click (one that re-renders on every update), where Playwright's click can find an element that is gone a moment later ("element was detached").
+
+**Returns**
+
+- `Promise.<void>`
+
+**Throws**
+
+- `Error` — When no visible control has that label.
+
+<MemberHeading id="trackmutations" depth="3" name="trackMutations" sig="trackMutations" />
+
+<MemberMeta badges="static" sourceHref="/source/functions/partials/pagetools-mjs/#L110" sourceLabel="pageTools.mjs:110" />
+
+Start counting how much of the page changes: elements added and removed (every element of an added or removed subtree counts, not just its top), attribute writes, and text changes (a text node's value changed, or a text node added or removed). Useful to measure what one action costs, or to check that an update only touched what it should. Counting stops when the page navigates or reloads; read() then fails saying so.
+
+**Parameters**
+
+- `page` (Object) — A Playwright page, already loaded.
+- `selector` (string, optional, default: "'body'") — The element to watch, with everything inside it.
+
+**Returns**
+
+- `Promise.<{read: function(): Promise.<{added: number, removed: number, attributes: number, text: number}>}>` — read() returns the counts since the last read (or since counting started) and starts the next count from zero.
+
+**Throws**
+
+- `Error` — When no element matches the selector.
+
 <MemberHeading id="readmetemplate" depth="3" name="readmeTemplate" sig="readmeTemplate" />
 
 <MemberMeta badges="static" sourceHref="/source/functions/partials/readmetemplate-mjs/#L14" sourceLabel="readmeTemplate.mjs:14" />
@@ -559,9 +615,9 @@ Build the CSS for a given source pattern.
 
 <MemberHeading id="servestatic" depth="3" name="serveStatic" sig="serveStatic" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/servestatic-mjs/#L33" sourceLabel="serveStatic.mjs:33" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/servestatic-mjs/#L35" sourceLabel="serveStatic.mjs:35" />
 
-Serve a directory's real files over plain HTTP, for anything that needs a page loaded from a real URL rather than a bare file:// path - most commonly, a page using root-relative asset paths (/browser/...), which a file:// load resolves against the filesystem root instead of the page's own directory.
+Serve a directory's real files over plain HTTP, for anything that needs a page loaded from a real URL rather than a bare file:// path - most commonly, a page using root-relative asset paths (/browser/...), which a file:// load resolves against the filesystem root instead of the page's own directory. A directory's own path (`/`, `/docs/`) serves its `index.html`, and nothing outside rootDir is ever served (403, also through a symbolic link); a malformed URL gets 400.
 
 **Parameters**
 
