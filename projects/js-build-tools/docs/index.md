@@ -619,6 +619,24 @@ server.close()
 
 `serveStatic` exists because a page loaded directly from a `file://` path resolves any root-relative asset path (`/browser/...`) against the filesystem root instead of the page's own directory - serving it over real HTTP avoids that entirely, and is also the right fix for the exact same problem in a jsdom-based test.
 
+A directory's own path (`/`, `/docs/`) serves its `index.html`, and nothing outside the served directory is ever served (403 for a path like `/../x`).
+
+Three more helpers cover what page scripts keep needing:
+
+```
+const { clickLabel, trackMutations, watchPage } = require('js-build-tools').partials
+
+const problems = watchPage(page, { ignore: [/goatcounter/] }) // uncaught errors, console errors, failed requests,
+await page.goto(`${url}/index.html`)                          // HTTP 4xx/5xx: read the array whenever you like
+
+await clickLabel(page, 'Start Game')                 // a visible button or input button by its text or value; fails at
+await clickLabel(page, 'Ready', { inPage: true })    // once naming the visible ones; inPage clicks in one step, for a
+                                                     // page that replaces its elements while you click
+const mutations = await trackMutations(page)         // count what an action changes in the page
+await clickLabel(page, 'Randomise')
+console.log(await mutations.read())                  // { added, removed, attributes, text } since the last read
+```
+
 ### Configure lint rule overrides (optional)
 
 `sourceLint` lints your real source directly (not the compiled dist/browser output) with [neostandard](https://github.com/neostandard/neostandard). Occasionally a rule is wrong for your project specifically, rather than something to fix in your code - for example a test which deliberately contains a string of literal `${...}` text (simulating another module's real source, not a mistaken non-template string), which trips neostandard's `no-template-curly-in-string` rule as a false positive. `lint.rules` layers ESLint rule overrides on top of neostandard's own rules, scoped to the same files neostandard itself lints:
