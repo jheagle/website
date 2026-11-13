@@ -7,7 +7,7 @@ description: Configurations to compile and copy the sass files into css.
 
 # SassConfig
 
-<SourceLink href="/source/gulp-config-mjs/#L187" label="gulp.config.mjs:187" />
+<SourceLink href="/source/gulp-config-mjs/#L190" label="gulp.config.mjs:190" />
 
 Configurations to compile and copy the sass files into css.
 

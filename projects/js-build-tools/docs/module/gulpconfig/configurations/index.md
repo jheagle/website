@@ -7,7 +7,7 @@ description: A set of Configurations options defined by Settings.
 
 # Configurations
 
-<SourceLink href="/source/gulp-config-mjs/#L223" label="gulp.config.mjs:223" />
+<SourceLink href="/source/gulp-config-mjs/#L226" label="gulp.config.mjs:226" />
 
 A set of Configurations options defined by Settings.
 
