@@ -324,9 +324,9 @@ Generate the HTML documentation of a plain-JavaScript project with jsdoc, using 
 
 <MemberHeading id="lintsource" depth="3" name="lintSource" sig="lintSource" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/partials/lintsource-mjs/#L14" sourceLabel="lintSource.mjs:14" />
+<MemberMeta badges="static" sourceHref="/source/functions/partials/lintsource-mjs/#L15" sourceLabel="lintSource.mjs:15" />
 
-Lint the project's source (srcPath: .js, .mjs and .cjs, plus .ts when typescript.enabled) with neostandard and write the automatic fixes back in place. Shared by the sourceLint (build) and lint (standalone) tasks.
+Lint the project's source (srcPath, plus any extra folders in lint.include: .js, .mjs and .cjs, plus .ts when typescript.enabled) with neostandard and write the automatic fixes back in place. Shared by the sourceLint (build) and lint (standalone) tasks.
 
 **Parameters**
 

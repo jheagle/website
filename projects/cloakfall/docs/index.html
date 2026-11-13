@@ -15,8 +15,8 @@ free-for-all where the robots hunt each other too. Play it solo against robots, 
 friends, or just watch the robots play. It is fully keyboard playable (Tab onto a board, arrow keys, Enter to fire) and
 screen-reader friendly: every cell is named by its coordinate and what it shows (&quot;B4, miss&quot;).</p>
 <p>Play it at <a href="https://joshuaheagle.com/projects/cloakfall/play.html">https://joshuaheagle.com/projects/cloakfall/play.html</a> (docs: <a href="https://joshuaheagle.com/projects/cloakfall/docs/">https://joshuaheagle.com/projects/cloakfall/docs/</a>).</p>
-<p>Built with TypeScript on <a href="https://github.com/jheagle/json-dom">json-dom</a> (the page as data) and
-<a href="https://github.com/jheagle/matrix-dom">matrix-dom</a> (the grids), with a <a href="http://socket.io">socket.io</a> lobby server for online play.</p>
+<p>Built with TypeScript on <a href="https://github.com/jheagle/treeloom">treeloom</a> (the page as data) and
+<a href="https://github.com/jheagle/treeloom-matrix">treeloom-matrix</a> (the grids), with a <a href="http://socket.io">socket.io</a> lobby server for online play.</p>
 <p><em>Formerly &quot;Battleship&quot;: renamed in November 2026, since that name is Hasbro's trademark. The rules of the classic
 pencil-and-paper game are free to use; the name, and Hasbro's own rules text, are not.</em></p>
 <h2 id="icons" class="tsd-anchor-link">Icons<a href="#icons" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
@@ -25,7 +25,7 @@ pencil-and-paper game are free to use; the name, and Hasbro's own rules text, ar
 icons (<code>scripts/build-icons.mjs</code> there). Re-render them after changing the SVG.</p>
 <h2 id="running-locally" class="tsd-anchor-link">Running locally<a href="#running-locally" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
 <p>Solo, hot-seat and robots-only play are just the static page - nothing to run, open the built page
-(e.g. <a href="http://battleship.local">http://battleship.local</a>, the local vhost's name from before the rename) in a browser.</p>
+(e.g. <a href="http://cloakfall.local">http://cloakfall.local</a>) in a browser.</p>
 <p>Online Multiplayer additionally needs the lobby server running:</p>
 <pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-2">serve</span><span class="hl-1">:</span><span class="hl-0">lobby</span>
 </code><button>Copy</button></pre>
@@ -33,6 +33,19 @@ icons (<code>scripts/build-icons.mjs</code> there). Re-render them after changin
 <p>This compiles and starts <code>server/lobbyServer.ts</code> on port 3002 (<code>src/network/lobbySocket.ts</code>'s own
 <code>DEFAULT_URL</code>). The page itself still needs to be served separately (same as local play) - this is
 just the <a href="http://socket.io">socket.io</a> server it talks to for room hosting/joining and the remote game itself.</p>
+<h2 id="checking-full-games-in-a-browser" class="tsd-anchor-link">Checking full games in a browser<a href="#checking-full-games-in-a-browser" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>Three scripts play a whole game in a real headless Chromium (Playwright) against the built page, and fail when the game
+doesn't reach its final score or a page has an error (uncaught errors, console errors, failed requests). Build first:</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-0">build</span><br/><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-2">e2e</span><span class="hl-1">:</span><span class="hl-0">robots</span><span class="hl-1">    # </span><span class="hl-0">Robots</span><span class="hl-1"> </span><span class="hl-3">only</span><span class="hl-1"> (~</span><span class="hl-4">2</span><span class="hl-1"> </span><span class="hl-0">min</span><span class="hl-1">)</span><br/><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-2">e2e</span><span class="hl-1">:</span><span class="hl-0">hotseat</span><span class="hl-1">   # </span><span class="hl-0">local</span><span class="hl-1"> </span><span class="hl-0">multiplayer</span><span class="hl-1">, </span><span class="hl-0">two</span><span class="hl-1"> </span><span class="hl-0">players</span><span class="hl-1"> </span><span class="hl-0">on</span><span class="hl-1"> </span><span class="hl-0">one</span><span class="hl-1"> </span><span class="hl-3">screen</span><span class="hl-1"> (~</span><span class="hl-4">2</span><span class="hl-1"> </span><span class="hl-0">min</span><span class="hl-1">)</span><br/><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-2">e2e</span><span class="hl-1">:</span><span class="hl-0">online</span><span class="hl-1">    # </span><span class="hl-2">online</span><span class="hl-1">: </span><span class="hl-0">starts</span><span class="hl-1"> </span><span class="hl-0">the</span><span class="hl-1"> </span><span class="hl-0">lobby</span><span class="hl-1"> </span><span class="hl-0">server</span><span class="hl-1">, </span><span class="hl-0">a</span><span class="hl-1"> </span><span class="hl-0">host</span><span class="hl-1"> </span><span class="hl-0">and</span><span class="hl-1"> </span><span class="hl-0">a</span><span class="hl-1"> </span><span class="hl-0">guest</span><span class="hl-1"> </span><span class="hl-3">page</span><span class="hl-1"> (~</span><span class="hl-4">1.5</span><span class="hl-1"> </span><span class="hl-0">min</span><span class="hl-1">)</span><br/><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-0">e2e</span><span class="hl-1">           # </span><span class="hl-0">all</span><span class="hl-1"> </span><span class="hl-0">three</span>
+</code><button>Copy</button></pre>
+
+<p>Players shoot at random cells. Each turn waits for the game itself (a shot showing, whose turn the badge says) rather
+than fixed pauses, so the online game's two-part updates (the shot, then the turn change) don't trip it.
+<code>npm run e2e:online</code> also reports how much of the guest's page each shot changes (elements added, attribute writes),
+to compare rendering changes. <code>E2E_LIMIT_MS</code> changes how long a game may take; <code>E2E_DEBUG=1</code> logs each online turn. The
+online check needs port 3002 free (no lobby server already running). They use js-build-tools' page tools
+(<code>watchPage</code>, <code>clickLabel</code>, <code>trackMutations</code>, <code>serveStatic</code>); a browser binary is needed once per machine:
+<code>npx playwright install chromium</code>.</p>
 </div></div>
 <div class="col-sidebar">
 <div class="page-menu">
@@ -51,7 +64,8 @@ just the <a href="http://socket.io">socket.io</a> server it talks to for room ho
 <div class="tsd-accordion-details"><a href="#cloakfall"><span>Cloakfall</span></a>
 <ul>
 <li><a href="#icons"><span>Icons</span></a></li>
-<li><a href="#running-locally"><span>Running locally</span></a></li></ul></div></details></div>
+<li><a href="#running-locally"><span>Running locally</span></a></li>
+<li><a href="#checking-full-games-in-a-browser"><span>Checking full games in a browser</span></a></li></ul></div></details></div>
 <div class="site-menu">
 <nav class="tsd-navigation"><a href="modules.html">cloakfall</a>
 <ul class="tsd-small-nested-navigation" id="tsd-nav-container">

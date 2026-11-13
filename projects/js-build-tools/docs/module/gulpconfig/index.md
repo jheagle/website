@@ -159,17 +159,18 @@ Configurations to minify and copy the images.
 
 <MemberHeading id="lintconfig" depth="3" name="LintConfig" sig="LintConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L130" sourceLabel="gulp.config.mjs:130" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L133" sourceLabel="gulp.config.mjs:133" />
 
 Configurations for linting (see [module:partials.neostandardLint](/module/partials#neostandardlint)).
 
 **Properties**
 
+- `include` ([ArrayableSetting](/module/gulpconfig#arrayablesetting)) — Extra folders to lint alongside srcPath, for hand-written code that lives outside it (for example `scripts`). Linted with the same rules, and fixed in place, like srcPath. Empty by default: a project that never sets this lints srcPath only, as before.
 - `rules` (Object.\<string, \*>) — ESLint rule overrides layered on top of neostandard's own config, scoped to the same files neostandard itself lints. For a rule that is wrong for your project specifically (for example a test fixture that deliberately contains text neostandard mistakes for a real syntax problem), rather than something to fix in your code. Empty by default: a project that never sets this gets exactly neostandard's own rules, unchanged. Keyed and valued exactly as ESLint's own `rules` object - see https\://eslint.org/docs/latest/use/configure/rules.
 
 <MemberHeading id="readmeconfig" depth="3" name="ReadmeConfig" sig="ReadmeConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L145" sourceLabel="gulp.config.mjs:145" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L148" sourceLabel="gulp.config.mjs:148" />
 
 Configurations to compile and generate the Readme file.
 
@@ -185,7 +186,7 @@ Configurations to compile and generate the Readme file.
 
 <MemberHeading id="docsconfig" depth="3" name="DocsConfig" sig="DocsConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L179" sourceLabel="gulp.config.mjs:179" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L182" sourceLabel="gulp.config.mjs:182" />
 
 Configurations for generating the HTML documentation of a project's own source, with either TypeDoc (real TypeScript types) or jsdoc (a modern theme over jsdoc's own classic default) - see docs.method.
 
@@ -208,7 +209,7 @@ Configurations for generating the HTML documentation of a project's own source, 
 
 <MemberHeading id="sassconfig" depth="3" name="SassConfig" sig="SassConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L187" sourceLabel="gulp.config.mjs:187" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L190" sourceLabel="gulp.config.mjs:190" />
 
 Configurations to compile and copy the sass files into css.
 
@@ -221,7 +222,7 @@ Configurations to compile and copy the sass files into css.
 
 <MemberHeading id="testconfig" depth="3" name="TestConfig" sig="TestConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L195" sourceLabel="gulp.config.mjs:195" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L198" sourceLabel="gulp.config.mjs:198" />
 
 Configurations for running the test suite.
 
@@ -233,7 +234,7 @@ Configurations for running the test suite.
 
 <MemberHeading id="tsconfig" depth="3" name="TsConfig" sig="TsConfig: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L203" sourceLabel="gulp.config.mjs:203" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L206" sourceLabel="gulp.config.mjs:206" />
 
 Configurations for compiling typescript into JS files.
 
@@ -246,7 +247,7 @@ Configurations for compiling typescript into JS files.
 
 <MemberHeading id="configurations" depth="3" name="Configurations" sig="Configurations: Object.<string, Setting>" />
 
-<MemberMeta sourceHref="/source/gulp-config-mjs/#L223" sourceLabel="gulp.config.mjs:223" />
+<MemberMeta sourceHref="/source/gulp-config-mjs/#L226" sourceLabel="gulp.config.mjs:226" />
 
 A set of Configurations options defined by Settings.
 
@@ -269,7 +270,7 @@ A set of Configurations options defined by Settings.
 
 <MemberHeading id="get" depth="3" name="get" sig="get" />
 
-<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L352" sourceLabel="gulp.config.mjs:352" />
+<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L356" sourceLabel="gulp.config.mjs:356" />
 
 Retrieve a value from the configurations, default may be returned.
 
@@ -284,7 +285,7 @@ Retrieve a value from the configurations, default may be returned.
 
 <MemberHeading id="set" depth="3" name="set" sig="set" />
 
-<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L361" sourceLabel="gulp.config.mjs:361" />
+<MemberMeta badges="static" sourceHref="/source/gulp-config-mjs/#L365" sourceLabel="gulp.config.mjs:365" />
 
 Specify a value for the configurations to use.
 
