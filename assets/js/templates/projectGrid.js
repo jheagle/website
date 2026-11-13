@@ -7,7 +7,7 @@ const columns = 4
 // tile-icon-letter) are hooks the tests use to find things; no CSS targets them.
 const classes = {
   grid: 'project-grid',
-  // matrix-dom's layer drives the layout; its rows step aside (display: contents) so the tiles flow into a
+  // treeloom-matrix's layer drives the layout; its rows step aside (display: contents) so the tiles flow into a
   // responsive grid however many columns the matrix was built with
   layer: 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
   row: 'contents',
@@ -37,7 +37,7 @@ const tileContent = project => anchor(
 )
 
 /**
- * Builds a matrix-dom grid of project tiles, one per entry in `projects`, in display order
+ * Builds a treeloom-matrix grid of project tiles, one per entry in `projects`, in display order
  * (row-major: left to right, then top to bottom). Any trailing columns left over when `projects.length`
  * doesn't divide evenly into `columns` are left empty (marked 'tile-empty', and `invisible`).
  * @param {Array<{title: string, href: string, description: string}>} projects

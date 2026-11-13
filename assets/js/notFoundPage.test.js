@@ -55,7 +55,10 @@ describe('404.html', () => {
     expect(await visit('/projects/json-file-db/docs/functions/introspect.create.html', ['/projects/json-fs-query/docs/functions/introspect.create.html']))
       .toEqual({ checked: ['HEAD /projects/json-fs-query/docs/functions/introspect.create.html'], replacedWith: '/projects/json-fs-query/docs/functions/introspect.create.html' })
     expect((await visit('/projects/test-fs/?from=readme#usage', ['/projects/test-filesystem/'])).replacedWith).toBe('/projects/test-filesystem/?from=readme#usage')
-    expect((await visit('/projects/json-dom-demo', ['/projects/json-dom/'])).replacedWith).toBe('/projects/json-dom/')
+    expect((await visit('/projects/json-dom-demo', ['/projects/treeloom/'])).replacedWith).toBe('/projects/treeloom/')
+    expect((await visit('/projects/json-dom/docs/functions/render.renderHtml.html', ['/projects/treeloom/docs/functions/render.renderHtml.html'])).replacedWith)
+      .toBe('/projects/treeloom/docs/functions/render.renderHtml.html')
+    expect((await visit('/projects/matrix-dom/docs/', ['/projects/treeloom-matrix/docs/'])).replacedWith).toBe('/projects/treeloom-matrix/docs/')
   })
 
   test('falls back to the project\'s page when the old page has no counterpart', async () => {

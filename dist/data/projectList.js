@@ -14,12 +14,12 @@ const projects = [{
   href: '/projects/cloakfall/',
   description: 'A full multiplayer-ready game, proving out a from-scratch TypeScript virtual-DOM ecosystem built on a composable trait system.'
 }, {
-  title: 'JSON DOM',
-  href: '/projects/json-dom/',
+  title: 'treeloom',
+  href: '/projects/treeloom/',
   description: 'A from-scratch virtual-DOM framework with a composable trait system, including a render-only mode that forwards events to a server.'
 }, {
-  title: 'Matrix DOM',
-  href: '/projects/matrix-dom/',
+  title: 'treeloom-matrix',
+  href: '/projects/treeloom-matrix/',
   description: 'Grid/matrix geometry helpers used by Cloakfall\'s boards — and by this very project grid.'
 }, {
   title: 'Pseudo DOM',
@@ -56,7 +56,7 @@ const projects = [{
 }, {
   title: 'Quizzes',
   href: '/quizzes/',
-  description: 'JSON-DOM-based dynamic forms — a form.io alternative.'
+  description: 'treeloom-based dynamic forms — a form.io alternative.'
 }, {
   title: 'Workout Planner',
   href: '/projects/workout-planner/',
