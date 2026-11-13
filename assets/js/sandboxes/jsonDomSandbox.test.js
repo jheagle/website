@@ -4,7 +4,7 @@
 // json-dom reads document while loading, so this suite runs in jsdom, like renderProjectGrid.test
 const fs = require('fs')
 const path = require('path')
-const jsonDom = require('json-dom')
+const treeloom = require('treeloom')
 const { examples, isSafeHref, sanitize, prettyHtml, markup, initJsonDomSandbox } = require('./jsonDomSandbox')
 
 const html = fs.readFileSync(path.join(__dirname, '../../../projects/index.html'), 'utf8')
@@ -55,7 +55,7 @@ describe('jsonDomSandbox', () => {
   describe('in a page', () => {
     test('loads the card example and renders it with json-dom', () => {
       setup()
-      expect(initJsonDomSandbox(document, window, jsonDom)).not.toBeNull()
+      expect(initJsonDomSandbox(document, window, treeloom)).not.toBeNull()
       expect([...document.querySelectorAll('#jd-examples [data-example]')].map(button => button.textContent)).toEqual(Object.values(examples).map(example => example.label))
       const preview = document.getElementById('jd-preview')
       expect(preview.querySelector('article h3').textContent).toBe('Hello from JSON')
@@ -64,7 +64,7 @@ describe('jsonDomSandbox', () => {
 
     test('every example renders', () => {
       setup()
-      const sandbox = initJsonDomSandbox(document, window, jsonDom)
+      const sandbox = initJsonDomSandbox(document, window, treeloom)
       sandbox.load('list')
       expect(document.querySelectorAll('#jd-preview li').length).toBe(3)
       sandbox.load('table')
@@ -73,7 +73,7 @@ describe('jsonDomSandbox', () => {
 
     test('editing re-renders; bad JSON keeps the last render and says why; unsafe parts are listed, not rendered', () => {
       setup()
-      const sandbox = initJsonDomSandbox(document, window, jsonDom)
+      const sandbox = initJsonDomSandbox(document, window, treeloom)
       const field = document.getElementById('jd-json')
       field.value = '{ "nodeName": "p", "children": [{ "nodeName": "#text", "nodeValue": "edited" }] }'
       sandbox.render()
@@ -93,7 +93,7 @@ describe('jsonDomSandbox', () => {
       setup()
       expect(initJsonDomSandbox(document, window, null)).toBeNull()
       document.body.innerHTML = '<p>No sandbox here</p>'
-      expect(initJsonDomSandbox(document, window, jsonDom)).toBeNull()
+      expect(initJsonDomSandbox(document, window, treeloom)).toBeNull()
     })
   })
 })

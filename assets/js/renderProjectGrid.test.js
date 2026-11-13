@@ -3,14 +3,14 @@
  */
 // jsdom never executes <script type="module"> tags found while parsing a page, so projects/index.html's own inline
 // module script can't be exercised by loading the real page - instead, this loads the real page's markup and drives
-// the exact same sequence of jsonDom calls that script performs, to prove the getItemByElement lookup + renderHtml
+// the exact same sequence of treeloom calls that script performs, to prove the getItemByElement lookup + renderHtml
 // insertion land every real project inside #project-grid without disturbing the hand-authored HTML around it.
 const fs = require('fs')
 const path = require('path')
-const jsonDom = require('json-dom')
-global.jsonDom = jsonDom
-global.jsonDomComponents = require('json-dom-components')
-global.matrixDom = require('matrix-dom')
+const treeloom = require('treeloom')
+global.treeloom = treeloom
+global.treeloomComponents = require('treeloom-components')
+global.treeloomMatrix = require('treeloom-matrix')
 const projectGrid = require('./templates/projectGrid').default
 const projects = require('./data/projectList').default
 
@@ -35,11 +35,11 @@ describe('projects/index.html', () => {
   test('the inline script\'s sequence renders every project into #project-grid, leaving the page around it intact', () => {
     // Mirrors the page's module script: capture once (a second full-tree updateDomItems pass throws in a real
     // browser), then render the grid into the existing container.
-    const documentItem = jsonDom.documentItem
-    jsonDom.updateDomItems(documentItem)
-    const gridItem = jsonDom.getItemByElement(documentItem.body, document.getElementById('project-grid'))
+    const documentItem = treeloom.documentItem
+    treeloom.updateDomItems(documentItem)
+    const gridItem = treeloom.getItemByElement(documentItem.body, document.getElementById('project-grid'))
     expect(gridItem).not.toBeNull()
-    jsonDom.renderHtml(projectGrid(projects), gridItem, 0)
+    treeloom.renderHtml(projectGrid(projects), gridItem, 0)
 
     const realTiles = [...document.getElementById('project-grid').querySelectorAll('.tile')].filter(tile => !tile.classList.contains('tile-empty'))
     expect(realTiles.map(tile => tile.querySelector('a.tile-link').getAttribute('href'))).toEqual(projects.map(project => project.href))

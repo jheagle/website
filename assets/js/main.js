@@ -1,7 +1,7 @@
-const jsonDom = require('json-dom')
-const jsonDomComponents = require('json-dom-components')
-const matrixDom = require('matrix-dom')
+const treeloom = require('treeloom')
+const treeloomComponents = require('treeloom-components')
+const treeloomMatrix = require('treeloom-matrix')
 
-window.jsonDom = jsonDom
-window.jsonDomComponents = jsonDomComponents
-window.matrixDom = matrixDom
+window.treeloom = treeloom
+window.treeloomComponents = treeloomComponents
+window.treeloomMatrix = treeloomMatrix

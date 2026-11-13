@@ -1,5 +1,5 @@
-/* global jsonDomComponents, matrixDom, jsonDom */
-const { div, span, anchor, heading, paragraph, text } = jsonDomComponents
+/* global treeloomComponents, treeloomMatrix, treeloom */
+const { div, span, anchor, heading, paragraph, text } = treeloomComponents
 
 const columns = 4
 
@@ -45,7 +45,7 @@ const tileContent = project => anchor(
  */
 const projectGrid = projects => {
   const rows = Math.ceil(projects.length / columns)
-  const grid = matrixDom.buildMatrix(
+  const grid = treeloomMatrix.buildMatrix(
     { x: columns, y: rows, z: 1 },
     {
       matrix: { attributes: { className: classes.grid } },
@@ -55,9 +55,9 @@ const projectGrid = projects => {
     }
   )
   projects.forEach((project, index) => {
-    const tile = matrixDom.getDomItemFromPoint(matrixDom.point(index % columns, Math.floor(index / columns)), grid)
+    const tile = treeloomMatrix.getDomItemFromPoint(treeloomMatrix.point(index % columns, Math.floor(index / columns)), grid)
     tile.attributes.className = classes.tile
-    jsonDom.appendChild(tile, tileContent(project))
+    treeloom.appendChild(tile, tileContent(project))
   })
   return grid
 }
