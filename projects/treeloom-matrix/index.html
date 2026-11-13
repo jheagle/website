@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>treeloom-matrix | Joshua Heagle</title>
+    <link rel="canonical" href="https://joshuaheagle.com/projects/treeloom-matrix/">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preload" href="/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/browser/fonts/lexend-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/browser/tailwind/site.css?v=9d64705248">
+</head>
+<body class="mx-auto max-w-3xl px-5 pt-6 pb-16 lg:pt-14">
+<main>
+    <a class="mb-5 inline-block font-heading" href="/projects/">&larr; Back to projects</a>
+    <div class="mb-6 border-b border-rule pb-4">
+        <h1 class="m-0 mb-1.5 text-4xl/tight tracking-tight lg:text-5xl">treeloom-matrix</h1>
+        <p class="m-0 text-muted">Grid/matrix geometry helpers - points, lines, bounds, lookup - used by Cloakfall's boards. Formerly Matrix DOM.</p>
+    </div>
+    <nav class="my-5 flex flex-wrap gap-2.5" aria-label="Project links">
+        <a class="rounded-lg bg-accent px-4 py-2 font-heading font-semibold text-background no-underline hover:opacity-90" href="./docs/">Documentation</a>
+        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="https://github.com/jheagle/treeloom-matrix" target="_blank">View on GitHub</a>
+        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="#demo">Try the demo</a>
+    </nav>
+    <p class="text-muted">Open source (MPL-2.0), and proven out in <a href="../cloakfall/">Cloakfall</a>, which uses it
+        for the game board. Try its geometry below, or open the browser console to use <code class="rounded bg-foreground/8 px-1 py-px">treeloomMatrix</code> directly.</p>
+
+    <section id="demo" class="mt-7 scroll-mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6">
+        <h2 class="mt-0 mb-1 text-xl">Try it</h2>
+        <p class="mt-0 mb-5 text-sm text-muted">Draw lines, check neighbours, place a fleet. The same sandbox is on the projects page.</p>
+        <!-- Filled in by /dist/sandboxes/treeloomMatrixSandboxInit.js (assets/js/sandboxes/treeloomMatrixSandbox.js) -->
+        <div data-sandbox="treeloom-matrix"><noscript><p class="m-0 text-sm">This demo needs JavaScript.</p></noscript></div>
+    </section>
+</main>
+<!-- The site's own treeloom-matrix dependency (package.json), the build the site's bundle also uses -->
+<script src="/browser/vendor/treeloom.min.js?v=6d79fdc36d" defer></script>
+<script src="/browser/vendor/treeloomMatrix.min.js?v=e3f5ced751" defer></script>
+<script type="module" src="/dist/sandboxes/treeloomMatrixSandboxInit.js?v=ccea0315b7"></script>
+<script data-goatcounter="https://joshuaheagle.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

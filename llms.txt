@@ -36,8 +36,8 @@ Each project page links its generated API documentation at `<page>docs/`.
 
 ### The rendering stack and the game that proves it
 
-- [JSON DOM](https://joshuaheagle.com/projects/json-dom/): a from-scratch virtual-DOM framework with a composable trait system, including a render-only mode that forwards events to a server
-- [Matrix DOM](https://joshuaheagle.com/projects/matrix-dom/): grid and matrix geometry on top of JSON DOM, used by Cloakfall's boards and by this site's project grid
+- [treeloom](https://joshuaheagle.com/projects/treeloom/) (formerly JSON DOM): a from-scratch virtual-DOM framework with a composable trait system, including a render-only mode that forwards events to a server
+- [treeloom-matrix](https://joshuaheagle.com/projects/treeloom-matrix/) (formerly Matrix DOM): grid and matrix geometry on top of treeloom, used by Cloakfall's boards and by this site's project grid
 - [Cloakfall](https://joshuaheagle.com/projects/cloakfall/) (formerly Battleship): a multiplayer, hidden-fleet game built on the whole stack ([play it](https://joshuaheagle.com/projects/cloakfall/play.html), [source](https://github.com/jheagle/cloakfall))
 
 ### Build tooling
@@ -47,5 +47,5 @@ Each project page links its generated API documentation at `<page>docs/`.
 
 ### Apps
 
-- [Quizzes](https://joshuaheagle.com/quizzes/): dynamic forms described as JSON DOM data, a form.io alternative
+- [Quizzes](https://joshuaheagle.com/quizzes/): dynamic forms described as treeloom data, a form.io alternative
 - [Workout Planner](https://joshuaheagle.com/projects/workout-planner/): an early, evolving idea for workout tracking ([source](https://github.com/jheagle/workout-planner))
