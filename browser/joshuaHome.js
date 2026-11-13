@@ -4258,9 +4258,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/tree/getTopParentItem.js
+  // node_modules/treeloom/dist/domItem/tree/getTopParentItem.js
   var require_getTopParentItem = __commonJS({
-    "node_modules/json-dom/dist/domItem/tree/getTopParentItem.js"(exports) {
+    "node_modules/treeloom/dist/domItem/tree/getTopParentItem.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4285,9 +4285,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/makeEventHandler.js
+  // node_modules/treeloom/dist/events/functions/makeEventHandler.js
   var require_makeEventHandler = __commonJS({
-    "node_modules/json-dom/dist/events/functions/makeEventHandler.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/makeEventHandler.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -4305,9 +4305,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/objects/createEventResponder.js
+  // node_modules/treeloom/dist/events/objects/createEventResponder.js
   var require_createEventResponder = __commonJS({
-    "node_modules/json-dom/dist/events/objects/createEventResponder.js"(exports) {
+    "node_modules/treeloom/dist/events/objects/createEventResponder.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -4330,9 +4330,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/objects/options/getListenerOptions.js
+  // node_modules/treeloom/dist/events/objects/options/getListenerOptions.js
   var require_getListenerOptions = __commonJS({
-    "node_modules/json-dom/dist/events/objects/options/getListenerOptions.js"(exports) {
+    "node_modules/treeloom/dist/events/objects/options/getListenerOptions.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -4352,9 +4352,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/objects/options/optionsToNumber.js
+  // node_modules/treeloom/dist/events/objects/options/optionsToNumber.js
   var require_optionsToNumber = __commonJS({
-    "node_modules/json-dom/dist/events/objects/options/optionsToNumber.js"(exports) {
+    "node_modules/treeloom/dist/events/objects/options/optionsToNumber.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4373,6 +4373,23 @@ var joshuaHome = (() => {
         return si_funciona_1.default.reduceObject(optionsTemplate, (binaryOptions, flag, name) => listenerOptions[name] ? binaryOptions | flag : binaryOptions, 0);
       };
       exports.default = optionsToNumber;
+    }
+  });
+
+  // node_modules/treeloom/dist/domItem/tree/appendChild.js
+  var require_appendChild = __commonJS({
+    "node_modules/treeloom/dist/domItem/tree/appendChild.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      var appendChild = (parent, child) => {
+        parent.children.push(child);
+        child.parentItem = parent;
+        return parent;
+      };
+      exports.default = appendChild;
     }
   });
 
@@ -4556,312 +4573,6 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/core-js/internals/get-iterator-direct.js
-  var require_get_iterator_direct = __commonJS({
-    "node_modules/core-js/internals/get-iterator-direct.js"(exports, module) {
-      "use strict";
-      init_process();
-      module.exports = function(obj) {
-        return {
-          iterator: obj,
-          next: obj.next,
-          done: false
-        };
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/define-built-ins.js
-  var require_define_built_ins = __commonJS({
-    "node_modules/core-js/internals/define-built-ins.js"(exports, module) {
-      "use strict";
-      init_process();
-      var defineBuiltIn = require_define_built_in();
-      module.exports = function(target, src, options) {
-        for (var key in src) defineBuiltIn(target, key, src[key], options);
-        return target;
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/create-iter-result-object.js
-  var require_create_iter_result_object = __commonJS({
-    "node_modules/core-js/internals/create-iter-result-object.js"(exports, module) {
-      "use strict";
-      init_process();
-      module.exports = function(value, done) {
-        return { value, done };
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/iterator-close.js
-  var require_iterator_close = __commonJS({
-    "node_modules/core-js/internals/iterator-close.js"(exports, module) {
-      "use strict";
-      init_process();
-      var call = require_function_call();
-      var anObject = require_an_object();
-      var getMethod = require_get_method();
-      module.exports = function(iterator, kind, value) {
-        var innerResult, innerError;
-        anObject(iterator);
-        try {
-          innerResult = getMethod(iterator, "return");
-          if (!innerResult) {
-            if (kind === "throw") throw value;
-            return value;
-          }
-          innerResult = call(innerResult, iterator);
-        } catch (error) {
-          innerError = true;
-          innerResult = error;
-        }
-        if (kind === "throw") throw value;
-        if (innerError) throw innerResult;
-        anObject(innerResult);
-        return value;
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/iterator-close-all.js
-  var require_iterator_close_all = __commonJS({
-    "node_modules/core-js/internals/iterator-close-all.js"(exports, module) {
-      "use strict";
-      init_process();
-      var iteratorClose = require_iterator_close();
-      module.exports = function(iters, kind, value) {
-        for (var i = iters.length - 1; i >= 0; i--) {
-          if (iters[i] === void 0) continue;
-          try {
-            value = iteratorClose(iters[i].iterator, kind, value);
-          } catch (error) {
-            kind = "throw";
-            value = error;
-          }
-        }
-        if (kind === "throw") throw value;
-        return value;
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/iterator-cleanup-state.js
-  var require_iterator_cleanup_state = __commonJS({
-    "node_modules/core-js/internals/iterator-cleanup-state.js"(exports, module) {
-      "use strict";
-      init_process();
-      module.exports = function(state) {
-        state.iterator = state.next = state.nextHandler = state.mapper = state.predicate = state.inner = state.iterables = state.iters = state.openIters = state.padding = state.finishResults = state.buffer = null;
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/iterator-create-proxy.js
-  var require_iterator_create_proxy = __commonJS({
-    "node_modules/core-js/internals/iterator-create-proxy.js"(exports, module) {
-      "use strict";
-      init_process();
-      var call = require_function_call();
-      var create = require_object_create();
-      var createNonEnumerableProperty = require_create_non_enumerable_property();
-      var defineBuiltIns = require_define_built_ins();
-      var wellKnownSymbol = require_well_known_symbol();
-      var InternalStateModule = require_internal_state();
-      var getMethod = require_get_method();
-      var IteratorPrototype = require_iterators_core().IteratorPrototype;
-      var createIterResultObject = require_create_iter_result_object();
-      var iteratorClose = require_iterator_close();
-      var iteratorCloseAll = require_iterator_close_all();
-      var cleanupState = require_iterator_cleanup_state();
-      var TO_STRING_TAG = wellKnownSymbol("toStringTag");
-      var ITERATOR_HELPER = "IteratorHelper";
-      var WRAP_FOR_VALID_ITERATOR = "WrapForValidIterator";
-      var NORMAL = "normal";
-      var THROW = "throw";
-      var setInternalState = InternalStateModule.set;
-      var createIteratorProxyPrototype = function(IS_ITERATOR) {
-        var getInternalState = InternalStateModule.getterFor(IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER);
-        return defineBuiltIns(create(IteratorPrototype), {
-          next: function next() {
-            var state = getInternalState(this);
-            if (IS_ITERATOR) return state.nextHandler();
-            if (state.done) return createIterResultObject(void 0, true);
-            try {
-              var result = state.nextHandler();
-              if (state.done) cleanupState(state);
-              return state.returnHandlerResult ? result : createIterResultObject(result, state.done);
-            } catch (error) {
-              state.done = true;
-              cleanupState(state);
-              throw error;
-            }
-          },
-          "return": function() {
-            var state = getInternalState(this);
-            var iterator = state.iterator;
-            var inner = state.inner;
-            var openIters = state.openIters;
-            var done = state.done;
-            state.done = true;
-            if (IS_ITERATOR) {
-              var returnMethod = getMethod(iterator, "return");
-              return returnMethod ? call(returnMethod, iterator) : createIterResultObject(void 0, true);
-            }
-            cleanupState(state);
-            if (done) return createIterResultObject(void 0, true);
-            if (inner) try {
-              iteratorClose(inner.iterator, NORMAL);
-            } catch (error) {
-              return iteratorClose(iterator, THROW, error);
-            }
-            if (openIters) try {
-              iteratorCloseAll(openIters, NORMAL);
-            } catch (error) {
-              if (iterator) return iteratorClose(iterator, THROW, error);
-              throw error;
-            }
-            if (iterator) iteratorClose(iterator, NORMAL);
-            return createIterResultObject(void 0, true);
-          }
-        });
-      };
-      var WrapForValidIteratorPrototype = createIteratorProxyPrototype(true);
-      var IteratorHelperPrototype = createIteratorProxyPrototype(false);
-      createNonEnumerableProperty(IteratorHelperPrototype, TO_STRING_TAG, "Iterator Helper");
-      module.exports = function(nextHandler, IS_ITERATOR, RETURN_HANDLER_RESULT) {
-        var IteratorProxy = function Iterator2(record, state) {
-          if (state) {
-            state.iterator = record.iterator;
-            state.next = record.next;
-          } else state = record;
-          state.type = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
-          state.returnHandlerResult = !!RETURN_HANDLER_RESULT;
-          state.nextHandler = nextHandler;
-          state.counter = 0;
-          state.done = false;
-          setInternalState(this, state);
-        };
-        IteratorProxy.prototype = IS_ITERATOR ? WrapForValidIteratorPrototype : IteratorHelperPrototype;
-        return IteratorProxy;
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/call-with-safe-iteration-closing.js
-  var require_call_with_safe_iteration_closing = __commonJS({
-    "node_modules/core-js/internals/call-with-safe-iteration-closing.js"(exports, module) {
-      "use strict";
-      init_process();
-      var anObject = require_an_object();
-      var iteratorClose = require_iterator_close();
-      module.exports = function(iterator, fn, value, ENTRIES) {
-        try {
-          return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
-        } catch (error) {
-          iteratorClose(iterator, "throw", error);
-        }
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/iterator-helper-throws-on-invalid-iterator.js
-  var require_iterator_helper_throws_on_invalid_iterator = __commonJS({
-    "node_modules/core-js/internals/iterator-helper-throws-on-invalid-iterator.js"(exports, module) {
-      "use strict";
-      init_process();
-      module.exports = function(methodName, argument) {
-        var method = typeof Iterator == "function" && Iterator.prototype[methodName];
-        if (method) try {
-          method.call({ next: null }, argument).next();
-        } catch (error) {
-          return true;
-        }
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/iterator-helper-without-closing-on-early-error.js
-  var require_iterator_helper_without_closing_on_early_error = __commonJS({
-    "node_modules/core-js/internals/iterator-helper-without-closing-on-early-error.js"(exports, module) {
-      "use strict";
-      init_process();
-      var globalThis2 = require_global_this();
-      module.exports = function(METHOD_NAME, ExpectedError) {
-        var Iterator2 = globalThis2.Iterator;
-        var IteratorPrototype = Iterator2 && Iterator2.prototype;
-        var method = IteratorPrototype && IteratorPrototype[METHOD_NAME];
-        var CLOSED = false;
-        if (method) try {
-          method.call({
-            next: function() {
-              return { done: true };
-            },
-            "return": function() {
-              CLOSED = true;
-            }
-          }, -1);
-        } catch (error) {
-          if (!(error instanceof ExpectedError)) CLOSED = false;
-        }
-        if (!CLOSED) return method;
-      };
-    }
-  });
-
-  // node_modules/core-js/modules/es.iterator.map.js
-  var require_es_iterator_map = __commonJS({
-    "node_modules/core-js/modules/es.iterator.map.js"() {
-      "use strict";
-      init_process();
-      var $ = require_export();
-      var call = require_function_call();
-      var aCallable = require_a_callable();
-      var anObject = require_an_object();
-      var getIteratorDirect = require_get_iterator_direct();
-      var createIteratorProxy = require_iterator_create_proxy();
-      var callWithSafeIterationClosing = require_call_with_safe_iteration_closing();
-      var iteratorClose = require_iterator_close();
-      var iteratorHelperThrowsOnInvalidIterator = require_iterator_helper_throws_on_invalid_iterator();
-      var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
-      var IS_PURE = require_is_pure();
-      var MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator("map", function() {
-      });
-      var mapWithoutClosingOnEarlyError = !IS_PURE && !MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError("map", TypeError);
-      var FORCED = IS_PURE || MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR || mapWithoutClosingOnEarlyError;
-      var IteratorProxy = createIteratorProxy(function() {
-        var iterator = this.iterator;
-        var result = anObject(call(this.next, iterator));
-        var done = this.done = !!result.done;
-        if (!done) return callWithSafeIterationClosing(iterator, this.mapper, [result.value, this.counter++], true);
-      });
-      $({ target: "Iterator", proto: true, real: true, forced: FORCED }, {
-        map: function map(mapper) {
-          anObject(this);
-          try {
-            aCallable(mapper);
-          } catch (error) {
-            iteratorClose(this, "throw", error);
-          }
-          if (mapWithoutClosingOnEarlyError) return call(mapWithoutClosingOnEarlyError, this, mapper);
-          return new IteratorProxy(getIteratorDirect(this), {
-            mapper
-          });
-        }
-      });
-    }
-  });
-
-  // node_modules/core-js/modules/esnext.iterator.map.js
-  var require_esnext_iterator_map = __commonJS({
-    "node_modules/core-js/modules/esnext.iterator.map.js"() {
-      "use strict";
-      init_process();
-      require_es_iterator_map();
-    }
-  });
-
   // node_modules/core-js/internals/function-uncurry-this-clause.js
   var require_function_uncurry_this_clause = __commonJS({
     "node_modules/core-js/internals/function-uncurry-this-clause.js"(exports, module) {
@@ -4953,6 +4664,36 @@ var joshuaHome = (() => {
     }
   });
 
+  // node_modules/core-js/internals/iterator-close.js
+  var require_iterator_close = __commonJS({
+    "node_modules/core-js/internals/iterator-close.js"(exports, module) {
+      "use strict";
+      init_process();
+      var call = require_function_call();
+      var anObject = require_an_object();
+      var getMethod = require_get_method();
+      module.exports = function(iterator, kind, value) {
+        var innerResult, innerError;
+        anObject(iterator);
+        try {
+          innerResult = getMethod(iterator, "return");
+          if (!innerResult) {
+            if (kind === "throw") throw value;
+            return value;
+          }
+          innerResult = call(innerResult, iterator);
+        } catch (error) {
+          innerError = true;
+          innerResult = error;
+        }
+        if (kind === "throw") throw value;
+        if (innerError) throw innerResult;
+        anObject(innerResult);
+        return value;
+      };
+    }
+  });
+
   // node_modules/core-js/internals/iterate.js
   var require_iterate = __commonJS({
     "node_modules/core-js/internals/iterate.js"(exports, module) {
@@ -5027,62 +4768,46 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/core-js/modules/es.iterator.for-each.js
-  var require_es_iterator_for_each = __commonJS({
-    "node_modules/core-js/modules/es.iterator.for-each.js"() {
+  // node_modules/core-js/internals/get-iterator-direct.js
+  var require_get_iterator_direct = __commonJS({
+    "node_modules/core-js/internals/get-iterator-direct.js"(exports, module) {
       "use strict";
       init_process();
-      var $ = require_export();
-      var call = require_function_call();
-      var iterate = require_iterate();
-      var aCallable = require_a_callable();
-      var anObject = require_an_object();
-      var getIteratorDirect = require_get_iterator_direct();
-      var iteratorClose = require_iterator_close();
-      var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
-      var forEachWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError("forEach", TypeError);
-      $({ target: "Iterator", proto: true, real: true, forced: forEachWithoutClosingOnEarlyError }, {
-        forEach: function forEach(fn) {
-          anObject(this);
-          try {
-            aCallable(fn);
-          } catch (error) {
-            iteratorClose(this, "throw", error);
-          }
-          if (forEachWithoutClosingOnEarlyError) return call(forEachWithoutClosingOnEarlyError, this, fn);
-          var record = getIteratorDirect(this);
-          var counter = 0;
-          iterate(record, function(value) {
-            fn(value, counter++);
-          }, { IS_RECORD: true });
-        }
-      });
-    }
-  });
-
-  // node_modules/core-js/modules/esnext.iterator.for-each.js
-  var require_esnext_iterator_for_each = __commonJS({
-    "node_modules/core-js/modules/esnext.iterator.for-each.js"() {
-      "use strict";
-      init_process();
-      require_es_iterator_for_each();
-    }
-  });
-
-  // node_modules/json-dom/dist/domItem/tree/appendChild.js
-  var require_appendChild = __commonJS({
-    "node_modules/json-dom/dist/domItem/tree/appendChild.js"(exports) {
-      "use strict";
-      init_process();
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      var appendChild = (parent, child) => {
-        parent.children.push(child);
-        child.parentItem = parent;
-        return parent;
+      module.exports = function(obj) {
+        return {
+          iterator: obj,
+          next: obj.next,
+          done: false
+        };
       };
-      exports.default = appendChild;
+    }
+  });
+
+  // node_modules/core-js/internals/iterator-helper-without-closing-on-early-error.js
+  var require_iterator_helper_without_closing_on_early_error = __commonJS({
+    "node_modules/core-js/internals/iterator-helper-without-closing-on-early-error.js"(exports, module) {
+      "use strict";
+      init_process();
+      var globalThis2 = require_global_this();
+      module.exports = function(METHOD_NAME, ExpectedError) {
+        var Iterator2 = globalThis2.Iterator;
+        var IteratorPrototype = Iterator2 && Iterator2.prototype;
+        var method = IteratorPrototype && IteratorPrototype[METHOD_NAME];
+        var CLOSED = false;
+        if (method) try {
+          method.call({
+            next: function() {
+              return { done: true };
+            },
+            "return": function() {
+              CLOSED = true;
+            }
+          }, -1);
+        } catch (error) {
+          if (!(error instanceof ExpectedError)) CLOSED = false;
+        }
+        if (!CLOSED) return method;
+      };
     }
   });
 
@@ -5547,6 +5272,48 @@ var joshuaHome = (() => {
         head: null,
         tail: null
       });
+    }
+  });
+
+  // node_modules/core-js/modules/es.iterator.for-each.js
+  var require_es_iterator_for_each = __commonJS({
+    "node_modules/core-js/modules/es.iterator.for-each.js"() {
+      "use strict";
+      init_process();
+      var $ = require_export();
+      var call = require_function_call();
+      var iterate = require_iterate();
+      var aCallable = require_a_callable();
+      var anObject = require_an_object();
+      var getIteratorDirect = require_get_iterator_direct();
+      var iteratorClose = require_iterator_close();
+      var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
+      var forEachWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError("forEach", TypeError);
+      $({ target: "Iterator", proto: true, real: true, forced: forEachWithoutClosingOnEarlyError }, {
+        forEach: function forEach(fn) {
+          anObject(this);
+          try {
+            aCallable(fn);
+          } catch (error) {
+            iteratorClose(this, "throw", error);
+          }
+          if (forEachWithoutClosingOnEarlyError) return call(forEachWithoutClosingOnEarlyError, this, fn);
+          var record = getIteratorDirect(this);
+          var counter = 0;
+          iterate(record, function(value) {
+            fn(value, counter++);
+          }, { IS_RECORD: true });
+        }
+      });
+    }
+  });
+
+  // node_modules/core-js/modules/esnext.iterator.for-each.js
+  var require_esnext_iterator_for_each = __commonJS({
+    "node_modules/core-js/modules/esnext.iterator.for-each.js"() {
+      "use strict";
+      init_process();
+      require_es_iterator_for_each();
     }
   });
 
@@ -6133,6 +5900,239 @@ var joshuaHome = (() => {
       DoublyLinkedList.fromArray = (values = [], linkerClass = _DoubleLinker.DoubleLinker, classType = DoublyLinkedList) => {
         return _LinkedList.LinkedList.fromArray(values, linkerClass, classType);
       };
+    }
+  });
+
+  // node_modules/core-js/internals/define-built-ins.js
+  var require_define_built_ins = __commonJS({
+    "node_modules/core-js/internals/define-built-ins.js"(exports, module) {
+      "use strict";
+      init_process();
+      var defineBuiltIn = require_define_built_in();
+      module.exports = function(target, src, options) {
+        for (var key in src) defineBuiltIn(target, key, src[key], options);
+        return target;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/create-iter-result-object.js
+  var require_create_iter_result_object = __commonJS({
+    "node_modules/core-js/internals/create-iter-result-object.js"(exports, module) {
+      "use strict";
+      init_process();
+      module.exports = function(value, done) {
+        return { value, done };
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/iterator-close-all.js
+  var require_iterator_close_all = __commonJS({
+    "node_modules/core-js/internals/iterator-close-all.js"(exports, module) {
+      "use strict";
+      init_process();
+      var iteratorClose = require_iterator_close();
+      module.exports = function(iters, kind, value) {
+        for (var i = iters.length - 1; i >= 0; i--) {
+          if (iters[i] === void 0) continue;
+          try {
+            value = iteratorClose(iters[i].iterator, kind, value);
+          } catch (error) {
+            kind = "throw";
+            value = error;
+          }
+        }
+        if (kind === "throw") throw value;
+        return value;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/iterator-cleanup-state.js
+  var require_iterator_cleanup_state = __commonJS({
+    "node_modules/core-js/internals/iterator-cleanup-state.js"(exports, module) {
+      "use strict";
+      init_process();
+      module.exports = function(state) {
+        state.iterator = state.next = state.nextHandler = state.mapper = state.predicate = state.inner = state.iterables = state.iters = state.openIters = state.padding = state.finishResults = state.buffer = null;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/iterator-create-proxy.js
+  var require_iterator_create_proxy = __commonJS({
+    "node_modules/core-js/internals/iterator-create-proxy.js"(exports, module) {
+      "use strict";
+      init_process();
+      var call = require_function_call();
+      var create = require_object_create();
+      var createNonEnumerableProperty = require_create_non_enumerable_property();
+      var defineBuiltIns = require_define_built_ins();
+      var wellKnownSymbol = require_well_known_symbol();
+      var InternalStateModule = require_internal_state();
+      var getMethod = require_get_method();
+      var IteratorPrototype = require_iterators_core().IteratorPrototype;
+      var createIterResultObject = require_create_iter_result_object();
+      var iteratorClose = require_iterator_close();
+      var iteratorCloseAll = require_iterator_close_all();
+      var cleanupState = require_iterator_cleanup_state();
+      var TO_STRING_TAG = wellKnownSymbol("toStringTag");
+      var ITERATOR_HELPER = "IteratorHelper";
+      var WRAP_FOR_VALID_ITERATOR = "WrapForValidIterator";
+      var NORMAL = "normal";
+      var THROW = "throw";
+      var setInternalState = InternalStateModule.set;
+      var createIteratorProxyPrototype = function(IS_ITERATOR) {
+        var getInternalState = InternalStateModule.getterFor(IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER);
+        return defineBuiltIns(create(IteratorPrototype), {
+          next: function next() {
+            var state = getInternalState(this);
+            if (IS_ITERATOR) return state.nextHandler();
+            if (state.done) return createIterResultObject(void 0, true);
+            try {
+              var result = state.nextHandler();
+              if (state.done) cleanupState(state);
+              return state.returnHandlerResult ? result : createIterResultObject(result, state.done);
+            } catch (error) {
+              state.done = true;
+              cleanupState(state);
+              throw error;
+            }
+          },
+          "return": function() {
+            var state = getInternalState(this);
+            var iterator = state.iterator;
+            var inner = state.inner;
+            var openIters = state.openIters;
+            var done = state.done;
+            state.done = true;
+            if (IS_ITERATOR) {
+              var returnMethod = getMethod(iterator, "return");
+              return returnMethod ? call(returnMethod, iterator) : createIterResultObject(void 0, true);
+            }
+            cleanupState(state);
+            if (done) return createIterResultObject(void 0, true);
+            if (inner) try {
+              iteratorClose(inner.iterator, NORMAL);
+            } catch (error) {
+              return iteratorClose(iterator, THROW, error);
+            }
+            if (openIters) try {
+              iteratorCloseAll(openIters, NORMAL);
+            } catch (error) {
+              if (iterator) return iteratorClose(iterator, THROW, error);
+              throw error;
+            }
+            if (iterator) iteratorClose(iterator, NORMAL);
+            return createIterResultObject(void 0, true);
+          }
+        });
+      };
+      var WrapForValidIteratorPrototype = createIteratorProxyPrototype(true);
+      var IteratorHelperPrototype = createIteratorProxyPrototype(false);
+      createNonEnumerableProperty(IteratorHelperPrototype, TO_STRING_TAG, "Iterator Helper");
+      module.exports = function(nextHandler, IS_ITERATOR, RETURN_HANDLER_RESULT) {
+        var IteratorProxy = function Iterator2(record, state) {
+          if (state) {
+            state.iterator = record.iterator;
+            state.next = record.next;
+          } else state = record;
+          state.type = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
+          state.returnHandlerResult = !!RETURN_HANDLER_RESULT;
+          state.nextHandler = nextHandler;
+          state.counter = 0;
+          state.done = false;
+          setInternalState(this, state);
+        };
+        IteratorProxy.prototype = IS_ITERATOR ? WrapForValidIteratorPrototype : IteratorHelperPrototype;
+        return IteratorProxy;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/call-with-safe-iteration-closing.js
+  var require_call_with_safe_iteration_closing = __commonJS({
+    "node_modules/core-js/internals/call-with-safe-iteration-closing.js"(exports, module) {
+      "use strict";
+      init_process();
+      var anObject = require_an_object();
+      var iteratorClose = require_iterator_close();
+      module.exports = function(iterator, fn, value, ENTRIES) {
+        try {
+          return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
+        } catch (error) {
+          iteratorClose(iterator, "throw", error);
+        }
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/iterator-helper-throws-on-invalid-iterator.js
+  var require_iterator_helper_throws_on_invalid_iterator = __commonJS({
+    "node_modules/core-js/internals/iterator-helper-throws-on-invalid-iterator.js"(exports, module) {
+      "use strict";
+      init_process();
+      module.exports = function(methodName, argument) {
+        var method = typeof Iterator == "function" && Iterator.prototype[methodName];
+        if (method) try {
+          method.call({ next: null }, argument).next();
+        } catch (error) {
+          return true;
+        }
+      };
+    }
+  });
+
+  // node_modules/core-js/modules/es.iterator.map.js
+  var require_es_iterator_map = __commonJS({
+    "node_modules/core-js/modules/es.iterator.map.js"() {
+      "use strict";
+      init_process();
+      var $ = require_export();
+      var call = require_function_call();
+      var aCallable = require_a_callable();
+      var anObject = require_an_object();
+      var getIteratorDirect = require_get_iterator_direct();
+      var createIteratorProxy = require_iterator_create_proxy();
+      var callWithSafeIterationClosing = require_call_with_safe_iteration_closing();
+      var iteratorClose = require_iterator_close();
+      var iteratorHelperThrowsOnInvalidIterator = require_iterator_helper_throws_on_invalid_iterator();
+      var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
+      var IS_PURE = require_is_pure();
+      var MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator("map", function() {
+      });
+      var mapWithoutClosingOnEarlyError = !IS_PURE && !MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError("map", TypeError);
+      var FORCED = IS_PURE || MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR || mapWithoutClosingOnEarlyError;
+      var IteratorProxy = createIteratorProxy(function() {
+        var iterator = this.iterator;
+        var result = anObject(call(this.next, iterator));
+        var done = this.done = !!result.done;
+        if (!done) return callWithSafeIterationClosing(iterator, this.mapper, [result.value, this.counter++], true);
+      });
+      $({ target: "Iterator", proto: true, real: true, forced: FORCED }, {
+        map: function map(mapper) {
+          anObject(this);
+          try {
+            aCallable(mapper);
+          } catch (error) {
+            iteratorClose(this, "throw", error);
+          }
+          if (mapWithoutClosingOnEarlyError) return call(mapWithoutClosingOnEarlyError, this, mapper);
+          return new IteratorProxy(getIteratorDirect(this), {
+            mapper
+          });
+        }
+      });
+    }
+  });
+
+  // node_modules/core-js/modules/esnext.iterator.map.js
+  var require_esnext_iterator_map = __commonJS({
+    "node_modules/core-js/modules/esnext.iterator.map.js"() {
+      "use strict";
+      init_process();
+      require_es_iterator_map();
     }
   });
 
@@ -7877,13 +7877,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/tree/itemIdIndex.js
+  // node_modules/treeloom/dist/domItem/tree/itemIdIndex.js
   var require_itemIdIndex = __commonJS({
-    "node_modules/json-dom/dist/domItem/tree/itemIdIndex.js"(exports) {
+    "node_modules/treeloom/dist/domItem/tree/itemIdIndex.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -7942,9 +7940,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/tree/removeChild.js
+  // node_modules/treeloom/dist/domItem/tree/removeChild.js
   var require_removeChild = __commonJS({
-    "node_modules/json-dom/dist/domItem/tree/removeChild.js"(exports) {
+    "node_modules/treeloom/dist/domItem/tree/removeChild.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -7960,13 +7958,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/objects/createCoreItem.js
+  // node_modules/treeloom/dist/domItem/objects/createCoreItem.js
   var require_createCoreItem = __commonJS({
-    "node_modules/json-dom/dist/domItem/objects/createCoreItem.js"(exports) {
+    "node_modules/treeloom/dist/domItem/objects/createCoreItem.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -8012,24 +8008,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/traits/definitions.js
+  // node_modules/treeloom/dist/domItem/traits/definitions.js
   var require_definitions = __commonJS({
-    "node_modules/json-dom/dist/domItem/traits/definitions.js"(exports) {
+    "node_modules/treeloom/dist/domItem/traits/definitions.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_map_delete_all();
-      require_esnext_map_every();
-      require_esnext_map_filter();
-      require_esnext_map_find();
-      require_esnext_map_find_key();
-      require_esnext_map_includes();
-      require_esnext_map_key_of();
-      require_esnext_map_map_keys();
-      require_esnext_map_map_values();
-      require_esnext_map_merge();
-      require_esnext_map_reduce();
-      require_esnext_map_some();
-      require_esnext_map_update();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -8044,9 +8027,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/traits/withTrait.js
+  // node_modules/treeloom/dist/domItem/traits/withTrait.js
   var require_withTrait = __commonJS({
-    "node_modules/json-dom/dist/domItem/traits/withTrait.js"(exports) {
+    "node_modules/treeloom/dist/domItem/traits/withTrait.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -8069,13 +8052,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/objects/createDomItem.js
+  // node_modules/treeloom/dist/domItem/objects/createDomItem.js
   var require_createDomItem = __commonJS({
-    "node_modules/json-dom/dist/domItem/objects/createDomItem.js"(exports) {
+    "node_modules/treeloom/dist/domItem/objects/createDomItem.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -8103,9 +8084,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/objects/initChildren.js
+  // node_modules/treeloom/dist/domItem/objects/initChildren.js
   var require_initChildren = __commonJS({
-    "node_modules/json-dom/dist/domItem/objects/initChildren.js"(exports) {
+    "node_modules/treeloom/dist/domItem/objects/initChildren.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -8147,9 +8128,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/objects/initRoot.js
+  // node_modules/treeloom/dist/domItem/objects/initRoot.js
   var require_initRoot = __commonJS({
-    "node_modules/json-dom/dist/domItem/objects/initRoot.js"(exports) {
+    "node_modules/treeloom/dist/domItem/objects/initRoot.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -8177,56 +8158,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/core-js/modules/es.iterator.find.js
-  var require_es_iterator_find = __commonJS({
-    "node_modules/core-js/modules/es.iterator.find.js"() {
-      "use strict";
-      init_process();
-      var $ = require_export();
-      var call = require_function_call();
-      var iterate = require_iterate();
-      var aCallable = require_a_callable();
-      var anObject = require_an_object();
-      var getIteratorDirect = require_get_iterator_direct();
-      var iteratorClose = require_iterator_close();
-      var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
-      var findWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError("find", TypeError);
-      $({ target: "Iterator", proto: true, real: true, forced: findWithoutClosingOnEarlyError }, {
-        find: function find(predicate) {
-          anObject(this);
-          try {
-            aCallable(predicate);
-          } catch (error) {
-            iteratorClose(this, "throw", error);
-          }
-          if (findWithoutClosingOnEarlyError) return call(findWithoutClosingOnEarlyError, this, predicate);
-          var record = getIteratorDirect(this);
-          var counter = 0;
-          return iterate(record, function(value, stop) {
-            if (predicate(value, counter++)) return stop(value);
-          }, { IS_RECORD: true, INTERRUPTED: true }).result;
-        }
-      });
-    }
-  });
-
-  // node_modules/core-js/modules/esnext.iterator.find.js
-  var require_esnext_iterator_find = __commonJS({
-    "node_modules/core-js/modules/esnext.iterator.find.js"() {
-      "use strict";
-      init_process();
-      require_es_iterator_find();
-    }
-  });
-
-  // node_modules/json-dom/dist/sync/updateChildren.js
+  // node_modules/treeloom/dist/sync/updateChildren.js
   var require_updateChildren = __commonJS({
-    "node_modules/json-dom/dist/sync/updateChildren.js"(exports) {
+    "node_modules/treeloom/dist/sync/updateChildren.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_find();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -8259,9 +8195,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/diff/getAssignedStyles.js
+  // node_modules/treeloom/dist/diff/getAssignedStyles.js
   var require_getAssignedStyles = __commonJS({
-    "node_modules/json-dom/dist/diff/getAssignedStyles.js"(exports) {
+    "node_modules/treeloom/dist/diff/getAssignedStyles.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -8278,13 +8214,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/diff/domItemHasAttribute.js
+  // node_modules/treeloom/dist/diff/domItemHasAttribute.js
   var require_domItemHasAttribute = __commonJS({
-    "node_modules/json-dom/dist/diff/domItemHasAttribute.js"(exports) {
+    "node_modules/treeloom/dist/diff/domItemHasAttribute.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_map();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -8329,9 +8263,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/diff/createChangeList.js
+  // node_modules/treeloom/dist/diff/createChangeList.js
   var require_createChangeList = __commonJS({
-    "node_modules/json-dom/dist/diff/createChangeList.js"(exports) {
+    "node_modules/treeloom/dist/diff/createChangeList.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
@@ -8365,13 +8299,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/diff/elementChanges.js
+  // node_modules/treeloom/dist/diff/elementChanges.js
   var require_elementChanges = __commonJS({
-    "node_modules/json-dom/dist/diff/elementChanges.js"(exports) {
+    "node_modules/treeloom/dist/diff/elementChanges.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_reduce();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -8504,9 +8436,107 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/sync/updateDomItem.js
+  // node_modules/treeloom/dist/diff/appliedSnapshot.js
+  var require_appliedSnapshot = __commonJS({
+    "node_modules/treeloom/dist/diff/appliedSnapshot.js"(exports) {
+      "use strict";
+      init_process();
+      require_es_array_includes();
+      var __importDefault = function(mod) {
+        return mod && mod.__esModule ? mod : {
+          "default": mod
+        };
+      };
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.changesFromApplied = exports.forgetApplied = exports.recordApplied = void 0;
+      var si_funciona_1 = __importDefault(require_main());
+      var createChangeList_1 = __importDefault(require_createChangeList());
+      var LIVE_PROPERTIES = ["value", "checked", "selected", "indeterminate"];
+      var snapshots = /* @__PURE__ */ new WeakMap();
+      var canSnapshot = (domItem) => typeof domItem.attributes.style === "undefined" || si_funciona_1.default.isObject(domItem.attributes.style);
+      var classNames = (className) => typeof className === "string" ? className.split(/\s+/).filter(Boolean) : [];
+      var describe = (domItem) => {
+        const snapshot = {
+          attributes: {},
+          classes: [],
+          style: {}
+        };
+        for (const name in domItem.attributes) {
+          const value = domItem.attributes[name];
+          if (name === "className") {
+            snapshot.classes = classNames(value);
+            continue;
+          }
+          if (name === "style") {
+            for (const property in value) {
+              snapshot.style[si_funciona_1.default.kabobCase(property)] = value[property];
+            }
+            continue;
+          }
+          snapshot.attributes[si_funciona_1.default.kabobCase(name)] = value;
+        }
+        return snapshot;
+      };
+      var recordApplied = (domItem) => {
+        if (!domItem.element || domItem.nodeValue !== null || !canSnapshot(domItem)) {
+          return;
+        }
+        snapshots.set(domItem.element, describe(domItem));
+      };
+      exports.recordApplied = recordApplied;
+      var forgetApplied = (element) => {
+        if (element) {
+          snapshots.delete(element);
+        }
+      };
+      exports.forgetApplied = forgetApplied;
+      var changesFromApplied = (domItem, propertyName) => {
+        const previous = domItem.element ? snapshots.get(domItem.element) : void 0;
+        if (!previous || domItem.nodeValue !== null || !canSnapshot(domItem)) {
+          return void 0;
+        }
+        const next = describe(domItem);
+        const changes = (0, createChangeList_1.default)();
+        const element = domItem.element;
+        for (const key in next.attributes) {
+          const live = LIVE_PROPERTIES.includes(key) && key in element;
+          const current = live ? element[key] : previous.attributes[key];
+          const differs = live && typeof current === "string" ? String(next.attributes[key] ?? "") !== current : next.attributes[key] !== current;
+          if (differs) {
+            changes.added[propertyName(key)] = next.attributes[key];
+          }
+        }
+        previous.classes.forEach((name, index) => {
+          if (!next.classes.includes(name)) {
+            changes.removed[`class.${index}`] = name;
+          }
+        });
+        next.classes.forEach((name, index) => {
+          if (!previous.classes.includes(name)) {
+            changes.added[`class.${index}`] = name;
+          }
+        });
+        for (const property in previous.style) {
+          if (!(property in next.style)) {
+            changes.removed[`style.${property}`] = previous.style[property];
+          }
+        }
+        for (const property in next.style) {
+          if (next.style[property] !== previous.style[property]) {
+            changes.added[`style.${property}`] = next.style[property];
+          }
+        }
+        return changes;
+      };
+      exports.changesFromApplied = changesFromApplied;
+    }
+  });
+
+  // node_modules/treeloom/dist/sync/updateDomItem.js
   var require_updateDomItem = __commonJS({
-    "node_modules/json-dom/dist/sync/updateDomItem.js"(exports) {
+    "node_modules/treeloom/dist/sync/updateDomItem.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -8519,6 +8549,7 @@ var joshuaHome = (() => {
       });
       var si_funciona_1 = __importDefault(require_main());
       var elementChanges_1 = __importDefault(require_elementChanges());
+      var appliedSnapshot_1 = require_appliedSnapshot();
       var updateDomItem = (config) => {
         if (!config.element) {
           return config;
@@ -8544,19 +8575,18 @@ var joshuaHome = (() => {
           }
           si_funciona_1.default.dotSet(config, dotKey, changes.added[dotKey]);
         }
+        (0, appliedSnapshot_1.forgetApplied)(config.element);
         return config;
       };
       exports.default = updateDomItem;
     }
   });
 
-  // node_modules/json-dom/dist/sync/updateDomItems.js
+  // node_modules/treeloom/dist/sync/updateDomItems.js
   var require_updateDomItems = __commonJS({
-    "node_modules/json-dom/dist/sync/updateDomItems.js"(exports) {
+    "node_modules/treeloom/dist/sync/updateDomItems.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -8582,13 +8612,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/objects/documentDomItem.js
+  // node_modules/treeloom/dist/domItem/objects/documentDomItem.js
   var require_documentDomItem = __commonJS({
-    "node_modules/json-dom/dist/domItem/objects/documentDomItem.js"(exports) {
+    "node_modules/treeloom/dist/domItem/objects/documentDomItem.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_map();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -8615,9 +8643,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/objects/documentItem.js
+  // node_modules/treeloom/dist/domItem/objects/documentItem.js
   var require_documentItem = __commonJS({
-    "node_modules/json-dom/dist/domItem/objects/documentItem.js"(exports) {
+    "node_modules/treeloom/dist/domItem/objects/documentItem.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -8628,21 +8656,27 @@ var joshuaHome = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
+      exports.withDocumentItem = void 0;
       var documentDomItem_1 = __importDefault(require_documentDomItem());
       var existingItem = null;
-      var documentItem = (() => {
+      var getDocumentItem = () => {
         if (existingItem === null) {
           existingItem = (0, documentDomItem_1.default)();
         }
         return existingItem;
-      })();
-      exports.default = documentItem;
+      };
+      var withDocumentItem = (api) => Object.defineProperty(api, "documentItem", {
+        enumerable: true,
+        get: getDocumentItem
+      });
+      exports.withDocumentItem = withDocumentItem;
+      exports.default = getDocumentItem;
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/makeForwardingListener.js
+  // node_modules/treeloom/dist/events/functions/makeForwardingListener.js
   var require_makeForwardingListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/makeForwardingListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/makeForwardingListener.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
@@ -8672,9 +8706,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/retrieveListener.js
+  // node_modules/treeloom/dist/events/functions/retrieveListener.js
   var require_retrieveListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/retrieveListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/retrieveListener.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
@@ -8688,7 +8722,7 @@ var joshuaHome = (() => {
       });
       var documentItem_1 = __importDefault(require_documentItem());
       var makeForwardingListener_1 = __importDefault(require_makeForwardingListener());
-      var retrieveListener = (listenerName, parent = documentItem_1.default) => {
+      var retrieveListener = (listenerName, parent = (0, documentItem_1.default)()) => {
         if (typeof listenerName === "function") {
           return listenerName;
         }
@@ -8704,9 +8738,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/activateListener.js
+  // node_modules/treeloom/dist/events/functions/activateListener.js
   var require_activateListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/activateListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/activateListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -8746,9 +8780,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/objects/createEventListener.js
+  // node_modules/treeloom/dist/events/objects/createEventListener.js
   var require_createEventListener = __commonJS({
-    "node_modules/json-dom/dist/events/objects/createEventListener.js"(exports) {
+    "node_modules/treeloom/dist/events/objects/createEventListener.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -8769,9 +8803,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/addEventListener.js
+  // node_modules/treeloom/dist/events/functions/addEventListener.js
   var require_addEventListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/addEventListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/addEventListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -8806,9 +8840,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/objects/options/numberToOptions.js
+  // node_modules/treeloom/dist/events/objects/options/numberToOptions.js
   var require_numberToOptions = __commonJS({
-    "node_modules/json-dom/dist/events/objects/options/numberToOptions.js"(exports) {
+    "node_modules/treeloom/dist/events/objects/options/numberToOptions.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -8825,9 +8859,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/listenerOptions.js
+  // node_modules/treeloom/dist/events/functions/listenerOptions.js
   var require_listenerOptions = __commonJS({
-    "node_modules/json-dom/dist/events/functions/listenerOptions.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/listenerOptions.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -8852,9 +8886,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/assignListener.js
+  // node_modules/treeloom/dist/events/functions/assignListener.js
   var require_assignListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/assignListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/assignListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -8881,9 +8915,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getItemByElement.js
+  // node_modules/treeloom/dist/domItem/query/getItemByElement.js
   var require_getItemByElement = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getItemByElement.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getItemByElement.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -8905,9 +8939,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/objects/createEventProxy.js
+  // node_modules/treeloom/dist/events/objects/createEventProxy.js
   var require_createEventProxy = __commonJS({
-    "node_modules/json-dom/dist/events/objects/createEventProxy.js"(exports) {
+    "node_modules/treeloom/dist/events/objects/createEventProxy.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -8948,13 +8982,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/applyActiveListeners.js
+  // node_modules/treeloom/dist/events/functions/applyActiveListeners.js
   var require_applyActiveListeners = __commonJS({
-    "node_modules/json-dom/dist/events/functions/applyActiveListeners.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/applyActiveListeners.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -8998,13 +9030,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/bindElementListeners.js
+  // node_modules/treeloom/dist/events/functions/bindElementListeners.js
   var require_bindElementListeners = __commonJS({
-    "node_modules/json-dom/dist/events/functions/bindElementListeners.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/bindElementListeners.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -9033,9 +9063,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/bindListeners.js
+  // node_modules/treeloom/dist/events/functions/bindListeners.js
   var require_bindListeners = __commonJS({
-    "node_modules/json-dom/dist/events/functions/bindListeners.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/bindListeners.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9053,9 +9083,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/bindAllListeners.js
+  // node_modules/treeloom/dist/events/functions/bindAllListeners.js
   var require_bindAllListeners = __commonJS({
-    "node_modules/json-dom/dist/events/functions/bindAllListeners.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/bindAllListeners.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9077,9 +9107,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/unassignListener.js
+  // node_modules/treeloom/dist/events/functions/unassignListener.js
   var require_unassignListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/unassignListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/unassignListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9101,9 +9131,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/deactivateListener.js
+  // node_modules/treeloom/dist/events/functions/deactivateListener.js
   var require_deactivateListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/deactivateListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/deactivateListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9153,13 +9183,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/deactivateListeners.js
+  // node_modules/treeloom/dist/events/functions/deactivateListeners.js
   var require_deactivateListeners = __commonJS({
-    "node_modules/json-dom/dist/events/functions/deactivateListeners.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/deactivateListeners.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -9176,9 +9204,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/findEventListener.js
+  // node_modules/treeloom/dist/events/functions/findEventListener.js
   var require_findEventListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/findEventListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/findEventListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9218,9 +9246,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/registerListener.js
+  // node_modules/treeloom/dist/events/functions/registerListener.js
   var require_registerListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/registerListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/registerListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9232,16 +9260,16 @@ var joshuaHome = (() => {
         value: true
       });
       var documentItem_1 = __importDefault(require_documentItem());
-      var registerListener = (listener, name = listener.name, parent = documentItem_1.default) => Object.assign(parent.eventActions, {
+      var registerListener = (listener, name = listener.name, parent = (0, documentItem_1.default)()) => Object.assign(parent.eventActions, {
         [name]: listener
       });
       exports.default = registerListener;
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/fullAddEventListener.js
+  // node_modules/treeloom/dist/events/functions/fullAddEventListener.js
   var require_fullAddEventListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/fullAddEventListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/fullAddEventListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9271,9 +9299,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/removeEventListener.js
+  // node_modules/treeloom/dist/events/functions/removeEventListener.js
   var require_removeEventListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/removeEventListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/removeEventListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9301,9 +9329,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/fullRemoveEventListener.js
+  // node_modules/treeloom/dist/events/functions/fullRemoveEventListener.js
   var require_fullRemoveEventListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/fullRemoveEventListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/fullRemoveEventListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9323,9 +9351,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/receiveForwardedEvent.js
+  // node_modules/treeloom/dist/events/functions/receiveForwardedEvent.js
   var require_receiveForwardedEvent = __commonJS({
-    "node_modules/json-dom/dist/events/functions/receiveForwardedEvent.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/receiveForwardedEvent.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -9353,9 +9381,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/registerListeners.js
+  // node_modules/treeloom/dist/events/functions/registerListeners.js
   var require_registerListeners = __commonJS({
-    "node_modules/json-dom/dist/events/functions/registerListeners.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/registerListeners.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9368,7 +9396,7 @@ var joshuaHome = (() => {
       });
       var si_funciona_1 = __importDefault(require_main());
       var documentItem_1 = __importDefault(require_documentItem());
-      var registerListeners = (listeners, parent = documentItem_1.default) => {
+      var registerListeners = (listeners, parent = (0, documentItem_1.default)()) => {
         si_funciona_1.default.mergeObjectsMutable(parent.eventActions, listeners);
         return parent;
       };
@@ -9376,13 +9404,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/revokeActiveListeners.js
+  // node_modules/treeloom/dist/events/functions/revokeActiveListeners.js
   var require_revokeActiveListeners = __commonJS({
-    "node_modules/json-dom/dist/events/functions/revokeActiveListeners.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/revokeActiveListeners.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -9425,9 +9451,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/setForwardEvents.js
+  // node_modules/treeloom/dist/events/functions/setForwardEvents.js
   var require_setForwardEvents = __commonJS({
-    "node_modules/json-dom/dist/events/functions/setForwardEvents.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/setForwardEvents.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9439,7 +9465,7 @@ var joshuaHome = (() => {
         value: true
       });
       var documentItem_1 = __importDefault(require_documentItem());
-      var setForwardEvents = (transport, parent = documentItem_1.default) => {
+      var setForwardEvents = (transport, parent = (0, documentItem_1.default)()) => {
         parent.forwardEvents = transport;
         return parent;
       };
@@ -9447,9 +9473,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/objects/options.js
+  // node_modules/treeloom/dist/events/objects/options.js
   var require_options = __commonJS({
-    "node_modules/json-dom/dist/events/objects/options.js"(exports) {
+    "node_modules/treeloom/dist/events/objects/options.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9471,9 +9497,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/index.js
+  // node_modules/treeloom/dist/events/index.js
   var require_events = __commonJS({
-    "node_modules/json-dom/dist/events/index.js"(exports) {
+    "node_modules/treeloom/dist/events/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9543,13 +9569,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/objects/addDomItemProperties.js
+  // node_modules/treeloom/dist/domItem/objects/addDomItemProperties.js
   var require_addDomItemProperties = __commonJS({
-    "node_modules/json-dom/dist/domItem/objects/addDomItemProperties.js"(exports) {
+    "node_modules/treeloom/dist/domItem/objects/addDomItemProperties.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -9571,9 +9595,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/traits/defineTrait.js
+  // node_modules/treeloom/dist/domItem/traits/defineTrait.js
   var require_defineTrait = __commonJS({
-    "node_modules/json-dom/dist/domItem/traits/defineTrait.js"(exports) {
+    "node_modules/treeloom/dist/domItem/traits/defineTrait.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9593,13 +9617,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/gatherChildItems.js
+  // node_modules/treeloom/dist/domItem/query/gatherChildItems.js
   var require_gatherChildItems = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/gatherChildItems.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/gatherChildItems.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_reduce();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -9608,9 +9630,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getChildrenByClass.js
+  // node_modules/treeloom/dist/domItem/query/getChildrenByClass.js
   var require_getChildrenByClass = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getChildrenByClass.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getChildrenByClass.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
@@ -9624,14 +9646,14 @@ var joshuaHome = (() => {
       });
       var documentItem_1 = __importDefault(require_documentItem());
       var gatherChildItems_1 = __importDefault(require_gatherChildItems());
-      var getChildrenByClass = (className, item = documentItem_1.default.body) => (0, gatherChildItems_1.default)(item, (child, gatheredResults) => (child.attributes.className ?? "").split(" ").includes(className) ? gatheredResults.concat([child]) : gatheredResults);
+      var getChildrenByClass = (className, item = (0, documentItem_1.default)().body) => (0, gatherChildItems_1.default)(item, (child, gatheredResults) => (child.attributes.className ?? "").split(" ").includes(className) ? gatheredResults.concat([child]) : gatheredResults);
       exports.default = getChildrenByClass;
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getChildTest.js
+  // node_modules/treeloom/dist/domItem/query/getChildTest.js
   var require_getChildTest = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getChildTest.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getChildTest.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -9642,9 +9664,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getChildrenFromAttribute.js
+  // node_modules/treeloom/dist/domItem/query/getChildrenFromAttribute.js
   var require_getChildrenFromAttribute = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getChildrenFromAttribute.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getChildrenFromAttribute.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9658,14 +9680,14 @@ var joshuaHome = (() => {
       var documentItem_1 = __importDefault(require_documentItem());
       var gatherChildItems_1 = __importDefault(require_gatherChildItems());
       var getChildTest_1 = __importDefault(require_getChildTest());
-      var getChildrenFromAttribute = (attr, value, item = documentItem_1.default.body) => (0, gatherChildItems_1.default)(item, (0, getChildTest_1.default)(attr, value));
+      var getChildrenFromAttribute = (attr, value, item = (0, documentItem_1.default)().body) => (0, gatherChildItems_1.default)(item, (0, getChildTest_1.default)(attr, value));
       exports.default = getChildrenFromAttribute;
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getChildrenByName.js
+  // node_modules/treeloom/dist/domItem/query/getChildrenByName.js
   var require_getChildrenByName = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getChildrenByName.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getChildrenByName.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9683,13 +9705,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/tree/getItemByPath.js
+  // node_modules/treeloom/dist/domItem/tree/getItemByPath.js
   var require_getItemByPath = __commonJS({
-    "node_modules/json-dom/dist/domItem/tree/getItemByPath.js"(exports) {
+    "node_modules/treeloom/dist/domItem/tree/getItemByPath.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_reduce();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -9704,9 +9724,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/tree/getItemPath.js
+  // node_modules/treeloom/dist/domItem/tree/getItemPath.js
   var require_getItemPath = __commonJS({
-    "node_modules/json-dom/dist/domItem/tree/getItemPath.js"(exports) {
+    "node_modules/treeloom/dist/domItem/tree/getItemPath.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9732,9 +9752,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getParentsByClass.js
+  // node_modules/treeloom/dist/domItem/query/getParentsByClass.js
   var require_getParentsByClass = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getParentsByClass.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getParentsByClass.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
@@ -9748,7 +9768,7 @@ var joshuaHome = (() => {
       });
       var documentItem_1 = __importDefault(require_documentItem());
       var si_funciona_1 = __importDefault(require_main());
-      var getParentsByClass = (className, item = documentItem_1.default.body) => {
+      var getParentsByClass = (className, item = (0, documentItem_1.default)().body) => {
         if (item.parentItem === null) {
           if (item.nodeName === "#document") {
             throw new Error("Root parent item must be an empty object, null reference found.");
@@ -9766,9 +9786,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getParentsFromAttribute.js
+  // node_modules/treeloom/dist/domItem/query/getParentsFromAttribute.js
   var require_getParentsFromAttribute = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getParentsFromAttribute.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getParentsFromAttribute.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9781,7 +9801,7 @@ var joshuaHome = (() => {
       });
       var documentItem_1 = __importDefault(require_documentItem());
       var si_funciona_1 = __importDefault(require_main());
-      var getParentsFromAttribute = (attr, value, item = documentItem_1.default.body) => {
+      var getParentsFromAttribute = (attr, value, item = (0, documentItem_1.default)().body) => {
         if (item.parentItem === null) {
           if (item.nodeName === "#document") {
             throw new Error("Root parent item must be an empty object, null reference found.");
@@ -9798,9 +9818,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getParentsByName.js
+  // node_modules/treeloom/dist/domItem/query/getParentsByName.js
   var require_getParentsByName = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getParentsByName.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getParentsByName.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9818,9 +9838,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getParentsByTagName.js
+  // node_modules/treeloom/dist/domItem/query/getParentsByTagName.js
   var require_getParentsByTagName = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getParentsByTagName.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getParentsByTagName.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9838,9 +9858,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/traits/getTraitDefinition.js
+  // node_modules/treeloom/dist/domItem/traits/getTraitDefinition.js
   var require_getTraitDefinition = __commonJS({
-    "node_modules/json-dom/dist/domItem/traits/getTraitDefinition.js"(exports) {
+    "node_modules/treeloom/dist/domItem/traits/getTraitDefinition.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9857,9 +9877,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/traits/hasTrait.js
+  // node_modules/treeloom/dist/domItem/traits/hasTrait.js
   var require_hasTrait = __commonJS({
-    "node_modules/json-dom/dist/domItem/traits/hasTrait.js"(exports) {
+    "node_modules/treeloom/dist/domItem/traits/hasTrait.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -9870,55 +9890,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/core-js/modules/es.iterator.every.js
-  var require_es_iterator_every = __commonJS({
-    "node_modules/core-js/modules/es.iterator.every.js"() {
-      "use strict";
-      init_process();
-      var $ = require_export();
-      var call = require_function_call();
-      var iterate = require_iterate();
-      var aCallable = require_a_callable();
-      var anObject = require_an_object();
-      var getIteratorDirect = require_get_iterator_direct();
-      var iteratorClose = require_iterator_close();
-      var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
-      var everyWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError("every", TypeError);
-      $({ target: "Iterator", proto: true, real: true, forced: everyWithoutClosingOnEarlyError }, {
-        every: function every(predicate) {
-          anObject(this);
-          try {
-            aCallable(predicate);
-          } catch (error) {
-            iteratorClose(this, "throw", error);
-          }
-          if (everyWithoutClosingOnEarlyError) return call(everyWithoutClosingOnEarlyError, this, predicate);
-          var record = getIteratorDirect(this);
-          var counter = 0;
-          return !iterate(record, function(value, stop) {
-            if (!predicate(value, counter++)) return stop();
-          }, { IS_RECORD: true, INTERRUPTED: true }).stopped;
-        }
-      });
-    }
-  });
-
-  // node_modules/core-js/modules/esnext.iterator.every.js
-  var require_esnext_iterator_every = __commonJS({
-    "node_modules/core-js/modules/esnext.iterator.every.js"() {
-      "use strict";
-      init_process();
-      require_es_iterator_every();
-    }
-  });
-
-  // node_modules/json-dom/dist/domItem/traits/hasTraits.js
+  // node_modules/treeloom/dist/domItem/traits/hasTraits.js
   var require_hasTraits = __commonJS({
-    "node_modules/json-dom/dist/domItem/traits/hasTraits.js"(exports) {
+    "node_modules/treeloom/dist/domItem/traits/hasTraits.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_every();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -9927,9 +9903,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/tree/insertChild.js
+  // node_modules/treeloom/dist/domItem/tree/insertChild.js
   var require_insertChild = __commonJS({
-    "node_modules/json-dom/dist/domItem/tree/insertChild.js"(exports) {
+    "node_modules/treeloom/dist/domItem/tree/insertChild.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -9944,13 +9920,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/traits/isDomItem.js
+  // node_modules/treeloom/dist/domItem/traits/isDomItem.js
   var require_isDomItem = __commonJS({
-    "node_modules/json-dom/dist/domItem/traits/isDomItem.js"(exports) {
+    "node_modules/treeloom/dist/domItem/traits/isDomItem.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_every();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -9965,13 +9939,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/tree/setParentItemReferences.js
+  // node_modules/treeloom/dist/domItem/tree/setParentItemReferences.js
   var require_setParentItemReferences = __commonJS({
-    "node_modules/json-dom/dist/domItem/tree/setParentItemReferences.js"(exports) {
+    "node_modules/treeloom/dist/domItem/tree/setParentItemReferences.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -9990,9 +9962,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/index.js
+  // node_modules/treeloom/dist/domItem/index.js
   var require_domItem = __commonJS({
-    "node_modules/json-dom/dist/domItem/index.js"(exports) {
+    "node_modules/treeloom/dist/domItem/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10041,7 +10013,7 @@ var joshuaHome = (() => {
         createDomItem: createDomItem_1.default,
         defineTrait: defineTrait_1.default,
         documentDomItem: documentDomItem_1.default,
-        documentItem: documentItem_1.default,
+        getDocumentItem: documentItem_1.default,
         gatherChildItems: gatherChildItems_1.default,
         getChildrenByClass: getChildrenByClass_1.default,
         getChildrenByName: getChildrenByName_1.default,
@@ -10070,9 +10042,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/inflate/jsonToDomItem.js
+  // node_modules/treeloom/dist/inflate/jsonToDomItem.js
   var require_jsonToDomItem = __commonJS({
-    "node_modules/json-dom/dist/inflate/jsonToDomItem.js"(exports) {
+    "node_modules/treeloom/dist/inflate/jsonToDomItem.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10099,9 +10071,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/inflate/index.js
+  // node_modules/treeloom/dist/inflate/index.js
   var require_inflate = __commonJS({
-    "node_modules/json-dom/dist/inflate/index.js"(exports) {
+    "node_modules/treeloom/dist/inflate/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10478,106 +10450,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/core-js/internals/get-iterator-flattenable.js
-  var require_get_iterator_flattenable = __commonJS({
-    "node_modules/core-js/internals/get-iterator-flattenable.js"(exports, module) {
-      "use strict";
-      init_process();
-      var call = require_function_call();
-      var anObject = require_an_object();
-      var getIteratorDirect = require_get_iterator_direct();
-      var getIteratorMethod = require_get_iterator_method_internal();
-      module.exports = function(obj, stringHandling) {
-        if (!stringHandling || typeof obj !== "string") anObject(obj);
-        var method = getIteratorMethod(obj);
-        return getIteratorDirect(anObject(method !== void 0 ? call(method, obj) : obj));
-      };
-    }
-  });
-
-  // node_modules/core-js/modules/es.iterator.flat-map.js
-  var require_es_iterator_flat_map = __commonJS({
-    "node_modules/core-js/modules/es.iterator.flat-map.js"() {
-      "use strict";
-      init_process();
-      var $ = require_export();
-      var call = require_function_call();
-      var aCallable = require_a_callable();
-      var anObject = require_an_object();
-      var getIteratorDirect = require_get_iterator_direct();
-      var getIteratorFlattenable = require_get_iterator_flattenable();
-      var createIteratorProxy = require_iterator_create_proxy();
-      var iteratorClose = require_iterator_close();
-      var fails = require_fails();
-      var IS_PURE = require_is_pure();
-      var iteratorHelperThrowsOnInvalidIterator = require_iterator_helper_throws_on_invalid_iterator();
-      var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
-      var THROWS_ON_ITERATOR_WITHOUT_RETURN = !IS_PURE && fails(function() {
-        return [1].values().flatMap(function() {
-          return [1];
-        }).find(function() {
-          return true;
-        }) !== 1;
-      });
-      var FLAT_MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !THROWS_ON_ITERATOR_WITHOUT_RETURN && !iteratorHelperThrowsOnInvalidIterator("flatMap", function() {
-      });
-      var flatMapWithoutClosingOnEarlyError = !IS_PURE && !THROWS_ON_ITERATOR_WITHOUT_RETURN && !FLAT_MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError("flatMap", TypeError);
-      var FORCED = IS_PURE || THROWS_ON_ITERATOR_WITHOUT_RETURN || FLAT_MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR || flatMapWithoutClosingOnEarlyError;
-      var IteratorProxy = createIteratorProxy(function() {
-        var iterator = this.iterator;
-        var mapper = this.mapper;
-        var result, inner;
-        while (true) {
-          if (inner = this.inner) try {
-            result = anObject(call(inner.next, inner.iterator));
-            if (!result.done) return result.value;
-            this.inner = null;
-          } catch (error) {
-            iteratorClose(iterator, "throw", error);
-          }
-          result = anObject(call(this.next, iterator));
-          if (this.done = !!result.done) return;
-          try {
-            this.inner = getIteratorFlattenable(mapper(result.value, this.counter++), false);
-          } catch (error) {
-            iteratorClose(iterator, "throw", error);
-          }
-        }
-      });
-      $({ target: "Iterator", proto: true, real: true, forced: FORCED }, {
-        flatMap: function flatMap(mapper) {
-          anObject(this);
-          try {
-            aCallable(mapper);
-          } catch (error) {
-            iteratorClose(this, "throw", error);
-          }
-          if (flatMapWithoutClosingOnEarlyError) return call(flatMapWithoutClosingOnEarlyError, this, mapper);
-          return new IteratorProxy(getIteratorDirect(this), {
-            mapper,
-            inner: null
-          });
-        }
-      });
-    }
-  });
-
-  // node_modules/core-js/modules/esnext.iterator.flat-map.js
-  var require_esnext_iterator_flat_map = __commonJS({
-    "node_modules/core-js/modules/esnext.iterator.flat-map.js"() {
-      "use strict";
-      init_process();
-      require_es_iterator_flat_map();
-    }
-  });
-
-  // node_modules/json-dom/dist/domItem/traits/getNonSerializableKeys.js
+  // node_modules/treeloom/dist/domItem/traits/getNonSerializableKeys.js
   var require_getNonSerializableKeys = __commonJS({
-    "node_modules/json-dom/dist/domItem/traits/getNonSerializableKeys.js"(exports) {
+    "node_modules/treeloom/dist/domItem/traits/getNonSerializableKeys.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_flat_map();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -10595,14 +10472,12 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/deflate/removeEmptyProperties.js
+  // node_modules/treeloom/dist/deflate/removeEmptyProperties.js
   var require_removeEmptyProperties = __commonJS({
-    "node_modules/json-dom/dist/deflate/removeEmptyProperties.js"(exports) {
+    "node_modules/treeloom/dist/deflate/removeEmptyProperties.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -10632,9 +10507,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/deflate/domItemToJson.js
+  // node_modules/treeloom/dist/deflate/domItemToJson.js
   var require_domItemToJson = __commonJS({
-    "node_modules/json-dom/dist/deflate/domItemToJson.js"(exports) {
+    "node_modules/treeloom/dist/deflate/domItemToJson.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
@@ -10669,9 +10544,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/deflate/index.js
+  // node_modules/treeloom/dist/deflate/index.js
   var require_deflate = __commonJS({
-    "node_modules/json-dom/dist/deflate/index.js"(exports) {
+    "node_modules/treeloom/dist/deflate/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10691,13 +10566,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/diff/elementHasAttribute.js
+  // node_modules/treeloom/dist/diff/elementHasAttribute.js
   var require_elementHasAttribute = __commonJS({
-    "node_modules/json-dom/dist/diff/elementHasAttribute.js"(exports) {
+    "node_modules/treeloom/dist/diff/elementHasAttribute.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_map();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -10748,14 +10621,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/diff/domItemChanges.js
+  // node_modules/treeloom/dist/diff/domItemChanges.js
   var require_domItemChanges = __commonJS({
-    "node_modules/json-dom/dist/diff/domItemChanges.js"(exports) {
+    "node_modules/treeloom/dist/diff/domItemChanges.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_find();
-      require_esnext_iterator_reduce();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -10767,6 +10637,7 @@ var joshuaHome = (() => {
       var si_funciona_1 = __importDefault(require_main());
       var elementHasAttribute_1 = __importDefault(require_elementHasAttribute());
       var createChangeList_1 = __importDefault(require_createChangeList());
+      var appliedSnapshot_1 = require_appliedSnapshot();
       var checkAttribute = (element) => (attr, key) => {
         if (typeof attr === "object") {
           const styles = attr;
@@ -10818,6 +10689,16 @@ var joshuaHome = (() => {
             changeList.added.nodeValue = domItem.nodeValue;
           }
           return changeList;
+        }
+        if (!changeList.added.nodeName) {
+          const fromApplied = (0, appliedSnapshot_1.changesFromApplied)(domItem, (kabobKey) => {
+            const name = attributeName(domItem.attributes, kabobKey);
+            const element = domItem.element;
+            return element && name in element && name !== "form" ? name : kabobKey;
+          });
+          if (fromApplied) {
+            return fromApplied;
+          }
         }
         const domItemAttributes = kabobCaseAttributes(domItem.attributes);
         const diffMap = si_funciona_1.default.mapObject(domItemAttributes, (attr, key) => checkAttribute(domItem.element)(attr, key));
@@ -10883,15 +10764,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/render/updateChildNodes.js
+  // node_modules/treeloom/dist/render/updateChildNodes.js
   var require_updateChildNodes = __commonJS({
-    "node_modules/json-dom/dist/render/updateChildNodes.js"(exports) {
+    "node_modules/treeloom/dist/render/updateChildNodes.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_find();
-      require_esnext_iterator_for_each();
-      require_esnext_iterator_map();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -10910,31 +10787,24 @@ var joshuaHome = (() => {
           return domItem;
         }
         const element = domItem.element;
-        const previousChildNodes = Array.from(element.childNodes);
-        domItem.children.map((child, index) => {
-          const existing = previousChildNodes.find((childNode2) => childNode2 === child.element);
-          let childNode = existing ?? child.element;
-          if (!childNode) {
-            childNode = (0, updateElement_1.default)(child).element;
-          }
-          if (!previousChildNodes[index]) {
-            element.appendChild(childNode);
-            return childNode;
-          }
-          if (childNode !== previousChildNodes[index]) {
-            element.replaceChild(childNode, previousChildNodes[index]);
-          }
+        const childNodes = domItem.children.map((child) => {
+          const childNode = child.element ?? (0, updateElement_1.default)(child).element;
+          child.element = childNode;
           return childNode;
-        }).forEach((childNode, index) => {
-          domItem.children[index].element = childNode;
         });
-        if (element.childNodes.length > domItem.children.length) {
-          const maxLength = domItem.children.length;
-          let nodeToRemove = element.childNodes[maxLength];
-          while (nodeToRemove) {
-            element.removeChild(nodeToRemove);
-            nodeToRemove = element.childNodes[maxLength];
+        const wanted = new Set(childNodes);
+        Array.from(element.childNodes).forEach((node) => {
+          if (!wanted.has(node)) {
+            element.removeChild(node);
           }
+        });
+        let following = null;
+        for (let index = childNodes.length - 1; index >= 0; index--) {
+          const childNode = childNodes[index];
+          if (childNode.parentNode !== element || childNode.nextSibling !== following) {
+            element.insertBefore(childNode, following);
+          }
+          following = childNode;
         }
         return domItem;
       };
@@ -10942,9 +10812,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/render/updateElement.js
+  // node_modules/treeloom/dist/render/updateElement.js
   var require_updateElement = __commonJS({
-    "node_modules/json-dom/dist/render/updateElement.js"(exports) {
+    "node_modules/treeloom/dist/render/updateElement.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
@@ -10959,6 +10829,7 @@ var joshuaHome = (() => {
       var bindListeners_1 = __importDefault(require_bindListeners());
       var deactivateListeners_1 = __importDefault(require_deactivateListeners());
       var domItemChanges_1 = __importDefault(require_domItemChanges());
+      var appliedSnapshot_1 = require_appliedSnapshot();
       var si_funciona_1 = __importDefault(require_main());
       var generateElement_1 = __importDefault(require_generateElement());
       var updateChildNodes_1 = __importDefault(require_updateChildNodes());
@@ -11026,15 +10897,16 @@ var joshuaHome = (() => {
           }
           element.style.setProperty(si_funciona_1.default.kabobCase(si_funciona_1.default.strAfter(dotKey, ".")), value);
         }
+        (0, appliedSnapshot_1.recordApplied)(domItem);
         return (0, bindListeners_1.default)(domItem);
       };
       exports.default = updateElement;
     }
   });
 
-  // node_modules/json-dom/dist/render/generateElement.js
+  // node_modules/treeloom/dist/render/generateElement.js
   var require_generateElement = __commonJS({
-    "node_modules/json-dom/dist/render/generateElement.js"(exports) {
+    "node_modules/treeloom/dist/render/generateElement.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11066,13 +10938,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/render/updateElements.js
+  // node_modules/treeloom/dist/render/updateElements.js
   var require_updateElements = __commonJS({
-    "node_modules/json-dom/dist/render/updateElements.js"(exports) {
+    "node_modules/treeloom/dist/render/updateElements.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -11098,9 +10968,127 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/render/renderHtml.js
+  // node_modules/treeloom/dist/render/reconcile.js
+  var require_reconcile = __commonJS({
+    "node_modules/treeloom/dist/render/reconcile.js"(exports) {
+      "use strict";
+      init_process();
+      require_es_array_includes();
+      require_es_json_stringify();
+      var __importDefault = function(mod) {
+        return mod && mod.__esModule ? mod : {
+          "default": mod
+        };
+      };
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      var removeEventListener_1 = __importDefault(require_removeEventListener());
+      var itemIdIndex_1 = require_itemIdIndex();
+      var updateElements_1 = __importDefault(require_updateElements());
+      var STRUCTURE = /* @__PURE__ */ new Set(["element", "parentItem", "children", "eventListeners", "activeListeners"]);
+      var listenerKey = (listener) => typeof listener.listenerFunc === "string" ? JSON.stringify([listener.listenerFunc, listener.listenerArgs ?? null, listener.listenerOptions ?? null]) : null;
+      var reconcileListeners = (existing, next) => {
+        const nextListeners = next.eventListeners ?? {};
+        existing.eventListeners = existing.eventListeners ?? {};
+        for (const eventName of Object.keys(existing.eventListeners)) {
+          const wanted = (nextListeners[eventName] ?? []).map(listenerKey);
+          for (const listener of [...existing.eventListeners[eventName]]) {
+            const key = listenerKey(listener);
+            if (key !== null && !wanted.includes(key)) {
+              (0, removeEventListener_1.default)(eventName, listener.listenerFunc, listener.listenerArgs, listener.listenerOptions, existing);
+            }
+          }
+        }
+        for (const eventName of Object.keys(nextListeners)) {
+          const have = (existing.eventListeners[eventName] ?? []).map(listenerKey);
+          for (const listener of nextListeners[eventName]) {
+            const key = listenerKey(listener);
+            if (key !== null && !have.includes(key)) {
+              existing.eventListeners[eventName] = existing.eventListeners[eventName] ?? [];
+              existing.eventListeners[eventName].push({
+                ...listener,
+                listenerActive: false,
+                activeResponder: null
+              });
+            }
+          }
+        }
+      };
+      var reconcileData = (existing, next) => {
+        const target = existing;
+        const source = next;
+        for (const key of Object.keys(target)) {
+          if (!STRUCTURE.has(key) && !(key in source) && typeof target[key] !== "function") {
+            delete target[key];
+          }
+        }
+        for (const key of Object.keys(source)) {
+          if (!STRUCTURE.has(key)) {
+            target[key] = source[key];
+          }
+        }
+      };
+      var pairChildren = (existing, next) => {
+        const byId = /* @__PURE__ */ new Map();
+        existing.forEach((child) => {
+          if (typeof child.id === "number") {
+            byId.set(child.id, child);
+          }
+        });
+        const claimed = new Set(next.map((child) => typeof child.id === "number" ? byId.get(child.id) : void 0).filter(Boolean));
+        const taken = /* @__PURE__ */ new Set();
+        return next.map((nextChild, index) => {
+          const sameId = typeof nextChild.id === "number" ? byId.get(nextChild.id) : void 0;
+          const atPosition = existing[index] && !claimed.has(existing[index]) ? existing[index] : void 0;
+          const candidate = sameId ?? atPosition;
+          if (candidate && !taken.has(candidate) && candidate.nodeName === nextChild.nodeName) {
+            taken.add(candidate);
+            return candidate;
+          }
+          return void 0;
+        });
+      };
+      var reconcileItem = (existing, next) => {
+        reconcileData(existing, next);
+        reconcileListeners(existing, next);
+        const previous = existing.children ?? [];
+        const nextChildren = next.children ?? [];
+        const pairs = pairChildren(previous, nextChildren);
+        const kept = new Set(pairs.filter(Boolean));
+        previous.filter((child) => !kept.has(child)).forEach((child) => {
+          ;
+          child.element?.remove?.();
+        });
+        existing.children = nextChildren.map((nextChild, index) => {
+          const child = pairs[index];
+          if (child) {
+            reconcileItem(child, nextChild);
+            return child;
+          }
+          nextChild.parentItem = existing;
+          return nextChild;
+        });
+        existing.children.forEach((child) => {
+          child.parentItem = existing;
+        });
+      };
+      var reconcile = (existing, next) => {
+        if (existing.nodeName.toLowerCase() !== next.nodeName.toLowerCase()) {
+          throw new Error(`reconcile can't turn a ${existing.nodeName} into a ${next.nodeName}: give it a tree of the same node, or reconcile its parent.`);
+        }
+        (0, itemIdIndex_1.unregisterItemIds)(existing);
+        reconcileItem(existing, next);
+        (0, itemIdIndex_1.registerItemIds)(existing);
+        return (0, updateElements_1.default)(existing);
+      };
+      exports.default = reconcile;
+    }
+  });
+
+  // node_modules/treeloom/dist/render/renderHtml.js
   var require_renderHtml = __commonJS({
-    "node_modules/json-dom/dist/render/renderHtml.js"(exports) {
+    "node_modules/treeloom/dist/render/renderHtml.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11117,8 +11105,8 @@ var joshuaHome = (() => {
       var setParentItemReferences_1 = __importDefault(require_setParentItemReferences());
       var updateChildNodes_1 = __importDefault(require_updateChildNodes());
       var updateElements_1 = __importDefault(require_updateElements());
-      var renderHtml = (item = null, parent = documentItem_1.default.body, index = parent.children.length) => {
-        const itemToRender = item === null ? documentItem_1.default : item;
+      var renderHtml = (item = null, parent = (0, documentItem_1.default)().body, index = parent.children.length) => {
+        const itemToRender = item === null ? (0, documentItem_1.default)() : item;
         (0, setParentItemReferences_1.default)(itemToRender);
         if (itemToRender.parentItem === null) {
           (0, insertChild_1.default)(parent, item, index);
@@ -11132,9 +11120,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/render/index.js
+  // node_modules/treeloom/dist/render/index.js
   var require_render = __commonJS({
-    "node_modules/json-dom/dist/render/index.js"(exports) {
+    "node_modules/treeloom/dist/render/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11146,12 +11134,14 @@ var joshuaHome = (() => {
         value: true
       });
       var generateElement_1 = __importDefault(require_generateElement());
+      var reconcile_1 = __importDefault(require_reconcile());
       var renderHtml_1 = __importDefault(require_renderHtml());
       var updateChildNodes_1 = __importDefault(require_updateChildNodes());
       var updateElement_1 = __importDefault(require_updateElement());
       var updateElements_1 = __importDefault(require_updateElements());
       exports.default = {
         generateElement: generateElement_1.default,
+        reconcile: reconcile_1.default,
         renderHtml: renderHtml_1.default,
         updateChildNodes: updateChildNodes_1.default,
         updateElement: updateElement_1.default,
@@ -11160,9 +11150,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/sync/index.js
+  // node_modules/treeloom/dist/sync/index.js
   var require_sync = __commonJS({
-    "node_modules/json-dom/dist/sync/index.js"(exports) {
+    "node_modules/treeloom/dist/sync/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11184,9 +11174,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/diff/index.js
+  // node_modules/treeloom/dist/diff/index.js
   var require_diff = __commonJS({
-    "node_modules/json-dom/dist/diff/index.js"(exports) {
+    "node_modules/treeloom/dist/diff/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11214,9 +11204,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/main.js
+  // node_modules/treeloom/dist/main.js
   var require_main3 = __commonJS({
-    "node_modules/json-dom/dist/main.js"(exports, module) {
+    "node_modules/treeloom/dist/main.js"(exports, module) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11226,19 +11216,20 @@ var joshuaHome = (() => {
       };
       var index_1 = __importDefault(require_events());
       var index_2 = __importDefault(require_domItem());
+      var documentItem_1 = require_documentItem();
       var index_3 = __importDefault(require_inflate());
       var index_4 = __importDefault(require_deflate());
       var index_5 = __importDefault(require_render());
       var index_6 = __importDefault(require_sync());
       var index_7 = __importDefault(require_diff());
-      var jsonDom2 = Object.assign({}, index_1.default, index_2.default, index_3.default, index_4.default, index_5.default, index_6.default, index_7.default);
-      module.exports = jsonDom2;
+      var treeloom2 = (0, documentItem_1.withDocumentItem)(Object.assign({}, index_1.default, index_2.default, index_3.default, index_4.default, index_5.default, index_6.default, index_7.default));
+      module.exports = treeloom2;
     }
   });
 
-  // node_modules/json-dom-components/dist/components/node.js
+  // node_modules/treeloom-components/dist/components/node.js
   var require_node = __commonJS({
-    "node_modules/json-dom-components/dist/components/node.js"(exports) {
+    "node_modules/treeloom-components/dist/components/node.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11249,8 +11240,8 @@ var joshuaHome = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
-      var node = (nodeName, nodeValue = null, children = [], attributes = {}) => json_dom_1.default.createDomItem({
+      var treeloom_1 = __importDefault(require_main3());
+      var node = (nodeName, nodeValue = null, children = [], attributes = {}) => treeloom_1.default.createDomItem({
         nodeName,
         nodeValue,
         attributes,
@@ -11260,9 +11251,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/element.js
+  // node_modules/treeloom-components/dist/components/element.js
   var require_element = __commonJS({
-    "node_modules/json-dom-components/dist/components/element.js"(exports) {
+    "node_modules/treeloom-components/dist/components/element.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11284,9 +11275,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/text.js
+  // node_modules/treeloom-components/dist/components/text.js
   var require_text = __commonJS({
-    "node_modules/json-dom-components/dist/components/text.js"(exports) {
+    "node_modules/treeloom-components/dist/components/text.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11303,9 +11294,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/button.js
+  // node_modules/treeloom-components/dist/components/button.js
   var require_button = __commonJS({
-    "node_modules/json-dom-components/dist/components/button.js"(exports) {
+    "node_modules/treeloom-components/dist/components/button.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11325,9 +11316,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/div.js
+  // node_modules/treeloom-components/dist/components/div.js
   var require_div = __commonJS({
-    "node_modules/json-dom-components/dist/components/div.js"(exports) {
+    "node_modules/treeloom-components/dist/components/div.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11344,9 +11335,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/input.js
+  // node_modules/treeloom-components/dist/components/input.js
   var require_input = __commonJS({
-    "node_modules/json-dom-components/dist/components/input.js"(exports) {
+    "node_modules/treeloom-components/dist/components/input.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11372,9 +11363,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/clearableInput/toggleClearButton.js
+  // node_modules/treeloom-components/dist/clearableInput/toggleClearButton.js
   var require_toggleClearButton = __commonJS({
-    "node_modules/json-dom-components/dist/clearableInput/toggleClearButton.js"(exports) {
+    "node_modules/treeloom-components/dist/clearableInput/toggleClearButton.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -11393,9 +11384,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/clearableInput/clearInput.js
+  // node_modules/treeloom-components/dist/clearableInput/clearInput.js
   var require_clearInput = __commonJS({
-    "node_modules/json-dom-components/dist/clearableInput/clearInput.js"(exports) {
+    "node_modules/treeloom-components/dist/clearableInput/clearInput.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11423,9 +11414,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/clearableInput/createClearableInput.js
+  // node_modules/treeloom-components/dist/clearableInput/createClearableInput.js
   var require_createClearableInput = __commonJS({
-    "node_modules/json-dom-components/dist/clearableInput/createClearableInput.js"(exports) {
+    "node_modules/treeloom-components/dist/clearableInput/createClearableInput.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11477,9 +11468,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/clearableInput/index.js
+  // node_modules/treeloom-components/dist/clearableInput/index.js
   var require_clearableInput = __commonJS({
-    "node_modules/json-dom-components/dist/clearableInput/index.js"(exports) {
+    "node_modules/treeloom-components/dist/clearableInput/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11497,9 +11488,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/anchor.js
+  // node_modules/treeloom-components/dist/components/anchor.js
   var require_anchor = __commonJS({
-    "node_modules/json-dom-components/dist/components/anchor.js"(exports) {
+    "node_modules/treeloom-components/dist/components/anchor.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11518,9 +11509,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/legend.js
+  // node_modules/treeloom-components/dist/components/legend.js
   var require_legend = __commonJS({
-    "node_modules/json-dom-components/dist/components/legend.js"(exports) {
+    "node_modules/treeloom-components/dist/components/legend.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11538,9 +11529,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/fieldset.js
+  // node_modules/treeloom-components/dist/components/fieldset.js
   var require_fieldset = __commonJS({
-    "node_modules/json-dom-components/dist/components/fieldset.js"(exports) {
+    "node_modules/treeloom-components/dist/components/fieldset.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11558,9 +11549,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/footer.js
+  // node_modules/treeloom-components/dist/components/footer.js
   var require_footer = __commonJS({
-    "node_modules/json-dom-components/dist/components/footer.js"(exports) {
+    "node_modules/treeloom-components/dist/components/footer.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11577,9 +11568,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/form.js
+  // node_modules/treeloom-components/dist/components/form.js
   var require_form = __commonJS({
-    "node_modules/json-dom-components/dist/components/form.js"(exports) {
+    "node_modules/treeloom-components/dist/components/form.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11604,9 +11595,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/header.js
+  // node_modules/treeloom-components/dist/components/header.js
   var require_header = __commonJS({
-    "node_modules/json-dom-components/dist/components/header.js"(exports) {
+    "node_modules/treeloom-components/dist/components/header.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11623,9 +11614,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/heading.js
+  // node_modules/treeloom-components/dist/components/heading.js
   var require_heading = __commonJS({
-    "node_modules/json-dom-components/dist/components/heading.js"(exports) {
+    "node_modules/treeloom-components/dist/components/heading.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11642,9 +11633,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/label.js
+  // node_modules/treeloom-components/dist/components/label.js
   var require_label = __commonJS({
-    "node_modules/json-dom-components/dist/components/label.js"(exports) {
+    "node_modules/treeloom-components/dist/components/label.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11664,9 +11655,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/listItem.js
+  // node_modules/treeloom-components/dist/components/listItem.js
   var require_listItem = __commonJS({
-    "node_modules/json-dom-components/dist/components/listItem.js"(exports) {
+    "node_modules/treeloom-components/dist/components/listItem.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11683,9 +11674,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/main.js
+  // node_modules/treeloom-components/dist/components/main.js
   var require_main4 = __commonJS({
-    "node_modules/json-dom-components/dist/components/main.js"(exports) {
+    "node_modules/treeloom-components/dist/components/main.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11702,9 +11693,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/nav.js
+  // node_modules/treeloom-components/dist/components/nav.js
   var require_nav = __commonJS({
-    "node_modules/json-dom-components/dist/components/nav.js"(exports) {
+    "node_modules/treeloom-components/dist/components/nav.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11721,9 +11712,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/option.js
+  // node_modules/treeloom-components/dist/components/option.js
   var require_option = __commonJS({
-    "node_modules/json-dom-components/dist/components/option.js"(exports) {
+    "node_modules/treeloom-components/dist/components/option.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11743,9 +11734,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/paragraph.js
+  // node_modules/treeloom-components/dist/components/paragraph.js
   var require_paragraph = __commonJS({
-    "node_modules/json-dom-components/dist/components/paragraph.js"(exports) {
+    "node_modules/treeloom-components/dist/components/paragraph.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11763,9 +11754,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/radio.js
+  // node_modules/treeloom-components/dist/components/radio.js
   var require_radio = __commonJS({
-    "node_modules/json-dom-components/dist/components/radio.js"(exports) {
+    "node_modules/treeloom-components/dist/components/radio.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11788,9 +11779,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/select.js
+  // node_modules/treeloom-components/dist/components/select.js
   var require_select = __commonJS({
-    "node_modules/json-dom-components/dist/components/select.js"(exports) {
+    "node_modules/treeloom-components/dist/components/select.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11807,9 +11798,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/span.js
+  // node_modules/treeloom-components/dist/components/span.js
   var require_span = __commonJS({
-    "node_modules/json-dom-components/dist/components/span.js"(exports) {
+    "node_modules/treeloom-components/dist/components/span.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11826,9 +11817,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/style.js
+  // node_modules/treeloom-components/dist/components/style.js
   var require_style = __commonJS({
-    "node_modules/json-dom-components/dist/components/style.js"(exports) {
+    "node_modules/treeloom-components/dist/components/style.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11846,9 +11837,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/submit.js
+  // node_modules/treeloom-components/dist/components/submit.js
   var require_submit = __commonJS({
-    "node_modules/json-dom-components/dist/components/submit.js"(exports) {
+    "node_modules/treeloom-components/dist/components/submit.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11868,9 +11859,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/table.js
+  // node_modules/treeloom-components/dist/components/table.js
   var require_table = __commonJS({
-    "node_modules/json-dom-components/dist/components/table.js"(exports) {
+    "node_modules/treeloom-components/dist/components/table.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11887,9 +11878,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/tableBody.js
+  // node_modules/treeloom-components/dist/components/tableBody.js
   var require_tableBody = __commonJS({
-    "node_modules/json-dom-components/dist/components/tableBody.js"(exports) {
+    "node_modules/treeloom-components/dist/components/tableBody.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11906,9 +11897,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/tableData.js
+  // node_modules/treeloom-components/dist/components/tableData.js
   var require_tableData = __commonJS({
-    "node_modules/json-dom-components/dist/components/tableData.js"(exports) {
+    "node_modules/treeloom-components/dist/components/tableData.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11925,9 +11916,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/tableHead.js
+  // node_modules/treeloom-components/dist/components/tableHead.js
   var require_tableHead = __commonJS({
-    "node_modules/json-dom-components/dist/components/tableHead.js"(exports) {
+    "node_modules/treeloom-components/dist/components/tableHead.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11944,9 +11935,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/tableHeading.js
+  // node_modules/treeloom-components/dist/components/tableHeading.js
   var require_tableHeading = __commonJS({
-    "node_modules/json-dom-components/dist/components/tableHeading.js"(exports) {
+    "node_modules/treeloom-components/dist/components/tableHeading.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11963,9 +11954,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/tableRow.js
+  // node_modules/treeloom-components/dist/components/tableRow.js
   var require_tableRow = __commonJS({
-    "node_modules/json-dom-components/dist/components/tableRow.js"(exports) {
+    "node_modules/treeloom-components/dist/components/tableRow.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11982,9 +11973,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/textArea.js
+  // node_modules/treeloom-components/dist/components/textArea.js
   var require_textArea = __commonJS({
-    "node_modules/json-dom-components/dist/components/textArea.js"(exports) {
+    "node_modules/treeloom-components/dist/components/textArea.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12006,9 +11997,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/unorderedList.js
+  // node_modules/treeloom-components/dist/components/unorderedList.js
   var require_unorderedList = __commonJS({
-    "node_modules/json-dom-components/dist/components/unorderedList.js"(exports) {
+    "node_modules/treeloom-components/dist/components/unorderedList.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12025,9 +12016,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/components/index.js
+  // node_modules/treeloom-components/dist/components/index.js
   var require_components = __commonJS({
-    "node_modules/json-dom-components/dist/components/index.js"(exports) {
+    "node_modules/treeloom-components/dist/components/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12107,14 +12098,12 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/typeahead/filterOptions.js
+  // node_modules/treeloom-components/dist/typeahead/filterOptions.js
   var require_filterOptions = __commonJS({
-    "node_modules/json-dom-components/dist/typeahead/filterOptions.js"(exports) {
+    "node_modules/treeloom-components/dist/typeahead/filterOptions.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -12149,9 +12138,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/typeahead/hideList.js
+  // node_modules/treeloom-components/dist/typeahead/hideList.js
   var require_hideList = __commonJS({
-    "node_modules/json-dom-components/dist/typeahead/hideList.js"(exports) {
+    "node_modules/treeloom-components/dist/typeahead/hideList.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -12173,13 +12162,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/typeahead/selectOption.js
+  // node_modules/treeloom-components/dist/typeahead/selectOption.js
   var require_selectOption = __commonJS({
-    "node_modules/json-dom-components/dist/typeahead/selectOption.js"(exports) {
+    "node_modules/treeloom-components/dist/typeahead/selectOption.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_find();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -12205,14 +12192,11 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/typeahead/createTypeahead.js
+  // node_modules/treeloom-components/dist/typeahead/createTypeahead.js
   var require_createTypeahead = __commonJS({
-    "node_modules/json-dom-components/dist/typeahead/createTypeahead.js"(exports) {
+    "node_modules/treeloom-components/dist/typeahead/createTypeahead.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_find();
-      require_esnext_iterator_map();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -12278,9 +12262,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/typeahead/index.js
+  // node_modules/treeloom-components/dist/typeahead/index.js
   var require_typeahead = __commonJS({
-    "node_modules/json-dom-components/dist/typeahead/index.js"(exports) {
+    "node_modules/treeloom-components/dist/typeahead/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12298,9 +12282,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/json-dom-components/dist/main.js
+  // node_modules/treeloom-components/dist/main.js
   var require_main5 = __commonJS({
-    "node_modules/json-dom-components/dist/main.js"(exports, module) {
+    "node_modules/treeloom-components/dist/main.js"(exports, module) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12312,19 +12296,19 @@ var joshuaHome = (() => {
       var index_2 = __importDefault(require_components());
       var index_3 = __importDefault(require_typeahead());
       var root = typeof window !== "undefined" ? window : {};
-      var jsonDomComponents2 = {
+      var treeloomComponents2 = {
         ...index_2.default,
         ...index_3.default,
         ...index_1.default
       };
-      root.jsonDomComponents = jsonDomComponents2;
-      module.exports = jsonDomComponents2;
+      root.treeloomComponents = treeloomComponents2;
+      module.exports = treeloomComponents2;
     }
   });
 
-  // node_modules/matrix-dom/dist/point/point.js
+  // node_modules/treeloom-matrix/dist/point/point.js
   var require_point = __commonJS({
-    "node_modules/matrix-dom/dist/point/point.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/point.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -12339,9 +12323,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/alterCoordinates.js
+  // node_modules/treeloom-matrix/dist/point/alterCoordinates.js
   var require_alterCoordinates = __commonJS({
-    "node_modules/matrix-dom/dist/point/alterCoordinates.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/alterCoordinates.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12360,9 +12344,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/areEqualPoints.js
+  // node_modules/treeloom-matrix/dist/point/areEqualPoints.js
   var require_areEqualPoints = __commonJS({
-    "node_modules/matrix-dom/dist/point/areEqualPoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/areEqualPoints.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -12373,9 +12357,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/nextCell.js
+  // node_modules/treeloom-matrix/dist/point/nextCell.js
   var require_nextCell = __commonJS({
-    "node_modules/matrix-dom/dist/point/nextCell.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/nextCell.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12392,9 +12376,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/prevCell.js
+  // node_modules/treeloom-matrix/dist/point/prevCell.js
   var require_prevCell = __commonJS({
-    "node_modules/matrix-dom/dist/point/prevCell.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/prevCell.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12411,9 +12395,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/direction.js
+  // node_modules/treeloom-matrix/dist/point/direction.js
   var require_direction = __commonJS({
-    "node_modules/matrix-dom/dist/point/direction.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/direction.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12440,9 +12424,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/getAbsolutePoint.js
+  // node_modules/treeloom-matrix/dist/point/getAbsolutePoint.js
   var require_getAbsolutePoint = __commonJS({
-    "node_modules/matrix-dom/dist/point/getAbsolutePoint.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/getAbsolutePoint.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12459,9 +12443,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/getFirstAxisOfCoordinate.js
+  // node_modules/treeloom-matrix/dist/point/getFirstAxisOfCoordinate.js
   var require_getFirstAxisOfCoordinate = __commonJS({
-    "node_modules/matrix-dom/dist/point/getFirstAxisOfCoordinate.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/getFirstAxisOfCoordinate.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -12472,9 +12456,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/getHighestAbsoluteCoordinate.js
+  // node_modules/treeloom-matrix/dist/point/getHighestAbsoluteCoordinate.js
   var require_getHighestAbsoluteCoordinate = __commonJS({
-    "node_modules/matrix-dom/dist/point/getHighestAbsoluteCoordinate.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/getHighestAbsoluteCoordinate.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12491,9 +12475,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/pointDifference.js
+  // node_modules/treeloom-matrix/dist/point/pointDifference.js
   var require_pointDifference = __commonJS({
-    "node_modules/matrix-dom/dist/point/pointDifference.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/pointDifference.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12510,9 +12494,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/sortAxisCoordinates.js
+  // node_modules/treeloom-matrix/dist/point/sortAxisCoordinates.js
   var require_sortAxisCoordinates = __commonJS({
-    "node_modules/matrix-dom/dist/point/sortAxisCoordinates.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/sortAxisCoordinates.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -12536,9 +12520,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/index.js
+  // node_modules/treeloom-matrix/dist/point/index.js
   var require_point2 = __commonJS({
-    "node_modules/matrix-dom/dist/point/index.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12576,9 +12560,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/pointsToStep.js
+  // node_modules/treeloom-matrix/dist/line/pointsToStep.js
   var require_pointsToStep = __commonJS({
-    "node_modules/matrix-dom/dist/line/pointsToStep.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/pointsToStep.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12607,9 +12591,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/getLineIntersectPoints.js
+  // node_modules/treeloom-matrix/dist/line/getLineIntersectPoints.js
   var require_getLineIntersectPoints = __commonJS({
-    "node_modules/matrix-dom/dist/line/getLineIntersectPoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/getLineIntersectPoints.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12637,9 +12621,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/getLineRelativePoints.js
+  // node_modules/treeloom-matrix/dist/line/getLineRelativePoints.js
   var require_getLineRelativePoints = __commonJS({
-    "node_modules/matrix-dom/dist/line/getLineRelativePoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/getLineRelativePoints.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12692,9 +12676,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/getLineTransitionPoints.js
+  // node_modules/treeloom-matrix/dist/line/getLineTransitionPoints.js
   var require_getLineTransitionPoints = __commonJS({
-    "node_modules/matrix-dom/dist/line/getLineTransitionPoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/getLineTransitionPoints.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12730,9 +12714,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/getLinePoints.js
+  // node_modules/treeloom-matrix/dist/line/getLinePoints.js
   var require_getLinePoints = __commonJS({
-    "node_modules/matrix-dom/dist/line/getLinePoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/getLinePoints.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12762,9 +12746,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/testPointsBetween.js
+  // node_modules/treeloom-matrix/dist/line/testPointsBetween.js
   var require_testPointsBetween = __commonJS({
-    "node_modules/matrix-dom/dist/line/testPointsBetween.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/testPointsBetween.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12787,9 +12771,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/checkInBetween.js
+  // node_modules/treeloom-matrix/dist/line/checkInBetween.js
   var require_checkInBetween = __commonJS({
-    "node_modules/matrix-dom/dist/line/checkInBetween.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/checkInBetween.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12806,9 +12790,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/getLinesOfLength.js
+  // node_modules/treeloom-matrix/dist/line/getLinesOfLength.js
   var require_getLinesOfLength = __commonJS({
-    "node_modules/matrix-dom/dist/line/getLinesOfLength.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/getLinesOfLength.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12843,9 +12827,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/getPointsForLines.js
+  // node_modules/treeloom-matrix/dist/line/getPointsForLines.js
   var require_getPointsForLines = __commonJS({
-    "node_modules/matrix-dom/dist/line/getPointsForLines.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/getPointsForLines.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12862,9 +12846,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/lineEndPoint.js
+  // node_modules/treeloom-matrix/dist/line/lineEndPoint.js
   var require_lineEndPoint = __commonJS({
-    "node_modules/matrix-dom/dist/line/lineEndPoint.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/lineEndPoint.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12881,9 +12865,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/index.js
+  // node_modules/treeloom-matrix/dist/line/index.js
   var require_line = __commonJS({
-    "node_modules/matrix-dom/dist/line/index.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12919,9 +12903,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/tile.js
+  // node_modules/treeloom-matrix/dist/grid/tile.js
   var require_tile = __commonJS({
-    "node_modules/matrix-dom/dist/grid/tile.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/tile.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -12934,9 +12918,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/traits.js
+  // node_modules/treeloom-matrix/dist/grid/traits.js
   var require_traits = __commonJS({
-    "node_modules/matrix-dom/dist/grid/traits.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/traits.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12948,26 +12932,26 @@ var joshuaHome = (() => {
         value: true
       });
       exports.hasTrait = void 0;
-      var json_dom_1 = __importDefault(require_main3());
-      exports.hasTrait = json_dom_1.default.hasTrait;
-      json_dom_1.default.defineTrait("matrix.matrix", {
+      var treeloom_1 = __importDefault(require_main3());
+      exports.hasTrait = treeloom_1.default.hasTrait;
+      treeloom_1.default.defineTrait("matrix.matrix", {
         keys: []
       });
-      json_dom_1.default.defineTrait("matrix.layer", {
+      treeloom_1.default.defineTrait("matrix.layer", {
         keys: ["axis"]
       });
-      json_dom_1.default.defineTrait("matrix.row", {
+      treeloom_1.default.defineTrait("matrix.row", {
         keys: ["axis"]
       });
-      json_dom_1.default.defineTrait("matrix.column", {
+      treeloom_1.default.defineTrait("matrix.column", {
         keys: ["axis", "point"]
       });
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/matrix.js
+  // node_modules/treeloom-matrix/dist/grid/matrix.js
   var require_matrix = __commonJS({
-    "node_modules/matrix-dom/dist/grid/matrix.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/matrix.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12979,7 +12963,7 @@ var joshuaHome = (() => {
         value: true
       });
       var si_funciona_1 = __importDefault(require_main());
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var tile_1 = __importDefault(require_tile());
       require_traits();
       var matrix = (dimensions = {
@@ -12991,7 +12975,7 @@ var joshuaHome = (() => {
         y: {},
         z: {},
         matrix: {}
-      }) => si_funciona_1.default.mergeObjects(json_dom_1.default.createDomItem({
+      }) => si_funciona_1.default.mergeObjects(treeloom_1.default.createDomItem({
         has: {
           "matrix.matrix": true
         },
@@ -13001,10 +12985,10 @@ var joshuaHome = (() => {
         },
         // Each level is built fresh per array element (not built once then cloned via buildArray) so every
         // createDomItem call actually runs and stamps its own real id - cloning a single built item would copy
-        // that one id onto every layer/row/tile instead (the id-collision bug behind JSON-DOM#100).
+        // that one id onto every layer/row/tile instead (the id-collision bug behind treeloom#100).
         children: Array.from({
           length: dimensions.z
-        }, () => si_funciona_1.default.mergeObjectsMutable(json_dom_1.default.createDomItem({
+        }, () => si_funciona_1.default.mergeObjectsMutable(treeloom_1.default.createDomItem({
           axis: "z",
           has: {
             "matrix.layer": true
@@ -13015,7 +12999,7 @@ var joshuaHome = (() => {
           },
           children: Array.from({
             length: dimensions.y
-          }, () => si_funciona_1.default.mergeObjectsMutable(json_dom_1.default.createDomItem({
+          }, () => si_funciona_1.default.mergeObjectsMutable(treeloom_1.default.createDomItem({
             axis: "y",
             has: {
               "matrix.row": true
@@ -13026,7 +13010,7 @@ var joshuaHome = (() => {
             },
             children: Array.from({
               length: dimensions.x
-            }, () => si_funciona_1.default.mergeObjectsMutable(json_dom_1.default.createDomItem({
+            }, () => si_funciona_1.default.mergeObjectsMutable(treeloom_1.default.createDomItem({
               axis: "x",
               has: {
                 "matrix.column": true
@@ -13044,9 +13028,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/updateMatrixPoints.js
+  // node_modules/treeloom-matrix/dist/grid/updateMatrixPoints.js
   var require_updateMatrixPoints = __commonJS({
-    "node_modules/matrix-dom/dist/grid/updateMatrixPoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/updateMatrixPoints.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13090,9 +13074,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/buildMatrix.js
+  // node_modules/treeloom-matrix/dist/grid/buildMatrix.js
   var require_buildMatrix = __commonJS({
-    "node_modules/matrix-dom/dist/grid/buildMatrix.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/buildMatrix.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13105,7 +13089,7 @@ var joshuaHome = (() => {
       });
       var matrix_1 = __importDefault(require_matrix());
       var updateMatrixPoints_1 = __importDefault(require_updateMatrixPoints());
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var si_funciona_1 = __importDefault(require_main());
       var buildMatrix = (dimensions = {
         x: 0,
@@ -13116,14 +13100,14 @@ var joshuaHome = (() => {
         y: {},
         z: {},
         matrix: {}
-      }) => si_funciona_1.default.pipe(json_dom_1.default.setParentItemReferences, updateMatrixPoints_1.default)((0, matrix_1.default)(dimensions, props));
+      }) => si_funciona_1.default.pipe(treeloom_1.default.setParentItemReferences, updateMatrixPoints_1.default)((0, matrix_1.default)(dimensions, props));
       exports.default = buildMatrix;
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/cube.js
+  // node_modules/treeloom-matrix/dist/grid/cube.js
   var require_cube = __commonJS({
-    "node_modules/matrix-dom/dist/grid/cube.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/cube.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13154,9 +13138,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/getAxisLengths.js
+  // node_modules/treeloom-matrix/dist/bounds/getAxisLengths.js
   var require_getAxisLengths = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/getAxisLengths.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/getAxisLengths.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13173,9 +13157,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/checkValidPoint.js
+  // node_modules/treeloom-matrix/dist/bounds/checkValidPoint.js
   var require_checkValidPoint = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/checkValidPoint.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/checkValidPoint.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13198,9 +13182,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/lookup/getDomItemFromPoint.js
+  // node_modules/treeloom-matrix/dist/lookup/getDomItemFromPoint.js
   var require_getDomItemFromPoint = __commonJS({
-    "node_modules/matrix-dom/dist/lookup/getDomItemFromPoint.js"(exports) {
+    "node_modules/treeloom-matrix/dist/lookup/getDomItemFromPoint.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13217,9 +13201,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/navigableGrid.js
+  // node_modules/treeloom-matrix/dist/grid/navigableGrid.js
   var require_navigableGrid = __commonJS({
-    "node_modules/matrix-dom/dist/grid/navigableGrid.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/navigableGrid.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13378,9 +13362,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/square.js
+  // node_modules/treeloom-matrix/dist/grid/square.js
   var require_square = __commonJS({
-    "node_modules/matrix-dom/dist/grid/square.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/square.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13411,9 +13395,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/index.js
+  // node_modules/treeloom-matrix/dist/grid/index.js
   var require_grid = __commonJS({
-    "node_modules/matrix-dom/dist/grid/index.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13443,9 +13427,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/adjacentEdgePoints.js
+  // node_modules/treeloom-matrix/dist/bounds/adjacentEdgePoints.js
   var require_adjacentEdgePoints = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/adjacentEdgePoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/adjacentEdgePoints.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13464,9 +13448,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/adjacentPoints.js
+  // node_modules/treeloom-matrix/dist/bounds/adjacentPoints.js
   var require_adjacentPoints = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/adjacentPoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/adjacentPoints.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13486,9 +13470,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/getAllPoints.js
+  // node_modules/treeloom-matrix/dist/bounds/getAllPoints.js
   var require_getAllPoints = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/getAllPoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/getAllPoints.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -13499,9 +13483,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/getCoordinateRanges.js
+  // node_modules/treeloom-matrix/dist/bounds/getCoordinateRanges.js
   var require_getCoordinateRanges = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/getCoordinateRanges.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/getCoordinateRanges.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13528,9 +13512,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/getMatrixRange.js
+  // node_modules/treeloom-matrix/dist/bounds/getMatrixRange.js
   var require_getMatrixRange = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/getMatrixRange.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/getMatrixRange.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13571,9 +13555,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/getAvailableRanges.js
+  // node_modules/treeloom-matrix/dist/bounds/getAvailableRanges.js
   var require_getAvailableRanges = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/getAvailableRanges.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/getAvailableRanges.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13594,9 +13578,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/getLayerPoints.js
+  // node_modules/treeloom-matrix/dist/bounds/getLayerPoints.js
   var require_getLayerPoints = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/getLayerPoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/getLayerPoints.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13613,9 +13597,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/index.js
+  // node_modules/treeloom-matrix/dist/bounds/index.js
   var require_bounds = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/index.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13649,9 +13633,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/lookup/getPointFromElement.js
+  // node_modules/treeloom-matrix/dist/lookup/getPointFromElement.js
   var require_getPointFromElement = __commonJS({
-    "node_modules/matrix-dom/dist/lookup/getPointFromElement.js"(exports) {
+    "node_modules/treeloom-matrix/dist/lookup/getPointFromElement.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13676,9 +13660,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/lookup/getDomItemFromElement.js
+  // node_modules/treeloom-matrix/dist/lookup/getDomItemFromElement.js
   var require_getDomItemFromElement = __commonJS({
-    "node_modules/matrix-dom/dist/lookup/getDomItemFromElement.js"(exports) {
+    "node_modules/treeloom-matrix/dist/lookup/getDomItemFromElement.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13696,9 +13680,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/lookup/getPointFromDomItem.js
+  // node_modules/treeloom-matrix/dist/lookup/getPointFromDomItem.js
   var require_getPointFromDomItem = __commonJS({
-    "node_modules/matrix-dom/dist/lookup/getPointFromDomItem.js"(exports) {
+    "node_modules/treeloom-matrix/dist/lookup/getPointFromDomItem.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13726,9 +13710,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/lookup/index.js
+  // node_modules/treeloom-matrix/dist/lookup/index.js
   var require_lookup = __commonJS({
-    "node_modules/matrix-dom/dist/lookup/index.js"(exports) {
+    "node_modules/treeloom-matrix/dist/lookup/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13752,9 +13736,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/random/randomPoint.js
+  // node_modules/treeloom-matrix/dist/random/randomPoint.js
   var require_randomPoint = __commonJS({
-    "node_modules/matrix-dom/dist/random/randomPoint.js"(exports) {
+    "node_modules/treeloom-matrix/dist/random/randomPoint.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13778,9 +13762,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/random/randDirection.js
+  // node_modules/treeloom-matrix/dist/random/randDirection.js
   var require_randDirection = __commonJS({
-    "node_modules/matrix-dom/dist/random/randDirection.js"(exports) {
+    "node_modules/treeloom-matrix/dist/random/randDirection.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13817,9 +13801,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/random/testIntervalFits.js
+  // node_modules/treeloom-matrix/dist/random/testIntervalFits.js
   var require_testIntervalFits = __commonJS({
-    "node_modules/matrix-dom/dist/random/testIntervalFits.js"(exports) {
+    "node_modules/treeloom-matrix/dist/random/testIntervalFits.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13853,9 +13837,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/random/randDirectionWithInterval.js
+  // node_modules/treeloom-matrix/dist/random/randDirectionWithInterval.js
   var require_randDirectionWithInterval = __commonJS({
-    "node_modules/matrix-dom/dist/random/randDirectionWithInterval.js"(exports) {
+    "node_modules/treeloom-matrix/dist/random/randDirectionWithInterval.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13919,9 +13903,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/random/randomStart.js
+  // node_modules/treeloom-matrix/dist/random/randomStart.js
   var require_randomStart = __commonJS({
-    "node_modules/matrix-dom/dist/random/randomStart.js"(exports) {
+    "node_modules/treeloom-matrix/dist/random/randomStart.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13974,9 +13958,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/random/index.js
+  // node_modules/treeloom-matrix/dist/random/index.js
   var require_random = __commonJS({
-    "node_modules/matrix-dom/dist/random/index.js"(exports) {
+    "node_modules/treeloom-matrix/dist/random/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -14002,9 +13986,9 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/main.js
+  // node_modules/treeloom-matrix/dist/main.js
   var require_main6 = __commonJS({
-    "node_modules/matrix-dom/dist/main.js"(exports, module) {
+    "node_modules/treeloom-matrix/dist/main.js"(exports, module) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -14019,7 +14003,7 @@ var joshuaHome = (() => {
       var index_5 = __importDefault(require_lookup());
       var index_6 = __importDefault(require_random());
       var root = typeof window !== "undefined" ? window : {};
-      var matrixDom2 = {
+      var treeloomMatrix2 = {
         ...index_1.default,
         ...index_2.default,
         ...index_3.default,
@@ -14027,18 +14011,18 @@ var joshuaHome = (() => {
         ...index_5.default,
         ...index_6.default
       };
-      root.matrixDom = matrixDom2;
-      module.exports = matrixDom2;
+      root.treeloomMatrix = treeloomMatrix2;
+      module.exports = treeloomMatrix2;
     }
   });
 
   // dist/main.js
   init_process();
-  var jsonDom = require_main3();
-  var jsonDomComponents = require_main5();
-  var matrixDom = require_main6();
-  window.jsonDom = jsonDom;
-  window.jsonDomComponents = jsonDomComponents;
-  window.matrixDom = matrixDom;
+  var treeloom = require_main3();
+  var treeloomComponents = require_main5();
+  var treeloomMatrix = require_main6();
+  window.treeloom = treeloom;
+  window.treeloomComponents = treeloomComponents;
+  window.treeloomMatrix = treeloomMatrix;
 })();
 if (typeof module === 'object' && module && module.exports) { module.exports = joshuaHome }

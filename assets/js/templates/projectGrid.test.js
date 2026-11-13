@@ -1,10 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-/* global jsonDom */
-global.jsonDom = require('json-dom')
-global.jsonDomComponents = require('json-dom-components')
-global.matrixDom = require('matrix-dom')
+/* global treeloom */
+global.treeloom = require('treeloom')
+global.treeloomComponents = require('treeloom-components')
+global.treeloomMatrix = require('treeloom-matrix')
 const projectGrid = require('./projectGrid').default
 
 const projects = [
@@ -18,7 +18,7 @@ const projects = [
 describe('projectGrid', () => {
   test('renders every project as a single-link tile, in row-major order, with trailing slots left empty', () => {
     const grid = projectGrid(projects)
-    jsonDom.renderHtml(grid) // defaults to inserting into documentItem.body, i.e. the real document.body
+    treeloom.renderHtml(grid) // defaults to inserting into documentItem.body, i.e. the real document.body
 
     const tiles = [...document.querySelectorAll('.tile')]
     // 5 projects over 4 columns -> 2 rows -> 8 tiles total, 3 of them empty

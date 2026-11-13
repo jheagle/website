@@ -1,4 +1,4 @@
-/* global jsonDomComponents, matrixDom, jsonDom */
+/* global treeloomComponents, treeloomMatrix, treeloom */
 const {
   div,
   span,
@@ -6,7 +6,7 @@ const {
   heading,
   paragraph,
   text
-} = jsonDomComponents;
+} = treeloomComponents;
 const columns = 4;
 
 // Styling is all Tailwind classes. The plain names in front (project-grid, tile, tile-empty, tile-link,
@@ -44,7 +44,7 @@ const tileContent = project => anchor(project.href, [div([span([text(project.tit
  */
 const projectGrid = projects => {
   const rows = Math.ceil(projects.length / columns);
-  const grid = matrixDom.buildMatrix({
+  const grid = treeloomMatrix.buildMatrix({
     x: columns,
     y: rows,
     z: 1
@@ -71,9 +71,9 @@ const projectGrid = projects => {
     }
   });
   projects.forEach((project, index) => {
-    const tile = matrixDom.getDomItemFromPoint(matrixDom.point(index % columns, Math.floor(index / columns)), grid);
+    const tile = treeloomMatrix.getDomItemFromPoint(treeloomMatrix.point(index % columns, Math.floor(index / columns)), grid);
     tile.attributes.className = classes.tile;
-    jsonDom.appendChild(tile, tileContent(project));
+    treeloom.appendChild(tile, tileContent(project));
   });
   return grid;
 };

@@ -1,6 +1,6 @@
 /**
  * The json-dom sandbox: describe a piece of page as JSON (json-dom's own item format) and watch json-dom render it,
- * next to the HTML it produced. Runs the real library (json-dom), loaded as window.jsonDom: on /projects/ the site's
+ * next to the HTML it produced. Runs the real library (json-dom), loaded as window.treeloom: on /projects/ the site's
  * own bundle defines it, and the json-dom page loads it from browser/vendor.
  *
  * Visitor JSON goes through an allowlist first: only plain content tags and a few safe attributes render, so nothing
@@ -131,10 +131,10 @@ export const markup = `<div class='grid grid-cols-1 gap-6 md:grid-cols-2'>
  * Render the sandbox into the page's `<div data-sandbox='json-dom'>` and wire it up. One per page.
  * @param {Document} document
  * @param {Window} window
- * @param {Object} [library=window.jsonDom]
+ * @param {Object} [library=window.treeloom]
  * @returns {{load: function(string): void, render: function(): void}|null}
  */
-export const initJsonDomSandbox = (document, window, library = window.jsonDom) => {
+export const initJsonDomSandbox = (document, window, library = window.treeloom) => {
   const mount = document.querySelector('[data-sandbox="json-dom"]')
   if (!mount || !library) return null
   if (!mount.querySelector('#jd-json')) mount.innerHTML = markup

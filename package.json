@@ -41,13 +41,13 @@
   },
   "dependencies": {
     "collect-your-stuff": "^2.4.0",
-    "json-dom": "github:jheagle/JSON-DOM",
-    "json-dom-components": "github:jheagle/json-dom-components",
     "json-fs-query": "^3.7.0",
-    "matrix-dom": "github:jheagle/matrix-DOM",
     "pseudo-dom": "^1.4.0",
     "si-funciona": "^2.10.0",
-    "title-switcher": "^2.2.3"
+    "title-switcher": "^2.2.3",
+    "treeloom": "^2.1.0",
+    "treeloom-components": "^0.2.0",
+    "treeloom-matrix": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^8.1.0",
@@ -79,7 +79,7 @@
     "gulp",
     "tailwind",
     "browsersync",
-    "json-dom",
+    "treeloom",
     "portfolio"
   ],
   "bugs": {

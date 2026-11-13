@@ -12,17 +12,17 @@
     <link rel='preload' href='/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
     <link rel='preload' href='/browser/fonts/lexend-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
     <link rel='stylesheet' href='/browser/tailwind/site.css?v=9d64705248'>
-    <script src='/browser/joshuaHome.js?v=f77a22a0ca'></script>
+    <script src='/browser/joshuaHome.js?v=4c4b15e08e'></script>
     <script type='module'>
-      import projectGrid from '/dist/templates/projectGrid.js?v=3da5c9d08f'
+      import projectGrid from '/dist/templates/projectGrid.js?v=cb85021a2d'
       import projects from '/dist/data/projectList.js?v=5e49f98304'
 
-      const documentItem = jsonDom.documentItem
+      const documentItem = treeloom.documentItem
       // Capture the hand-authored HTML into items once, so renderHtml's insert doesn't wipe out real children it
       // doesn't know about yet. Only call this once per page: a second full-tree pass throws in a real browser.
-      jsonDom.updateDomItems(documentItem)
-      const gridItem = jsonDom.getItemByElement(documentItem.body, document.getElementById('project-grid'))
-      jsonDom.renderHtml(projectGrid(projects), gridItem, 0)
+      treeloom.updateDomItems(documentItem)
+      const gridItem = treeloom.getItemByElement(documentItem.body, document.getElementById('project-grid'))
+      treeloom.renderHtml(projectGrid(projects), gridItem, 0)
     </script>
 </head>
 <body class='mx-auto max-w-6xl px-5 pt-6 pb-16 lg:pt-14'>
@@ -75,7 +75,7 @@
             <h3 class='mt-0 mb-1 text-xl'><a class='text-foreground no-underline hover:underline' href='/projects/matrix-dom/'>Matrix DOM</a></h3>
             <p class='mt-0 mb-5 text-sm text-muted'>The grid geometry under Cloakfall's boards (and this page's project grid). Draw lines, check neighbours, place a fleet.</p>
             <!-- Filled in by /dist/sandboxes/matrixDomSandboxInit.js (assets/js/sandboxes/matrixDomSandbox.js), the same
-                 sandbox the matrix-dom page uses; here window.matrixDom comes from /browser/joshuaHome.js -->
+                 sandbox the matrix-dom page uses; here window.treeloomMatrix comes from /browser/joshuaHome.js -->
             <div data-sandbox='matrix-dom'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
         </article>
 
@@ -83,7 +83,7 @@
             <h3 class='mt-0 mb-1 text-xl'><a class='text-foreground no-underline hover:underline' href='/projects/json-dom/'>JSON DOM</a></h3>
             <p class='mt-0 mb-5 text-sm text-muted'>Describe part of a page as data and json-dom builds it. Edit the JSON and the result re-renders as you type.</p>
             <!-- Filled in by /dist/sandboxes/jsonDomSandboxInit.js (assets/js/sandboxes/jsonDomSandbox.js), the same sandbox
-                 the json-dom page uses; here window.jsonDom comes from /browser/joshuaHome.js -->
+                 the json-dom page uses; here window.treeloom comes from /browser/joshuaHome.js -->
             <div data-sandbox='json-dom'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
         </article>
 
@@ -114,11 +114,11 @@
 <script type='module' src='/dist/sandboxes/siFuncionaSandboxInit.js?v=3b0f4dca0d'></script>
 <script src='/browser/vendor/collectYourStuff.min.js?v=b74fef1d93' defer></script>
 <script type='module' src='/dist/sandboxes/collectYourStuffSandboxInit.js?v=97c7c0128c'></script>
-<script type='module' src='/dist/sandboxes/matrixDomSandboxInit.js?v=6ffac2a6a3'></script>
-<script type='module' src='/dist/sandboxes/jsonDomSandboxInit.js?v=e464d4b8ed'></script>
-<script src='/browser/vendor/pseudoDom.min.js?v=fb5fce0ba6' defer></script>
+<script type='module' src='/dist/sandboxes/matrixDomSandboxInit.js?v=a53e676a8f'></script>
+<script type='module' src='/dist/sandboxes/jsonDomSandboxInit.js?v=d2d2496b0a'></script>
+<script src='/browser/vendor/pseudoDom.min.js?v=4bd65d4716' defer></script>
 <script type='module' src='/dist/sandboxes/pseudoDomSandboxInit.js?v=af5cd3d932'></script>
-<script src='/browser/vendor/jsonFsQuery.min.js?v=053080ba1d' defer></script>
+<script src='/browser/vendor/jsonFsQuery.min.js?v=a94fbccd95' defer></script>
 <script type='module' src='/dist/sandboxes/jsonFsQuerySandboxInit.js?v=b0147b15f2'></script>
 <script data-goatcounter="https://joshuaheagle.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

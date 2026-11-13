@@ -2,8 +2,8 @@
  * The matrix-dom sandbox: a 10 by 10 board to try the grid geometry Cloakfall is built on. Draw a line between two
  * cells, see a cell's neighbours, or place a fleet the way Cloakfall does.
  * Runs the real libraries: the board is a matrix-dom matrix made an interactive ARIA grid by navigableGrid (arrow
- * keys, Home / End, Enter or Space to tap) and rendered by json-dom. Both are globals (window.matrixDom,
- * window.jsonDom): on /projects/ the site's own bundle defines them, and the matrix-dom page loads them from
+ * keys, Home / End, Enter or Space to tap) and rendered by json-dom. Both are globals (window.treeloomMatrix,
+ * window.treeloom): on /projects/ the site's own bundle defines them, and the matrix-dom page loads them from
  * browser/vendor.
  *
  * Rendered into each `<div data-sandbox='matrix-dom'>`, so /projects/ and the matrix-dom page share one sandbox.
@@ -88,11 +88,11 @@ export const markup = `<div class='grid grid-cols-1 gap-6 md:grid-cols-2'>
  * Render the sandbox into the page's `<div data-sandbox='matrix-dom'>` and wire it up. One per page.
  * @param {Document} document
  * @param {Window} window
- * @param {Object} [library=window.matrixDom]
- * @param {Object} [renderer=window.jsonDom] json-dom, which renders the board
+ * @param {Object} [library=window.treeloomMatrix]
+ * @param {Object} [renderer=window.treeloom] json-dom, which renders the board
  * @returns {{setMode: function(string): void, tap: function(number, number): void, placeNext: function(): void, clear: function(): void}|null}
  */
-export const initMatrixDomSandbox = (document, window, library = window.matrixDom, renderer = window.jsonDom) => {
+export const initMatrixDomSandbox = (document, window, library = window.treeloomMatrix, renderer = window.treeloom) => {
   const mount = document.querySelector('[data-sandbox="matrix-dom"]')
   if (!mount || !library || !renderer) return null
   if (!mount.querySelector('#md-board')) mount.innerHTML = markup
