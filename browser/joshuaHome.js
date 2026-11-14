@@ -12098,43 +12098,47 @@ var joshuaHome = (() => {
     }
   });
 
-  // node_modules/treeloom-components/dist/typeahead/filterOptions.js
-  var require_filterOptions = __commonJS({
-    "node_modules/treeloom-components/dist/typeahead/filterOptions.js"(exports) {
+  // node_modules/treeloom-components/dist/typeahead/setSelectValue.js
+  var require_setSelectValue = __commonJS({
+    "node_modules/treeloom-components/dist/typeahead/setSelectValue.js"(exports) {
       "use strict";
       init_process();
-      require_es_array_includes();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.makeFilterOptions = void 0;
-      var filterOptions = (searchTerm, optionItems, selectItem) => {
-        const term = searchTerm.trim().toLowerCase();
-        let visibleCount = 0;
-        optionItems.forEach((optionItem) => {
-          const label = (optionItem.children[0]?.nodeValue ?? "").toLowerCase();
-          const value = String(optionItem.attributes.value ?? "").toLowerCase();
-          const matches = term.length > 0 && (label.includes(term) || value.includes(term));
-          optionItem.attributes.hidden = !matches;
-          if (matches) {
-            visibleCount++;
-          }
-          if (optionItem.element) {
-            optionItem.element.hidden = !matches;
+      var setSelectValue = (selectItem, value) => {
+        selectItem.attributes.value = value;
+        selectItem.children.forEach((optionItem) => {
+          if (optionItem.attributes.value === value) {
+            optionItem.attributes.selected = true;
+          } else {
+            delete optionItem.attributes.selected;
           }
         });
-        const expand = term.length >= 2 && visibleCount > 0;
-        selectItem.attributes.hidden = !expand;
-        selectItem.attributes.size = expand ? Math.min(5, visibleCount) : 1;
         if (selectItem.element) {
-          const element = selectItem.element;
-          element.hidden = !expand;
-          element.size = expand ? Math.min(5, visibleCount) : 1;
+          selectItem.element.value = value;
         }
       };
-      var makeFilterOptions = (optionItems, selectItem) => (event) => filterOptions(event.target.value, optionItems, selectItem);
-      exports.makeFilterOptions = makeFilterOptions;
-      exports.default = filterOptions;
+      exports.default = setSelectValue;
+    }
+  });
+
+  // node_modules/treeloom-components/dist/typeahead/showOptions.js
+  var require_showOptions = __commonJS({
+    "node_modules/treeloom-components/dist/typeahead/showOptions.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      var showOptions = (selectItem, optionItems) => {
+        selectItem.children = optionItems;
+        if (selectItem.element) {
+          const elements = optionItems.map((optionItem) => optionItem.element).filter(Boolean);
+          selectItem.element.replaceChildren(...elements);
+        }
+      };
+      exports.default = showOptions;
     }
   });
 
@@ -12143,11 +12147,21 @@ var joshuaHome = (() => {
     "node_modules/treeloom-components/dist/typeahead/hideList.js"(exports) {
       "use strict";
       init_process();
+      var __importDefault = function(mod) {
+        return mod && mod.__esModule ? mod : {
+          "default": mod
+        };
+      };
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.makeHideList = void 0;
-      var hideList = (selectItem) => {
+      var setSelectValue_1 = __importDefault(require_setSelectValue());
+      var showOptions_1 = __importDefault(require_showOptions());
+      var hideList = (parts) => {
+        const {
+          selectItem
+        } = parts;
+        (0, showOptions_1.default)(selectItem, [parts.emptyOption, ...parts.optionItems]);
         selectItem.attributes.hidden = true;
         selectItem.attributes.size = 1;
         if (selectItem.element) {
@@ -12155,10 +12169,60 @@ var joshuaHome = (() => {
           element.hidden = true;
           element.size = 1;
         }
+        (0, setSelectValue_1.default)(selectItem, parts.state.committed);
       };
-      var makeHideList = (selectItem) => () => hideList(selectItem);
-      exports.makeHideList = makeHideList;
       exports.default = hideList;
+    }
+  });
+
+  // node_modules/treeloom-components/dist/typeahead/filterOptions.js
+  var require_filterOptions = __commonJS({
+    "node_modules/treeloom-components/dist/typeahead/filterOptions.js"(exports) {
+      "use strict";
+      init_process();
+      require_es_array_includes();
+      var __importDefault = function(mod) {
+        return mod && mod.__esModule ? mod : {
+          "default": mod
+        };
+      };
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.optionMatches = void 0;
+      var hideList_1 = __importDefault(require_hideList());
+      var showOptions_1 = __importDefault(require_showOptions());
+      var optionMatches = (optionItem, term) => {
+        const label = (optionItem.children[0]?.nodeValue ?? "").toLowerCase();
+        const value = String(optionItem.attributes.value ?? "").toLowerCase();
+        return term.length > 0 && (label.includes(term) || value.includes(term));
+      };
+      exports.optionMatches = optionMatches;
+      var filterOptions = (searchTerm, parts) => {
+        const term = searchTerm.trim().toLowerCase();
+        const matches = parts.optionItems.filter((optionItem) => (0, exports.optionMatches)(optionItem, term));
+        if (term.length < 2 || matches.length === 0) {
+          (0, hideList_1.default)(parts);
+          return;
+        }
+        const {
+          selectItem
+        } = parts;
+        (0, showOptions_1.default)(selectItem, matches);
+        selectItem.attributes.hidden = false;
+        selectItem.attributes.size = Math.max(2, Math.min(5, matches.length));
+        if (selectItem.element) {
+          const element = selectItem.element;
+          element.hidden = false;
+          element.size = selectItem.attributes.size;
+          if (matches.some((optionItem) => optionItem.attributes.value === parts.state.committed)) {
+            element.value = parts.state.committed;
+          } else {
+            element.selectedIndex = -1;
+          }
+        }
+      };
+      exports.default = filterOptions;
     }
   });
 
@@ -12175,20 +12239,154 @@ var joshuaHome = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.makeSelectOption = void 0;
       var hideList_1 = __importDefault(require_hideList());
-      var selectOption = (selectedValue, options, freeTypeInput, selectItem) => {
-        const matched = options.find((candidate) => candidate.value === selectedValue);
+      var selectOption = (selectedValue, parts) => {
+        const matched = parts.options.find((candidate) => candidate.value === selectedValue);
         const displayValue = matched ? matched.label : "";
-        freeTypeInput.attributes.value = displayValue;
-        if (freeTypeInput.element) {
-          freeTypeInput.element.value = displayValue;
+        parts.freeTypeInput.attributes.value = displayValue;
+        if (parts.freeTypeInput.element) {
+          parts.freeTypeInput.element.value = displayValue;
         }
-        (0, hideList_1.default)(selectItem);
+        parts.state.committed = matched ? matched.value : "";
+        (0, hideList_1.default)(parts);
       };
-      var makeSelectOption = (options, freeTypeInput, selectItem) => (event) => selectOption(event.target.value, options, freeTypeInput, selectItem);
-      exports.makeSelectOption = makeSelectOption;
       exports.default = selectOption;
+    }
+  });
+
+  // node_modules/treeloom-components/dist/typeahead/listeners.js
+  var require_listeners = __commonJS({
+    "node_modules/treeloom-components/dist/typeahead/listeners.js"(exports) {
+      "use strict";
+      init_process();
+      require_es_array_includes();
+      var __importDefault = function(mod) {
+        return mod && mod.__esModule ? mod : {
+          "default": mod
+        };
+      };
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.makeFocusout = exports.makeListChange = exports.makeListClick = exports.makeListMouseup = exports.makeListMousedown = exports.makeListKeydown = exports.makeSearchKeydown = exports.makeSearchKeyup = exports.pickFromList = exports.closeList = exports.isListShown = void 0;
+      var filterOptions_1 = __importDefault(require_filterOptions());
+      var hideList_1 = __importDefault(require_hideList());
+      var selectOption_1 = __importDefault(require_selectOption());
+      var setSelectValue_1 = __importDefault(require_setSelectValue());
+      var navigationKeys = ["ArrowDown", "ArrowUp", "Enter", "Escape", "Tab", "Shift"];
+      var listElement = (parts) => parts.selectItem.element;
+      var searchElement = (parts) => parts.freeTypeInput.element;
+      var isListShown = (parts) => parts.selectItem.attributes.hidden !== true;
+      exports.isListShown = isListShown;
+      var closeList = (parts) => {
+        (0, hideList_1.default)(parts);
+      };
+      exports.closeList = closeList;
+      var pickFromList = (parts, value) => {
+        parts.state.pointerInList = false;
+        if (!value) {
+          return;
+        }
+        (0, selectOption_1.default)(value, parts);
+        searchElement(parts)?.focus();
+      };
+      exports.pickFromList = pickFromList;
+      var makeSearchKeyup = (parts) => (event) => {
+        if (navigationKeys.includes(event.key)) {
+          return;
+        }
+        parts.state.pointerInList = false;
+        const text = event.target.value;
+        if (parts.state.committed) {
+          const picked = parts.options.find((candidate) => candidate.value === parts.state.committed);
+          if (!picked || picked.label !== text) {
+            parts.state.committed = "";
+            (0, setSelectValue_1.default)(parts.selectItem, "");
+          }
+        }
+        (0, filterOptions_1.default)(text, parts);
+      };
+      exports.makeSearchKeyup = makeSearchKeyup;
+      var makeSearchKeydown = (parts) => (event) => {
+        const {
+          key
+        } = event;
+        if (!(0, exports.isListShown)(parts) || !["ArrowDown", "Escape", "Enter"].includes(key)) {
+          return;
+        }
+        event.preventDefault();
+        if (key === "Escape") {
+          (0, exports.closeList)(parts);
+          return;
+        }
+        if (key === "Enter") {
+          const text = (searchElement(parts)?.value ?? "").trim().toLowerCase();
+          const exact = parts.options.find((candidate) => candidate.label.trim().toLowerCase() === text);
+          if (exact) {
+            (0, exports.pickFromList)(parts, exact.value);
+            return;
+          }
+        }
+        const list = listElement(parts);
+        if (list) {
+          list.selectedIndex = 0;
+          parts.state.usingKeys = true;
+          list.focus();
+        }
+      };
+      exports.makeSearchKeydown = makeSearchKeydown;
+      var makeListKeydown = (parts) => (event) => {
+        const {
+          key
+        } = event;
+        parts.state.usingKeys = true;
+        if (key === "Enter") {
+          event.preventDefault();
+          (0, exports.pickFromList)(parts, listElement(parts)?.value ?? "");
+        } else if (key === "Escape") {
+          event.preventDefault();
+          (0, exports.closeList)(parts);
+          searchElement(parts)?.focus();
+        }
+      };
+      exports.makeListKeydown = makeListKeydown;
+      var makeListMousedown = (parts) => () => {
+        parts.state.pointerInList = true;
+        parts.state.usingKeys = false;
+      };
+      exports.makeListMousedown = makeListMousedown;
+      var makeListMouseup = (parts) => () => {
+        parts.state.pointerInList = false;
+      };
+      exports.makeListMouseup = makeListMouseup;
+      var makeListClick = (parts) => (event) => {
+        const target = event.target;
+        if (target && target.tagName === "OPTION") {
+          (0, exports.pickFromList)(parts, target.value);
+        }
+      };
+      exports.makeListClick = makeListClick;
+      var makeListChange = (parts) => (event) => {
+        if (parts.state.usingKeys) {
+          return;
+        }
+        (0, exports.pickFromList)(parts, event.target.value);
+      };
+      exports.makeListChange = makeListChange;
+      var makeFocusout = (parts) => (event) => {
+        const next = event.relatedTarget;
+        const wrapper = parts.wrapper.element;
+        if (next && wrapper && wrapper.contains(next)) {
+          return;
+        }
+        const pressingList = parts.state.pointerInList && next === null && event.target === searchElement(parts);
+        parts.state.pointerInList = false;
+        if (pressingList) {
+          return;
+        }
+        (0, exports.closeList)(parts);
+      };
+      exports.makeFocusout = makeFocusout;
     }
   });
 
@@ -12209,54 +12407,92 @@ var joshuaHome = (() => {
       var input_1 = __importDefault(require_input());
       var option_1 = __importDefault(require_option());
       var select_1 = __importDefault(require_select());
-      var filterOptions_1 = require_filterOptions();
-      var hideList_1 = require_hideList();
-      var selectOption_1 = require_selectOption();
+      var listeners_1 = require_listeners();
       var createTypeahead = (config) => {
         const {
           name,
           options,
           value = "",
           placeholder = "",
+          label,
           className,
           readonly = false
         } = config;
         const selected = options.find((candidate) => candidate.value === value);
+        const emptyOption = (0, option_1.default)("", "", void 0, {
+          hidden: true,
+          ...selected ? {} : {
+            selected: true
+          }
+        });
         const optionItems = options.map((choice) => (0, option_1.default)(choice.value, choice.label, void 0, choice.value === value ? {
           selected: true
         } : {}));
         const freeTypeInput = (0, input_1.default)("text", `${name}-search`, selected ? selected.label : "", [], "typeahead-search", {
           placeholder,
+          autocomplete: "off",
+          ...label ? {
+            "aria-label": label
+          } : {},
           ...readonly ? {
             readonly: true
           } : {}
         });
-        const selectItem = (0, select_1.default)(optionItems, "typeahead-options", {
+        const selectItem = (0, select_1.default)([emptyOption, ...optionItems], "typeahead-options", {
           name,
           hidden: true,
           size: 1,
-          ...value ? {
+          ...label ? {
+            "aria-label": `${label} matches`
+          } : {},
+          ...selected ? {
             value
           } : {},
           ...readonly ? {
             disabled: true
           } : {}
         });
+        const wrapper = (0, div_1.default)([freeTypeInput, selectItem], className ?? "typeahead");
         if (!readonly) {
+          const parts = {
+            options,
+            optionItems,
+            emptyOption,
+            freeTypeInput,
+            selectItem,
+            wrapper,
+            state: {
+              committed: selected ? selected.value : "",
+              pointerInList: false,
+              usingKeys: false
+            }
+          };
           freeTypeInput.eventListeners.keyup = [{
-            listenerFunc: (0, filterOptions_1.makeFilterOptions)(optionItems, selectItem)
+            listenerFunc: (0, listeners_1.makeSearchKeyup)(parts)
           }];
-          freeTypeInput.eventListeners.blur = [{
-            listenerFunc: (0, hideList_1.makeHideList)(selectItem)
+          freeTypeInput.eventListeners.keydown = [{
+            listenerFunc: (0, listeners_1.makeSearchKeydown)(parts)
+          }];
+          selectItem.eventListeners.keydown = [{
+            listenerFunc: (0, listeners_1.makeListKeydown)(parts)
+          }];
+          selectItem.eventListeners.mousedown = [{
+            listenerFunc: (0, listeners_1.makeListMousedown)(parts)
+          }];
+          selectItem.eventListeners.mouseup = [{
+            listenerFunc: (0, listeners_1.makeListMouseup)(parts)
+          }];
+          selectItem.eventListeners.click = [{
+            listenerFunc: (0, listeners_1.makeListClick)(parts)
           }];
           selectItem.eventListeners.change = [{
-            listenerFunc: (0, selectOption_1.makeSelectOption)(options, freeTypeInput, selectItem)
+            listenerFunc: (0, listeners_1.makeListChange)(parts)
           }];
-          selectItem.eventListeners.blur = [{
-            listenerFunc: (0, hideList_1.makeHideList)(selectItem)
+          wrapper.eventListeners.focusout = [{
+            listenerFunc: (0, listeners_1.makeFocusout)(parts)
           }];
         }
-        return (0, div_1.default)([freeTypeInput, selectItem], className ?? "typeahead");
+        return wrapper;
       };
       exports.default = createTypeahead;
     }
