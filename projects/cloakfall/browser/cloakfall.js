@@ -20546,18 +20546,60 @@ var cloakfall = (() => {
           point: treeloom_matrix_1.default.getPointFromElement(focused)
         };
       };
-      var renderInto = (root, redactedBody) => {
+      var fullRenderForwarding = /* @__PURE__ */ new WeakMap();
+      var inflateBody = (redactedBody, focus) => {
+        const body = treeloom_1.default.jsonToDomItem(JSON.stringify(redactedBody));
+        const boards = boardsIn(body);
+        boards.forEach((board, index) => treeloom_matrix_1.default.navigableGrid(board, focus?.board === index ? focus.point : void 0));
+        return {
+          body,
+          boards
+        };
+      };
+      var renderFresh = (root, redactedBody) => {
         const focus = focusedCell(root);
         clearChildren(root.body);
-        const inflated = treeloom_1.default.jsonToDomItem(JSON.stringify(redactedBody));
-        const boards = boardsIn(inflated);
-        boards.forEach((board, index) => treeloom_matrix_1.default.navigableGrid(board, focus?.board === index ? focus.point : void 0));
-        inflated.children.forEach((child) => {
+        const {
+          body,
+          boards
+        } = inflateBody(redactedBody, focus);
+        body.children.forEach((child) => {
           child.parentItem = null;
           treeloom_1.default.renderHtml(child, root.body);
         });
         const refocus = focus && boards[focus.board] ? treeloom_matrix_1.default.getDomItemFromPoint(focus.point, boards[focus.board]) : false;
         (refocus ? refocus.element : void 0)?.focus();
+        fullRenderForwarding.set(root, Boolean(root.forwardEvents));
+      };
+      var renderChanges = (root, redactedBody) => {
+        const {
+          body
+        } = inflateBody(redactedBody, focusedCell(root));
+        const existing = root.body;
+        const next = body;
+        for (const key of Object.keys(next)) {
+          if (key !== "children") {
+            delete next[key];
+          }
+        }
+        for (const key of Object.keys(existing)) {
+          if (key !== "children") {
+            next[key] = existing[key];
+          }
+        }
+        try {
+          treeloom_1.default.reconcile(root.body, body);
+        } catch (error) {
+          console.warn("Cloakfall: reconciling a game update failed, rendering it in full instead", error);
+          renderFresh(root, redactedBody);
+        }
+      };
+      var renderInto = (root, redactedBody) => {
+        if (fullRenderForwarding.get(root) === Boolean(root.forwardEvents)) {
+          renderChanges(root, redactedBody);
+        } else {
+          renderFresh(root, redactedBody);
+        }
       };
       var stopForwarding = (root) => {
         delete root.forwardEvents;
@@ -20569,7 +20611,7 @@ var cloakfall = (() => {
         if (firstOver) {
           stopForwarding(root);
         }
-        renderInto(root, firstOver ? finalScoreOnly(firstUpdate) : firstUpdate);
+        renderFresh(root, firstOver ? finalScoreOnly(firstUpdate) : firstUpdate);
         setCountdownDeadline(deadlineOf(firstUpdate));
         (0, lobbySocket_1.onGameUpdate)((redactedBody) => {
           const over = isGameOver(redactedBody);
@@ -20586,6 +20628,7 @@ var cloakfall = (() => {
       var leaveRemoteGame = (root) => {
         stopForwarding(root);
         clearChildren(root.body);
+        fullRenderForwarding.delete(root);
       };
       exports.leaveRemoteGame = leaveRemoteGame;
     }
