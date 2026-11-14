@@ -209,9 +209,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/point.js
+  // node_modules/treeloom-matrix/dist/point/point.js
   var require_point = __commonJS({
-    "node_modules/matrix-dom/dist/point/point.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/point.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -226,9 +226,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/alterCoordinates.js
+  // node_modules/treeloom-matrix/dist/point/alterCoordinates.js
   var require_alterCoordinates = __commonJS({
-    "node_modules/matrix-dom/dist/point/alterCoordinates.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/alterCoordinates.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -247,9 +247,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/areEqualPoints.js
+  // node_modules/treeloom-matrix/dist/point/areEqualPoints.js
   var require_areEqualPoints = __commonJS({
-    "node_modules/matrix-dom/dist/point/areEqualPoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/areEqualPoints.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -260,9 +260,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/nextCell.js
+  // node_modules/treeloom-matrix/dist/point/nextCell.js
   var require_nextCell = __commonJS({
-    "node_modules/matrix-dom/dist/point/nextCell.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/nextCell.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -279,9 +279,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/prevCell.js
+  // node_modules/treeloom-matrix/dist/point/prevCell.js
   var require_prevCell = __commonJS({
-    "node_modules/matrix-dom/dist/point/prevCell.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/prevCell.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4534,9 +4534,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/direction.js
+  // node_modules/treeloom-matrix/dist/point/direction.js
   var require_direction = __commonJS({
-    "node_modules/matrix-dom/dist/point/direction.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/direction.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4563,9 +4563,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/getAbsolutePoint.js
+  // node_modules/treeloom-matrix/dist/point/getAbsolutePoint.js
   var require_getAbsolutePoint = __commonJS({
-    "node_modules/matrix-dom/dist/point/getAbsolutePoint.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/getAbsolutePoint.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4582,9 +4582,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/getFirstAxisOfCoordinate.js
+  // node_modules/treeloom-matrix/dist/point/getFirstAxisOfCoordinate.js
   var require_getFirstAxisOfCoordinate = __commonJS({
-    "node_modules/matrix-dom/dist/point/getFirstAxisOfCoordinate.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/getFirstAxisOfCoordinate.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -4595,9 +4595,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/getHighestAbsoluteCoordinate.js
+  // node_modules/treeloom-matrix/dist/point/getHighestAbsoluteCoordinate.js
   var require_getHighestAbsoluteCoordinate = __commonJS({
-    "node_modules/matrix-dom/dist/point/getHighestAbsoluteCoordinate.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/getHighestAbsoluteCoordinate.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4614,9 +4614,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/pointDifference.js
+  // node_modules/treeloom-matrix/dist/point/pointDifference.js
   var require_pointDifference = __commonJS({
-    "node_modules/matrix-dom/dist/point/pointDifference.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/pointDifference.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4633,9 +4633,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/sortAxisCoordinates.js
+  // node_modules/treeloom-matrix/dist/point/sortAxisCoordinates.js
   var require_sortAxisCoordinates = __commonJS({
-    "node_modules/matrix-dom/dist/point/sortAxisCoordinates.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/sortAxisCoordinates.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -4659,9 +4659,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/point/index.js
+  // node_modules/treeloom-matrix/dist/point/index.js
   var require_point2 = __commonJS({
-    "node_modules/matrix-dom/dist/point/index.js"(exports) {
+    "node_modules/treeloom-matrix/dist/point/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4699,9 +4699,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/pointsToStep.js
+  // node_modules/treeloom-matrix/dist/line/pointsToStep.js
   var require_pointsToStep = __commonJS({
-    "node_modules/matrix-dom/dist/line/pointsToStep.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/pointsToStep.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4730,9 +4730,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/getLineIntersectPoints.js
+  // node_modules/treeloom-matrix/dist/line/getLineIntersectPoints.js
   var require_getLineIntersectPoints = __commonJS({
-    "node_modules/matrix-dom/dist/line/getLineIntersectPoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/getLineIntersectPoints.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4760,9 +4760,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/getLineRelativePoints.js
+  // node_modules/treeloom-matrix/dist/line/getLineRelativePoints.js
   var require_getLineRelativePoints = __commonJS({
-    "node_modules/matrix-dom/dist/line/getLineRelativePoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/getLineRelativePoints.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4815,9 +4815,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/getLineTransitionPoints.js
+  // node_modules/treeloom-matrix/dist/line/getLineTransitionPoints.js
   var require_getLineTransitionPoints = __commonJS({
-    "node_modules/matrix-dom/dist/line/getLineTransitionPoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/getLineTransitionPoints.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4853,9 +4853,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/getLinePoints.js
+  // node_modules/treeloom-matrix/dist/line/getLinePoints.js
   var require_getLinePoints = __commonJS({
-    "node_modules/matrix-dom/dist/line/getLinePoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/getLinePoints.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4885,9 +4885,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/testPointsBetween.js
+  // node_modules/treeloom-matrix/dist/line/testPointsBetween.js
   var require_testPointsBetween = __commonJS({
-    "node_modules/matrix-dom/dist/line/testPointsBetween.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/testPointsBetween.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4910,9 +4910,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/checkInBetween.js
+  // node_modules/treeloom-matrix/dist/line/checkInBetween.js
   var require_checkInBetween = __commonJS({
-    "node_modules/matrix-dom/dist/line/checkInBetween.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/checkInBetween.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4929,9 +4929,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/getLinesOfLength.js
+  // node_modules/treeloom-matrix/dist/line/getLinesOfLength.js
   var require_getLinesOfLength = __commonJS({
-    "node_modules/matrix-dom/dist/line/getLinesOfLength.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/getLinesOfLength.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4966,9 +4966,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/getPointsForLines.js
+  // node_modules/treeloom-matrix/dist/line/getPointsForLines.js
   var require_getPointsForLines = __commonJS({
-    "node_modules/matrix-dom/dist/line/getPointsForLines.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/getPointsForLines.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -4985,9 +4985,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/lineEndPoint.js
+  // node_modules/treeloom-matrix/dist/line/lineEndPoint.js
   var require_lineEndPoint = __commonJS({
-    "node_modules/matrix-dom/dist/line/lineEndPoint.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/lineEndPoint.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -5004,9 +5004,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/line/index.js
+  // node_modules/treeloom-matrix/dist/line/index.js
   var require_line = __commonJS({
-    "node_modules/matrix-dom/dist/line/index.js"(exports) {
+    "node_modules/treeloom-matrix/dist/line/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -5042,9 +5042,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/tree/getTopParentItem.js
+  // node_modules/treeloom/dist/domItem/tree/getTopParentItem.js
   var require_getTopParentItem = __commonJS({
-    "node_modules/json-dom/dist/domItem/tree/getTopParentItem.js"(exports) {
+    "node_modules/treeloom/dist/domItem/tree/getTopParentItem.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -5069,9 +5069,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/makeEventHandler.js
+  // node_modules/treeloom/dist/events/functions/makeEventHandler.js
   var require_makeEventHandler = __commonJS({
-    "node_modules/json-dom/dist/events/functions/makeEventHandler.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/makeEventHandler.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -5089,9 +5089,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/objects/createEventResponder.js
+  // node_modules/treeloom/dist/events/objects/createEventResponder.js
   var require_createEventResponder = __commonJS({
-    "node_modules/json-dom/dist/events/objects/createEventResponder.js"(exports) {
+    "node_modules/treeloom/dist/events/objects/createEventResponder.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -5114,9 +5114,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/objects/options/getListenerOptions.js
+  // node_modules/treeloom/dist/events/objects/options/getListenerOptions.js
   var require_getListenerOptions = __commonJS({
-    "node_modules/json-dom/dist/events/objects/options/getListenerOptions.js"(exports) {
+    "node_modules/treeloom/dist/events/objects/options/getListenerOptions.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -5136,9 +5136,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/objects/options/optionsToNumber.js
+  // node_modules/treeloom/dist/events/objects/options/optionsToNumber.js
   var require_optionsToNumber = __commonJS({
-    "node_modules/json-dom/dist/events/objects/options/optionsToNumber.js"(exports) {
+    "node_modules/treeloom/dist/events/objects/options/optionsToNumber.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -5157,6 +5157,23 @@ var cloakfall = (() => {
         return si_funciona_1.default.reduceObject(optionsTemplate, (binaryOptions, flag, name) => listenerOptions[name] ? binaryOptions | flag : binaryOptions, 0);
       };
       exports.default = optionsToNumber;
+    }
+  });
+
+  // node_modules/treeloom/dist/domItem/tree/appendChild.js
+  var require_appendChild = __commonJS({
+    "node_modules/treeloom/dist/domItem/tree/appendChild.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      var appendChild = (parent, child) => {
+        parent.children.push(child);
+        child.parentItem = parent;
+        return parent;
+      };
+      exports.default = appendChild;
     }
   });
 
@@ -5340,312 +5357,6 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/core-js/internals/get-iterator-direct.js
-  var require_get_iterator_direct = __commonJS({
-    "node_modules/core-js/internals/get-iterator-direct.js"(exports, module) {
-      "use strict";
-      init_process();
-      module.exports = function(obj) {
-        return {
-          iterator: obj,
-          next: obj.next,
-          done: false
-        };
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/define-built-ins.js
-  var require_define_built_ins = __commonJS({
-    "node_modules/core-js/internals/define-built-ins.js"(exports, module) {
-      "use strict";
-      init_process();
-      var defineBuiltIn = require_define_built_in();
-      module.exports = function(target, src, options) {
-        for (var key in src) defineBuiltIn(target, key, src[key], options);
-        return target;
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/create-iter-result-object.js
-  var require_create_iter_result_object = __commonJS({
-    "node_modules/core-js/internals/create-iter-result-object.js"(exports, module) {
-      "use strict";
-      init_process();
-      module.exports = function(value, done) {
-        return { value, done };
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/iterator-close.js
-  var require_iterator_close = __commonJS({
-    "node_modules/core-js/internals/iterator-close.js"(exports, module) {
-      "use strict";
-      init_process();
-      var call = require_function_call();
-      var anObject = require_an_object();
-      var getMethod = require_get_method();
-      module.exports = function(iterator, kind, value) {
-        var innerResult, innerError;
-        anObject(iterator);
-        try {
-          innerResult = getMethod(iterator, "return");
-          if (!innerResult) {
-            if (kind === "throw") throw value;
-            return value;
-          }
-          innerResult = call(innerResult, iterator);
-        } catch (error) {
-          innerError = true;
-          innerResult = error;
-        }
-        if (kind === "throw") throw value;
-        if (innerError) throw innerResult;
-        anObject(innerResult);
-        return value;
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/iterator-close-all.js
-  var require_iterator_close_all = __commonJS({
-    "node_modules/core-js/internals/iterator-close-all.js"(exports, module) {
-      "use strict";
-      init_process();
-      var iteratorClose = require_iterator_close();
-      module.exports = function(iters, kind, value) {
-        for (var i = iters.length - 1; i >= 0; i--) {
-          if (iters[i] === void 0) continue;
-          try {
-            value = iteratorClose(iters[i].iterator, kind, value);
-          } catch (error) {
-            kind = "throw";
-            value = error;
-          }
-        }
-        if (kind === "throw") throw value;
-        return value;
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/iterator-cleanup-state.js
-  var require_iterator_cleanup_state = __commonJS({
-    "node_modules/core-js/internals/iterator-cleanup-state.js"(exports, module) {
-      "use strict";
-      init_process();
-      module.exports = function(state) {
-        state.iterator = state.next = state.nextHandler = state.mapper = state.predicate = state.inner = state.iterables = state.iters = state.openIters = state.padding = state.finishResults = state.buffer = null;
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/iterator-create-proxy.js
-  var require_iterator_create_proxy = __commonJS({
-    "node_modules/core-js/internals/iterator-create-proxy.js"(exports, module) {
-      "use strict";
-      init_process();
-      var call = require_function_call();
-      var create = require_object_create();
-      var createNonEnumerableProperty = require_create_non_enumerable_property();
-      var defineBuiltIns = require_define_built_ins();
-      var wellKnownSymbol = require_well_known_symbol();
-      var InternalStateModule = require_internal_state();
-      var getMethod = require_get_method();
-      var IteratorPrototype = require_iterators_core().IteratorPrototype;
-      var createIterResultObject = require_create_iter_result_object();
-      var iteratorClose = require_iterator_close();
-      var iteratorCloseAll = require_iterator_close_all();
-      var cleanupState = require_iterator_cleanup_state();
-      var TO_STRING_TAG = wellKnownSymbol("toStringTag");
-      var ITERATOR_HELPER = "IteratorHelper";
-      var WRAP_FOR_VALID_ITERATOR = "WrapForValidIterator";
-      var NORMAL = "normal";
-      var THROW = "throw";
-      var setInternalState = InternalStateModule.set;
-      var createIteratorProxyPrototype = function(IS_ITERATOR) {
-        var getInternalState = InternalStateModule.getterFor(IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER);
-        return defineBuiltIns(create(IteratorPrototype), {
-          next: function next() {
-            var state = getInternalState(this);
-            if (IS_ITERATOR) return state.nextHandler();
-            if (state.done) return createIterResultObject(void 0, true);
-            try {
-              var result = state.nextHandler();
-              if (state.done) cleanupState(state);
-              return state.returnHandlerResult ? result : createIterResultObject(result, state.done);
-            } catch (error) {
-              state.done = true;
-              cleanupState(state);
-              throw error;
-            }
-          },
-          "return": function() {
-            var state = getInternalState(this);
-            var iterator = state.iterator;
-            var inner = state.inner;
-            var openIters = state.openIters;
-            var done = state.done;
-            state.done = true;
-            if (IS_ITERATOR) {
-              var returnMethod = getMethod(iterator, "return");
-              return returnMethod ? call(returnMethod, iterator) : createIterResultObject(void 0, true);
-            }
-            cleanupState(state);
-            if (done) return createIterResultObject(void 0, true);
-            if (inner) try {
-              iteratorClose(inner.iterator, NORMAL);
-            } catch (error) {
-              return iteratorClose(iterator, THROW, error);
-            }
-            if (openIters) try {
-              iteratorCloseAll(openIters, NORMAL);
-            } catch (error) {
-              if (iterator) return iteratorClose(iterator, THROW, error);
-              throw error;
-            }
-            if (iterator) iteratorClose(iterator, NORMAL);
-            return createIterResultObject(void 0, true);
-          }
-        });
-      };
-      var WrapForValidIteratorPrototype = createIteratorProxyPrototype(true);
-      var IteratorHelperPrototype = createIteratorProxyPrototype(false);
-      createNonEnumerableProperty(IteratorHelperPrototype, TO_STRING_TAG, "Iterator Helper");
-      module.exports = function(nextHandler, IS_ITERATOR, RETURN_HANDLER_RESULT) {
-        var IteratorProxy = function Iterator2(record, state) {
-          if (state) {
-            state.iterator = record.iterator;
-            state.next = record.next;
-          } else state = record;
-          state.type = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
-          state.returnHandlerResult = !!RETURN_HANDLER_RESULT;
-          state.nextHandler = nextHandler;
-          state.counter = 0;
-          state.done = false;
-          setInternalState(this, state);
-        };
-        IteratorProxy.prototype = IS_ITERATOR ? WrapForValidIteratorPrototype : IteratorHelperPrototype;
-        return IteratorProxy;
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/call-with-safe-iteration-closing.js
-  var require_call_with_safe_iteration_closing = __commonJS({
-    "node_modules/core-js/internals/call-with-safe-iteration-closing.js"(exports, module) {
-      "use strict";
-      init_process();
-      var anObject = require_an_object();
-      var iteratorClose = require_iterator_close();
-      module.exports = function(iterator, fn, value, ENTRIES) {
-        try {
-          return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
-        } catch (error) {
-          iteratorClose(iterator, "throw", error);
-        }
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/iterator-helper-throws-on-invalid-iterator.js
-  var require_iterator_helper_throws_on_invalid_iterator = __commonJS({
-    "node_modules/core-js/internals/iterator-helper-throws-on-invalid-iterator.js"(exports, module) {
-      "use strict";
-      init_process();
-      module.exports = function(methodName, argument) {
-        var method = typeof Iterator == "function" && Iterator.prototype[methodName];
-        if (method) try {
-          method.call({ next: null }, argument).next();
-        } catch (error) {
-          return true;
-        }
-      };
-    }
-  });
-
-  // node_modules/core-js/internals/iterator-helper-without-closing-on-early-error.js
-  var require_iterator_helper_without_closing_on_early_error = __commonJS({
-    "node_modules/core-js/internals/iterator-helper-without-closing-on-early-error.js"(exports, module) {
-      "use strict";
-      init_process();
-      var globalThis2 = require_global_this();
-      module.exports = function(METHOD_NAME, ExpectedError) {
-        var Iterator2 = globalThis2.Iterator;
-        var IteratorPrototype = Iterator2 && Iterator2.prototype;
-        var method = IteratorPrototype && IteratorPrototype[METHOD_NAME];
-        var CLOSED = false;
-        if (method) try {
-          method.call({
-            next: function() {
-              return { done: true };
-            },
-            "return": function() {
-              CLOSED = true;
-            }
-          }, -1);
-        } catch (error) {
-          if (!(error instanceof ExpectedError)) CLOSED = false;
-        }
-        if (!CLOSED) return method;
-      };
-    }
-  });
-
-  // node_modules/core-js/modules/es.iterator.map.js
-  var require_es_iterator_map = __commonJS({
-    "node_modules/core-js/modules/es.iterator.map.js"() {
-      "use strict";
-      init_process();
-      var $ = require_export();
-      var call = require_function_call();
-      var aCallable = require_a_callable();
-      var anObject = require_an_object();
-      var getIteratorDirect = require_get_iterator_direct();
-      var createIteratorProxy = require_iterator_create_proxy();
-      var callWithSafeIterationClosing = require_call_with_safe_iteration_closing();
-      var iteratorClose = require_iterator_close();
-      var iteratorHelperThrowsOnInvalidIterator = require_iterator_helper_throws_on_invalid_iterator();
-      var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
-      var IS_PURE = require_is_pure();
-      var MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator("map", function() {
-      });
-      var mapWithoutClosingOnEarlyError = !IS_PURE && !MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError("map", TypeError);
-      var FORCED = IS_PURE || MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR || mapWithoutClosingOnEarlyError;
-      var IteratorProxy = createIteratorProxy(function() {
-        var iterator = this.iterator;
-        var result = anObject(call(this.next, iterator));
-        var done = this.done = !!result.done;
-        if (!done) return callWithSafeIterationClosing(iterator, this.mapper, [result.value, this.counter++], true);
-      });
-      $({ target: "Iterator", proto: true, real: true, forced: FORCED }, {
-        map: function map(mapper) {
-          anObject(this);
-          try {
-            aCallable(mapper);
-          } catch (error) {
-            iteratorClose(this, "throw", error);
-          }
-          if (mapWithoutClosingOnEarlyError) return call(mapWithoutClosingOnEarlyError, this, mapper);
-          return new IteratorProxy(getIteratorDirect(this), {
-            mapper
-          });
-        }
-      });
-    }
-  });
-
-  // node_modules/core-js/modules/esnext.iterator.map.js
-  var require_esnext_iterator_map = __commonJS({
-    "node_modules/core-js/modules/esnext.iterator.map.js"() {
-      "use strict";
-      init_process();
-      require_es_iterator_map();
-    }
-  });
-
   // node_modules/core-js/internals/function-uncurry-this-clause.js
   var require_function_uncurry_this_clause = __commonJS({
     "node_modules/core-js/internals/function-uncurry-this-clause.js"(exports, module) {
@@ -5737,6 +5448,36 @@ var cloakfall = (() => {
     }
   });
 
+  // node_modules/core-js/internals/iterator-close.js
+  var require_iterator_close = __commonJS({
+    "node_modules/core-js/internals/iterator-close.js"(exports, module) {
+      "use strict";
+      init_process();
+      var call = require_function_call();
+      var anObject = require_an_object();
+      var getMethod = require_get_method();
+      module.exports = function(iterator, kind, value) {
+        var innerResult, innerError;
+        anObject(iterator);
+        try {
+          innerResult = getMethod(iterator, "return");
+          if (!innerResult) {
+            if (kind === "throw") throw value;
+            return value;
+          }
+          innerResult = call(innerResult, iterator);
+        } catch (error) {
+          innerError = true;
+          innerResult = error;
+        }
+        if (kind === "throw") throw value;
+        if (innerError) throw innerResult;
+        anObject(innerResult);
+        return value;
+      };
+    }
+  });
+
   // node_modules/core-js/internals/iterate.js
   var require_iterate = __commonJS({
     "node_modules/core-js/internals/iterate.js"(exports, module) {
@@ -5811,62 +5552,46 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/core-js/modules/es.iterator.for-each.js
-  var require_es_iterator_for_each = __commonJS({
-    "node_modules/core-js/modules/es.iterator.for-each.js"() {
+  // node_modules/core-js/internals/get-iterator-direct.js
+  var require_get_iterator_direct = __commonJS({
+    "node_modules/core-js/internals/get-iterator-direct.js"(exports, module) {
       "use strict";
       init_process();
-      var $ = require_export();
-      var call = require_function_call();
-      var iterate = require_iterate();
-      var aCallable = require_a_callable();
-      var anObject = require_an_object();
-      var getIteratorDirect = require_get_iterator_direct();
-      var iteratorClose = require_iterator_close();
-      var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
-      var forEachWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError("forEach", TypeError);
-      $({ target: "Iterator", proto: true, real: true, forced: forEachWithoutClosingOnEarlyError }, {
-        forEach: function forEach(fn) {
-          anObject(this);
-          try {
-            aCallable(fn);
-          } catch (error) {
-            iteratorClose(this, "throw", error);
-          }
-          if (forEachWithoutClosingOnEarlyError) return call(forEachWithoutClosingOnEarlyError, this, fn);
-          var record = getIteratorDirect(this);
-          var counter = 0;
-          iterate(record, function(value) {
-            fn(value, counter++);
-          }, { IS_RECORD: true });
-        }
-      });
-    }
-  });
-
-  // node_modules/core-js/modules/esnext.iterator.for-each.js
-  var require_esnext_iterator_for_each = __commonJS({
-    "node_modules/core-js/modules/esnext.iterator.for-each.js"() {
-      "use strict";
-      init_process();
-      require_es_iterator_for_each();
-    }
-  });
-
-  // node_modules/json-dom/dist/domItem/tree/appendChild.js
-  var require_appendChild = __commonJS({
-    "node_modules/json-dom/dist/domItem/tree/appendChild.js"(exports) {
-      "use strict";
-      init_process();
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      var appendChild = (parent, child) => {
-        parent.children.push(child);
-        child.parentItem = parent;
-        return parent;
+      module.exports = function(obj) {
+        return {
+          iterator: obj,
+          next: obj.next,
+          done: false
+        };
       };
-      exports.default = appendChild;
+    }
+  });
+
+  // node_modules/core-js/internals/iterator-helper-without-closing-on-early-error.js
+  var require_iterator_helper_without_closing_on_early_error = __commonJS({
+    "node_modules/core-js/internals/iterator-helper-without-closing-on-early-error.js"(exports, module) {
+      "use strict";
+      init_process();
+      var globalThis2 = require_global_this();
+      module.exports = function(METHOD_NAME, ExpectedError) {
+        var Iterator2 = globalThis2.Iterator;
+        var IteratorPrototype = Iterator2 && Iterator2.prototype;
+        var method = IteratorPrototype && IteratorPrototype[METHOD_NAME];
+        var CLOSED = false;
+        if (method) try {
+          method.call({
+            next: function() {
+              return { done: true };
+            },
+            "return": function() {
+              CLOSED = true;
+            }
+          }, -1);
+        } catch (error) {
+          if (!(error instanceof ExpectedError)) CLOSED = false;
+        }
+        if (!CLOSED) return method;
+      };
     }
   });
 
@@ -6331,6 +6056,48 @@ var cloakfall = (() => {
         head: null,
         tail: null
       });
+    }
+  });
+
+  // node_modules/core-js/modules/es.iterator.for-each.js
+  var require_es_iterator_for_each = __commonJS({
+    "node_modules/core-js/modules/es.iterator.for-each.js"() {
+      "use strict";
+      init_process();
+      var $ = require_export();
+      var call = require_function_call();
+      var iterate = require_iterate();
+      var aCallable = require_a_callable();
+      var anObject = require_an_object();
+      var getIteratorDirect = require_get_iterator_direct();
+      var iteratorClose = require_iterator_close();
+      var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
+      var forEachWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError("forEach", TypeError);
+      $({ target: "Iterator", proto: true, real: true, forced: forEachWithoutClosingOnEarlyError }, {
+        forEach: function forEach(fn) {
+          anObject(this);
+          try {
+            aCallable(fn);
+          } catch (error) {
+            iteratorClose(this, "throw", error);
+          }
+          if (forEachWithoutClosingOnEarlyError) return call(forEachWithoutClosingOnEarlyError, this, fn);
+          var record = getIteratorDirect(this);
+          var counter = 0;
+          iterate(record, function(value) {
+            fn(value, counter++);
+          }, { IS_RECORD: true });
+        }
+      });
+    }
+  });
+
+  // node_modules/core-js/modules/esnext.iterator.for-each.js
+  var require_esnext_iterator_for_each = __commonJS({
+    "node_modules/core-js/modules/esnext.iterator.for-each.js"() {
+      "use strict";
+      init_process();
+      require_es_iterator_for_each();
     }
   });
 
@@ -6917,6 +6684,239 @@ var cloakfall = (() => {
       DoublyLinkedList.fromArray = (values = [], linkerClass = _DoubleLinker.DoubleLinker, classType = DoublyLinkedList) => {
         return _LinkedList.LinkedList.fromArray(values, linkerClass, classType);
       };
+    }
+  });
+
+  // node_modules/core-js/internals/define-built-ins.js
+  var require_define_built_ins = __commonJS({
+    "node_modules/core-js/internals/define-built-ins.js"(exports, module) {
+      "use strict";
+      init_process();
+      var defineBuiltIn = require_define_built_in();
+      module.exports = function(target, src, options) {
+        for (var key in src) defineBuiltIn(target, key, src[key], options);
+        return target;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/create-iter-result-object.js
+  var require_create_iter_result_object = __commonJS({
+    "node_modules/core-js/internals/create-iter-result-object.js"(exports, module) {
+      "use strict";
+      init_process();
+      module.exports = function(value, done) {
+        return { value, done };
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/iterator-close-all.js
+  var require_iterator_close_all = __commonJS({
+    "node_modules/core-js/internals/iterator-close-all.js"(exports, module) {
+      "use strict";
+      init_process();
+      var iteratorClose = require_iterator_close();
+      module.exports = function(iters, kind, value) {
+        for (var i = iters.length - 1; i >= 0; i--) {
+          if (iters[i] === void 0) continue;
+          try {
+            value = iteratorClose(iters[i].iterator, kind, value);
+          } catch (error) {
+            kind = "throw";
+            value = error;
+          }
+        }
+        if (kind === "throw") throw value;
+        return value;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/iterator-cleanup-state.js
+  var require_iterator_cleanup_state = __commonJS({
+    "node_modules/core-js/internals/iterator-cleanup-state.js"(exports, module) {
+      "use strict";
+      init_process();
+      module.exports = function(state) {
+        state.iterator = state.next = state.nextHandler = state.mapper = state.predicate = state.inner = state.iterables = state.iters = state.openIters = state.padding = state.finishResults = state.buffer = null;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/iterator-create-proxy.js
+  var require_iterator_create_proxy = __commonJS({
+    "node_modules/core-js/internals/iterator-create-proxy.js"(exports, module) {
+      "use strict";
+      init_process();
+      var call = require_function_call();
+      var create = require_object_create();
+      var createNonEnumerableProperty = require_create_non_enumerable_property();
+      var defineBuiltIns = require_define_built_ins();
+      var wellKnownSymbol = require_well_known_symbol();
+      var InternalStateModule = require_internal_state();
+      var getMethod = require_get_method();
+      var IteratorPrototype = require_iterators_core().IteratorPrototype;
+      var createIterResultObject = require_create_iter_result_object();
+      var iteratorClose = require_iterator_close();
+      var iteratorCloseAll = require_iterator_close_all();
+      var cleanupState = require_iterator_cleanup_state();
+      var TO_STRING_TAG = wellKnownSymbol("toStringTag");
+      var ITERATOR_HELPER = "IteratorHelper";
+      var WRAP_FOR_VALID_ITERATOR = "WrapForValidIterator";
+      var NORMAL = "normal";
+      var THROW = "throw";
+      var setInternalState = InternalStateModule.set;
+      var createIteratorProxyPrototype = function(IS_ITERATOR) {
+        var getInternalState = InternalStateModule.getterFor(IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER);
+        return defineBuiltIns(create(IteratorPrototype), {
+          next: function next() {
+            var state = getInternalState(this);
+            if (IS_ITERATOR) return state.nextHandler();
+            if (state.done) return createIterResultObject(void 0, true);
+            try {
+              var result = state.nextHandler();
+              if (state.done) cleanupState(state);
+              return state.returnHandlerResult ? result : createIterResultObject(result, state.done);
+            } catch (error) {
+              state.done = true;
+              cleanupState(state);
+              throw error;
+            }
+          },
+          "return": function() {
+            var state = getInternalState(this);
+            var iterator = state.iterator;
+            var inner = state.inner;
+            var openIters = state.openIters;
+            var done = state.done;
+            state.done = true;
+            if (IS_ITERATOR) {
+              var returnMethod = getMethod(iterator, "return");
+              return returnMethod ? call(returnMethod, iterator) : createIterResultObject(void 0, true);
+            }
+            cleanupState(state);
+            if (done) return createIterResultObject(void 0, true);
+            if (inner) try {
+              iteratorClose(inner.iterator, NORMAL);
+            } catch (error) {
+              return iteratorClose(iterator, THROW, error);
+            }
+            if (openIters) try {
+              iteratorCloseAll(openIters, NORMAL);
+            } catch (error) {
+              if (iterator) return iteratorClose(iterator, THROW, error);
+              throw error;
+            }
+            if (iterator) iteratorClose(iterator, NORMAL);
+            return createIterResultObject(void 0, true);
+          }
+        });
+      };
+      var WrapForValidIteratorPrototype = createIteratorProxyPrototype(true);
+      var IteratorHelperPrototype = createIteratorProxyPrototype(false);
+      createNonEnumerableProperty(IteratorHelperPrototype, TO_STRING_TAG, "Iterator Helper");
+      module.exports = function(nextHandler, IS_ITERATOR, RETURN_HANDLER_RESULT) {
+        var IteratorProxy = function Iterator2(record, state) {
+          if (state) {
+            state.iterator = record.iterator;
+            state.next = record.next;
+          } else state = record;
+          state.type = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
+          state.returnHandlerResult = !!RETURN_HANDLER_RESULT;
+          state.nextHandler = nextHandler;
+          state.counter = 0;
+          state.done = false;
+          setInternalState(this, state);
+        };
+        IteratorProxy.prototype = IS_ITERATOR ? WrapForValidIteratorPrototype : IteratorHelperPrototype;
+        return IteratorProxy;
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/call-with-safe-iteration-closing.js
+  var require_call_with_safe_iteration_closing = __commonJS({
+    "node_modules/core-js/internals/call-with-safe-iteration-closing.js"(exports, module) {
+      "use strict";
+      init_process();
+      var anObject = require_an_object();
+      var iteratorClose = require_iterator_close();
+      module.exports = function(iterator, fn, value, ENTRIES) {
+        try {
+          return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
+        } catch (error) {
+          iteratorClose(iterator, "throw", error);
+        }
+      };
+    }
+  });
+
+  // node_modules/core-js/internals/iterator-helper-throws-on-invalid-iterator.js
+  var require_iterator_helper_throws_on_invalid_iterator = __commonJS({
+    "node_modules/core-js/internals/iterator-helper-throws-on-invalid-iterator.js"(exports, module) {
+      "use strict";
+      init_process();
+      module.exports = function(methodName, argument) {
+        var method = typeof Iterator == "function" && Iterator.prototype[methodName];
+        if (method) try {
+          method.call({ next: null }, argument).next();
+        } catch (error) {
+          return true;
+        }
+      };
+    }
+  });
+
+  // node_modules/core-js/modules/es.iterator.map.js
+  var require_es_iterator_map = __commonJS({
+    "node_modules/core-js/modules/es.iterator.map.js"() {
+      "use strict";
+      init_process();
+      var $ = require_export();
+      var call = require_function_call();
+      var aCallable = require_a_callable();
+      var anObject = require_an_object();
+      var getIteratorDirect = require_get_iterator_direct();
+      var createIteratorProxy = require_iterator_create_proxy();
+      var callWithSafeIterationClosing = require_call_with_safe_iteration_closing();
+      var iteratorClose = require_iterator_close();
+      var iteratorHelperThrowsOnInvalidIterator = require_iterator_helper_throws_on_invalid_iterator();
+      var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
+      var IS_PURE = require_is_pure();
+      var MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !iteratorHelperThrowsOnInvalidIterator("map", function() {
+      });
+      var mapWithoutClosingOnEarlyError = !IS_PURE && !MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError("map", TypeError);
+      var FORCED = IS_PURE || MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR || mapWithoutClosingOnEarlyError;
+      var IteratorProxy = createIteratorProxy(function() {
+        var iterator = this.iterator;
+        var result = anObject(call(this.next, iterator));
+        var done = this.done = !!result.done;
+        if (!done) return callWithSafeIterationClosing(iterator, this.mapper, [result.value, this.counter++], true);
+      });
+      $({ target: "Iterator", proto: true, real: true, forced: FORCED }, {
+        map: function map(mapper) {
+          anObject(this);
+          try {
+            aCallable(mapper);
+          } catch (error) {
+            iteratorClose(this, "throw", error);
+          }
+          if (mapWithoutClosingOnEarlyError) return call(mapWithoutClosingOnEarlyError, this, mapper);
+          return new IteratorProxy(getIteratorDirect(this), {
+            mapper
+          });
+        }
+      });
+    }
+  });
+
+  // node_modules/core-js/modules/esnext.iterator.map.js
+  var require_esnext_iterator_map = __commonJS({
+    "node_modules/core-js/modules/esnext.iterator.map.js"() {
+      "use strict";
+      init_process();
+      require_es_iterator_map();
     }
   });
 
@@ -8661,13 +8661,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/tree/itemIdIndex.js
+  // node_modules/treeloom/dist/domItem/tree/itemIdIndex.js
   var require_itemIdIndex = __commonJS({
-    "node_modules/json-dom/dist/domItem/tree/itemIdIndex.js"(exports) {
+    "node_modules/treeloom/dist/domItem/tree/itemIdIndex.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -8726,9 +8724,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/tree/removeChild.js
+  // node_modules/treeloom/dist/domItem/tree/removeChild.js
   var require_removeChild = __commonJS({
-    "node_modules/json-dom/dist/domItem/tree/removeChild.js"(exports) {
+    "node_modules/treeloom/dist/domItem/tree/removeChild.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -8744,13 +8742,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/objects/createCoreItem.js
+  // node_modules/treeloom/dist/domItem/objects/createCoreItem.js
   var require_createCoreItem = __commonJS({
-    "node_modules/json-dom/dist/domItem/objects/createCoreItem.js"(exports) {
+    "node_modules/treeloom/dist/domItem/objects/createCoreItem.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -8796,24 +8792,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/traits/definitions.js
+  // node_modules/treeloom/dist/domItem/traits/definitions.js
   var require_definitions = __commonJS({
-    "node_modules/json-dom/dist/domItem/traits/definitions.js"(exports) {
+    "node_modules/treeloom/dist/domItem/traits/definitions.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_map_delete_all();
-      require_esnext_map_every();
-      require_esnext_map_filter();
-      require_esnext_map_find();
-      require_esnext_map_find_key();
-      require_esnext_map_includes();
-      require_esnext_map_key_of();
-      require_esnext_map_map_keys();
-      require_esnext_map_map_values();
-      require_esnext_map_merge();
-      require_esnext_map_reduce();
-      require_esnext_map_some();
-      require_esnext_map_update();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -8828,9 +8811,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/traits/withTrait.js
+  // node_modules/treeloom/dist/domItem/traits/withTrait.js
   var require_withTrait = __commonJS({
-    "node_modules/json-dom/dist/domItem/traits/withTrait.js"(exports) {
+    "node_modules/treeloom/dist/domItem/traits/withTrait.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -8853,13 +8836,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/objects/createDomItem.js
+  // node_modules/treeloom/dist/domItem/objects/createDomItem.js
   var require_createDomItem = __commonJS({
-    "node_modules/json-dom/dist/domItem/objects/createDomItem.js"(exports) {
+    "node_modules/treeloom/dist/domItem/objects/createDomItem.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -8887,9 +8868,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/objects/initChildren.js
+  // node_modules/treeloom/dist/domItem/objects/initChildren.js
   var require_initChildren = __commonJS({
-    "node_modules/json-dom/dist/domItem/objects/initChildren.js"(exports) {
+    "node_modules/treeloom/dist/domItem/objects/initChildren.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -8931,9 +8912,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/objects/initRoot.js
+  // node_modules/treeloom/dist/domItem/objects/initRoot.js
   var require_initRoot = __commonJS({
-    "node_modules/json-dom/dist/domItem/objects/initRoot.js"(exports) {
+    "node_modules/treeloom/dist/domItem/objects/initRoot.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -8961,56 +8942,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/core-js/modules/es.iterator.find.js
-  var require_es_iterator_find = __commonJS({
-    "node_modules/core-js/modules/es.iterator.find.js"() {
-      "use strict";
-      init_process();
-      var $ = require_export();
-      var call = require_function_call();
-      var iterate = require_iterate();
-      var aCallable = require_a_callable();
-      var anObject = require_an_object();
-      var getIteratorDirect = require_get_iterator_direct();
-      var iteratorClose = require_iterator_close();
-      var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
-      var findWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError("find", TypeError);
-      $({ target: "Iterator", proto: true, real: true, forced: findWithoutClosingOnEarlyError }, {
-        find: function find(predicate) {
-          anObject(this);
-          try {
-            aCallable(predicate);
-          } catch (error) {
-            iteratorClose(this, "throw", error);
-          }
-          if (findWithoutClosingOnEarlyError) return call(findWithoutClosingOnEarlyError, this, predicate);
-          var record = getIteratorDirect(this);
-          var counter = 0;
-          return iterate(record, function(value, stop) {
-            if (predicate(value, counter++)) return stop(value);
-          }, { IS_RECORD: true, INTERRUPTED: true }).result;
-        }
-      });
-    }
-  });
-
-  // node_modules/core-js/modules/esnext.iterator.find.js
-  var require_esnext_iterator_find = __commonJS({
-    "node_modules/core-js/modules/esnext.iterator.find.js"() {
-      "use strict";
-      init_process();
-      require_es_iterator_find();
-    }
-  });
-
-  // node_modules/json-dom/dist/sync/updateChildren.js
+  // node_modules/treeloom/dist/sync/updateChildren.js
   var require_updateChildren = __commonJS({
-    "node_modules/json-dom/dist/sync/updateChildren.js"(exports) {
+    "node_modules/treeloom/dist/sync/updateChildren.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_find();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -9043,9 +8979,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/diff/getAssignedStyles.js
+  // node_modules/treeloom/dist/diff/getAssignedStyles.js
   var require_getAssignedStyles = __commonJS({
-    "node_modules/json-dom/dist/diff/getAssignedStyles.js"(exports) {
+    "node_modules/treeloom/dist/diff/getAssignedStyles.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9062,13 +8998,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/diff/domItemHasAttribute.js
+  // node_modules/treeloom/dist/diff/domItemHasAttribute.js
   var require_domItemHasAttribute = __commonJS({
-    "node_modules/json-dom/dist/diff/domItemHasAttribute.js"(exports) {
+    "node_modules/treeloom/dist/diff/domItemHasAttribute.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_map();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -9113,9 +9047,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/diff/createChangeList.js
+  // node_modules/treeloom/dist/diff/createChangeList.js
   var require_createChangeList = __commonJS({
-    "node_modules/json-dom/dist/diff/createChangeList.js"(exports) {
+    "node_modules/treeloom/dist/diff/createChangeList.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
@@ -9149,13 +9083,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/diff/elementChanges.js
+  // node_modules/treeloom/dist/diff/elementChanges.js
   var require_elementChanges = __commonJS({
-    "node_modules/json-dom/dist/diff/elementChanges.js"(exports) {
+    "node_modules/treeloom/dist/diff/elementChanges.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_reduce();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -9288,9 +9220,107 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/sync/updateDomItem.js
+  // node_modules/treeloom/dist/diff/appliedSnapshot.js
+  var require_appliedSnapshot = __commonJS({
+    "node_modules/treeloom/dist/diff/appliedSnapshot.js"(exports) {
+      "use strict";
+      init_process();
+      require_es_array_includes();
+      var __importDefault = function(mod) {
+        return mod && mod.__esModule ? mod : {
+          "default": mod
+        };
+      };
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.changesFromApplied = exports.forgetApplied = exports.recordApplied = void 0;
+      var si_funciona_1 = __importDefault(require_main());
+      var createChangeList_1 = __importDefault(require_createChangeList());
+      var LIVE_PROPERTIES = ["value", "checked", "selected", "indeterminate"];
+      var snapshots = /* @__PURE__ */ new WeakMap();
+      var canSnapshot = (domItem) => typeof domItem.attributes.style === "undefined" || si_funciona_1.default.isObject(domItem.attributes.style);
+      var classNames = (className) => typeof className === "string" ? className.split(/\s+/).filter(Boolean) : [];
+      var describe = (domItem) => {
+        const snapshot = {
+          attributes: {},
+          classes: [],
+          style: {}
+        };
+        for (const name in domItem.attributes) {
+          const value = domItem.attributes[name];
+          if (name === "className") {
+            snapshot.classes = classNames(value);
+            continue;
+          }
+          if (name === "style") {
+            for (const property in value) {
+              snapshot.style[si_funciona_1.default.kabobCase(property)] = value[property];
+            }
+            continue;
+          }
+          snapshot.attributes[si_funciona_1.default.kabobCase(name)] = value;
+        }
+        return snapshot;
+      };
+      var recordApplied = (domItem) => {
+        if (!domItem.element || domItem.nodeValue !== null || !canSnapshot(domItem)) {
+          return;
+        }
+        snapshots.set(domItem.element, describe(domItem));
+      };
+      exports.recordApplied = recordApplied;
+      var forgetApplied = (element) => {
+        if (element) {
+          snapshots.delete(element);
+        }
+      };
+      exports.forgetApplied = forgetApplied;
+      var changesFromApplied = (domItem, propertyName) => {
+        const previous = domItem.element ? snapshots.get(domItem.element) : void 0;
+        if (!previous || domItem.nodeValue !== null || !canSnapshot(domItem)) {
+          return void 0;
+        }
+        const next = describe(domItem);
+        const changes = (0, createChangeList_1.default)();
+        const element = domItem.element;
+        for (const key in next.attributes) {
+          const live = LIVE_PROPERTIES.includes(key) && key in element;
+          const current = live ? element[key] : previous.attributes[key];
+          const differs = live && typeof current === "string" ? String(next.attributes[key] ?? "") !== current : next.attributes[key] !== current;
+          if (differs) {
+            changes.added[propertyName(key)] = next.attributes[key];
+          }
+        }
+        previous.classes.forEach((name, index) => {
+          if (!next.classes.includes(name)) {
+            changes.removed[`class.${index}`] = name;
+          }
+        });
+        next.classes.forEach((name, index) => {
+          if (!previous.classes.includes(name)) {
+            changes.added[`class.${index}`] = name;
+          }
+        });
+        for (const property in previous.style) {
+          if (!(property in next.style)) {
+            changes.removed[`style.${property}`] = previous.style[property];
+          }
+        }
+        for (const property in next.style) {
+          if (next.style[property] !== previous.style[property]) {
+            changes.added[`style.${property}`] = next.style[property];
+          }
+        }
+        return changes;
+      };
+      exports.changesFromApplied = changesFromApplied;
+    }
+  });
+
+  // node_modules/treeloom/dist/sync/updateDomItem.js
   var require_updateDomItem = __commonJS({
-    "node_modules/json-dom/dist/sync/updateDomItem.js"(exports) {
+    "node_modules/treeloom/dist/sync/updateDomItem.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9303,6 +9333,7 @@ var cloakfall = (() => {
       });
       var si_funciona_1 = __importDefault(require_main());
       var elementChanges_1 = __importDefault(require_elementChanges());
+      var appliedSnapshot_1 = require_appliedSnapshot();
       var updateDomItem = (config) => {
         if (!config.element) {
           return config;
@@ -9328,19 +9359,18 @@ var cloakfall = (() => {
           }
           si_funciona_1.default.dotSet(config, dotKey, changes.added[dotKey]);
         }
+        (0, appliedSnapshot_1.forgetApplied)(config.element);
         return config;
       };
       exports.default = updateDomItem;
     }
   });
 
-  // node_modules/json-dom/dist/sync/updateDomItems.js
+  // node_modules/treeloom/dist/sync/updateDomItems.js
   var require_updateDomItems = __commonJS({
-    "node_modules/json-dom/dist/sync/updateDomItems.js"(exports) {
+    "node_modules/treeloom/dist/sync/updateDomItems.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -9366,13 +9396,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/objects/documentDomItem.js
+  // node_modules/treeloom/dist/domItem/objects/documentDomItem.js
   var require_documentDomItem = __commonJS({
-    "node_modules/json-dom/dist/domItem/objects/documentDomItem.js"(exports) {
+    "node_modules/treeloom/dist/domItem/objects/documentDomItem.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_map();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -9399,9 +9427,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/objects/documentItem.js
+  // node_modules/treeloom/dist/domItem/objects/documentItem.js
   var require_documentItem = __commonJS({
-    "node_modules/json-dom/dist/domItem/objects/documentItem.js"(exports) {
+    "node_modules/treeloom/dist/domItem/objects/documentItem.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9412,21 +9440,27 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
+      exports.withDocumentItem = void 0;
       var documentDomItem_1 = __importDefault(require_documentDomItem());
       var existingItem = null;
-      var documentItem = (() => {
+      var getDocumentItem = () => {
         if (existingItem === null) {
           existingItem = (0, documentDomItem_1.default)();
         }
         return existingItem;
-      })();
-      exports.default = documentItem;
+      };
+      var withDocumentItem = (api) => Object.defineProperty(api, "documentItem", {
+        enumerable: true,
+        get: getDocumentItem
+      });
+      exports.withDocumentItem = withDocumentItem;
+      exports.default = getDocumentItem;
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/makeForwardingListener.js
+  // node_modules/treeloom/dist/events/functions/makeForwardingListener.js
   var require_makeForwardingListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/makeForwardingListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/makeForwardingListener.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
@@ -9456,9 +9490,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/retrieveListener.js
+  // node_modules/treeloom/dist/events/functions/retrieveListener.js
   var require_retrieveListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/retrieveListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/retrieveListener.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
@@ -9472,7 +9506,7 @@ var cloakfall = (() => {
       });
       var documentItem_1 = __importDefault(require_documentItem());
       var makeForwardingListener_1 = __importDefault(require_makeForwardingListener());
-      var retrieveListener = (listenerName, parent = documentItem_1.default) => {
+      var retrieveListener = (listenerName, parent = (0, documentItem_1.default)()) => {
         if (typeof listenerName === "function") {
           return listenerName;
         }
@@ -9488,9 +9522,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/activateListener.js
+  // node_modules/treeloom/dist/events/functions/activateListener.js
   var require_activateListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/activateListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/activateListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9530,9 +9564,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/objects/createEventListener.js
+  // node_modules/treeloom/dist/events/objects/createEventListener.js
   var require_createEventListener = __commonJS({
-    "node_modules/json-dom/dist/events/objects/createEventListener.js"(exports) {
+    "node_modules/treeloom/dist/events/objects/createEventListener.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -9553,9 +9587,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/addEventListener.js
+  // node_modules/treeloom/dist/events/functions/addEventListener.js
   var require_addEventListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/addEventListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/addEventListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9590,9 +9624,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/objects/options/numberToOptions.js
+  // node_modules/treeloom/dist/events/objects/options/numberToOptions.js
   var require_numberToOptions = __commonJS({
-    "node_modules/json-dom/dist/events/objects/options/numberToOptions.js"(exports) {
+    "node_modules/treeloom/dist/events/objects/options/numberToOptions.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9609,9 +9643,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/listenerOptions.js
+  // node_modules/treeloom/dist/events/functions/listenerOptions.js
   var require_listenerOptions = __commonJS({
-    "node_modules/json-dom/dist/events/functions/listenerOptions.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/listenerOptions.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -9636,9 +9670,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/assignListener.js
+  // node_modules/treeloom/dist/events/functions/assignListener.js
   var require_assignListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/assignListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/assignListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9665,9 +9699,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getItemByElement.js
+  // node_modules/treeloom/dist/domItem/query/getItemByElement.js
   var require_getItemByElement = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getItemByElement.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getItemByElement.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -9689,9 +9723,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/objects/createEventProxy.js
+  // node_modules/treeloom/dist/events/objects/createEventProxy.js
   var require_createEventProxy = __commonJS({
-    "node_modules/json-dom/dist/events/objects/createEventProxy.js"(exports) {
+    "node_modules/treeloom/dist/events/objects/createEventProxy.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9732,13 +9766,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/applyActiveListeners.js
+  // node_modules/treeloom/dist/events/functions/applyActiveListeners.js
   var require_applyActiveListeners = __commonJS({
-    "node_modules/json-dom/dist/events/functions/applyActiveListeners.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/applyActiveListeners.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -9782,13 +9814,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/bindElementListeners.js
+  // node_modules/treeloom/dist/events/functions/bindElementListeners.js
   var require_bindElementListeners = __commonJS({
-    "node_modules/json-dom/dist/events/functions/bindElementListeners.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/bindElementListeners.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -9817,9 +9847,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/bindListeners.js
+  // node_modules/treeloom/dist/events/functions/bindListeners.js
   var require_bindListeners = __commonJS({
-    "node_modules/json-dom/dist/events/functions/bindListeners.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/bindListeners.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9837,9 +9867,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/bindAllListeners.js
+  // node_modules/treeloom/dist/events/functions/bindAllListeners.js
   var require_bindAllListeners = __commonJS({
-    "node_modules/json-dom/dist/events/functions/bindAllListeners.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/bindAllListeners.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9861,9 +9891,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/unassignListener.js
+  // node_modules/treeloom/dist/events/functions/unassignListener.js
   var require_unassignListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/unassignListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/unassignListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9885,9 +9915,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/deactivateListener.js
+  // node_modules/treeloom/dist/events/functions/deactivateListener.js
   var require_deactivateListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/deactivateListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/deactivateListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -9937,13 +9967,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/deactivateListeners.js
+  // node_modules/treeloom/dist/events/functions/deactivateListeners.js
   var require_deactivateListeners = __commonJS({
-    "node_modules/json-dom/dist/events/functions/deactivateListeners.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/deactivateListeners.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -9960,9 +9988,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/findEventListener.js
+  // node_modules/treeloom/dist/events/functions/findEventListener.js
   var require_findEventListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/findEventListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/findEventListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10002,9 +10030,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/registerListener.js
+  // node_modules/treeloom/dist/events/functions/registerListener.js
   var require_registerListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/registerListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/registerListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10016,16 +10044,16 @@ var cloakfall = (() => {
         value: true
       });
       var documentItem_1 = __importDefault(require_documentItem());
-      var registerListener = (listener, name = listener.name, parent = documentItem_1.default) => Object.assign(parent.eventActions, {
+      var registerListener = (listener, name = listener.name, parent = (0, documentItem_1.default)()) => Object.assign(parent.eventActions, {
         [name]: listener
       });
       exports.default = registerListener;
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/fullAddEventListener.js
+  // node_modules/treeloom/dist/events/functions/fullAddEventListener.js
   var require_fullAddEventListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/fullAddEventListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/fullAddEventListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10055,9 +10083,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/removeEventListener.js
+  // node_modules/treeloom/dist/events/functions/removeEventListener.js
   var require_removeEventListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/removeEventListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/removeEventListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10085,9 +10113,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/fullRemoveEventListener.js
+  // node_modules/treeloom/dist/events/functions/fullRemoveEventListener.js
   var require_fullRemoveEventListener = __commonJS({
-    "node_modules/json-dom/dist/events/functions/fullRemoveEventListener.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/fullRemoveEventListener.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10107,9 +10135,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/receiveForwardedEvent.js
+  // node_modules/treeloom/dist/events/functions/receiveForwardedEvent.js
   var require_receiveForwardedEvent = __commonJS({
-    "node_modules/json-dom/dist/events/functions/receiveForwardedEvent.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/receiveForwardedEvent.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -10137,9 +10165,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/registerListeners.js
+  // node_modules/treeloom/dist/events/functions/registerListeners.js
   var require_registerListeners = __commonJS({
-    "node_modules/json-dom/dist/events/functions/registerListeners.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/registerListeners.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10152,7 +10180,7 @@ var cloakfall = (() => {
       });
       var si_funciona_1 = __importDefault(require_main());
       var documentItem_1 = __importDefault(require_documentItem());
-      var registerListeners = (listeners, parent = documentItem_1.default) => {
+      var registerListeners = (listeners, parent = (0, documentItem_1.default)()) => {
         si_funciona_1.default.mergeObjectsMutable(parent.eventActions, listeners);
         return parent;
       };
@@ -10160,13 +10188,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/revokeActiveListeners.js
+  // node_modules/treeloom/dist/events/functions/revokeActiveListeners.js
   var require_revokeActiveListeners = __commonJS({
-    "node_modules/json-dom/dist/events/functions/revokeActiveListeners.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/revokeActiveListeners.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -10209,9 +10235,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/functions/setForwardEvents.js
+  // node_modules/treeloom/dist/events/functions/setForwardEvents.js
   var require_setForwardEvents = __commonJS({
-    "node_modules/json-dom/dist/events/functions/setForwardEvents.js"(exports) {
+    "node_modules/treeloom/dist/events/functions/setForwardEvents.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10223,7 +10249,7 @@ var cloakfall = (() => {
         value: true
       });
       var documentItem_1 = __importDefault(require_documentItem());
-      var setForwardEvents = (transport, parent = documentItem_1.default) => {
+      var setForwardEvents = (transport, parent = (0, documentItem_1.default)()) => {
         parent.forwardEvents = transport;
         return parent;
       };
@@ -10231,9 +10257,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/objects/options.js
+  // node_modules/treeloom/dist/events/objects/options.js
   var require_options = __commonJS({
-    "node_modules/json-dom/dist/events/objects/options.js"(exports) {
+    "node_modules/treeloom/dist/events/objects/options.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10255,9 +10281,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/events/index.js
+  // node_modules/treeloom/dist/events/index.js
   var require_events = __commonJS({
-    "node_modules/json-dom/dist/events/index.js"(exports) {
+    "node_modules/treeloom/dist/events/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10327,13 +10353,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/objects/addDomItemProperties.js
+  // node_modules/treeloom/dist/domItem/objects/addDomItemProperties.js
   var require_addDomItemProperties = __commonJS({
-    "node_modules/json-dom/dist/domItem/objects/addDomItemProperties.js"(exports) {
+    "node_modules/treeloom/dist/domItem/objects/addDomItemProperties.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -10355,9 +10379,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/traits/defineTrait.js
+  // node_modules/treeloom/dist/domItem/traits/defineTrait.js
   var require_defineTrait = __commonJS({
-    "node_modules/json-dom/dist/domItem/traits/defineTrait.js"(exports) {
+    "node_modules/treeloom/dist/domItem/traits/defineTrait.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10377,13 +10401,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/gatherChildItems.js
+  // node_modules/treeloom/dist/domItem/query/gatherChildItems.js
   var require_gatherChildItems = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/gatherChildItems.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/gatherChildItems.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_reduce();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -10392,9 +10414,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getChildrenByClass.js
+  // node_modules/treeloom/dist/domItem/query/getChildrenByClass.js
   var require_getChildrenByClass = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getChildrenByClass.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getChildrenByClass.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
@@ -10408,14 +10430,14 @@ var cloakfall = (() => {
       });
       var documentItem_1 = __importDefault(require_documentItem());
       var gatherChildItems_1 = __importDefault(require_gatherChildItems());
-      var getChildrenByClass = (className, item = documentItem_1.default.body) => (0, gatherChildItems_1.default)(item, (child, gatheredResults) => (child.attributes.className ?? "").split(" ").includes(className) ? gatheredResults.concat([child]) : gatheredResults);
+      var getChildrenByClass = (className, item = (0, documentItem_1.default)().body) => (0, gatherChildItems_1.default)(item, (child, gatheredResults) => (child.attributes.className ?? "").split(" ").includes(className) ? gatheredResults.concat([child]) : gatheredResults);
       exports.default = getChildrenByClass;
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getChildTest.js
+  // node_modules/treeloom/dist/domItem/query/getChildTest.js
   var require_getChildTest = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getChildTest.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getChildTest.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -10426,9 +10448,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getChildrenFromAttribute.js
+  // node_modules/treeloom/dist/domItem/query/getChildrenFromAttribute.js
   var require_getChildrenFromAttribute = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getChildrenFromAttribute.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getChildrenFromAttribute.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10442,14 +10464,14 @@ var cloakfall = (() => {
       var documentItem_1 = __importDefault(require_documentItem());
       var gatherChildItems_1 = __importDefault(require_gatherChildItems());
       var getChildTest_1 = __importDefault(require_getChildTest());
-      var getChildrenFromAttribute = (attr, value, item = documentItem_1.default.body) => (0, gatherChildItems_1.default)(item, (0, getChildTest_1.default)(attr, value));
+      var getChildrenFromAttribute = (attr, value, item = (0, documentItem_1.default)().body) => (0, gatherChildItems_1.default)(item, (0, getChildTest_1.default)(attr, value));
       exports.default = getChildrenFromAttribute;
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getChildrenByName.js
+  // node_modules/treeloom/dist/domItem/query/getChildrenByName.js
   var require_getChildrenByName = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getChildrenByName.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getChildrenByName.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10467,13 +10489,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/tree/getItemByPath.js
+  // node_modules/treeloom/dist/domItem/tree/getItemByPath.js
   var require_getItemByPath = __commonJS({
-    "node_modules/json-dom/dist/domItem/tree/getItemByPath.js"(exports) {
+    "node_modules/treeloom/dist/domItem/tree/getItemByPath.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_reduce();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -10488,9 +10508,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/tree/getItemPath.js
+  // node_modules/treeloom/dist/domItem/tree/getItemPath.js
   var require_getItemPath = __commonJS({
-    "node_modules/json-dom/dist/domItem/tree/getItemPath.js"(exports) {
+    "node_modules/treeloom/dist/domItem/tree/getItemPath.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10516,9 +10536,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getParentsByClass.js
+  // node_modules/treeloom/dist/domItem/query/getParentsByClass.js
   var require_getParentsByClass = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getParentsByClass.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getParentsByClass.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
@@ -10532,7 +10552,7 @@ var cloakfall = (() => {
       });
       var documentItem_1 = __importDefault(require_documentItem());
       var si_funciona_1 = __importDefault(require_main());
-      var getParentsByClass = (className, item = documentItem_1.default.body) => {
+      var getParentsByClass = (className, item = (0, documentItem_1.default)().body) => {
         if (item.parentItem === null) {
           if (item.nodeName === "#document") {
             throw new Error("Root parent item must be an empty object, null reference found.");
@@ -10550,9 +10570,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getParentsFromAttribute.js
+  // node_modules/treeloom/dist/domItem/query/getParentsFromAttribute.js
   var require_getParentsFromAttribute = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getParentsFromAttribute.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getParentsFromAttribute.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10565,7 +10585,7 @@ var cloakfall = (() => {
       });
       var documentItem_1 = __importDefault(require_documentItem());
       var si_funciona_1 = __importDefault(require_main());
-      var getParentsFromAttribute = (attr, value, item = documentItem_1.default.body) => {
+      var getParentsFromAttribute = (attr, value, item = (0, documentItem_1.default)().body) => {
         if (item.parentItem === null) {
           if (item.nodeName === "#document") {
             throw new Error("Root parent item must be an empty object, null reference found.");
@@ -10582,9 +10602,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getParentsByName.js
+  // node_modules/treeloom/dist/domItem/query/getParentsByName.js
   var require_getParentsByName = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getParentsByName.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getParentsByName.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10602,9 +10622,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/query/getParentsByTagName.js
+  // node_modules/treeloom/dist/domItem/query/getParentsByTagName.js
   var require_getParentsByTagName = __commonJS({
-    "node_modules/json-dom/dist/domItem/query/getParentsByTagName.js"(exports) {
+    "node_modules/treeloom/dist/domItem/query/getParentsByTagName.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10622,9 +10642,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/traits/getTraitDefinition.js
+  // node_modules/treeloom/dist/domItem/traits/getTraitDefinition.js
   var require_getTraitDefinition = __commonJS({
-    "node_modules/json-dom/dist/domItem/traits/getTraitDefinition.js"(exports) {
+    "node_modules/treeloom/dist/domItem/traits/getTraitDefinition.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10641,9 +10661,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/traits/hasTrait.js
+  // node_modules/treeloom/dist/domItem/traits/hasTrait.js
   var require_hasTrait = __commonJS({
-    "node_modules/json-dom/dist/domItem/traits/hasTrait.js"(exports) {
+    "node_modules/treeloom/dist/domItem/traits/hasTrait.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -10654,55 +10674,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/core-js/modules/es.iterator.every.js
-  var require_es_iterator_every = __commonJS({
-    "node_modules/core-js/modules/es.iterator.every.js"() {
-      "use strict";
-      init_process();
-      var $ = require_export();
-      var call = require_function_call();
-      var iterate = require_iterate();
-      var aCallable = require_a_callable();
-      var anObject = require_an_object();
-      var getIteratorDirect = require_get_iterator_direct();
-      var iteratorClose = require_iterator_close();
-      var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
-      var everyWithoutClosingOnEarlyError = iteratorHelperWithoutClosingOnEarlyError("every", TypeError);
-      $({ target: "Iterator", proto: true, real: true, forced: everyWithoutClosingOnEarlyError }, {
-        every: function every(predicate) {
-          anObject(this);
-          try {
-            aCallable(predicate);
-          } catch (error) {
-            iteratorClose(this, "throw", error);
-          }
-          if (everyWithoutClosingOnEarlyError) return call(everyWithoutClosingOnEarlyError, this, predicate);
-          var record = getIteratorDirect(this);
-          var counter = 0;
-          return !iterate(record, function(value, stop) {
-            if (!predicate(value, counter++)) return stop();
-          }, { IS_RECORD: true, INTERRUPTED: true }).stopped;
-        }
-      });
-    }
-  });
-
-  // node_modules/core-js/modules/esnext.iterator.every.js
-  var require_esnext_iterator_every = __commonJS({
-    "node_modules/core-js/modules/esnext.iterator.every.js"() {
-      "use strict";
-      init_process();
-      require_es_iterator_every();
-    }
-  });
-
-  // node_modules/json-dom/dist/domItem/traits/hasTraits.js
+  // node_modules/treeloom/dist/domItem/traits/hasTraits.js
   var require_hasTraits = __commonJS({
-    "node_modules/json-dom/dist/domItem/traits/hasTraits.js"(exports) {
+    "node_modules/treeloom/dist/domItem/traits/hasTraits.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_every();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -10711,9 +10687,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/tree/insertChild.js
+  // node_modules/treeloom/dist/domItem/tree/insertChild.js
   var require_insertChild = __commonJS({
-    "node_modules/json-dom/dist/domItem/tree/insertChild.js"(exports) {
+    "node_modules/treeloom/dist/domItem/tree/insertChild.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -10728,13 +10704,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/traits/isDomItem.js
+  // node_modules/treeloom/dist/domItem/traits/isDomItem.js
   var require_isDomItem = __commonJS({
-    "node_modules/json-dom/dist/domItem/traits/isDomItem.js"(exports) {
+    "node_modules/treeloom/dist/domItem/traits/isDomItem.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_every();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -10749,13 +10723,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/tree/setParentItemReferences.js
+  // node_modules/treeloom/dist/domItem/tree/setParentItemReferences.js
   var require_setParentItemReferences = __commonJS({
-    "node_modules/json-dom/dist/domItem/tree/setParentItemReferences.js"(exports) {
+    "node_modules/treeloom/dist/domItem/tree/setParentItemReferences.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -10774,9 +10746,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/domItem/index.js
+  // node_modules/treeloom/dist/domItem/index.js
   var require_domItem = __commonJS({
-    "node_modules/json-dom/dist/domItem/index.js"(exports) {
+    "node_modules/treeloom/dist/domItem/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10825,7 +10797,7 @@ var cloakfall = (() => {
         createDomItem: createDomItem_1.default,
         defineTrait: defineTrait_1.default,
         documentDomItem: documentDomItem_1.default,
-        documentItem: documentItem_1.default,
+        getDocumentItem: documentItem_1.default,
         gatherChildItems: gatherChildItems_1.default,
         getChildrenByClass: getChildrenByClass_1.default,
         getChildrenByName: getChildrenByName_1.default,
@@ -10854,9 +10826,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/inflate/jsonToDomItem.js
+  // node_modules/treeloom/dist/inflate/jsonToDomItem.js
   var require_jsonToDomItem = __commonJS({
-    "node_modules/json-dom/dist/inflate/jsonToDomItem.js"(exports) {
+    "node_modules/treeloom/dist/inflate/jsonToDomItem.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -10883,9 +10855,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/inflate/index.js
+  // node_modules/treeloom/dist/inflate/index.js
   var require_inflate = __commonJS({
-    "node_modules/json-dom/dist/inflate/index.js"(exports) {
+    "node_modules/treeloom/dist/inflate/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11262,106 +11234,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/core-js/internals/get-iterator-flattenable.js
-  var require_get_iterator_flattenable = __commonJS({
-    "node_modules/core-js/internals/get-iterator-flattenable.js"(exports, module) {
-      "use strict";
-      init_process();
-      var call = require_function_call();
-      var anObject = require_an_object();
-      var getIteratorDirect = require_get_iterator_direct();
-      var getIteratorMethod = require_get_iterator_method_internal();
-      module.exports = function(obj, stringHandling) {
-        if (!stringHandling || typeof obj !== "string") anObject(obj);
-        var method = getIteratorMethod(obj);
-        return getIteratorDirect(anObject(method !== void 0 ? call(method, obj) : obj));
-      };
-    }
-  });
-
-  // node_modules/core-js/modules/es.iterator.flat-map.js
-  var require_es_iterator_flat_map = __commonJS({
-    "node_modules/core-js/modules/es.iterator.flat-map.js"() {
-      "use strict";
-      init_process();
-      var $ = require_export();
-      var call = require_function_call();
-      var aCallable = require_a_callable();
-      var anObject = require_an_object();
-      var getIteratorDirect = require_get_iterator_direct();
-      var getIteratorFlattenable = require_get_iterator_flattenable();
-      var createIteratorProxy = require_iterator_create_proxy();
-      var iteratorClose = require_iterator_close();
-      var fails = require_fails();
-      var IS_PURE = require_is_pure();
-      var iteratorHelperThrowsOnInvalidIterator = require_iterator_helper_throws_on_invalid_iterator();
-      var iteratorHelperWithoutClosingOnEarlyError = require_iterator_helper_without_closing_on_early_error();
-      var THROWS_ON_ITERATOR_WITHOUT_RETURN = !IS_PURE && fails(function() {
-        return [1].values().flatMap(function() {
-          return [1];
-        }).find(function() {
-          return true;
-        }) !== 1;
-      });
-      var FLAT_MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR = !IS_PURE && !THROWS_ON_ITERATOR_WITHOUT_RETURN && !iteratorHelperThrowsOnInvalidIterator("flatMap", function() {
-      });
-      var flatMapWithoutClosingOnEarlyError = !IS_PURE && !THROWS_ON_ITERATOR_WITHOUT_RETURN && !FLAT_MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR && iteratorHelperWithoutClosingOnEarlyError("flatMap", TypeError);
-      var FORCED = IS_PURE || THROWS_ON_ITERATOR_WITHOUT_RETURN || FLAT_MAP_WITHOUT_THROWING_ON_INVALID_ITERATOR || flatMapWithoutClosingOnEarlyError;
-      var IteratorProxy = createIteratorProxy(function() {
-        var iterator = this.iterator;
-        var mapper = this.mapper;
-        var result, inner;
-        while (true) {
-          if (inner = this.inner) try {
-            result = anObject(call(inner.next, inner.iterator));
-            if (!result.done) return result.value;
-            this.inner = null;
-          } catch (error) {
-            iteratorClose(iterator, "throw", error);
-          }
-          result = anObject(call(this.next, iterator));
-          if (this.done = !!result.done) return;
-          try {
-            this.inner = getIteratorFlattenable(mapper(result.value, this.counter++), false);
-          } catch (error) {
-            iteratorClose(iterator, "throw", error);
-          }
-        }
-      });
-      $({ target: "Iterator", proto: true, real: true, forced: FORCED }, {
-        flatMap: function flatMap(mapper) {
-          anObject(this);
-          try {
-            aCallable(mapper);
-          } catch (error) {
-            iteratorClose(this, "throw", error);
-          }
-          if (flatMapWithoutClosingOnEarlyError) return call(flatMapWithoutClosingOnEarlyError, this, mapper);
-          return new IteratorProxy(getIteratorDirect(this), {
-            mapper,
-            inner: null
-          });
-        }
-      });
-    }
-  });
-
-  // node_modules/core-js/modules/esnext.iterator.flat-map.js
-  var require_esnext_iterator_flat_map = __commonJS({
-    "node_modules/core-js/modules/esnext.iterator.flat-map.js"() {
-      "use strict";
-      init_process();
-      require_es_iterator_flat_map();
-    }
-  });
-
-  // node_modules/json-dom/dist/domItem/traits/getNonSerializableKeys.js
+  // node_modules/treeloom/dist/domItem/traits/getNonSerializableKeys.js
   var require_getNonSerializableKeys = __commonJS({
-    "node_modules/json-dom/dist/domItem/traits/getNonSerializableKeys.js"(exports) {
+    "node_modules/treeloom/dist/domItem/traits/getNonSerializableKeys.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_flat_map();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -11379,14 +11256,12 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/deflate/removeEmptyProperties.js
+  // node_modules/treeloom/dist/deflate/removeEmptyProperties.js
   var require_removeEmptyProperties = __commonJS({
-    "node_modules/json-dom/dist/deflate/removeEmptyProperties.js"(exports) {
+    "node_modules/treeloom/dist/deflate/removeEmptyProperties.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -11416,9 +11291,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/deflate/domItemToJson.js
+  // node_modules/treeloom/dist/deflate/domItemToJson.js
   var require_domItemToJson = __commonJS({
-    "node_modules/json-dom/dist/deflate/domItemToJson.js"(exports) {
+    "node_modules/treeloom/dist/deflate/domItemToJson.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
@@ -11453,9 +11328,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/deflate/index.js
+  // node_modules/treeloom/dist/deflate/index.js
   var require_deflate = __commonJS({
-    "node_modules/json-dom/dist/deflate/index.js"(exports) {
+    "node_modules/treeloom/dist/deflate/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11475,13 +11350,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/diff/elementHasAttribute.js
+  // node_modules/treeloom/dist/diff/elementHasAttribute.js
   var require_elementHasAttribute = __commonJS({
-    "node_modules/json-dom/dist/diff/elementHasAttribute.js"(exports) {
+    "node_modules/treeloom/dist/diff/elementHasAttribute.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_map();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -11532,14 +11405,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/diff/domItemChanges.js
+  // node_modules/treeloom/dist/diff/domItemChanges.js
   var require_domItemChanges = __commonJS({
-    "node_modules/json-dom/dist/diff/domItemChanges.js"(exports) {
+    "node_modules/treeloom/dist/diff/domItemChanges.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_find();
-      require_esnext_iterator_reduce();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -11551,6 +11421,7 @@ var cloakfall = (() => {
       var si_funciona_1 = __importDefault(require_main());
       var elementHasAttribute_1 = __importDefault(require_elementHasAttribute());
       var createChangeList_1 = __importDefault(require_createChangeList());
+      var appliedSnapshot_1 = require_appliedSnapshot();
       var checkAttribute = (element) => (attr, key) => {
         if (typeof attr === "object") {
           const styles = attr;
@@ -11602,6 +11473,16 @@ var cloakfall = (() => {
             changeList.added.nodeValue = domItem.nodeValue;
           }
           return changeList;
+        }
+        if (!changeList.added.nodeName) {
+          const fromApplied = (0, appliedSnapshot_1.changesFromApplied)(domItem, (kabobKey) => {
+            const name = attributeName(domItem.attributes, kabobKey);
+            const element = domItem.element;
+            return element && name in element && name !== "form" ? name : kabobKey;
+          });
+          if (fromApplied) {
+            return fromApplied;
+          }
         }
         const domItemAttributes = kabobCaseAttributes(domItem.attributes);
         const diffMap = si_funciona_1.default.mapObject(domItemAttributes, (attr, key) => checkAttribute(domItem.element)(attr, key));
@@ -11667,15 +11548,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/render/updateChildNodes.js
+  // node_modules/treeloom/dist/render/updateChildNodes.js
   var require_updateChildNodes = __commonJS({
-    "node_modules/json-dom/dist/render/updateChildNodes.js"(exports) {
+    "node_modules/treeloom/dist/render/updateChildNodes.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_find();
-      require_esnext_iterator_for_each();
-      require_esnext_iterator_map();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -11694,31 +11571,24 @@ var cloakfall = (() => {
           return domItem;
         }
         const element = domItem.element;
-        const previousChildNodes = Array.from(element.childNodes);
-        domItem.children.map((child, index) => {
-          const existing = previousChildNodes.find((childNode2) => childNode2 === child.element);
-          let childNode = existing ?? child.element;
-          if (!childNode) {
-            childNode = (0, updateElement_1.default)(child).element;
-          }
-          if (!previousChildNodes[index]) {
-            element.appendChild(childNode);
-            return childNode;
-          }
-          if (childNode !== previousChildNodes[index]) {
-            element.replaceChild(childNode, previousChildNodes[index]);
-          }
+        const childNodes = domItem.children.map((child) => {
+          const childNode = child.element ?? (0, updateElement_1.default)(child).element;
+          child.element = childNode;
           return childNode;
-        }).forEach((childNode, index) => {
-          domItem.children[index].element = childNode;
         });
-        if (element.childNodes.length > domItem.children.length) {
-          const maxLength = domItem.children.length;
-          let nodeToRemove = element.childNodes[maxLength];
-          while (nodeToRemove) {
-            element.removeChild(nodeToRemove);
-            nodeToRemove = element.childNodes[maxLength];
+        const wanted = new Set(childNodes);
+        Array.from(element.childNodes).forEach((node) => {
+          if (!wanted.has(node)) {
+            element.removeChild(node);
           }
+        });
+        let following = null;
+        for (let index = childNodes.length - 1; index >= 0; index--) {
+          const childNode = childNodes[index];
+          if (childNode.parentNode !== element || childNode.nextSibling !== following) {
+            element.insertBefore(childNode, following);
+          }
+          following = childNode;
         }
         return domItem;
       };
@@ -11726,9 +11596,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/render/updateElement.js
+  // node_modules/treeloom/dist/render/updateElement.js
   var require_updateElement = __commonJS({
-    "node_modules/json-dom/dist/render/updateElement.js"(exports) {
+    "node_modules/treeloom/dist/render/updateElement.js"(exports) {
       "use strict";
       init_process();
       require_es_array_includes();
@@ -11743,6 +11613,7 @@ var cloakfall = (() => {
       var bindListeners_1 = __importDefault(require_bindListeners());
       var deactivateListeners_1 = __importDefault(require_deactivateListeners());
       var domItemChanges_1 = __importDefault(require_domItemChanges());
+      var appliedSnapshot_1 = require_appliedSnapshot();
       var si_funciona_1 = __importDefault(require_main());
       var generateElement_1 = __importDefault(require_generateElement());
       var updateChildNodes_1 = __importDefault(require_updateChildNodes());
@@ -11810,15 +11681,16 @@ var cloakfall = (() => {
           }
           element.style.setProperty(si_funciona_1.default.kabobCase(si_funciona_1.default.strAfter(dotKey, ".")), value);
         }
+        (0, appliedSnapshot_1.recordApplied)(domItem);
         return (0, bindListeners_1.default)(domItem);
       };
       exports.default = updateElement;
     }
   });
 
-  // node_modules/json-dom/dist/render/generateElement.js
+  // node_modules/treeloom/dist/render/generateElement.js
   var require_generateElement = __commonJS({
-    "node_modules/json-dom/dist/render/generateElement.js"(exports) {
+    "node_modules/treeloom/dist/render/generateElement.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11850,13 +11722,11 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/render/updateElements.js
+  // node_modules/treeloom/dist/render/updateElements.js
   var require_updateElements = __commonJS({
-    "node_modules/json-dom/dist/render/updateElements.js"(exports) {
+    "node_modules/treeloom/dist/render/updateElements.js"(exports) {
       "use strict";
       init_process();
-      require_esnext_iterator_constructor();
-      require_esnext_iterator_for_each();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -11882,9 +11752,127 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/render/renderHtml.js
+  // node_modules/treeloom/dist/render/reconcile.js
+  var require_reconcile = __commonJS({
+    "node_modules/treeloom/dist/render/reconcile.js"(exports) {
+      "use strict";
+      init_process();
+      require_es_array_includes();
+      require_es_json_stringify();
+      var __importDefault = function(mod) {
+        return mod && mod.__esModule ? mod : {
+          "default": mod
+        };
+      };
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      var removeEventListener_1 = __importDefault(require_removeEventListener());
+      var itemIdIndex_1 = require_itemIdIndex();
+      var updateElements_1 = __importDefault(require_updateElements());
+      var STRUCTURE = /* @__PURE__ */ new Set(["element", "parentItem", "children", "eventListeners", "activeListeners"]);
+      var listenerKey = (listener) => typeof listener.listenerFunc === "string" ? JSON.stringify([listener.listenerFunc, listener.listenerArgs ?? null, listener.listenerOptions ?? null]) : null;
+      var reconcileListeners = (existing, next) => {
+        const nextListeners = next.eventListeners ?? {};
+        existing.eventListeners = existing.eventListeners ?? {};
+        for (const eventName of Object.keys(existing.eventListeners)) {
+          const wanted = (nextListeners[eventName] ?? []).map(listenerKey);
+          for (const listener of [...existing.eventListeners[eventName]]) {
+            const key = listenerKey(listener);
+            if (key !== null && !wanted.includes(key)) {
+              (0, removeEventListener_1.default)(eventName, listener.listenerFunc, listener.listenerArgs, listener.listenerOptions, existing);
+            }
+          }
+        }
+        for (const eventName of Object.keys(nextListeners)) {
+          const have = (existing.eventListeners[eventName] ?? []).map(listenerKey);
+          for (const listener of nextListeners[eventName]) {
+            const key = listenerKey(listener);
+            if (key !== null && !have.includes(key)) {
+              existing.eventListeners[eventName] = existing.eventListeners[eventName] ?? [];
+              existing.eventListeners[eventName].push({
+                ...listener,
+                listenerActive: false,
+                activeResponder: null
+              });
+            }
+          }
+        }
+      };
+      var reconcileData = (existing, next) => {
+        const target = existing;
+        const source = next;
+        for (const key of Object.keys(target)) {
+          if (!STRUCTURE.has(key) && !(key in source) && typeof target[key] !== "function") {
+            delete target[key];
+          }
+        }
+        for (const key of Object.keys(source)) {
+          if (!STRUCTURE.has(key)) {
+            target[key] = source[key];
+          }
+        }
+      };
+      var pairChildren = (existing, next) => {
+        const byId = /* @__PURE__ */ new Map();
+        existing.forEach((child) => {
+          if (typeof child.id === "number") {
+            byId.set(child.id, child);
+          }
+        });
+        const claimed = new Set(next.map((child) => typeof child.id === "number" ? byId.get(child.id) : void 0).filter(Boolean));
+        const taken = /* @__PURE__ */ new Set();
+        return next.map((nextChild, index) => {
+          const sameId = typeof nextChild.id === "number" ? byId.get(nextChild.id) : void 0;
+          const atPosition = existing[index] && !claimed.has(existing[index]) ? existing[index] : void 0;
+          const candidate = sameId ?? atPosition;
+          if (candidate && !taken.has(candidate) && candidate.nodeName === nextChild.nodeName) {
+            taken.add(candidate);
+            return candidate;
+          }
+          return void 0;
+        });
+      };
+      var reconcileItem = (existing, next) => {
+        reconcileData(existing, next);
+        reconcileListeners(existing, next);
+        const previous = existing.children ?? [];
+        const nextChildren = next.children ?? [];
+        const pairs = pairChildren(previous, nextChildren);
+        const kept = new Set(pairs.filter(Boolean));
+        previous.filter((child) => !kept.has(child)).forEach((child) => {
+          ;
+          child.element?.remove?.();
+        });
+        existing.children = nextChildren.map((nextChild, index) => {
+          const child = pairs[index];
+          if (child) {
+            reconcileItem(child, nextChild);
+            return child;
+          }
+          nextChild.parentItem = existing;
+          return nextChild;
+        });
+        existing.children.forEach((child) => {
+          child.parentItem = existing;
+        });
+      };
+      var reconcile = (existing, next) => {
+        if (existing.nodeName.toLowerCase() !== next.nodeName.toLowerCase()) {
+          throw new Error(`reconcile can't turn a ${existing.nodeName} into a ${next.nodeName}: give it a tree of the same node, or reconcile its parent.`);
+        }
+        (0, itemIdIndex_1.unregisterItemIds)(existing);
+        reconcileItem(existing, next);
+        (0, itemIdIndex_1.registerItemIds)(existing);
+        return (0, updateElements_1.default)(existing);
+      };
+      exports.default = reconcile;
+    }
+  });
+
+  // node_modules/treeloom/dist/render/renderHtml.js
   var require_renderHtml = __commonJS({
-    "node_modules/json-dom/dist/render/renderHtml.js"(exports) {
+    "node_modules/treeloom/dist/render/renderHtml.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11901,8 +11889,8 @@ var cloakfall = (() => {
       var setParentItemReferences_1 = __importDefault(require_setParentItemReferences());
       var updateChildNodes_1 = __importDefault(require_updateChildNodes());
       var updateElements_1 = __importDefault(require_updateElements());
-      var renderHtml = (item = null, parent = documentItem_1.default.body, index = parent.children.length) => {
-        const itemToRender = item === null ? documentItem_1.default : item;
+      var renderHtml = (item = null, parent = (0, documentItem_1.default)().body, index = parent.children.length) => {
+        const itemToRender = item === null ? (0, documentItem_1.default)() : item;
         (0, setParentItemReferences_1.default)(itemToRender);
         if (itemToRender.parentItem === null) {
           (0, insertChild_1.default)(parent, item, index);
@@ -11916,9 +11904,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/render/index.js
+  // node_modules/treeloom/dist/render/index.js
   var require_render = __commonJS({
-    "node_modules/json-dom/dist/render/index.js"(exports) {
+    "node_modules/treeloom/dist/render/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11930,12 +11918,14 @@ var cloakfall = (() => {
         value: true
       });
       var generateElement_1 = __importDefault(require_generateElement());
+      var reconcile_1 = __importDefault(require_reconcile());
       var renderHtml_1 = __importDefault(require_renderHtml());
       var updateChildNodes_1 = __importDefault(require_updateChildNodes());
       var updateElement_1 = __importDefault(require_updateElement());
       var updateElements_1 = __importDefault(require_updateElements());
       exports.default = {
         generateElement: generateElement_1.default,
+        reconcile: reconcile_1.default,
         renderHtml: renderHtml_1.default,
         updateChildNodes: updateChildNodes_1.default,
         updateElement: updateElement_1.default,
@@ -11944,9 +11934,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/sync/index.js
+  // node_modules/treeloom/dist/sync/index.js
   var require_sync = __commonJS({
-    "node_modules/json-dom/dist/sync/index.js"(exports) {
+    "node_modules/treeloom/dist/sync/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11968,9 +11958,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/diff/index.js
+  // node_modules/treeloom/dist/diff/index.js
   var require_diff = __commonJS({
-    "node_modules/json-dom/dist/diff/index.js"(exports) {
+    "node_modules/treeloom/dist/diff/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -11998,9 +11988,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/json-dom/dist/main.js
+  // node_modules/treeloom/dist/main.js
   var require_main3 = __commonJS({
-    "node_modules/json-dom/dist/main.js"(exports, module) {
+    "node_modules/treeloom/dist/main.js"(exports, module) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12010,19 +12000,20 @@ var cloakfall = (() => {
       };
       var index_1 = __importDefault(require_events());
       var index_2 = __importDefault(require_domItem());
+      var documentItem_1 = require_documentItem();
       var index_3 = __importDefault(require_inflate());
       var index_4 = __importDefault(require_deflate());
       var index_5 = __importDefault(require_render());
       var index_6 = __importDefault(require_sync());
       var index_7 = __importDefault(require_diff());
-      var jsonDom = Object.assign({}, index_1.default, index_2.default, index_3.default, index_4.default, index_5.default, index_6.default, index_7.default);
-      module.exports = jsonDom;
+      var treeloom = (0, documentItem_1.withDocumentItem)(Object.assign({}, index_1.default, index_2.default, index_3.default, index_4.default, index_5.default, index_6.default, index_7.default));
+      module.exports = treeloom;
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/tile.js
+  // node_modules/treeloom-matrix/dist/grid/tile.js
   var require_tile = __commonJS({
-    "node_modules/matrix-dom/dist/grid/tile.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/tile.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -12035,9 +12026,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/traits.js
+  // node_modules/treeloom-matrix/dist/grid/traits.js
   var require_traits = __commonJS({
-    "node_modules/matrix-dom/dist/grid/traits.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/traits.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12049,26 +12040,26 @@ var cloakfall = (() => {
         value: true
       });
       exports.hasTrait = void 0;
-      var json_dom_1 = __importDefault(require_main3());
-      exports.hasTrait = json_dom_1.default.hasTrait;
-      json_dom_1.default.defineTrait("matrix.matrix", {
+      var treeloom_1 = __importDefault(require_main3());
+      exports.hasTrait = treeloom_1.default.hasTrait;
+      treeloom_1.default.defineTrait("matrix.matrix", {
         keys: []
       });
-      json_dom_1.default.defineTrait("matrix.layer", {
+      treeloom_1.default.defineTrait("matrix.layer", {
         keys: ["axis"]
       });
-      json_dom_1.default.defineTrait("matrix.row", {
+      treeloom_1.default.defineTrait("matrix.row", {
         keys: ["axis"]
       });
-      json_dom_1.default.defineTrait("matrix.column", {
+      treeloom_1.default.defineTrait("matrix.column", {
         keys: ["axis", "point"]
       });
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/matrix.js
+  // node_modules/treeloom-matrix/dist/grid/matrix.js
   var require_matrix = __commonJS({
-    "node_modules/matrix-dom/dist/grid/matrix.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/matrix.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12080,7 +12071,7 @@ var cloakfall = (() => {
         value: true
       });
       var si_funciona_1 = __importDefault(require_main());
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var tile_1 = __importDefault(require_tile());
       require_traits();
       var matrix = (dimensions = {
@@ -12092,7 +12083,7 @@ var cloakfall = (() => {
         y: {},
         z: {},
         matrix: {}
-      }) => si_funciona_1.default.mergeObjects(json_dom_1.default.createDomItem({
+      }) => si_funciona_1.default.mergeObjects(treeloom_1.default.createDomItem({
         has: {
           "matrix.matrix": true
         },
@@ -12102,10 +12093,10 @@ var cloakfall = (() => {
         },
         // Each level is built fresh per array element (not built once then cloned via buildArray) so every
         // createDomItem call actually runs and stamps its own real id - cloning a single built item would copy
-        // that one id onto every layer/row/tile instead (the id-collision bug behind JSON-DOM#100).
+        // that one id onto every layer/row/tile instead (the id-collision bug behind treeloom#100).
         children: Array.from({
           length: dimensions.z
-        }, () => si_funciona_1.default.mergeObjectsMutable(json_dom_1.default.createDomItem({
+        }, () => si_funciona_1.default.mergeObjectsMutable(treeloom_1.default.createDomItem({
           axis: "z",
           has: {
             "matrix.layer": true
@@ -12116,7 +12107,7 @@ var cloakfall = (() => {
           },
           children: Array.from({
             length: dimensions.y
-          }, () => si_funciona_1.default.mergeObjectsMutable(json_dom_1.default.createDomItem({
+          }, () => si_funciona_1.default.mergeObjectsMutable(treeloom_1.default.createDomItem({
             axis: "y",
             has: {
               "matrix.row": true
@@ -12127,7 +12118,7 @@ var cloakfall = (() => {
             },
             children: Array.from({
               length: dimensions.x
-            }, () => si_funciona_1.default.mergeObjectsMutable(json_dom_1.default.createDomItem({
+            }, () => si_funciona_1.default.mergeObjectsMutable(treeloom_1.default.createDomItem({
               axis: "x",
               has: {
                 "matrix.column": true
@@ -12145,9 +12136,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/updateMatrixPoints.js
+  // node_modules/treeloom-matrix/dist/grid/updateMatrixPoints.js
   var require_updateMatrixPoints = __commonJS({
-    "node_modules/matrix-dom/dist/grid/updateMatrixPoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/updateMatrixPoints.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12191,9 +12182,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/buildMatrix.js
+  // node_modules/treeloom-matrix/dist/grid/buildMatrix.js
   var require_buildMatrix = __commonJS({
-    "node_modules/matrix-dom/dist/grid/buildMatrix.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/buildMatrix.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12206,7 +12197,7 @@ var cloakfall = (() => {
       });
       var matrix_1 = __importDefault(require_matrix());
       var updateMatrixPoints_1 = __importDefault(require_updateMatrixPoints());
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var si_funciona_1 = __importDefault(require_main());
       var buildMatrix = (dimensions = {
         x: 0,
@@ -12217,14 +12208,14 @@ var cloakfall = (() => {
         y: {},
         z: {},
         matrix: {}
-      }) => si_funciona_1.default.pipe(json_dom_1.default.setParentItemReferences, updateMatrixPoints_1.default)((0, matrix_1.default)(dimensions, props));
+      }) => si_funciona_1.default.pipe(treeloom_1.default.setParentItemReferences, updateMatrixPoints_1.default)((0, matrix_1.default)(dimensions, props));
       exports.default = buildMatrix;
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/cube.js
+  // node_modules/treeloom-matrix/dist/grid/cube.js
   var require_cube = __commonJS({
-    "node_modules/matrix-dom/dist/grid/cube.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/cube.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12255,9 +12246,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/getAxisLengths.js
+  // node_modules/treeloom-matrix/dist/bounds/getAxisLengths.js
   var require_getAxisLengths = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/getAxisLengths.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/getAxisLengths.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12274,9 +12265,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/checkValidPoint.js
+  // node_modules/treeloom-matrix/dist/bounds/checkValidPoint.js
   var require_checkValidPoint = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/checkValidPoint.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/checkValidPoint.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12299,9 +12290,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/lookup/getDomItemFromPoint.js
+  // node_modules/treeloom-matrix/dist/lookup/getDomItemFromPoint.js
   var require_getDomItemFromPoint = __commonJS({
-    "node_modules/matrix-dom/dist/lookup/getDomItemFromPoint.js"(exports) {
+    "node_modules/treeloom-matrix/dist/lookup/getDomItemFromPoint.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12318,9 +12309,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/navigableGrid.js
+  // node_modules/treeloom-matrix/dist/grid/navigableGrid.js
   var require_navigableGrid = __commonJS({
-    "node_modules/matrix-dom/dist/grid/navigableGrid.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/navigableGrid.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12479,9 +12470,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/square.js
+  // node_modules/treeloom-matrix/dist/grid/square.js
   var require_square = __commonJS({
-    "node_modules/matrix-dom/dist/grid/square.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/square.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12512,9 +12503,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/grid/index.js
+  // node_modules/treeloom-matrix/dist/grid/index.js
   var require_grid = __commonJS({
-    "node_modules/matrix-dom/dist/grid/index.js"(exports) {
+    "node_modules/treeloom-matrix/dist/grid/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12544,9 +12535,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/adjacentEdgePoints.js
+  // node_modules/treeloom-matrix/dist/bounds/adjacentEdgePoints.js
   var require_adjacentEdgePoints = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/adjacentEdgePoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/adjacentEdgePoints.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12565,9 +12556,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/adjacentPoints.js
+  // node_modules/treeloom-matrix/dist/bounds/adjacentPoints.js
   var require_adjacentPoints = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/adjacentPoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/adjacentPoints.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12587,9 +12578,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/getAllPoints.js
+  // node_modules/treeloom-matrix/dist/bounds/getAllPoints.js
   var require_getAllPoints = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/getAllPoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/getAllPoints.js"(exports) {
       "use strict";
       init_process();
       Object.defineProperty(exports, "__esModule", {
@@ -12600,9 +12591,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/getCoordinateRanges.js
+  // node_modules/treeloom-matrix/dist/bounds/getCoordinateRanges.js
   var require_getCoordinateRanges = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/getCoordinateRanges.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/getCoordinateRanges.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12629,9 +12620,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/getMatrixRange.js
+  // node_modules/treeloom-matrix/dist/bounds/getMatrixRange.js
   var require_getMatrixRange = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/getMatrixRange.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/getMatrixRange.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12672,9 +12663,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/getAvailableRanges.js
+  // node_modules/treeloom-matrix/dist/bounds/getAvailableRanges.js
   var require_getAvailableRanges = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/getAvailableRanges.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/getAvailableRanges.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12695,9 +12686,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/getLayerPoints.js
+  // node_modules/treeloom-matrix/dist/bounds/getLayerPoints.js
   var require_getLayerPoints = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/getLayerPoints.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/getLayerPoints.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12714,9 +12705,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/bounds/index.js
+  // node_modules/treeloom-matrix/dist/bounds/index.js
   var require_bounds = __commonJS({
-    "node_modules/matrix-dom/dist/bounds/index.js"(exports) {
+    "node_modules/treeloom-matrix/dist/bounds/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12750,9 +12741,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/lookup/getPointFromElement.js
+  // node_modules/treeloom-matrix/dist/lookup/getPointFromElement.js
   var require_getPointFromElement = __commonJS({
-    "node_modules/matrix-dom/dist/lookup/getPointFromElement.js"(exports) {
+    "node_modules/treeloom-matrix/dist/lookup/getPointFromElement.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12777,9 +12768,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/lookup/getDomItemFromElement.js
+  // node_modules/treeloom-matrix/dist/lookup/getDomItemFromElement.js
   var require_getDomItemFromElement = __commonJS({
-    "node_modules/matrix-dom/dist/lookup/getDomItemFromElement.js"(exports) {
+    "node_modules/treeloom-matrix/dist/lookup/getDomItemFromElement.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12797,9 +12788,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/lookup/getPointFromDomItem.js
+  // node_modules/treeloom-matrix/dist/lookup/getPointFromDomItem.js
   var require_getPointFromDomItem = __commonJS({
-    "node_modules/matrix-dom/dist/lookup/getPointFromDomItem.js"(exports) {
+    "node_modules/treeloom-matrix/dist/lookup/getPointFromDomItem.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12827,9 +12818,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/lookup/index.js
+  // node_modules/treeloom-matrix/dist/lookup/index.js
   var require_lookup = __commonJS({
-    "node_modules/matrix-dom/dist/lookup/index.js"(exports) {
+    "node_modules/treeloom-matrix/dist/lookup/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12853,9 +12844,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/random/randomPoint.js
+  // node_modules/treeloom-matrix/dist/random/randomPoint.js
   var require_randomPoint = __commonJS({
-    "node_modules/matrix-dom/dist/random/randomPoint.js"(exports) {
+    "node_modules/treeloom-matrix/dist/random/randomPoint.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12879,9 +12870,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/random/randDirection.js
+  // node_modules/treeloom-matrix/dist/random/randDirection.js
   var require_randDirection = __commonJS({
-    "node_modules/matrix-dom/dist/random/randDirection.js"(exports) {
+    "node_modules/treeloom-matrix/dist/random/randDirection.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12918,9 +12909,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/random/testIntervalFits.js
+  // node_modules/treeloom-matrix/dist/random/testIntervalFits.js
   var require_testIntervalFits = __commonJS({
-    "node_modules/matrix-dom/dist/random/testIntervalFits.js"(exports) {
+    "node_modules/treeloom-matrix/dist/random/testIntervalFits.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -12954,9 +12945,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/random/randDirectionWithInterval.js
+  // node_modules/treeloom-matrix/dist/random/randDirectionWithInterval.js
   var require_randDirectionWithInterval = __commonJS({
-    "node_modules/matrix-dom/dist/random/randDirectionWithInterval.js"(exports) {
+    "node_modules/treeloom-matrix/dist/random/randDirectionWithInterval.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13020,9 +13011,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/random/randomStart.js
+  // node_modules/treeloom-matrix/dist/random/randomStart.js
   var require_randomStart = __commonJS({
-    "node_modules/matrix-dom/dist/random/randomStart.js"(exports) {
+    "node_modules/treeloom-matrix/dist/random/randomStart.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13075,9 +13066,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/random/index.js
+  // node_modules/treeloom-matrix/dist/random/index.js
   var require_random = __commonJS({
-    "node_modules/matrix-dom/dist/random/index.js"(exports) {
+    "node_modules/treeloom-matrix/dist/random/index.js"(exports) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13103,9 +13094,9 @@ var cloakfall = (() => {
     }
   });
 
-  // node_modules/matrix-dom/dist/main.js
+  // node_modules/treeloom-matrix/dist/main.js
   var require_main4 = __commonJS({
-    "node_modules/matrix-dom/dist/main.js"(exports, module) {
+    "node_modules/treeloom-matrix/dist/main.js"(exports, module) {
       "use strict";
       init_process();
       var __importDefault = function(mod) {
@@ -13120,7 +13111,7 @@ var cloakfall = (() => {
       var index_5 = __importDefault(require_lookup());
       var index_6 = __importDefault(require_random());
       var root = typeof window !== "undefined" ? window : {};
-      var matrixDom = {
+      var treeloomMatrix = {
         ...index_1.default,
         ...index_2.default,
         ...index_3.default,
@@ -13128,8 +13119,8 @@ var cloakfall = (() => {
         ...index_5.default,
         ...index_6.default
       };
-      root.matrixDom = matrixDom;
-      module.exports = matrixDom;
+      root.treeloomMatrix = treeloomMatrix;
+      module.exports = treeloomMatrix;
     }
   });
 
@@ -13147,7 +13138,7 @@ var cloakfall = (() => {
         value: true
       });
       exports.getSession = void 0;
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var si_funciona_1 = __importDefault(require_main());
       var sessions = /* @__PURE__ */ new WeakMap();
       var defaultSession = () => ({
@@ -13167,7 +13158,7 @@ var cloakfall = (() => {
         onAttackerChanged: null
       });
       var getSession = (item) => {
-        const root = json_dom_1.default.getTopParentItem(item);
+        const root = treeloom_1.default.getTopParentItem(item);
         if (!sessions.has(root)) {
           sessions.set(root, defaultSession());
         }
@@ -13317,7 +13308,7 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var attackLock_1 = __importDefault(require_attackLock());
       var colourHitCell_1 = __importDefault(require_colourHitCell());
       var labelTile_1 = __importDefault(require_labelTile());
@@ -13328,13 +13319,13 @@ var cloakfall = (() => {
           attackLock.isLocked = true;
           (0, queue_1.default)(config, () => {
             (0, colourHitCell_1.default)(config);
-            config = json_dom_1.default.updateElement((0, labelTile_1.default)(config));
+            config = treeloom_1.default.updateElement((0, labelTile_1.default)(config));
             attackLock.isLocked = false;
             return config;
           }, 0);
         } else {
           (0, colourHitCell_1.default)(config);
-          config = json_dom_1.default.updateElement((0, labelTile_1.default)(config));
+          config = treeloom_1.default.updateElement((0, labelTile_1.default)(config));
         }
         return config;
       };
@@ -13522,7 +13513,7 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var si_funciona_1 = __importDefault(require_main());
       var playerStats_1 = __importDefault(require_playerStats());
       var labelTile_1 = require_labelTile();
@@ -13530,10 +13521,10 @@ var cloakfall = (() => {
         if (player.board?.attributes) {
           (0, labelTile_1.labelBoard)(player);
           if (player.board.element) {
-            json_dom_1.default.updateElement(player.board);
+            treeloom_1.default.updateElement(player.board);
           }
         }
-        player.playerStats = json_dom_1.default.updateElements(si_funciona_1.default.mergeObjectsMutable(player.playerStats, (0, playerStats_1.default)(player, status)));
+        player.playerStats = treeloom_1.default.updateElements(si_funciona_1.default.mergeObjectsMutable(player.playerStats, (0, playerStats_1.default)(player, status)));
         return player;
       };
       exports.default = updatePlayerStats;
@@ -13554,13 +13545,13 @@ var cloakfall = (() => {
         value: true
       });
       exports.paint = exports.shade = void 0;
-      var json_dom_1 = __importDefault(require_main3());
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_1 = __importDefault(require_main3());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var si_funciona_1 = __importDefault(require_main());
       var shade = (intensity) => `rgba(255, 215, 0, ${0.15 + 0.85 * intensity})`;
       exports.shade = shade;
       var paint = (victim, point, color) => {
-        json_dom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(matrix_dom_1.default.getDomItemFromPoint(point, victim.board), {
+        treeloom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(treeloom_matrix_1.default.getDomItemFromPoint(point, victim.board), {
           attributes: {
             style: {
               borderColor: color
@@ -13570,7 +13561,7 @@ var cloakfall = (() => {
       };
       exports.paint = paint;
       var resetTargets = (data) => {
-        data.victim.board.children.map((l) => json_dom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(l, {
+        data.victim.board.children.map((l) => treeloom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(l, {
           attributes: {
             style: {
               borderColor: "#333"
@@ -13582,7 +13573,7 @@ var cloakfall = (() => {
           (0, exports.paint)(data.victim, data.target, "red");
         }
         if (!data.target) {
-          data.victim.board.children.map((l) => json_dom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(l, {
+          data.victim.board.children.map((l) => treeloom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(l, {
             attributes: {
               style: {
                 borderColor: "yellow"
@@ -13755,7 +13746,7 @@ var cloakfall = (() => {
         value: true
       });
       exports.bestHitChance = exports.densityChoices = exports.buildShotState = void 0;
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var checkIfHitCell_1 = __importDefault(require_checkIfHitCell());
       var densityScores_1 = require_densityScores();
       var filterAdjacentPoints_1 = __importDefault(require_filterAdjacentPoints());
@@ -13764,7 +13755,7 @@ var cloakfall = (() => {
         y: point.y
       });
       var buildShotState = (victim) => {
-        const points = matrix_dom_1.default.getLayerPoints(victim.board, 0);
+        const points = treeloom_matrix_1.default.getLayerPoints(victim.board, 0);
         const size = Math.max(...points.map((p) => p.x)) + 1;
         const hitParts = victim.shipFleet.flatMap((ship) => ship.parts.filter((part) => part.isHit));
         const hits = hitParts.map((part) => toCell(part.point));
@@ -13782,7 +13773,7 @@ var cloakfall = (() => {
       };
       exports.buildShotState = buildShotState;
       var refineTies = (cells) => {
-        const checkerboard = cells.filter((c) => (0, filterAdjacentPoints_1.default)(matrix_dom_1.default.point(c.x, c.y, 0)));
+        const checkerboard = cells.filter((c) => (0, filterAdjacentPoints_1.default)(treeloom_matrix_1.default.point(c.x, c.y, 0)));
         return checkerboard.length ? checkerboard : cells;
       };
       var densityChoices = (victim) => {
@@ -13790,12 +13781,12 @@ var cloakfall = (() => {
         const best = (0, densityScores_1.bestTargets)(scores);
         const max = Math.max(0, ...scores.flat());
         const heat = scores.flatMap((row, y) => row.flatMap((score, x) => score > 0 ? [{
-          point: matrix_dom_1.default.point(x, y, 0),
+          point: treeloom_matrix_1.default.point(x, y, 0),
           intensity: score / max
         }] : []));
         return {
           heat,
-          targets: (best.length ? refineTies(best) : best).map((c) => matrix_dom_1.default.point(c.x, c.y, 0))
+          targets: (best.length ? refineTies(best) : best).map((c) => treeloom_matrix_1.default.point(c.x, c.y, 0))
         };
       };
       exports.densityChoices = densityChoices;
@@ -13820,18 +13811,18 @@ var cloakfall = (() => {
         value: true
       });
       exports.clearHeatHint = exports.showHeatHint = exports.victimsOf = void 0;
-      var json_dom_1 = __importDefault(require_main3());
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_1 = __importDefault(require_main3());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var densityTargets_1 = require_densityTargets();
       var resetTargets_1 = require_resetTargets();
-      var victimsOf = (player) => json_dom_1.default.getParentsByClass("boards", player)[0].children.filter((p) => p !== player);
+      var victimsOf = (player) => treeloom_1.default.getParentsByClass("boards", player)[0].children.filter((p) => p !== player);
       exports.victimsOf = victimsOf;
       var showHeatHint = (victim) => {
         (0, densityTargets_1.densityChoices)(victim).heat.forEach((cell) => (0, resetTargets_1.paint)(victim, cell.point, (0, resetTargets_1.shade)(cell.intensity)));
       };
       exports.showHeatHint = showHeatHint;
       var clearHeatHint = (victim) => {
-        matrix_dom_1.default.getLayerPoints(victim.board, 0).forEach((point) => (0, resetTargets_1.paint)(victim, point, "#333"));
+        treeloom_matrix_1.default.getLayerPoints(victim.board, 0).forEach((point) => (0, resetTargets_1.paint)(victim, point, "#333"));
       };
       exports.clearHeatHint = clearHeatHint;
     }
@@ -13851,14 +13842,14 @@ var cloakfall = (() => {
         value: true
       });
       exports.clearTargets = exports.outlineBoard = exports.STAGE_MS = void 0;
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var si_funciona_1 = __importDefault(require_main());
       var queue_1 = __importDefault(require_queue());
       var resetTargets_1 = __importDefault(require_resetTargets());
       var heatHint_1 = require_heatHint();
       exports.STAGE_MS = 400;
       var outlineBoard = (player, color) => {
-        player.board.children.forEach((row) => json_dom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(row, {
+        player.board.children.forEach((row) => treeloom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(row, {
           attributes: {
             style: {
               borderColor: color
@@ -13904,9 +13895,9 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var checkIfHitCell_1 = __importDefault(require_checkIfHitCell());
-      var getAllNonHitCells = (matrix) => matrix_dom_1.default.getAllPoints(matrix).filter((p) => !(0, checkIfHitCell_1.default)(p, matrix));
+      var getAllNonHitCells = (matrix) => treeloom_matrix_1.default.getAllPoints(matrix).filter((p) => !(0, checkIfHitCell_1.default)(p, matrix));
       exports.default = getAllNonHitCells;
     }
   });
@@ -13924,7 +13915,7 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var si_funciona_1 = __importDefault(require_main());
       var displayTargets_1 = __importDefault(require_displayTargets());
       var filterAdjacentPoints_1 = __importDefault(require_filterAdjacentPoints());
@@ -13941,7 +13932,7 @@ var cloakfall = (() => {
           point,
           intensity: 1
         })), target, victim, opponents);
-        return matrix_dom_1.default.getDomItemFromPoint(target, victim.board);
+        return treeloom_matrix_1.default.getDomItemFromPoint(target, victim.board);
       };
       exports.default = selectTargetCoordinate;
     }
@@ -14045,8 +14036,8 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
-      var finalScore = (players = []) => json_dom_1.default.createDomItem({
+      var treeloom_1 = __importDefault(require_main3());
+      var finalScore = (players = []) => treeloom_1.default.createDomItem({
         nodeName: "div",
         attributes: {
           className: "final-scores"
@@ -14130,12 +14121,12 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var finalScore_1 = __importDefault(require_finalScore());
       var updatePlayerStats_1 = __importDefault(require_updatePlayerStats());
       var gameSession_1 = require_gameSession();
       var endGame = (winner) => {
-        const parent = json_dom_1.default.getTopParentItem(winner);
+        const parent = treeloom_1.default.getTopParentItem(winner);
         const players = winner.parentItem.children;
         players.map((player) => (0, updatePlayerStats_1.default)(player));
         winner = (0, updatePlayerStats_1.default)(winner, "WINNER");
@@ -14143,7 +14134,7 @@ var cloakfall = (() => {
         if (onGameOver) {
           onGameOver(players, parent);
         } else {
-          json_dom_1.default.renderHtml((0, finalScore_1.default)(players), parent.body);
+          treeloom_1.default.renderHtml((0, finalScore_1.default)(players), parent.body);
         }
         return [winner];
       };
@@ -14203,13 +14194,13 @@ var cloakfall = (() => {
         value: true
       });
       exports.applyLocalPlayerView = void 0;
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var si_funciona_1 = __importDefault(require_main());
       var playerView_1 = require_playerView();
       var applyLocalPlayerView = (players, viewer) => {
         players.forEach((player) => {
           const role = viewer === null ? "summary" : (0, playerView_1.roleFor)(player, viewer);
-          json_dom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(player, {
+          treeloom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(player, {
             attributes: {
               className: `player role-${role}`
             }
@@ -14235,14 +14226,14 @@ var cloakfall = (() => {
         value: true
       });
       exports.clearValidTargets = exports.showValidTargets = void 0;
-      var json_dom_1 = __importDefault(require_main3());
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_1 = __importDefault(require_main3());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var si_funciona_1 = __importDefault(require_main());
       var markBoard = (victim, attackable) => {
-        matrix_dom_1.default.getLayerPoints(victim.board, 0).forEach((point) => {
-          const tile = matrix_dom_1.default.getDomItemFromPoint(point, victim.board);
+        treeloom_matrix_1.default.getLayerPoints(victim.board, 0).forEach((point) => {
+          const tile = treeloom_matrix_1.default.getDomItemFromPoint(point, victim.board);
           const className = attackable && !tile.isHit ? "column valid-target" : "column";
-          json_dom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(tile, {
+          treeloom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(tile, {
             attributes: {
               className
             }
@@ -14269,7 +14260,7 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var si_funciona_1 = __importDefault(require_main());
       var attackLock_1 = __importDefault(require_attackLock());
       var queue_1 = __importDefault(require_queue());
@@ -14301,7 +14292,7 @@ var cloakfall = (() => {
           (0, queue_1.default)(player, () => (0, heatHint_1.victimsOf)(player).forEach((victim) => player.attacker ? (0, heatHint_1.showHeatHint)(victim) : (0, heatHint_1.clearHeatHint)(victim)), 0);
         }
         if (player.attacker) {
-          const root = json_dom_1.default.getTopParentItem(player);
+          const root = treeloom_1.default.getTopParentItem(player);
           if (!player.isRobot) {
             (0, queue_1.default)(player, () => {
               attackLock.isLocked = false;
@@ -14310,7 +14301,7 @@ var cloakfall = (() => {
           }
           const mode = (0, gameOptions_1.getGameMode)(root);
           if (mode === "multi" || mode === "solo") {
-            const players = json_dom_1.default.getParentsByClass("boards", player)[0].children;
+            const players = treeloom_1.default.getParentsByClass("boards", player)[0].children;
             if (mode === "solo") {
               (0, localPlayerView_1.applyLocalPlayerView)(players, players.find((p) => !p.isRobot) ?? null);
             } else if (!(0, gameSession_1.getSession)(root).onAttackerChanged) {
@@ -14324,14 +14315,14 @@ var cloakfall = (() => {
           }, 0);
         }
         (0, queue_1.default)(player, () => {
-          json_dom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(player, {
+          treeloom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(player, {
             attributes: {
               style: {
                 outline: player.attacker ? "3px solid yellow" : "none"
               }
             }
           }));
-          (0, heatHint_1.victimsOf)(player).forEach((victim) => json_dom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(victim, {
+          (0, heatHint_1.victimsOf)(player).forEach((victim) => treeloom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(victim, {
             attributes: {
               style: {
                 boxShadow: player.attacker ? `0 0 0 6px ${player.colour}` : "none"
@@ -14417,16 +14408,16 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_1 = __importDefault(require_main3());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var attackLock_1 = __importDefault(require_attackLock());
       var setHit_1 = __importDefault(require_setHit());
       var updatePlayerStats_1 = __importDefault(require_updatePlayerStats());
       var updateScore_1 = __importDefault(require_updateScore());
       var attackFleet = (target) => {
         const attackLock = (0, attackLock_1.default)(target);
-        let player = json_dom_1.default.getParentsByClass("player", target)[0];
-        const players = json_dom_1.default.getParentsByClass("boards", target)[0].children;
+        let player = treeloom_1.default.getParentsByClass("player", target)[0];
+        const players = treeloom_1.default.getParentsByClass("boards", target)[0].children;
         if (player.status <= 0 || player.attacker || attackLock.isLocked || target.isHit) {
           return players;
         }
@@ -14437,7 +14428,7 @@ var cloakfall = (() => {
           let status = 0;
           player.shipFleet.map((ship) => {
             const healthy = ship.parts.filter((part) => {
-              if (matrix_dom_1.default.areEqualPoints(part.point, target.point)) {
+              if (treeloom_matrix_1.default.areEqualPoints(part.point, target.point)) {
                 hitShip = ship;
               }
               return !part.isHit;
@@ -14608,10 +14599,10 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var si_funciona_1 = __importDefault(require_main());
       var checkIfShipCell_1 = __importDefault(require_checkIfShipCell());
-      var validPlacements = (matrix, shipLength) => matrix_dom_1.default.getLinesOfLength(matrix_dom_1.default.getAxisLengths(matrix), shipLength).filter((line) => !line.some((point) => (0, checkIfShipCell_1.default)(point, matrix))).map((line) => [line[0], line[line.length - 1]]);
+      var validPlacements = (matrix, shipLength) => treeloom_matrix_1.default.getLinesOfLength(treeloom_matrix_1.default.getAxisLengths(matrix), shipLength).filter((line) => !line.some((point) => (0, checkIfShipCell_1.default)(point, matrix))).map((line) => [line[0], line[line.length - 1]]);
       var generateStartEnd = (matrix, shipLength) => {
         const placements = validPlacements(matrix, shipLength);
         if (!placements.length) {
@@ -14636,10 +14627,10 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var buildShip_1 = __importDefault(require_buildShip());
       var generateStartEnd_1 = __importDefault(require_generateStartEnd());
-      var generateRandomFleet = (ships, matrix, view = false) => ships.map((ship) => (0, buildShip_1.default)(ship, matrix_dom_1.default.getLinePoints(...(0, generateStartEnd_1.default)(matrix, ship.size)), matrix, view));
+      var generateRandomFleet = (ships, matrix, view = false) => ships.map((ship) => (0, buildShip_1.default)(ship, treeloom_matrix_1.default.getLinePoints(...(0, generateStartEnd_1.default)(matrix, ship.size)), matrix, view));
       exports.default = generateRandomFleet;
     }
   });
@@ -14760,7 +14751,7 @@ var cloakfall = (() => {
         value: true
       });
       exports.placeShip = exports.isValidPlacement = void 0;
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var buildShip_1 = __importDefault(require_buildShip());
       var checkIfShipCell_1 = __importDefault(require_checkIfShipCell());
       var isValidPlacement = (board, start, end, length) => {
@@ -14772,10 +14763,10 @@ var cloakfall = (() => {
         if (!straight || cellCount !== length || !inside) {
           return false;
         }
-        return matrix_dom_1.default.getLinePoints(start, end).every((point) => !(0, checkIfShipCell_1.default)(point, board));
+        return treeloom_matrix_1.default.getLinePoints(start, end).every((point) => !(0, checkIfShipCell_1.default)(point, board));
       };
       exports.isValidPlacement = isValidPlacement;
-      var placeShip = (board, shipInfo, start, end, view = true) => (0, exports.isValidPlacement)(board, start, end, shipInfo.size) ? (0, buildShip_1.default)(shipInfo, matrix_dom_1.default.getLinePoints(start, end), board, view) : false;
+      var placeShip = (board, shipInfo, start, end, view = true) => (0, exports.isValidPlacement)(board, start, end, shipInfo.size) ? (0, buildShip_1.default)(shipInfo, treeloom_matrix_1.default.getLinePoints(start, end), board, view) : false;
       exports.placeShip = placeShip;
     }
   });
@@ -14795,9 +14786,9 @@ var cloakfall = (() => {
         value: true
       });
       exports.finishTurn = exports.randomOrder = exports.chooseOrder = exports.randomise = exports.placeCell = exports.continueTurn = exports.setStatsShown = exports.startPlacement = exports.isPlacing = void 0;
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var labelTile_1 = __importDefault(require_labelTile());
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var si_funciona_1 = __importDefault(require_main());
       var defaultFleet_1 = require_defaultFleet();
       var generateRandomFleet_1 = __importDefault(require_generateRandomFleet());
@@ -14814,9 +14805,9 @@ var cloakfall = (() => {
         }
         return session;
       };
-      var child = (item, className) => json_dom_1.default.getChildrenByClass(className, item)[0];
+      var child = (item, className) => treeloom_1.default.getChildrenByClass(className, item)[0];
       var update = (item, attributes) => {
-        json_dom_1.default.updateElement((0, labelTile_1.default)(si_funciona_1.default.mergeObjectsMutable(item, {
+        treeloom_1.default.updateElement((0, labelTile_1.default)(si_funciona_1.default.mergeObjectsMutable(item, {
           attributes
         })));
       };
@@ -14839,7 +14830,7 @@ var cloakfall = (() => {
           done(players);
           return;
         }
-        const panel = json_dom_1.default.renderHtml(json_dom_1.default.createDomItem((0, placementPanel_1.default)()), body);
+        const panel = treeloom_1.default.renderHtml(treeloom_1.default.createDomItem((0, placementPanel_1.default)()), body);
         const session = {
           players,
           humans,
@@ -14958,8 +14949,8 @@ var cloakfall = (() => {
       exports.continueTurn = continueTurn;
       var showStart = (session, point, size) => {
         const board = current(session).board;
-        matrix_dom_1.default.getLayerPoints(board, 0).forEach((p) => {
-          const tile = matrix_dom_1.default.getDomItemFromPoint(p, board);
+        treeloom_matrix_1.default.getLayerPoints(board, 0).forEach((p) => {
+          const tile = treeloom_matrix_1.default.getDomItemFromPoint(p, board);
           const isStart = Boolean(point && p.x === point.x && p.y === point.y);
           const isEnd = point !== null && !isStart && (0, placeShip_1.isValidPlacement)(board, point, p, size);
           update(tile, {
@@ -14970,7 +14961,7 @@ var cloakfall = (() => {
           });
         });
       };
-      var endCount = (session, start, size) => matrix_dom_1.default.getAllPoints(current(session).board).filter((p) => p.z === 0 && !(p.x === start.x && p.y === start.y)).filter((p) => (0, placeShip_1.isValidPlacement)(current(session).board, start, p, size)).length;
+      var endCount = (session, start, size) => treeloom_matrix_1.default.getAllPoints(current(session).board).filter((p) => p.z === 0 && !(p.x === start.x && p.y === start.y)).filter((p) => (0, placeShip_1.isValidPlacement)(current(session).board, start, p, size)).length;
       var placeCell = (tile, board) => {
         const session = active(tile);
         if (session.stage === "ordering") {
@@ -15015,9 +15006,9 @@ var cloakfall = (() => {
       var randomise = (item) => {
         const session = active(item);
         const player = current(session);
-        matrix_dom_1.default.getLayerPoints(player.board, 0).forEach((p) => {
-          const tile = matrix_dom_1.default.getDomItemFromPoint(p, player.board);
-          json_dom_1.default.updateElement((0, labelTile_1.default)(si_funciona_1.default.mergeObjectsMutable(tile, {
+        treeloom_matrix_1.default.getLayerPoints(player.board, 0).forEach((p) => {
+          const tile = treeloom_matrix_1.default.getDomItemFromPoint(p, player.board);
+          treeloom_1.default.updateElement((0, labelTile_1.default)(si_funciona_1.default.mergeObjectsMutable(tile, {
             hasShip: false,
             attributes: {
               style: {
@@ -15034,8 +15025,8 @@ var cloakfall = (() => {
       };
       exports.randomise = randomise;
       var hideShips = (player) => {
-        matrix_dom_1.default.getLayerPoints(player.board, 0).forEach((p) => {
-          const tile = matrix_dom_1.default.getDomItemFromPoint(p, player.board);
+        treeloom_matrix_1.default.getLayerPoints(player.board, 0).forEach((p) => {
+          const tile = treeloom_matrix_1.default.getDomItemFromPoint(p, player.board);
           if ((0, checkIfShipCell_1.default)(p, player.board)) {
             update(tile, {
               style: {
@@ -15158,7 +15149,7 @@ var cloakfall = (() => {
         }));
       };
       var reorderBoards = (order) => {
-        const boards = json_dom_1.default.getParentsByClass("boards", order[0])[0];
+        const boards = treeloom_1.default.getParentsByClass("boards", order[0])[0];
         boards.children = [...order];
         order.forEach((player) => boards.element.appendChild(player.element));
       };
@@ -15334,9 +15325,9 @@ var cloakfall = (() => {
         value: true
       });
       exports.chooseOrderRandom = exports.beginOrderSet = exports.randomiseRemoteShips = exports.readyRemotePlayer = exports.handleRemoteBoardClick = exports.startRemotePlacement = exports.remotePlacementStage = exports.isHostOnlyStage = exports.cancelRemotePlacement = exports.isRemoteSessionActive = exports.PLACEMENT_TIMEOUT_MS = void 0;
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var labelTile_1 = __importDefault(require_labelTile());
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var si_funciona_1 = __importDefault(require_main());
       var defaultFleet_1 = require_defaultFleet();
       var generateRandomFleet_1 = __importDefault(require_generateRandomFleet());
@@ -15347,7 +15338,7 @@ var cloakfall = (() => {
       var remoteOrderingPanel_1 = __importDefault(require_remoteOrderingPanel());
       exports.PLACEMENT_TIMEOUT_MS = 6e4;
       var sessions = /* @__PURE__ */ new WeakMap();
-      var findSession = (item) => sessions.get(json_dom_1.default.getTopParentItem(item)) ?? null;
+      var findSession = (item) => sessions.get(treeloom_1.default.getTopParentItem(item)) ?? null;
       var activeSession = (item) => {
         const found = findSession(item);
         if (!found) {
@@ -15358,7 +15349,7 @@ var cloakfall = (() => {
       var isRemoteSessionActive = (item) => findSession(item) !== null;
       exports.isRemoteSessionActive = isRemoteSessionActive;
       var cancelRemotePlacement = (item) => {
-        const root = json_dom_1.default.getTopParentItem(item);
+        const root = treeloom_1.default.getTopParentItem(item);
         const session = sessions.get(root);
         if (!session) {
           return;
@@ -15375,11 +15366,11 @@ var cloakfall = (() => {
       var remotePlacementStage = (item) => findSession(item)?.stage ?? null;
       exports.remotePlacementStage = remotePlacementStage;
       var update = (item, attributes) => {
-        json_dom_1.default.updateElement((0, labelTile_1.default)(si_funciona_1.default.mergeObjectsMutable(item, {
+        treeloom_1.default.updateElement((0, labelTile_1.default)(si_funciona_1.default.mergeObjectsMutable(item, {
           attributes
         })));
       };
-      var child = (item, className) => json_dom_1.default.getChildrenByClass(className, item)[0];
+      var child = (item, className) => treeloom_1.default.getChildrenByClass(className, item)[0];
       var panelOf = (player) => child(player, "remote-placement-panel");
       var renderPanel = (session, player) => {
         const state = session.playerState.get(player);
@@ -15397,8 +15388,8 @@ var cloakfall = (() => {
       };
       var showStart = (player, point, size) => {
         const board = player.board;
-        matrix_dom_1.default.getLayerPoints(board, 0).forEach((p) => {
-          const tile = matrix_dom_1.default.getDomItemFromPoint(p, board);
+        treeloom_matrix_1.default.getLayerPoints(board, 0).forEach((p) => {
+          const tile = treeloom_matrix_1.default.getDomItemFromPoint(p, board);
           const isStart = Boolean(point && p.x === point.x && p.y === point.y);
           const isEnd = point !== null && !isStart && (0, placeShip_1.isValidPlacement)(board, point, p, size);
           update(tile, {
@@ -15429,7 +15420,7 @@ var cloakfall = (() => {
       };
       var startRemotePlacement = (players, body, done, onTimerChange = () => {
       }) => {
-        const root = json_dom_1.default.getTopParentItem(body);
+        const root = treeloom_1.default.getTopParentItem(body);
         const playerState = new Map(players.map((player) => [player, player.isRobot ? {
           pending: [],
           start: null,
@@ -15457,14 +15448,14 @@ var cloakfall = (() => {
         });
         (0, placement_1.setStatsShown)(players, false);
         players.filter((player) => !player.isRobot).forEach((player) => {
-          json_dom_1.default.renderHtml(json_dom_1.default.createDomItem((0, remotePlacementPanel_1.default)()), player);
+          treeloom_1.default.renderHtml(treeloom_1.default.createDomItem((0, remotePlacementPanel_1.default)()), player);
           renderPanel(session, player);
         });
-        json_dom_1.default.renderHtml(json_dom_1.default.createDomItem((0, remoteOrderingPanel_1.default)()), root.body);
+        treeloom_1.default.renderHtml(treeloom_1.default.createDomItem((0, remoteOrderingPanel_1.default)()), root.body);
       };
       exports.startRemotePlacement = startRemotePlacement;
       var placeRemoteShip = (tile, board) => {
-        const player = json_dom_1.default.getParentsByClass("player", tile)[0];
+        const player = treeloom_1.default.getParentsByClass("player", tile)[0];
         if (board !== player.board) {
           return;
         }
@@ -15518,7 +15509,7 @@ var cloakfall = (() => {
           return;
         }
         session.order.push(player);
-        const root = json_dom_1.default.getTopParentItem(board);
+        const root = treeloom_1.default.getTopParentItem(board);
         if (session.order.length < session.players.length) {
           updateOrderingPanel(session, root);
           return;
@@ -15565,7 +15556,7 @@ var cloakfall = (() => {
         if (player.isRobot) {
           return;
         }
-        const root = json_dom_1.default.getTopParentItem(player);
+        const root = treeloom_1.default.getTopParentItem(player);
         const session = activeSession(player);
         const state = session.playerState.get(player);
         if (state.pending.length > 0) {
@@ -15582,9 +15573,9 @@ var cloakfall = (() => {
         if (state.ready) {
           return;
         }
-        matrix_dom_1.default.getLayerPoints(player.board, 0).forEach((p) => {
-          const tile = matrix_dom_1.default.getDomItemFromPoint(p, player.board);
-          json_dom_1.default.updateElement((0, labelTile_1.default)(si_funciona_1.default.mergeObjectsMutable(tile, {
+        treeloom_matrix_1.default.getLayerPoints(player.board, 0).forEach((p) => {
+          const tile = treeloom_matrix_1.default.getDomItemFromPoint(p, player.board);
+          treeloom_1.default.updateElement((0, labelTile_1.default)(si_funciona_1.default.mergeObjectsMutable(tile, {
             hasShip: false,
             attributes: {
               style: {
@@ -15606,7 +15597,7 @@ var cloakfall = (() => {
         }
         session.stage = "ordering";
         session.order = [];
-        const root = json_dom_1.default.getTopParentItem(item);
+        const root = treeloom_1.default.getTopParentItem(item);
         session.players.forEach((player) => update(player, {
           "data-pickable": "true"
         }));
@@ -15634,7 +15625,7 @@ var cloakfall = (() => {
           return;
         }
         session.stage = "shuffling";
-        const root = json_dom_1.default.getTopParentItem(item);
+        const root = treeloom_1.default.getTopParentItem(item);
         updateOrderingPanel(session, root);
         const shuffled = shuffle(session.players);
         const steps = 12;
@@ -15686,13 +15677,13 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var attackFleet_1 = __importDefault(require_attackFleet());
       var placement_1 = require_placement();
       var remotePlacement_1 = require_remotePlacement();
       var attackListener = (e, target) => {
         const board = target;
-        const tile = matrix_dom_1.default.getDomItemFromElement(e.target, board);
+        const tile = treeloom_matrix_1.default.getDomItemFromElement(e.target, board);
         if (!tile) {
           return [];
         }
@@ -15804,11 +15795,11 @@ var cloakfall = (() => {
         value: true
       });
       exports.showLobby = exports.show = exports.update = void 0;
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var si_funciona_1 = __importDefault(require_main());
       var gameOptions_1 = require_gameOptions();
       var update = (item, attributes) => {
-        json_dom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(item, {
+        treeloom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(item, {
           attributes
         }));
       };
@@ -15820,11 +15811,11 @@ var cloakfall = (() => {
       });
       exports.show = show;
       var showLobby = (menu, preset, values = {}) => {
-        const form = json_dom_1.default.getChildrenByClass("main-menu-form", menu)[0];
-        const presets = json_dom_1.default.getChildrenByClass("presets", menu)[0];
+        const form = treeloom_1.default.getChildrenByClass("main-menu-form", menu)[0];
+        const presets = treeloom_1.default.getChildrenByClass("presets", menu)[0];
         (0, gameOptions_1.setGameMode)(menu, preset.mode);
-        const humanInput = json_dom_1.default.getChildrenByName("human-players", form)[0];
-        const robotInput = json_dom_1.default.getChildrenByName("robot-players", form)[0];
+        const humanInput = treeloom_1.default.getChildrenByName("human-players", form)[0];
+        const robotInput = treeloom_1.default.getChildrenByName("robot-players", form)[0];
         (0, exports.update)(humanInput, {
           min: preset.humansRange[0],
           max: preset.humansRange[1]
@@ -15835,17 +15826,17 @@ var cloakfall = (() => {
         });
         humanInput.element.value = String(values.humans ?? preset.humans);
         robotInput.element.value = String(values.robots ?? preset.robots);
-        json_dom_1.default.getChildrenByName("first-go-first", form)[0].element.checked = values.firstGoesFirst ?? true;
-        json_dom_1.default.getChildrenByName("hint-setting", form)[0].element.value = values.hints ?? "optional";
-        (0, exports.update)(json_dom_1.default.getChildrenByClass("human-group", form)[0], {
+        treeloom_1.default.getChildrenByName("first-go-first", form)[0].element.checked = values.firstGoesFirst ?? true;
+        treeloom_1.default.getChildrenByName("hint-setting", form)[0].element.value = values.hints ?? "optional";
+        (0, exports.update)(treeloom_1.default.getChildrenByClass("human-group", form)[0], {
           style: {
             display: preset.humansShown ? "" : "none"
           }
         });
-        (0, exports.update)(json_dom_1.default.getChildrenByClass("lobby-title", menu)[0], {
+        (0, exports.update)(treeloom_1.default.getChildrenByClass("lobby-title", menu)[0], {
           innerHTML: preset.title
         });
-        (0, exports.update)(json_dom_1.default.getChildrenByClass("first-group", form)[0], {
+        (0, exports.update)(treeloom_1.default.getChildrenByClass("first-group", form)[0], {
           style: {
             display: preset.firstShown ? "" : "none"
           }
@@ -15871,18 +15862,18 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var gamePresets_1 = require_gamePresets();
       var showLobby_1 = require_showLobby();
       var presetListener = (e, target) => {
         const className = e.target.className;
-        const menu = json_dom_1.default.getChildrenByClass("main-menu", json_dom_1.default.getTopParentItem(target).body)[0];
+        const menu = treeloom_1.default.getChildrenByClass("main-menu", treeloom_1.default.getTopParentItem(target).body)[0];
         const preset = Object.keys(gamePresets_1.gamePresets).find((name) => className.includes(name));
         if (preset) {
           (0, showLobby_1.showLobby)(menu, gamePresets_1.gamePresets[preset]);
         } else if (className.includes("lobby-back")) {
-          (0, showLobby_1.show)(json_dom_1.default.getChildrenByClass("main-menu-form", menu)[0], false);
-          (0, showLobby_1.show)(json_dom_1.default.getChildrenByClass("presets", menu)[0], true);
+          (0, showLobby_1.show)(treeloom_1.default.getChildrenByClass("main-menu-form", menu)[0], false);
+          (0, showLobby_1.show)(treeloom_1.default.getChildrenByClass("presets", menu)[0], true);
         }
       };
       exports.default = presetListener;
@@ -20459,12 +20450,12 @@ var cloakfall = (() => {
         value: true
       });
       exports.leaveRemoteGame = exports.enterRemoteGame = void 0;
-      var json_dom_1 = __importDefault(require_main3());
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_1 = __importDefault(require_main3());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var lobbySocket_1 = require_lobbySocket();
       var clearChildren = (parent) => {
         for (let i = parent.children.length - 1; i >= 0; --i) {
-          json_dom_1.default.removeChild(parent, parent.children[i]);
+          treeloom_1.default.removeChild(parent, parent.children[i]);
         }
       };
       var deadlineOf = (redactedBody) => {
@@ -20552,20 +20543,20 @@ var cloakfall = (() => {
         }
         return {
           board: Array.from(body.querySelectorAll('[role="grid"]')).indexOf(grid),
-          point: matrix_dom_1.default.getPointFromElement(focused)
+          point: treeloom_matrix_1.default.getPointFromElement(focused)
         };
       };
       var renderInto = (root, redactedBody) => {
         const focus = focusedCell(root);
         clearChildren(root.body);
-        const inflated = json_dom_1.default.jsonToDomItem(JSON.stringify(redactedBody));
+        const inflated = treeloom_1.default.jsonToDomItem(JSON.stringify(redactedBody));
         const boards = boardsIn(inflated);
-        boards.forEach((board, index) => matrix_dom_1.default.navigableGrid(board, focus?.board === index ? focus.point : void 0));
+        boards.forEach((board, index) => treeloom_matrix_1.default.navigableGrid(board, focus?.board === index ? focus.point : void 0));
         inflated.children.forEach((child) => {
           child.parentItem = null;
-          json_dom_1.default.renderHtml(child, root.body);
+          treeloom_1.default.renderHtml(child, root.body);
         });
-        const refocus = focus && boards[focus.board] ? matrix_dom_1.default.getDomItemFromPoint(focus.point, boards[focus.board]) : false;
+        const refocus = focus && boards[focus.board] ? treeloom_matrix_1.default.getDomItemFromPoint(focus.point, boards[focus.board]) : false;
         (refocus ? refocus.element : void 0)?.focus();
       };
       var stopForwarding = (root) => {
@@ -20573,7 +20564,7 @@ var cloakfall = (() => {
         stopCountdown();
       };
       var enterRemoteGame = (root, firstUpdate) => {
-        json_dom_1.default.setForwardEvents(lobbySocket_1.sendGameAction, root);
+        treeloom_1.default.setForwardEvents(lobbySocket_1.sendGameAction, root);
         const firstOver = isGameOver(firstUpdate);
         if (firstOver) {
           stopForwarding(root);
@@ -20585,7 +20576,7 @@ var cloakfall = (() => {
           if (over) {
             stopForwarding(root);
           } else if (!root.forwardEvents) {
-            json_dom_1.default.setForwardEvents(lobbySocket_1.sendGameAction, root);
+            treeloom_1.default.setForwardEvents(lobbySocket_1.sendGameAction, root);
           }
           renderInto(root, over ? finalScoreOnly(redactedBody) : redactedBody);
           setCountdownDeadline(deadlineOf(redactedBody));
@@ -20615,7 +20606,7 @@ var cloakfall = (() => {
         value: true
       });
       exports.enterWaitingRoom = exports.showRemoteEntry = exports.getLastRoomState = void 0;
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var lobbySocket_1 = require_lobbySocket();
       var remoteGame_1 = require_remoteGame();
       var showLobby_1 = require_showLobby();
@@ -20625,34 +20616,34 @@ var cloakfall = (() => {
       var pendingJoinCode = null;
       var showSubPanel = (entry, which) => {
         const panels = ["remote-choice", "remote-host-form", "remote-code-entry", "remote-join-confirm"];
-        panels.forEach((panel) => (0, showLobby_1.show)(json_dom_1.default.getChildrenByClass(panel, entry)[0], panel === which));
+        panels.forEach((panel) => (0, showLobby_1.show)(treeloom_1.default.getChildrenByClass(panel, entry)[0], panel === which));
       };
       var peekAndConfirm = async (entry, roomCode) => {
-        json_dom_1.default.getChildrenByName("remote-code", entry)[0].element.value = roomCode;
-        (0, showLobby_1.update)(json_dom_1.default.getChildrenByClass("remote-code-status", entry)[0], {
+        treeloom_1.default.getChildrenByName("remote-code", entry)[0].element.value = roomCode;
+        (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("remote-code-status", entry)[0], {
           innerHTML: "Looking up room..."
         });
         showSubPanel(entry, "remote-code-entry");
         const result = await (0, lobbySocket_1.peekRoom)(roomCode);
         if ("error" in result) {
-          (0, showLobby_1.update)(json_dom_1.default.getChildrenByClass("remote-code-status", entry)[0], {
+          (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("remote-code-status", entry)[0], {
             innerHTML: result.error
           });
           return;
         }
-        (0, showLobby_1.update)(json_dom_1.default.getChildrenByClass("remote-code-status", entry)[0], {
+        (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("remote-code-status", entry)[0], {
           innerHTML: ""
         });
         pendingJoinCode = roomCode;
-        (0, showLobby_1.update)(json_dom_1.default.getChildrenByClass("remote-join-message", entry)[0], {
+        (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("remote-join-message", entry)[0], {
           innerHTML: `You are joining ${result.hostName}'s ${result.roomName}.`
         });
         showSubPanel(entry, "remote-join-confirm");
-        json_dom_1.default.getChildrenByName("remote-join-name", entry)[0].element.focus();
+        treeloom_1.default.getChildrenByName("remote-join-name", entry)[0].element.focus();
       };
       var showRemoteEntry = (menu, roomCode = "") => {
-        const entry = json_dom_1.default.getChildrenByClass("remote-entry", menu)[0];
-        (0, showLobby_1.show)(json_dom_1.default.getChildrenByClass("presets", menu)[0], false);
+        const entry = treeloom_1.default.getChildrenByClass("remote-entry", menu)[0];
+        (0, showLobby_1.show)(treeloom_1.default.getChildrenByClass("presets", menu)[0], false);
         (0, showLobby_1.show)(entry, true);
         if (roomCode) {
           void peekAndConfirm(entry, roomCode);
@@ -20664,24 +20655,24 @@ var cloakfall = (() => {
       exports.showRemoteEntry = showRemoteEntry;
       var renderRoomState = (menu, state) => {
         lastRoomState = state;
-        const list = json_dom_1.default.getChildrenByClass("waiting-room-players", menu)[0];
-        list.children.slice().forEach((child) => json_dom_1.default.removeChild(list, child));
+        const list = treeloom_1.default.getChildrenByClass("waiting-room-players", menu)[0];
+        list.children.slice().forEach((child) => treeloom_1.default.removeChild(list, child));
         state.players.forEach((player) => {
-          json_dom_1.default.renderHtml(json_dom_1.default.createDomItem({
+          treeloom_1.default.renderHtml(treeloom_1.default.createDomItem({
             nodeName: "li",
             attributes: {
               innerHTML: player.id === state.hostId ? `${player.name} (Host)` : player.name
             }
           }), list);
         });
-        (0, showLobby_1.update)(json_dom_1.default.getChildrenByClass("waiting-room-name", menu)[0], {
+        (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("waiting-room-name", menu)[0], {
           innerHTML: `Lobby: ${state.roomName}`
         });
-        (0, showLobby_1.update)(json_dom_1.default.getChildrenByClass("waiting-room-code", menu)[0], {
+        (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("waiting-room-code", menu)[0], {
           innerHTML: `Room Code: ${state.roomCode}`
         });
-        (0, showLobby_1.show)(json_dom_1.default.getChildrenByClass("waiting-room-host-controls", menu)[0], state.hostId === (0, lobbySocket_1.getSocketId)());
-        const robotsInput = json_dom_1.default.getChildrenByName("waiting-room-robots", menu)[0];
+        (0, showLobby_1.show)(treeloom_1.default.getChildrenByClass("waiting-room-host-controls", menu)[0], state.hostId === (0, lobbySocket_1.getSocketId)());
+        const robotsInput = treeloom_1.default.getChildrenByName("waiting-room-robots", menu)[0];
         const robotsMax = state.maxRobots;
         const robotsElement = robotsInput.element;
         const currentRobots = parseInt(robotsElement.value) || 0;
@@ -20694,39 +20685,39 @@ var cloakfall = (() => {
         (0, lobbySocket_1.disconnectLobbySocket)();
         history.replaceState(null, "", location.pathname);
         pendingJoinCode = null;
-        (0, showLobby_1.show)(json_dom_1.default.getChildrenByClass("waiting-room", menu)[0], false);
-        const entry = json_dom_1.default.getChildrenByClass("remote-entry", menu)[0];
-        (0, showLobby_1.update)(json_dom_1.default.getChildrenByClass("remote-choice-status", entry)[0], {
+        (0, showLobby_1.show)(treeloom_1.default.getChildrenByClass("waiting-room", menu)[0], false);
+        const entry = treeloom_1.default.getChildrenByClass("remote-entry", menu)[0];
+        (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("remote-choice-status", entry)[0], {
           innerHTML: message
         });
         (0, showLobby_1.show)(entry, Boolean(message));
         if (message) {
           showSubPanel(entry, "remote-choice");
         }
-        (0, showLobby_1.show)(json_dom_1.default.getChildrenByClass("presets", menu)[0], !message);
+        (0, showLobby_1.show)(treeloom_1.default.getChildrenByClass("presets", menu)[0], !message);
       };
       var enterWaitingRoom = (menu, state) => {
         history.replaceState(null, "", `${location.pathname}?room=${state.roomCode}`);
         (0, lobbySocket_1.onRoomUpdate)((newState) => renderRoomState(menu, newState));
         (0, lobbySocket_1.onRoomClosed)(() => leaveToPresets(menu, "The host left - room closed."));
-        (0, lobbySocket_1.connectLobbySocket)().once("gameUpdate", (firstUpdate) => (0, remoteGame_1.enterRemoteGame)(json_dom_1.default.getTopParentItem(menu), firstUpdate));
+        (0, lobbySocket_1.connectLobbySocket)().once("gameUpdate", (firstUpdate) => (0, remoteGame_1.enterRemoteGame)(treeloom_1.default.getTopParentItem(menu), firstUpdate));
         renderRoomState(menu, state);
-        (0, showLobby_1.show)(json_dom_1.default.getChildrenByClass("presets", menu)[0], false);
-        (0, showLobby_1.show)(json_dom_1.default.getChildrenByClass("remote-entry", menu)[0], false);
-        (0, showLobby_1.show)(json_dom_1.default.getChildrenByClass("waiting-room", menu)[0], true);
+        (0, showLobby_1.show)(treeloom_1.default.getChildrenByClass("presets", menu)[0], false);
+        (0, showLobby_1.show)(treeloom_1.default.getChildrenByClass("remote-entry", menu)[0], false);
+        (0, showLobby_1.show)(treeloom_1.default.getChildrenByClass("waiting-room", menu)[0], true);
       };
       exports.enterWaitingRoom = enterWaitingRoom;
       var remoteListener = async (e, target) => {
         const className = e.target.className;
-        const menu = json_dom_1.default.getChildrenByClass("main-menu", json_dom_1.default.getTopParentItem(target).body)[0];
-        const entry = json_dom_1.default.getChildrenByClass("remote-entry", menu)[0];
+        const menu = treeloom_1.default.getChildrenByClass("main-menu", treeloom_1.default.getTopParentItem(target).body)[0];
+        const entry = treeloom_1.default.getChildrenByClass("remote-entry", menu)[0];
         if (className.includes("preset-remote")) {
           (0, exports.showRemoteEntry)(menu);
           return;
         }
         if (className.includes("remote-back")) {
           (0, showLobby_1.show)(entry, false);
-          (0, showLobby_1.show)(json_dom_1.default.getChildrenByClass("presets", menu)[0], true);
+          (0, showLobby_1.show)(treeloom_1.default.getChildrenByClass("presets", menu)[0], true);
           return;
         }
         if (className.includes("remote-sub-back")) {
@@ -20742,9 +20733,9 @@ var cloakfall = (() => {
           return;
         }
         if (className.includes("remote-code-submit")) {
-          const roomCode = json_dom_1.default.getChildrenByName("remote-code", entry)[0].element.value.trim().toUpperCase();
+          const roomCode = treeloom_1.default.getChildrenByName("remote-code", entry)[0].element.value.trim().toUpperCase();
           if (!roomCode) {
-            (0, showLobby_1.update)(json_dom_1.default.getChildrenByClass("remote-code-status", entry)[0], {
+            (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("remote-code-status", entry)[0], {
               innerHTML: "Enter a room code"
             });
             return;
@@ -20753,23 +20744,23 @@ var cloakfall = (() => {
           return;
         }
         if (className.includes("remote-host-submit")) {
-          const roomName = json_dom_1.default.getChildrenByName("remote-room-name", entry)[0].element.value.trim();
-          const name = json_dom_1.default.getChildrenByName("remote-host-name", entry)[0].element.value.trim();
+          const roomName = treeloom_1.default.getChildrenByName("remote-room-name", entry)[0].element.value.trim();
+          const name = treeloom_1.default.getChildrenByName("remote-host-name", entry)[0].element.value.trim();
           if (!roomName) {
-            (0, showLobby_1.update)(json_dom_1.default.getChildrenByClass("remote-host-status", entry)[0], {
+            (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("remote-host-status", entry)[0], {
               innerHTML: "A lobby name is required"
             });
             return;
           }
           if (!name) {
-            (0, showLobby_1.update)(json_dom_1.default.getChildrenByClass("remote-host-status", entry)[0], {
+            (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("remote-host-status", entry)[0], {
               innerHTML: "Enter your name first"
             });
             return;
           }
           const result = await (0, lobbySocket_1.createRoom)(name, roomName);
           if ("error" in result) {
-            (0, showLobby_1.update)(json_dom_1.default.getChildrenByClass("remote-host-status", entry)[0], {
+            (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("remote-host-status", entry)[0], {
               innerHTML: result.error
             });
             return;
@@ -20778,9 +20769,9 @@ var cloakfall = (() => {
           return;
         }
         if (className.includes("remote-join-submit")) {
-          const name = json_dom_1.default.getChildrenByName("remote-join-name", entry)[0].element.value.trim();
+          const name = treeloom_1.default.getChildrenByName("remote-join-name", entry)[0].element.value.trim();
           if (!name) {
-            (0, showLobby_1.update)(json_dom_1.default.getChildrenByClass("remote-join-status", entry)[0], {
+            (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("remote-join-status", entry)[0], {
               innerHTML: "Enter your name first"
             });
             return;
@@ -20790,7 +20781,7 @@ var cloakfall = (() => {
           }
           const result = await (0, lobbySocket_1.joinRoom)(pendingJoinCode, name);
           if ("error" in result) {
-            (0, showLobby_1.update)(json_dom_1.default.getChildrenByClass("remote-join-status", entry)[0], {
+            (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("remote-join-status", entry)[0], {
               innerHTML: result.error
             });
             return;
@@ -20804,12 +20795,12 @@ var cloakfall = (() => {
           return;
         }
         if (className.includes("waiting-room-start")) {
-          const waitingRoom = json_dom_1.default.getChildrenByClass("waiting-room", menu)[0];
-          const hints = json_dom_1.default.getChildrenByName("waiting-room-hints", waitingRoom)[0].element.value;
-          const robots = parseInt(json_dom_1.default.getChildrenByName("waiting-room-robots", waitingRoom)[0].element.value) || 0;
+          const waitingRoom = treeloom_1.default.getChildrenByClass("waiting-room", menu)[0];
+          const hints = treeloom_1.default.getChildrenByName("waiting-room-hints", waitingRoom)[0].element.value;
+          const robots = parseInt(treeloom_1.default.getChildrenByName("waiting-room-robots", waitingRoom)[0].element.value) || 0;
           const ack = await (0, lobbySocket_1.startGame)(hints, robots);
           if ("error" in ack) {
-            (0, showLobby_1.update)(json_dom_1.default.getChildrenByClass("waiting-room-status", waitingRoom)[0], {
+            (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("waiting-room-status", waitingRoom)[0], {
               innerHTML: ack.error
             });
           }
@@ -20832,13 +20823,13 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var listener = (listenerFunc) => [{
         listenerFunc,
         listenerArgs: {},
         listenerOptions: false
       }];
-      var mainMenu = () => json_dom_1.default.createDomItem({
+      var mainMenu = () => treeloom_1.default.createDomItem({
         nodeName: "div",
         attributes: {
           className: "main-menu"
@@ -21444,19 +21435,19 @@ var cloakfall = (() => {
         value: true
       });
       var theme_1 = require_theme();
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var labelTile_1 = __importDefault(require_labelTile());
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var si_funciona_1 = __importDefault(require_main());
       var checkIfShipCell_1 = __importDefault(require_checkIfShipCell());
       var shadeShips = (player, shown) => {
-        matrix_dom_1.default.getLayerPoints(player.board, 0).forEach((p) => {
+        treeloom_matrix_1.default.getLayerPoints(player.board, 0).forEach((p) => {
           if (!(0, checkIfShipCell_1.default)(p, player.board)) {
             return;
           }
-          const tile = matrix_dom_1.default.getDomItemFromPoint(p, player.board);
+          const tile = treeloom_matrix_1.default.getDomItemFromPoint(p, player.board);
           if (!tile.isHit) {
-            json_dom_1.default.updateElement((0, labelTile_1.default)(si_funciona_1.default.mergeObjectsMutable(tile, {
+            treeloom_1.default.updateElement((0, labelTile_1.default)(si_funciona_1.default.mergeObjectsMutable(tile, {
               attributes: {
                 style: {
                   backgroundColor: shown ? theme_1.colours.ship : ""
@@ -21483,8 +21474,8 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
-      var boards = (players = []) => json_dom_1.default.createDomItem({
+      var treeloom_1 = __importDefault(require_main3());
+      var boards = (players = []) => treeloom_1.default.createDomItem({
         nodeName: "div",
         attributes: {
           className: "boards"
@@ -21561,8 +21552,8 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
-      var gameTile = () => json_dom_1.default.createDomItem({
+      var treeloom_1 = __importDefault(require_main3());
+      var gameTile = () => treeloom_1.default.createDomItem({
         has: {
           "cloakfall.tile": true
         },
@@ -21586,10 +21577,10 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var si_funciona_1 = __importDefault(require_main());
       var gameTile_1 = __importDefault(require_gameTile());
-      var waterTile = () => si_funciona_1.default.mergeObjects((0, gameTile_1.default)(), matrix_dom_1.default.tile());
+      var waterTile = () => si_funciona_1.default.mergeObjects((0, gameTile_1.default)(), treeloom_matrix_1.default.tile());
       exports.default = waterTile;
     }
   });
@@ -21607,8 +21598,8 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
-      var matrix_dom_1 = __importDefault(require_main4());
+      var treeloom_1 = __importDefault(require_main3());
+      var treeloom_matrix_1 = __importDefault(require_main4());
       var defaultFleet_1 = __importDefault(require_defaultFleet());
       var playerColours_1 = __importDefault(require_playerColours());
       var playerSet_1 = __importDefault(require_playerSet());
@@ -21622,7 +21613,7 @@ var cloakfall = (() => {
         const player = (0, playerSet_1.default)({}, `Player ${players.length + 1}`);
         player.isRobot = humans <= 0;
         player.colour = (0, playerColours_1.default)(players.length);
-        player.board = matrix_dom_1.default.navigableGrid((0, labelTile_1.labelBoardTiles)(matrix_dom_1.default.updateMatrixPoints(matrix_dom_1.default.square({
+        player.board = treeloom_matrix_1.default.navigableGrid((0, labelTile_1.labelBoardTiles)(treeloom_matrix_1.default.updateMatrixPoints(treeloom_matrix_1.default.square({
           x: (0, waterTile_1.default)(),
           matrix: {
             eventListeners: {
@@ -21636,7 +21627,7 @@ var cloakfall = (() => {
         }, 10))));
         (0, labelTile_1.labelBoard)(player);
         player.shipFleet = player.isRobot ? (0, defaultFleet_1.default)(player.board, false) : [];
-        player.playerStats = json_dom_1.default.createDomItem((0, playerStats_1.default)(player, `${Math.round(player.status * 100) / 100}%`, root));
+        player.playerStats = treeloom_1.default.createDomItem((0, playerStats_1.default)(player, `${Math.round(player.status * 100) / 100}%`, root));
         player.children = [{
           nodeName: "div",
           attributes: {
@@ -21701,7 +21692,7 @@ var cloakfall = (() => {
         value: true
       });
       exports.startNewGame = void 0;
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var si_funciona_1 = __importDefault(require_main());
       var boards_1 = __importDefault(require_boards());
       var buildPlayers_1 = __importDefault(require_buildPlayers());
@@ -21713,7 +21704,7 @@ var cloakfall = (() => {
       var showShipsControl_1 = __importDefault(require_showShipsControl());
       var clearBody = (parent) => {
         for (let i = parent.body.children.length - 1; i >= 0; --i) {
-          json_dom_1.default.removeChild(parent.body, parent.body.children[i]);
+          treeloom_1.default.removeChild(parent.body, parent.body.children[i]);
         }
       };
       var applyInitialLocalView = (players, mode) => {
@@ -21732,9 +21723,9 @@ var cloakfall = (() => {
         (0, gameOptions_1.setHintSetting)(parent, hints);
         clearBody(parent);
         if ((0, gameOptions_1.getGameMode)(parent) === "robots") {
-          json_dom_1.default.renderHtml(json_dom_1.default.createDomItem((0, showShipsControl_1.default)()), parent.body);
+          treeloom_1.default.renderHtml(treeloom_1.default.createDomItem((0, showShipsControl_1.default)()), parent.body);
         }
-        const players = json_dom_1.default.renderHtml((0, boards_1.default)((0, buildPlayers_1.default)(humans, parent.body, robots)), parent.body).children;
+        const players = treeloom_1.default.renderHtml((0, boards_1.default)((0, buildPlayers_1.default)(humans, parent.body, robots)), parent.body).children;
         players.filter((player) => !player.isRobot).forEach((player) => {
           player.showHint = hints === "on";
         });
@@ -21763,7 +21754,7 @@ var cloakfall = (() => {
         value: true
       });
       exports.startIntroDemo = exports.stopIntroDemo = exports.introLayer = exports.RESTART_MS = exports.DEMO_ROBOTS = void 0;
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var shadeShips_1 = __importDefault(require_shadeShips());
       var gameSession_1 = require_gameSession();
       var gameOptions_1 = require_gameOptions();
@@ -21786,13 +21777,13 @@ var cloakfall = (() => {
       };
       exports.introLayer = introLayer;
       var demoGameRoot = (listeners, layer) => {
-        const head = json_dom_1.default.createDomItem({
+        const head = treeloom_1.default.createDomItem({
           nodeName: "head",
           attributes: {},
           element: document.createElement("head"),
           children: []
         });
-        const body = json_dom_1.default.createDomItem({
+        const body = treeloom_1.default.createDomItem({
           nodeName: "div",
           attributes: {
             className: "intro-demo"
@@ -21800,12 +21791,12 @@ var cloakfall = (() => {
           element: layer,
           children: []
         });
-        return json_dom_1.default.documentDomItem(listeners, json_dom_1.default.initRoot([head, body], listeners));
+        return treeloom_1.default.documentDomItem(listeners, treeloom_1.default.initRoot([head, body], listeners));
       };
       var playDemo = (root) => {
         (0, gameOptions_1.setGameMode)(root, "robots");
         (0, startNewGame_1.startNewGame)(root, 0, exports.DEMO_ROBOTS, true, "off");
-        const boards = json_dom_1.default.getChildrenByClass("boards", root.body)[0];
+        const boards = treeloom_1.default.getChildrenByClass("boards", root.body)[0];
         (boards?.children ?? []).forEach((player) => (0, shadeShips_1.default)(player, true));
       };
       var prefersReducedMotion = () => typeof window !== "undefined" && Boolean(window.matchMedia?.("(prefers-reduced-motion: reduce)").matches);
@@ -21860,14 +21851,14 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var mainMenu_1 = __importDefault(require_mainMenu());
       var introDemo_1 = require_introDemo();
       var startMenu = (parent) => {
         for (let i = parent.body.children.length - 1; i >= 0; --i) {
-          json_dom_1.default.removeChild(parent.body, parent.body.children[i]);
+          treeloom_1.default.removeChild(parent.body, parent.body.children[i]);
         }
-        json_dom_1.default.renderHtml((0, mainMenu_1.default)(), parent.body);
+        treeloom_1.default.renderHtml((0, mainMenu_1.default)(), parent.body);
         if (typeof document !== "undefined" && parent.body.element?.matches?.("main.game") && document.querySelector("header.game-header")) {
           (0, introDemo_1.startIntroDemo)(parent.eventActions);
         }
@@ -21890,7 +21881,7 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var remoteGame_1 = require_remoteGame();
       var startMenu_1 = __importDefault(require_startMenu());
       var remoteListener_1 = require_remoteListener();
@@ -21899,9 +21890,9 @@ var cloakfall = (() => {
         if (!state) {
           return;
         }
-        const root = json_dom_1.default.getTopParentItem(target);
+        const root = treeloom_1.default.getTopParentItem(target);
         (0, remoteGame_1.leaveRemoteGame)(root);
-        const menu = json_dom_1.default.getChildrenByClass("main-menu", (0, startMenu_1.default)(root).body)[0];
+        const menu = treeloom_1.default.getChildrenByClass("main-menu", (0, startMenu_1.default)(root).body)[0];
         (0, remoteListener_1.enterWaitingRoom)(menu, state);
       };
       exports.default = remotePlayAgainListener;
@@ -21921,12 +21912,12 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var remoteGame_1 = require_remoteGame();
       var lobbySocket_1 = require_lobbySocket();
       var startMenu_1 = __importDefault(require_startMenu());
       var remoteLeaveListener = (e, target) => {
-        const root = json_dom_1.default.getTopParentItem(target);
+        const root = treeloom_1.default.getTopParentItem(target);
         (0, remoteGame_1.leaveRemoteGame)(root);
         (0, lobbySocket_1.disconnectLobbySocket)();
         history.replaceState(null, "", location.pathname);
@@ -21950,7 +21941,7 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var shadeShips_1 = __importDefault(require_shadeShips());
       var shipsListener = (e, target) => {
         const input = e.target;
@@ -21959,10 +21950,10 @@ var cloakfall = (() => {
           (0, shadeShips_1.default)(player, input.checked);
         };
         if (input.className.includes("own-ships")) {
-          set(json_dom_1.default.getParentsByClass("player", target)[0]);
+          set(treeloom_1.default.getParentsByClass("player", target)[0]);
         } else if (input.className.includes("all-ships")) {
-          const root = json_dom_1.default.getTopParentItem(target);
-          const boards = json_dom_1.default.getChildrenByClass("boards", root.body)[0];
+          const root = treeloom_1.default.getTopParentItem(target);
+          const boards = treeloom_1.default.getChildrenByClass("boards", root.body)[0];
           boards.children.forEach(set);
         }
       };
@@ -21983,10 +21974,10 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var heatHint_1 = require_heatHint();
       var hintListener = (e, target) => {
-        const player = json_dom_1.default.getParentsByClass("player", target)[0];
+        const player = treeloom_1.default.getParentsByClass("player", target)[0];
         player.showHint = e.target.checked;
         if (!player.attacker) {
           return;
@@ -22010,7 +22001,7 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var startNewGame_1 = require_startNewGame();
       var gameOptions_1 = require_gameOptions();
       var gamePresets_1 = require_gamePresets();
@@ -22020,16 +22011,16 @@ var cloakfall = (() => {
         }
         console.log("beginRound", e.eventPhase, e.type);
         e.preventDefault();
-        const parent = json_dom_1.default.getTopParentItem(mainForm);
-        const humans = parseInt(json_dom_1.default.getChildrenByName("human-players", mainForm)[0].element.value);
-        let robots = parseInt(json_dom_1.default.getChildrenByName("robot-players", mainForm)[0].element.value);
+        const parent = treeloom_1.default.getTopParentItem(mainForm);
+        const humans = parseInt(treeloom_1.default.getChildrenByName("human-players", mainForm)[0].element.value);
+        let robots = parseInt(treeloom_1.default.getChildrenByName("robot-players", mainForm)[0].element.value);
         const mode = (0, gameOptions_1.getGameMode)(parent);
         const preset = (0, gamePresets_1.presetForMode)(mode);
         if (humans < preset.humansRange[0] || humans > preset.humansRange[1] || robots < 0 || robots > preset.robotsMax || humans + robots > preset.totalMax) {
           return false;
         }
-        const firstGoesFirst = json_dom_1.default.getChildrenByName("first-go-first", mainForm)[0].element.checked;
-        const hints = json_dom_1.default.getChildrenByName("hint-setting", mainForm)[0].element.value;
+        const firstGoesFirst = treeloom_1.default.getChildrenByName("first-go-first", mainForm)[0].element.checked;
+        const hints = treeloom_1.default.getChildrenByName("hint-setting", mainForm)[0].element.value;
         if (humans === 0) {
           robots = robots < 2 ? 2 : robots;
         }
@@ -22061,9 +22052,9 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var startMenu_1 = __importDefault(require_startMenu());
-      var restart = (e, button) => (0, startMenu_1.default)(json_dom_1.default.getTopParentItem(button));
+      var restart = (e, button) => (0, startMenu_1.default)(treeloom_1.default.getTopParentItem(button));
       exports.default = restart;
     }
   });
@@ -22081,11 +22072,11 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var startNewGame_1 = require_startNewGame();
       var gameOptions_1 = require_gameOptions();
       var playAgain = (e, button) => {
-        const parent = json_dom_1.default.getTopParentItem(button);
+        const parent = treeloom_1.default.getTopParentItem(button);
         const {
           humans,
           robots,
@@ -22110,14 +22101,14 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var startMenu_1 = __importDefault(require_startMenu());
       var gameOptions_1 = require_gameOptions();
       var gamePresets_1 = require_gamePresets();
       var showLobby_1 = require_showLobby();
       var returnToLobby = (e, button) => {
-        const root = (0, startMenu_1.default)(json_dom_1.default.getTopParentItem(button));
-        const menu = json_dom_1.default.getChildrenByClass("main-menu", root.body)[0];
+        const root = (0, startMenu_1.default)(treeloom_1.default.getTopParentItem(button));
+        const menu = treeloom_1.default.getChildrenByClass("main-menu", root.body)[0];
         (0, showLobby_1.showLobby)(menu, (0, gamePresets_1.presetForMode)((0, gameOptions_1.getGameMode)(root)), {
           ...(0, gameOptions_1.getGameSettings)(root),
           hints: (0, gameOptions_1.getHintSetting)(root)
@@ -22143,7 +22134,7 @@ var cloakfall = (() => {
       });
       exports.gameLayout = void 0;
       var theme_1 = require_theme();
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var gameLayout = (doc) => {
         let header = doc.querySelector("header.game-header");
         if (!header && !doc.querySelector("h1")) {
@@ -22176,13 +22167,13 @@ var cloakfall = (() => {
         const {
           main
         } = (0, exports.gameLayout)(document);
-        const head = json_dom_1.default.createDomItem({
+        const head = treeloom_1.default.createDomItem({
           nodeName: "head",
           attributes: {},
           element: document.head,
           children: []
         });
-        const body = json_dom_1.default.createDomItem({
+        const body = treeloom_1.default.createDomItem({
           nodeName: "main",
           attributes: {
             className: "game"
@@ -22190,7 +22181,7 @@ var cloakfall = (() => {
           element: main,
           children: []
         });
-        return json_dom_1.default.documentDomItem(listeners, json_dom_1.default.initRoot([head, body], listeners));
+        return treeloom_1.default.documentDomItem(listeners, treeloom_1.default.initRoot([head, body], listeners));
       };
       exports.default = gameRoot;
     }
@@ -22312,7 +22303,7 @@ var cloakfall = (() => {
       var returnToLobby_1 = __importDefault(require_returnToLobby());
       var startMenu_1 = __importDefault(require_startMenu());
       var gameRoot_1 = __importDefault(require_gameRoot());
-      var json_dom_1 = __importDefault(require_main3());
+      var treeloom_1 = __importDefault(require_main3());
       var browser_or_node_1 = require_dist();
       var cloakfall = () => {
         const listeners = {
@@ -22329,15 +22320,15 @@ var cloakfall = (() => {
           playAgain: playAgain_1.default,
           returnToLobby: returnToLobby_1.default
         };
-        const documentItem = (0, startMenu_1.default)(browser_or_node_1.isNode ? json_dom_1.default.documentDomItem(listeners) : (0, gameRoot_1.default)(listeners));
+        const documentItem = (0, startMenu_1.default)(browser_or_node_1.isNode ? treeloom_1.default.documentDomItem(listeners) : (0, gameRoot_1.default)(listeners));
         if (browser_or_node_1.isNode) {
-          const form = json_dom_1.default.getChildrenByClass("main-menu-form", documentItem.body)[0];
-          const submitBtn = json_dom_1.default.getChildrenFromAttribute("type", "submit", form);
+          const form = treeloom_1.default.getChildrenByClass("main-menu-form", documentItem.body)[0];
+          const submitBtn = treeloom_1.default.getChildrenFromAttribute("type", "submit", form);
           submitBtn[0].element.click();
         } else {
           const roomCode = new URLSearchParams(window.location.search).get("room");
           if (roomCode) {
-            (0, remoteListener_1.showRemoteEntry)(json_dom_1.default.getChildrenByClass("main-menu", documentItem.body)[0], roomCode.toUpperCase());
+            (0, remoteListener_1.showRemoteEntry)(treeloom_1.default.getChildrenByClass("main-menu", documentItem.body)[0], roomCode.toUpperCase());
           }
         }
       };
