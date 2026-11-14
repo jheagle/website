@@ -14,22 +14,20 @@
 <section class="tsd-panel">
 <ul class="tsd-signatures">
 <li class="">
-<div class="tsd-signature tsd-anchor-link" id="selectoption"><span class="tsd-kind-call-signature">selectOption</span><span class="tsd-signature-symbol">(</span><br/>    <span class="tsd-kind-parameter">selectedValue</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">:</span> <a href="../types/typeahead.TypeaheadOption.html" class="tsd-signature-type tsd-kind-type-alias">TypeaheadOption</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-kind-parameter">freeTypeInput</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DomItem</span><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-kind-parameter">selectItem</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DomItem</span><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#selectoption" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-signature tsd-anchor-link" id="selectoption"><span class="tsd-kind-call-signature">selectOption</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">selectedValue</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">parts</span><span class="tsd-signature-symbol">:</span> <a href="../types/typeahead.TypeaheadParts.html" class="tsd-signature-type tsd-kind-type-alias">TypeaheadParts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#selectoption" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>A pick was made (directly, or via the select's own change event): copy the matching option's label back into
-the free-type input's real value and its attributes (so it stays correct across a re-render), then collapse
-the list again.</p>
+<div class="tsd-comment tsd-typography"><p>Pick an option: the select takes its value (what the form submits), its label goes into the free-type input
+(attributes and real value, so it stays correct across a re-render) and the list collapses. A value matching
+nothing picks nothing: the input and the select are cleared.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li><span><span class="tsd-kind-parameter">selectedValue</span>: <span class="tsd-signature-type">string</span></span></li>
-<li><span><span class="tsd-kind-parameter">options</span>: <a href="../types/typeahead.TypeaheadOption.html" class="tsd-signature-type tsd-kind-type-alias">TypeaheadOption</a><span class="tsd-signature-symbol">[]</span></span></li>
-<li><span><span class="tsd-kind-parameter">freeTypeInput</span>: <span class="tsd-signature-type">DomItem</span></span></li>
-<li><span><span class="tsd-kind-parameter">selectItem</span>: <span class="tsd-signature-type">DomItem</span></span></li></ul></div>
+<li><span><span class="tsd-kind-parameter">parts</span>: <a href="../types/typeahead.TypeaheadParts.html" class="tsd-signature-type tsd-kind-type-alias">TypeaheadParts</a></span></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/treeloom-components/blob/main/src/typeahead/selectOption.ts#L18">src/typeahead/selectOption.ts:18</a></li></ul></aside></div></li></ul></section></div>
+<li>Defined in <a href="https://github.com/jheagle/treeloom-components/blob/main/src/typeahead/selectOption.ts#L15">src/typeahead/selectOption.ts:15</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

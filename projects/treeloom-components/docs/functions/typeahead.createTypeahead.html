@@ -16,25 +16,20 @@
 <li class="">
 <div class="tsd-signature tsd-anchor-link" id="createtypeahead"><span class="tsd-kind-call-signature">createTypeahead</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">config</span><span class="tsd-signature-symbol">:</span> <a href="../types/typeahead.TypeaheadConfig.html" class="tsd-signature-type tsd-kind-type-alias">TypeaheadConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DomItem</span><a href="#createtypeahead" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>A typeahead: a free-text input that filters a list of options as you type, and a (visually hidden until
-needed) select carrying the real options and the real submitted value - picking one from the filtered list
-copies its label back into the free-text input and collapses the list again.</p>
-<p>Ported from a PHP Blade reference implementation, reusing its two-field shape (visible free-type input +
-collapsed select holding the real value) and its filtering rules (case-insensitive match on value or label,
-list only expands once there are 2+ characters typed and at least one match) - but wired through treeloom's
-own DomItem tree (via eventListeners set directly on each item, bound automatically on render) instead of
-attaching to the real DOM by hand.</p>
-<p>This is a minimum/POC implementation: listeners are plain closures, not names registered for treeloom's
-render-only/forwarding mode - fine for a component built and rendered locally, not yet for one whose events
-need forwarding across a socket. See <a href="http://MAIN.md">MAIN.md</a>.</p>
+<div class="tsd-comment tsd-typography"><p>Build a filterable select: a free-type input to type into, and the real <select> (the field a form submits), hidden
+until 2+ typed characters match something. With a pointer: click a match. With keys: Down arrow into the list,
+arrows to move, Enter to pick (in the input: the option with exactly that label), Escape to close. Editing the
+text after a pick un-picks it, and an untouched typeahead submits '' (a hidden, empty first option), never
+whichever option the browser happened to select.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li><span><span class="tsd-kind-parameter">config</span>: <a href="../types/typeahead.TypeaheadConfig.html" class="tsd-signature-type tsd-kind-type-alias">TypeaheadConfig</a></span></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">DomItem</span></h4><aside class="tsd-sources">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">DomItem</span></h4><p>The typeahead's container item.</p>
+<aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/treeloom-components/blob/main/src/typeahead/createTypeahead.ts#L30">src/typeahead/createTypeahead.ts:30</a></li></ul></aside></div></li></ul></section></div>
+<li>Defined in <a href="https://github.com/jheagle/treeloom-components/blob/main/src/typeahead/createTypeahead.ts#L31">src/typeahead/createTypeahead.ts:31</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

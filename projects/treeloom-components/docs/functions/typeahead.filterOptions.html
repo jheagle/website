@@ -14,21 +14,20 @@
 <section class="tsd-panel">
 <ul class="tsd-signatures">
 <li class="">
-<div class="tsd-signature tsd-anchor-link" id="filteroptions"><span class="tsd-kind-call-signature">filterOptions</span><span class="tsd-signature-symbol">(</span><br/>    <span class="tsd-kind-parameter">searchTerm</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-kind-parameter">optionItems</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DomItem</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-kind-parameter">selectItem</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DomItem</span><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#filteroptions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-signature tsd-anchor-link" id="filteroptions"><span class="tsd-kind-call-signature">filterOptions</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">searchTerm</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">parts</span><span class="tsd-signature-symbol">:</span> <a href="../types/typeahead.TypeaheadParts.html" class="tsd-signature-type tsd-kind-type-alias">TypeaheadParts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#filteroptions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Filter optionItems by whether their value or label text includes the search term (case-insensitive), hiding
-everything else. Reveals the select (as a real dropdown, a few rows tall) once there is a real search term and
-at least one match; otherwise keeps it collapsed - matching the reference Blade component's own behaviour.</p>
+<div class="tsd-comment tsd-typography"><p>Filter the list to the options whose value or label includes the search term (case-insensitive). Once there are
+2+ characters and at least one match, the list shows only the matches, a few rows tall; otherwise it collapses
+with every option back in place.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li><span><span class="tsd-kind-parameter">searchTerm</span>: <span class="tsd-signature-type">string</span></span></li>
-<li><span><span class="tsd-kind-parameter">optionItems</span>: <span class="tsd-signature-type">DomItem</span><span class="tsd-signature-symbol">[]</span></span></li>
-<li><span><span class="tsd-kind-parameter">selectItem</span>: <span class="tsd-signature-type">DomItem</span></span></li></ul></div>
+<li><span><span class="tsd-kind-parameter">parts</span>: <a href="../types/typeahead.TypeaheadParts.html" class="tsd-signature-type tsd-kind-type-alias">TypeaheadParts</a></span></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/treeloom-components/blob/main/src/typeahead/filterOptions.ts#L15">src/typeahead/filterOptions.ts:15</a></li></ul></aside></div></li></ul></section></div>
+<li>Defined in <a href="https://github.com/jheagle/treeloom-components/blob/main/src/typeahead/filterOptions.ts#L28">src/typeahead/filterOptions.ts:28</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

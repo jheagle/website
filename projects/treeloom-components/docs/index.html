@@ -28,10 +28,19 @@ need for it shows up.</p>
 <p>Each one returns a <code>DomItem</code> - compose them the same way you would real HTML, then render with treeloom's own
 <code>renderHtml</code>/<code>documentDomItem</code> as usual.</p>
 <h2 id="typeahead-" class="tsd-anchor-link">Typeahead (<code>src/typeahead</code>)<a href="#typeahead-" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
-<p><code>createTypeahead({ name, options, value?, placeholder?, className?, readonly? })</code> builds a filterable select: a
-free-type input you type into to filter a list of options, and the real <code>&lt;select&gt;</code> (visually collapsed until
-there's a match) that holds the actual submitted value. Picking an option copies its label back into the
-free-type input and collapses the list again.</p>
+<p><code>createTypeahead({ name, options, value?, placeholder?, label?, className?, readonly? })</code> builds a filterable
+select: a free-type input you type into to filter a list of options, and the real <code>&lt;select&gt;</code> (hidden until there's
+a match) that holds the actual submitted value. The open list holds only the matches. Picking an option copies its
+label back into the free-type input and collapses the list again.</p>
+<ul>
+<li><strong>Pointer:</strong> click a match. On a phone, the browser's own picker works too.</li>
+<li><strong>Keys:</strong> Down arrow (or Tab) moves into the list, arrows move the highlight, Enter picks, Escape closes the list
+without picking. Moving between the input and the list keeps it open; focus leaving the whole typeahead closes it.</li>
+<li><strong>The submitted value</strong> is only ever a real pick: untouched, it submits <code>''</code> (a hidden, empty first option), and
+editing the text after a pick un-picks it. A highlight is not a pick: closing the list puts the last pick back.</li>
+<li><strong><code>label</code></strong> names the input (<code>aria-label</code>) and the list (<code>&quot;&lt;label&gt; matches&quot;</code>). Leave it out when the page labels
+the input itself.</li>
+</ul>
 <p>Ported from a PHP Blade reference implementation - same two-field shape, same filtering rule (case-insensitive
 match on value or label text, list only expands once 2+ characters are typed and something matches) - but
 wired through treeloom's own <code>eventListeners</code> (bound automatically wherever the component gets rendered)
