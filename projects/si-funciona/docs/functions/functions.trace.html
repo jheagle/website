@@ -10,7 +10,7 @@
 <ul class="tsd-breadcrumb" aria-label="Breadcrumb">
 <li><a href="../modules/functions.html">functions</a></li>
 <li><a href="" aria-current="page">trace</a></li></ul>
-<h1>Function trace</h1></div>
+<h1 class="deprecated">Function trace</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures">
 <li class="">
@@ -29,9 +29,14 @@ inspecting a value mid-pipe/mid-chain without altering the result.</p>
 <div class="tsd-comment tsd-typography"><p>Determines if the logged data should be a clone of the original to preserve
 its state at the time of logging (rather than a live reference that may show later mutations).</p>
 </div></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">outputAndReturn</span></h4><aside class="tsd-sources">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">outputAndReturn</span></h4>
+<div class="tsd-comment tsd-typography">
+<div class="tsd-tag-deprecated">
+<h4 class="tsd-anchor-link" id="deprecated">Deprecated<a href="#deprecated" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>It will be removed in the next major version: use a plain tap instead, e.g.
+<code>value =&gt; { console.info(label, value); return value }</code>.</p>
+</div></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/si-funciona/blob/main/src/helpers/functions/trace.ts#L12">src/helpers/functions/trace.ts:12</a></li></ul></aside></div></li></ul></section></div>
+<li>Defined in <a href="https://github.com/jheagle/si-funciona/blob/main/src/helpers/functions/trace.ts#L14">src/helpers/functions/trace.ts:14</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
