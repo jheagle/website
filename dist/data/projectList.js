@@ -22,6 +22,10 @@ const projects = [{
   href: '/projects/treeloom-matrix/',
   description: 'Grid/matrix geometry helpers used by Cloakfall\'s boards — and by this very project grid.'
 }, {
+  title: 'treeloom-components',
+  href: '/projects/treeloom-components/',
+  description: 'Ready-made treeloom building blocks: base HTML element factories, a typeahead and a clearable input.'
+}, {
   title: 'Pseudo DOM',
   href: '/projects/pseudo-dom/',
   description: 'A comprehensive mock of the browser DOM for Node.'
