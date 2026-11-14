@@ -1,12 +1,15 @@
-import form from '../components/form.js?v=9c0cfa1177'
-import radios from '../templates/radios.js?v=9170ddc863'
-import textArea from '../components/textArea.js?v=d3a10a8504'
-import div from '../components/div.js?v=24c7355f9c'
-import label from '../components/label.js?v=137626c089'
-import fieldset from '../components/fieldset.js?v=9139f217b0'
-import main from '../components/main.js?v=dc7e3a7c15'
-import submit from '../components/submit.js?v=cb23c6b9c5'
-import footer from '../components/footer.js?v=f0fa678d12'
+/* global treeloomComponents */
+import radios from '../templates/radios.js?v=fbac90c5f9';
+const {
+  form,
+  textArea,
+  div,
+  label,
+  fieldset,
+  main,
+  submit,
+  footer
+} = treeloomComponents;
 
 /**
  * Generates a menu with the provided index as the currently selected item.
@@ -68,9 +71,9 @@ const quiz = () => [main([div([form(null, null, [div([fieldset('These are radios
   label: 'Other',
   id: 'other',
   value: 'other'
-}]), div([label('Provide any additional explanation if you want.', 'additional-context'), textArea('additional-context', [], null, {
+}]), div([label('Provide any additional explanation if you want.', 'additional-context'), textArea('additional-context', [], undefined, {
   id: 'additional-context'
 })])])], 'follow-up', {
   id: 'follow-up'
-})]), div([submit()], 'form-footer')])], 'form-wrapper')]), footer()]
-export default quiz
+})]), div([submit()], 'form-footer')])], 'form-wrapper')]), footer()];
+export default quiz;
