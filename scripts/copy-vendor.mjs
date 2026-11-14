@@ -8,6 +8,8 @@
  *   window.collectYourStuff.
  * - treeloom-matrix: its sandbox, on the matrix page (/projects/ already has window.treeloomMatrix from
  *   joshuaHome.js). The bundle defines window.treeloomMatrix.
+ * - treeloom-components: its sandbox, on the treeloom-components page (/projects/ already has
+ *   window.treeloomComponents from joshuaHome.js). The bundle defines window.treeloomComponents.
  * - treeloom: its sandbox, on the treeloom page (/projects/ already has window.treeloom from joshuaHome.js). The
  *   bundle defines window.treeloom.
  * - pseudo-dom: its sandbox (assets/js/sandboxes/pseudoDomSandbox.js). The bundle defines window.pseudoDom.
@@ -27,6 +29,7 @@ const files = [
   ['collect-your-stuff/browser/collect-your-stuff.min.js', 'collectYourStuff.min.js'],
   ['treeloom-matrix/browser/treeloom-matrix.min.js', 'treeloomMatrix.min.js'],
   ['treeloom/browser/treeloom.min.js', 'treeloom.min.js'],
+  ['treeloom-components/browser/treeloomComponents.min.js', 'treeloomComponents.min.js'],
   ['pseudo-dom/browser/pseudo-dom.min.js', 'pseudoDom.min.js'],
   ['json-fs-query/browser/jsonFsQuery.min.js', 'jsonFsQuery.min.js']
 ]

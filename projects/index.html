@@ -11,7 +11,7 @@
     <link rel='apple-touch-icon' href='/apple-touch-icon.png'>
     <link rel='preload' href='/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
     <link rel='preload' href='/browser/fonts/lexend-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
-    <link rel='stylesheet' href='/browser/tailwind/site.css?v=9d64705248'>
+    <link rel='stylesheet' href='/browser/tailwind/site.css?v=51ad6cc888'>
     <script src='/browser/joshuaHome.js?v=1664851cde'></script>
     <script type='module'>
       import projectGrid from '/dist/templates/projectGrid.js?v=d5270a95d5'
@@ -88,6 +88,14 @@
         </article>
 
         <article class='mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6'>
+            <h3 class='mt-0 mb-1 text-xl'><a class='text-foreground no-underline hover:underline' href='/projects/treeloom-components/'>treeloom-components</a></h3>
+            <p class='mt-0 mb-5 text-sm text-muted'>A typeahead and a clearable input in a real form. Only a pick sets the field: see what the form would submit.</p>
+            <!-- Filled in by /dist/sandboxes/treeloomComponentsSandboxInit.js (assets/js/sandboxes/treeloomComponentsSandbox.js),
+                 the same sandbox the treeloom-components page uses; here window.treeloomComponents comes from /browser/joshuaHome.js -->
+            <div data-sandbox='treeloom-components'><noscript><p class='m-0 text-sm'>This demo needs JavaScript.</p></noscript></div>
+        </article>
+
+        <article class='mt-6 rounded-lg border border-rule bg-foreground/4 p-5 md:p-6'>
             <h3 class='mt-0 mb-1 text-xl'><a class='text-foreground no-underline hover:underline' href='/projects/pseudo-dom/'>Pseudo DOM</a></h3>
             <p class='mt-0 mb-5 text-sm text-muted'>A DOM for tests in Node, checked against the real thing: the page asks both the same question and shows both answers.</p>
             <!-- Filled in by /dist/sandboxes/pseudoDomSandboxInit.js (assets/js/sandboxes/pseudoDomSandbox.js), the same
@@ -116,6 +124,7 @@
 <script type='module' src='/dist/sandboxes/collectYourStuffSandboxInit.js?v=97c7c0128c'></script>
 <script type='module' src='/dist/sandboxes/treeloomMatrixSandboxInit.js?v=ccea0315b7'></script>
 <script type='module' src='/dist/sandboxes/treeloomSandboxInit.js?v=c9bb4b38d4'></script>
+<script type='module' src='/dist/sandboxes/treeloomComponentsSandboxInit.js?v=af2831ea76'></script>
 <script src='/browser/vendor/pseudoDom.min.js?v=4bd65d4716' defer></script>
 <script type='module' src='/dist/sandboxes/pseudoDomSandboxInit.js?v=af5cd3d932'></script>
 <script src='/browser/vendor/jsonFsQuery.min.js?v=a94fbccd95' defer></script>
