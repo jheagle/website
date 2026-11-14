@@ -38,6 +38,7 @@ Each project page links its generated API documentation at `<page>docs/`.
 
 - [treeloom](https://joshuaheagle.com/projects/treeloom/) (formerly JSON DOM): a from-scratch virtual-DOM framework with a composable trait system, including a render-only mode that forwards events to a server
 - [treeloom-matrix](https://joshuaheagle.com/projects/treeloom-matrix/) (formerly Matrix DOM): grid and matrix geometry on top of treeloom, used by Cloakfall's boards and by this site's project grid
+- [treeloom-components](https://joshuaheagle.com/projects/treeloom-components/): ready-made treeloom components (base HTML element factories, a typeahead, a clearable input), used by Quizzes and this site's project grid
 - [Cloakfall](https://joshuaheagle.com/projects/cloakfall/) (formerly Battleship): a multiplayer, hidden-fleet game built on the whole stack ([play it](https://joshuaheagle.com/projects/cloakfall/play.html), [source](https://github.com/jheagle/cloakfall))
 
 ### Build tooling

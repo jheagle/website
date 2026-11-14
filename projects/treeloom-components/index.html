@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>treeloom-components | Joshua Heagle</title>
+    <link rel="canonical" href="https://joshuaheagle.com/projects/treeloom-components/">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preload" href="/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/browser/fonts/lexend-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/browser/tailwind/site.css?v=9d64705248">
+</head>
+<body class="mx-auto max-w-3xl px-5 pt-6 pb-16 lg:pt-14">
+<main>
+    <a class="mb-5 inline-block font-heading" href="/projects/">&larr; Back to projects</a>
+    <div class="mb-6 border-b border-rule pb-4">
+        <h1 class="m-0 mb-1.5 text-4xl/tight tracking-tight lg:text-5xl">treeloom-components</h1>
+        <p class="m-0 text-muted">Ready-made treeloom building blocks: one small factory per HTML element, plus a typeahead and a clearable search box.</p>
+    </div>
+    <nav class="my-5 flex flex-wrap gap-2.5" aria-label="Project links">
+        <a class="rounded-lg bg-accent px-4 py-2 font-heading font-semibold text-background no-underline hover:opacity-90" href="./docs/">Documentation</a>
+        <a class="rounded-lg border border-rule px-4 py-2 font-heading text-foreground no-underline hover:border-accent hover:text-accent" href="https://github.com/jheagle/treeloom-components" target="_blank">View on GitHub</a>
+    </nav>
+    <p>Three of my projects had each grown their own, slightly different copy of the same small "build a
+        <code class="rounded bg-foreground/8 px-1 py-px">&lt;div&gt;</code>, an <code class="rounded bg-foreground/8 px-1 py-px">&lt;input&gt;</code>,
+        a <code class="rounded bg-foreground/8 px-1 py-px">&lt;label&gt;</code>" functions for <a href="../treeloom/">treeloom</a>.
+        This package is those functions brought into one place and reconciled, and a home for richer components none of them had yet.</p>
+    <ul class="text-muted">
+        <li><strong class="text-foreground">Base components:</strong> thin wrappers around treeloom's <code class="rounded bg-foreground/8 px-1 py-px">createDomItem</code>,
+            one per real element (<code class="rounded bg-foreground/8 px-1 py-px">div</code>, <code class="rounded bg-foreground/8 px-1 py-px">form</code>,
+            <code class="rounded bg-foreground/8 px-1 py-px">radio</code>, <code class="rounded bg-foreground/8 px-1 py-px">table</code>, ...). Compose them the way you would write the HTML.</li>
+        <li><strong class="text-foreground">Typeahead:</strong> type to filter a list of options; a real <code class="rounded bg-foreground/8 px-1 py-px">&lt;select&gt;</code> holds the submitted value.</li>
+        <li><strong class="text-foreground">Clearable input:</strong> a search box with a clear button that empties it and gives focus back.</li>
+    </ul>
+    <p class="text-muted">Open source (MPL-2.0) and on npm. It's young (0.x) and grows as the apps need it: the
+        <a href="../../quizzes/">Quizzes</a> forms and this site's own project grid are built with it.</p>
+</main>
+<script data-goatcounter="https://joshuaheagle.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
