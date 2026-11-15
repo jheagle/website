@@ -20,7 +20,7 @@ Export the setUp helper.
 
 <MemberHeading id="createtempdir" depth="3" name="createTempDir" sig="createTempDir" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L65" sourceLabel="setUp.mjs:65" />
+<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L67" sourceLabel="setUp.mjs:67" />
 
 Ensure that the del has completed, recursively attempt to delete and recreate
 
@@ -34,7 +34,7 @@ Ensure that the del has completed, recursively attempt to delete and recreate
 
 <MemberHeading id="beforeeach" depth="3" name="beforeEach" sig="beforeEach" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L71" sourceLabel="setUp.mjs:71" />
+<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L73" sourceLabel="setUp.mjs:73" />
 
 In the Jest.beforeEach function call this one to set up the temp directory.
 
@@ -44,7 +44,7 @@ In the Jest.beforeEach function call this one to set up the temp directory.
 
 <MemberHeading id="aftereach" depth="3" name="afterEach" sig="afterEach" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L77" sourceLabel="setUp.mjs:77" />
+<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L79" sourceLabel="setUp.mjs:79" />
 
 In the Jest.afterEach function call this one to clean up and remove the temp directory.
 
@@ -54,7 +54,7 @@ In the Jest.afterEach function call this one to clean up and remove the temp dir
 
 <MemberHeading id="countmatches" depth="3" name="countMatches" sig="countMatches" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L83" sourceLabel="setUp.mjs:83" />
+<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L85" sourceLabel="setUp.mjs:85" />
 
 Return number of occurrences of substring in another string.
 
@@ -64,7 +64,7 @@ Return number of occurrences of substring in another string.
 
 <MemberHeading id="fileexists" depth="3" name="fileExists" sig="fileExists" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L89" sourceLabel="setUp.mjs:89" />
+<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L91" sourceLabel="setUp.mjs:91" />
 
 Returns true if the given file or directory exists, otherwise false.
 
@@ -74,7 +74,7 @@ Returns true if the given file or directory exists, otherwise false.
 
 <MemberHeading id="logobject" depth="3" name="logObject" sig="logObject" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L95" sourceLabel="setUp.mjs:95" />
+<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L97" sourceLabel="setUp.mjs:97" />
 
 Console log objects in a readable format, returns the given object.
 
@@ -84,7 +84,7 @@ Console log objects in a readable format, returns the given object.
 
 <MemberHeading id="removedirectory" depth="3" name="removeDirectory" sig="removeDirectory" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L101" sourceLabel="setUp.mjs:101" />
+<MemberMeta badges="static" sourceHref="/source/functions/test-helpers/setup-mjs/#L103" sourceLabel="setUp.mjs:103" />
 
 Delete a directory and subcontents.
 

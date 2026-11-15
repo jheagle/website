@@ -524,7 +524,7 @@ Start counting how much of the page changes: elements added and removed (every e
 
 <MemberMeta badges="static" sourceHref="/source/functions/partials/readmetemplate-mjs/#L14" sourceLabel="readmeTemplate.mjs:14" />
 
-Copy a readme template into the README.md file. Without the template (readme.template names a file which does not exist, or is empty), the readme starts empty instead, so it holds only the generated documentation; set readme.enabled to false to keep a hand-written readme instead.
+Copy a readme template into the README.md file. Without the template (readme.template names a file which does not exist, or is empty), the readme starts empty instead, so it holds only the generated documentation. To keep a hand-written readme instead, turn readme.enabled off (the default).
 
 **Returns**
 
