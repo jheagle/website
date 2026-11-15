@@ -17,7 +17,8 @@
 <div class="tsd-signature tsd-anchor-link" id="receiveforwardedevent"><span class="tsd-kind-call-signature">receiveForwardedEvent</span><span class="tsd-signature-symbol">(</span><br/>    <span class="tsd-kind-parameter">root</span><span class="tsd-signature-symbol">:</span> <a href="../types/domItem.DomItemRoot.html" class="tsd-signature-type tsd-kind-type-alias">DomItemRoot</a><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-kind-parameter">envelope</span><span class="tsd-signature-symbol">:</span> <a href="../types/events.ForwardedEvent.html" class="tsd-signature-type tsd-kind-type-alias">ForwardedEvent</a><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-kind-parameter">validator</span><span class="tsd-signature-symbol">?:</span> <a href="../types/events_functions.ForwardedEventValidator.html" class="tsd-signature-type tsd-kind-type-alias">ForwardedEventValidator</a><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span><a href="#receiveforwardedevent" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>The receiving end of makeForwardingListener's envelope: resolve the item it was built for, replay any live target
-state it carried onto that item's real element (see captureTargetState in makeForwardingListener), then dispatch
+state it carried onto that item's real element (see applyTargetState and makeForwardingListener's
+captureTargetState), then dispatch
 a real event of the same type on it. The resolved item's own, already-bound listener runs exactly as it would for
 a genuine local event - nothing here needs to know what that listener does.</p>
 </div>
@@ -39,7 +40,7 @@ in, instead of every caller re-deriving &quot;resolve first, then check, then di
 </div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/jheagle/treeloom/blob/main/src/events/functions/receiveForwardedEvent.ts#L29">src/events/functions/receiveForwardedEvent.ts:29</a></li></ul></aside></div></li></ul></section></div>
+<li>Defined in <a href="https://github.com/jheagle/treeloom/blob/main/src/events/functions/receiveForwardedEvent.ts#L53">src/events/functions/receiveForwardedEvent.ts:53</a></li></ul></aside></div></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
