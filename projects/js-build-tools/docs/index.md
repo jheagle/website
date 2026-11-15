@@ -70,7 +70,7 @@ In your project's root directory, create a `build-tools.config.json` file. Every
     // HTML added to every page of the documentation just before </body>, false for none.
     "bodyHtml": false,
     // Toggle generating the HTML documentation from the source (see 'Configure HTML documentation').
-    // When on, the build does this instead of generating the readme from the jsdoc comments.
+    // Independent of readme.enabled: turn on either, both, or neither.
     "enabled": false,
     // The directory holding the source, each folder in it becomes a module of the documentation.
     "from": "src",
@@ -122,8 +122,9 @@ In your project's root directory, create a `build-tools.config.json` file. Every
     "rules": {}
   },
   "readme": {
-    // Generate the readme; false keeps a hand-written readme (or none): neither build nor the readme task writes it.
-    "enabled": true,
+    // Generate the readme from the jsdoc comments (see 'Generate the readme'). False (the default) keeps a
+    // hand-written readme (or none): neither build nor the readme task writes it.
+    "enabled": false,
     // The file which will be pre-fixed to your README.md output. When it doesn't exist, the readme holds only the
     // generated documentation.
     "template": "MAIN.md",
@@ -264,6 +265,7 @@ It is not recommended to use `"type": "module"` in the `package.json` to enable 
     "to": "dist"
   },
   "readme": {
+    "enabled": true,
     "template": "MAIN.md",
     "options": "utf8",
     "file": "README.md",
@@ -378,6 +380,20 @@ By default a project produces exactly one browser bundle, from `dist.main`/`brow
 ```
 
 For the `gulpConfig` module's own `get`/`set` functions (read or override a resolved configuration value from your own code, by the same dot-notation path a setting has in the JSON above), see the generated reference below.
+
+### Generate the readme (optional)
+
+The readme and the HTML documentation (see 'Configure HTML documentation') are separate settings, both off by default: turn on either, both, or neither. With `readme.enabled` on, `gulp build` (and `gulp readme` on its own) writes `readme.file` from the template (`readme.template`, usually `MAIN.md`) followed by markdown generated from the jsdoc comments of the files `readme.from` matches. With it off, your `README.md` is your own: neither command touches it, and `gulp readme` says so instead.
+
+```
+{
+  "readme": {
+    "enabled": true
+  }
+}
+```
+
+Before 9.0.0 the readme was on by default, and `docs.enabled` turned it off in `gulp build` (but not in `gulp readme`). A project which relied on that default now sets `readme.enabled` to `true`; a project with `docs.enabled` on and a hand-written readme needs no change.
 
 ### Configure including ESM files in the generated readme (optional)
 
@@ -508,6 +524,8 @@ Add the following to the exports in your `build-tools.config.json`:
 ```
 {
   "readme": {
+    // Generate the readme (off by default, see 'Generate the readme').
+    "enabled": true,
     // Location of files to use for compiling documentation into the readme.
     "from": "dist/**/!(*.min).js"
   },
@@ -589,9 +607,9 @@ Turn it on with `"docs": { "enabled": true }` in your `build-tools.config.json`.
 }
 ```
 
-While `docs.enabled` is on, `gulp build` generates the documentation instead of the readme, so your `README.md` stays hand-written (a short overview which links to the documentation). If you also export `docs` from your gulpfile you can run it on its own with `gulp docs`, and can then add the script `"docs": "gulp docs"`.
+While `docs.enabled` is on, `gulp build` generates the documentation. It leaves your `README.md` alone unless you also turn on `readme.enabled` (see 'Generate the readme'), so the readme can stay hand-written (a short overview which links to the documentation). If you also export `docs` from your gulpfile you can run it on its own with `gulp docs`, and can then add the script `"docs": "gulp docs"`.
 
-To make generating the documentation a deliberate step instead, set `docs.inBuild` to `false`: `gulp build` then generates neither the documentation nor the readme, and `gulp docs` is the only thing that writes to `docs.to`. This suits a `docs.to` which points into another repository (a website, say): a build on a work-in-progress branch no longer rewrites the published documentation, which you regenerate when you release instead. For example with release-it, in `.release-it.json`:
+To make generating the documentation a deliberate step instead, set `docs.inBuild` to `false`: `gulp build` then skips the documentation, and `gulp docs` is the only thing that writes to `docs.to`. This suits a `docs.to` which points into another repository (a website, say): a build on a work-in-progress branch no longer rewrites the published documentation, which you regenerate when you release instead. For example with release-it, in `.release-it.json`:
 
 ```
 {

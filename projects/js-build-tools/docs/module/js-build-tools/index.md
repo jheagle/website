@@ -55,9 +55,9 @@ Creates the minified file for every bundle (the primary bundle, plus any additio
 
 <MemberHeading id="compilereadme" depth="3" name="compileReadme" sig="compileReadme" />
 
-<MemberMeta badges="static" sourceHref="/source/functions/compilereadme-mjs/#L27" sourceLabel="compileReadme.mjs:27" />
+<MemberMeta badges="static" sourceHref="/source/functions/compilereadme-mjs/#L28" sourceLabel="compileReadme.mjs:28" />
 
-Generate the README.md file based off of the template, then append the generated documentation. Does nothing when readme.enabled is false, so a project can keep a hand-written readme (or none). Also does nothing, with a warning, when no file matches readme.from or readme.fromEsm (a TypeScript project's src has no .js files, say): writing the template and then failing to document anything would leave a broken readme behind.
+Generate the README.md file based off of the template, then append the generated documentation. Does nothing when readme.enabled is off (the default), so a project can keep a hand-written readme (or none). Also does nothing, with a warning, when no file matches readme.from or readme.fromEsm (a TypeScript project's src has no .js files, say): writing the template and then failing to document anything would leave a broken readme behind.
 
 **Parameters**
 
