@@ -28,7 +28,7 @@ shapes do not line up index-for-index - see updatePlayerStats.ts) never passed t
 all, so it has no id (or parentItem, or has map) whatsoever.</li>
 <li>A collision (the id is already registered to a <em>different</em> item within this same root): a generic &quot;build
 one item, then replicate it N times&quot; helper (si-funciona's buildArray, cloning rather than constructing
-fresh - the shape matrix-dom's own buildMatrix uses for a grid's rows/columns/tiles) copies whatever id
+fresh - the shape treeloom-matrix's own buildMatrix uses for a grid's rows/columns/tiles) copies whatever id
 the one template already carries into every copy right along with everything else, with no way for
 treeloom to know that happened before registration.</li>
 </ul>
