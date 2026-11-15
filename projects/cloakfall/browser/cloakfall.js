@@ -3579,8 +3579,9 @@ var cloakfall = (() => {
           arrayObject[dotNotation] = value;
           return arrayObject;
         }
-        const next = arrayObject[key] ?? [];
-        arrayObject[key] = dotSet(next, (0, _strAfter.default)(dotNotation, "."), value);
+        const rest = (0, _strAfter.default)(dotNotation, ".");
+        const next = arrayObject[key] ?? (/^\d+$/.test((0, _strBefore.default)(rest, ".") || rest) ? [] : {});
+        arrayObject[key] = dotSet(next, rest, value);
         return arrayObject;
       };
       var _default = exports.default = dotSet;
@@ -4127,6 +4128,27 @@ var cloakfall = (() => {
     }
   });
 
+  // node_modules/si-funciona/dist/helpers/strings/htmlEscape.js
+  var require_htmlEscape = __commonJS({
+    "node_modules/si-funciona/dist/helpers/strings/htmlEscape.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.htmlEscape = exports.default = void 0;
+      var htmlEscape = (str) => str.replace(/[&<>"']/g, (character) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[character]);
+      exports.htmlEscape = htmlEscape;
+      var _default = exports.default = htmlEscape;
+    }
+  });
+
   // node_modules/si-funciona/dist/helpers/strings/kabobCase.js
   var require_kabobCase = __commonJS({
     "node_modules/si-funciona/dist/helpers/strings/kabobCase.js"(exports) {
@@ -4324,6 +4346,12 @@ var cloakfall = (() => {
         }
       });
       exports.default = void 0;
+      Object.defineProperty(exports, "htmlEscape", {
+        enumerable: true,
+        get: function() {
+          return _htmlEscape.default;
+        }
+      });
       Object.defineProperty(exports, "kabobCase", {
         enumerable: true,
         get: function() {
@@ -4397,6 +4425,7 @@ var cloakfall = (() => {
         }
       });
       var _camelCase = _interopRequireDefault(require_camelCase());
+      var _htmlEscape = _interopRequireDefault(require_htmlEscape());
       var _kabobCase = _interopRequireDefault(require_kabobCase());
       var _makeFilepath = _interopRequireDefault(require_makeFilepath());
       var _makeRelativePath = _interopRequireDefault(require_makeRelativePath());
@@ -4414,6 +4443,7 @@ var cloakfall = (() => {
       }
       var _default = exports.default = {
         camelCase: _camelCase.default,
+        htmlEscape: _htmlEscape.default,
         kabobCase: _kabobCase.default,
         makeFilepath: _makeFilepath.default,
         makeRelativePath: _makeRelativePath.default,
@@ -9467,10 +9497,11 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      var FORM_CONTROL_TAGS = ["INPUT", "SELECT", "TEXTAREA"];
+      exports.FORM_CONTROL_TAGS = void 0;
+      exports.FORM_CONTROL_TAGS = ["INPUT", "SELECT", "TEXTAREA"];
       var captureTargetState = (target) => {
         const element = target;
-        if (!element || !FORM_CONTROL_TAGS.includes(element.tagName)) {
+        if (!element || !exports.FORM_CONTROL_TAGS.includes(element.tagName)) {
           return void 0;
         }
         return element.type === "checkbox" || element.type === "radio" ? {
@@ -10140,10 +10171,27 @@ var cloakfall = (() => {
     "node_modules/treeloom/dist/events/functions/receiveForwardedEvent.js"(exports) {
       "use strict";
       init_process();
+      require_es_array_includes();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
       var itemIdIndex_1 = require_itemIdIndex();
+      var makeForwardingListener_1 = require_makeForwardingListener();
+      var applyTargetState = (element, targetState) => {
+        if (typeof targetState !== "object" || targetState === null || !makeForwardingListener_1.FORM_CONTROL_TAGS.includes(element.tagName)) {
+          return;
+        }
+        const {
+          value,
+          checked
+        } = targetState;
+        if (typeof value === "string") {
+          element.value = value;
+        }
+        if (typeof checked === "boolean") {
+          element.checked = checked;
+        }
+      };
       var receiveForwardedEvent = (root, envelope, validator) => {
         const resolvedItem = (0, itemIdIndex_1.getItemById)(root, envelope.itemId);
         if (validator && !validator(resolvedItem, envelope)) {
@@ -10153,9 +10201,7 @@ var cloakfall = (() => {
         if (!element) {
           throw new Error("The resolved item has no element to dispatch the event on.");
         }
-        if (envelope.targetState) {
-          Object.assign(element, envelope.targetState);
-        }
+        applyTargetState(element, envelope.targetState);
         element.dispatchEvent(new Event(envelope.eventType, {
           bubbles: true,
           cancelable: true
@@ -13414,6 +13460,7 @@ var cloakfall = (() => {
         value: true
       });
       var gameOptions_1 = require_gameOptions();
+      var si_funciona_1 = require_main();
       var playerStats = (player, status = "", item = player) => {
         const hintControl = player.isRobot || (0, gameOptions_1.getHintSetting)(item) !== "optional" ? [] : [{
           nodeName: "label",
@@ -13476,7 +13523,7 @@ var cloakfall = (() => {
             nodeName: "span",
             attributes: {
               className: "player-name",
-              innerHTML: `<strong style="color: ${player.colour}">${player.name}</strong>: ${status}`
+              innerHTML: `<strong style="color: ${player.colour}">${(0, si_funciona_1.htmlEscape)(player.name)}</strong>: ${status}`
             }
           }, ...controls.length ? [{
             nodeName: "div",
@@ -14037,6 +14084,7 @@ var cloakfall = (() => {
         value: true
       });
       var treeloom_1 = __importDefault(require_main3());
+      var si_funciona_1 = require_main();
       var finalScore = (players = []) => treeloom_1.default.createDomItem({
         nodeName: "div",
         attributes: {
@@ -14051,7 +14099,7 @@ var cloakfall = (() => {
             nodeName: "div",
             attributes: {
               className: "score-card",
-              innerHTML: `<strong>${player.name}</strong><hr><br></strong><strong>Status:</strong> ${Math.round(player.status * 100) / 100}%, <strong>Sunk:</strong> ${player.attacks.sunk}<br><strong>Hit:</strong> ${player.attacks.hit} / <strong>Miss:</strong> ${player.attacks.miss}<br><strong>Turns:</strong> ${player.turnCnt}`
+              innerHTML: `<strong>${(0, si_funciona_1.htmlEscape)(player.name)}</strong><hr><br><strong>Status:</strong> ${Math.round(player.status * 100) / 100}%, <strong>Sunk:</strong> ${player.attacks.sunk}<br><strong>Hit:</strong> ${player.attacks.hit} / <strong>Miss:</strong> ${player.attacks.miss}<br><strong>Turns:</strong> ${player.turnCnt}`
             }
           }))
         }, {
@@ -20379,35 +20427,48 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.sendGameAction = exports.onGameUpdate = exports.startGame = exports.getSocketId = exports.onRoomClosed = exports.onRoomUpdate = exports.joinRoom = exports.peekRoom = exports.createRoom = exports.disconnectLobbySocket = exports.connectLobbySocket = void 0;
+      exports.sendGameAction = exports.onGameUpdate = exports.startGame = exports.getSocketId = exports.onRoomClosed = exports.onRoomUpdate = exports.joinRoom = exports.peekRoom = exports.createRoom = exports.disconnectLobbySocket = exports.setLobbyTimeout = exports.UNREACHABLE_ERROR = exports.connectLobbySocket = exports.lobbyUrl = exports.LOBBY_PORT = void 0;
       var socket_io_client_1 = require_cjs5();
-      var DEFAULT_URL = "http://localhost:3002";
+      exports.LOBBY_PORT = 3002;
+      var lobbyUrl = (location2 = globalThis.location ?? null) => location2 && /^https?:$/.test(location2.protocol) && location2.hostname ? `${location2.protocol}//${location2.hostname}:${exports.LOBBY_PORT}` : `http://localhost:${exports.LOBBY_PORT}`;
+      exports.lobbyUrl = lobbyUrl;
       var socket = null;
-      var connectLobbySocket = (url = DEFAULT_URL) => {
+      var connectLobbySocket = (url = (0, exports.lobbyUrl)()) => {
         if (!socket) {
           socket = (0, socket_io_client_1.io)(url);
         }
         return socket;
       };
       exports.connectLobbySocket = connectLobbySocket;
+      exports.UNREACHABLE_ERROR = `Can't reach the game server. <a href="status.html" target="_blank" rel="noopener">Check the server status</a>, then try again.`;
+      var requestTimeoutMs = 8e3;
+      var setLobbyTimeout = (ms) => {
+        requestTimeoutMs = ms;
+      };
+      exports.setLobbyTimeout = setLobbyTimeout;
+      var request = (event, payload) => new Promise((resolve) => {
+        (0, exports.connectLobbySocket)().timeout(requestTimeoutMs).emit(event, payload, (timedOut, answer) => resolve(timedOut ? {
+          error: exports.UNREACHABLE_ERROR
+        } : answer));
+      });
       var disconnectLobbySocket = () => {
         socket?.close();
         socket = null;
       };
       exports.disconnectLobbySocket = disconnectLobbySocket;
-      var createRoom = (name, roomName) => new Promise((resolve) => (0, exports.connectLobbySocket)().emit("createRoom", {
+      var createRoom = (name, roomName) => request("createRoom", {
         name,
         roomName
-      }, resolve));
+      });
       exports.createRoom = createRoom;
-      var peekRoom = (roomCode) => new Promise((resolve) => (0, exports.connectLobbySocket)().emit("peekRoom", {
+      var peekRoom = (roomCode) => request("peekRoom", {
         roomCode
-      }, resolve));
+      });
       exports.peekRoom = peekRoom;
-      var joinRoom = (roomCode, name) => new Promise((resolve) => (0, exports.connectLobbySocket)().emit("joinRoom", {
+      var joinRoom = (roomCode, name) => request("joinRoom", {
         roomCode,
         name
-      }, resolve));
+      });
       exports.joinRoom = joinRoom;
       var onRoomUpdate = (callback) => {
         (0, exports.connectLobbySocket)().off("roomUpdate").on("roomUpdate", callback);
@@ -20419,10 +20480,10 @@ var cloakfall = (() => {
       exports.onRoomClosed = onRoomClosed;
       var getSocketId = () => (0, exports.connectLobbySocket)().id;
       exports.getSocketId = getSocketId;
-      var startGame = (hints, robots = 0) => new Promise((resolve) => (0, exports.connectLobbySocket)().emit("startGame", {
+      var startGame = (hints, robots = 0) => request("startGame", {
         hints,
         robots
-      }, resolve));
+      });
       exports.startGame = startGame;
       var onGameUpdate = (callback) => {
         (0, exports.connectLobbySocket)().off("gameUpdate").on("gameUpdate", callback);
@@ -20653,6 +20714,7 @@ var cloakfall = (() => {
       var lobbySocket_1 = require_lobbySocket();
       var remoteGame_1 = require_remoteGame();
       var showLobby_1 = require_showLobby();
+      var si_funciona_1 = require_main();
       var lastRoomState = null;
       var getLastRoomState = () => lastRoomState;
       exports.getLastRoomState = getLastRoomState;
@@ -20679,7 +20741,7 @@ var cloakfall = (() => {
         });
         pendingJoinCode = roomCode;
         (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("remote-join-message", entry)[0], {
-          innerHTML: `You are joining ${result.hostName}'s ${result.roomName}.`
+          innerHTML: `You are joining ${(0, si_funciona_1.htmlEscape)(result.hostName)}'s ${(0, si_funciona_1.htmlEscape)(result.roomName)}.`
         });
         showSubPanel(entry, "remote-join-confirm");
         treeloom_1.default.getChildrenByName("remote-join-name", entry)[0].element.focus();
@@ -20704,12 +20766,12 @@ var cloakfall = (() => {
           treeloom_1.default.renderHtml(treeloom_1.default.createDomItem({
             nodeName: "li",
             attributes: {
-              innerHTML: player.id === state.hostId ? `${player.name} (Host)` : player.name
+              innerHTML: player.id === state.hostId ? `${(0, si_funciona_1.htmlEscape)(player.name)} (Host)` : (0, si_funciona_1.htmlEscape)(player.name)
             }
           }), list);
         });
         (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("waiting-room-name", menu)[0], {
-          innerHTML: `Lobby: ${state.roomName}`
+          innerHTML: `Lobby: ${(0, si_funciona_1.htmlEscape)(state.roomName)}`
         });
         (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("waiting-room-code", menu)[0], {
           innerHTML: `Room Code: ${state.roomCode}`
@@ -20853,6 +20915,22 @@ var cloakfall = (() => {
     }
   });
 
+  // dist/version.js
+  var require_version = __commonJS({
+    "dist/version.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.releaseNotesUrl = exports.RELEASES_URL = exports.version = void 0;
+      exports.version = "2.0.0";
+      exports.RELEASES_URL = "https://github.com/jheagle/cloakfall/releases";
+      var releaseNotesUrl = (forVersion = exports.version) => `${exports.RELEASES_URL}/tag/v${forVersion}`;
+      exports.releaseNotesUrl = releaseNotesUrl;
+    }
+  });
+
   // dist/components/layout/mainMenu.js
   var require_mainMenu = __commonJS({
     "dist/components/layout/mainMenu.js"(exports) {
@@ -20867,6 +20945,7 @@ var cloakfall = (() => {
         value: true
       });
       var treeloom_1 = __importDefault(require_main3());
+      var version_1 = require_version();
       var listener = (listenerFunc) => [{
         listenerFunc,
         listenerArgs: {},
@@ -20882,352 +20961,74 @@ var cloakfall = (() => {
           attributes: {
             className: "content"
           },
-          children: [{
-            nodeName: "p",
-            attributes: {
-              className: "tagline",
-              textContent: "Every fleet is cloaked. Fire blind into the dark. The last fleet still hidden wins."
-            }
-          }, {
-            nodeName: "div",
-            attributes: {
-              className: "presets"
-            },
-            children: [{
-              nodeName: "button",
+          children: [
+            {
+              nodeName: "p",
               attributes: {
-                className: "preset-solo",
-                type: "button",
-                innerHTML: "1 player vs robots"
-              },
-              eventListeners: {
-                click: listener("presetListener")
-              }
-            }, {
-              nodeName: "button",
-              attributes: {
-                className: "preset-multi",
-                type: "button",
-                innerHTML: "Multiplayer (2 to 4 players, one screen)"
-              },
-              eventListeners: {
-                click: listener("presetListener")
-              }
-            }, {
-              nodeName: "button",
-              attributes: {
-                className: "preset-robots",
-                type: "button",
-                innerHTML: "Robots only"
-              },
-              eventListeners: {
-                click: listener("presetListener")
-              }
-            }, {
-              nodeName: "button",
-              attributes: {
-                className: "preset-remote",
-                type: "button",
-                innerHTML: "Online Multiplayer"
-              },
-              eventListeners: {
-                click: listener("remoteListener")
-              }
-            }]
-          }, {
-            nodeName: "div",
-            attributes: {
-              className: "remote-entry",
-              style: {
-                display: "none"
+                className: "tagline",
+                textContent: "Every fleet is cloaked. Fire blind into the dark. The last fleet still hidden wins."
               }
             },
-            children: [{
+            // Which version is running, with its release notes and the online server's status (both open in a new tab, so
+            // the game itself is kept)
+            {
+              nodeName: "p",
+              attributes: {
+                className: "version-line",
+                innerHTML: `v${version_1.version} \xB7 <a href="${(0, version_1.releaseNotesUrl)()}" target="_blank" rel="noopener">What's new</a> \xB7 <a href="status.html" target="_blank" rel="noopener">Server status</a>`
+              }
+            },
+            {
               nodeName: "div",
               attributes: {
-                className: "remote-choice"
+                className: "presets"
               },
               children: [{
                 nodeName: "button",
                 attributes: {
-                  className: "remote-back",
+                  className: "preset-solo",
                   type: "button",
-                  innerHTML: "Back"
+                  innerHTML: "1 player vs robots"
                 },
                 eventListeners: {
-                  click: listener("remoteListener")
+                  click: listener("presetListener")
                 }
               }, {
-                nodeName: "h2",
+                nodeName: "button",
                 attributes: {
-                  className: "lobby-title",
+                  className: "preset-multi",
+                  type: "button",
+                  innerHTML: "Multiplayer (2 to 4 players, one screen)"
+                },
+                eventListeners: {
+                  click: listener("presetListener")
+                }
+              }, {
+                nodeName: "button",
+                attributes: {
+                  className: "preset-robots",
+                  type: "button",
+                  innerHTML: "Robots only"
+                },
+                eventListeners: {
+                  click: listener("presetListener")
+                }
+              }, {
+                nodeName: "button",
+                attributes: {
+                  className: "preset-remote",
+                  type: "button",
                   innerHTML: "Online Multiplayer"
-                }
-              }, {
-                nodeName: "button",
-                attributes: {
-                  className: "remote-choice-host",
-                  type: "button",
-                  innerHTML: "Host a Game"
                 },
                 eventListeners: {
                   click: listener("remoteListener")
-                }
-              }, {
-                nodeName: "button",
-                attributes: {
-                  className: "remote-choice-join",
-                  type: "button",
-                  innerHTML: "Join a Game"
-                },
-                eventListeners: {
-                  click: listener("remoteListener")
-                }
-              }, {
-                nodeName: "div",
-                attributes: {
-                  className: "remote-choice-status"
                 }
               }]
-            }, {
-              nodeName: "div",
-              attributes: {
-                className: "remote-host-form",
-                style: {
-                  display: "none"
-                }
-              },
-              children: [{
-                nodeName: "button",
-                attributes: {
-                  className: "remote-sub-back",
-                  type: "button",
-                  innerHTML: "Back"
-                },
-                eventListeners: {
-                  click: listener("remoteListener")
-                }
-              }, {
-                nodeName: "h2",
-                attributes: {
-                  className: "lobby-title",
-                  innerHTML: "Host a Game"
-                }
-              }, {
-                nodeName: "div",
-                attributes: {
-                  className: "form-group"
-                },
-                children: [{
-                  nodeName: "label",
-                  attributes: {
-                    for: "remote-room-name",
-                    innerText: "Lobby Name"
-                  }
-                }, {
-                  nodeName: "input",
-                  attributes: {
-                    id: "remote-room-name",
-                    name: "remote-room-name",
-                    type: "text",
-                    required: ""
-                  }
-                }]
-              }, {
-                nodeName: "div",
-                attributes: {
-                  className: "form-group"
-                },
-                children: [{
-                  nodeName: "label",
-                  attributes: {
-                    for: "remote-host-name",
-                    innerText: "Your Name"
-                  }
-                }, {
-                  nodeName: "input",
-                  attributes: {
-                    id: "remote-host-name",
-                    name: "remote-host-name",
-                    type: "text",
-                    required: ""
-                  }
-                }]
-              }, {
-                nodeName: "button",
-                attributes: {
-                  className: "remote-host-submit",
-                  type: "button",
-                  innerHTML: "Create"
-                },
-                eventListeners: {
-                  click: listener("remoteListener")
-                }
-              }, {
-                nodeName: "div",
-                attributes: {
-                  className: "remote-host-status"
-                }
-              }]
-            }, {
-              nodeName: "div",
-              attributes: {
-                className: "remote-code-entry",
-                style: {
-                  display: "none"
-                }
-              },
-              children: [{
-                nodeName: "button",
-                attributes: {
-                  className: "remote-sub-back",
-                  type: "button",
-                  innerHTML: "Back"
-                },
-                eventListeners: {
-                  click: listener("remoteListener")
-                }
-              }, {
-                nodeName: "h2",
-                attributes: {
-                  className: "lobby-title",
-                  innerHTML: "Join a Game"
-                }
-              }, {
-                nodeName: "div",
-                attributes: {
-                  className: "form-group"
-                },
-                children: [{
-                  nodeName: "label",
-                  attributes: {
-                    for: "remote-code",
-                    innerText: "Room Code"
-                  }
-                }, {
-                  nodeName: "input",
-                  attributes: {
-                    id: "remote-code",
-                    name: "remote-code",
-                    type: "text",
-                    maxlength: 4
-                  }
-                }]
-              }, {
-                nodeName: "button",
-                attributes: {
-                  className: "remote-code-submit",
-                  type: "button",
-                  innerHTML: "Find Room"
-                },
-                eventListeners: {
-                  click: listener("remoteListener")
-                }
-              }, {
-                nodeName: "div",
-                attributes: {
-                  className: "remote-code-status"
-                }
-              }]
-            }, {
-              nodeName: "div",
-              attributes: {
-                className: "remote-join-confirm",
-                style: {
-                  display: "none"
-                }
-              },
-              children: [{
-                nodeName: "button",
-                attributes: {
-                  className: "remote-sub-back",
-                  type: "button",
-                  innerHTML: "Back"
-                },
-                eventListeners: {
-                  click: listener("remoteListener")
-                }
-              }, {
-                nodeName: "h2",
-                attributes: {
-                  className: "lobby-title",
-                  innerHTML: "Join a Game"
-                }
-              }, {
-                nodeName: "p",
-                attributes: {
-                  className: "remote-join-message"
-                }
-              }, {
-                nodeName: "div",
-                attributes: {
-                  className: "form-group"
-                },
-                children: [{
-                  nodeName: "label",
-                  attributes: {
-                    for: "remote-join-name",
-                    innerText: "Your Name"
-                  }
-                }, {
-                  nodeName: "input",
-                  attributes: {
-                    id: "remote-join-name",
-                    name: "remote-join-name",
-                    type: "text",
-                    required: ""
-                  }
-                }]
-              }, {
-                nodeName: "button",
-                attributes: {
-                  className: "remote-join-submit",
-                  type: "button",
-                  innerHTML: "Join"
-                },
-                eventListeners: {
-                  click: listener("remoteListener")
-                }
-              }, {
-                nodeName: "div",
-                attributes: {
-                  className: "remote-join-status"
-                }
-              }]
-            }]
-          }, {
-            nodeName: "div",
-            attributes: {
-              className: "waiting-room",
-              style: {
-                display: "none"
-              }
             },
-            children: [{
-              nodeName: "h2",
-              attributes: {
-                className: "lobby-title",
-                innerHTML: "Waiting Room"
-              }
-            }, {
+            {
               nodeName: "div",
               attributes: {
-                className: "waiting-room-name"
-              }
-            }, {
-              nodeName: "div",
-              attributes: {
-                className: "waiting-room-code"
-              }
-            }, {
-              nodeName: "ul",
-              attributes: {
-                className: "waiting-room-players"
-              }
-            }, {
-              nodeName: "div",
-              attributes: {
-                className: "waiting-room-host-controls",
+                className: "remote-entry",
                 style: {
                   display: "none"
                 }
@@ -21235,19 +21036,472 @@ var cloakfall = (() => {
               children: [{
                 nodeName: "div",
                 attributes: {
+                  className: "remote-choice"
+                },
+                children: [{
+                  nodeName: "button",
+                  attributes: {
+                    className: "remote-back",
+                    type: "button",
+                    innerHTML: "Back"
+                  },
+                  eventListeners: {
+                    click: listener("remoteListener")
+                  }
+                }, {
+                  nodeName: "h2",
+                  attributes: {
+                    className: "lobby-title",
+                    innerHTML: "Online Multiplayer"
+                  }
+                }, {
+                  nodeName: "button",
+                  attributes: {
+                    className: "remote-choice-host",
+                    type: "button",
+                    innerHTML: "Host a Game"
+                  },
+                  eventListeners: {
+                    click: listener("remoteListener")
+                  }
+                }, {
+                  nodeName: "button",
+                  attributes: {
+                    className: "remote-choice-join",
+                    type: "button",
+                    innerHTML: "Join a Game"
+                  },
+                  eventListeners: {
+                    click: listener("remoteListener")
+                  }
+                }, {
+                  nodeName: "div",
+                  attributes: {
+                    className: "remote-choice-status"
+                  }
+                }]
+              }, {
+                nodeName: "div",
+                attributes: {
+                  className: "remote-host-form",
+                  style: {
+                    display: "none"
+                  }
+                },
+                children: [{
+                  nodeName: "button",
+                  attributes: {
+                    className: "remote-sub-back",
+                    type: "button",
+                    innerHTML: "Back"
+                  },
+                  eventListeners: {
+                    click: listener("remoteListener")
+                  }
+                }, {
+                  nodeName: "h2",
+                  attributes: {
+                    className: "lobby-title",
+                    innerHTML: "Host a Game"
+                  }
+                }, {
+                  nodeName: "div",
+                  attributes: {
+                    className: "form-group"
+                  },
+                  children: [{
+                    nodeName: "label",
+                    attributes: {
+                      for: "remote-room-name",
+                      innerText: "Lobby Name"
+                    }
+                  }, {
+                    nodeName: "input",
+                    attributes: {
+                      id: "remote-room-name",
+                      name: "remote-room-name",
+                      type: "text",
+                      required: ""
+                    }
+                  }]
+                }, {
+                  nodeName: "div",
+                  attributes: {
+                    className: "form-group"
+                  },
+                  children: [{
+                    nodeName: "label",
+                    attributes: {
+                      for: "remote-host-name",
+                      innerText: "Your Name"
+                    }
+                  }, {
+                    nodeName: "input",
+                    attributes: {
+                      id: "remote-host-name",
+                      name: "remote-host-name",
+                      type: "text",
+                      required: ""
+                    }
+                  }]
+                }, {
+                  nodeName: "button",
+                  attributes: {
+                    className: "remote-host-submit",
+                    type: "button",
+                    innerHTML: "Create"
+                  },
+                  eventListeners: {
+                    click: listener("remoteListener")
+                  }
+                }, {
+                  nodeName: "div",
+                  attributes: {
+                    className: "remote-host-status"
+                  }
+                }]
+              }, {
+                nodeName: "div",
+                attributes: {
+                  className: "remote-code-entry",
+                  style: {
+                    display: "none"
+                  }
+                },
+                children: [{
+                  nodeName: "button",
+                  attributes: {
+                    className: "remote-sub-back",
+                    type: "button",
+                    innerHTML: "Back"
+                  },
+                  eventListeners: {
+                    click: listener("remoteListener")
+                  }
+                }, {
+                  nodeName: "h2",
+                  attributes: {
+                    className: "lobby-title",
+                    innerHTML: "Join a Game"
+                  }
+                }, {
+                  nodeName: "div",
+                  attributes: {
+                    className: "form-group"
+                  },
+                  children: [{
+                    nodeName: "label",
+                    attributes: {
+                      for: "remote-code",
+                      innerText: "Room Code"
+                    }
+                  }, {
+                    nodeName: "input",
+                    attributes: {
+                      id: "remote-code",
+                      name: "remote-code",
+                      type: "text",
+                      maxlength: 4
+                    }
+                  }]
+                }, {
+                  nodeName: "button",
+                  attributes: {
+                    className: "remote-code-submit",
+                    type: "button",
+                    innerHTML: "Find Room"
+                  },
+                  eventListeners: {
+                    click: listener("remoteListener")
+                  }
+                }, {
+                  nodeName: "div",
+                  attributes: {
+                    className: "remote-code-status"
+                  }
+                }]
+              }, {
+                nodeName: "div",
+                attributes: {
+                  className: "remote-join-confirm",
+                  style: {
+                    display: "none"
+                  }
+                },
+                children: [{
+                  nodeName: "button",
+                  attributes: {
+                    className: "remote-sub-back",
+                    type: "button",
+                    innerHTML: "Back"
+                  },
+                  eventListeners: {
+                    click: listener("remoteListener")
+                  }
+                }, {
+                  nodeName: "h2",
+                  attributes: {
+                    className: "lobby-title",
+                    innerHTML: "Join a Game"
+                  }
+                }, {
+                  nodeName: "p",
+                  attributes: {
+                    className: "remote-join-message"
+                  }
+                }, {
+                  nodeName: "div",
+                  attributes: {
+                    className: "form-group"
+                  },
+                  children: [{
+                    nodeName: "label",
+                    attributes: {
+                      for: "remote-join-name",
+                      innerText: "Your Name"
+                    }
+                  }, {
+                    nodeName: "input",
+                    attributes: {
+                      id: "remote-join-name",
+                      name: "remote-join-name",
+                      type: "text",
+                      required: ""
+                    }
+                  }]
+                }, {
+                  nodeName: "button",
+                  attributes: {
+                    className: "remote-join-submit",
+                    type: "button",
+                    innerHTML: "Join"
+                  },
+                  eventListeners: {
+                    click: listener("remoteListener")
+                  }
+                }, {
+                  nodeName: "div",
+                  attributes: {
+                    className: "remote-join-status"
+                  }
+                }]
+              }]
+            },
+            {
+              nodeName: "div",
+              attributes: {
+                className: "waiting-room",
+                style: {
+                  display: "none"
+                }
+              },
+              children: [{
+                nodeName: "h2",
+                attributes: {
+                  className: "lobby-title",
+                  innerHTML: "Waiting Room"
+                }
+              }, {
+                nodeName: "div",
+                attributes: {
+                  className: "waiting-room-name"
+                }
+              }, {
+                nodeName: "div",
+                attributes: {
+                  className: "waiting-room-code"
+                }
+              }, {
+                nodeName: "ul",
+                attributes: {
+                  className: "waiting-room-players"
+                }
+              }, {
+                nodeName: "div",
+                attributes: {
+                  className: "waiting-room-host-controls",
+                  style: {
+                    display: "none"
+                  }
+                },
+                children: [{
+                  nodeName: "div",
+                  attributes: {
+                    className: "form-group"
+                  },
+                  children: [{
+                    nodeName: "label",
+                    attributes: {
+                      for: "waiting-room-hints",
+                      innerText: "Sensor scans (hints)"
+                    }
+                  }, {
+                    nodeName: "select",
+                    attributes: {
+                      id: "waiting-room-hints",
+                      name: "waiting-room-hints"
+                    },
+                    children: [{
+                      nodeName: "option",
+                      attributes: {
+                        value: "off",
+                        innerHTML: "Off"
+                      }
+                    }, {
+                      nodeName: "option",
+                      attributes: {
+                        value: "optional",
+                        selected: true,
+                        innerHTML: "Optional (each player chooses)"
+                      }
+                    }, {
+                      nodeName: "option",
+                      attributes: {
+                        value: "on",
+                        innerHTML: "On for everyone"
+                      }
+                    }]
+                  }]
+                }, {
+                  nodeName: "div",
+                  attributes: {
+                    className: "form-group"
+                  },
+                  children: [{
+                    nodeName: "label",
+                    attributes: {
+                      for: "waiting-room-robots",
+                      innerText: "Robots (fill empty seats)"
+                    }
+                  }, {
+                    nodeName: "input",
+                    attributes: {
+                      id: "waiting-room-robots",
+                      name: "waiting-room-robots",
+                      type: "number",
+                      value: 0,
+                      min: 0,
+                      max: 0
+                    }
+                  }]
+                }, {
+                  nodeName: "button",
+                  attributes: {
+                    className: "waiting-room-start",
+                    type: "button",
+                    innerHTML: "Start Game"
+                  },
+                  eventListeners: {
+                    click: listener("remoteListener")
+                  }
+                }]
+              }, {
+                nodeName: "div",
+                attributes: {
+                  className: "waiting-room-status"
+                }
+              }, {
+                nodeName: "button",
+                attributes: {
+                  className: "waiting-room-leave",
+                  type: "button",
+                  innerHTML: "Leave"
+                },
+                eventListeners: {
+                  click: listener("remoteListener")
+                }
+              }]
+            },
+            {
+              nodeName: "form",
+              attributes: {
+                name: "mainMenuForm",
+                className: "main-menu-form",
+                style: {
+                  display: "none"
+                }
+              },
+              eventListeners: {
+                submit: listener("beginRound")
+              },
+              children: [{
+                nodeName: "button",
+                attributes: {
+                  className: "lobby-back",
+                  type: "button",
+                  innerHTML: "Back"
+                },
+                eventListeners: {
+                  click: listener("presetListener")
+                }
+              }, {
+                nodeName: "h2",
+                attributes: {
+                  className: "lobby-title",
+                  innerHTML: "Lobby"
+                }
+              }, {
+                nodeName: "div",
+                attributes: {
+                  className: "human-group"
+                },
+                children: [{
+                  nodeName: "label",
+                  attributes: {
+                    for: "human-players",
+                    innerText: "Humans"
+                  }
+                }, {
+                  nodeName: "input",
+                  attributes: {
+                    id: "human-players",
+                    name: "human-players",
+                    type: "number",
+                    value: 0,
+                    min: 0,
+                    max: 4,
+                    required: ""
+                  }
+                }]
+              }, {
+                nodeName: "div",
+                attributes: {
                   className: "form-group"
                 },
                 children: [{
                   nodeName: "label",
                   attributes: {
-                    for: "waiting-room-hints",
+                    for: "robot-players",
+                    innerText: "Robots"
+                  }
+                }, {
+                  nodeName: "input",
+                  attributes: {
+                    id: "robot-players",
+                    name: "robot-players",
+                    type: "number",
+                    value: 0,
+                    min: 0,
+                    max: 4,
+                    required: ""
+                  }
+                }]
+              }, {
+                nodeName: "div",
+                attributes: {
+                  className: "form-group"
+                },
+                children: [{
+                  nodeName: "label",
+                  attributes: {
+                    for: "hint-setting",
                     innerText: "Sensor scans (hints)"
                   }
                 }, {
                   nodeName: "select",
                   attributes: {
-                    id: "waiting-room-hints",
-                    name: "waiting-room-hints"
+                    id: "hint-setting",
+                    name: "hint-setting"
                   },
                   children: [{
                     nodeName: "option",
@@ -21273,191 +21527,31 @@ var cloakfall = (() => {
               }, {
                 nodeName: "div",
                 attributes: {
-                  className: "form-group"
+                  className: "first-group"
                 },
                 children: [{
                   nodeName: "label",
                   attributes: {
-                    for: "waiting-room-robots",
-                    innerText: "Robots (fill empty seats)"
+                    for: "first-go-first",
+                    innerText: "First Player Starts"
                   }
                 }, {
                   nodeName: "input",
                   attributes: {
-                    id: "waiting-room-robots",
-                    name: "waiting-room-robots",
-                    type: "number",
-                    value: 0,
-                    min: 0,
-                    max: 0
+                    id: "first-go-first",
+                    name: "first-go-first",
+                    type: "checkbox"
                   }
                 }]
               }, {
-                nodeName: "button",
-                attributes: {
-                  className: "waiting-room-start",
-                  type: "button",
-                  innerHTML: "Start Game"
-                },
-                eventListeners: {
-                  click: listener("remoteListener")
-                }
-              }]
-            }, {
-              nodeName: "div",
-              attributes: {
-                className: "waiting-room-status"
-              }
-            }, {
-              nodeName: "button",
-              attributes: {
-                className: "waiting-room-leave",
-                type: "button",
-                innerHTML: "Leave"
-              },
-              eventListeners: {
-                click: listener("remoteListener")
-              }
-            }]
-          }, {
-            nodeName: "form",
-            attributes: {
-              name: "mainMenuForm",
-              className: "main-menu-form",
-              style: {
-                display: "none"
-              }
-            },
-            eventListeners: {
-              submit: listener("beginRound")
-            },
-            children: [{
-              nodeName: "button",
-              attributes: {
-                className: "lobby-back",
-                type: "button",
-                innerHTML: "Back"
-              },
-              eventListeners: {
-                click: listener("presetListener")
-              }
-            }, {
-              nodeName: "h2",
-              attributes: {
-                className: "lobby-title",
-                innerHTML: "Lobby"
-              }
-            }, {
-              nodeName: "div",
-              attributes: {
-                className: "human-group"
-              },
-              children: [{
-                nodeName: "label",
-                attributes: {
-                  for: "human-players",
-                  innerText: "Humans"
-                }
-              }, {
                 nodeName: "input",
                 attributes: {
-                  id: "human-players",
-                  name: "human-players",
-                  type: "number",
-                  value: 0,
-                  min: 0,
-                  max: 4,
-                  required: ""
+                  type: "submit",
+                  value: "Start"
                 }
               }]
-            }, {
-              nodeName: "div",
-              attributes: {
-                className: "form-group"
-              },
-              children: [{
-                nodeName: "label",
-                attributes: {
-                  for: "robot-players",
-                  innerText: "Robots"
-                }
-              }, {
-                nodeName: "input",
-                attributes: {
-                  id: "robot-players",
-                  name: "robot-players",
-                  type: "number",
-                  value: 0,
-                  min: 0,
-                  max: 4,
-                  required: ""
-                }
-              }]
-            }, {
-              nodeName: "div",
-              attributes: {
-                className: "form-group"
-              },
-              children: [{
-                nodeName: "label",
-                attributes: {
-                  for: "hint-setting",
-                  innerText: "Sensor scans (hints)"
-                }
-              }, {
-                nodeName: "select",
-                attributes: {
-                  id: "hint-setting",
-                  name: "hint-setting"
-                },
-                children: [{
-                  nodeName: "option",
-                  attributes: {
-                    value: "off",
-                    innerHTML: "Off"
-                  }
-                }, {
-                  nodeName: "option",
-                  attributes: {
-                    value: "optional",
-                    selected: true,
-                    innerHTML: "Optional (each player chooses)"
-                  }
-                }, {
-                  nodeName: "option",
-                  attributes: {
-                    value: "on",
-                    innerHTML: "On for everyone"
-                  }
-                }]
-              }]
-            }, {
-              nodeName: "div",
-              attributes: {
-                className: "first-group"
-              },
-              children: [{
-                nodeName: "label",
-                attributes: {
-                  for: "first-go-first",
-                  innerText: "First Player Starts"
-                }
-              }, {
-                nodeName: "input",
-                attributes: {
-                  id: "first-go-first",
-                  name: "first-go-first",
-                  type: "checkbox"
-                }
-              }]
-            }, {
-              nodeName: "input",
-              attributes: {
-                type: "submit",
-                value: "Start"
-              }
-            }]
-          }]
+            }
+          ]
         }]
       });
       exports.default = mainMenu;

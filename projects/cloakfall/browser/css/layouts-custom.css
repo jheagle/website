@@ -78,6 +78,16 @@
   padding: 0 2rem;
 }
 
+.version-line {
+  color: #9aa4bd;
+  font-size: 1.3rem;
+  margin: 0.75rem auto 0;
+}
+.version-line a {
+  color: inherit;
+  text-decoration: underline;
+}
+
 .presets {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
@@ -145,12 +155,20 @@
   font-size: 1.4rem;
   min-height: 1.4rem;
 }
+.waiting-room .waiting-room-status a {
+  color: inherit;
+  text-decoration: underline;
+}
 
 .remote-entry .remote-choice-status, .remote-entry .remote-host-status, .remote-entry .remote-code-status, .remote-entry .remote-join-status {
   color: #f4a742;
   font-size: 1.4rem;
   text-align: center;
   min-height: 1.4rem;
+}
+.remote-entry .remote-choice-status a, .remote-entry .remote-host-status a, .remote-entry .remote-code-status a, .remote-entry .remote-join-status a {
+  color: inherit;
+  text-decoration: underline;
 }
 .remote-entry .remote-join-message {
   color: white;

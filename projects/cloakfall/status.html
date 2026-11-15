@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cloakfall status</title>
+    <meta name="description" content="Whether Cloakfall's online game server is up right now.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="icons/favicon.ico" sizes="32x32">
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#070b16">
+    <style>
+      :root {
+        --bg: #070b16;
+        --panel: rgba(16, 23, 44, .88);
+        --text: #e6e9f2;
+        --muted: #9aa4bd;
+        --up: #4ade80;
+        --down: #ff8a3d;
+        --checking: #6e7898;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+      main { max-width: 36rem; margin: 0 auto; padding: 2rem 1rem; }
+      h1 { margin: 0 0 1.5rem; font-size: 1.5rem; letter-spacing: .08em; text-transform: uppercase; }
+      .card { background: var(--panel); border: 1px solid #1e2a4a; border-radius: .5rem; padding: 1.25rem; }
+      .state { display: flex; align-items: center; gap: .75rem; margin: 0; font-size: 1.25rem; font-weight: 600; }
+      .dot { width: .875rem; height: .875rem; border-radius: 50%; background: var(--checking); flex: none; }
+      [data-state="up"] .dot { background: var(--up); }
+      [data-state="down"] .dot { background: var(--down); }
+      .summary { margin: .75rem 0 0; color: var(--muted); }
+      dl { display: grid; grid-template-columns: auto 1fr; gap: .25rem 1rem; margin: 1rem 0 0; }
+      dt { color: var(--muted); }
+      dd { margin: 0; }
+      .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 1.25rem; }
+      button { font: inherit; color: var(--bg); background: var(--muted); border: 0; border-radius: .375rem; padding: .375rem .875rem; cursor: pointer; }
+      button:focus-visible, a:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+      .checked { color: var(--muted); font-size: .875rem; }
+      a { color: var(--text); }
+      [hidden] { display: none; }
+    </style>
+</head>
+<body>
+<main>
+    <h1>Cloakfall status</h1>
+    <section class="card" id="lobby" data-state="checking" aria-labelledby="lobby-state">
+        <p class="state" id="lobby-state" role="status"><span class="dot" aria-hidden="true"></span><span id="state-text">Checking the game server...</span></p>
+        <p class="summary" id="summary"></p>
+        <dl id="details" hidden>
+            <dt>Up since</dt><dd id="started"></dd>
+            <dt>Games in progress</dt><dd id="games"></dd>
+            <dt>Open rooms</dt><dd id="rooms"></dd>
+            <dt>Players online</dt><dd id="players"></dd>
+            <dt>Version</dt><dd><span id="version"></span> (<a id="notes" href="https://github.com/jheagle/cloakfall/releases" target="_blank" rel="noopener">release notes</a>)</dd>
+        </dl>
+        <div class="actions">
+            <button type="button" id="recheck">Check again</button>
+            <span class="checked" id="checked"></span>
+        </div>
+    </section>
+    <p><a href="index.html">Back to Cloakfall</a> · <a href="https://github.com/jheagle/cloakfall/releases" target="_blank" rel="noopener">All releases</a></p>
+</main>
+<script>
+  // The lobby's address, worked out the same way as src/network/lobbySocket.ts's lobbyUrl (port 3002 on the host this
+  // page came from, localhost outside a web page); kept inline so this page loads nothing else and still works when
+  // the game's own bundle is what's broken.
+  const lobbyUrl = /^https?:$/.test(location.protocol) && location.hostname
+    ? `${location.protocol}//${location.hostname}:3002`
+    : 'http://localhost:3002'
+  const TIMEOUT_MS = 5000
+  const RECHECK_MS = 30000
+  const byId = id => document.getElementById(id)
+
+  const show = (state, text, summary, status) => {
+    byId('lobby').dataset.state = state
+    byId('state-text').textContent = text
+    byId('summary').textContent = summary
+    byId('details').hidden = !status
+    if (status) {
+      byId('started').textContent = new Date(status.startedAt).toLocaleString()
+      byId('games').textContent = status.games
+      byId('rooms').textContent = status.rooms
+      byId('players').textContent = status.players
+      byId('version').textContent = status.version
+      // The lobby's own version's notes; every release when it doesn't know its version (run without npm)
+      byId('notes').href = /^\d+\.\d+\.\d+/.test(status.version)
+        ? `https://github.com/jheagle/cloakfall/releases/tag/v${status.version}`
+        : 'https://github.com/jheagle/cloakfall/releases'
+    }
+    byId('checked').textContent = state === 'checking' ? '' : `Checked at ${new Date().toLocaleTimeString()}`
+  }
+
+  let checking = false
+  const check = async () => {
+    if (checking) return
+    checking = true
+    show('checking', 'Checking the game server...', '', null)
+    try {
+      const response = await fetch(`${lobbyUrl}/status`, { cache: 'no-store', signal: AbortSignal.timeout(TIMEOUT_MS) })
+      const status = response.ok ? await response.json() : null
+      if (status?.status !== 'up') throw new Error(`HTTP ${response.status}`)
+      show('up', 'Online play is up', 'The game server is running: you can host and join online games.', status)
+    } catch {
+      show('down', 'Online play is down',
+        "The game server isn't answering. It may be restarting or have run into a problem; online games can't be " +
+        'hosted or joined until it is back. Games on this device (against robots or friends taking turns) still work.',
+        null)
+    } finally {
+      checking = false
+    }
+  }
+
+  byId('recheck').addEventListener('click', check)
+  check()
+  setInterval(() => { if (!document.hidden) check() }, RECHECK_MS)
+</script>
+</body>
+</html>
