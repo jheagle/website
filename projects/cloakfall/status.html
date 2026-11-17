@@ -9,6 +9,7 @@
     <link rel="icon" href="icons/favicon.ico" sizes="32x32">
     <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
     <meta name="theme-color" content="#070b16">
+    <meta name="cloakfall-lobby" content="https://cloakfall.joshuaheagle.com">
     <style>
       :root {
         --bg: #070b16;
@@ -67,12 +68,21 @@
     <p><a href="index.html">Back to Cloakfall</a> · <a href="https://github.com/jheagle/cloakfall/releases" target="_blank" rel="noopener">All releases</a></p>
 </main>
 <script>
-  // The lobby's address, worked out the same way as src/network/lobbySocket.ts's lobbyUrl (port 3002 on the host this
-  // page came from, localhost outside a web page); kept inline so this page loads nothing else and still works when
-  // the game's own bundle is what's broken.
-  const lobbyUrl = /^https?:$/.test(location.protocol) && location.hostname
+  // The lobby's address, worked out the same way as src/network/lobbySocket.ts's lobbyUrl (the http: or https: URL in a
+  // cloakfall-lobby meta tag when the page has one, otherwise port 3002 on the host this page came from, localhost
+  // outside a web page); kept inline so this page loads nothing else and still works when the game's own bundle is
+  // what's broken.
+  const configuredLobbyUrl = () => {
+    try {
+      const url = new URL(document.querySelector('meta[name="cloakfall-lobby"]')?.getAttribute('content') ?? '')
+      return /^https?:$/.test(url.protocol) ? url.origin : null
+    } catch {
+      return null
+    }
+  }
+  const lobbyUrl = configuredLobbyUrl() ?? (/^https?:$/.test(location.protocol) && location.hostname
     ? `${location.protocol}//${location.hostname}:3002`
-    : 'http://localhost:3002'
+    : 'http://localhost:3002')
   const TIMEOUT_MS = 5000
   const RECHECK_MS = 30000
   const byId = id => document.getElementById(id)

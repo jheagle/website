@@ -20427,10 +20427,24 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.sendGameAction = exports.onGameUpdate = exports.startGame = exports.getSocketId = exports.onRoomClosed = exports.onRoomUpdate = exports.joinRoom = exports.peekRoom = exports.createRoom = exports.disconnectLobbySocket = exports.setLobbyTimeout = exports.UNREACHABLE_ERROR = exports.connectLobbySocket = exports.lobbyUrl = exports.LOBBY_PORT = void 0;
+      exports.sendGameAction = exports.onGameUpdate = exports.startGame = exports.getSocketId = exports.onRoomClosed = exports.onRoomUpdate = exports.joinRoom = exports.peekRoom = exports.createRoom = exports.disconnectLobbySocket = exports.setLobbyTimeout = exports.UNREACHABLE_ERROR = exports.connectLobbySocket = exports.lobbyUrl = exports.configuredLobbyUrl = exports.LOBBY_META_NAME = exports.LOBBY_PORT = void 0;
       var socket_io_client_1 = require_cjs5();
       exports.LOBBY_PORT = 3002;
-      var lobbyUrl = (location2 = globalThis.location ?? null) => location2 && /^https?:$/.test(location2.protocol) && location2.hostname ? `${location2.protocol}//${location2.hostname}:${exports.LOBBY_PORT}` : `http://localhost:${exports.LOBBY_PORT}`;
+      exports.LOBBY_META_NAME = "cloakfall-lobby";
+      var configuredLobbyUrl = (doc = globalThis.document ?? null) => doc?.querySelector(`meta[name="${exports.LOBBY_META_NAME}"]`)?.getAttribute("content") ?? null;
+      exports.configuredLobbyUrl = configuredLobbyUrl;
+      var lobbyUrl = (location2 = globalThis.location ?? null, configured = (0, exports.configuredLobbyUrl)()) => {
+        if (configured) {
+          try {
+            const url = new URL(configured);
+            if (/^https?:$/.test(url.protocol)) {
+              return url.origin;
+            }
+          } catch {
+          }
+        }
+        return location2 && /^https?:$/.test(location2.protocol) && location2.hostname ? `${location2.protocol}//${location2.hostname}:${exports.LOBBY_PORT}` : `http://localhost:${exports.LOBBY_PORT}`;
+      };
       exports.lobbyUrl = lobbyUrl;
       var socket = null;
       var connectLobbySocket = (url = (0, exports.lobbyUrl)()) => {
