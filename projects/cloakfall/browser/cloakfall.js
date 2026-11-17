@@ -9497,11 +9497,13 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.FORM_CONTROL_TAGS = void 0;
+      exports.isFormControl = exports.FORM_CONTROL_TAGS = void 0;
       exports.FORM_CONTROL_TAGS = ["INPUT", "SELECT", "TEXTAREA"];
+      var isFormControl = (element) => typeof element?.tagName === "string" && exports.FORM_CONTROL_TAGS.includes(element.tagName.toUpperCase());
+      exports.isFormControl = isFormControl;
       var captureTargetState = (target) => {
         const element = target;
-        if (!element || !exports.FORM_CONTROL_TAGS.includes(element.tagName)) {
+        if (!element || !(0, exports.isFormControl)(element)) {
           return void 0;
         }
         return element.type === "checkbox" || element.type === "radio" ? {
@@ -10171,14 +10173,13 @@ var cloakfall = (() => {
     "node_modules/treeloom/dist/events/functions/receiveForwardedEvent.js"(exports) {
       "use strict";
       init_process();
-      require_es_array_includes();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
       var itemIdIndex_1 = require_itemIdIndex();
       var makeForwardingListener_1 = require_makeForwardingListener();
       var applyTargetState = (element, targetState) => {
-        if (typeof targetState !== "object" || targetState === null || !makeForwardingListener_1.FORM_CONTROL_TAGS.includes(element.tagName)) {
+        if (typeof targetState !== "object" || targetState === null || !(0, makeForwardingListener_1.isFormControl)(element)) {
           return;
         }
         const {
@@ -13459,8 +13460,10 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
+      exports.PLAYER_CONTROLS_CLASS = void 0;
       var gameOptions_1 = require_gameOptions();
       var si_funciona_1 = require_main();
+      exports.PLAYER_CONTROLS_CLASS = "player-controls";
       var playerStats = (player, status = "", item = player) => {
         const hintControl = player.isRobot || (0, gameOptions_1.getHintSetting)(item) !== "optional" ? [] : [{
           nodeName: "label",
@@ -13528,7 +13531,7 @@ var cloakfall = (() => {
           }, ...controls.length ? [{
             nodeName: "div",
             attributes: {
-              className: "player-controls"
+              className: exports.PLAYER_CONTROLS_CLASS
             },
             children: controls
           }] : [], {
@@ -22126,10 +22129,16 @@ var cloakfall = (() => {
         value: true
       });
       var treeloom_1 = __importDefault(require_main3());
+      var si_funciona_1 = __importDefault(require_main());
       var heatHint_1 = require_heatHint();
       var hintListener = (e, target) => {
         const player = treeloom_1.default.getParentsByClass("player", target)[0];
         player.showHint = e.target.checked;
+        treeloom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(target, {
+          attributes: {
+            checked: player.showHint
+          }
+        }));
         if (!player.attacker) {
           return;
         }
