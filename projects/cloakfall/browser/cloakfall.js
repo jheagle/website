@@ -14966,6 +14966,79 @@ var cloakfall = (() => {
     }
   });
 
+  // dist/setup/orderPicks.js
+  var require_orderPicks = __commonJS({
+    "dist/setup/orderPicks.js"(exports) {
+      "use strict";
+      init_process();
+      var __importDefault = function(mod) {
+        return mod && mod.__esModule ? mod : {
+          "default": mod
+        };
+      };
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.showOrderPicks = exports.setOrderBadge = exports.ordinal = exports.orderPick = exports.ORDER_PICK_CLASS = void 0;
+      var treeloom_1 = __importDefault(require_main3());
+      var si_funciona_1 = __importDefault(require_main());
+      exports.ORDER_PICK_CLASS = "order-pick";
+      var orderPick = () => ({
+        nodeName: "button",
+        attributes: {
+          className: exports.ORDER_PICK_CLASS,
+          type: "button",
+          disabled: true
+        },
+        eventListeners: {
+          click: [{
+            listenerFunc: "placementListener",
+            listenerArgs: {},
+            listenerOptions: false
+          }]
+        }
+      });
+      exports.orderPick = orderPick;
+      var ordinal = (place) => {
+        const suffix = place % 10 === 1 && place % 100 !== 11 ? "st" : place % 10 === 2 && place % 100 !== 12 ? "nd" : place % 10 === 3 && place % 100 !== 13 ? "rd" : "th";
+        return `${place}${suffix}`;
+      };
+      exports.ordinal = ordinal;
+      var update = (item, attributes) => {
+        treeloom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(item, {
+          attributes
+        }));
+      };
+      var setOrderBadge = (player, text) => {
+        const badge = treeloom_1.default.getChildrenByClass("turn-badge", player)[0];
+        if (badge) {
+          update(badge, {
+            innerHTML: text
+          });
+        }
+      };
+      exports.setOrderBadge = setOrderBadge;
+      var showOrderPicks = (players, shown, pickable = () => false) => {
+        players.forEach((player) => {
+          const pick = treeloom_1.default.getChildrenByClass(exports.ORDER_PICK_CLASS, player)[0];
+          if (pick) {
+            update(pick, {
+              textContent: player.name,
+              disabled: !(shown && pickable(player)),
+              style: {
+                borderLeftColor: player.colour ?? ""
+              }
+            });
+          }
+          update(player, {
+            "data-ordering": shown ? "true" : "false"
+          });
+        });
+      };
+      exports.showOrderPicks = showOrderPicks;
+    }
+  });
+
   // dist/setup/placement.js
   var require_placement = __commonJS({
     "dist/setup/placement.js"(exports) {
@@ -14980,7 +15053,7 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.finishTurn = exports.randomOrder = exports.chooseOrder = exports.randomise = exports.placeCell = exports.continueTurn = exports.setStatsShown = exports.startPlacement = exports.isPlacing = void 0;
+      exports.finishTurn = exports.randomOrder = exports.pickOrder = exports.chooseOrder = exports.randomise = exports.placeCell = exports.continueTurn = exports.setStatsShown = exports.startPlacement = exports.isPlacing = void 0;
       var treeloom_1 = __importDefault(require_main3());
       var labelTile_1 = __importDefault(require_labelTile());
       var treeloom_matrix_1 = __importDefault(require_main4());
@@ -14993,6 +15066,7 @@ var cloakfall = (() => {
       var updatePlayerStats_1 = __importDefault(require_updatePlayerStats());
       var placeShip_1 = require_placeShip();
       var checkIfShipCell_1 = __importDefault(require_checkIfShipCell());
+      var orderPicks_1 = require_orderPicks();
       var active = (item) => {
         const session = (0, gameSession_1.getSession)(item).placement;
         if (!session) {
@@ -15006,9 +15080,6 @@ var cloakfall = (() => {
           attributes
         })));
       };
-      var setBadge = (player, text) => update(child(player, "turn-badge"), {
-        innerHTML: text
-      });
       var nameInput = (session) => child(session.panel, "placement-name").element;
       var readName = (session, player) => {
         const name = nameInput(session).value.trim();
@@ -15125,7 +15196,7 @@ var cloakfall = (() => {
         setButtons(session, {
           placingShown: true,
           doneEnabled: !session.pending.length,
-          nameShown: true
+          nameShown: session.humans.length === 1
         });
       };
       var continueTurn = (item) => {
@@ -15135,6 +15206,7 @@ var cloakfall = (() => {
         } else if (session.stage === "chosen") {
           startRound(session, session.order);
         } else if (session.stage === "handoff") {
+          readName(session, current(session));
           session.stage = "placing";
           session.pending = [...defaultFleet_1.defaultShipSpecs];
           session.start = null;
@@ -15243,7 +15315,8 @@ var cloakfall = (() => {
           session.stage = "choosing";
           showAll(session);
           (0, exports.setStatsShown)(session.players, true);
-          setMessage(session, "All players are ready. Choose who goes first: Random, or set the order by clicking each player's board in turn.");
+          (0, orderPicks_1.showOrderPicks)(session.players, true);
+          setMessage(session, "All players are ready. Choose who goes first: Random, or set the order by tapping each player's name in turn.");
           setButtons(session, {
             randomShown: true,
             orderShown: true
@@ -15263,40 +15336,46 @@ var cloakfall = (() => {
         session.order = [];
         showAll(session);
         session.players.forEach((p) => {
-          setBadge(p, "");
+          (0, orderPicks_1.setOrderBadge)(p, "");
           update(p, {
             "data-pickable": "true"
           });
         });
-        setMessage(session, "Click each player's board in turn. The first one you click goes first.");
+        (0, orderPicks_1.showOrderPicks)(session.players, true, () => true);
+        setMessage(session, "Tap each player's name in turn. The first one you tap goes first.");
         setButtons(session, {
           orderShown: true
         });
       };
       exports.chooseOrder = chooseOrder;
-      var ordinal = (place) => {
-        const suffix = place % 10 === 1 && place % 100 !== 11 ? "st" : place % 10 === 2 && place % 100 !== 12 ? "nd" : place % 10 === 3 && place % 100 !== 13 ? "rd" : "th";
-        return `${place}${suffix}`;
-      };
       var pickPlayer = (session, board) => {
         const player = session.players.find((p) => p.board === board);
         if (!player || session.order.includes(player)) {
           return;
         }
         session.order.push(player);
-        setBadge(player, ordinal(session.order.length));
+        (0, orderPicks_1.setOrderBadge)(player, (0, orderPicks_1.ordinal)(session.order.length));
+        (0, orderPicks_1.showOrderPicks)(session.players, true, (p) => !session.order.includes(p));
         if (session.order.length < session.players.length) {
-          setMessage(session, `${session.order.map((p) => p.name).join(", ")} so far. Click the next player in turn.`);
+          setMessage(session, `${session.order.map((p) => p.name).join(", ")} so far. Tap the next player in turn.`);
           return;
         }
         showOrder(session);
       };
+      var pickOrder = (item, player) => {
+        const session = active(item);
+        if (session.stage === "ordering") {
+          pickPlayer(session, player.board);
+        }
+      };
+      exports.pickOrder = pickOrder;
       var showOrder = (session) => {
         session.stage = "chosen";
         showAll(session);
         session.players.forEach((p) => update(p, {
           "data-pickable": "false"
         }));
+        (0, orderPicks_1.showOrderPicks)(session.players, true);
         setMessage(session, `${session.order.map((p) => p.name).join(", then ")} will take turns, in that order. Press Continue to start.`);
         setButtons(session, {
           continueShown: true,
@@ -15309,6 +15388,7 @@ var cloakfall = (() => {
         session.players.forEach((p) => update(p, {
           "data-pickable": "false"
         }));
+        (0, orderPicks_1.showOrderPicks)(session.players, true);
         setButtons(session, {});
         setMessage(session, "Choosing at random...");
         const shuffled = shuffle(session.players);
@@ -15323,7 +15403,7 @@ var cloakfall = (() => {
             }
           }));
           session.order = shuffled;
-          session.order.forEach((p, i) => setBadge(p, ordinal(i + 1)));
+          session.order.forEach((p, i) => (0, orderPicks_1.setOrderBadge)(p, (0, orderPicks_1.ordinal)(i + 1)));
           showOrder(session);
         }, 120);
       };
@@ -15362,8 +15442,9 @@ var cloakfall = (() => {
         if (order.length > 1 && order !== players) {
           reorderBoards(order);
         }
+        (0, orderPicks_1.showOrderPicks)(players, false);
         players.forEach((p) => {
-          setBadge(p, "");
+          (0, orderPicks_1.setOrderBadge)(p, "");
           update(p, {
             style: {
               display: "",
@@ -15519,7 +15600,7 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.chooseOrderRandom = exports.beginOrderSet = exports.randomiseRemoteShips = exports.readyRemotePlayer = exports.handleRemoteBoardClick = exports.startRemotePlacement = exports.remotePlacementStage = exports.isHostOnlyStage = exports.cancelRemotePlacement = exports.isRemoteSessionActive = exports.PLACEMENT_TIMEOUT_MS = void 0;
+      exports.chooseOrderRandom = exports.beginOrderSet = exports.randomiseRemoteShips = exports.readyRemotePlayer = exports.handleRemoteBoardClick = exports.pickRemoteOrder = exports.startRemotePlacement = exports.remotePlacementStage = exports.isHostOnlyStage = exports.cancelRemotePlacement = exports.isRemoteSessionActive = exports.PLACEMENT_TIMEOUT_MS = void 0;
       var treeloom_1 = __importDefault(require_main3());
       var labelTile_1 = __importDefault(require_labelTile());
       var treeloom_matrix_1 = __importDefault(require_main4());
@@ -15531,6 +15612,7 @@ var cloakfall = (() => {
       var placement_1 = require_placement();
       var remotePlacementPanel_1 = __importDefault(require_remotePlacementPanel());
       var remoteOrderingPanel_1 = __importDefault(require_remoteOrderingPanel());
+      var orderPicks_1 = require_orderPicks();
       exports.PLACEMENT_TIMEOUT_MS = 6e4;
       var sessions = /* @__PURE__ */ new WeakMap();
       var findSession = (item) => sessions.get(treeloom_1.default.getTopParentItem(item)) ?? null;
@@ -15599,8 +15681,8 @@ var cloakfall = (() => {
         const panel = child(root.body, "remote-ordering");
         const messages = {
           placing: "",
-          choosing: "Choose how to decide the order: Random, or click each player's board in turn.",
-          ordering: "Click each player's board in turn. The first one clicked goes first.",
+          choosing: "Choose how to decide the order: Random, or tap each player's name in turn.",
+          ordering: "Tap each player's name in turn. The first one tapped goes first.",
           shuffling: "Choosing at random...",
           chosen: `${session.order.map((p) => p.name).join(", then ")} will take turns, in that order.`
         };
@@ -15704,6 +15786,8 @@ var cloakfall = (() => {
           return;
         }
         session.order.push(player);
+        (0, orderPicks_1.setOrderBadge)(player, (0, orderPicks_1.ordinal)(session.order.length));
+        (0, orderPicks_1.showOrderPicks)(session.players, true, (p) => !session.order.includes(p));
         const root = treeloom_1.default.getTopParentItem(board);
         if (session.order.length < session.players.length) {
           updateOrderingPanel(session, root);
@@ -15711,6 +15795,8 @@ var cloakfall = (() => {
         }
         finishOrdering(session, root);
       };
+      var pickRemoteOrder = (player) => pickOrderPlayer(player.board);
+      exports.pickRemoteOrder = pickRemoteOrder;
       var handleRemoteBoardClick = (tile, board) => {
         const session = activeSession(tile);
         if (session.stage === "placing") {
@@ -15727,6 +15813,7 @@ var cloakfall = (() => {
             display: "none"
           }
         }));
+        (0, orderPicks_1.showOrderPicks)(session.players, true);
         updateOrderingPanel(session, root);
       };
       var autoFinishPlacement = (root) => {
@@ -15796,6 +15883,7 @@ var cloakfall = (() => {
         session.players.forEach((player) => update(player, {
           "data-pickable": "true"
         }));
+        (0, orderPicks_1.showOrderPicks)(session.players, true, () => true);
         updateOrderingPanel(session, root);
       };
       exports.beginOrderSet = beginOrderSet;
@@ -15843,6 +15931,8 @@ var cloakfall = (() => {
         session.players.forEach((player) => update(player, {
           "data-pickable": "false"
         }));
+        (0, orderPicks_1.showOrderPicks)(session.players, false);
+        session.players.forEach((player) => (0, orderPicks_1.setOrderBadge)(player, ""));
         updateOrderingPanel(session, root);
         update(child(root.body, "remote-ordering"), {
           style: {
@@ -15902,10 +15992,18 @@ var cloakfall = (() => {
       "use strict";
       init_process();
       require_es_array_includes();
+      var __importDefault = function(mod) {
+        return mod && mod.__esModule ? mod : {
+          "default": mod
+        };
+      };
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
+      var treeloom_1 = __importDefault(require_main3());
       var placement_1 = require_placement();
+      var remotePlacement_1 = require_remotePlacement();
+      var orderPicks_1 = require_orderPicks();
       var placementListener = (e, target) => {
         const className = e.target.className;
         if (className.includes("placement-continue")) {
@@ -15918,6 +16016,16 @@ var cloakfall = (() => {
           (0, placement_1.randomOrder)(target);
         } else if (className.includes("begin-order")) {
           (0, placement_1.chooseOrder)(target);
+        } else if (className.includes(orderPicks_1.ORDER_PICK_CLASS)) {
+          const player = treeloom_1.default.getParentsByClass("player", target)[0];
+          if (!player) {
+            return;
+          }
+          if ((0, remotePlacement_1.isRemoteSessionActive)(target)) {
+            (0, remotePlacement_1.pickRemoteOrder)(player);
+          } else {
+            (0, placement_1.pickOrder)(target, player);
+          }
         }
       };
       exports.default = placementListener;
@@ -20893,7 +21001,7 @@ var cloakfall = (() => {
         value: true
       });
       exports.releaseNotesUrl = exports.RELEASES_URL = exports.version = void 0;
-      exports.version = "2.1.0";
+      exports.version = "2.1.1";
       exports.RELEASES_URL = "https://github.com/jheagle/cloakfall/releases";
       var releaseNotesUrl = (forVersion = exports.version) => `${exports.RELEASES_URL}/tag/v${forVersion}`;
       exports.releaseNotesUrl = releaseNotesUrl;
@@ -21710,6 +21818,7 @@ var cloakfall = (() => {
       var playerColours_1 = __importDefault(require_playerColours());
       var playerSet_1 = __importDefault(require_playerSet());
       var playerStats_1 = __importDefault(require_playerStats());
+      var orderPicks_1 = require_orderPicks();
       var waterTile_1 = __importDefault(require_waterTile());
       var labelTile_1 = require_labelTile();
       var buildPlayers = (humans, root, robots = 0, players = []) => {
@@ -21739,7 +21848,7 @@ var cloakfall = (() => {
           attributes: {
             className: "turn-badge"
           }
-        }, player.board, player.playerStats];
+        }, (0, orderPicks_1.orderPick)(), player.board, player.playerStats];
         players.push(player);
         return buildPlayers(--humans, root, humans < 0 ? --robots : robots, players);
       };
@@ -22078,11 +22187,13 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.installPlayerBar = exports.oneBoardCss = exports.readPlayers = exports.inPlay = exports.nextBarState = exports.boardToShow = exports.initialBarState = exports.OWN_BOARD_EVENT = exports.SHOT_ALERT_MS = exports.ONE_BOARD_MAX_WIDTH_PX = void 0;
+      exports.installPlayerBar = exports.oneBoardCss = exports.readPlayers = exports.inPlay = exports.nextBarState = exports.boardToShow = exports.initialBarState = exports.OWN_BOARD_EVENT = exports.SHOT_ALERT_MS = exports.PHONE_MEDIA = exports.ONE_BOARD_MAX_HEIGHT_PX = exports.ONE_BOARD_MAX_WIDTH_PX = void 0;
       var controlPanel_1 = __importDefault(require_controlPanel());
       var turnBanner_1 = __importDefault(require_turnBanner());
       var shotWatcher_1 = __importStar(require_shotWatcher());
       exports.ONE_BOARD_MAX_WIDTH_PX = 759;
+      exports.ONE_BOARD_MAX_HEIGHT_PX = 500;
+      exports.PHONE_MEDIA = `(max-width: ${exports.ONE_BOARD_MAX_WIDTH_PX}px), (max-height: ${exports.ONE_BOARD_MAX_HEIGHT_PX}px)`;
       exports.SHOT_ALERT_MS = 2500;
       exports.OWN_BOARD_EVENT = "cloakfall:own-board";
       var initialBarState = () => ({
@@ -22154,7 +22265,7 @@ var cloakfall = (() => {
         });
       };
       exports.readPlayers = readPlayers;
-      var oneBoardCss = (shown) => shown === null ? "" : `@media (max-width: ${exports.ONE_BOARD_MAX_WIDTH_PX}px) {
+      var oneBoardCss = (shown) => shown === null ? "" : `@media ${exports.PHONE_MEDIA} {
   main.game > .boards > .player:not(.role-own):not(:nth-child(${shown + 1})) { display: none !important; }
   main.game > .boards > .player:not(.role-own) > .player-stats > ul,
   main.game > .boards > .player:not(.role-own) > .player-stats > .player-controls { display: none; }
@@ -22239,7 +22350,7 @@ var cloakfall = (() => {
         const style = doc.createElement("style");
         main.after(nav, style);
         const view = doc.defaultView;
-        const narrow = view?.matchMedia?.(`(max-width: ${exports.ONE_BOARD_MAX_WIDTH_PX}px)`) ?? null;
+        const narrow = view?.matchMedia?.(exports.PHONE_MEDIA) ?? null;
         let state = (0, exports.initialBarState)();
         let frame = null;
         let rendered = "";
@@ -22463,6 +22574,7 @@ var cloakfall = (() => {
       exports.listenForOwnBoard = exports.revealOwnShips = void 0;
       var shadeShips_1 = __importDefault(require_shadeShips());
       var gameOptions_1 = require_gameOptions();
+      var gameSession_1 = require_gameSession();
       var playerBar_1 = require_playerBar();
       var revealOwnShips = (players, open) => {
         const humans = players.filter((player) => !player.isRobot);
@@ -22485,6 +22597,9 @@ var cloakfall = (() => {
         listening.add(main);
         main.addEventListener(playerBar_1.OWN_BOARD_EVENT, (event) => {
           if (root.forwardEvents || (0, gameOptions_1.getGameMode)(root) !== "multi") {
+            return;
+          }
+          if ((0, gameSession_1.getSession)(root).placement) {
             return;
           }
           const boards = root.body.children.find((child) => String(child.attributes?.className ?? "") === "boards");

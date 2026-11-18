@@ -267,7 +267,7 @@ body.has-player-bar {
   content: " ▸";
 }
 
-@media (max-width: 759px) {
+@media (max-width: 759px), (max-height: 500px) {
   body.has-player-bar main.game > .boards > .player.role-own {
     position: fixed;
     top: 0;
@@ -305,7 +305,7 @@ body.has-player-bar {
     transition: none !important;
   }
 }
-@media (min-width: 760px) {
+@media (min-width: 760px) and (min-height: 501px) {
   body.has-own-board main.game > .boards {
     padding-left: 30rem;
   }
@@ -498,7 +498,7 @@ body.has-turn-banner main.game > .boards {
   padding-top: 6.5rem;
 }
 
-@media (min-width: 760px) {
+@media (min-width: 760px) and (min-height: 501px) {
   body.has-turn-banner.has-own-board main.game > .boards > .player.role-own {
     top: 6.5rem;
     max-height: calc(100vh - 15.5rem);
@@ -534,5 +534,131 @@ body.has-turn-banner main.game > .boards {
 @media (prefers-reduced-motion: reduce) {
   .player-bar .player-bar-entry.was-hit {
     animation: none;
+  }
+}
+@media (max-height: 500px) and (min-width: 600px) {
+  .matrix .layer .row .column {
+    height: clamp(1.6rem, (100vh - 19rem) / 10, 3.5rem);
+    height: clamp(1.6rem, (100dvh - 19rem) / 10, 3.5rem);
+    width: clamp(1.6rem, (100vh - 19rem) / 10, 3.5rem);
+    width: clamp(1.6rem, (100dvh - 19rem) / 10, 3.5rem);
+  }
+  .turn-banner {
+    left: 0.8rem;
+    transform: none;
+    max-width: calc(50vw - 18rem);
+    white-space: normal;
+  }
+  body.has-turn-banner main.game > .boards {
+    padding-top: 1rem;
+  }
+  body.has-player-bar main.game > .boards > .player.role-own {
+    padding-top: 1rem;
+  }
+  body.has-player-bar main.game > .boards > .player.role-own .matrix .layer .row .column {
+    height: clamp(1.6rem, (100vh - 19rem) / 10, 3.5rem);
+    height: clamp(1.6rem, (100dvh - 19rem) / 10, 3.5rem);
+    width: clamp(1.6rem, (100vh - 19rem) / 10, 3.5rem);
+    width: clamp(1.6rem, (100dvh - 19rem) / 10, 3.5rem);
+  }
+  body.own-board-open .turn-banner {
+    visibility: hidden;
+  }
+}
+@keyframes turn-banner-in-side {
+  from {
+    transform: translateY(-150%);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+@media (max-height: 500px) and (min-width: 600px) and (prefers-reduced-motion: no-preference) {
+  .turn-banner.is-new {
+    animation-name: turn-banner-in-side;
+  }
+}
+@media (max-width: 759px), (max-height: 500px) {
+  .main-menu-form input:not([type=checkbox]), .main-menu-form select, .main-menu-form button, .remote-entry input:not([type=checkbox]), .remote-entry select, .remote-entry button, .waiting-room input:not([type=checkbox]), .waiting-room select, .waiting-room button, .final-scores input:not([type=checkbox]), .final-scores select, .final-scores button {
+    min-height: 4.8rem;
+    font-size: 1.8rem;
+  }
+  .main-menu-form input:not([type=checkbox]):not([type=submit]), .remote-entry input:not([type=checkbox]):not([type=submit]), .waiting-room input:not([type=checkbox]):not([type=submit]), .final-scores input:not([type=checkbox]):not([type=submit]) {
+    width: min(24rem, 90%);
+    padding: 0.6rem 1rem;
+    box-sizing: border-box;
+  }
+  .main-menu-form select, .remote-entry select, .waiting-room select, .final-scores select {
+    padding: 0.6rem 1rem;
+    border-radius: 0.6rem;
+  }
+  .main-menu-form input[type=checkbox], .remote-entry input[type=checkbox], .waiting-room input[type=checkbox], .final-scores input[type=checkbox] {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  .main-menu-form input[type=submit], .main-menu-form button.remote-choice-host, .main-menu-form button.remote-choice-join, .main-menu-form button.remote-host-submit, .main-menu-form button.remote-code-submit, .main-menu-form button.remote-join-submit, .remote-entry input[type=submit], .remote-entry button.remote-choice-host, .remote-entry button.remote-choice-join, .remote-entry button.remote-host-submit, .remote-entry button.remote-code-submit, .remote-entry button.remote-join-submit, .waiting-room input[type=submit], .waiting-room button.remote-choice-host, .waiting-room button.remote-choice-join, .waiting-room button.remote-host-submit, .waiting-room button.remote-code-submit, .waiting-room button.remote-join-submit, .final-scores input[type=submit], .final-scores button.remote-choice-host, .final-scores button.remote-choice-join, .final-scores button.remote-host-submit, .final-scores button.remote-code-submit, .final-scores button.remote-join-submit {
+    width: min(28rem, 90%);
+  }
+  .main-menu-form .lobby-back, .main-menu-form .remote-back, .main-menu-form .remote-sub-back, .main-menu-form .waiting-room-leave, .remote-entry .lobby-back, .remote-entry .remote-back, .remote-entry .remote-sub-back, .remote-entry .waiting-room-leave, .waiting-room .lobby-back, .waiting-room .remote-back, .waiting-room .remote-sub-back, .waiting-room .waiting-room-leave, .final-scores .lobby-back, .final-scores .remote-back, .final-scores .remote-sub-back, .final-scores .waiting-room-leave {
+    float: none;
+    display: block;
+    min-height: 4.4rem;
+    padding: 0.8rem 1.8rem;
+    font-size: 1.6rem;
+  }
+  .main-menu-form .form-group:has(select), .remote-entry .form-group:has(select), .waiting-room .form-group:has(select), .final-scores .form-group:has(select) {
+    width: 100%;
+  }
+  .main-menu-form select, .remote-entry select, .waiting-room select, .final-scores select {
+    width: min(38rem, 92%);
+  }
+  body.own-board-open .turn-banner {
+    visibility: hidden;
+  }
+  .placement {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1.2rem;
+  }
+  .placement p, .placement .placement-name {
+    flex: 1 1 100%;
+  }
+  .placement p {
+    margin: 0;
+  }
+  .placement .placement-name {
+    max-width: none;
+    margin: 0;
+    min-height: 4.8rem;
+  }
+  .placement button {
+    flex: 1 1 14rem;
+    min-width: 0;
+    min-height: 5.2rem;
+    margin: 0;
+    font-size: 2rem;
+  }
+}
+@media (max-width: 759px) and (min-height: 501px) {
+  main.game > .boards {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+  main.game > .boards > .player {
+    padding: 0.2rem;
+  }
+  main.game > .boards > .player:not(.role-own) .matrix .layer .row .column {
+    height: clamp(1.6rem, min((100vw - 4rem) / 10, (100vh - 22rem) / 10), 6rem);
+    height: clamp(1.6rem, min((100vw - 4rem) / 10, (100dvh - 22rem) / 10), 6rem);
+    width: clamp(1.6rem, min((100vw - 4rem) / 10, (100vh - 22rem) / 10), 6rem);
+    width: clamp(1.6rem, min((100vw - 4rem) / 10, (100dvh - 22rem) / 10), 6rem);
+  }
+  body.has-player-bar main.game > .boards > .player.role-own .matrix .layer .row .column {
+    height: clamp(2.6rem, (min(92vw, 36rem) - 4rem) / 10, 3.4rem);
+    width: clamp(2.6rem, (min(92vw, 36rem) - 4rem) / 10, 3.4rem);
   }
 }

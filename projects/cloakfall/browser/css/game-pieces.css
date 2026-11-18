@@ -43,6 +43,15 @@
 .placement p {
   margin: 0 0 1.2rem;
 }
+.placement .placement-name {
+  font-size: 1.8rem;
+  padding: 0.6rem 1rem;
+  margin: 0.4rem 1rem;
+  border-radius: 0.6rem;
+  border: none;
+  max-width: calc(100% - 2rem);
+  box-sizing: border-box;
+}
 .placement button {
   font-size: 1.8rem;
   font-weight: 700;
@@ -76,6 +85,41 @@
   cursor: pointer;
   outline: 2px dashed #51cf66;
   outline-offset: -2px;
+}
+
+.order-pick {
+  display: none;
+}
+
+.player[data-ordering=true] > :not(.turn-badge):not(.order-pick) {
+  display: none;
+}
+.player[data-ordering=true] > .order-pick {
+  display: block;
+  box-sizing: border-box;
+  min-width: 16rem;
+  max-width: calc(100vw - 4rem);
+  min-height: 5.2rem;
+  padding: 0.8rem 2.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: 0.2rem solid #3a4770;
+  border-left: 0.8rem solid #3a4770;
+  border-radius: 2.6rem;
+  background-color: #10172c;
+  color: #e8ecf8;
+  font: inherit;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.player[data-ordering=true] > .order-pick:enabled {
+  cursor: pointer;
+}
+.player[data-ordering=true] > .order-pick:enabled:hover, .player[data-ordering=true] > .order-pick:enabled:focus-visible {
+  border-top-color: #ff8a3d;
+  border-right-color: #ff8a3d;
+  border-bottom-color: #ff8a3d;
 }
 
 .player[data-pickable=true] {
