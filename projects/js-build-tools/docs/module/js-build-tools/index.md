@@ -196,7 +196,7 @@ Run all tests with jest. Configure where tests are located by using 'testPath'.
 
 **Returns**
 
-- `Promise.<*>`
+- `Promise.<Object>` — Jest's aggregated results, when every test passed; rejects when any failed.
 
 <MemberHeading id="testhelpers" depth="3" name="testHelpers" sig="testHelpers" />
 
@@ -215,7 +215,7 @@ Run the Jest tests for files which have been modified (based on git status). Con
 
 **Returns**
 
-- `Promise.<*>`
+- `Promise.<Object>` — Jest's aggregated results, when every test passed; rejects when any failed.
 
 <MemberHeading id="typedocs" depth="3" name="typeDocs" sig="typeDocs" />
 
