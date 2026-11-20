@@ -14603,12 +14603,19 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
+      exports.nameHitShip = void 0;
       var treeloom_1 = __importDefault(require_main3());
       var treeloom_matrix_1 = __importDefault(require_main4());
       var attackLock_1 = __importDefault(require_attackLock());
       var setHit_1 = __importDefault(require_setHit());
       var updatePlayerStats_1 = __importDefault(require_updatePlayerStats());
       var updateScore_1 = __importDefault(require_updateScore());
+      var nameHitShip = (cell, ship) => {
+        cell.attributes["data-ship"] = ship.name;
+        cell.attributes["data-ship-hits"] = String(ship.parts.filter((part) => part.isHit).length);
+        cell.attributes["data-ship-size"] = String(ship.parts.length);
+      };
+      exports.nameHitShip = nameHitShip;
       var attackFleet = (target) => {
         const attackLock = (0, attackLock_1.default)(target);
         let player = treeloom_1.default.getParentsByClass("player", target)[0];
@@ -14637,6 +14644,7 @@ var cloakfall = (() => {
         if (hitShip) {
           const theHitShip = hitShip;
           player = (0, updatePlayerStats_1.default)(player, `${Math.round(player.status * 100) / 100}%`);
+          (0, exports.nameHitShip)(hitCell, theHitShip);
           sunkShip = theHitShip.status <= 0 ? theHitShip.parts.length : 0;
         }
         return (0, updateScore_1.default)(hitCell.hasShip, sunkShip, players);
@@ -15592,6 +15600,49 @@ var cloakfall = (() => {
       "use strict";
       init_process();
       require_es_array_includes();
+      var __createBinding = Object.create ? function(o, m, k, k2) {
+        if (k2 === void 0) k2 = k;
+        var desc = Object.getOwnPropertyDescriptor(m, k);
+        if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+          desc = {
+            enumerable: true,
+            get: function() {
+              return m[k];
+            }
+          };
+        }
+        Object.defineProperty(o, k2, desc);
+      } : function(o, m, k, k2) {
+        if (k2 === void 0) k2 = k;
+        o[k2] = m[k];
+      };
+      var __setModuleDefault = Object.create ? function(o, v) {
+        Object.defineProperty(o, "default", {
+          enumerable: true,
+          value: v
+        });
+      } : function(o, v) {
+        o["default"] = v;
+      };
+      var __importStar = /* @__PURE__ */ (function() {
+        var ownKeys = function(o) {
+          ownKeys = Object.getOwnPropertyNames || function(o2) {
+            var ar = [];
+            for (var k in o2) if (Object.prototype.hasOwnProperty.call(o2, k)) ar[ar.length] = k;
+            return ar;
+          };
+          return ownKeys(o);
+        };
+        return function(mod) {
+          if (mod && mod.__esModule) return mod;
+          var result = {};
+          if (mod != null) {
+            for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+          }
+          __setModuleDefault(result, mod);
+          return result;
+        };
+      })();
       var __importDefault = function(mod) {
         return mod && mod.__esModule ? mod : {
           "default": mod
@@ -15600,11 +15651,11 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.chooseOrderRandom = exports.beginOrderSet = exports.randomiseRemoteShips = exports.readyRemotePlayer = exports.handleRemoteBoardClick = exports.pickRemoteOrder = exports.startRemotePlacement = exports.remotePlacementStage = exports.isHostOnlyStage = exports.cancelRemotePlacement = exports.isRemoteSessionActive = exports.PLACEMENT_TIMEOUT_MS = void 0;
+      exports.chooseOrderRandom = exports.beginOrderSet = exports.randomiseRemoteShips = exports.readyRemotePlayer = exports.handleRemoteBoardClick = exports.pickRemoteOrder = exports.startRemotePlacement = exports.orderingMessage = exports.remotePlacementStage = exports.isHostOnlyStage = exports.cancelRemotePlacement = exports.isRemoteSessionActive = exports.PLACEMENT_TIMEOUT_MS = void 0;
       var treeloom_1 = __importDefault(require_main3());
       var labelTile_1 = __importDefault(require_labelTile());
       var treeloom_matrix_1 = __importDefault(require_main4());
-      var si_funciona_1 = __importDefault(require_main());
+      var si_funciona_1 = __importStar(require_main());
       var defaultFleet_1 = require_defaultFleet();
       var generateRandomFleet_1 = __importDefault(require_generateRandomFleet());
       var queue_1 = __importDefault(require_queue());
@@ -15677,17 +15728,23 @@ var cloakfall = (() => {
           });
         });
       };
-      var updateOrderingPanel = (session, root) => {
-        const panel = child(root.body, "remote-ordering");
+      var orderingMessage = (stage, order) => {
         const messages = {
           placing: "",
-          choosing: "Choose how to decide the order: Random, or tap each player's name in turn.",
+          // The same words as a local game (placement.ts), so online reads like the game people already know
+          choosing: "All players are ready. Choose who goes first: Random, or set the order by tapping each player's name in turn.",
           ordering: "Tap each player's name in turn. The first one tapped goes first.",
           shuffling: "Choosing at random...",
-          chosen: `${session.order.map((p) => p.name).join(", then ")} will take turns, in that order.`
+          // Escaped: a name is whatever a player typed, and this is HTML on every player's screen
+          chosen: `${order.map((p) => (0, si_funciona_1.htmlEscape)(p.name)).join(", then ")} will take turns, in that order.`
         };
+        return messages[stage];
+      };
+      exports.orderingMessage = orderingMessage;
+      var updateOrderingPanel = (session, root) => {
+        const panel = child(root.body, "remote-ordering");
         update(child(panel, "remote-ordering-message"), {
-          innerHTML: messages[session.stage]
+          innerHTML: (0, exports.orderingMessage)(session.stage, session.order)
         });
         update(panel, {
           style: {
@@ -20791,7 +20848,7 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.leaveRemoteGame = exports.enterRemoteGame = void 0;
+      exports.leaveRemoteGame = exports.enterRemoteGame = exports.deadlineOf = void 0;
       var treeloom_1 = __importDefault(require_main3());
       var treeloom_matrix_1 = __importDefault(require_main4());
       var lobbySocket_1 = require_lobbySocket();
@@ -20804,8 +20861,10 @@ var cloakfall = (() => {
       var deadlineOf = (redactedBody) => {
         const placement = redactedBody.attributes?.["data-placement-deadline"];
         if (placement) {
+          const ordering = redactedBody.children.find((child) => child.attributes?.className === "remote-ordering");
+          const choosingOrder = ordering !== void 0 && ordering.attributes?.style?.display !== "none";
           return {
-            kind: "placement",
+            kind: choosingOrder ? "ordering" : "placement",
             deadline: Number(placement)
           };
         }
@@ -20818,6 +20877,7 @@ var cloakfall = (() => {
         }
         return null;
       };
+      exports.deadlineOf = deadlineOf;
       var isGameOver = (redactedBody) => redactedBody.children.some((child) => child.attributes?.className === "final-scores");
       var finalScoreOnly = (redactedBody) => ({
         ...redactedBody,
@@ -20829,6 +20889,7 @@ var cloakfall = (() => {
       var countdownKind = null;
       var COUNTDOWN_LABEL = {
         placement: "Placing ships",
+        ordering: "Choosing the order",
         turn: "Turn"
       };
       var renderCountdown = () => {
@@ -20877,7 +20938,7 @@ var cloakfall = (() => {
       };
       var setCountdownDeadline = (info) => {
         tellTurnDeadline(info?.kind === "turn" ? info.deadline : null);
-        showCornerCountdown(info?.kind === "placement" ? info : null);
+        showCornerCountdown(info !== null && info.kind !== "turn" ? info : null);
       };
       var stopCountdown = () => {
         tellTurnDeadline(null);
@@ -20969,7 +21030,7 @@ var cloakfall = (() => {
           stopForwarding(root);
         }
         renderFresh(root, firstOver ? finalScoreOnly(firstUpdate) : firstUpdate);
-        setCountdownDeadline(deadlineOf(firstUpdate));
+        setCountdownDeadline((0, exports.deadlineOf)(firstUpdate));
         (0, lobbySocket_1.onGameUpdate)((redactedBody) => {
           const over = isGameOver(redactedBody);
           if (over) {
@@ -20978,7 +21039,7 @@ var cloakfall = (() => {
             treeloom_1.default.setForwardEvents(lobbySocket_1.sendGameAction, root);
           }
           renderInto(root, over ? finalScoreOnly(redactedBody) : redactedBody);
-          setCountdownDeadline(deadlineOf(redactedBody));
+          setCountdownDeadline((0, exports.deadlineOf)(redactedBody));
         });
       };
       exports.enterRemoteGame = enterRemoteGame;
@@ -21001,7 +21062,7 @@ var cloakfall = (() => {
         value: true
       });
       exports.releaseNotesUrl = exports.RELEASES_URL = exports.version = void 0;
-      exports.version = "2.1.1";
+      exports.version = "2.2.0";
       exports.RELEASES_URL = "https://github.com/jheagle/cloakfall/releases";
       var releaseNotesUrl = (forVersion = exports.version) => `${exports.RELEASES_URL}/tag/v${forVersion}`;
       exports.releaseNotesUrl = releaseNotesUrl;
@@ -22070,7 +22131,22 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.flashShot = exports.FLASH_MS = exports.createShotWatcher = void 0;
+      exports.flashShot = exports.FLASH_MS = exports.createShotWatcher = exports.hitShipOf = void 0;
+      var hitShipOf = (cell) => {
+        const {
+          ship,
+          shipHits,
+          shipSize
+        } = cell.dataset;
+        const hits = Number(shipHits);
+        const size = Number(shipSize);
+        return ship && Number.isInteger(hits) && Number.isInteger(size) && hits >= 1 && hits <= size ? {
+          name: ship,
+          hits,
+          size
+        } : void 0;
+      };
+      exports.hitShipOf = hitShipOf;
       var createShotWatcher = () => {
         let seen = /* @__PURE__ */ new WeakSet();
         let seeded = false;
@@ -22084,9 +22160,16 @@ var cloakfall = (() => {
               }
               seen.add(cell);
               if (seeded) {
-                fresh.push({
+                const result = cell.dataset.shot === "hit" ? "hit" : "miss";
+                const ship = result === "hit" ? (0, exports.hitShipOf)(cell) : void 0;
+                fresh.push(ship ? {
                   index,
-                  result: cell.dataset.shot === "hit" ? "hit" : "miss",
+                  result,
+                  cell,
+                  ship
+                } : {
+                  index,
+                  result,
                   cell
                 });
               }
@@ -22187,7 +22270,7 @@ var cloakfall = (() => {
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
-      exports.installPlayerBar = exports.oneBoardCss = exports.readPlayers = exports.inPlay = exports.nextBarState = exports.boardToShow = exports.initialBarState = exports.OWN_BOARD_EVENT = exports.SHOT_ALERT_MS = exports.PHONE_MEDIA = exports.ONE_BOARD_MAX_HEIGHT_PX = exports.ONE_BOARD_MAX_WIDTH_PX = void 0;
+      exports.installPlayerBar = exports.ownShotAnnouncement = exports.shotAlertText = exports.oneBoardCss = exports.readPlayers = exports.inPlay = exports.nextBarState = exports.boardToShow = exports.initialBarState = exports.OWN_BOARD_EVENT = exports.SHOT_ALERT_MS = exports.PHONE_MEDIA = exports.ONE_BOARD_MAX_HEIGHT_PX = exports.ONE_BOARD_MAX_WIDTH_PX = void 0;
       var controlPanel_1 = __importDefault(require_controlPanel());
       var turnBanner_1 = __importDefault(require_turnBanner());
       var shotWatcher_1 = __importStar(require_shotWatcher());
@@ -22309,12 +22392,41 @@ var cloakfall = (() => {
           element.setAttribute(name, value);
         }
       };
+      var shotAlertText = (alert) => {
+        if (!alert) {
+          return "";
+        }
+        if (alert.result === "miss") {
+          return "Miss";
+        }
+        const {
+          ship
+        } = alert;
+        if (!ship) {
+          return "Hit";
+        }
+        return ship.hits >= ship.size ? `Sunk: ${ship.name}` : `Hit: ${ship.name} ${ship.hits}/${ship.size}`;
+      };
+      exports.shotAlertText = shotAlertText;
+      var ownShotAnnouncement = (alert) => {
+        if (alert.result === "miss") {
+          return "A shot missed your fleet";
+        }
+        const {
+          ship
+        } = alert;
+        if (!ship) {
+          return "Your fleet was hit";
+        }
+        return ship.hits >= ship.size ? `Your ${ship.name} was sunk` : `Your ${ship.name} was hit, ${ship.hits} of ${ship.size}`;
+      };
+      exports.ownShotAnnouncement = ownShotAnnouncement;
       var updateEntry = (item, player, shown, ownOpen, alert) => {
         const entry = item.firstElementChild;
         const [name, status, turn, alertText] = Array.from(entry.children);
-        entry.classList.toggle("was-hit", alert === "hit");
-        entry.classList.toggle("was-missed", alert === "miss");
-        setText(alertText, alert === "hit" ? "Hit" : alert === "miss" ? "Miss" : "");
+        entry.classList.toggle("was-hit", alert?.result === "hit");
+        entry.classList.toggle("was-missed", alert?.result === "miss");
+        setText(alertText, (0, exports.shotAlertText)(alert));
         if (entry.style.getPropertyValue("--player-colour") !== player.colour) {
           entry.style.setProperty("--player-colour", player.colour);
         }
@@ -22380,7 +22492,12 @@ var cloakfall = (() => {
             if (!player) {
               return;
             }
-            alerts.set(player.id, shot.result);
+            alerts.set(player.id, shot.ship ? {
+              result: shot.result,
+              ship: shot.ship
+            } : {
+              result: shot.result
+            });
             clearTimeout(alertTimers.get(player.id));
             alertTimers.set(player.id, setTimeout(() => {
               alerts.delete(player.id);
@@ -22389,7 +22506,7 @@ var cloakfall = (() => {
               schedule();
             }, exports.SHOT_ALERT_MS));
             if (player.own) {
-              announcer.textContent = shot.result === "hit" ? "Your fleet was hit" : "A shot missed your fleet";
+              announcer.textContent = (0, exports.ownShotAnnouncement)(shot);
             }
           });
         };
