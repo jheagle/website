@@ -386,7 +386,7 @@ ${section.books.map(bookItem).join('\n')}
     </section>`).join('\n')}
 </main>
 <footer class='mt-12 border-t border-rule pt-4 text-sm text-muted'>
-    <p>Joshua Heagle &copy; ${new Date().getFullYear()}</p>
+    <p>Joshua Heagle &copy; ${new Date().getFullYear()} · <a href='/privacy/'>Privacy</a></p>
 </footer>
 </body>
 </html>

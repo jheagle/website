@@ -161,7 +161,7 @@ const head = ({ title, description, canonical, image, type = 'website', publishe
 
 const back = (href, text) => `<a class='mb-5 inline-block font-heading' href='${href}'>&larr; ${text}</a>`
 const footer = `<footer class='mt-12 border-t border-rule pt-4 text-sm text-muted'>
-    <p>Joshua Heagle &copy; ${new Date().getFullYear()} · <a href='/blog/feed.xml'>RSS feed</a></p>
+    <p>Joshua Heagle &copy; ${new Date().getFullYear()} · <a href='/blog/feed.xml'>RSS feed</a> · <a href='/privacy/'>Privacy</a></p>
 </footer>`
 
 /** A post's card in a listing. */
