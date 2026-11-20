@@ -617,25 +617,25 @@ body.has-turn-banner main.game > .boards {
   body.own-board-open .turn-banner {
     visibility: hidden;
   }
-  .placement {
+  .placement, .remote-ordering, .remote-placement-panel {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.8rem;
     padding: 1.2rem;
   }
-  .placement p, .placement .placement-name {
+  .placement p, .placement .placement-name, .remote-ordering p, .remote-ordering .placement-name, .remote-placement-panel p, .remote-placement-panel .placement-name {
     flex: 1 1 100%;
   }
-  .placement p {
+  .placement p, .remote-ordering p, .remote-placement-panel p {
     margin: 0;
   }
-  .placement .placement-name {
+  .placement .placement-name, .remote-ordering .placement-name, .remote-placement-panel .placement-name {
     max-width: none;
     margin: 0;
     min-height: 4.8rem;
   }
-  .placement button {
+  .placement button, .remote-ordering button, .remote-placement-panel button {
     flex: 1 1 14rem;
     min-width: 0;
     min-height: 5.2rem;
