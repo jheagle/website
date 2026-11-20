@@ -14003,6 +14003,180 @@ var cloakfall = (() => {
     }
   });
 
+  // dist/track.js
+  var require_track = __commonJS({
+    "dist/track.js"(exports) {
+      "use strict";
+      init_process();
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.trackLinks = exports.trackErrors = exports.trackAbandon = exports.trackGameEnd = exports.trackGameStart = exports.turnsBucket = exports.ignoreGames = exports.track = exports.eventPath = void 0;
+      var waiting = [];
+      var WAIT_MS = 500;
+      var WAIT_TRIES = 40;
+      var waitTries = 0;
+      var waitTimer = null;
+      var counter = () => {
+        const count = window.goatcounter?.count;
+        return typeof count === "function" ? {
+          count
+        } : null;
+      };
+      var pageCounts = () => typeof window !== "undefined" && typeof document !== "undefined" && Boolean(document.querySelector?.("script[data-goatcounter]"));
+      var send = (goatcounter, path, title) => {
+        try {
+          goatcounter.count({
+            path,
+            title,
+            event: true,
+            no_session: true
+          });
+        } catch {
+        }
+      };
+      var flush = () => {
+        waitTimer = null;
+        const goatcounter = counter();
+        if (goatcounter) {
+          waiting.splice(0).forEach(({
+            path,
+            title
+          }) => send(goatcounter, path, title));
+          return;
+        }
+        if (++waitTries >= WAIT_TRIES) {
+          waiting.length = 0;
+          return;
+        }
+        waitTimer = setTimeout(flush, WAIT_MS);
+      };
+      var eventPath = (name) => "cloakfall-" + name.toLowerCase().replace(/[^a-z0-9-]+/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, "");
+      exports.eventPath = eventPath;
+      var track = (name, title = "") => {
+        if (!pageCounts()) {
+          return;
+        }
+        const path = (0, exports.eventPath)(name);
+        const goatcounter = counter();
+        if (goatcounter && waiting.length === 0) {
+          send(goatcounter, path, title);
+          return;
+        }
+        if (waiting.length < 50) {
+          waiting.push({
+            path,
+            title
+          });
+        }
+        if (!waitTimer) {
+          waitTries = 0;
+          waitTimer = setTimeout(flush, WAIT_MS);
+        }
+      };
+      exports.track = track;
+      var ignored = /* @__PURE__ */ new WeakSet();
+      var ignoreGames = (root) => {
+        ignored.add(root);
+      };
+      exports.ignoreGames = ignoreGames;
+      var inProgress = /* @__PURE__ */ new WeakMap();
+      var watchingClose = false;
+      var lastRoot = null;
+      var turnsBucket = (turns) => turns < 25 ? "0-24" : turns < 50 ? "25-49" : turns < 100 ? "50-99" : turns < 200 ? "100-199" : "200-plus";
+      exports.turnsBucket = turnsBucket;
+      var trackGameStart = (root, mode, settings = {}) => {
+        if (!pageCounts() || ignored.has(root)) {
+          return;
+        }
+        (0, exports.trackAbandon)(root, "restart");
+        inProgress.set(root, mode);
+        lastRoot = root;
+        (0, exports.track)(`start-${mode}`, `Game started: ${mode}`);
+        const {
+          humans,
+          robots,
+          hints
+        } = settings;
+        if (humans !== void 0 && robots !== void 0) {
+          (0, exports.track)(`players-${mode}-${humans}h-${robots}r`, `${mode}: ${humans} human(s), ${robots} robot(s)`);
+        } else if (robots !== void 0) {
+          (0, exports.track)(`players-${mode}-${robots}r`, `${mode}: ${robots} robot(s)`);
+        }
+        if (hints) {
+          (0, exports.track)(`hints-${mode}-${hints}`, `${mode}: hints ${hints}`);
+        }
+        if (!watchingClose && typeof window.addEventListener === "function") {
+          watchingClose = true;
+          window.addEventListener("pagehide", () => {
+            if (lastRoot) {
+              (0, exports.trackAbandon)(lastRoot, "close");
+            }
+          });
+        }
+      };
+      exports.trackGameStart = trackGameStart;
+      var trackGameEnd = (root, turns, outcome) => {
+        const mode = inProgress.get(root);
+        if (!mode) {
+          return;
+        }
+        inProgress.delete(root);
+        (0, exports.track)(`finish-${mode}`, `Game finished: ${mode}`);
+        if (turns !== void 0) {
+          (0, exports.track)(`turns-${mode}-${(0, exports.turnsBucket)(turns)}`, `${mode}: ${(0, exports.turnsBucket)(turns)} turns`);
+        }
+        if (outcome) {
+          (0, exports.track)(`finish-${mode}-${outcome}`, `${mode}: the human ${outcome}`);
+        }
+      };
+      exports.trackGameEnd = trackGameEnd;
+      var trackAbandon = (root, how) => {
+        const mode = inProgress.get(root);
+        if (!mode) {
+          return;
+        }
+        inProgress.delete(root);
+        (0, exports.track)(`abandon-${mode}-${how}`, `Game left before the end: ${mode}, ${how}`);
+      };
+      exports.trackAbandon = trackAbandon;
+      var watchingErrors = false;
+      var errorsSent = 0;
+      var trackErrors = () => {
+        if (watchingErrors || !pageCounts() || typeof window.addEventListener !== "function") {
+          return;
+        }
+        watchingErrors = true;
+        const where = (file, line) => `${(file ?? "").split("/").pop()?.split("?")[0] || "unknown"}:${line ?? 0}`;
+        window.addEventListener("error", (event) => {
+          if (errorsSent++ < 5) {
+            (0, exports.track)("error", `Error at ${where(event.filename, event.lineno)}`);
+          }
+        });
+        window.addEventListener("unhandledrejection", () => {
+          if (errorsSent++ < 5) {
+            (0, exports.track)("error-promise", "Unhandled promise rejection");
+          }
+        });
+      };
+      exports.trackErrors = trackErrors;
+      var watchingLinks = false;
+      var trackLinks = () => {
+        if (watchingLinks || !pageCounts()) {
+          return;
+        }
+        watchingLinks = true;
+        document.addEventListener("click", (event) => {
+          const link = event.target?.closest?.("[data-track]");
+          if (link) {
+            (0, exports.track)(`link-${link.getAttribute("data-track") ?? ""}`, `Opened: ${link.getAttribute("data-track") ?? ""}`);
+          }
+        }, true);
+      };
+      exports.trackLinks = trackLinks;
+    }
+  });
+
   // dist/attack/endGame.js
   var require_endGame = __commonJS({
     "dist/attack/endGame.js"(exports) {
@@ -14020,11 +14194,14 @@ var cloakfall = (() => {
       var finalScore_1 = __importDefault(require_finalScore());
       var updatePlayerStats_1 = __importDefault(require_updatePlayerStats());
       var gameSession_1 = require_gameSession();
+      var track_1 = require_track();
       var endGame = (winner) => {
         const parent = treeloom_1.default.getTopParentItem(winner);
         const players = winner.parentItem.children;
         players.map((player) => (0, updatePlayerStats_1.default)(player));
         winner = (0, updatePlayerStats_1.default)(winner, "WINNER");
+        const humans = players.filter((player) => !player.isRobot);
+        (0, track_1.trackGameEnd)(parent, players.reduce((turns, player) => turns + (player.turnCnt || 0), 0), humans.length === 1 && players.length > 1 ? winner.isRobot ? "lost" : "won" : void 0);
         const onGameOver = (0, gameSession_1.getSession)(parent).onGameOver;
         if (onGameOver) {
           onGameOver(players, parent);
@@ -16225,11 +16402,13 @@ var cloakfall = (() => {
       var treeloom_1 = __importDefault(require_main3());
       var gamePresets_1 = require_gamePresets();
       var showLobby_1 = require_showLobby();
+      var track_1 = require_track();
       var presetListener = (e, target) => {
         const className = e.target.className;
         const menu = treeloom_1.default.getChildrenByClass("main-menu", treeloom_1.default.getTopParentItem(target).body)[0];
         const preset = Object.keys(gamePresets_1.gamePresets).find((name) => className.includes(name));
         if (preset) {
+          (0, track_1.track)(`menu-${gamePresets_1.gamePresets[preset].mode}`, `Menu: ${gamePresets_1.gamePresets[preset].mode}`);
           (0, showLobby_1.showLobby)(menu, gamePresets_1.gamePresets[preset]);
         } else if (className.includes("lobby-back")) {
           (0, showLobby_1.show)(treeloom_1.default.getChildrenByClass("main-menu-form", menu)[0], false);
@@ -20853,6 +21032,7 @@ var cloakfall = (() => {
       var treeloom_matrix_1 = __importDefault(require_main4());
       var lobbySocket_1 = require_lobbySocket();
       var turnBanner_1 = require_turnBanner();
+      var track_1 = require_track();
       var clearChildren = (parent) => {
         for (let i = parent.children.length - 1; i >= 0; --i) {
           treeloom_1.default.removeChild(parent, parent.children[i]);
@@ -21028,11 +21208,20 @@ var cloakfall = (() => {
         const firstOver = isGameOver(firstUpdate);
         if (firstOver) {
           stopForwarding(root);
+        } else {
+          (0, track_1.trackGameStart)(root, "online");
         }
+        let wasOver = firstOver;
         renderFresh(root, firstOver ? finalScoreOnly(firstUpdate) : firstUpdate);
         setCountdownDeadline((0, exports.deadlineOf)(firstUpdate));
         (0, lobbySocket_1.onGameUpdate)((redactedBody) => {
           const over = isGameOver(redactedBody);
+          if (over && !wasOver) {
+            (0, track_1.trackGameEnd)(root);
+          } else if (!over && wasOver) {
+            (0, track_1.trackGameStart)(root, "online");
+          }
+          wasOver = over;
           if (over) {
             stopForwarding(root);
           } else if (!root.forwardEvents) {
@@ -21062,7 +21251,7 @@ var cloakfall = (() => {
         value: true
       });
       exports.releaseNotesUrl = exports.RELEASES_URL = exports.version = void 0;
-      exports.version = "2.2.0";
+      exports.version = "2.3.0";
       exports.RELEASES_URL = "https://github.com/jheagle/cloakfall/releases";
       var releaseNotesUrl = (forVersion = exports.version) => `${exports.RELEASES_URL}/tag/v${forVersion}`;
       exports.releaseNotesUrl = releaseNotesUrl;
@@ -21113,7 +21302,7 @@ var cloakfall = (() => {
               nodeName: "p",
               attributes: {
                 className: "version-line",
-                innerHTML: `v${version_1.version} \xB7 <a href="${(0, version_1.releaseNotesUrl)()}" target="_blank" rel="noopener">What's new</a> \xB7 <a href="status.html" target="_blank" rel="noopener">Server status</a>`
+                innerHTML: `v${version_1.version} \xB7 <a href="${(0, version_1.releaseNotesUrl)()}" target="_blank" rel="noopener" data-track="whats-new">What's new</a> \xB7 <a href="status.html" target="_blank" rel="noopener" data-track="server-status">Server status</a>`
               }
             },
             {
@@ -22754,6 +22943,7 @@ var cloakfall = (() => {
       var showShipsControl_1 = __importDefault(require_showShipsControl());
       var shadeShips_1 = __importDefault(require_shadeShips());
       var ownBoardReveal_1 = require_ownBoardReveal();
+      var track_1 = require_track();
       var clearBody = (parent) => {
         for (let i = parent.body.children.length - 1; i >= 0; --i) {
           treeloom_1.default.removeChild(parent.body, parent.body.children[i]);
@@ -22791,6 +22981,11 @@ var cloakfall = (() => {
         });
         onPlayersBuilt(players);
         const mode = (0, gameOptions_1.getGameMode)(parent);
+        (0, track_1.trackGameStart)(parent, mode, {
+          humans,
+          robots,
+          hints
+        });
         placementStarter(players, parent.body, (order) => {
           applyInitialLocalView(order, mode);
           startRound(order, humans > 1 ? void 0 : firstGoesFirst);
@@ -22819,6 +23014,7 @@ var cloakfall = (() => {
       var gameSession_1 = require_gameSession();
       var gameOptions_1 = require_gameOptions();
       var startNewGame_1 = require_startNewGame();
+      var track_1 = require_track();
       exports.DEMO_ROBOTS = 3;
       exports.RESTART_MS = 4e3;
       var demoRoot = null;
@@ -22851,7 +23047,9 @@ var cloakfall = (() => {
           element: layer,
           children: []
         });
-        return treeloom_1.default.documentDomItem(listeners, treeloom_1.default.initRoot([head, body], listeners));
+        const root = treeloom_1.default.documentDomItem(listeners, treeloom_1.default.initRoot([head, body], listeners));
+        (0, track_1.ignoreGames)(root);
+        return root;
       };
       var playDemo = (root) => {
         (0, gameOptions_1.setGameMode)(root, "robots");
@@ -22949,6 +23147,7 @@ var cloakfall = (() => {
       var startMenu_1 = __importDefault(require_startMenu());
       var showLobby_1 = require_showLobby();
       var si_funciona_1 = require_main();
+      var track_1 = require_track();
       var lastRoomState = null;
       var getLastRoomState = () => lastRoomState;
       exports.getLastRoomState = getLastRoomState;
@@ -23057,6 +23256,7 @@ var cloakfall = (() => {
         const menu = treeloom_1.default.getChildrenByClass("main-menu", treeloom_1.default.getTopParentItem(target).body)[0];
         const entry = treeloom_1.default.getChildrenByClass("remote-entry", menu)[0];
         if (className.includes("preset-remote")) {
+          (0, track_1.track)("menu-online", "Menu: online");
           (0, exports.showRemoteEntry)(menu);
           return;
         }
@@ -23110,6 +23310,7 @@ var cloakfall = (() => {
             });
             return;
           }
+          (0, track_1.track)("online-host", "Online: room created");
           (0, exports.enterWaitingRoom)(menu, result);
           return;
         }
@@ -23132,6 +23333,7 @@ var cloakfall = (() => {
             return;
           }
           pendingJoinCode = null;
+          (0, track_1.track)("online-join", "Online: joined a room");
           (0, exports.enterWaitingRoom)(menu, result);
           return;
         }
@@ -23148,7 +23350,11 @@ var cloakfall = (() => {
             (0, showLobby_1.update)(treeloom_1.default.getChildrenByClass("waiting-room-status", waitingRoom)[0], {
               innerHTML: ack.error
             });
+            return;
           }
+          const players = (0, exports.getLastRoomState)()?.players?.length;
+          (0, track_1.track)(players === void 0 ? `players-online-${robots}r` : `players-online-${players}h-${robots}r`, `online: host started with ${robots} robot(s)`);
+          (0, track_1.track)(`hints-online-${hints}`, `online: hints ${hints}`);
         }
       };
       exports.default = remoteListener;
@@ -23204,10 +23410,12 @@ var cloakfall = (() => {
       var remoteGame_1 = require_remoteGame();
       var lobbySocket_1 = require_lobbySocket();
       var startMenu_1 = __importDefault(require_startMenu());
+      var track_1 = require_track();
       var remoteLeaveListener = (e, target) => {
         (0, exports.leaveOnlineGame)(treeloom_1.default.getTopParentItem(target));
       };
       var leaveOnlineGame = (root) => {
+        (0, track_1.trackAbandon)(root, "leave");
         (0, remoteGame_1.leaveRemoteGame)(root);
         (0, lobbySocket_1.disconnectLobbySocket)();
         history.replaceState(null, "", location.pathname);
@@ -23266,9 +23474,11 @@ var cloakfall = (() => {
       var treeloom_1 = __importDefault(require_main3());
       var si_funciona_1 = __importDefault(require_main());
       var heatHint_1 = require_heatHint();
+      var track_1 = require_track();
       var hintListener = (e, target) => {
         const player = treeloom_1.default.getParentsByClass("player", target)[0];
         player.showHint = e.target.checked;
+        (0, track_1.track)(`hint-checkbox-${player.showHint ? "on" : "off"}`, `Hint checkbox switched ${player.showHint ? "on" : "off"}`);
         treeloom_1.default.updateElement(si_funciona_1.default.mergeObjectsMutable(target, {
           attributes: {
             checked: player.showHint
@@ -23437,6 +23647,7 @@ var cloakfall = (() => {
       var remoteListener_1 = require_remoteListener();
       var lobbySocket_1 = require_lobbySocket();
       var startMenu_1 = __importDefault(require_startMenu());
+      var track_1 = require_track();
       var isOnline = (root) => Boolean(root.forwardEvents);
       var gameActionsFor = (root) => {
         if (isOnline(root)) {
@@ -23499,6 +23710,7 @@ var cloakfall = (() => {
           } = (0, gameOptions_1.getGameSettings)(root);
           (0, startNewGame_1.startNewGame)(root, humans, robots, firstGoesFirst, (0, gameOptions_1.getHintSetting)(root));
         } else if (action === "quit") {
+          (0, track_1.trackAbandon)(root, "quit");
           (0, gameSession_1.stopGame)(root);
           (0, startMenu_1.default)(root);
         }
@@ -23714,6 +23926,7 @@ var cloakfall = (() => {
       var gameRoot_1 = __importDefault(require_gameRoot());
       var treeloom_1 = __importDefault(require_main3());
       var browser_or_node_1 = require_dist();
+      var track_1 = require_track();
       var cloakfall = () => {
         const listeners = {
           beginRound: beginRound_1.default,
@@ -23735,6 +23948,8 @@ var cloakfall = (() => {
           const submitBtn = treeloom_1.default.getChildrenFromAttribute("type", "submit", form);
           submitBtn[0].element.click();
         } else {
+          (0, track_1.trackErrors)();
+          (0, track_1.trackLinks)();
           const roomCode = new URLSearchParams(window.location.search).get("room");
           if (roomCode) {
             (0, remoteListener_1.showRemoteEntry)(treeloom_1.default.getChildrenByClass("main-menu", documentItem.body)[0], roomCode.toUpperCase());
