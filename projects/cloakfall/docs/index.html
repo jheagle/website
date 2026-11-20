@@ -50,6 +50,83 @@ image's non-root <code>node</code> user on port 3002 (it writes nothing to disk,
 <pre><code><span class="hl-0">docker</span><span class="hl-1"> </span><span class="hl-0">build</span><span class="hl-1"> -</span><span class="hl-0">t</span><span class="hl-1"> </span><span class="hl-0">cloakfall</span><span class="hl-1">-</span><span class="hl-0">lobby</span><span class="hl-1"> .</span><br/><span class="hl-0">docker</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> --</span><span class="hl-0">rm</span><span class="hl-1"> -</span><span class="hl-0">p</span><span class="hl-1"> </span><span class="hl-7">3002</span><span class="hl-1">:</span><span class="hl-7">3002</span><span class="hl-1"> </span><span class="hl-0">cloakfall</span><span class="hl-1">-</span><span class="hl-0">lobby</span><br/><span class="hl-0">curl</span><span class="hl-1"> </span><span class="hl-2">http</span><span class="hl-1">:</span><span class="hl-8">//localhost:3002/status</span>
 </code><button>Copy</button></pre>
 
+<h2 id="releasing-to-joshuaheaglecom" class="tsd-anchor-link">Releasing to <a href="http://joshuaheagle.com">joshuaheagle.com</a><a href="#releasing-to-joshuaheaglecom" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>A release has two halves that go live separately: the game page on the website (GitHub Pages) and the lobby server on
+the VPS. Do both, or online games run one version's page against another version's server.</p>
+<p>After <code>npx release-it --no-increment</code> on <code>main</code>:</p>
+<ol>
+<li><strong>Website copy.</strong> The website checkout must sit next to this repo (<code>../joshuaheagle.local</code>). <code>npm run build</code> doesn't
+copy, so:<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-0">build</span><span class="hl-1"> &amp;&amp; </span><span class="hl-0">npx</span><span class="hl-1"> </span><span class="hl-0">gulp</span><span class="hl-1"> </span><span class="hl-0">copyFiles</span><span class="hl-1"> &amp;&amp; </span><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-0">docs</span><br/><span class="hl-0">cd</span><span class="hl-1"> ../</span><span class="hl-0">joshuaheagle</span><span class="hl-1">.</span><span class="hl-0">local</span><span class="hl-1"> &amp;&amp; </span><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-2">build</span><span class="hl-1">:</span><span class="hl-0">fingerprint</span><span class="hl-1"> &amp;&amp; </span><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">test</span>
+</code><button>Copy</button></pre>
+
+Open a website PR with <code>projects/cloakfall/</code> (bundle, CSS, <code>play.html</code> fingerprints, docs). Once it's merged, check
+<code>play.html</code> loads the new <code>cloakfall.js?v=...</code> and the bundle's <code>exports.version</code> is the new version.</li>
+<li><strong>Lobby server</strong> (<code>cloakfall.joshuaheagle.com</code>: a VPS running this repo's <code>Dockerfile</code> behind a reverse proxy). On
+the server's checkout, pull, rebuild the image and restart the container (see
+<a href="#running-the-lobby-in-docker">Running the lobby in Docker</a>):<pre><code><span class="hl-0">git</span><span class="hl-1"> </span><span class="hl-0">pull</span><span class="hl-1"> &amp;&amp; </span><span class="hl-0">docker</span><span class="hl-1"> </span><span class="hl-0">build</span><span class="hl-1"> -</span><span class="hl-0">t</span><span class="hl-1"> </span><span class="hl-0">cloakfall</span><span class="hl-1">-</span><span class="hl-0">lobby</span><span class="hl-1"> . &amp;&amp; </span><span class="hl-0">docker</span><span class="hl-1"> </span><span class="hl-0">compose</span><span class="hl-1"> </span><span class="hl-0">up</span><span class="hl-1"> -</span><span class="hl-0">d</span>
+</code><button>Copy</button></pre>
+
+Check <code>https://cloakfall.joshuaheagle.com/status</code> reports the new version. (The maintainer's host details are kept
+privately.)</li>
+</ol>
+<p>The lobby needs redeploying for every release, even one with no server changes: <code>/status</code> reports the version, and the
+server holds shared game code too. 2026-11-19: the lobby was still on 2.1.0 after 2.1.1 shipped, so online games missed
+2.1.1's turn-order names.</p>
+<h2 id="play-events-goatcounter" class="tsd-anchor-link">Play events (GoatCounter)<a href="#play-events-goatcounter" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
+<p>The website's copy of the game counts anonymous play events with <a href="https://www.goatcounter.com/help/events">GoatCounter</a>
+(<code>src/track.ts</code>), to see how people play and what to fix. It only happens on a page that loads GoatCounter's script
+(<code>&lt;script data-goatcounter=...&gt;</code>); this repo's own <code>index.html</code>, the tests and the server send nothing. Events never
+contain a player's name or anything typed, and each one counts every time it happens (not once per visitor).</p>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cloakfall-menu-&lt;mode&gt;</code></td>
+<td>a game type chosen on the main menu (<code>solo</code>, <code>multi</code>, <code>robots</code>, <code>online</code>)</td>
+</tr>
+<tr>
+<td><code>cloakfall-start-&lt;mode&gt;</code></td>
+<td>a game starts (Restart and Play Again included); the intro's demo game is never counted</td>
+</tr>
+<tr>
+<td><code>cloakfall-players-&lt;mode&gt;-&lt;h&gt;h-&lt;r&gt;r</code>, <code>cloakfall-hints-&lt;mode&gt;-&lt;setting&gt;</code></td>
+<td>the settings it started with</td>
+</tr>
+<tr>
+<td><code>cloakfall-finish-&lt;mode&gt;</code>, <code>cloakfall-turns-&lt;mode&gt;-&lt;range&gt;</code></td>
+<td>it reached the final score, and roughly how many turns it took (local games)</td>
+</tr>
+<tr>
+<td><code>cloakfall-finish-solo-won</code> / <code>-lost</code></td>
+<td>single player: whether the human won</td>
+</tr>
+<tr>
+<td><code>cloakfall-abandon-&lt;mode&gt;-&lt;how&gt;</code></td>
+<td>left before the end: <code>restart</code>, <code>quit</code>, <code>leave</code> (online) or <code>close</code> (tab closed, best effort)</td>
+</tr>
+<tr>
+<td><code>cloakfall-online-host</code>, <code>cloakfall-online-join</code></td>
+<td>an online room created or joined</td>
+</tr>
+<tr>
+<td><code>cloakfall-hint-checkbox-on</code> / <code>-off</code></td>
+<td>the hint checkbox switched (local games)</td>
+</tr>
+<tr>
+<td><code>cloakfall-link-whats-new</code>, <code>cloakfall-link-server-status</code></td>
+<td>a menu link opened (any link with <code>data-track</code>)</td>
+</tr>
+<tr>
+<td><code>cloakfall-error</code>, <code>cloakfall-error-promise</code></td>
+<td>an uncaught error (titled with file and line, at most 5 per page)</td>
+</tr>
+</tbody>
+</table>
 <h2 id="checking-full-games-in-a-browser" class="tsd-anchor-link">Checking full games in a browser<a href="#checking-full-games-in-a-browser" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
 <p>Three scripts play a whole game in a real headless Chromium (Playwright) against the built page, and fail when the game
 doesn't reach its final score or a page has an error (uncaught errors, console errors, failed requests). Build first:</p>
@@ -83,6 +160,8 @@ online check needs port 3002 free (no lobby server already running). They use js
 <li><a href="#icons"><span>Icons</span></a></li>
 <li><a href="#running-locally"><span>Running locally</span></a></li>
 <li><a href="#running-the-lobby-in-docker"><span>Running the lobby in <wbr/>Docker</span></a></li>
+<li><a href="#releasing-to-joshuaheaglecom"><span>Releasing to joshuaheagle.com</span></a></li>
+<li><a href="#play-events-goatcounter"><span>Play events (<wbr/>Goat<wbr/>Counter)</span></a></li>
 <li><a href="#checking-full-games-in-a-browser"><span>Checking full games in a browser</span></a></li></ul></div></details></div>
 <div class="site-menu">
 <nav class="tsd-navigation"><a href="modules.html">cloakfall</a>
