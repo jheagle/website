@@ -13917,6 +13917,69 @@ var cloakfall = (() => {
     }
   });
 
+  // dist/components/layout/credits.js
+  var require_credits = __commonJS({
+    "dist/components/layout/credits.js"(exports) {
+      "use strict";
+      init_process();
+      var __importDefault = function(mod) {
+        return mod && mod.__esModule ? mod : {
+          "default": mod
+        };
+      };
+      Object.defineProperty(exports, "__esModule", {
+        value: true
+      });
+      exports.creditLine = exports.aboutSection = exports.CREDIT_LINKS = void 0;
+      var treeloom_1 = __importDefault(require_main3());
+      exports.CREDIT_LINKS = {
+        portfolio: "https://joshuaheagle.com/",
+        project: "https://joshuaheagle.com/projects/cloakfall/",
+        source: "https://github.com/jheagle/cloakfall",
+        privacy: "https://joshuaheagle.com/privacy/"
+      };
+      var link = (href, text, track) => `<a href="${href}" target="_blank" rel="noopener" data-track="${track}">${text}</a>`;
+      var aboutSection = () => treeloom_1.default.createDomItem({
+        nodeName: "details",
+        attributes: {
+          className: "about"
+        },
+        children: [{
+          nodeName: "summary",
+          attributes: {
+            innerHTML: "About Cloakfall",
+            "data-track": "about"
+          }
+        }, {
+          nodeName: "p",
+          attributes: {
+            innerHTML: `Cloakfall is made by ${link(exports.CREDIT_LINKS.portfolio, "Joshua Heagle", "about-portfolio")}, a full-stack engineer, and built on his own open-source libraries, treeloom and treeloom-matrix.`
+          }
+        }, {
+          nodeName: "p",
+          attributes: {
+            innerHTML: `${link(exports.CREDIT_LINKS.project, "About the game and its libraries", "about-project")} \xB7 ${link(exports.CREDIT_LINKS.source, "Source on GitHub", "about-source")} \xB7 ${link(exports.CREDIT_LINKS.portfolio, "More of his work", "about-more")}`
+          }
+        }, {
+          nodeName: "p",
+          attributes: {
+            className: "about-privacy",
+            innerHTML: `The game counts how it gets played, anonymously (never names or anything you type), to see what to improve. ${link(exports.CREDIT_LINKS.privacy, "Privacy", "about-privacy")}`
+          }
+        }]
+      });
+      exports.aboutSection = aboutSection;
+      var creditLine = (track = "credit-final") => treeloom_1.default.createDomItem({
+        nodeName: "p",
+        attributes: {
+          className: "credit-line",
+          innerHTML: `Cloakfall is made by Joshua Heagle. ${link(exports.CREDIT_LINKS.portfolio, "More games and projects", track)}`
+        }
+      });
+      exports.creditLine = creditLine;
+    }
+  });
+
   // dist/components/layout/finalScore.js
   var require_finalScore = __commonJS({
     "dist/components/layout/finalScore.js"(exports) {
@@ -13932,72 +13995,78 @@ var cloakfall = (() => {
       });
       var treeloom_1 = __importDefault(require_main3());
       var si_funciona_1 = require_main();
+      var credits_1 = require_credits();
       var finalScore = (players = []) => treeloom_1.default.createDomItem({
         nodeName: "div",
         attributes: {
           className: "final-scores"
         },
-        children: [{
-          nodeName: "div",
-          attributes: {
-            className: "score-cards"
-          },
-          children: players.map((player) => ({
+        children: [
+          {
             nodeName: "div",
             attributes: {
-              className: "score-card",
-              innerHTML: `<strong>${(0, si_funciona_1.htmlEscape)(player.name)}</strong><hr><br><strong>Status:</strong> ${Math.round(player.status * 100) / 100}%, <strong>Sunk:</strong> ${player.attacks.sunk}<br><strong>Hit:</strong> ${player.attacks.hit} / <strong>Miss:</strong> ${player.attacks.miss}<br><strong>Turns:</strong> ${player.turnCnt}`
-            }
-          }))
-        }, {
-          nodeName: "div",
-          attributes: {
-            className: "final-scores-actions"
+              className: "score-cards"
+            },
+            children: players.map((player) => ({
+              nodeName: "div",
+              attributes: {
+                className: "score-card",
+                innerHTML: `<strong>${(0, si_funciona_1.htmlEscape)(player.name)}</strong><hr><br><strong>Status:</strong> ${Math.round(player.status * 100) / 100}%, <strong>Sunk:</strong> ${player.attacks.sunk}<br><strong>Hit:</strong> ${player.attacks.hit} / <strong>Miss:</strong> ${player.attacks.miss}<br><strong>Turns:</strong> ${player.turnCnt}`
+              }
+            }))
           },
-          children: [{
-            nodeName: "input",
+          {
+            nodeName: "div",
             attributes: {
-              className: "play-again",
-              type: "button",
-              value: "Play Again"
+              className: "final-scores-actions"
             },
-            eventListeners: {
-              click: [{
-                listenerFunc: "playAgain",
-                listenerArgs: {},
-                listenerOptions: false
-              }]
-            }
-          }, {
-            nodeName: "input",
-            attributes: {
-              className: "return-to-lobby",
-              type: "button",
-              value: "Change Settings"
-            },
-            eventListeners: {
-              click: [{
-                listenerFunc: "returnToLobby",
-                listenerArgs: {},
-                listenerOptions: false
-              }]
-            }
-          }, {
-            nodeName: "input",
-            attributes: {
-              className: "new-game",
-              type: "button",
-              value: "Main Menu"
-            },
-            eventListeners: {
-              click: [{
-                listenerFunc: "restart",
-                listenerArgs: {},
-                listenerOptions: false
-              }]
-            }
-          }]
-        }]
+            children: [{
+              nodeName: "input",
+              attributes: {
+                className: "play-again",
+                type: "button",
+                value: "Play Again"
+              },
+              eventListeners: {
+                click: [{
+                  listenerFunc: "playAgain",
+                  listenerArgs: {},
+                  listenerOptions: false
+                }]
+              }
+            }, {
+              nodeName: "input",
+              attributes: {
+                className: "return-to-lobby",
+                type: "button",
+                value: "Change Settings"
+              },
+              eventListeners: {
+                click: [{
+                  listenerFunc: "returnToLobby",
+                  listenerArgs: {},
+                  listenerOptions: false
+                }]
+              }
+            }, {
+              nodeName: "input",
+              attributes: {
+                className: "new-game",
+                type: "button",
+                value: "Main Menu"
+              },
+              eventListeners: {
+                click: [{
+                  listenerFunc: "restart",
+                  listenerArgs: {},
+                  listenerOptions: false
+                }]
+              }
+            }]
+          },
+          // Who made the game (credits.ts)
+          (0, credits_1.creditLine)("credit-final")
+        ]
       });
       exports.default = finalScore;
     }
@@ -21251,7 +21320,7 @@ var cloakfall = (() => {
         value: true
       });
       exports.releaseNotesUrl = exports.RELEASES_URL = exports.version = void 0;
-      exports.version = "2.3.0";
+      exports.version = "2.4.0";
       exports.RELEASES_URL = "https://github.com/jheagle/cloakfall/releases";
       var releaseNotesUrl = (forVersion = exports.version) => `${exports.RELEASES_URL}/tag/v${forVersion}`;
       exports.releaseNotesUrl = releaseNotesUrl;
@@ -21273,6 +21342,7 @@ var cloakfall = (() => {
       });
       var treeloom_1 = __importDefault(require_main3());
       var version_1 = require_version();
+      var credits_1 = require_credits();
       var listener = (listenerFunc) => [{
         listenerFunc,
         listenerArgs: {},
@@ -21305,6 +21375,8 @@ var cloakfall = (() => {
                 innerHTML: `v${version_1.version} \xB7 <a href="${(0, version_1.releaseNotesUrl)()}" target="_blank" rel="noopener" data-track="whats-new">What's new</a> \xB7 <a href="status.html" target="_blank" rel="noopener" data-track="server-status">Server status</a>`
               }
             },
+            // Who made the game, and what it counts (credits.ts)
+            (0, credits_1.aboutSection)(),
             {
               nodeName: "div",
               attributes: {
