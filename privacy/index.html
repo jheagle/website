@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang='en-CA'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Privacy | Joshua Heagle</title>
+    <link rel='canonical' href='https://joshuaheagle.com/privacy/'>
+    <meta name='description' content='What joshuaheagle.com and the Cloakfall game count, what they never collect, and how to opt out.'>
+    <link rel='icon' href='/favicon.ico' sizes='32x32'>
+    <link rel='icon' href='/icon.svg' type='image/svg+xml'>
+    <link rel='apple-touch-icon' href='/apple-touch-icon.png'>
+    <link rel='preload' href='/browser/fonts/atkinson-hyperlegible-next-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
+    <link rel='preload' href='/browser/fonts/lexend-latin-wght-normal.woff2' as='font' type='font/woff2' crossorigin>
+    <link rel='stylesheet' href='/browser/tailwind/site.css?v=51ad6cc888'>
+</head>
+<body class='mx-auto max-w-6xl px-5 pt-6 pb-16 lg:pt-14'>
+<header class='mb-8'>
+    <p class='mt-0 mb-4'><a class='font-heading' href='/'>&larr; Joshua Heagle</a></p>
+    <h1 class='m-0 text-4xl/tight tracking-tight lg:text-5xl'>Privacy</h1>
+</header>
+
+<main class='max-w-prose'>
+    <p class='mt-0 mb-8 text-lg'>
+        This site counts visits so I can see what people read and what to improve. It does that without cookies, without
+        storing your IP address, and without following you to other sites. There are no ads and nothing is sold.
+    </p>
+
+    <h2 class='mt-10 mb-3 text-2xl'>Visits: GoatCounter</h2>
+    <p class='mt-0 mb-4'>
+        Pages on joshuaheagle.com load <a href='https://www.goatcounter.com'>GoatCounter</a>, a small, open-source
+        analytics service. For each visit it counts the page, the site you came from, your browser and operating system
+        (not the full browser string), your screen width, your language, and your country (worked out from your IP
+        address, which is not stored). GoatCounter stores nothing in your browser and doesn't share the data with
+        anyone. It is run from Ireland and keeps the data on servers in Finland and Germany.
+        <a href='https://www.goatcounter.com/help/privacy'>GoatCounter's own privacy page</a> has the details.
+    </p>
+
+    <h2 class='mt-10 mb-3 text-2xl'>Cloakfall</h2>
+    <p class='mt-0 mb-4'>
+        The <a href='/projects/cloakfall/'>Cloakfall</a> game also counts, anonymously, how it gets played: which game
+        type people choose, how many players and robots, the hint setting, whether a game is finished or left early, and
+        any errors the page runs into. These counts go to GoatCounter too. They never include a player's name, anything
+        you type, or a room code.
+    </p>
+    <p class='mt-0 mb-4'>
+        Online games run through a small server in Canada (OVHcloud, Beauharnois, Quebec). It holds player names and
+        network addresses only in memory, while you're connected, to run the game and limit abuse, and forgets them when
+        you leave. It keeps no record of who connected.
+    </p>
+
+    <h2 class='mt-10 mb-3 text-2xl'>Hosting</h2>
+    <p class='mt-0 mb-4'>
+        The site itself is served by GitHub Pages. Like any web host, GitHub sees the requests your browser makes; its
+        <a href='https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement'>privacy statement</a>
+        covers that.
+    </p>
+
+    <h2 class='mt-10 mb-3 text-2xl'>Opting out</h2>
+    <p class='mt-0 mb-4'>
+        To stop your visits being counted in one browser, open any page with <code>#toggle-goatcounter</code> at the end of
+        the address (for example <a href='/#toggle-goatcounter'>joshuaheagle.com/#toggle-goatcounter</a>) and confirm. Your
+        browser remembers the choice; do it again to switch counting back on. Blocking <code>gc.zgo.at</code> with a
+        content blocker works too, and the site works the same either way.
+    </p>
+
+    <h2 class='mt-10 mb-3 text-2xl'>Questions</h2>
+    <p class='mt-0 mb-4'>
+        If anything here is unclear, or you'd like something removed, <a href='/#lets-chat'>get in touch</a>.
+    </p>
+
+    <p class='mt-10 mb-0 text-sm text-muted'>Last updated 20 November 2026.</p>
+</main>
+
+<footer class='mt-12 border-t border-rule pt-4 text-sm text-muted'>
+    <p>Joshua Heagle &copy; 2026 · <a href='/privacy/'>Privacy</a></p>
+</footer>
+<script data-goatcounter="https://joshuaheagle.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
