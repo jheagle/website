@@ -127,6 +127,13 @@ contain a player's name or anything typed, and each one counts every time it hap
 </tr>
 </tbody>
 </table>
+<h3 id="the-lobbys-usage-log" class="tsd-anchor-link">The lobby's usage log<a href="#the-lobbys-usage-log" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<p>The lobby server writes one JSON line per online event to its output (<code>server/usage.ts</code>), next to its start-up line:
+rooms created and joined, games started (humans, robots, hints, whether it was a restart), finished (minutes, turns)
+or stopped early (restart, back to the lobby, the host leaving, idle), players leaving, and rooms closing. Never a
+name, a room code or a network address. In Docker they're in the container's log, e.g.
+<code>docker logs &lt;container&gt; | grep '&quot;usage&quot;'</code>; a recreated container starts a new log. <code>GET /status</code> also has <code>totals</code>
+since the server started (rooms created, games started / finished / stopped, players who left mid-game).</p>
 <h2 id="checking-full-games-in-a-browser" class="tsd-anchor-link">Checking full games in a browser<a href="#checking-full-games-in-a-browser" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
 <p>Three scripts play a whole game in a real headless Chromium (Playwright) against the built page, and fail when the game
 doesn't reach its final score or a page has an error (uncaught errors, console errors, failed requests). Build first:</p>
@@ -162,6 +169,9 @@ online check needs port 3002 free (no lobby server already running). They use js
 <li><a href="#running-the-lobby-in-docker"><span>Running the lobby in <wbr/>Docker</span></a></li>
 <li><a href="#releasing-to-joshuaheaglecom"><span>Releasing to joshuaheagle.com</span></a></li>
 <li><a href="#play-events-goatcounter"><span>Play events (<wbr/>Goat<wbr/>Counter)</span></a></li>
+<li>
+<ul>
+<li><a href="#the-lobbys-usage-log"><span>The lobby&#39;s usage log</span></a></li></ul></li>
 <li><a href="#checking-full-games-in-a-browser"><span>Checking full games in a browser</span></a></li></ul></div></details></div>
 <div class="site-menu">
 <nav class="tsd-navigation"><a href="modules.html">cloakfall</a>
