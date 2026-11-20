@@ -63,7 +63,7 @@
     "gulp-autoprefixer": "9.0.0",
     "gulp-imagemin": "github:jheagle/gulp-imagemin#common-js-compatibility",
     "jest": "^29.7.0",
-    "js-build-tools": "^8.2.0",
+    "js-build-tools": "^9.1.0",
     "jsdom": "^26.1.0",
     "marked": "^16.4.2",
     "playwright": "^1.65.0",
