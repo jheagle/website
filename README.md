@@ -1,5 +1,7 @@
 # joshuaheagle.com
 
+[![tests](https://github.com/jheagle/website/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/jheagle/website/actions/workflows/tests.yml)
+
 The source of [joshuaheagle.com](https://joshuaheagle.com/): Joshua Heagle's portfolio, blog, reading list and the
 documentation and live demos of his open-source libraries. It's a static site, served by GitHub Pages straight from
 this repository: every page is plain HTML that reads fine without JavaScript, apart from the demos on `/projects/`.
