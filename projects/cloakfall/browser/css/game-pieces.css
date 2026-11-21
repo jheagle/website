@@ -75,6 +75,9 @@
 
 .remote-placement-panel {
   position: static;
+  box-sizing: border-box;
+  width: 0;
+  min-width: 100%;
 }
 
 .column.valid-target {

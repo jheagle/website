@@ -21320,7 +21320,7 @@ var cloakfall = (() => {
         value: true
       });
       exports.releaseNotesUrl = exports.RELEASES_URL = exports.version = void 0;
-      exports.version = "2.4.0";
+      exports.version = "2.4.1";
       exports.RELEASES_URL = "https://github.com/jheagle/cloakfall/releases";
       var releaseNotesUrl = (forVersion = exports.version) => `${exports.RELEASES_URL}/tag/v${forVersion}`;
       exports.releaseNotesUrl = releaseNotesUrl;
